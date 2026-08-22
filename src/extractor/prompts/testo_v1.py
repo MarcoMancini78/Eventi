@@ -1,0 +1,83 @@
+"""Prompt per artefatti testuali, versione 1 (06.3). Versionato: il nome del
+modulo è prompt_version, salvato in extractions per confrontare le rese."""
+
+PROMPT_VERSION = "testo_v1"
+
+SISTEMA = """Estrai eventi pubblici da testi italiani. Rispondi SOLO con JSON valido
+conforme allo schema. Nessun testo prima o dopo.
+
+REGOLE
+1. Estrai solo eventi PUBBLICI con una data futura o in corso.
+   Non estrarre: resoconti di eventi passati, ringraziamenti, auguri,
+   avvisi amministrativi, offerte commerciali, post di sole foto.
+1b. NON estrarre la programmazione cinematografica ordinaria di sala
+   (il film delle 21 al cinema, gli orari degli spettacoli, i titoli
+   in cartellone). Estrai SOLO le proiezioni-evento: cinema all'aperto,
+   arene estive, rassegne tematiche, proiezioni con ospite o dibattito.
+   Nel dubbio: se è un film in programmazione normale, non è un evento.
+2. Non inventare mai. Campo non deducibile -> null.
+   È molto meglio un null che un valore plausibile ma sbagliato.
+3. Date: usa DATA_RIFERIMENTO per risolvere date relative
+   ("sabato prossimo", "il 12"). Se manca l'anno, assumi il
+   prossimo anno in cui quella data cade nel futuro e imposta
+   anno_esplicito=false.
+4. Evento su più giorni -> data_inizio e data_fine.
+   Evento di un giorno -> data_fine = data_inizio.
+   Evento RICORRENTE ("tutti i venerdì di luglio", "la prima domenica
+   del mese") -> imposta ricorrenza.e_ricorrente=true e compila i campi
+   strutturati. In data_inizio metti la PRIMA occorrenza futura.
+   Non elencare tu le occorrenze: le calcola il sistema.
+   ordinale vale 1..4 per "prima/seconda/terza/quarta", -1 per
+   "ultima". Se un mese è escluso ("tranne agosto"), omettilo da
+   mesi_inclusi.
+5. Un testo può contenere PIÙ eventi (es. programma di una rassegna):
+   restituiscili tutti separatamente.
+6. comune_testuale: riporta il toponimo come scritto. Se il testo non
+   indica alcun luogo, usa COMUNE_FONTE.
+7. tipologia: scegli dalla lista. Nel dubbio "altro".
+8. Confidenza: 90+ se tutto è esplicito; 60-80 se hai inferito
+   qualcosa; <60 se il testo è ambiguo."""
+
+REGOLE_LOCANDINA_AGGIUNTIVE = """
+9. Leggi la struttura visiva: il testo più grande in alto è di norma
+   il titolo; date e orari sono spesso in evidenza o in fondo; il luogo
+   è spesso vicino a un'icona o in fondo; i loghi in basso indicano gli
+   organizzatori, NON il luogo dell'evento.
+10. Le locandine spesso indicano il giorno della settimana e il numero
+    ("SABATO 12 LUGLIO") senza anno: usa DATA_RIFERIMENTO e verifica
+    la coerenza col giorno della settimana. Se giorno e data non
+    coincidono in nessun anno vicino, segnala data in campi_incerti.
+11. Se la locandina contiene un PROGRAMMA con più serate/spettacoli
+    datati, restituisci un evento per ciascuno.
+12. Ignora testo decorativo, slogan, hashtag, sponsor.
+13. Se l'immagine non è una locandina (foto, logo, grafica di auguri),
+    imposta non_e_un_evento=true."""
+
+TIPOLOGIE_AMMESSE = [
+    "sagra", "gastronomia", "degustazione", "concerto", "teatro", "cinema",
+    "mostra", "fiera", "sportivo", "bambini", "altro",
+]
+
+
+def costruisci_prompt_utente(
+    data_riferimento: str,
+    fonte: str,
+    categoria_fonte: str,
+    comune_fonte: str,
+    url: str,
+    testo: str,
+    caption: str | None = None,
+) -> str:
+    corpo = f"""DATA_RIFERIMENTO: {data_riferimento}
+FONTE: {fonte} ({categoria_fonte})
+COMUNE_FONTE: {comune_fonte}
+URL: {url}
+TIPOLOGIE_AMMESSE: {", ".join(TIPOLOGIE_AMMESSE)}
+
+TESTO:
+\"\"\"
+{testo}
+\"\"\""""
+    if caption:
+        corpo += f'\n\nCAPTION DEL POST (può contenere informazioni assenti dall\'immagine):\n"""\n{caption}\n"""'
+    return corpo

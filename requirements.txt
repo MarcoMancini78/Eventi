@@ -8,3 +8,4 @@ trafilatura
 httpx
 tenacity
 pytest
+google-generativeai

@@ -83,7 +83,7 @@ class Config:
         default_factory=lambda: os.getenv("GOOGLE_SPREADSHEET_ID_ESTESO", "")
     )
     llm_api_key: str = field(default_factory=lambda: os.getenv("LLM_API_KEY", ""))
-    llm_provider: str = field(default_factory=lambda: os.getenv("LLM_PROVIDER", ""))
+    llm_provider: str = field(default_factory=lambda: os.getenv("LLM_PROVIDER", "gemini"))
     imap_host: str = field(default_factory=lambda: os.getenv("IMAP_HOST", ""))
     imap_user: str = field(default_factory=lambda: os.getenv("IMAP_USER", ""))
     imap_password: str = field(default_factory=lambda: os.getenv("IMAP_PASSWORD", ""))
