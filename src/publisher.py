@@ -66,6 +66,24 @@ def pubblica_eventi(worksheet: gspread.Worksheet, righe: list[dict]) -> None:
     )
 
 
+COLONNE_PERIMETRO = ["comune", "alias", "provincia", "lat", "lon", "istat", "km", "minuti", "fascia", "attivo"]
+
+
+def pubblica_perimetro(worksheet: gspread.Worksheet, conn: sqlite3.Connection) -> int:
+    """Scrive il foglio `Perimetro` da SQLite (03.1.4). Nessuna colonna utente qui:
+    `attivo` è l'unica modificabile a mano ma il foglio Perimetro è a bassa
+    frequenza di scrittura (si aggiorna solo dopo un nuovo import), quindi
+    non serve la rilettura preventiva di pubblica_eventi.
+    """
+    cur = conn.execute(
+        "SELECT comune, alias, provincia, lat, lon, istat, km, minuti, fascia, attivo FROM comuni ORDER BY km ASC"
+    )
+    righe = [[row[col] for col in COLONNE_PERIMETRO] for row in cur.fetchall()]
+    worksheet.clear()
+    worksheet.update([COLONNE_PERIMETRO] + righe, value_input_option="USER_ENTERED")
+    return len(righe)
+
+
 def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
     cur = conn.execute(
         """

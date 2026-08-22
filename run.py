@@ -53,6 +53,14 @@ def cmd_import_perimetro(args: argparse.Namespace) -> None:
     for fascia, n in conteggi.items():
         print(f"  {fascia}: {n}")
 
+    if args.publish:
+        from src import publisher, sheets_client
+
+        client = sheets_client.get_client(config)
+        ws = client.open_by_key(config.spreadsheet_id_anagrafiche).worksheet("Perimetro")
+        n = publisher.pubblica_perimetro(ws, conn)
+        print(f"Foglio Perimetro aggiornato: {n} righe scritte.")
+
 
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
@@ -85,6 +93,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_perimetro = sub.add_parser("import-perimetro", help="Importa il file Perimetro (M1)")
     p_perimetro.add_argument("--file", default="../Perimetro.txt", help="Percorso del CSV Perimetro (';' separato)")
+    p_perimetro.add_argument("--publish", action="store_true", help="Scrive anche il foglio Perimetro su Google Sheets")
     p_perimetro.set_defaults(func=cmd_import_perimetro)
 
     # Sottocomandi previsti dalla guida (15.1), da implementare nelle tappe successive.
