@@ -18,27 +18,46 @@ class ProviderLLM(ABC):
 
 
 class GeminiProvider(ProviderLLM):
-    """Google Gemini Flash: multimodale, quota gratuita (06.7, 12.10)."""
+    """Google Gemini Flash: multimodale, quota gratuita (06.7, 12.10).
 
-    def __init__(self, api_key: str, modello: str = "gemini-2.0-flash"):
+    Usa il package `google-genai` (successore di `google-generativeai`,
+    deprecato). Il nome del modello non è un numero magico da inseguire ad
+    ogni deprecazione: resta configurabile via Config se serve cambiarlo
+    senza toccare il codice.
+    """
+
+    def __init__(self, api_key: str, modello: str = "gemini-flash-latest"):
         if not api_key:
             raise ValueError("LLM_API_KEY mancante in config/.env per il provider gemini")
-        import google.generativeai as genai
+        from google import genai
+        from google.genai import types
 
-        genai.configure(api_key=api_key)
-        self._genai = genai
+        self._client = genai.Client(api_key=api_key)
+        self._types = types
         self._modello_nome = modello
-        self._modello = genai.GenerativeModel(modello)
 
     def estrai(self, prompt_sistema: str, prompt_utente: str, immagini: list[bytes] | None = None) -> str:
-        parti: list = [f"{prompt_sistema}\n\n{prompt_utente}"]
+        from .schema import RispostaEstrazione
+
+        parti: list = [prompt_utente]
         if immagini:
             for img_bytes in immagini:
-                parti.append({"mime_type": "image/jpeg", "data": img_bytes})
+                parti.append(self._types.Part.from_bytes(data=img_bytes, mime_type="image/jpeg"))
 
-        risposta = self._modello.generate_content(
-            parti,
-            generation_config={"response_mime_type": "application/json"},
+        # response_schema vincola la forma esatta dell'output (06.2: "se il
+        # provider supporta l'output JSON vincolato a schema, va usato").
+        # Senza questo il modello può rispondere con una forma diversa da
+        # quella attesa (es. un array nudo invece di {"eventi": [...]})
+        # anche con response_mime_type="application/json", che garantisce
+        # solo JSON sintatticamente valido, non la forma.
+        risposta = self._client.models.generate_content(
+            model=self._modello_nome,
+            contents=parti,
+            config=self._types.GenerateContentConfig(
+                system_instruction=prompt_sistema,
+                response_mime_type="application/json",
+                response_schema=RispostaEstrazione,
+            ),
         )
         return risposta.text
 
