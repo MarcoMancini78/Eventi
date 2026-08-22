@@ -1,10 +1,9 @@
-"""M2/M11 (parziale): orchestrazione minima fetch -> pre-filtro -> normalizzazione -> dedup.
+"""M2/M5/M11 (parziale): orchestrazione fetch -> pre-filtro -> estrazione -> normalizzazione -> dedup.
 
-Questa è la versione ridotta prevista da M2 ("un evento reale nel foglio,
-senza LLM"): copre solo gli adattatori T0/T1 che non richiedono l'estrattore
-per i campi già strutturati (ical, jsonld). Per gli artefatti T1 generici
-(html) senza data strutturata, l'evento resta grezzo in attesa dell'estrattore
-LLM (M5) e non viene ancora pubblicato come riga completa.
+I T0 con campi già strutturati (ical, jsonld) bypassano l'estrattore: non
+c'è nulla da capire, solo da normalizzare. Gli artefatti T1 generici (html)
+che superano il pre-filtro passano dall'estrattore LLM (M5); sotto la
+soglia di confidenza vanno in quarantena (06.6), mai scartati in silenzio.
 
 La coda a priorità, il budget di tempo e l'isolamento totale degli errori
 (08.3, 08.4) arrivano con M11: qui ogni fonte è comunque isolata in un
@@ -12,8 +11,10 @@ try/except, perché è la regola non negoziabile 15.1.4.
 """
 from __future__ import annotations
 
+import hashlib
 import logging
 import sqlite3
+from datetime import datetime, timezone
 
 from .adapters.html import HtmlAdapter
 from .adapters.ical import ICalAdapter
@@ -21,6 +22,7 @@ from .adapters.jsonld import JsonLdAdapter
 from .adapters.rss import RssAdapter
 from .config import Config
 from .dedup import upsert_evento
+from .extractor.client import ErroreQuotaEsaurita, ExtractorClient
 from .normalizer import risolvi_comune_evento, titolo_normalizzato, titolo_visualizzato
 from .prefilter import scarta_testo
 
@@ -34,12 +36,24 @@ _ADAPTER_PER_TIER = {
 }
 
 
-def esegui_fonte(fonte: dict, conn: sqlite3.Connection, config: Config) -> dict:
+def esegui_fonte(
+    fonte: dict, conn: sqlite3.Connection, config: Config, extractor: ExtractorClient | None = None
+) -> dict:
     """Elabora una fonte isolatamente. Ritorna un riepilogo per il Log (03.1.7).
 
     Non solleva mai: un'eccezione qui non deve mai fermare il run (15.1.4).
+    `extractor=None` disabilita l'estrazione LLM: i T1 restano al
+    pre-filtro, comportamento utile per i test offline.
     """
-    riepilogo = {"source_id": fonte["source_id"], "artefatti": 0, "eventi_pubblicati": 0, "scartati_prefilter": 0, "errore": None}
+    riepilogo = {
+        "source_id": fonte["source_id"],
+        "artefatti": 0,
+        "eventi_pubblicati": 0,
+        "eventi_in_quarantena": 0,
+        "scartati_prefilter": 0,
+        "chiamate_llm": 0,
+        "errore": None,
+    }
 
     adapter = _ADAPTER_PER_TIER.get(fonte["metodo"])
     if adapter is None:
@@ -54,6 +68,7 @@ def esegui_fonte(fonte: dict, conn: sqlite3.Connection, config: Config) -> dict:
         return riepilogo
 
     riepilogo["artefatti"] = len(artefatti)
+    _assicura_source(conn, fonte["source_id"])
 
     for art in artefatti:
         # I soli T0 con campi già strutturati (ical/jsonld) bypassano il pre-filtro
@@ -65,16 +80,115 @@ def esegui_fonte(fonte: dict, conn: sqlite3.Connection, config: Config) -> dict:
                 riepilogo["eventi_pubblicati"] += 1
             continue
 
-        # T1 generico (html): il testo grezzo va pre-filtrato. Se passa,
-        # aspetta l'estrattore LLM (M5) — qui non viene ancora pubblicato
-        # come evento strutturato.
+        # T1 generico (html): il testo grezzo va pre-filtrato prima di
+        # spendere quota LLM (15.1 regola 7).
         scarta, motivo = scarta_testo(art.text or "", ha_immagine=bool(art.image_paths))
         if scarta:
             riepilogo["scartati_prefilter"] += 1
             continue
-        # TODO(M5): passare art a extractor.client per ottenere titolo/data.
+
+        if extractor is None:
+            continue  # nessun estrattore configurato: l'artefatto resta in coda
+
+        artifact_id = _registra_artefatto(conn, art, fonte["source_id"])
+        try:
+            risposta = extractor.estrai_da_testo(
+                testo=art.text,
+                artifact_id=artifact_id,
+                fonte=fonte["source_id"],
+                categoria_fonte=fonte.get("categoria", "altro"),
+                comune_fonte=fonte.get("comune_riferimento") or "",
+                url=art.url,
+            )
+        except ErroreQuotaEsaurita as exc:
+            # 08.5: l'artefatto resta con processed_at=null, ripreso il giorno dopo.
+            logger.info("Budget LLM esaurito su fonte %s: %s", fonte["source_id"], exc)
+            riepilogo["errore"] = str(exc)
+            break
+        except Exception as exc:  # isolamento totale anche per la chiamata LLM
+            logger.warning("Estrazione fallita per artifact %s: %s", artifact_id, exc)
+            continue
+
+        riepilogo["chiamate_llm"] += 1
+        for evento_estratto in risposta.eventi:
+            esito = _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte, conn, config)
+            if esito == "pubblicato":
+                riepilogo["eventi_pubblicati"] += 1
+            elif esito == "quarantena":
+                riepilogo["eventi_in_quarantena"] += 1
 
     return riepilogo
+
+
+def _assicura_source(conn: sqlite3.Connection, source_id: str) -> None:
+    conn.execute("INSERT OR IGNORE INTO sources (source_id) VALUES (?)", (source_id,))
+    conn.commit()
+
+
+def _registra_artefatto(conn: sqlite3.Connection, art, source_id: str) -> str:
+    artifact_id = hashlib.sha1(f"{source_id}|{art.url}|{art.raw_hash}".encode()).hexdigest()[:16]
+    conn.execute(
+        """
+        INSERT OR IGNORE INTO artifacts (artifact_id, source_id, url, fetched_at, kind, text, raw_hash)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """,
+        (artifact_id, source_id, art.url, art.fetched_at, art.kind, art.text, art.raw_hash),
+    )
+    conn.commit()
+    return artifact_id
+
+
+def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sqlite3.Connection, config: Config) -> str:
+    """06.6: sotto soglia_confidenza -> Quarantena, altrimenti Eventi.
+
+    La quarantena vera e propria (foglio dedicato) è compito del publisher
+    (M5 completo); qui si applica solo la soglia e si evita di pubblicare
+    un evento incerto come se fosse certo.
+    """
+    if not evento_estratto.data_inizio:
+        return "scartato"  # 06.8: data mancante, non pubblicabile né in quarantena senza data
+
+    comune_riga, penalita_comune = risolvi_comune_evento(
+        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn
+    )
+    if comune_riga is None:
+        return "quarantena"  # 07.3.7: comune_ambiguo
+
+    confidenza_finale = evento_estratto.confidenza + penalita_comune
+    if not evento_estratto.anno_esplicito:
+        confidenza_finale -= 15
+    if not evento_estratto.luogo_testuale:
+        confidenza_finale -= 10
+
+    titolo_norm = titolo_normalizzato(evento_estratto.titolo, comune_riga["comune"])
+    evento = {
+        "titolo": titolo_visualizzato(evento_estratto.titolo),
+        "titolo_normalizzato": titolo_norm,
+        "descrizione": (evento_estratto.descrizione or "")[:400],
+        "tipologia": evento_estratto.tipologia,
+        "data_inizio": evento_estratto.data_inizio,
+        "ora_inizio": evento_estratto.ora_inizio,
+        "data_fine": evento_estratto.data_fine or evento_estratto.data_inizio,
+        "ora_fine": evento_estratto.ora_fine,
+        "comune": comune_riga["comune"],
+        "comune_normalizzato": titolo_normalizzato(comune_riga["comune"]),
+        "luogo": evento_estratto.luogo_testuale,
+        "km": comune_riga["km"],
+        "minuti": comune_riga["minuti"],
+        "prezzo": evento_estratto.prezzo,
+        "organizzatore": evento_estratto.organizzatore,
+        "url": art.url,
+        "url_immagine": art.image_paths[0] if art.image_paths else None,
+        "confidenza": max(0, min(100, confidenza_finale)),
+    }
+
+    eid = upsert_evento(conn, evento, source_id=fonte["source_id"])
+
+    if confidenza_finale < config.soglia_confidenza:
+        conn.execute("UPDATE events SET stato = 'quarantena' WHERE event_id = ?", (eid,))
+        conn.commit()
+        return "quarantena"
+    return "pubblicato"
 
 
 def _costruisci_evento_da_artefatto(art, fonte: dict, conn: sqlite3.Connection) -> dict | None:

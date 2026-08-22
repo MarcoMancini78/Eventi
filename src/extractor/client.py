@@ -9,7 +9,7 @@ from __future__ import annotations
 import hashlib
 import json
 import sqlite3
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
@@ -161,7 +161,12 @@ class ExtractorClient:
 
         scarti = _controlli_di_sanita(risposta, data_riferimento, self._config.limite_sanita_anni)
 
-        extraction_id = hashlib.sha1(f"{artifact_id}|{datetime.now(timezone.utc).isoformat()}".encode()).hexdigest()[:16]
+        # Ora locale, non UTC: il conteggio giornaliero (budget_rimanente)
+        # confronta con date.today() (locale, 07.2 "si lavora sempre in ora
+        # locale italiana"). Un mismatch di fuso qui rompe il conteggio a
+        # cavallo di mezzanotte tra locale e UTC.
+        adesso_locale = datetime.now()
+        extraction_id = hashlib.sha1(f"{artifact_id}|{adesso_locale.isoformat()}".encode()).hexdigest()[:16]
         self._conn.execute(
             """
             INSERT INTO extractions (extraction_id, artifact_id, model, prompt_version, raw_output, parsed_json, confidence, created_at)
@@ -175,7 +180,7 @@ class ExtractorClient:
                 grezzo,
                 risposta.model_dump_json(),
                 risposta.eventi[0].confidenza if risposta.eventi else 0,
-                datetime.now(timezone.utc).isoformat(),
+                adesso_locale.isoformat(),
             ),
         )
         self._conn.commit()

@@ -62,12 +62,22 @@ def cmd_import_perimetro(args: argparse.Namespace) -> None:
         print(f"Foglio Perimetro aggiornato: {n} righe scritte.")
 
 
+def _crea_extractor_se_configurato(config, conn):
+    if not config.llm_api_key:
+        print("LLM_API_KEY non impostata: le fonti T1 si fermeranno al pre-filtro, senza estrazione.")
+        return None
+    from src.extractor.client import ExtractorClient
+
+    return ExtractorClient(config, conn)
+
+
 def cmd_run(args: argparse.Namespace) -> None:
     from src import pipeline
 
     config = load_config()
     conn = store.connect(DB_PATH)
     store.migrate(conn)
+    extractor = None if args.no_llm else _crea_extractor_se_configurato(config, conn)
 
     fonti = conn.execute("SELECT source_id, endpoint, tier FROM sources").fetchall()
     if not fonti:
@@ -80,13 +90,13 @@ def cmd_run(args: argparse.Namespace) -> None:
             "metodo": args.metodo,
             "comune_riferimento": args.comune,
         }
-        riepilogo = pipeline.esegui_fonte(fonte, conn, config)
+        riepilogo = pipeline.esegui_fonte(fonte, conn, config, extractor)
         print(riepilogo)
         return
 
     for riga in fonti:
         fonte = {"source_id": riga["source_id"], "endpoint": riga["endpoint"], "metodo": riga["tier"], "comune_riferimento": None}
-        riepilogo = pipeline.esegui_fonte(fonte, conn, config)
+        riepilogo = pipeline.esegui_fonte(fonte, conn, config, extractor)
         print(riepilogo)
 
 
@@ -129,6 +139,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--endpoint", help="URL della fonte, con --fonte")
     p_run.add_argument("--metodo", choices=["T0_ical", "T0_jsonld", "T0_rss", "T1_html"], help="Adattatore da usare, con --fonte")
     p_run.add_argument("--comune", help="Comune di riferimento della fonte, con --fonte")
+    p_run.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: i T1 si fermano al pre-filtro")
     p_run.set_defaults(func=cmd_run)
 
     # Sottocomandi previsti dalla guida (15.1), da implementare nelle tappe successive.
