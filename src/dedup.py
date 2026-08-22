@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 import sqlite3
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 
 from .normalizer import dedup_key, event_id
+
+_CAMPI_OPZIONALI_DEFAULT = {"serie_id": None, "occorrenza": None}
 
 
 def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str:
@@ -13,7 +15,10 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
     Se l'evento esiste già, aggiorna solo i campi calcolati (mai le colonne
     utente: stato/note/bloccato/soppressa restano quelle già in DB — le
     tocca solo publisher.py in fase di scrittura su Sheet, mai qui).
+    `serie_id`/`occorrenza` sono opzionali: presenti solo per le occorrenze
+    generate da una Serie (07.9), assenti per gli eventi singoli.
     """
+    evento = {**_CAMPI_OPZIONALI_DEFAULT, **evento}
     chiave = dedup_key(evento["titolo_normalizzato"], evento["data_inizio"], evento["comune_normalizzato"])
     eid = event_id(chiave)
     oggi = date.today().isoformat()
@@ -32,7 +37,8 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
             UPDATE events SET
                 titolo=:titolo, descrizione=:descrizione, tipologia=:tipologia,
                 data_inizio=:data_inizio, ora_inizio=:ora_inizio, data_fine=:data_fine,
-                ora_fine=:ora_fine, comune=:comune, luogo=:luogo, km=:km, minuti=:minuti,
+                ora_fine=:ora_fine, serie_id=:serie_id, occorrenza=:occorrenza,
+                comune=:comune, luogo=:luogo, km=:km, minuti=:minuti,
                 prezzo=:prezzo, organizzatore=:organizzatore, url=:url, url_immagine=:url_immagine,
                 confidenza=:confidenza, ultimo_visto=:oggi
             WHERE event_id=:event_id
@@ -44,14 +50,14 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
             """
             INSERT INTO events (
                 event_id, dedup_key, titolo, descrizione, tipologia, data_inizio,
-                ora_inizio, data_fine, ora_fine, comune, luogo, km, minuti, prezzo,
-                organizzatore, url, url_immagine, confidenza, stato, primo_visto,
-                ultimo_visto, bloccato, soppressa, archiviato
+                ora_inizio, data_fine, ora_fine, serie_id, occorrenza, comune, luogo,
+                km, minuti, prezzo, organizzatore, url, url_immagine, confidenza,
+                stato, primo_visto, ultimo_visto, bloccato, soppressa, archiviato
             ) VALUES (
                 :event_id, :dedup_key, :titolo, :descrizione, :tipologia, :data_inizio,
-                :ora_inizio, :data_fine, :ora_fine, :comune, :luogo, :km, :minuti, :prezzo,
-                :organizzatore, :url, :url_immagine, :confidenza, 'nuovo', :oggi,
-                :oggi, 'no', 'no', 'no'
+                :ora_inizio, :data_fine, :ora_fine, :serie_id, :occorrenza, :comune, :luogo,
+                :km, :minuti, :prezzo, :organizzatore, :url, :url_immagine, :confidenza,
+                'nuovo', :oggi, :oggi, 'no', 'no', 'no'
             )
             """,
             {**evento, "event_id": eid, "dedup_key": chiave, "oggi": oggi},
@@ -69,7 +75,7 @@ def _registra_fonte(conn: sqlite3.Connection, event_id_: str, source_id: str, ur
         VALUES (?, ?, ?, ?)
         ON CONFLICT(event_id, source_id) DO UPDATE SET url=excluded.url, seen_at=excluded.seen_at
         """,
-        (event_id_, source_id, url, datetime.now(timezone.utc).isoformat()),
+        (event_id_, source_id, url, datetime.now().isoformat()),
     )
 
 

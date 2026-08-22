@@ -25,6 +25,7 @@ from .dedup import upsert_evento
 from .extractor.client import ErroreQuotaEsaurita, ExtractorClient
 from .normalizer import risolvi_comune_evento, titolo_normalizzato, titolo_visualizzato
 from .prefilter import scarta_testo
+from .series import espandi_serie_in_eventi, upsert_serie
 
 logger = logging.getLogger(__name__)
 
@@ -50,6 +51,7 @@ def esegui_fonte(
         "artefatti": 0,
         "eventi_pubblicati": 0,
         "eventi_in_quarantena": 0,
+        "occorrenze_generate": 0,
         "scartati_prefilter": 0,
         "chiamate_llm": 0,
         "errore": None,
@@ -111,6 +113,11 @@ def esegui_fonte(
 
         riepilogo["chiamate_llm"] += 1
         for evento_estratto in risposta.eventi:
+            if evento_estratto.ricorrenza.e_ricorrente:
+                n_occorrenze = _gestisci_evento_ricorrente(evento_estratto, art, fonte, conn, config)
+                riepilogo["occorrenze_generate"] += n_occorrenze
+                continue
+
             esito = _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte, conn, config)
             if esito == "pubblicato":
                 riepilogo["eventi_pubblicati"] += 1
@@ -118,6 +125,38 @@ def esegui_fonte(
                 riepilogo["eventi_in_quarantena"] += 1
 
     return riepilogo
+
+
+def _gestisci_evento_ricorrente(evento_estratto, art, fonte: dict, conn: sqlite3.Connection, config: Config) -> int:
+    """07.9: un evento ricorrente diventa una Serie, non una riga con testo esplicativo.
+
+    Ritorna il numero di occorrenze pubblicate. Un comune non risolvibile
+    o una frequenza non supportata (solo settimanale/mensile, non annuale)
+    fanno rinunciare silenziosamente all'espansione: la serie riparte al
+    prossimo avvistamento con dati migliori.
+    """
+    comune_riga, _ = risolvi_comune_evento(
+        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn
+    )
+    if comune_riga is None:
+        return 0
+
+    serie_id = upsert_serie(
+        conn,
+        evento_estratto.ricorrenza,
+        titolo=evento_estratto.titolo,
+        tipologia=evento_estratto.tipologia,
+        comune=comune_riga["comune"],
+        luogo=evento_estratto.luogo_testuale,
+        fonte=fonte["source_id"],
+    )
+    if serie_id is None:
+        return 0
+
+    occorrenze = espandi_serie_in_eventi(conn, serie_id, config)
+    for occ in occorrenze:
+        upsert_evento(conn, occ, source_id=fonte["source_id"])
+    return len(occorrenze)
 
 
 def _assicura_source(conn: sqlite3.Connection, source_id: str) -> None:

@@ -164,3 +164,42 @@ def test_run_py_no_llm_non_chiama_lestrattore():
 
     assert riepilogo["chiamate_llm"] == 0
     assert riepilogo["eventi_pubblicati"] == 0
+
+
+# --- M6 collegato: evento ricorrente estratto -> Serie -> occorrenze ---
+
+_RISPOSTA_RICORRENTE = (
+    '{"eventi": [{"titolo": "Mercatino dell\'antiquariato", "descrizione": null, "tipologia": "fiera", '
+    '"data_inizio": "2026-09-06", "data_fine": "2026-09-06", "ora_inizio": null, "ora_fine": null, '
+    '"ricorrenza": {"e_ricorrente": true, "frequenza": "mensile", "giorni_settimana": ["SU"], '
+    '"ordinale": 1, "mesi_inclusi": [1,2,3,4,5,6,7,9,10,11,12], "fine_dichiarata": null, '
+    '"testo_originale": "prima domenica del mese, escluso agosto"}, '
+    '"luogo_testuale": "Piazza Roma", "comune_testuale": "Comune Prova", '
+    '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": true, '
+    '"confidenza": 90, "campi_incerti": [], "note_estrazione": null}], '
+    '"non_e_un_evento": false, "motivo": null}'
+)
+
+
+def test_fonte_t1_con_evento_ricorrente_genera_serie_e_occorrenze():
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_RISPOSTA_RICORRENTE])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    fonte = {"source_id": "sito-prova", "metodo": "T1_html", "endpoint": "https://sito-prova.it/eventi", "comune_riferimento": "Comune Prova"}
+    html = (FIXTURES / "esempio_pagina_eventi.html").read_text(encoding="utf-8")
+
+    with patch("src.adapters.html.HtmlAdapter.fetch", return_value=parse_html(html, "sito-prova", fonte["endpoint"])):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, Config(), extractor)
+
+    assert riepilogo["occorrenze_generate"] > 0
+    assert riepilogo["eventi_pubblicati"] == 0  # non pubblicato come evento singolo
+
+    serie = conn.execute("SELECT * FROM series").fetchall()
+    assert len(serie) == 1
+    assert "prima domenica" in serie[0]["regola_leggibile"]
+
+    occorrenze = conn.execute("SELECT * FROM events WHERE serie_id IS NOT NULL").fetchall()
+    assert len(occorrenze) == riepilogo["occorrenze_generate"]
+    for occ in occorrenze:
+        assert occ["comune"] == "Comune Prova"
