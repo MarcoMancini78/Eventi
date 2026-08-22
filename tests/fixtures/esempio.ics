@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Comune di Prova//Eventi//IT
+BEGIN:VEVENT
+UID:evento-1@comune-prova.it
+DTSTART:20260912T210000
+DTEND:20260912T230000
+SUMMARY:SAGRA DEL TARTUFO
+LOCATION:Piazza Roma
+DESCRIPTION:Degustazioni e musica dal vivo in piazza.
+URL:https://comune-prova.it/eventi/sagra-tartufo
+END:VEVENT
+BEGIN:VEVENT
+UID:evento-2@comune-prova.it
+DTSTART:20260920
+DTEND:20260921
+SUMMARY:Mercatino dell'antiquariato
+LOCATION:Via Garibaldi
+DESCRIPTION:Bancarelle di modernariato e antiquariato.
+END:VEVENT
+END:VCALENDAR
