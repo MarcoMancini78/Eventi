@@ -7,3 +7,4 @@ python-dateutil
 trafilatura
 httpx
 tenacity
+pytest
