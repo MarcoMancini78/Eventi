@@ -1,0 +1,9 @@
+python-dotenv
+gspread
+google-auth
+google-auth-oauthlib
+pydantic
+python-dateutil
+trafilatura
+httpx
+tenacity
