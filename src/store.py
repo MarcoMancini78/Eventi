@@ -142,6 +142,40 @@ CREATE TABLE IF NOT EXISTS runs (
     archiviati INTEGER,
     note TEXT
 );
+
+-- M9 (14.4): coda di follow semiautomatica per i due account social dedicati.
+CREATE TABLE IF NOT EXISTS coda_follow (
+    source_id TEXT NOT NULL,
+    piattaforma TEXT NOT NULL,
+    handle TEXT,
+    url TEXT,
+    soggetto TEXT,
+    comune TEXT,
+    fascia TEXT,
+    categoria TEXT,
+    stato TEXT DEFAULT 'da_seguire',
+    tentativi INTEGER DEFAULT 0,
+    data_follow TEXT,
+    note TEXT,
+    PRIMARY KEY (source_id, piattaforma)
+);
+
+-- Log storico di ogni tentativo di follow, indipendente dallo stato corrente
+-- in coda_follow: serve per il conteggio giornaliero (14.4, 14.5).
+CREATE TABLE IF NOT EXISTS coda_follow_log (
+    log_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source_id TEXT,
+    piattaforma TEXT,
+    esito TEXT,
+    data_follow TEXT
+);
+
+-- Stato minimo persistente per il circuito di sicurezza (14.5) e l'orario
+-- dell'ultimo lotto (14.4: intervallo minimo tra due lotti).
+CREATE TABLE IF NOT EXISTS app_state (
+    chiave TEXT PRIMARY KEY,
+    valore TEXT
+);
 """
 
 

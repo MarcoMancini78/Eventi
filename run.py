@@ -100,6 +100,82 @@ def cmd_run(args: argparse.Namespace) -> None:
         print(riepilogo)
 
 
+def cmd_populate_coda_follow(args: argparse.Namespace) -> None:
+    from src.bonifica_social import importa_e_bonifica
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    cartella = Path(args.raw_dir)
+    comuni_csv = cartella / "Comuni.csv"
+    proloco_csv = cartella / "ProLoco.csv"
+    social_csv = cartella / "Social.csv"
+    for f in (comuni_csv, proloco_csv):
+        if not f.exists():
+            print(f"File non trovato: {f}")
+            sys.exit(1)
+
+    righe = importa_e_bonifica(comuni_csv, proloco_csv, social_csv, conn)
+    print(f"Righe bonificate pronte: {len(righe)}")
+
+    for r in righe:
+        conn.execute(
+            """
+            INSERT INTO coda_follow (source_id, piattaforma, handle, url, soggetto, comune, fascia, categoria, stato)
+            VALUES (:source_id, :piattaforma, :handle, :url, :soggetto, :comune, :fascia, :categoria, :stato)
+            ON CONFLICT(source_id, piattaforma) DO UPDATE SET
+                handle=excluded.handle, url=excluded.url, soggetto=excluded.soggetto,
+                comune=excluded.comune, fascia=excluded.fascia, categoria=excluded.categoria
+            """,
+            r,
+        )
+    conn.commit()
+    print(f"Coda follow aggiornata in SQLite: {len(righe)} righe (nuove o aggiornate).")
+
+    if args.publish:
+        from src import sheets_client
+
+        client = sheets_client.get_client(config)
+        ws = client.open_by_key(config.spreadsheet_id_principale).worksheet("CodaFollow")
+        intestazione = ["source_id", "piattaforma", "handle", "url", "soggetto", "comune", "fascia", "priorita", "stato", "tentativi", "data_follow", "note"]
+        tutte = conn.execute("SELECT * FROM coda_follow ORDER BY fascia ASC, categoria ASC").fetchall()
+        corpo = [
+            [r["source_id"], r["piattaforma"], r["handle"], r["url"], r["soggetto"], r["comune"], r["fascia"], "", r["stato"], r["tentativi"], r["data_follow"] or "", r["note"] or ""]
+            for r in tutte
+        ]
+        ws.clear()
+        ws.update([intestazione] + corpo, value_input_option="USER_ENTERED")
+        print(f"Foglio CodaFollow aggiornato: {len(corpo)} righe scritte.")
+
+
+def cmd_follow(args: argparse.Namespace) -> None:
+    from src import follow
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    try:
+        esiti = follow.follow_batch(conn, config, args.platform, n=args.n, dry_run=args.dry_run)
+    except follow.CircuitoApertoError as exc:
+        print(f"Impossibile procedere: {exc}")
+        sys.exit(1)
+
+    if not esiti:
+        print("Nessun candidato in coda_follow con stato 'da_seguire'.")
+        return
+
+    for e in esiti:
+        print(f"  {e.source_id:40} {e.esito:12} {e.dettaglio}")
+
+    if args.dry_run:
+        print(f"\n--dry-run: {len(esiti)} candidati elencati, nessuna azione eseguita.")
+    else:
+        seguiti = sum(1 for e in esiti if e.esito == "seguito")
+        print(f"\nLotto completato: {seguiti}/{len(esiti)} seguiti con successo.")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -142,10 +218,20 @@ def build_parser() -> argparse.ArgumentParser:
     p_run.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: i T1 si fermano al pre-filtro")
     p_run.set_defaults(func=cmd_run)
 
+    p_coda = sub.add_parser("populate-coda-follow", help="Bonifica ed importa le fonti social nella CodaFollow (M9)")
+    p_coda.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv, Social.csv")
+    p_coda.add_argument("--publish", action="store_true", help="Scrive anche il foglio CodaFollow su Google Sheets")
+    p_coda.set_defaults(func=cmd_populate_coda_follow)
+
+    p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
+    p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])
+    p_follow.add_argument("--n", type=int, default=None, help="Quanti follow in questo lotto (default: follow_per_lotto)")
+    p_follow.add_argument("--dry-run", action="store_true", help="Elenca cosa farebbe, senza eseguire alcuna azione")
+    p_follow.set_defaults(func=cmd_follow)
+
     # Sottocomandi previsti dalla guida (15.1), da implementare nelle tappe successive.
     for nome, aiuto in [
         ("discover", "Discovery e fingerprinting delle fonti (M8)"),
-        ("follow", "Lotto di follow social (M9)"),
         ("publish", "Solo pubblicazione su Sheets"),
         ("reprocess", "Riestrae dal grezzo, senza rete (M5)"),
     ]:

@@ -5,6 +5,7 @@ data/eventi.db
 data/cache/
 data/logs/
 data/sessions/
+data/raw_import/
 __pycache__/
 *.pyc
 .pytest_cache/
