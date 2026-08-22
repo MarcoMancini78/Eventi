@@ -62,6 +62,34 @@ def cmd_import_perimetro(args: argparse.Namespace) -> None:
         print(f"Foglio Perimetro aggiornato: {n} righe scritte.")
 
 
+def cmd_run(args: argparse.Namespace) -> None:
+    from src import pipeline
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    fonti = conn.execute("SELECT source_id, endpoint, tier FROM sources").fetchall()
+    if not fonti:
+        print("Nessuna fonte in SQLite. Popola il foglio Fonti e sincronizzalo, oppure usa --fonte per un test puntuale.")
+
+    if args.fonte and args.endpoint and args.metodo:
+        fonte = {
+            "source_id": args.fonte,
+            "endpoint": args.endpoint,
+            "metodo": args.metodo,
+            "comune_riferimento": args.comune,
+        }
+        riepilogo = pipeline.esegui_fonte(fonte, conn, config)
+        print(riepilogo)
+        return
+
+    for riga in fonti:
+        fonte = {"source_id": riga["source_id"], "endpoint": riga["endpoint"], "metodo": riga["tier"], "comune_riferimento": None}
+        riepilogo = pipeline.esegui_fonte(fonte, conn, config)
+        print(riepilogo)
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -96,11 +124,17 @@ def build_parser() -> argparse.ArgumentParser:
     p_perimetro.add_argument("--publish", action="store_true", help="Scrive anche il foglio Perimetro su Google Sheets")
     p_perimetro.set_defaults(func=cmd_import_perimetro)
 
+    p_run = sub.add_parser("run", help="Esegue la raccolta sulle fonti T0/T1 note (M2, parziale)")
+    p_run.add_argument("--fonte", help="source_id per un test puntuale, invece di leggere da SQLite")
+    p_run.add_argument("--endpoint", help="URL della fonte, con --fonte")
+    p_run.add_argument("--metodo", choices=["T0_ical", "T0_jsonld", "T0_rss", "T1_html"], help="Adattatore da usare, con --fonte")
+    p_run.add_argument("--comune", help="Comune di riferimento della fonte, con --fonte")
+    p_run.set_defaults(func=cmd_run)
+
     # Sottocomandi previsti dalla guida (15.1), da implementare nelle tappe successive.
     for nome, aiuto in [
         ("discover", "Discovery e fingerprinting delle fonti (M8)"),
         ("follow", "Lotto di follow social (M9)"),
-        ("run", "Esegue una pipeline di raccolta (M2+)"),
         ("publish", "Solo pubblicazione su Sheets"),
         ("reprocess", "Riestrae dal grezzo, senza rete (M5)"),
     ]:
