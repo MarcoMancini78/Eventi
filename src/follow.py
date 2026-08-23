@@ -153,6 +153,11 @@ def follow_batch(
             except SegnaleDiBloccoRilevato as segnale:
                 apri_circuito(conn, piattaforma, segnale.ore_apertura)
                 _registra_esito(conn, candidato, "fallito", str(segnale))
+                # Il tentativo va comunque riportato: senza questo, un
+                # blocco al primo candidato produce esiti=[] e nasconde
+                # completamente l'evento a chi legge l'output del comando
+                # (14.5 richiede che il blocco sia visibile, non silenzioso).
+                esiti.append(EsitoFollow(candidato["source_id"], "bloccato_da_circuito", str(segnale)))
                 break  # 14.5: si ferma immediatamente, non continua il lotto
 
             _registra_esito(conn, candidato, esito.esito, esito.dettaglio)

@@ -172,6 +172,10 @@ def cmd_follow(args: argparse.Namespace) -> None:
     if args.dry_run:
         print(f"\n--dry-run: {len(esiti)} candidati elencati, nessuna azione eseguita.")
     else:
+        bloccati = [e for e in esiti if e.esito == "bloccato_da_circuito"]
+        if bloccati:
+            print(f"\n⚠️  Interrotto da un segnale di blocco: {bloccati[0].dettaglio}")
+            print("Il circuito di sicurezza è ora aperto per questa piattaforma: nessun follow ripartirà finché non si richiude da solo.")
         seguiti = sum(1 for e in esiti if e.esito == "seguito")
         print(f"\nLotto completato: {seguiti}/{len(esiti)} seguiti con successo.")
 

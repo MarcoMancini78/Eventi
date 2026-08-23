@@ -180,6 +180,50 @@ def test_follow_batch_facebook_si_ferma_se_identita_pagina_non_attivabile(monkey
     assert riga["tentativi"] == 0
 
 
+def test_follow_batch_su_captcha_ritorna_esito_visibile_non_lista_vuota(monkeypatch):
+    """Bug reale: un captcha sul primo candidato produceva esiti=[], e
+    cmd_follow lo interpretava come 'nessun candidato', nascondendo
+    completamente l'evento all'utente (14.5 richiede che il blocco sia
+    visibile). Il circuito deve comunque aprirsi e il tentativo fallito
+    deve comunque essere restituito."""
+    conn = _conn_di_prova()
+    _inserisci_candidato(conn, "fonte-1", piattaforma="instagram")
+    _inserisci_candidato(conn, "fonte-2", piattaforma="instagram")
+
+    contesto_finto = {"piattaforma": "instagram"}
+
+    def _apri_finto(piattaforma, sessione_dir):
+        return contesto_finto
+
+    def _chiudi_finto(contesto):
+        pass
+
+    def _apri_e_segui_finto(contesto, candidato):
+        raise follow.SegnaleDiBloccoRilevato("captcha rilevato", 72)
+
+    monkeypatch.setattr(follow, "_apri_sessione_browser", _apri_finto)
+    monkeypatch.setattr(follow, "_chiudi_sessione_browser", _chiudi_finto)
+    monkeypatch.setattr(follow, "_apri_e_segui", _apri_e_segui_finto)
+
+    esiti = follow.follow_batch(conn, Config(), "instagram", n=2, dry_run=False)
+
+    assert len(esiti) == 1  # il tentativo bloccato è comunque riportato
+    assert esiti[0].esito == "bloccato_da_circuito"
+    assert "captcha" in esiti[0].dettaglio.lower()
+
+    # il circuito deve essere aperto per davvero
+    try:
+        follow.verifica_precondizioni(conn, "instagram", Config())
+        assert False, "il circuito doveva essere aperto dopo il captcha"
+    except follow.CircuitoApertoError:
+        pass
+
+    # il secondo candidato non è mai stato tentato: il lotto si è fermato subito
+    riga2 = conn.execute("SELECT stato, tentativi FROM coda_follow WHERE source_id='fonte-2'").fetchone()
+    assert riga2["stato"] == "da_seguire"
+    assert riga2["tentativi"] == 0
+
+
 def test_identita_pagina_attiva_riconosce_gestisci():
     class PaginaFinta:
         def content(self):
