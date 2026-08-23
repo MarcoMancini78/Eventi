@@ -58,8 +58,16 @@ def _normalizza_testo(testo: str) -> str:
     return "".join(c for c in testo if not unicodedata.combining(c))
 
 
+_PATTERN_PROFILO_PEOPLE_FB = re.compile(r"facebook\.com/people/([^/?#]+)/(\d+)", re.I)
+
+
 def _handle_da_url(url: str, piattaforma: str) -> str:
     if piattaforma == "facebook":
+        # facebook.com/people/Nome-Leggibile/12345: il segmento utile è il
+        # nome, non "people" (che il pattern generico sotto prenderebbe).
+        m_people = _PATTERN_PROFILO_PEOPLE_FB.search(url)
+        if m_people:
+            return f"{m_people.group(1)}-{m_people.group(2)}"
         m = re.search(r"facebook\.com/([^/?#]+)", url, re.I)
     else:
         m = re.search(r"instagram\.com/([^/?#]+)", url, re.I)

@@ -187,33 +187,56 @@ def _registra_esito(conn: sqlite3.Connection, candidato: sqlite3.Row, esito: str
 
 # --- Interazione browser reale: isolata qui, mai chiamata dai test automatici ---
 
+def _cartella_profilo(piattaforma: str, sessione_dir: Path | None) -> Path:
+    sessione_dir = sessione_dir or (Path(__file__).resolve().parent.parent / "data" / "sessions")
+    sessione_dir.mkdir(parents=True, exist_ok=True)
+    return sessione_dir / f"{piattaforma}_profile"
+
+
 def _apri_sessione_browser(piattaforma: str, sessione_dir: Path | None):
     """Sessione persistente Playwright (14.5b): nessun re-login automatico.
 
-    Se lo storage_state salvato manca o è scaduto, l'utente deve fare login
-    a mano nella finestra che si apre — nessuna credenziale in chiaro nel
-    codice o in config/.env.
+    launch_persistent_context salva l'intero profilo del browser (cookie,
+    storage) nella cartella indicata: dopo il primo login manuale, i lanci
+    successivi riaprono la stessa sessione senza richiederlo di nuovo.
+    Nessuna credenziale in chiaro nel codice o in config/.env.
     """
     from playwright.sync_api import sync_playwright
 
-    sessione_dir = sessione_dir or (Path(__file__).resolve().parent.parent / "data" / "sessions")
-    sessione_dir.mkdir(parents=True, exist_ok=True)
-    storage_state_path = sessione_dir / f"{piattaforma}.json"
-
     playwright = sync_playwright().start()
     browser = playwright.chromium.launch_persistent_context(
-        user_data_dir=str(sessione_dir / f"{piattaforma}_profile"),
+        user_data_dir=str(_cartella_profilo(piattaforma, sessione_dir)),
         headless=False,  # visibile: un login/interazione headless è più sospetto (14.3)
-        storage_state=str(storage_state_path) if storage_state_path.exists() else None,
     )
-    return {"playwright": playwright, "browser": browser, "piattaforma": piattaforma, "storage_state_path": storage_state_path}
+    return {"playwright": playwright, "browser": browser, "piattaforma": piattaforma}
 
 
 def _chiudi_sessione_browser(contesto: dict) -> None:
     if contesto is None:
         return
-    contesto["browser"].storage_state(path=str(contesto["storage_state_path"]))
     contesto["browser"].close()
+    contesto["playwright"].stop()
+
+
+_URL_LOGIN = {
+    "facebook": "https://www.facebook.com/login",
+    "instagram": "https://www.instagram.com/accounts/login/",
+}
+
+
+def login_manuale(piattaforma: str, sessione_dir: Path | None = None) -> None:
+    """Apre il browser sulla pagina di login e attende che l'utente lo chiuda a mano.
+
+    Non fa altro: nessuna azione, nessuna verifica. Serve solo a fare il
+    primo login una tantum su un profilo Chromium vuoto (14.3), prima di
+    lanciare qualunque follow_batch. Va lanciata dal terminale locale
+    dell'utente, mai da un ambiente senza display.
+    """
+    contesto = _apri_sessione_browser(piattaforma, sessione_dir)
+    pagina = contesto["browser"].new_page()
+    pagina.goto(_URL_LOGIN[piattaforma], timeout=30000)
+    print(f"Fai login con l'account dedicato, poi chiudi la finestra del browser per continuare.")
+    contesto["browser"].wait_for_event("close", timeout=0)
     contesto["playwright"].stop()
 
 

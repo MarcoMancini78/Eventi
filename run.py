@@ -176,6 +176,14 @@ def cmd_follow(args: argparse.Namespace) -> None:
         print(f"\nLotto completato: {seguiti}/{len(esiti)} seguiti con successo.")
 
 
+def cmd_login(args: argparse.Namespace) -> None:
+    from src import follow
+
+    print(f"Apertura del browser per il login {args.platform}...")
+    follow.login_manuale(args.platform)
+    print("Sessione salvata. I prossimi 'run.py follow' non richiederanno più il login.")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -222,6 +230,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_coda.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv, Social.csv")
     p_coda.add_argument("--publish", action="store_true", help="Scrive anche il foglio CodaFollow su Google Sheets")
     p_coda.set_defaults(func=cmd_populate_coda_follow)
+
+    p_login = sub.add_parser("login", help="Apre il browser per il login manuale una tantum (M9, 14.3)")
+    p_login.add_argument("--platform", required=True, choices=["facebook", "instagram"])
+    p_login.set_defaults(func=cmd_login)
 
     p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
     p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])
