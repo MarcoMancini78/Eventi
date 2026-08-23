@@ -126,16 +126,44 @@ _JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW = """
 """
 
 
-def _scroll_e_raccogli_con_bottone_follow(pagina, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
-    """Scroll incrementale raccogliendo solo le righe che hanno un bottone
-    di stato-follow accanto (vedi sopra), fino a quando due scroll
-    consecutivi non aggiungono nulla (fine lista) o max_scroll
-    (circuit-breaker anti-loop)."""
+# Su Facebook la lista "Pagine seguite" non ha alcun bottone di stato-follow
+# accanto a ogni riga (a differenza di Instagram): l'HTML reale ispezionato
+# dall'utente mostra solo un bottone "Altre opzioni" con
+# aria-label="Altre opzioni per {nome della pagina}". È lo stesso segnale
+# strutturale (un elemento presente solo nelle vere righe della lista, mai
+# nei link di menu/navigazione), ma diverso testo/attributo.
+_JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI = """
+() => {
+    const bottoni = Array.from(document.querySelectorAll('[aria-label]')).filter(b => {
+        const label = (b.getAttribute('aria-label') || '').toLowerCase();
+        return label.startsWith('altre opzioni per') || label.startsWith('more options for');
+    });
+    const risultati = new Set();
+    for (const bottone of bottoni) {
+        let nodo = bottone;
+        for (let livelli = 0; livelli < 8 && nodo; livelli++) {
+            const link = nodo.querySelector ? nodo.querySelector('a[href]') : null;
+            if (link && link.getAttribute('href')) {
+                risultati.add(link.getAttribute('href'));
+                break;
+            }
+            nodo = nodo.parentElement;
+        }
+    }
+    return Array.from(risultati);
+}
+"""
+
+
+def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
+    """Scroll incrementale eseguendo `script_js` ad ogni passo, fino a
+    quando due scroll consecutivi non aggiungono altezza (fine lista) o
+    max_scroll (circuit-breaker anti-loop)."""
     handle_trovati: set[str] = set()
     altezza_precedente = -1
 
     for _ in range(max_scroll):
-        href_trovati = pagina.evaluate(_JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW)
+        href_trovati = pagina.evaluate(script_js)
         for href in href_trovati:
             handle = href.strip("/").split("/")[-1].split("?")[0]
             if handle:
@@ -166,7 +194,7 @@ def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
         pagina.goto("https://www.instagram.com/?variant=following", timeout=20000)
         pagina.wait_for_timeout(2000)
 
-        return sorted(_scroll_e_raccogli_con_bottone_follow(pagina))
+        return sorted(_scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW))
     finally:
         pagina.close()
 
@@ -182,9 +210,10 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
     la lista di pagine seguite. Il tentativo precedente (/pages_followed_by)
     era un path inesistente per questa Pagina/versione dell'interfaccia.
 
-    Stessa tecnica di isolamento usata per Instagram (bottone di stato
-    accanto al link), per lo stesso motivo: il selettore generico
-    raccoglieva anche link di navigazione/menu propri della Pagina."""
+    Isolamento delle righe basato sul bottone "Altre opzioni" (aria-label
+    "Altre opzioni per {nome}"): a differenza di Instagram, la lista delle
+    Pagine seguite da una Pagina non mostra un bottone di stato-follow
+    (HTML reale ispezionato dall'utente: solo un menu a tre puntini)."""
     pagina = contesto["browser"].new_page()
     try:
         url_seguiti = _aggiungi_parametro_query(config.facebook_page_url, "sk", "following")
@@ -192,7 +221,7 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         pagina.wait_for_timeout(1500)
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
-        handle = _scroll_e_raccogli_con_bottone_follow(pagina)
+        handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
         return sorted(handle)
