@@ -12,7 +12,6 @@ automaticamente da nessun lotto finché qualcuno non conferma il comune.
 """
 from __future__ import annotations
 
-import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
@@ -123,75 +122,38 @@ def _scroll_e_raccogli(pagina, selettore_link: str, max_scroll: int = 40, pausa_
     return handle_trovati
 
 
-def _username_instagram_attivo(pagina) -> str | None:
-    """Instagram espone sempre l'username del profilo loggato in un meta tag
-    (og:url o al.ios.url tipicamente puntano al proprio profilo dalla home),
-    più stabile di un testo di bottone che cambia con lingua/interfaccia
-    (causa probabile del bug osservato: 0 profili trovati)."""
-    pagina.goto("https://www.instagram.com/", timeout=20000)
-    pagina.wait_for_timeout(2000)
-
-    # La barra di navigazione ha un link all'icona profilo con
-    # href="/{username}/" ed è sempre presente sulla home, indipendentemente
-    # dalla lingua dell'interfaccia.
-    candidati = pagina.query_selector_all('a[href^="/"][role="link"]')
-    for el in candidati:
-        aria = el.get_attribute("aria-label") or ""
-        if "profilo" in aria.lower() or "profile" in aria.lower():
-            href = el.get_attribute("href") or ""
-            username = href.strip("/").split("/")[0]
-            if username:
-                return username
-    return None
-
-
 def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
+    """URL confermato dall'utente ispezionando l'interfaccia reale:
+    instagram.com/?variant=following mostra direttamente la lista dei
+    seguiti del profilo attivo, senza bisogno di conoscere lo username
+    (i due tentativi precedenti, basati su ipotesi sul testo dei bottoni,
+    erano entrambi sbagliati)."""
     pagina = contesto["browser"].new_page()
     try:
-        username = _username_instagram_attivo(pagina)
-        if not username:
-            return []
-
-        pagina.goto(f"https://www.instagram.com/{username}/following/", timeout=20000)
+        pagina.goto("https://www.instagram.com/?variant=following", timeout=20000)
         pagina.wait_for_timeout(2000)
 
-        handle = _scroll_e_raccogli(pagina, "a[href^='/'][role='link']")
-        # Il proprio username compare spesso nella lista come riferimento
-        # incrociato (link "torna al mio profilo" dentro il modale): va
-        # escluso, non è un "seguito".
-        handle.discard(username)
-        return sorted(handle)
+        return sorted(_scroll_e_raccogli(pagina, "a[href^='/'][role='link']"))
     finally:
         pagina.close()
 
 
-def _id_pagina_da_url(page_url: str) -> str | None:
-    """Estrae l'ID numerico da un URL tipo facebook.com/profile.php?id=123
-    o restituisce l'handle finale per un URL tipo facebook.com/nome.pagina."""
-    m = re.search(r"[?&]id=(\d+)", page_url)
-    if m:
-        return m.group(1)
-    m = re.search(r"facebook\.com/([^/?#]+)", page_url)
-    return m.group(1) if m else None
+def _aggiungi_parametro_query(url: str, chiave: str, valore: str) -> str:
+    separatore = "&" if "?" in url else "?"
+    return f"{url}{separatore}{chiave}={valore}"
 
 
 def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
-    """Le Pagine seguite da una Pagina si leggono da /pages_followed_by ,
-    non da un semplice suffisso /following (che su un URL con query string
-    tipo profile.php?id=... produce un URL malformato e Facebook reindirizza
-    altrove — bug reale osservato: mostrava i seguiti del profilo personale
-    invece di quelli della Pagina)."""
+    """URL confermato dall'utente ispezionando l'interfaccia reale:
+    aggiungere &sk=following (o ?sk=following) all'URL della Pagina mostra
+    la lista di pagine seguite. Il tentativo precedente (/pages_followed_by)
+    era un path inesistente per questa Pagina/versione dell'interfaccia."""
     pagina = contesto["browser"].new_page()
     try:
-        page_id = _id_pagina_da_url(config.facebook_page_url)
-        if not page_id:
-            return []
-
-        url_seguiti = f"https://www.facebook.com/{page_id}/pages_followed_by"
+        url_seguiti = _aggiungi_parametro_query(config.facebook_page_url, "sk", "following")
         pagina.goto(url_seguiti, timeout=20000)
         pagina.wait_for_timeout(1500)
 
-        handle = _scroll_e_raccogli(pagina, "a[href*='facebook.com/'][role='link']")
-        return sorted(handle)
+        return sorted(_scroll_e_raccogli(pagina, "a[href*='facebook.com/'][role='link']"))
     finally:
         pagina.close()

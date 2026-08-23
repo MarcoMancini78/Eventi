@@ -91,19 +91,20 @@ def test_rilancio_ripetuto_e_idempotente():
     assert totale == 1
 
 
-# --- Bug reale: URL Facebook con query string (profile.php?id=...) rotto da un suffisso /following ---
+# --- URL corretti confermati dall'utente ispezionando l'interfaccia reale:
+# Instagram: instagram.com/?variant=following
+# Facebook: facebook.com/profile.php?id=...&sk=following
+# (i due tentativi precedenti, /following e /pages_followed_by, erano ipotesi sbagliate) ---
 
-def test_id_pagina_da_url_con_query_string():
-    """Bug reale: facebook_page_url + '/following' su un URL con query string
-    (profile.php?id=123) produceva 'profile.php?id=123/following', un URL
-    malformato che Facebook reindirizzava altrove (il profilo personale
-    dell'utente, non la Pagina)."""
-    assert sync_seguiti._id_pagina_da_url("https://www.facebook.com/profile.php?id=61593736766094") == "61593736766094"
+def test_aggiungi_parametro_query_su_url_con_query_string_esistente():
+    """Caso reale: facebook_page_url è già 'profile.php?id=...', il
+    parametro sk=following va aggiunto con '&', non '?'."""
+    url = sync_seguiti._aggiungi_parametro_query(
+        "https://www.facebook.com/profile.php?id=61593736766094", "sk", "following"
+    )
+    assert url == "https://www.facebook.com/profile.php?id=61593736766094&sk=following"
 
 
-def test_id_pagina_da_url_con_handle_pulito():
-    assert sync_seguiti._id_pagina_da_url("https://www.facebook.com/nomepagina") == "nomepagina"
-
-
-def test_id_pagina_da_url_non_riconosciuto():
-    assert sync_seguiti._id_pagina_da_url("https://www.esempio.it/qualcosa") is None
+def test_aggiungi_parametro_query_su_url_senza_query_string():
+    url = sync_seguiti._aggiungi_parametro_query("https://www.facebook.com/nomepagina", "sk", "following")
+    assert url == "https://www.facebook.com/nomepagina?sk=following"
