@@ -144,3 +144,53 @@ def test_follow_batch_rispetta_precondizioni_anche_in_dry_run():
         assert False, "doveva sollevare CircuitoApertoError anche in dry-run"
     except follow.CircuitoApertoError:
         pass
+
+
+def test_follow_batch_facebook_si_ferma_se_identita_pagina_non_attivabile(monkeypatch):
+    """14.2 opzione A: se non si può confermare l'identità Pagina, nessun
+    follow deve partire — mai procedere sotto il profilo personale (14.1)."""
+    conn = _conn_di_prova()
+    _inserisci_candidato(conn, "fonte-1", piattaforma="facebook")
+
+    contesto_finto = {"piattaforma": "facebook"}
+    chiuso = {"valore": False}
+
+    def _apri_finto(piattaforma, sessione_dir):
+        return contesto_finto
+
+    def _chiudi_finto(contesto):
+        chiuso["valore"] = True
+
+    def _assicura_finto(contesto, config):
+        raise follow.IdentitaPaginaNonAttivaError("simulato")
+
+    monkeypatch.setattr(follow, "_apri_sessione_browser", _apri_finto)
+    monkeypatch.setattr(follow, "_chiudi_sessione_browser", _chiudi_finto)
+    monkeypatch.setattr(follow, "_assicura_identita_pagina", _assicura_finto)
+
+    try:
+        follow.follow_batch(conn, Config(), "facebook", dry_run=False)
+        assert False, "doveva sollevare IdentitaPaginaNonAttivaError"
+    except follow.IdentitaPaginaNonAttivaError:
+        pass
+
+    assert chiuso["valore"] is True  # la sessione va chiusa comunque
+    riga = conn.execute("SELECT stato, tentativi FROM coda_follow WHERE source_id='fonte-1'").fetchone()
+    assert riga["stato"] == "da_seguire"  # nessun tentativo registrato
+    assert riga["tentativi"] == 0
+
+
+def test_identita_pagina_attiva_riconosce_gestisci():
+    class PaginaFinta:
+        def content(self):
+            return "<html>...Gestisci Pagina...</html>"
+
+    assert follow._identita_pagina_attiva(PaginaFinta()) is True
+
+
+def test_identita_pagina_non_attiva_su_profilo_personale():
+    class PaginaFinta:
+        def content(self):
+            return "<html>...Segui...Mi piace...</html>"
+
+    assert follow._identita_pagina_attiva(PaginaFinta()) is False

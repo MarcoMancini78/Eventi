@@ -60,6 +60,16 @@ class Config:
     follow_pausa_lunga_max_sec: int = 240
     follow_intervallo_lotti_min: int = 45
 
+    # 14.1/14.2 opzione A: l'account Facebook dedicato è una Pagina gestita
+    # dal profilo personale dell'utente, non un secondo profilo. Prima di
+    # ogni sessione di follow va attivata l'identità "Pagina", altrimenti i
+    # follow partirebbero dal profilo personale.
+    facebook_page_url: str = field(
+        default_factory=lambda: os.getenv(
+            "FACEBOOK_PAGE_URL", "https://www.facebook.com/profile.php?id=61593736766094"
+        )
+    )
+
     # Operatività (03.1.6)
     recupero_run_saltati: int = 1
 

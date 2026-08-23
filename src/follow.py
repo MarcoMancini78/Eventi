@@ -31,6 +31,14 @@ class SegnaleDiBloccoRilevato(Exception):
         self.ore_apertura = ore_apertura
 
 
+class IdentitaPaginaNonAttivaError(Exception):
+    """14.2 opzione A: il login Facebook è personale, ma i follow devono
+    partire dalla Pagina dedicata, mai dal profilo personale (14.1: 'ti
+    inonda il feed personale con centinaia di pagine'). Se non si riesce a
+    verificare o attivare l'identità Pagina, ci si ferma: non si procede
+    mai sotto l'identità sbagliata."""
+
+
 @dataclass
 class EsitoFollow:
     source_id: str
@@ -136,6 +144,9 @@ def follow_batch(
         raise CircuitoApertoError(f"Impossibile aprire la sessione browser: {exc}") from exc
 
     try:
+        if piattaforma == "facebook":
+            _assicura_identita_pagina(contesto, config)
+
         for indice, candidato in enumerate(candidati):
             try:
                 esito = _apri_e_segui(contesto, candidato)
@@ -238,6 +249,60 @@ def login_manuale(piattaforma: str, sessione_dir: Path | None = None) -> None:
     print(f"Fai login con l'account dedicato, poi chiudi la finestra del browser per continuare.")
     contesto["browser"].wait_for_event("close", timeout=0)
     contesto["playwright"].stop()
+
+
+def _assicura_identita_pagina(contesto: dict, config: Config) -> None:
+    """14.2 opzione A: verifica di essere 'loggati come Pagina', non come profilo personale.
+
+    Naviga alla Pagina dedicata e controlla se compare l'indicatore che la
+    identifica come identità attiva (il pulsante "Gestisci" o l'assenza del
+    pulsante "Segui/Mi piace" sulla propria Pagina sono segnali affidabili:
+    solo il gestore vede "Gestisci", un visitatore vede "Segui"). Se non è
+    attiva, prova a cambiarla dal menu identità; se non riesce, si ferma —
+    non si procede mai sotto l'identità sbagliata (14.1).
+    """
+    pagina = contesto["browser"].new_page()
+    try:
+        pagina.goto(config.facebook_page_url, timeout=20000)
+        pagina.wait_for_timeout(1500)
+
+        if _identita_pagina_attiva(pagina):
+            return
+
+        _tenta_cambio_a_pagina(pagina)
+        pagina.wait_for_timeout(2000)
+
+        if not _identita_pagina_attiva(pagina):
+            raise IdentitaPaginaNonAttivaError(
+                "Impossibile confermare l'identità Pagina dopo il tentativo di cambio. "
+                "Nel browser aperto dalla sessione salvata, passa manualmente a "
+                "'Usa Facebook come Pagina' sulla Pagina dedicata, poi rilancia."
+            )
+    finally:
+        pagina.close()
+
+
+def _identita_pagina_attiva(pagina) -> bool:
+    contenuto = pagina.content().lower()
+    return "gestisci" in contenuto or "manage" in contenuto
+
+
+def _tenta_cambio_a_pagina(pagina) -> None:
+    """Il menu 'Cambia' / 'Sfoglia come Pagina' di Facebook cambia spesso
+    struttura: qui si tenta i selettori più stabili (ruolo + testo), senza
+    pretendere di coprire ogni variante dell'interfaccia. Se fallisce, la
+    verifica successiva in _assicura_identita_pagina se ne accorge e ferma
+    tutto invece di procedere alla cieca."""
+    try:
+        selettore_profilo = pagina.get_by_role("button", name=lambda n: n and ("account" in n.lower() or "profilo" in n.lower()))
+        if selettore_profilo.count() > 0:
+            selettore_profilo.first.click()
+            pagina.wait_for_timeout(800)
+        link_cambia = pagina.get_by_text(lambda t: t and "cambia" in t.lower(), exact=False)
+        if link_cambia.count() > 0:
+            link_cambia.first.click()
+    except Exception:
+        pass  # la verifica esplicita dopo la chiamata è l'unica fonte di verità
 
 
 _SEGNALI_BLOCCO = {
