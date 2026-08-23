@@ -89,3 +89,21 @@ def test_rilancio_ripetuto_e_idempotente():
     assert esito2.nuovi == 0  # la seconda volta esiste già, non viene ricreato
     totale = conn.execute("SELECT COUNT(*) FROM coda_follow WHERE handle='profilo_nuovo'").fetchone()[0]
     assert totale == 1
+
+
+# --- Bug reale: URL Facebook con query string (profile.php?id=...) rotto da un suffisso /following ---
+
+def test_id_pagina_da_url_con_query_string():
+    """Bug reale: facebook_page_url + '/following' su un URL con query string
+    (profile.php?id=123) produceva 'profile.php?id=123/following', un URL
+    malformato che Facebook reindirizzava altrove (il profilo personale
+    dell'utente, non la Pagina)."""
+    assert sync_seguiti._id_pagina_da_url("https://www.facebook.com/profile.php?id=61593736766094") == "61593736766094"
+
+
+def test_id_pagina_da_url_con_handle_pulito():
+    assert sync_seguiti._id_pagina_da_url("https://www.facebook.com/nomepagina") == "nomepagina"
+
+
+def test_id_pagina_da_url_non_riconosciuto():
+    assert sync_seguiti._id_pagina_da_url("https://www.esempio.it/qualcosa") is None

@@ -123,37 +123,71 @@ def _scroll_e_raccogli(pagina, selettore_link: str, max_scroll: int = 40, pausa_
     return handle_trovati
 
 
+def _username_instagram_attivo(pagina) -> str | None:
+    """Instagram espone sempre l'username del profilo loggato in un meta tag
+    (og:url o al.ios.url tipicamente puntano al proprio profilo dalla home),
+    più stabile di un testo di bottone che cambia con lingua/interfaccia
+    (causa probabile del bug osservato: 0 profili trovati)."""
+    pagina.goto("https://www.instagram.com/", timeout=20000)
+    pagina.wait_for_timeout(2000)
+
+    # La barra di navigazione ha un link all'icona profilo con
+    # href="/{username}/" ed è sempre presente sulla home, indipendentemente
+    # dalla lingua dell'interfaccia.
+    candidati = pagina.query_selector_all('a[href^="/"][role="link"]')
+    for el in candidati:
+        aria = el.get_attribute("aria-label") or ""
+        if "profilo" in aria.lower() or "profile" in aria.lower():
+            href = el.get_attribute("href") or ""
+            username = href.strip("/").split("/")[0]
+            if username:
+                return username
+    return None
+
+
 def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
-    """La pagina 'Modifica profilo' contiene il proprio username nell'URL
-    dopo il redirect (instagram.com/accounts/edit/ mostra comunque un link
-    'Vedi il profilo' con l'username reale): più affidabile che indovinare
-    lo username da un selettore di menu, che cambia spesso struttura."""
     pagina = contesto["browser"].new_page()
     try:
-        pagina.goto("https://www.instagram.com/accounts/edit/", timeout=20000)
-        pagina.wait_for_timeout(1500)
-
-        link_vedi_profilo = pagina.get_by_role("link", name=re.compile("vedi il profilo|view profile", re.IGNORECASE))
-        if link_vedi_profilo.count() == 0:
-            return []
-        href_profilo = link_vedi_profilo.first.get_attribute("href") or ""
-        username = href_profilo.strip("/").split("/")[-1]
+        username = _username_instagram_attivo(pagina)
         if not username:
             return []
 
         pagina.goto(f"https://www.instagram.com/{username}/following/", timeout=20000)
-        pagina.wait_for_timeout(1500)
+        pagina.wait_for_timeout(2000)
 
         handle = _scroll_e_raccogli(pagina, "a[href^='/'][role='link']")
+        # Il proprio username compare spesso nella lista come riferimento
+        # incrociato (link "torna al mio profilo" dentro il modale): va
+        # escluso, non è un "seguito".
+        handle.discard(username)
         return sorted(handle)
     finally:
         pagina.close()
 
 
+def _id_pagina_da_url(page_url: str) -> str | None:
+    """Estrae l'ID numerico da un URL tipo facebook.com/profile.php?id=123
+    o restituisce l'handle finale per un URL tipo facebook.com/nome.pagina."""
+    m = re.search(r"[?&]id=(\d+)", page_url)
+    if m:
+        return m.group(1)
+    m = re.search(r"facebook\.com/([^/?#]+)", page_url)
+    return m.group(1) if m else None
+
+
 def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
+    """Le Pagine seguite da una Pagina si leggono da /pages_followed_by ,
+    non da un semplice suffisso /following (che su un URL con query string
+    tipo profile.php?id=... produce un URL malformato e Facebook reindirizza
+    altrove — bug reale osservato: mostrava i seguiti del profilo personale
+    invece di quelli della Pagina)."""
     pagina = contesto["browser"].new_page()
     try:
-        url_seguiti = config.facebook_page_url.rstrip("/") + "/following"
+        page_id = _id_pagina_da_url(config.facebook_page_url)
+        if not page_id:
+            return []
+
+        url_seguiti = f"https://www.facebook.com/{page_id}/pages_followed_by"
         pagina.goto(url_seguiti, timeout=20000)
         pagina.wait_for_timeout(1500)
 
