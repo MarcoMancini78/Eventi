@@ -12,6 +12,7 @@ automaticamente da nessun lotto finché qualcuno non conferma il comune.
 """
 from __future__ import annotations
 
+import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
@@ -96,18 +97,47 @@ def leggi_seguiti_reali(piattaforma: str, config: Config, sessione_dir: Path | N
         _chiudi_sessione_browser(contesto)
 
 
-def _scroll_e_raccogli(pagina, selettore_link: str, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
-    """Scroll incrementale della pagina raccogliendo href che matchano il
-    selettore, fino a quando due scroll consecutivi non aggiungono nulla
-    (fine lista) o si raggiunge max_scroll (circuit-breaker anti-loop)."""
+# Estrae solo i profili che hanno accanto un bottone di stato-follow
+# ("Segui"/"Segui già"/"Following"/"Follow"): è il segnale più affidabile
+# per isolare le vere righe della lista dai link di menu/footer/navigazione,
+# che l'HTML reale (fornito dall'utente via ispezione manuale) mostra non
+# avere mai un simile bottone accanto. Ogni riga della lista contiene due
+# link identici (foto + nome): l'href identifica univocamente il profilo.
+_JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW = """
+() => {
+    const bottoni = Array.from(document.querySelectorAll('button')).filter(b => {
+        const testo = (b.innerText || '').trim().toLowerCase();
+        return ['segui', 'segui gi\\u00e0', 'following', 'follow'].includes(testo);
+    });
+    const risultati = new Set();
+    for (const bottone of bottoni) {
+        let nodo = bottone;
+        for (let livelli = 0; livelli < 8 && nodo; livelli++) {
+            const link = nodo.querySelector ? nodo.querySelector('a[href]') : null;
+            if (link && link.getAttribute('href')) {
+                risultati.add(link.getAttribute('href'));
+                break;
+            }
+            nodo = nodo.parentElement;
+        }
+    }
+    return Array.from(risultati);
+}
+"""
+
+
+def _scroll_e_raccogli_con_bottone_follow(pagina, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
+    """Scroll incrementale raccogliendo solo le righe che hanno un bottone
+    di stato-follow accanto (vedi sopra), fino a quando due scroll
+    consecutivi non aggiungono nulla (fine lista) o max_scroll
+    (circuit-breaker anti-loop)."""
     handle_trovati: set[str] = set()
     altezza_precedente = -1
 
     for _ in range(max_scroll):
-        elementi = pagina.query_selector_all(selettore_link)
-        for el in elementi:
-            href = el.get_attribute("href") or ""
-            handle = href.strip("/").split("/")[-1] if href else ""
+        href_trovati = pagina.evaluate(_JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW)
+        for href in href_trovati:
+            handle = href.strip("/").split("/")[-1].split("?")[0]
             if handle:
                 handle_trovati.add(handle)
 
@@ -125,15 +155,18 @@ def _scroll_e_raccogli(pagina, selettore_link: str, max_scroll: int = 40, pausa_
 def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
     """URL confermato dall'utente ispezionando l'interfaccia reale:
     instagram.com/?variant=following mostra direttamente la lista dei
-    seguiti del profilo attivo, senza bisogno di conoscere lo username
-    (i due tentativi precedenti, basati su ipotesi sul testo dei bottoni,
-    erano entrambi sbagliati)."""
+    seguiti del profilo attivo, senza bisogno di conoscere lo username.
+
+    La raccolta usa il bottone di stato ("Segui già") per isolare le vere
+    righe della lista dai link di menu/footer/navigazione (HTML reale
+    ispezionato dall'utente: il selettore generico precedente raccoglieva
+    anche voci come 'inbox', 'reels', 'privacy', il proprio stesso handle)."""
     pagina = contesto["browser"].new_page()
     try:
         pagina.goto("https://www.instagram.com/?variant=following", timeout=20000)
         pagina.wait_for_timeout(2000)
 
-        return sorted(_scroll_e_raccogli(pagina, "a[href^='/'][role='link']"))
+        return sorted(_scroll_e_raccogli_con_bottone_follow(pagina))
     finally:
         pagina.close()
 
@@ -147,13 +180,32 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
     """URL confermato dall'utente ispezionando l'interfaccia reale:
     aggiungere &sk=following (o ?sk=following) all'URL della Pagina mostra
     la lista di pagine seguite. Il tentativo precedente (/pages_followed_by)
-    era un path inesistente per questa Pagina/versione dell'interfaccia."""
+    era un path inesistente per questa Pagina/versione dell'interfaccia.
+
+    Stessa tecnica di isolamento usata per Instagram (bottone di stato
+    accanto al link), per lo stesso motivo: il selettore generico
+    raccoglieva anche link di navigazione/menu propri della Pagina."""
     pagina = contesto["browser"].new_page()
     try:
         url_seguiti = _aggiungi_parametro_query(config.facebook_page_url, "sk", "following")
         pagina.goto(url_seguiti, timeout=20000)
         pagina.wait_for_timeout(1500)
 
-        return sorted(_scroll_e_raccogli(pagina, "a[href*='facebook.com/'][role='link']"))
+        page_id = _id_pagina_da_url(config.facebook_page_url)
+        handle = _scroll_e_raccogli_con_bottone_follow(pagina)
+        if page_id:
+            handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
+        return sorted(handle)
     finally:
         pagina.close()
+
+
+def _id_pagina_da_url(page_url: str) -> str | None:
+    """ID numerico o handle della propria Pagina, per escluderlo dai
+    risultati (bug osservato: la propria Pagina/i suoi link di navigazione
+    finivano nella lista dei 'seguiti')."""
+    m = re.search(r"[?&]id=(\d+)", page_url)
+    if m:
+        return m.group(1)
+    m = re.search(r"facebook\.com/([^/?#]+)", page_url)
+    return m.group(1) if m else None
