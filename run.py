@@ -188,6 +188,24 @@ def cmd_login(args: argparse.Namespace) -> None:
     print("Sessione salvata. I prossimi 'run.py follow' non richiederanno più il login.")
 
 
+def cmd_sync_seguiti(args: argparse.Namespace) -> None:
+    from src import sync_seguiti
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    print(f"Lettura della lista 'seguiti' reale su {args.platform} (sola lettura, nessuna azione)...")
+    handle = sync_seguiti.leggi_seguiti_reali(args.platform, config)
+    print(f"Trovati {len(handle)} profili seguiti.")
+
+    esito = sync_seguiti.confronta_e_aggiorna(conn, args.platform, handle)
+    print(f"Aggiornati a 'seguito': {esito.aggiornati}")
+    print(f"Nuovi (non censiti, messi in quarantena da verificare): {esito.nuovi}")
+    if esito.nuovi:
+        print("Controlla il foglio/coda_follow per assegnare il comune corretto ai nuovi profili prima che diventino fonti attive.")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -238,6 +256,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_login = sub.add_parser("login", help="Apre il browser per il login manuale una tantum (M9, 14.3)")
     p_login.add_argument("--platform", required=True, choices=["facebook", "instagram"])
     p_login.set_defaults(func=cmd_login)
+
+    p_sync = sub.add_parser("sync-seguiti", help="Legge la lista 'seguiti' reale e aggiorna coda_follow (M9, sola lettura)")
+    p_sync.add_argument("--platform", required=True, choices=["facebook", "instagram"])
+    p_sync.set_defaults(func=cmd_sync_seguiti)
 
     p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
     p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])
