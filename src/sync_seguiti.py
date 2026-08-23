@@ -12,6 +12,7 @@ automaticamente da nessun lotto finché qualcuno non conferma il comune.
 """
 from __future__ import annotations
 
+import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime
@@ -132,7 +133,7 @@ def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
         pagina.goto("https://www.instagram.com/accounts/edit/", timeout=20000)
         pagina.wait_for_timeout(1500)
 
-        link_vedi_profilo = pagina.get_by_role("link", name=lambda n: n and ("vedi il profilo" in n.lower() or "view profile" in n.lower()))
+        link_vedi_profilo = pagina.get_by_role("link", name=re.compile("vedi il profilo|view profile", re.IGNORECASE))
         if link_vedi_profilo.count() == 0:
             return []
         href_profilo = link_vedi_profilo.first.get_attribute("href") or ""

@@ -10,6 +10,7 @@ isolata in _apri_e_segui, così i test non toccano mai un browser reale.
 from __future__ import annotations
 
 import random
+import re
 import sqlite3
 import time
 from dataclasses import dataclass
@@ -299,11 +300,11 @@ def _tenta_cambio_a_pagina(pagina) -> None:
     verifica successiva in _assicura_identita_pagina se ne accorge e ferma
     tutto invece di procedere alla cieca."""
     try:
-        selettore_profilo = pagina.get_by_role("button", name=lambda n: n and ("account" in n.lower() or "profilo" in n.lower()))
+        selettore_profilo = pagina.get_by_role("button", name=re.compile("account|profilo", re.IGNORECASE))
         if selettore_profilo.count() > 0:
             selettore_profilo.first.click()
             pagina.wait_for_timeout(800)
-        link_cambia = pagina.get_by_text(lambda t: t and "cambia" in t.lower(), exact=False)
+        link_cambia = pagina.get_by_text(re.compile("cambia", re.IGNORECASE))
         if link_cambia.count() > 0:
             link_cambia.first.click()
     except Exception:
@@ -336,7 +337,7 @@ def _apri_e_segui(contesto: dict, candidato: sqlite3.Row) -> EsitoFollow:
         if handle_atteso and handle_atteso not in pagina.url.lower() and handle_atteso not in contenuto:
             return EsitoFollow(candidato["source_id"], "non_valido", "handle non corrisponde alla pagina aperta")
 
-        pulsante_segui = pagina.get_by_role("button", name=lambda n: n and "segui" in n.lower())
+        pulsante_segui = pagina.get_by_role("button", name=re.compile("segui", re.IGNORECASE))
         if pulsante_segui.count() == 0:
             return EsitoFollow(candidato["source_id"], "gia_seguito", "nessun pulsante Segui trovato")
 
