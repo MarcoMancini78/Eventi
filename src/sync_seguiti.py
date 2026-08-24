@@ -142,7 +142,12 @@ _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI = """
 () => {
     const bottoni = Array.from(document.querySelectorAll('[aria-label]')).filter(b => {
         const label = (b.getAttribute('aria-label') || '').toLowerCase();
-        return label.startsWith('altre opzioni per') || label.startsWith('more options for');
+        const inizia = label.startsWith('altre opzioni per') || label.startsWith('more options for');
+        // Falso positivo reale osservato: il bottone "Altre opzioni per la
+        // lista degli amici" appartiene al tablist stesso, non a una riga
+        // della lista di profili.
+        const rumore = label.includes('la lista degli amici') || label.includes('the friends list');
+        return inizia && !rumore;
     });
     const risultati = new Set();
     for (const bottone of bottoni) {
@@ -299,6 +304,7 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         pagina.wait_for_timeout(1500)
 
         _clicca_sottotab_persone_seguite(pagina)
+        _attendi_righe_altre_opzioni(pagina)
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
         handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
@@ -315,6 +321,26 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         return sorted(handle)
     finally:
         pagina.close()
+
+
+def _attendi_righe_altre_opzioni(pagina, timeout_ms: int = 8000) -> None:
+    """HTML reale salvato dall'utente (2026-08-25, file 'pagina_facebook')
+    conferma che la struttura attesa (bottone "Altre opzioni per {nome}"
+    accanto al link profilo) è corretta ed esiste per davvero quando il
+    tab "Persone seguite" è attivo — quindi il problema non è il selettore,
+    ma il tempo: Facebook carica la lista in modo asincrono dopo l'attivazione
+    del tab, e il timeout fisso precedente (1.5s) probabilmente non bastava.
+    Nessun errore bloccante se scade: la diagnostica esistente se ne accorge
+    comunque con un risultato vuoto."""
+    try:
+        pagina.wait_for_function(
+            """() => Array.from(document.querySelectorAll('[aria-label]')).some(
+                el => (el.getAttribute('aria-label') || '').toLowerCase().startsWith('altre opzioni per')
+            )""",
+            timeout=timeout_ms,
+        )
+    except Exception:
+        pass
 
 
 def _clicca_sottotab_persone_seguite(pagina) -> None:
