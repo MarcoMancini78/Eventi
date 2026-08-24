@@ -307,8 +307,9 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
         elemento = pagina.get_by_text(re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)).first
         elemento.click(timeout=5000)
         pagina.wait_for_timeout(1500)
-    except Exception:
-        pass
+        print("  (diagnostica click) sotto-tab 'Persone seguite' cliccato con successo")
+    except Exception as exc:
+        print(f"  (diagnostica click) impossibile cliccare 'Persone seguite': {exc}")
 
 
 def _id_pagina_da_url(page_url: str) -> str | None:
