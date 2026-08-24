@@ -203,6 +203,7 @@ def test_follow_batch_su_captcha_ritorna_esito_visibile_non_lista_vuota(monkeypa
 
     monkeypatch.setattr(follow, "_apri_sessione_browser", _apri_finto)
     monkeypatch.setattr(follow, "_chiudi_sessione_browser", _chiudi_finto)
+    monkeypatch.setattr(follow, "verifica_identita_instagram", lambda contesto, config: None)
     monkeypatch.setattr(follow, "_apri_e_segui", _apri_e_segui_finto)
 
     esiti = follow.follow_batch(conn, Config(), "instagram", n=2, dry_run=False)
@@ -238,3 +239,87 @@ def test_identita_pagina_non_attiva_su_profilo_personale():
             return "<html>...Segui...Mi piace...</html>"
 
     assert follow._identita_pagina_attiva(PaginaFinta()) is False
+
+
+# --- Bug reale: la sessione salvata era loggata sul profilo Instagram
+# personale invece dell'account dedicato eventi.langa (04.7/14.1: mai
+# procedere in silenzio sotto un'identità non verificata) ---
+
+class _CampoUsernameFinto:
+    def __init__(self, valore: str):
+        self._valore = valore
+
+    def input_value(self):
+        return self._valore
+
+
+class _PaginaInstagramFinta:
+    def __init__(self, username: str | None):
+        self._username = username
+
+    def goto(self, url, timeout=None):
+        pass
+
+    def wait_for_timeout(self, ms):
+        pass
+
+    def query_selector(self, selettore):
+        if self._username is None:
+            return None
+        return _CampoUsernameFinto(self._username)
+
+    def close(self):
+        pass
+
+
+class _ContestoInstagramFinto:
+    def __init__(self, username: str | None):
+        self._username = username
+
+    class _Browser:
+        def __init__(self, outer):
+            self._outer = outer
+
+        def new_page(self):
+            return _PaginaInstagramFinta(self._outer._username)
+
+    def __getitem__(self, chiave):
+        if chiave == "browser":
+            return self._Browser(self)
+        raise KeyError(chiave)
+
+
+def test_verifica_identita_instagram_passa_se_username_corrisponde():
+    contesto = _ContestoInstagramFinto("eventi.langa")
+    config = Config()  # instagram_username default 'eventi.langa'
+    follow.verifica_identita_instagram(contesto, config)  # non deve sollevare
+
+
+def test_verifica_identita_instagram_fallisce_su_profilo_sbagliato():
+    """Bug reale osservato: la sessione era loggata come profilo personale."""
+    contesto = _ContestoInstagramFinto("marco.personale")
+    config = Config()
+
+    try:
+        follow.verifica_identita_instagram(contesto, config)
+        assert False, "doveva sollevare IdentitaInstagramNonVerificataError"
+    except follow.IdentitaInstagramNonVerificataError as exc:
+        assert "marco.personale" in str(exc)
+        assert "eventi.langa" in str(exc)
+
+
+def test_verifica_identita_instagram_fallisce_se_username_non_leggibile():
+    contesto = _ContestoInstagramFinto(None)
+    config = Config()
+
+    try:
+        follow.verifica_identita_instagram(contesto, config)
+        assert False, "doveva sollevare IdentitaInstagramNonVerificataError"
+    except follow.IdentitaInstagramNonVerificataError:
+        pass
+
+
+def test_verifica_identita_instagram_case_insensitive():
+    contesto = _ContestoInstagramFinto("Eventi.Langa")
+    config = Config()
+    follow.verifica_identita_instagram(contesto, config)  # non deve sollevare

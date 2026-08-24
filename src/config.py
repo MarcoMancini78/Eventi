@@ -70,6 +70,13 @@ class Config:
         )
     )
 
+    # Bug reale osservato (2026-08-24): la sessione salvata risultava
+    # loggata sul profilo personale invece dell'account dedicato. Username
+    # atteso, verificato prima di ogni lettura/azione su Instagram.
+    instagram_username: str = field(
+        default_factory=lambda: os.getenv("INSTAGRAM_USERNAME", "eventi.langa")
+    )
+
     # Operatività (03.1.6)
     recupero_run_saltati: int = 1
 

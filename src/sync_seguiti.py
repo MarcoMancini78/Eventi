@@ -18,7 +18,12 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 
-from .follow import _apri_sessione_browser, _assicura_identita_pagina, _chiudi_sessione_browser
+from .follow import (
+    _apri_sessione_browser,
+    _assicura_identita_pagina,
+    _chiudi_sessione_browser,
+    verifica_identita_instagram,
+)
 from .config import Config
 
 
@@ -92,6 +97,7 @@ def leggi_seguiti_reali(piattaforma: str, config: Config, sessione_dir: Path | N
         if piattaforma == "facebook":
             _assicura_identita_pagina(contesto, config)
             return _leggi_seguiti_facebook(contesto, config)
+        verifica_identita_instagram(contesto, config)
         return _leggi_seguiti_instagram(contesto)
     finally:
         _chiudi_sessione_browser(contesto)

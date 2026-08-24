@@ -40,6 +40,14 @@ class IdentitaPaginaNonAttivaError(Exception):
     mai sotto l'identità sbagliata."""
 
 
+class IdentitaInstagramNonVerificataError(Exception):
+    """Bug reale osservato (2026-08-24): la sessione salvata risultava
+    loggata sul profilo Instagram personale dell'utente invece
+    dell'account dedicato eventi.langa (probabile scelta errata durante
+    il login manuale). Senza una verifica esplicita dello username attivo,
+    ogni lettura/azione procede silenziosamente sull'identità sbagliata."""
+
+
 @dataclass
 class EsitoFollow:
     source_id: str
@@ -147,6 +155,8 @@ def follow_batch(
     try:
         if piattaforma == "facebook":
             _assicura_identita_pagina(contesto, config)
+        else:
+            verifica_identita_instagram(contesto, config)
 
         for indice, candidato in enumerate(candidati):
             try:
@@ -291,6 +301,44 @@ def _assicura_identita_pagina(contesto: dict, config: Config) -> None:
 def _identita_pagina_attiva(pagina) -> bool:
     contenuto = pagina.content().lower()
     return "gestisci" in contenuto or "manage" in contenuto
+
+
+def verifica_identita_instagram(contesto: dict, config: Config) -> None:
+    """Verifica che la sessione salvata sia loggata sull'account dedicato,
+    non su un profilo personale (bug reale osservato: il login manuale può
+    finire sull'account sbagliato se il browser ne propone più di uno).
+
+    instagram.com/accounts/edit/ mostra sempre lo username reale in un
+    campo di input "Nome utente", indipendentemente da lingua/interfaccia:
+    più affidabile di un testo di menu. Se non corrisponde, si ferma senza
+    eseguire alcuna lettura o azione — mai procedere sotto l'identità
+    sbagliata (stesso principio di _assicura_identita_pagina per Facebook).
+    """
+    atteso = (config.instagram_username or "").strip().lower().lstrip("@")
+    if not atteso:
+        return  # nessun username configurato: nulla da verificare
+
+    pagina = contesto["browser"].new_page()
+    try:
+        pagina.goto("https://www.instagram.com/accounts/edit/", timeout=20000)
+        pagina.wait_for_timeout(2000)
+
+        campo_username = pagina.query_selector('input[name="username"]')
+        username_attivo = (campo_username.input_value() if campo_username else "").strip().lower()
+
+        if not username_attivo:
+            raise IdentitaInstagramNonVerificataError(
+                "Impossibile leggere lo username della sessione attiva su Instagram. "
+                "Verifica manualmente di essere loggato con l'account dedicato prima di rilanciare."
+            )
+        if username_attivo != atteso:
+            raise IdentitaInstagramNonVerificataError(
+                f"Sessione loggata come '{username_attivo}', atteso '{atteso}'. "
+                "Elimina data/sessions/instagram_profile e rifai il login con l'account corretto "
+                "('python run.py login --platform=instagram')."
+            )
+    finally:
+        pagina.close()
 
 
 def _tenta_cambio_a_pagina(pagina) -> None:
