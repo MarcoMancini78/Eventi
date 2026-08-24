@@ -327,11 +327,14 @@ def verifica_identita_instagram(contesto: dict, config: Config) -> None:
     non su un profilo personale (bug reale osservato: il login manuale può
     finire sull'account sbagliato se il browser ne propone più di uno).
 
-    instagram.com/accounts/edit/ mostra sempre lo username reale in un
-    campo di input "Nome utente", indipendentemente da lingua/interfaccia:
-    più affidabile di un testo di menu. Se non corrisponde, si ferma senza
-    eseguire alcuna lettura o azione — mai procedere sotto l'identità
-    sbagliata (stesso principio di _assicura_identita_pagina per Facebook).
+    Bug reale nel primo tentativo: instagram.com/accounts/edit/ non è
+    affidabile come pagina di verifica — Instagram può reindirizzare altrove
+    (osservato: apriva la pagina del profilo invece del form) perché è una
+    pagina "sensibile" con controlli di sessione più stringenti. Approccio
+    più robusto: leggere lo username direttamente dal proprio profilo
+    (instagram.com/{username}/), che è sempre raggiungibile con un click
+    sull'icona profilo nella barra di navigazione della home — qui letto
+    dall'attributo href di quel link, senza passare da pagine sensibili.
     """
     atteso = (config.instagram_username or "").strip().lower().lstrip("@")
     if not atteso:
@@ -339,21 +342,16 @@ def verifica_identita_instagram(contesto: dict, config: Config) -> None:
 
     pagina = contesto["browser"].new_page()
     try:
-        pagina.goto("https://www.instagram.com/accounts/edit/", timeout=20000)
+        pagina.goto("https://www.instagram.com/", timeout=20000)
         _chiudi_banner_cookie_se_presente(pagina)
+        pagina.wait_for_timeout(1500)
 
-        try:
-            pagina.wait_for_selector('input[name="username"]', timeout=15000)
-        except Exception:
-            pass  # il controllo esplicito sotto gestisce il caso "non trovato"
-
-        campo_username = pagina.query_selector('input[name="username"]')
-        username_attivo = (campo_username.input_value() if campo_username else "").strip().lower()
+        username_attivo = _username_da_link_profilo(pagina)
 
         if not username_attivo:
             raise IdentitaInstagramNonVerificataError(
-                "Impossibile leggere lo username della sessione attiva su Instagram "
-                "(campo non trovato entro 15s, forse per un banner cookie o un caricamento lento). "
+                "Impossibile determinare lo username della sessione attiva su Instagram "
+                "(link al profilo non trovato in home). "
                 "Verifica manualmente di essere loggato con l'account dedicato prima di rilanciare."
             )
         if username_attivo != atteso:
@@ -364,6 +362,19 @@ def verifica_identita_instagram(contesto: dict, config: Config) -> None:
             )
     finally:
         pagina.close()
+
+
+def _username_da_link_profilo(pagina) -> str | None:
+    """Cerca, tra i link della barra di navigazione, quello con aria-label
+    contenente 'profilo'/'profile' — porta sempre a /{username}/."""
+    for el in pagina.query_selector_all('a[href^="/"][role="link"]'):
+        aria = (el.get_attribute("aria-label") or "").lower()
+        if "profilo" in aria or "profile" in aria:
+            href = el.get_attribute("href") or ""
+            username = href.strip("/").split("/")[0]
+            if username:
+                return username.lower()
+    return None
 
 
 def _tenta_cambio_a_pagina(pagina) -> None:

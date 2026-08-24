@@ -245,12 +245,17 @@ def test_identita_pagina_non_attiva_su_profilo_personale():
 # personale invece dell'account dedicato eventi.langa (04.7/14.1: mai
 # procedere in silenzio sotto un'identità non verificata) ---
 
-class _CampoUsernameFinto:
-    def __init__(self, valore: str):
-        self._valore = valore
+class _LinkFinto:
+    def __init__(self, aria_label: str, href: str):
+        self._aria_label = aria_label
+        self._href = href
 
-    def input_value(self):
-        return self._valore
+    def get_attribute(self, nome):
+        if nome == "aria-label":
+            return self._aria_label
+        if nome == "href":
+            return self._href
+        return None
 
 
 class _PaginaInstagramFinta:
@@ -263,10 +268,13 @@ class _PaginaInstagramFinta:
     def wait_for_timeout(self, ms):
         pass
 
-    def query_selector(self, selettore):
+    def query_selector_all(self, selettore):
         if self._username is None:
-            return None
-        return _CampoUsernameFinto(self._username)
+            return []  # simula 'link al profilo non trovato'
+        return [
+            _LinkFinto("Home", "/"),  # rumore: un link senza aria-label utile
+            _LinkFinto(f"Vai al profilo di {self._username}", f"/{self._username}/"),
+        ]
 
     def close(self):
         pass
