@@ -259,8 +259,14 @@ def _aggiungi_parametro_query(url: str, chiave: str, valore: str) -> str:
 def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
     """URL confermato dall'utente ispezionando l'interfaccia reale:
     aggiungere &sk=following (o ?sk=following) all'URL della Pagina mostra
-    la lista di pagine seguite. Il tentativo precedente (/pages_followed_by)
-    era un path inesistente per questa Pagina/versione dell'interfaccia.
+    la scheda "Follower" della Pagina — NON un modale, come si era ipotizzato
+    nei giri precedenti, ma la pagina normale con scroll di pagina. Questa
+    scheda contiene due sotto-tab interni ("Follower" e "Persone seguite"):
+    quello attivo di default è "Follower", quindi la lista dei 53 seguiti
+    non è nel DOM finché non si clicca il sotto-tab "Persone seguite"
+    (screenshot reale fornito dall'utente, 2026-08-25 — spiega il persistente
+    0 nonostante l'utente vedesse la lista popolata: la vedeva DOPO aver
+    cliccato il sotto-tab a mano, lo script non lo faceva).
 
     Isolamento delle righe basato sul bottone "Altre opzioni" (aria-label
     "Altre opzioni per {nome}"): a differenza di Instagram, la lista delle
@@ -271,6 +277,8 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         url_seguiti = _aggiungi_parametro_query(config.facebook_page_url, "sk", "following")
         pagina.goto(url_seguiti, timeout=20000)
         pagina.wait_for_timeout(1500)
+
+        _clicca_sottotab_persone_seguite(pagina)
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
         handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
@@ -287,6 +295,20 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         return sorted(handle)
     finally:
         pagina.close()
+
+
+def _clicca_sottotab_persone_seguite(pagina) -> None:
+    """Il sotto-tab "Persone seguite" (dentro la scheda "Follower" della
+    Pagina) non è selezionato di default — si apre prima su "Follower".
+    Se non lo clicchiamo, la lista dei profili seguiti non è nel DOM.
+    Nessun errore bloccante se non lo troviamo: la diagnostica esistente
+    in _leggi_seguiti_facebook segnalerà comunque un risultato vuoto."""
+    try:
+        elemento = pagina.get_by_text(re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)).first
+        elemento.click(timeout=5000)
+        pagina.wait_for_timeout(1500)
+    except Exception:
+        pass
 
 
 def _id_pagina_da_url(page_url: str) -> str | None:
