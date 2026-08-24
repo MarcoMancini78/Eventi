@@ -330,11 +330,15 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
             elemento.click(timeout=5000)
         except Exception:
             # Bug reale osservato: l'elemento risulta risolto ma Playwright
-            # lo giudica "not visible" (probabilmente un antenato con
-            # visibility/opacity gestita via JS che i controlli automatici
-            # di Playwright non riconoscono come pronto) — click via JS
-            # bypassa i controlli di visibilità, sufficiente per un tab.
-            elemento.evaluate("el => el.click()")
+            # lo giudica "not visible" dopo 5s di retry. Un click via JS
+            # (el.click()) "riesce" senza sollevare errori ma non attiva
+            # il tab (verificato dal vivo: la diagnostica resta identica) —
+            # probabile handler React agganciato a eventi mouse sintetici,
+            # non al semplice .click() nativo. force=True fa comunque
+            # generare a Playwright un evento mouse reale (mousedown/up)
+            # sulle coordinate dell'elemento, bypassando solo i controlli
+            # di attuabilità (visibilità/stabilità), non l'evento stesso.
+            elemento.click(timeout=5000, force=True)
         pagina.wait_for_timeout(1500)
         print("  (diagnostica click) sotto-tab 'Persone seguite' cliccato con successo")
     except Exception as exc:
