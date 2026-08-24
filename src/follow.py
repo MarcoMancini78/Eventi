@@ -303,6 +303,25 @@ def _identita_pagina_attiva(pagina) -> bool:
     return "gestisci" in contenuto or "manage" in contenuto
 
 
+_TESTI_BANNER_COOKIE = re.compile(
+    "accetta tutti i cookie|accetta tutto|consenti tutti i cookie|allow all cookies|accept all",
+    re.IGNORECASE,
+)
+
+
+def _chiudi_banner_cookie_se_presente(pagina, timeout_ms: int = 4000) -> None:
+    """Bug reale osservato: un banner di consenso cookie può ritardare o
+    bloccare il caricamento del contenuto sottostante (es. il form
+    username in accounts/edit/), facendo fallire silenziosamente le
+    verifiche successive con un semplice timeout fisso troppo corto."""
+    try:
+        bottone = pagina.get_by_role("button", name=_TESTI_BANNER_COOKIE)
+        bottone.first.click(timeout=timeout_ms)
+        pagina.wait_for_timeout(500)
+    except Exception:
+        pass  # nessun banner presente, o già chiuso: non è un errore
+
+
 def verifica_identita_instagram(contesto: dict, config: Config) -> None:
     """Verifica che la sessione salvata sia loggata sull'account dedicato,
     non su un profilo personale (bug reale osservato: il login manuale può
@@ -321,14 +340,20 @@ def verifica_identita_instagram(contesto: dict, config: Config) -> None:
     pagina = contesto["browser"].new_page()
     try:
         pagina.goto("https://www.instagram.com/accounts/edit/", timeout=20000)
-        pagina.wait_for_timeout(2000)
+        _chiudi_banner_cookie_se_presente(pagina)
+
+        try:
+            pagina.wait_for_selector('input[name="username"]', timeout=15000)
+        except Exception:
+            pass  # il controllo esplicito sotto gestisce il caso "non trovato"
 
         campo_username = pagina.query_selector('input[name="username"]')
         username_attivo = (campo_username.input_value() if campo_username else "").strip().lower()
 
         if not username_attivo:
             raise IdentitaInstagramNonVerificataError(
-                "Impossibile leggere lo username della sessione attiva su Instagram. "
+                "Impossibile leggere lo username della sessione attiva su Instagram "
+                "(campo non trovato entro 15s, forse per un banner cookie o un caricamento lento). "
                 "Verifica manualmente di essere loggato con l'account dedicato prima di rilanciare."
             )
         if username_attivo != atteso:

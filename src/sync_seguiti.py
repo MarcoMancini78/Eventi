@@ -161,12 +161,39 @@ _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI = """
 """
 
 
+# Bug reale osservato (Facebook): la lista "Pagine seguite" si apre in un
+# riquadro/modale con scroll proprio, non con la pagina intera. Scrollare
+# la finestra (mouse.wheel su document) non ha alcun effetto sul contenuto
+# del modale, che resta fermo sui primi elementi renderizzati -> 0 risultati
+# anche con la lista visibilmente popolata sullo schermo. Instagram invece
+# usa lo scroll di pagina normale (verificato nel collaudo precedente):
+# scrollare entrambi (finestra + eventuale contenitore interno) copre i due
+# casi senza doverli distinguere in anticipo.
+_JS_SCROLL_CONTENITORE_INTERNO = """
+() => {
+    let totale = 0;
+    for (const el of document.querySelectorAll('div')) {
+        const stile = window.getComputedStyle(el);
+        const scrollabile = (stile.overflowY === 'auto' || stile.overflowY === 'scroll');
+        if (scrollabile && el.scrollHeight > el.clientHeight + 50) {
+            el.scrollTop += 2000;
+            totale += el.scrollTop;
+        }
+    }
+    return totale;
+}
+"""
+
+
 def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
     """Scroll incrementale eseguendo `script_js` ad ogni passo, fino a
-    quando due scroll consecutivi non aggiungono altezza (fine lista) o
-    max_scroll (circuit-breaker anti-loop)."""
+    quando due scroll consecutivi non producono più progresso (fine lista)
+    o max_scroll (circuit-breaker anti-loop). Il progresso è misurato sia
+    dall'altezza della pagina sia dalla somma degli scrollTop dei
+    contenitori interni scrollabili, per coprire entrambi i casi (lista a
+    piena pagina o lista in modale)."""
     handle_trovati: set[str] = set()
-    altezza_precedente = -1
+    progresso_precedente = -1
 
     for _ in range(max_scroll):
         href_trovati = pagina.evaluate(script_js)
@@ -176,12 +203,14 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: i
                 handle_trovati.add(handle)
 
         pagina.mouse.wheel(0, 2000)
+        scroll_interno = pagina.evaluate(_JS_SCROLL_CONTENITORE_INTERNO)
         pagina.wait_for_timeout(pausa_ms)
 
-        altezza_corrente = pagina.evaluate("document.body.scrollHeight")
-        if altezza_corrente == altezza_precedente:
+        altezza_pagina = pagina.evaluate("document.body.scrollHeight")
+        progresso_corrente = altezza_pagina + scroll_interno
+        if progresso_corrente == progresso_precedente:
             break
-        altezza_precedente = altezza_corrente
+        progresso_precedente = progresso_corrente
 
     return handle_trovati
 
