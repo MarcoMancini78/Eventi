@@ -359,6 +359,8 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
     Nessun errore bloccante se non lo troviamo: la diagnostica esistente
     in _leggi_seguiti_facebook segnalerà comunque un risultato vuoto."""
     try:
+        conteggio_tab = pagina.get_by_role("tab").count()
+        print(f"  (diagnostica click) elementi role=tab trovati sulla pagina: {conteggio_tab}")
         elemento = pagina.get_by_role(
             "tab", name=re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)
         ).first
