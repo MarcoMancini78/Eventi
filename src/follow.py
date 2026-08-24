@@ -364,14 +364,24 @@ def verifica_identita_instagram(contesto: dict, config: Config) -> None:
         pagina.close()
 
 
+_TESTO_ALT_IMMAGINE_PROFILO = re.compile(
+    r"immagine del profilo di (.+)|profile picture of (.+)", re.IGNORECASE
+)
+
+
 def _username_da_link_profilo(pagina) -> str | None:
-    """Cerca, tra i link della barra di navigazione, quello con aria-label
-    contenente 'profilo'/'profile' — porta sempre a /{username}/."""
-    for el in pagina.query_selector_all('a[href^="/"][role="link"]'):
-        aria = (el.get_attribute("aria-label") or "").lower()
-        if "profilo" in aria or "profile" in aria:
-            href = el.get_attribute("href") or ""
-            username = href.strip("/").split("/")[0]
+    """Cerca, tra le immagini della barra di navigazione, quella con l'alt
+    "Immagine del profilo di {username}" / "Profile picture of {username}":
+    HTML reale ispezionato dall'utente (2026-08-25) mostra che il link
+    all'icona profilo non ha alcun aria-label utile ("profilo"/"profile"
+    compare solo come testo visivamente nascosto in uno <span> interno,
+    non come attributo), mentre l'<img> dentro il link porta lo username
+    direttamente nell'attributo alt."""
+    for img in pagina.query_selector_all("img[alt]"):
+        alt = img.get_attribute("alt") or ""
+        m = _TESTO_ALT_IMMAGINE_PROFILO.match(alt.strip())
+        if m:
+            username = (m.group(1) or m.group(2) or "").strip()
             if username:
                 return username.lower()
     return None
