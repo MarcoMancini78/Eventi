@@ -347,10 +347,21 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
     """Il sotto-tab "Persone seguite" (dentro la scheda "Follower" della
     Pagina) non è selezionato di default — si apre prima su "Follower".
     Se non lo clicchiamo, la lista dei profili seguiti non è nel DOM.
+
+    Bug reale (HTML salvato dall'utente, 2026-08-25): il testo "Persone
+    seguite" compare DUE volte nel documento — una nello <span> decorativo
+    di un wrapper interno (senza ruolo interattivo), una dentro il vero
+    <a role="tab">. get_by_text(...).first risolveva sempre la prima
+    occorrenza (quella decorativa, non cliccabile per davvero): il click
+    "riusciva" senza errori ma non cambiava mai il tab attivo. Ora si
+    cerca esplicitamente l'elemento con role="tab".
+
     Nessun errore bloccante se non lo troviamo: la diagnostica esistente
     in _leggi_seguiti_facebook segnalerà comunque un risultato vuoto."""
     try:
-        elemento = pagina.get_by_text(re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)).first
+        elemento = pagina.get_by_role(
+            "tab", name=re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)
+        ).first
         elemento.scroll_into_view_if_needed(timeout=5000)
         try:
             elemento.click(timeout=5000)
