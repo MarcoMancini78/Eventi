@@ -160,6 +160,23 @@ _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI = """
 }
 """
 
+# Diagnostica temporanea (2026-08-25): conta quanti elementi con aria-label
+# esistono sulla pagina e quanti iniziano davvero per "altre opzioni per",
+# per capire se il problema è il selettore o la risalita del DOM quando il
+# risultato finale è 0 nonostante l'utente veda la lista popolata.
+_JS_DIAGNOSTICA_FACEBOOK = """
+() => {
+    const tutti = Array.from(document.querySelectorAll('[aria-label]'));
+    const conAriaLabel = tutti.map(el => el.getAttribute('aria-label')).filter(Boolean);
+    const opzioni = conAriaLabel.filter(l => l.toLowerCase().includes('opzioni') || l.toLowerCase().includes('options'));
+    return {
+        totale_elementi_con_aria_label: tutti.length,
+        esempio_aria_label: conAriaLabel.slice(0, 15),
+        aria_label_con_opzioni: opzioni.slice(0, 10),
+    };
+}
+"""
+
 
 # Bug reale osservato (Facebook): la lista "Pagine seguite" si apre in un
 # riquadro/modale con scroll proprio, non con la pagina intera. Scrollare
@@ -259,6 +276,14 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
+
+        if not handle:
+            diagnostica = pagina.evaluate(_JS_DIAGNOSTICA_FACEBOOK)
+            print("DIAGNOSTICA (nessun profilo trovato su Facebook):")
+            print(f"  elementi con aria-label sulla pagina: {diagnostica['totale_elementi_con_aria_label']}")
+            print(f"  esempi di aria-label trovati: {diagnostica['esempio_aria_label']}")
+            print(f"  aria-label che contengono 'opzioni'/'options': {diagnostica['aria_label_con_opzioni']}")
+
         return sorted(handle)
     finally:
         pagina.close()
