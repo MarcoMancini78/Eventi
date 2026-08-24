@@ -325,7 +325,16 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
     in _leggi_seguiti_facebook segnalerà comunque un risultato vuoto."""
     try:
         elemento = pagina.get_by_text(re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)).first
-        elemento.click(timeout=5000)
+        elemento.scroll_into_view_if_needed(timeout=5000)
+        try:
+            elemento.click(timeout=5000)
+        except Exception:
+            # Bug reale osservato: l'elemento risulta risolto ma Playwright
+            # lo giudica "not visible" (probabilmente un antenato con
+            # visibility/opacity gestita via JS che i controlli automatici
+            # di Playwright non riconoscono come pronto) — click via JS
+            # bypassa i controlli di visibilità, sufficiente per un tab.
+            elemento.evaluate("el => el.click()")
         pagina.wait_for_timeout(1500)
         print("  (diagnostica click) sotto-tab 'Persone seguite' cliccato con successo")
     except Exception as exc:
