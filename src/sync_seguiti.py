@@ -98,7 +98,7 @@ def leggi_seguiti_reali(piattaforma: str, config: Config, sessione_dir: Path | N
             _assicura_identita_pagina(contesto, config)
             return _leggi_seguiti_facebook(contesto, config)
         verifica_identita_instagram(contesto, config)
-        return _leggi_seguiti_instagram(contesto)
+        return _leggi_seguiti_instagram(contesto, config)
     finally:
         _chiudi_sessione_browser(contesto)
 
@@ -232,10 +232,15 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: i
     return handle_trovati
 
 
-def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
-    """URL confermato dall'utente ispezionando l'interfaccia reale:
-    instagram.com/?variant=following mostra direttamente la lista dei
-    seguiti del profilo attivo, senza bisogno di conoscere lo username.
+def _leggi_seguiti_instagram(contesto: dict, config: Config) -> list[str]:
+    """Bug reale (2026-08-25): instagram.com/?variant=following NON apre
+    alcuna lista di seguiti — è identico alla home normale. Screenshot
+    reale dell'utente ha chiarito il percorso corretto: andare sul proprio
+    profilo (instagram.com/{username}/) e cliccare il link "N seguiti", che
+    apre un popup "Chi segui" — questo sì un vero modale con scroll
+    proprio, a differenza della scheda Facebook. Lo username è già
+    verificato da verifica_identita_instagram prima di questa chiamata,
+    quindi si riusa direttamente da config invece di rileggerlo.
 
     La raccolta usa il bottone di stato ("Segui già") per isolare le vere
     righe della lista dai link di menu/footer/navigazione (HTML reale
@@ -243,12 +248,27 @@ def _leggi_seguiti_instagram(contesto: dict) -> list[str]:
     anche voci come 'inbox', 'reels', 'privacy', il proprio stesso handle)."""
     pagina = contesto["browser"].new_page()
     try:
-        pagina.goto("https://www.instagram.com/?variant=following", timeout=20000)
+        username = (config.instagram_username or "").strip().lower().lstrip("@")
+        pagina.goto(f"https://www.instagram.com/{username}/", timeout=20000)
         pagina.wait_for_timeout(2000)
+
+        _clicca_link_seguiti_instagram(pagina)
 
         return sorted(_scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_BOTTONE_FOLLOW))
     finally:
         pagina.close()
+
+
+def _clicca_link_seguiti_instagram(pagina) -> None:
+    """Il link "N seguiti" in cima al profilo apre il popup "Chi segui":
+    senza questo click il popup non è nel DOM e la raccolta trova 0 righe."""
+    try:
+        elemento = pagina.get_by_text(re.compile(r"seguiti$|following$", re.IGNORECASE)).first
+        elemento.click(timeout=5000)
+        pagina.wait_for_timeout(1500)
+        print("  (diagnostica click) link 'seguiti' cliccato con successo")
+    except Exception as exc:
+        print(f"  (diagnostica click) impossibile cliccare 'seguiti': {exc}")
 
 
 def _aggiungi_parametro_query(url: str, chiave: str, valore: str) -> str:
