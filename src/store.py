@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS sources (
     last_run TEXT,
     last_hash TEXT,
     consecutive_errors INTEGER DEFAULT 0,
-    stats_json TEXT
+    stats_json TEXT,
+    piattaforma TEXT  -- famiglia di CMS rilevata dal fingerprinting (M8, 12.5)
 );
 
 CREATE TABLE IF NOT EXISTS artifacts (
