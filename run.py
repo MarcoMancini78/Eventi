@@ -149,6 +149,78 @@ def cmd_populate_coda_follow(args: argparse.Namespace) -> None:
         print(f"Foglio CodaFollow aggiornato: {len(corpo)} righe scritte.")
 
 
+def cmd_fingerprint_comuni(args: argparse.Namespace) -> None:
+    """M8, 12.5: fingerprinting batch dei siti comunali nel perimetro.
+
+    Legge SitoIstituzionale da Comuni.csv (già raccolto e verificato per
+    tutti i 992 comuni, non un pattern URL indovinato), filtra sui comuni
+    attivi nel perimetro (comuni.attivo='si'), fa una richiesta HTTP per
+    ciascuno e classifica per famiglia CMS. Salva tutto in
+    fingerprint_comuni, poi stampa la distribuzione per famiglia."""
+    import csv
+    from datetime import datetime
+
+    from src.fingerprint import fingerprint_batch
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    comuni_csv = Path(args.raw_dir) / "Comuni.csv"
+    if not comuni_csv.exists():
+        print(f"File non trovato: {comuni_csv}")
+        sys.exit(1)
+
+    comuni_perimetro = {
+        r["comune"].strip().lower(): r["istat"]
+        for r in conn.execute("SELECT istat, comune FROM comuni WHERE attivo='si'").fetchall()
+    }
+
+    da_fingerprintare = []
+    with open(comuni_csv, encoding="utf-8-sig", newline="") as f:
+        for riga in csv.DictReader(f, delimiter=";"):
+            nome = riga.get("Comune", "").strip()
+            istat = comuni_perimetro.get(nome.lower())
+            url = riga.get("SitoIstituzionale", "").strip()
+            if istat and url:
+                da_fingerprintare.append({"istat": istat, "comune": nome, "url": url})
+
+    print(f"Comuni con URL nel perimetro: {len(da_fingerprintare)}/{len(comuni_perimetro)}")
+
+    if args.limite:
+        da_fingerprintare = da_fingerprintare[: args.limite]
+        print(f"Limitato a {len(da_fingerprintare)} per --limite")
+
+    risultati = fingerprint_batch(da_fingerprintare, pausa_secondi=args.pausa)
+
+    ora = datetime.now().isoformat()
+    for r in risultati:
+        conn.execute(
+            """
+            INSERT INTO fingerprint_comuni (istat, comune, url, piattaforma, indizi, http_status, errore, fingerprinted_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(istat) DO UPDATE SET
+                url=excluded.url, piattaforma=excluded.piattaforma, indizi=excluded.indizi,
+                http_status=excluded.http_status, errore=excluded.errore, fingerprinted_at=excluded.fingerprinted_at
+            """,
+            (r.istat, r.comune, r.url, r.piattaforma, "; ".join(r.indizi), r.http_status, r.errore, ora),
+        )
+    conn.commit()
+
+    conteggio: dict[str, int] = {}
+    errori = 0
+    for r in risultati:
+        if r.errore:
+            errori += 1
+        else:
+            conteggio[r.piattaforma or "sconosciuta"] = conteggio.get(r.piattaforma or "sconosciuta", 0) + 1
+
+    print(f"\nFingerprint completato: {len(risultati)} comuni, {errori} errori/irraggiungibili.")
+    for piattaforma, n in sorted(conteggio.items(), key=lambda kv: -kv[1]):
+        percentuale = 100 * n / len(risultati) if risultati else 0
+        print(f"  {piattaforma:20} {n:4}  ({percentuale:.1f}%)")
+
+
 def cmd_follow(args: argparse.Namespace) -> None:
     from src import follow
 
@@ -256,6 +328,12 @@ def build_parser() -> argparse.ArgumentParser:
     p_coda.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv, Social.csv")
     p_coda.add_argument("--publish", action="store_true", help="Scrive anche il foglio CodaFollow su Google Sheets")
     p_coda.set_defaults(func=cmd_populate_coda_follow)
+
+    p_fp = sub.add_parser("fingerprint-comuni", help="Fingerprinting batch dei siti comunali per famiglia CMS (M8, 12.5)")
+    p_fp.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv (colonna SitoIstituzionale)")
+    p_fp.add_argument("--limite", type=int, default=0, help="Limita il numero di comuni (0 = tutti, utile per un primo test)")
+    p_fp.add_argument("--pausa", type=float, default=0.2, help="Pausa in secondi tra una richiesta e l'altra")
+    p_fp.set_defaults(func=cmd_fingerprint_comuni)
 
     p_login = sub.add_parser("login", help="Apre il browser per il login manuale una tantum (M9, 14.3)")
     p_login.add_argument("--platform", required=True, choices=["facebook", "instagram"])

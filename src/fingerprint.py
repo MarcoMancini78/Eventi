@@ -4,9 +4,10 @@ A poche decine di fonti scrivere un parser dedicato non conviene (04.3);
 a centinaia di siti comunali sì, perché non sono siti diversi: sono una
 decina di piattaforme ripetute molte volte. Questo modulo classifica una
 homepage per firma (meta generator, percorsi caratteristici, CSS
-ricorrenti) — la classificazione batch su tutti i comuni e la scrittura
-di un adattatore per famiglia sono i passi successivi di M8, non ancora
-fatti qui.
+ricorrenti), e la classificazione batch su tutti i comuni del perimetro
+(`fingerprint_batch`) — la scrittura di un adattatore per famiglia resta
+il passo successivo di M8, da fare quando la classificazione avrà
+rivelato quali famiglie meritano un adattatore dedicato.
 
 Firme verificate empiricamente (2026-08-25, comuni reali del perimetro):
 - comune.cuneo.it: 'wp-content' + commento HTML "Yoast SEO" -> wordpress
@@ -97,3 +98,54 @@ def fingerprint_sito(url: str) -> Fingerprint:
         risposta = client.get(url, headers={"User-Agent": _USER_AGENT_BROWSER})
         risposta.raise_for_status()
     return classifica_html(risposta.text)
+
+
+@dataclass
+class RisultatoFingerprintComune:
+    istat: str
+    comune: str
+    url: str
+    piattaforma: str | None
+    indizi: list[str]
+    http_status: int | None
+    errore: str | None
+
+
+def fingerprint_batch(comuni: list[dict], pausa_secondi: float = 0.0) -> list[RisultatoFingerprintComune]:
+    """Fingerprinting di più comuni in sequenza (12.5: "operazione batch da
+    fare una volta"). Isolamento totale per comune (15.1 regola 4): un
+    sito irraggiungibile o lento non deve fermare l'intero censimento.
+
+    `comuni` è una lista di dict con almeno 'istat', 'comune', 'url'.
+    `pausa_secondi` (default 0, nessuna pausa) è per gentilezza verso i
+    siti target su un batch di centinaia di richieste — nessun requisito
+    documentale lo impone, ma è buona pratica non martellare 683 domini
+    diversi senza alcuna pausa tra una richiesta e l'altra."""
+    import time
+
+    risultati: list[RisultatoFingerprintComune] = []
+    for riga in comuni:
+        try:
+            with httpx.Client(timeout=_TIMEOUT_SECONDI, follow_redirects=True) as client:
+                risposta = client.get(riga["url"], headers={"User-Agent": _USER_AGENT_BROWSER})
+                status = risposta.status_code
+                risposta.raise_for_status()
+            fp = classifica_html(risposta.text)
+            risultati.append(
+                RisultatoFingerprintComune(
+                    istat=riga["istat"], comune=riga["comune"], url=riga["url"],
+                    piattaforma=fp.piattaforma, indizi=fp.indizi, http_status=status, errore=None,
+                )
+            )
+        except Exception as exc:
+            risultati.append(
+                RisultatoFingerprintComune(
+                    istat=riga["istat"], comune=riga["comune"], url=riga["url"],
+                    piattaforma=None, indizi=[],
+                    http_status=getattr(getattr(exc, "response", None), "status_code", None),
+                    errore=str(exc),
+                )
+            )
+        if pausa_secondi:
+            time.sleep(pausa_secondi)
+    return risultati
