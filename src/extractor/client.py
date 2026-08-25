@@ -20,7 +20,6 @@ from .schema import RispostaEstrazione
 
 _LIMITE_TITOLO_MIN = 3
 _LIMITE_TITOLO_MAX = 200
-_MAX_EVENTI_PER_ARTEFATTO = 20  # oltre: probabile allucinazione (06.8)
 
 
 class ErroreQuotaEsaurita(Exception):
@@ -53,7 +52,9 @@ def _chiama_con_retry(provider: ProviderLLM, prompt_sistema: str, prompt_utente:
         raise
 
 
-def _controlli_di_sanita(risposta: RispostaEstrazione, oggi: date, limite_sanita_anni: int) -> list[str]:
+def _controlli_di_sanita(
+    risposta: RispostaEstrazione, oggi: date, limite_sanita_anni: int, max_eventi_per_artefatto: int
+) -> list[str]:
     """06.8. Ritorna la lista degli scarti (per log per-fonte), filtra risposta.eventi in place."""
     validi = []
     scarti = []
@@ -72,7 +73,7 @@ def _controlli_di_sanita(risposta: RispostaEstrazione, oggi: date, limite_sanita
                 continue
         validi.append(evento)
 
-    if len(validi) > _MAX_EVENTI_PER_ARTEFATTO:
+    if len(validi) > max_eventi_per_artefatto:
         scarti.append(f"troppi eventi in un artefatto ({len(validi)}), probabile allucinazione")
         validi = []
 
@@ -159,7 +160,9 @@ class ExtractorClient:
             # 06.8: JSON non valido -> 1 retry già fatto dal provider, qui si scarta con log.
             risposta = RispostaEstrazione(eventi=[], non_e_un_evento=True, motivo="json_non_valido")
 
-        scarti = _controlli_di_sanita(risposta, data_riferimento, self._config.limite_sanita_anni)
+        scarti = _controlli_di_sanita(
+            risposta, data_riferimento, self._config.limite_sanita_anni, self._config.max_eventi_per_artefatto
+        )
 
         # Ora locale, non UTC: il conteggio giornaliero (budget_rimanente)
         # confronta con date.today() (locale, 07.2 "si lavora sempre in ora

@@ -42,6 +42,14 @@ class Config:
     # Confidenza ed estrazione (06.6)
     soglia_confidenza: int = 70
 
+    # Controllo di sanità 06.8: sopra questa soglia di eventi estratti da un
+    # solo artefatto, l'intera risposta è scartata come probabile
+    # allucinazione. Bug reale osservato (2026-08-25): un vero cartellone
+    # teatrale stagionale (46 spettacoli reali e plausibili in un'unica
+    # pagina) veniva scartato interamente col valore precedente (20) — non
+    # un'allucinazione, solo un artefatto con molti eventi legittimi.
+    max_eventi_per_artefatto: int = 60
+
     # Budget di run (08.1, 08.5)
     budget_run_minuti: int = 180
     budget_feed_minuti: int = 45
