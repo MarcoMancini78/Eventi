@@ -266,6 +266,17 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
             conteggio_senza_progresso = 0
         progresso_precedente = progresso_corrente
 
+    # Diagnostica temporanea (2026-08-25): salva l'HTML esatto nell'istante
+    # in cui il DOM ha smesso di crescere, per verificare la vera struttura
+    # delle righe non estratte correttamente (44/53) senza dipendere da un
+    # salvataggio manuale potenzialmente disallineato nel tempo.
+    try:
+        with open("dump_scroll_finale.html", "w", encoding="utf-8") as f:
+            f.write(pagina.content())
+        print("  (diagnostica scroll) HTML finale salvato in dump_scroll_finale.html")
+    except Exception as exc:
+        print(f"  (diagnostica scroll) impossibile salvare l'HTML finale: {exc}")
+
     return handle_trovati
 
 
