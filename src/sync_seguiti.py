@@ -149,16 +149,29 @@ _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI = """
         const rumore = label.includes('la lista degli amici') || label.includes('the friends list');
         return inizia && !rumore;
     });
+    // Bug reale osservato (2026-08-25): risalire il DOM e prendere il
+    // primo link nel sottoalbero di ogni antenato ("querySelector") può
+    // agganciare per errore il link di una riga vicina già raccolta, una
+    // volta che la risalita arriva a un contenitore che include più righe
+    // — su 53 bottoni reali venivano estratti solo 44 href univoci.
+    // Più affidabile: usare l'ORDINE del documento e prendere, per ogni
+    // bottone, il link <a href> più vicino che lo PRECEDE (il nome/foto
+    // della stessa riga viene sempre prima del bottone opzioni nel markup).
+    const tuttiILink = Array.from(document.querySelectorAll('a[href]'));
     const risultati = new Set();
     for (const bottone of bottoni) {
-        let nodo = bottone;
-        for (let livelli = 0; livelli < 8 && nodo; livelli++) {
-            const link = nodo.querySelector ? nodo.querySelector('a[href]') : null;
-            if (link && link.getAttribute('href')) {
-                risultati.add(link.getAttribute('href'));
-                break;
+        let migliore = null;
+        for (const link of tuttiILink) {
+            const relazione = bottone.compareDocumentPosition(link);
+            // DOCUMENT_POSITION_PRECEDING = 2: il link viene prima del bottone
+            if (relazione & 2) {
+                migliore = link;  // l'ultimo che precede è il più vicino
+            } else if (migliore) {
+                break;  // superato il bottone: i link dopo non ci interessano
             }
-            nodo = nodo.parentElement;
+        }
+        if (migliore && migliore.getAttribute('href')) {
+            risultati.add(migliore.getAttribute('href'));
         }
     }
     return Array.from(risultati);
