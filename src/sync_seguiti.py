@@ -271,9 +271,8 @@ def _clicca_link_seguiti_instagram(pagina) -> None:
         elemento = pagina.get_by_text(re.compile(r"seguiti$|following$", re.IGNORECASE)).first
         elemento.click(timeout=5000)
         pagina.wait_for_timeout(1500)
-        print("  (diagnostica click) link 'seguiti' cliccato con successo")
-    except Exception as exc:
-        print(f"  (diagnostica click) impossibile cliccare 'seguiti': {exc}")
+    except Exception:
+        pass
 
 
 def _aggiungi_parametro_query(url: str, chiave: str, valore: str) -> str:
@@ -359,8 +358,6 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
     Nessun errore bloccante se non lo troviamo: la diagnostica esistente
     in _leggi_seguiti_facebook segnalerà comunque un risultato vuoto."""
     try:
-        conteggio_tab = pagina.get_by_role("tab").count()
-        print(f"  (diagnostica click) elementi role=tab trovati sulla pagina: {conteggio_tab}")
         elemento = pagina.get_by_role(
             "tab", name=re.compile(r"^Persone seguite$|^People followed$", re.IGNORECASE)
         ).first
@@ -379,9 +376,8 @@ def _clicca_sottotab_persone_seguite(pagina) -> None:
             # di attuabilità (visibilità/stabilità), non l'evento stesso.
             elemento.click(timeout=5000, force=True)
         pagina.wait_for_timeout(1500)
-        print("  (diagnostica click) sotto-tab 'Persone seguite' cliccato con successo")
-    except Exception as exc:
-        print(f"  (diagnostica click) impossibile cliccare 'Persone seguite': {exc}")
+    except Exception:
+        pass
 
 
 def _id_pagina_da_url(page_url: str) -> str | None:
