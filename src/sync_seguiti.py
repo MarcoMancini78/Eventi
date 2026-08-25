@@ -306,9 +306,16 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         _attendi_righe_altre_opzioni(pagina)
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
-        handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
+        handle_grezzi = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
+        handle = handle_grezzi
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
+
+        scartati_da_filtro = sorted(handle_grezzi - handle)
+        print(f"  (diagnostica conteggio) raccolti prima del filtro: {len(handle_grezzi)}, dopo: {len(handle)}")
+        if scartati_da_filtro:
+            print(f"  (diagnostica conteggio) scartati dal filtro page_id: {scartati_da_filtro}")
+        print(f"  (diagnostica conteggio) elenco completo handle trovati: {sorted(handle)}")
 
         if not handle:
             diagnostica = pagina.evaluate(_JS_DIAGNOSTICA_FACEBOOK)
