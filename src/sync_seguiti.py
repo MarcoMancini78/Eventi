@@ -220,6 +220,25 @@ _JS_SCROLL_CONTENITORE_INTERNO = """
 """
 
 
+def _handle_da_href(href: str) -> str:
+    """Bug reale osservato (2026-08-25): i profili Facebook senza username
+    personalizzato usano l'URL 'profile.php?id={numero}' invece di
+    'facebook.com/{username}'. La normalizzazione precedente (ultimo
+    segmento del path, query string scartata) riduceva TUTTI questi href
+    al valore identico 'profile.php', facendoli collassare in un solo
+    elemento del Set e poi essere scartati dal filtro che esclude la
+    propria Pagina (anch'essa un profile.php?id=...) — su 53 profili reali,
+    11 usavano questo formato: da qui i 9-10 mancanti nel collaudo dal
+    vivo. Se l'ultimo segmento è 'profile.php', si preserva l'id dalla
+    query string così ogni profilo resta distinto."""
+    path = href.strip("/").split("?")[0]
+    ultimo_segmento = path.split("/")[-1]
+    if ultimo_segmento == "profile.php":
+        m = re.search(r"[?&]id=(\d+)", href)
+        return f"profile.php?id={m.group(1)}" if m else ""
+    return ultimo_segmento
+
+
 def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: int = 1200) -> set[str]:
     """Scroll incrementale eseguendo `script_js` ad ogni passo, fino a
     quando l'altezza/scrollTop smette di crescere per tre controlli
@@ -243,7 +262,7 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
     for passo in range(max_scroll):
         href_trovati = pagina.evaluate(script_js)
         for href in href_trovati:
-            handle = href.strip("/").split("/")[-1].split("?")[0]
+            handle = _handle_da_href(href)
             if handle:
                 handle_trovati.add(handle)
 
@@ -350,9 +369,7 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
         handle_grezzi = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
-        # Falso positivo reale osservato (2026-08-25): 'profile.php' isolato
-        # dal DOM-walk, un link generico di navigazione, non un vero profilo.
-        handle = {h for h in handle_grezzi if h != "profile.php"}
+        handle = handle_grezzi
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
 
