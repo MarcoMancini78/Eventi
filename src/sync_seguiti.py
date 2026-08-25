@@ -207,9 +207,9 @@ _JS_SCROLL_CONTENITORE_INTERNO = """
 """
 
 
-def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
+def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: int = 1200) -> set[str]:
     """Scroll incrementale eseguendo `script_js` ad ogni passo, fino a
-    quando l'altezza/scrollTop smette di crescere per due controlli
+    quando l'altezza/scrollTop smette di crescere per tre controlli
     CONSECUTIVI (fine lista) o max_scroll (circuit-breaker anti-loop). Il
     progresso è misurato sia dall'altezza della pagina sia dalla somma
     degli scrollTop dei contenitori interni scrollabili, per coprire
@@ -217,11 +217,12 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: i
 
     Bug reale osservato (2026-08-25): con un solo controllo senza progresso
     come condizione di stop, Facebook (che carica altre righe in modo
-    asincrono/lazy dopo aver raggiunto il fondo visibile) poteva far
-    fermare lo scroll un istante troppo presto — nel giro di test dal vivo
-    mancavano 10-12 profili su 53, prevalentemente quelli in fondo alla
-    lista. Ora serve un secondo controllo di fila senza progresso prima di
-    considerare la lista completa, dando tempo al caricamento lazy."""
+    asincrono/lazy dopo aver raggiunto il fondo visibile) faceva fermare
+    lo scroll troppo presto — nel primo giro di test dal vivo mancavano
+    10-12 profili su 53. Con due controlli il miglioramento è stato solo
+    parziale (da 41 a 43): aumentata ulteriormente la tolleranza (3
+    controlli, pausa più lunga, più iterazioni massime) per dare più
+    margine al caricamento lazy."""
     handle_trovati: set[str] = set()
     progresso_precedente = -1
     conteggio_senza_progresso = 0
@@ -241,7 +242,7 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: i
         progresso_corrente = altezza_pagina + scroll_interno
         if progresso_corrente == progresso_precedente:
             conteggio_senza_progresso += 1
-            if conteggio_senza_progresso >= 2:
+            if conteggio_senza_progresso >= 3:
                 break
         else:
             conteggio_senza_progresso = 0
