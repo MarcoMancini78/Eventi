@@ -227,7 +227,7 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
     progresso_precedente = -1
     conteggio_senza_progresso = 0
 
-    for _ in range(max_scroll):
+    for passo in range(max_scroll):
         href_trovati = pagina.evaluate(script_js)
         for href in href_trovati:
             handle = href.strip("/").split("/")[-1].split("?")[0]
@@ -240,6 +240,11 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
 
         altezza_pagina = pagina.evaluate("document.body.scrollHeight")
         progresso_corrente = altezza_pagina + scroll_interno
+        print(
+            f"  (diagnostica scroll) passo {passo}: righe nel DOM ora={len(href_trovati)}, "
+            f"totale accumulato={len(handle_trovati)}, altezza_pagina={altezza_pagina}, "
+            f"scroll_interno={scroll_interno}"
+        )
         if progresso_corrente == progresso_precedente:
             conteggio_senza_progresso += 1
             if conteggio_senza_progresso >= 3:
