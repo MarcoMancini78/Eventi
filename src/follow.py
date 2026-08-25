@@ -425,8 +425,23 @@ def _apri_e_segui(contesto: dict, candidato: sqlite3.Row) -> EsitoFollow:
                     raise SegnaleDiBloccoRilevato(f"Richiesta di verifica identità: fermata definitiva", 24 * 365)
                 raise SegnaleDiBloccoRilevato(f"Segnale di blocco rilevato: {segnale}", ore)
 
+        # Bug reale osservato (2026-08-25): per gli URL facebook.com/people/,
+        # l'handle salvato in coda_follow è "Nome-ID" (trattino unito, per
+        # renderlo univoco nel Set di sync_seguiti/bonifica_social), ma
+        # l'URL reale della pagina resta "Nome/ID" con Nome e ID separati
+        # da uno slash — la stringa "Nome-ID" non compare mai letteralmente
+        # nella pagina, facendo scartare come "non_valido" candidati in
+        # realtà corretti. Il segnale davvero stabile è il solo ID
+        # numerico finale, sempre presente indipendentemente dal formato
+        # con cui è stato unito al nome.
         handle_atteso = (candidato["handle"] or "").lower()
-        if handle_atteso and handle_atteso not in pagina.url.lower() and handle_atteso not in contenuto:
+        id_numerico_atteso = re.search(r"(\d+)$", handle_atteso)
+        controllo_valido = (
+            (id_numerico_atteso and id_numerico_atteso.group(1) in pagina.url)
+            or (handle_atteso and handle_atteso in pagina.url.lower())
+            or (handle_atteso and handle_atteso in contenuto)
+        )
+        if handle_atteso and not controllo_valido:
             return EsitoFollow(candidato["source_id"], "non_valido", "handle non corrisponde alla pagina aperta")
 
         pulsante_segui = pagina.get_by_role("button", name=re.compile("segui", re.IGNORECASE))
