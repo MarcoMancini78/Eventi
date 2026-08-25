@@ -259,7 +259,7 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
     progresso_precedente = -1
     conteggio_senza_progresso = 0
 
-    for passo in range(max_scroll):
+    for _ in range(max_scroll):
         href_trovati = pagina.evaluate(script_js)
         for href in href_trovati:
             handle = _handle_da_href(href)
@@ -272,11 +272,6 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
 
         altezza_pagina = pagina.evaluate("document.body.scrollHeight")
         progresso_corrente = altezza_pagina + scroll_interno
-        print(
-            f"  (diagnostica scroll) passo {passo}: righe nel DOM ora={len(href_trovati)}, "
-            f"totale accumulato={len(handle_trovati)}, altezza_pagina={altezza_pagina}, "
-            f"scroll_interno={scroll_interno}"
-        )
         if progresso_corrente == progresso_precedente:
             conteggio_senza_progresso += 1
             if conteggio_senza_progresso >= 3:
@@ -284,17 +279,6 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 60, pausa_ms: i
         else:
             conteggio_senza_progresso = 0
         progresso_precedente = progresso_corrente
-
-    # Diagnostica temporanea (2026-08-25): salva l'HTML esatto nell'istante
-    # in cui il DOM ha smesso di crescere, per verificare la vera struttura
-    # delle righe non estratte correttamente (44/53) senza dipendere da un
-    # salvataggio manuale potenzialmente disallineato nel tempo.
-    try:
-        with open("dump_scroll_finale.html", "w", encoding="utf-8") as f:
-            f.write(pagina.content())
-        print("  (diagnostica scroll) HTML finale salvato in dump_scroll_finale.html")
-    except Exception as exc:
-        print(f"  (diagnostica scroll) impossibile salvare l'HTML finale: {exc}")
 
     return handle_trovati
 
@@ -368,16 +352,9 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
         _attendi_righe_altre_opzioni(pagina)
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
-        handle_grezzi = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
-        handle = handle_grezzi
+        handle = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
-
-        scartati_da_filtro = sorted(handle_grezzi - handle)
-        print(f"  (diagnostica conteggio) raccolti prima del filtro: {len(handle_grezzi)}, dopo: {len(handle)}")
-        if scartati_da_filtro:
-            print(f"  (diagnostica conteggio) scartati dal filtro page_id: {scartati_da_filtro}")
-        print(f"  (diagnostica conteggio) elenco completo handle trovati: {sorted(handle)}")
 
         if not handle:
             diagnostica = pagina.evaluate(_JS_DIAGNOSTICA_FACEBOOK)
