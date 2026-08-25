@@ -36,6 +36,23 @@ CREATE TABLE IF NOT EXISTS sources (
     piattaforma TEXT  -- famiglia di CMS rilevata dal fingerprinting (M8, 12.5)
 );
 
+-- M8, 12.5: censimento del fingerprinting batch sui siti comunali del
+-- perimetro. Distinta da `sources` (che è per fonti già attive di
+-- ingestione eventi): qui si registra la classificazione grezza di TUTTI
+-- i comuni, anche quelli senza ancora una fonte configurata, per calcolare
+-- la copertura per famiglia e decidere quali adattatori scrivere.
+CREATE TABLE IF NOT EXISTS fingerprint_comuni (
+    istat TEXT PRIMARY KEY,
+    comune TEXT NOT NULL,
+    url TEXT NOT NULL,
+    piattaforma TEXT,
+    indizi TEXT,
+    http_status INTEGER,
+    errore TEXT,
+    fingerprinted_at TEXT,
+    FOREIGN KEY (istat) REFERENCES comuni (istat)
+);
+
 CREATE TABLE IF NOT EXISTS artifacts (
     artifact_id TEXT PRIMARY KEY,
     source_id TEXT NOT NULL,
@@ -193,4 +210,12 @@ def migrate(conn: sqlite3.Connection) -> None:
     row = conn.execute("SELECT version FROM schema_version").fetchone()
     if row is None:
         conn.execute("INSERT INTO schema_version (version) VALUES (?)", (SCHEMA_VERSION,))
+        conn.commit()
+
+    # CREATE TABLE IF NOT EXISTS non aggiunge colonne a tabelle già create
+    # con uno schema precedente (M8, 2026-08-25: sources.piattaforma
+    # aggiunta dopo che alcuni database locali esistevano già).
+    colonne_sources = {r["name"] for r in conn.execute("PRAGMA table_info(sources)").fetchall()}
+    if "piattaforma" not in colonne_sources:
+        conn.execute("ALTER TABLE sources ADD COLUMN piattaforma TEXT")
         conn.commit()
