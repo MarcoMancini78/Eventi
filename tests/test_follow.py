@@ -225,20 +225,42 @@ def test_follow_batch_su_captcha_ritorna_esito_visibile_non_lista_vuota(monkeypa
     assert riga2["tentativi"] == 0
 
 
-def test_identita_pagina_attiva_riconosce_gestisci():
-    class PaginaFinta:
-        def content(self):
-            return "<html>...Gestisci Pagina...</html>"
+class _BottoneFinto:
+    def __init__(self, testo: str):
+        self._testo = testo
 
-    assert follow._identita_pagina_attiva(PaginaFinta()) is True
+    def inner_text(self):
+        return self._testo
+
+
+class _PaginaConBottoniFinta:
+    def __init__(self, testi_bottoni: list[str]):
+        self._testi_bottoni = testi_bottoni
+
+    def query_selector_all(self, selettore):
+        return [_BottoneFinto(t) for t in self._testi_bottoni]
+
+
+def test_identita_pagina_attiva_senza_bottone_segui():
+    """Modalità gestione: niente bottone "Segui"/"Mi piace", solo controlli
+    da amministratore ("Dashboard per professionisti", "Modifica")."""
+    pagina = _PaginaConBottoniFinta(["Dashboard per professionisti", "Modifica", "Pubblicizza"])
+    assert follow._identita_pagina_attiva(pagina) is True
 
 
 def test_identita_pagina_non_attiva_su_profilo_personale():
-    class PaginaFinta:
-        def content(self):
-            return "<html>...Segui...Mi piace...</html>"
+    """Bug reale (2026-08-25): un amministratore che visita la propria
+    Pagina da VISITATORE (non in modalità "agisci come Pagina") vede
+    ancora il bottone "Segui" — anche se la sidebar mostra "Gestisci
+    Pagina" nel menu di navigazione (falso positivo del vecchio check
+    basato su pagina.content())."""
+    pagina = _PaginaConBottoniFinta(["Segui", "Messaggio", "Altro"])
+    assert follow._identita_pagina_attiva(pagina) is False
 
-    assert follow._identita_pagina_attiva(PaginaFinta()) is False
+
+def test_identita_pagina_non_attiva_su_mi_piace():
+    pagina = _PaginaConBottoniFinta(["Mi piace", "Condividi"])
+    assert follow._identita_pagina_attiva(pagina) is False
 
 
 # --- Bug reale: la sessione salvata era loggata sul profilo Instagram

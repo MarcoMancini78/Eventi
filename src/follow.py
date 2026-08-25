@@ -298,9 +298,31 @@ def _assicura_identita_pagina(contesto: dict, config: Config) -> None:
         pagina.close()
 
 
+_TESTI_BOTTONE_SEGUI_PAGINA = re.compile(
+    r"^(segui|mi piace|follow|like)$", re.IGNORECASE
+)
+
+
 def _identita_pagina_attiva(pagina) -> bool:
-    contenuto = pagina.content().lower()
-    return "gestisci" in contenuto or "manage" in contenuto
+    """Bug reale (2026-08-25): cercare 'gestisci' in tutto il contenuto
+    della pagina è un falso positivo — quella parola compare anche nel
+    titolo della sidebar "Gestisci Pagina" (menu di navigazione), visibile
+    a un amministratore anche quando sta visitando la propria Pagina da
+    VISITATORE (bottone "Segui"/"Mi piace" ancora presente, non in modalità
+    "agisci come Pagina"). L'utente ha confermato visivamente questo
+    scenario: sidebar con "Gestisci Pagina" presente, ma bottone "Segui"
+    ancora mostrato, e la lista "Persone seguite" non popolata di
+    conseguenza (vista non equivalente a quella di gestione).
+
+    Segnale affidabile: l'ASSENZA del bottone "Segui"/"Mi piace" — solo un
+    visitatore (anche se amministratore) lo vede sulla propria Pagina;
+    in modalità gestione compaiono invece "Dashboard per professionisti"/
+    "Modifica"."""
+    for bottone in pagina.query_selector_all('[role="button"], button'):
+        testo = (bottone.inner_text() or "").strip()
+        if _TESTI_BOTTONE_SEGUI_PAGINA.match(testo):
+            return False
+    return True
 
 
 _TESTI_BANNER_COOKIE = re.compile(
