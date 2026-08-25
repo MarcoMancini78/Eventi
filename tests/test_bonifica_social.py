@@ -47,6 +47,53 @@ def test_livello1_marca_gruppo_facebook():
     assert b.motivo == "gruppo_facebook"
 
 
+# Bug reale trovato in coda_follow (2026-08-25): 46 righe con handle
+# inutilizzabile ('p', 'pages', 'events', 'explore', 'reel') ereditate dal
+# dataset originale — frammenti di URL che il pattern generico prendeva
+# letteralmente, producendo handle identici e inutili per righe diverse.
+
+def test_livello1_recupera_handle_da_profilo_p_facebook():
+    b = bonifica_url(
+        "https://www.facebook.com/p/Pro-Loco-Montechiaro-dAcqui-100045573854924",
+        "Calosso", COMUNI_PERIMETRO,
+    )
+    assert b.stato == "ok"
+    assert b.handle == "Pro-Loco-Montechiaro-dAcqui-100045573854924"
+
+
+def test_livello1_recupera_handle_da_profilo_pages_facebook():
+    b = bonifica_url(
+        "https://www.facebook.com/pages/Pro-Loco-Monchiero/144965495559893",
+        "Calosso", COMUNI_PERIMETRO,
+    )
+    assert b.stato == "ok"
+    assert b.handle == "Pro-Loco-Monchiero-144965495559893"
+
+
+def test_livello1_marca_evento_standalone_facebook():
+    b = bonifica_url(
+        "https://www.facebook.com/events/pro-loco-refrancore/festa-cerro-tanaro/1900301450258547",
+        "Calosso", COMUNI_PERIMETRO,
+    )
+    assert b.stato == "quarantena"
+    assert b.motivo == "link_a_evento_non_a_pagina"
+
+
+def test_livello1_marca_location_tag_instagram():
+    b = bonifica_url(
+        "https://www.instagram.com/explore/locations/1021219573/pro-loco-ponti",
+        "Calosso", COMUNI_PERIMETRO,
+    )
+    assert b.stato == "quarantena"
+    assert b.motivo == "tag_di_localita_non_e_un_profilo"
+
+
+def test_livello1_marca_reel_standalone_instagram():
+    b = bonifica_url("https://www.instagram.com/reel/ABC123xyz", "Calosso", COMUNI_PERIMETRO)
+    assert b.stato == "quarantena"
+    assert b.motivo == "link_a_reel_non_a_profilo"
+
+
 def test_livello2_intercetta_entita_sbagliata_caso_reale_documentato():
     """13.2: Pro Loco Asti con link a prolocodiRefrancore."""
     b = bonifica_url("https://www.facebook.com/prolocodiRefrancore", "Asti", COMUNI_PERIMETRO)

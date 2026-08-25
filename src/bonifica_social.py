@@ -38,6 +38,13 @@ _PATTERN_POST_PERMALINK_IG = re.compile(r"instagram\.com/p/[\w-]+", re.IGNORECAS
 _PATTERN_PROFILO_NUMERICO_FB = re.compile(r"facebook\.com/(\d+)/?$")
 _PATTERN_GRUPPO_FB = re.compile(r"facebook\.com/groups/", re.IGNORECASE)
 
+# Bug reale trovato in coda_follow (2026-08-25): 46 righe con handle
+# inutilizzabile ('p', 'pages', 'events', 'explore', 'reel') — frammenti di
+# URL malformati dall'estrazione generica _handle_da_url, non veri profili.
+_PATTERN_EVENTO_STANDALONE_FB = re.compile(r"facebook\.com/events/[^?#]+/\d+", re.IGNORECASE)
+_PATTERN_LOCATION_TAG_IG = re.compile(r"instagram\.com/explore/locations/", re.IGNORECASE)
+_PATTERN_REEL_STANDALONE_IG = re.compile(r"(?:instagram|facebook)\.com/reel/", re.IGNORECASE)
+
 
 def _normalizza_url(url: str) -> str:
     url = url.strip()
@@ -59,6 +66,18 @@ def _normalizza_testo(testo: str) -> str:
 
 
 _PATTERN_PROFILO_PEOPLE_FB = re.compile(r"facebook\.com/people/([^/?#]+)/(\d+)", re.I)
+# facebook.com/p/Nome-Leggibile-12345 e facebook.com/pages/Nome/12345:
+# stesso problema del pattern "people" sopra — il segmento utile è il nome,
+# non "p"/"pages" (che il pattern generico sotto prenderebbe letteralmente,
+# producendo un handle inutilizzabile identico per righe diverse).
+_PATTERN_PROFILO_P_FB = re.compile(r"facebook\.com/p/([^/?#]+)", re.I)
+# facebook.com/pages/Nome/12345: nome e id in segmenti separati.
+_PATTERN_PROFILO_PAGES_FB = re.compile(r"facebook\.com/pages/([^/?#]+)/(\d+)", re.I)
+# facebook.com/pages/category/Tipo/Nome-12345: variante con una categoria
+# intermedia, dove l'ultimo segmento contiene già "Nome-ID" unito.
+_PATTERN_PROFILO_PAGES_CATEGORY_FB = re.compile(
+    r"facebook\.com/pages/category/[^/?#]+/([^/?#]+-\d+)", re.I
+)
 
 
 def _handle_da_url(url: str, piattaforma: str) -> str:
@@ -68,6 +87,15 @@ def _handle_da_url(url: str, piattaforma: str) -> str:
         m_people = _PATTERN_PROFILO_PEOPLE_FB.search(url)
         if m_people:
             return f"{m_people.group(1)}-{m_people.group(2)}"
+        m_p = _PATTERN_PROFILO_P_FB.search(url)
+        if m_p:
+            return m_p.group(1)
+        m_pages_cat = _PATTERN_PROFILO_PAGES_CATEGORY_FB.search(url)
+        if m_pages_cat:
+            return m_pages_cat.group(1)
+        m_pages = _PATTERN_PROFILO_PAGES_FB.search(url)
+        if m_pages:
+            return f"{m_pages.group(1)}-{m_pages.group(2)}"
         m = re.search(r"facebook\.com/([^/?#]+)", url, re.I)
     else:
         m = re.search(r"instagram\.com/([^/?#]+)", url, re.I)
@@ -98,6 +126,16 @@ def bonifica_url(url: str, comune_assegnato: str, tutti_i_comuni: list[str]) -> 
 
     if _PATTERN_POST_PERMALINK_IG.search(url):
         return RigaBonificata("", "instagram", url, "", comune_assegnato, "quarantena", "permalink_post_da_risolvere")
+
+    if _PATTERN_EVENTO_STANDALONE_FB.search(url):
+        return RigaBonificata("", "facebook", url, "", comune_assegnato, "quarantena", "link_a_evento_non_a_pagina")
+
+    if _PATTERN_LOCATION_TAG_IG.search(url):
+        return RigaBonificata("", "instagram", url, "", comune_assegnato, "quarantena", "tag_di_localita_non_e_un_profilo")
+
+    if _PATTERN_REEL_STANDALONE_IG.search(url):
+        piattaforma_reel = "facebook" if "facebook.com" in url.lower() else "instagram"
+        return RigaBonificata("", piattaforma_reel, url, "", comune_assegnato, "quarantena", "link_a_reel_non_a_profilo")
 
     m_num = _PATTERN_PROFILO_NUMERICO_FB.search(url)
     if m_num:
