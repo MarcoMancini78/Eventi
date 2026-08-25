@@ -209,13 +209,22 @@ _JS_SCROLL_CONTENITORE_INTERNO = """
 
 def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: int = 800) -> set[str]:
     """Scroll incrementale eseguendo `script_js` ad ogni passo, fino a
-    quando due scroll consecutivi non producono più progresso (fine lista)
-    o max_scroll (circuit-breaker anti-loop). Il progresso è misurato sia
-    dall'altezza della pagina sia dalla somma degli scrollTop dei
-    contenitori interni scrollabili, per coprire entrambi i casi (lista a
-    piena pagina o lista in modale)."""
+    quando l'altezza/scrollTop smette di crescere per due controlli
+    CONSECUTIVI (fine lista) o max_scroll (circuit-breaker anti-loop). Il
+    progresso è misurato sia dall'altezza della pagina sia dalla somma
+    degli scrollTop dei contenitori interni scrollabili, per coprire
+    entrambi i casi (lista a piena pagina o lista in modale).
+
+    Bug reale osservato (2026-08-25): con un solo controllo senza progresso
+    come condizione di stop, Facebook (che carica altre righe in modo
+    asincrono/lazy dopo aver raggiunto il fondo visibile) poteva far
+    fermare lo scroll un istante troppo presto — nel giro di test dal vivo
+    mancavano 10-12 profili su 53, prevalentemente quelli in fondo alla
+    lista. Ora serve un secondo controllo di fila senza progresso prima di
+    considerare la lista completa, dando tempo al caricamento lazy."""
     handle_trovati: set[str] = set()
     progresso_precedente = -1
+    conteggio_senza_progresso = 0
 
     for _ in range(max_scroll):
         href_trovati = pagina.evaluate(script_js)
@@ -231,7 +240,11 @@ def _scroll_e_raccogli(pagina, script_js: str, max_scroll: int = 40, pausa_ms: i
         altezza_pagina = pagina.evaluate("document.body.scrollHeight")
         progresso_corrente = altezza_pagina + scroll_interno
         if progresso_corrente == progresso_precedente:
-            break
+            conteggio_senza_progresso += 1
+            if conteggio_senza_progresso >= 2:
+                break
+        else:
+            conteggio_senza_progresso = 0
         progresso_precedente = progresso_corrente
 
     return handle_trovati
@@ -307,7 +320,9 @@ def _leggi_seguiti_facebook(contesto: dict, config: Config) -> list[str]:
 
         page_id = _id_pagina_da_url(config.facebook_page_url)
         handle_grezzi = _scroll_e_raccogli(pagina, _JS_RACCOGLI_RIGHE_CON_ALTRE_OPZIONI)
-        handle = handle_grezzi
+        # Falso positivo reale osservato (2026-08-25): 'profile.php' isolato
+        # dal DOM-walk, un link generico di navigazione, non un vero profilo.
+        handle = {h for h in handle_grezzi if h != "profile.php"}
         if page_id:
             handle = {h for h in handle if page_id not in h}  # mai la propria Pagina
 
