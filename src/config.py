@@ -57,10 +57,12 @@ class Config:
     max_post_social: int = 15
     max_polling_diretto: int = 100
 
-    # Follow (14.4). Default doc: 40/giorno; l'utente ha chiesto 50/giorno
-    # come tetto massimo su più lanci manuali nella giornata.
-    follow_per_lotto: int = 10
-    follow_max_giornalieri: int = 50
+    # Follow (14.4). Default doc: 40/giorno; l'utente ha chiesto 50/giorno,
+    # poi (2026-08-25, riscaldamento ancora in corso fino a ~2026-09-05,
+    # rischio accettato esplicitamente) il raddoppio a 100/giorno e lotti
+    # da 20 invece di 10.
+    follow_per_lotto: int = 20
+    follow_max_giornalieri: int = 100
     follow_pausa_min_sec: int = 25
     follow_pausa_max_sec: int = 70
     follow_pausa_lunga_ogni: int = 4
