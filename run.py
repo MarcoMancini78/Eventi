@@ -243,7 +243,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_run = sub.add_parser("run", help="Esegue la raccolta sulle fonti T0/T1 note (M2, parziale)")
     p_run.add_argument("--fonte", help="source_id per un test puntuale, invece di leggere da SQLite")
     p_run.add_argument("--endpoint", help="URL della fonte, con --fonte")
-    p_run.add_argument("--metodo", choices=["T0_ical", "T0_jsonld", "T0_rss", "T1_html"], help="Adattatore da usare, con --fonte")
+    p_run.add_argument(
+        "--metodo",
+        choices=["T0_ical", "T0_jsonld", "T0_rss", "T0_email", "T0_telegram", "T1_html"],
+        help="Adattatore da usare, con --fonte",
+    )
     p_run.add_argument("--comune", help="Comune di riferimento della fonte, con --fonte")
     p_run.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: i T1 si fermano al pre-filtro")
     p_run.set_defaults(func=cmd_run)

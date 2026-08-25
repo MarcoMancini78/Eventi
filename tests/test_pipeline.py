@@ -95,6 +95,42 @@ def _risposta_json(titolo="Sagra del Tartufo", comune="Comune Prova", confidenza
     ) % (titolo, f'"{luogo}"' if luogo else "null", comune, confidenza)
 
 
+def test_fonte_t0_email_instradata_come_t1_e_pubblica_con_estrattore():
+    """M7: email/telegram non hanno campi strutturati precompilati (a
+    differenza di ical/jsonld), quindi seguono lo stesso ramo T1-like
+    dell'html — verificato qui che pipeline.esegui_fonte le riconosca e le
+    faccia passare dall'estrattore, coerente col contratto degli altri
+    adapter."""
+    from src.adapters.email_imap import EmailImapAdapter, parse_email
+    import email as email_stdlib
+
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    msg = email_stdlib.message_from_string(
+        "Subject: Sagra del Tartufo\nFrom: newsletter@proloco.it\n\n"
+        "Vi aspettiamo sabato 12 settembre in Piazza Roma per la Sagra del Tartufo, "
+        "con degustazioni, musica dal vivo e mercatino artigianale."
+    )
+    artefatto = parse_email(msg, "email-prova", "casella", "1")
+
+    fonte = {"source_id": "email-prova", "metodo": "T0_email", "endpoint": "proloco.it", "comune_riferimento": "Comune Prova"}
+    with patch.object(EmailImapAdapter, "fetch", return_value=[artefatto]):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, Config(), extractor)
+
+    assert riepilogo["errore"] is None
+    assert riepilogo["chiamate_llm"] == 1
+    assert riepilogo["eventi_pubblicati"] == 1
+
+
+def test_fonte_metodo_sconosciuto_produce_errore_isolato():
+    conn = _conn_di_prova()
+    fonte = {"source_id": "fonte-strana", "metodo": "T9_inesistente", "endpoint": "x", "comune_riferimento": "Comune Prova"}
+    riepilogo = pipeline.esegui_fonte(fonte, conn, Config())
+    assert riepilogo["errore"] == "metodo sconosciuto: T9_inesistente"
+
+
 def test_fonte_t1_html_con_estrattore_pubblica_evento_sopra_soglia():
     conn = _conn_di_prova()
     provider = _ProviderFinto([_risposta_json(confidenza=92)])

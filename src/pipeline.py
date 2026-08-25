@@ -16,10 +16,12 @@ import logging
 import sqlite3
 from datetime import datetime, timezone
 
+from .adapters.email_imap import EmailImapAdapter
 from .adapters.html import HtmlAdapter
 from .adapters.ical import ICalAdapter
 from .adapters.jsonld import JsonLdAdapter
 from .adapters.rss import RssAdapter
+from .adapters.telegram import TelegramAdapter
 from .config import Config
 from .dedup import upsert_evento
 from .extractor.client import ErroreQuotaEsaurita, ExtractorClient
@@ -57,9 +59,18 @@ def esegui_fonte(
         "errore": None,
     }
 
-    adapter = _ADAPTER_PER_TIER.get(fonte["metodo"])
+    metodo = fonte["metodo"]
+    # email/telegram (M7) leggono credenziali da Config, non disponibile al
+    # momento dell'import del modulo: istanziati qui per fonte, a
+    # differenza degli adapter in _ADAPTER_PER_TIER che sono stateless.
+    if metodo == "T0_email":
+        adapter = EmailImapAdapter(config)
+    elif metodo == "T0_telegram":
+        adapter = TelegramAdapter(config)
+    else:
+        adapter = _ADAPTER_PER_TIER.get(metodo)
     if adapter is None:
-        riepilogo["errore"] = f"metodo sconosciuto: {fonte['metodo']}"
+        riepilogo["errore"] = f"metodo sconosciuto: {metodo}"
         return riepilogo
 
     try:
