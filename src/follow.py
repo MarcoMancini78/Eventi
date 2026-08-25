@@ -410,8 +410,17 @@ def _apri_e_segui(contesto: dict, candidato: sqlite3.Row) -> EsitoFollow:
         pagina.goto(candidato["url"], timeout=20000)
         contenuto = pagina.content().lower()
 
+        # Bug reale osservato (2026-08-25): cercare i segnali di blocco
+        # nell'HTML grezzo (pagina.content()) produce falsi positivi — su
+        # una pagina Facebook normale, senza alcun captcha visibile,
+        # "captcha" compare comunque nel blob di configurazione cookie
+        # come nome di un'integrazione di terze parti ("arkose_captcha").
+        # Verificato empiricamente: lo stesso controllo sul testo VISIBILE
+        # (inner_text, quello che un utente reale vedrebbe) non produce
+        # il falso positivo sulla stessa pagina.
+        testo_visibile = pagina.inner_text("body").lower()
         for segnale, ore in _SEGNALI_BLOCCO.items():
-            if segnale in contenuto:
+            if segnale in testo_visibile:
                 if ore is None:
                     raise SegnaleDiBloccoRilevato(f"Richiesta di verifica identità: fermata definitiva", 24 * 365)
                 raise SegnaleDiBloccoRilevato(f"Segnale di blocco rilevato: {segnale}", ore)
