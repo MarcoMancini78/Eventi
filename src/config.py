@@ -61,13 +61,21 @@ class Config:
     follow_intervallo_lotti_min: int = 45
 
     # 14.1/14.2 opzione A: l'account Facebook dedicato è una Pagina gestita
-    # dal profilo personale dell'utente, non un secondo profilo. Prima di
-    # ogni sessione di follow va attivata l'identità "Pagina", altrimenti i
-    # follow partirebbero dal profilo personale.
+    # dal profilo personale dell'utente, non un secondo profilo.
     facebook_page_url: str = field(
         default_factory=lambda: os.getenv(
             "FACEBOOK_PAGE_URL", "https://www.facebook.com/profile.php?id=61593736766094"
         )
+    )
+
+    # Bug reale osservato (2026-08-25): Facebook non offre più uno switch
+    # esplicito "Usa Facebook come Pagina" — un amministratore vede sempre
+    # la vista pubblica (bottone "Segui") quando visita la Pagina. L'unico
+    # segnale affidabile resta il nome dell'account PERSONALE loggato nella
+    # sessione salvata (letto dal blob di configurazione della pagina),
+    # confrontato con questo valore atteso.
+    facebook_account_name: str = field(
+        default_factory=lambda: os.getenv("FACEBOOK_ACCOUNT_NAME", "")
     )
 
     # Bug reale osservato (2026-08-24): la sessione salvata risultava

@@ -267,62 +267,47 @@ def login_manuale(piattaforma: str, sessione_dir: Path | None = None) -> None:
     contesto["playwright"].stop()
 
 
-def _assicura_identita_pagina(contesto: dict, config: Config) -> None:
-    """14.2 opzione A: verifica di essere 'loggati come Pagina', non come profilo personale.
+_TESTO_NOME_ACCOUNT = re.compile(r'"NAME":"([^"]+)"')
 
-    Naviga alla Pagina dedicata e controlla se compare l'indicatore che la
-    identifica come identità attiva (il pulsante "Gestisci" o l'assenza del
-    pulsante "Segui/Mi piace" sulla propria Pagina sono segnali affidabili:
-    solo il gestore vede "Gestisci", un visitatore vede "Segui"). Se non è
-    attiva, prova a cambiarla dal menu identità; se non riesce, si ferma —
-    non si procede mai sotto l'identità sbagliata (14.1).
-    """
+
+def _assicura_identita_pagina(contesto: dict, config: Config) -> None:
+    """14.2 opzione A: verifica di essere loggati con l'account PERSONALE
+    giusto (non un altro profilo) prima di agire sulla Pagina dedicata.
+
+    Bug reale (2026-08-25): Facebook non offre più uno switch esplicito
+    "Usa Facebook come Pagina" — un amministratore vede sempre la vista
+    pubblica (bottone "Segui") quando visita la Pagina; la vecchia verifica
+    basata su quel meccanismo (assenza del bottone "Segui", o peggio la
+    sottostringa "gestisci" nel contenuto) era quindi inaffidabile e si
+    bloccava anche con la sessione corretta. L'unico segnale stabile
+    trovato nell'HTML reale ispezionato dall'utente è il nome dell'account
+    PERSONALE loggato, presente nel blob di configurazione della pagina
+    (pattern "NAME":"{nome}", 3 occorrenze identiche verificate)."""
+    if not (config.facebook_account_name or "").strip():
+        return  # nessun nome configurato: nulla da verificare
+
     pagina = contesto["browser"].new_page()
     try:
         pagina.goto(config.facebook_page_url, timeout=20000)
         pagina.wait_for_timeout(1500)
 
-        if _identita_pagina_attiva(pagina):
-            return
+        contenuto = pagina.content()
+        m = _TESTO_NOME_ACCOUNT.search(contenuto)
+        nome_attivo = m.group(1).strip() if m else None
 
-        _tenta_cambio_a_pagina(pagina)
-        pagina.wait_for_timeout(2000)
-
-        if not _identita_pagina_attiva(pagina):
+        if not nome_attivo:
             raise IdentitaPaginaNonAttivaError(
-                "Impossibile confermare l'identità Pagina dopo il tentativo di cambio. "
-                "Nel browser aperto dalla sessione salvata, passa manualmente a "
-                "'Usa Facebook come Pagina' sulla Pagina dedicata, poi rilancia."
+                "Impossibile determinare il nome dell'account personale loggato su Facebook. "
+                "Verifica manualmente di essere loggato con l'account corretto prima di rilanciare."
+            )
+        if nome_attivo.lower() != config.facebook_account_name.strip().lower():
+            raise IdentitaPaginaNonAttivaError(
+                f"Sessione loggata come '{nome_attivo}', atteso '{config.facebook_account_name}'. "
+                "Elimina data/sessions/facebook_profile e rifai il login con l'account corretto "
+                "('python run.py login --platform=facebook')."
             )
     finally:
         pagina.close()
-
-
-_TESTI_BOTTONE_SEGUI_PAGINA = re.compile(
-    r"^(segui|mi piace|follow|like)$", re.IGNORECASE
-)
-
-
-def _identita_pagina_attiva(pagina) -> bool:
-    """Bug reale (2026-08-25): cercare 'gestisci' in tutto il contenuto
-    della pagina è un falso positivo — quella parola compare anche nel
-    titolo della sidebar "Gestisci Pagina" (menu di navigazione), visibile
-    a un amministratore anche quando sta visitando la propria Pagina da
-    VISITATORE (bottone "Segui"/"Mi piace" ancora presente, non in modalità
-    "agisci come Pagina"). L'utente ha confermato visivamente questo
-    scenario: sidebar con "Gestisci Pagina" presente, ma bottone "Segui"
-    ancora mostrato, e la lista "Persone seguite" non popolata di
-    conseguenza (vista non equivalente a quella di gestione).
-
-    Segnale affidabile: l'ASSENZA del bottone "Segui"/"Mi piace" — solo un
-    visitatore (anche se amministratore) lo vede sulla propria Pagina;
-    in modalità gestione compaiono invece "Dashboard per professionisti"/
-    "Modifica"."""
-    for bottone in pagina.query_selector_all('[role="button"], button'):
-        testo = (bottone.inner_text() or "").strip()
-        if _TESTI_BOTTONE_SEGUI_PAGINA.match(testo):
-            return False
-    return True
 
 
 _TESTI_BANNER_COOKIE = re.compile(
@@ -407,24 +392,6 @@ def _username_da_link_profilo(pagina) -> str | None:
             if username:
                 return username.lower()
     return None
-
-
-def _tenta_cambio_a_pagina(pagina) -> None:
-    """Il menu 'Cambia' / 'Sfoglia come Pagina' di Facebook cambia spesso
-    struttura: qui si tenta i selettori più stabili (ruolo + testo), senza
-    pretendere di coprire ogni variante dell'interfaccia. Se fallisce, la
-    verifica successiva in _assicura_identita_pagina se ne accorge e ferma
-    tutto invece di procedere alla cieca."""
-    try:
-        selettore_profilo = pagina.get_by_role("button", name=re.compile("account|profilo", re.IGNORECASE))
-        if selettore_profilo.count() > 0:
-            selettore_profilo.first.click()
-            pagina.wait_for_timeout(800)
-        link_cambia = pagina.get_by_text(re.compile("cambia", re.IGNORECASE))
-        if link_cambia.count() > 0:
-            link_cambia.first.click()
-    except Exception:
-        pass  # la verifica esplicita dopo la chiamata è l'unica fonte di verità
 
 
 _SEGNALI_BLOCCO = {

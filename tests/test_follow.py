@@ -225,42 +225,88 @@ def test_follow_batch_su_captcha_ritorna_esito_visibile_non_lista_vuota(monkeypa
     assert riga2["tentativi"] == 0
 
 
-class _BottoneFinto:
-    def __init__(self, testo: str):
-        self._testo = testo
+# --- Bug reale (2026-08-25): Facebook non offre più uno switch esplicito
+# "Usa Facebook come Pagina" — un amministratore vede sempre la vista
+# pubblica quando visita la Pagina, quindi la vecchia verifica (bottone
+# "Gestisci"/assenza di "Segui") è inaffidabile. Nuovo segnale: il nome
+# dell'account PERSONALE loggato, letto dal blob "NAME":"{nome}" presente
+# nell'HTML della pagina. ---
 
-    def inner_text(self):
-        return self._testo
+class _PaginaFacebookFinta:
+    def __init__(self, nome_account: str | None):
+        self._nome_account = nome_account
 
+    def goto(self, url, timeout=None):
+        pass
 
-class _PaginaConBottoniFinta:
-    def __init__(self, testi_bottoni: list[str]):
-        self._testi_bottoni = testi_bottoni
+    def wait_for_timeout(self, ms):
+        pass
 
-    def query_selector_all(self, selettore):
-        return [_BottoneFinto(t) for t in self._testi_bottoni]
+    def content(self):
+        if self._nome_account is None:
+            return "<html>nessun nome qui</html>"
+        return f'<script>{{"NAME":"{self._nome_account}"}}</script>'
 
-
-def test_identita_pagina_attiva_senza_bottone_segui():
-    """Modalità gestione: niente bottone "Segui"/"Mi piace", solo controlli
-    da amministratore ("Dashboard per professionisti", "Modifica")."""
-    pagina = _PaginaConBottoniFinta(["Dashboard per professionisti", "Modifica", "Pubblicizza"])
-    assert follow._identita_pagina_attiva(pagina) is True
-
-
-def test_identita_pagina_non_attiva_su_profilo_personale():
-    """Bug reale (2026-08-25): un amministratore che visita la propria
-    Pagina da VISITATORE (non in modalità "agisci come Pagina") vede
-    ancora il bottone "Segui" — anche se la sidebar mostra "Gestisci
-    Pagina" nel menu di navigazione (falso positivo del vecchio check
-    basato su pagina.content())."""
-    pagina = _PaginaConBottoniFinta(["Segui", "Messaggio", "Altro"])
-    assert follow._identita_pagina_attiva(pagina) is False
+    def close(self):
+        pass
 
 
-def test_identita_pagina_non_attiva_su_mi_piace():
-    pagina = _PaginaConBottoniFinta(["Mi piace", "Condividi"])
-    assert follow._identita_pagina_attiva(pagina) is False
+class _ContestoFacebookFinto:
+    def __init__(self, nome_account: str | None):
+        self._nome_account = nome_account
+
+    class _Browser:
+        def __init__(self, outer):
+            self._outer = outer
+
+        def new_page(self):
+            return _PaginaFacebookFinta(self._outer._nome_account)
+
+    def __getitem__(self, chiave):
+        if chiave == "browser":
+            return self._Browser(self)
+        raise KeyError(chiave)
+
+
+def test_assicura_identita_pagina_passa_se_nome_corrisponde():
+    contesto = _ContestoFacebookFinto("Marco Mancini")
+    config = Config(facebook_account_name="Marco Mancini")
+    follow._assicura_identita_pagina(contesto, config)  # non deve sollevare
+
+
+def test_assicura_identita_pagina_fallisce_su_account_sbagliato():
+    contesto = _ContestoFacebookFinto("Altro Utente")
+    config = Config(facebook_account_name="Marco Mancini")
+
+    try:
+        follow._assicura_identita_pagina(contesto, config)
+        assert False, "doveva sollevare IdentitaPaginaNonAttivaError"
+    except follow.IdentitaPaginaNonAttivaError as exc:
+        assert "Altro Utente" in str(exc)
+        assert "Marco Mancini" in str(exc)
+
+
+def test_assicura_identita_pagina_fallisce_se_nome_non_leggibile():
+    contesto = _ContestoFacebookFinto(None)
+    config = Config(facebook_account_name="Marco Mancini")
+
+    try:
+        follow._assicura_identita_pagina(contesto, config)
+        assert False, "doveva sollevare IdentitaPaginaNonAttivaError"
+    except follow.IdentitaPaginaNonAttivaError:
+        pass
+
+
+def test_assicura_identita_pagina_case_insensitive():
+    contesto = _ContestoFacebookFinto("marco mancini")
+    config = Config(facebook_account_name="Marco Mancini")
+    follow._assicura_identita_pagina(contesto, config)  # non deve sollevare
+
+
+def test_assicura_identita_pagina_nessun_nome_configurato_non_verifica():
+    contesto = _ContestoFacebookFinto(None)
+    config = Config(facebook_account_name="")
+    follow._assicura_identita_pagina(contesto, config)  # non deve sollevare
 
 
 # --- Bug reale: la sessione salvata era loggata sul profilo Instagram
