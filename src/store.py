@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS extractions (
     artifact_id TEXT NOT NULL,
     model TEXT,
     prompt_version TEXT,
+    prompt_utente TEXT,  -- il prompt COMPILATO mandato all'LLM, non solo la versione del template
     raw_output TEXT,
     parsed_json TEXT,
     confidence INTEGER,
@@ -218,4 +219,9 @@ def migrate(conn: sqlite3.Connection) -> None:
     colonne_sources = {r["name"] for r in conn.execute("PRAGMA table_info(sources)").fetchall()}
     if "piattaforma" not in colonne_sources:
         conn.execute("ALTER TABLE sources ADD COLUMN piattaforma TEXT")
+        conn.commit()
+
+    colonne_extractions = {r["name"] for r in conn.execute("PRAGMA table_info(extractions)").fetchall()}
+    if "prompt_utente" not in colonne_extractions:
+        conn.execute("ALTER TABLE extractions ADD COLUMN prompt_utente TEXT")
         conn.commit()

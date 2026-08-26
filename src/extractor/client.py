@@ -117,7 +117,7 @@ class ExtractorClient:
         )
 
         grezzo = _chiama_con_retry(self._provider, SISTEMA, prompt_utente, None)
-        risposta = self._valida_e_salva(grezzo, artifact_id, data_rif)
+        risposta = self._valida_e_salva(grezzo, artifact_id, data_rif, prompt_utente)
         return risposta
 
     def estrai_da_immagine(
@@ -150,10 +150,12 @@ class ExtractorClient:
         prompt_sistema = SISTEMA + REGOLE_LOCANDINA_AGGIUNTIVE
 
         grezzo = _chiama_con_retry(self._provider, prompt_sistema, prompt_utente, [immagine_bytes])
-        risposta = self._valida_e_salva(grezzo, artifact_id, data_rif)
+        risposta = self._valida_e_salva(grezzo, artifact_id, data_rif, prompt_utente)
         return risposta
 
-    def _valida_e_salva(self, grezzo: str, artifact_id: str, data_riferimento: date) -> RispostaEstrazione:
+    def _valida_e_salva(
+        self, grezzo: str, artifact_id: str, data_riferimento: date, prompt_utente: str | None = None
+    ) -> RispostaEstrazione:
         try:
             risposta = RispostaEstrazione.model_validate_json(grezzo)
         except Exception:
@@ -172,14 +174,15 @@ class ExtractorClient:
         extraction_id = hashlib.sha1(f"{artifact_id}|{adesso_locale.isoformat()}".encode()).hexdigest()[:16]
         self._conn.execute(
             """
-            INSERT INTO extractions (extraction_id, artifact_id, model, prompt_version, raw_output, parsed_json, confidence, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO extractions (extraction_id, artifact_id, model, prompt_version, prompt_utente, raw_output, parsed_json, confidence, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 extraction_id,
                 artifact_id,
                 self._config.llm_provider or "gemini",
                 PROMPT_VERSION,
+                prompt_utente,
                 grezzo,
                 risposta.model_dump_json(),
                 risposta.eventi[0].confidenza if risposta.eventi else 0,
