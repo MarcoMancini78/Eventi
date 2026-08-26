@@ -83,6 +83,9 @@ def cmd_run(args: argparse.Namespace) -> None:
     if not fonti:
         print("Nessuna fonte in SQLite. Popola il foglio Fonti e sincronizzalo, oppure usa --fonte per un test puntuale.")
 
+    if args.limite:
+        fonti = fonti[: args.limite]
+
     if args.fonte and args.endpoint and args.metodo:
         fonte = {
             "source_id": args.fonte,
@@ -381,6 +384,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_run.add_argument("--comune", help="Comune di riferimento della fonte, con --fonte")
     p_run.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: i T1 si fermano al pre-filtro")
+    p_run.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti processate dal giro multi-fonte (0 = tutte)")
     p_run.set_defaults(func=cmd_run)
 
     p_coda = sub.add_parser("populate-coda-follow", help="Bonifica ed importa le fonti social nella CodaFollow (M9)")
