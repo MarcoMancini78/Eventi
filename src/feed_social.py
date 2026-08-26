@@ -24,11 +24,14 @@ fallimenti, non continuare a indovinare.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import sqlite3
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 from .adapters.base import Artefatto
 from .config import Config
@@ -147,19 +150,43 @@ def leggi_feed_reale(
     return post
 
 
-# --- Selettori DOM: primo tentativo, da verificare contro l'interfaccia reale ---
-
+# --- Selettori DOM Facebook: riscritti dopo il primo collaudo dal vivo
+# (2026-08-27). div[role="article"] NON esiste più nel feed principale di
+# Facebook (trovati solo 2 elementi con quel ruolo, entrambi skeleton di
+# caricamento residui, aria-label="Caricamento..." — mai contenuto reale).
+# Il vero autore del post è affidabile tramite h3 a[href] (verificato:
+# isola correttamente "Pro Loco Valfenera", "Pro Loco Roddino", ecc. con
+# handle puliti nell'href). Non esiste un contenitore di post con un
+# ruolo/attributo stabile: risalendo dal link autore, il testo del vero
+# post si riconosce perché ha molte parole UNICHE (>8) — a differenza dei
+# contenitori intermedi che ripetono solo "Facebook" (alt-text di icone
+# nel carosello di post consigliati) o dei tag di localizzazione geografica
+# ("Proloco X si trova a Y, Piemonte", da escludere esplicitamente perché
+# non è mai testo di un post, solo un tag). Nessun permalink singolo
+# affidabile trovato nel primo collaudo (solo 3 link a permalink.php/posts/
+# nell'intera pagina, tutti provenienti da notifiche di commento, non dai
+# post del feed) — usa quindi come "post_id" un hash del testo, meno
+# preciso di un vero ID ma sufficiente per la change detection.
+# -- Selettori Instagram: NON ancora collaudati, primo tentativo.
 _JS_RACCOGLI_POST_FACEBOOK = """
 () => {
     const risultati = [];
-    for (const articolo of document.querySelectorAll('div[role="article"]')) {
-        const linkAutore = articolo.querySelector('h3 a[href], strong a[href]');
-        if (!linkAutore) continue;
-        const href = linkAutore.getAttribute('href') || '';
-        const linkPermalink = articolo.querySelector('a[href*="/posts/"], a[href*="/videos/"], a[href*="story_fbid"]');
-        const permalink = linkPermalink ? linkPermalink.getAttribute('href') : href;
-        const testo = articolo.innerText || '';
-        risultati.push({href, permalink, testo});
+    for (const link of document.querySelectorAll('h3 a[href]')) {
+        const href = link.getAttribute('href') || '';
+        let nodo = link.closest('h3');
+        let scelto = null;
+        for (let livelli = 0; livelli < 25 && nodo; livelli++) {
+            nodo = nodo.parentElement;
+            if (!nodo) break;
+            const t = nodo.innerText || '';
+            const paroleUniche = new Set(t.split(/\\s+/)).size;
+            if (t.length > 80 && paroleUniche > 8 && !t.includes('si trova a')) {
+                scelto = nodo;
+                break;
+            }
+        }
+        if (!scelto) continue;
+        risultati.push({href, permalink: href, testo: scelto.innerText || ''});
     }
     return risultati;
 }
@@ -183,16 +210,88 @@ _JS_RACCOGLI_POST_INSTAGRAM = """
 
 
 def _handle_da_href_profilo(href: str, piattaforma: str) -> str:
-    path = href.strip("/").split("?")[0]
-    segmenti = [s for s in path.split("/") if s]
+    """Bug reale osservato (2026-08-27): nel feed reale l'href dell'autore
+    è un URL ASSOLUTO (https://www.facebook.com/ProLocoBUBBIO?...), non
+    relativo come nella pagina 'seguiti' già collaudata in sync_seguiti.py
+    — split manuale su '/' produceva 'https:' come falso handle. Usare
+    urlparse (come già fatto in prober.py con urljoin) invece di
+    manipolare la stringa a mano.
+
+    Stesso bug già risolto altrove (bonifica_social.py) per i profili
+    senza username personalizzato: facebook.com/profile.php?id=NNN va
+    identificato dall'id nella query string, non dal segmento letterale
+    'profile.php' (che collasserebbe profili diversi sullo stesso
+    handle-fasullo, come già osservato nel dataset ereditato)."""
+    if piattaforma == "facebook":
+        query = parse_qs(urlparse(href).query)
+        if "id" in query and query["id"]:
+            return f"profile.php?id={query['id'][0]}"
+
+    path = urlparse(href).path
+    segmenti = [s for s in path.strip("/").split("/") if s]
     return segmenti[0].lower() if segmenti else ""
 
 
-def _post_id_da_permalink(permalink: str) -> str:
+def _post_id_da_permalink(permalink: str, testo: str = "") -> str:
+    """Bug reale osservato (2026-08-27): nel feed principale di Facebook
+    l'unico link disponibile per un post è quello dell'autore, con
+    parametri di tracking (__cft__/__tn__) che cambiano ad ogni
+    caricamento della pagina — usarlo come ID romperebbe la change
+    detection (lo stesso post risulterebbe sempre "nuovo"). Se il
+    permalink non contiene un vero ID di post riconoscibile (nessun
+    /posts/, /videos/, /p/, /reel/), l'ID si basa sul TESTO del post
+    (stabile tra un caricamento e l'altro, a differenza dell'URL)."""
     m = re.search(r"/(?:posts|videos|p|reel)/([^/?#]+)", permalink)
     if m:
         return m.group(1)
-    return re.sub(r"[^a-zA-Z0-9]", "", permalink)[-32:] or permalink
+    if testo:
+        return hashlib.sha1(testo.strip().encode("utf-8")).hexdigest()[:16]
+    url_pulito = permalink.split("?")[0]
+    return re.sub(r"[^a-zA-Z0-9]", "", url_pulito)[-32:] or permalink
+
+
+_PATTERN_RIGA_RUMORE_FACEBOOK = re.compile(
+    r"^(Facebook|·|Segui|Altro\.{3}|\d+\s*(min|h|ago|gg)?)$", re.IGNORECASE
+)
+
+
+def _e_carattere_offuscato(riga: str) -> bool:
+    """Bug reale osservato (2026-08-27): alcuni post hanno la data/il
+    timestamp offuscati carattere per carattere, ognuno su una riga a sé,
+    con un marcatore invisibile appiccicato (es. 't͏' = lettera +
+    U+034F COMBINING GRAPHEME JOINER) — probabile misura anti-scraping di
+    Facebook contro l'estrazione di innerText. Nota tecnica: U+034F ha
+    categoria Unicode Mn (Mark) ma "combining class" pari a zero, quindi
+    unicodedata.combining() lo ignora (ritorna 0) — va controllata la
+    CATEGORIA (Mn/Mc/Me), non la combining class, per riconoscerlo.
+    Una riga così è un solo carattere alfanumerico seguito da ≥1 di questi
+    marcatori: non rappresenta testo leggibile, va scartata (non
+    "ripulita", non c'è nulla di utile da recuperare in una lettera
+    isolata)."""
+    if not riga:
+        return False
+    if all(unicodedata.category(c).startswith("M") for c in riga):
+        return True  # riga di soli marcatori invisibili residui, nessuna lettera
+    if len(riga) < 2:
+        return False
+    return riga[0].isalnum() and all(unicodedata.category(c).startswith("M") for c in riga[1:])
+
+
+def _pulisci_testo_post(testo: str) -> str:
+    """Il contenitore del post nel feed include anche righe di rumore che
+    precedono il vero testo — 'Facebook' ripetuto molte volte (alt-text di
+    icone/avatar in un carosello), punti elenco isolati, 'Segui', reazioni,
+    caratteri offuscati (vedi _e_carattere_offuscato). Il NUMERO di
+    ripetizioni di 'Facebook' varia da un caricamento all'altro della
+    stessa pagina (non è stabile), quindi il testo va ripulito PRIMA di
+    calcolare l'hash per la change detection, non solo per leggibilità —
+    altrimenti lo stesso post produrrebbe un ID diverso ad ogni lettura."""
+    righe = [r.strip() for r in testo.split("\n")]
+    righe_pulite = [
+        r for r in righe
+        if r and not _PATTERN_RIGA_RUMORE_FACEBOOK.match(r) and not _e_carattere_offuscato(r)
+    ]
+    return "\n".join(righe_pulite).strip()
 
 
 def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_visto: str | None, max_scroll: int = 40) -> list[PostFeed]:
@@ -209,8 +308,9 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
             handle = _handle_da_href_profilo(g["href"], piattaforma)
             if not handle:
                 continue
+            g["testo"] = _pulisci_testo_post(g.get("testo") or "") if piattaforma == "facebook" else g.get("testo")
             permalink = g.get("permalink") or g["href"]
-            post_id = _post_id_da_permalink(permalink)
+            post_id = _post_id_da_permalink(permalink, g.get("testo") or "")
             if post_id == ultimo_visto:
                 fermato = True
                 break

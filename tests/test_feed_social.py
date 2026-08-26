@@ -96,6 +96,14 @@ def test_handle_da_href_profilo_facebook():
     assert feed_social._handle_da_href_profilo("/prolococalosso?ref=x", "facebook") == "prolococalosso"
 
 
+def test_handle_da_href_profilo_url_assoluto():
+    """Bug reale (2026-08-27): nel feed reale l'href dell'autore è un URL
+    assoluto con parametri di tracking, non relativo come nella pagina
+    'seguiti' — split manuale su '/' produceva 'https:' come falso handle."""
+    href = "https://www.facebook.com/ProLocoBUBBIO?__cft__[0]=AZZabc123&__tn__=-UC%2CP-R"
+    assert feed_social._handle_da_href_profilo(href, "facebook") == "prolocobubbio"
+
+
 def test_handle_da_href_profilo_instagram():
     assert feed_social._handle_da_href_profilo("/eventi.langa/", "instagram") == "eventi.langa"
 
@@ -103,6 +111,22 @@ def test_handle_da_href_profilo_instagram():
 def test_post_id_da_permalink_facebook():
     assert feed_social._post_id_da_permalink("/prolococalosso/posts/1234567890") == "1234567890"
     assert feed_social._post_id_da_permalink("/watch/videos/999888777") == "999888777"
+
+
+def test_post_id_usa_hash_del_testo_se_url_senza_id_riconoscibile():
+    """Bug reale (2026-08-27): nel feed principale l'unico link disponibile
+    è quello dell'autore, con parametri di tracking (__cft__) diversi ad
+    ogni caricamento — usarlo come ID romperebbe la change detection."""
+    url_con_tracking_variabile = "/prolococalosso?__cft__[0]=AZYxyzABC123&__tn__=-UC"
+    id1 = feed_social._post_id_da_permalink(url_con_tracking_variabile, testo="Sagra del Tartufo il 12 settembre")
+
+    url_con_tracking_diverso = "/prolococalosso?__cft__[0]=DIVERSO999&__tn__=-UC"
+    id2 = feed_social._post_id_da_permalink(url_con_tracking_diverso, testo="Sagra del Tartufo il 12 settembre")
+
+    assert id1 == id2  # stesso testo, stesso id, nonostante l'URL cambi
+
+    id3 = feed_social._post_id_da_permalink(url_con_tracking_variabile, testo="Un testo completamente diverso")
+    assert id3 != id1
 
 
 def test_post_id_da_permalink_instagram():
@@ -224,3 +248,58 @@ def test_elabora_post_non_evento_scartato():
     )
     esito = feed_social.elabora_post(post, conn, Config(), extractor)
     assert esito == "scartato"
+
+
+def test_pulisci_testo_post_rimuove_righe_facebook_ripetute():
+    """Bug reale (2026-08-27): il contenitore del post include 'Facebook'
+    ripetuto (alt-text di icone in un carosello) prima del vero testo,
+    in numero variabile a ogni caricamento — va rimosso per non rompere
+    la change detection basata sull'hash del testo."""
+    testo = "Facebook\nFacebook\nFacebook\nPro Loco Roddino\n \n·\nGrazie \n \n \nTesto del post reale."
+    pulito = feed_social._pulisci_testo_post(testo)
+    assert "Facebook" not in pulito
+    assert "Pro Loco Roddino" in pulito
+    assert "Testo del post reale." in pulito
+
+
+def test_pulisci_testo_post_rimuove_caratteri_offuscati():
+    """Bug reale (2026-08-27): alcuni post hanno la data offuscata
+    carattere per carattere con un marcatore Unicode invisibile
+    (categoria Mark, es. U+034F) appiccicato a ogni lettera — righe
+    illeggibili, vanno scartate."""
+    riga_offuscata_1 = "t" + "͏"
+    riga_offuscata_2 = "g" + "́"  # combining acute accent, altro caso plausibile
+    testo = f"Pro Loco BUBBIO\n{riga_offuscata_1}\n{riga_offuscata_2}\n͏"
+    pulito = feed_social._pulisci_testo_post(testo)
+    assert pulito == "Pro Loco BUBBIO"
+
+
+def test_e_carattere_offuscato_non_scarta_testo_normale():
+    assert feed_social._e_carattere_offuscato("Grazie") is False
+    assert feed_social._e_carattere_offuscato("Un'estate intensa") is False
+
+
+def test_post_id_stabile_dopo_pulizia_nonostante_ripetizioni_variabili():
+    """Lo stesso post, con un numero diverso di righe 'Facebook' residue
+    (che varia a ogni caricamento reale della pagina), deve produrre lo
+    stesso post_id una volta ripulito — altrimenti la change detection
+    non riconoscerebbe mai un post già visto."""
+    testo_a = "Facebook\n" * 15 + "Pro Loco Roddino\nGrazie per tutto."
+    testo_b = "Facebook\n" * 22 + "Pro Loco Roddino\nGrazie per tutto."
+
+    pulito_a = feed_social._pulisci_testo_post(testo_a)
+    pulito_b = feed_social._pulisci_testo_post(testo_b)
+    assert pulito_a == pulito_b
+
+    id_a = feed_social._post_id_da_permalink("/prolocoroddino?__cft__=X", testo=pulito_a)
+    id_b = feed_social._post_id_da_permalink("/prolocoroddino?__cft__=Y", testo=pulito_b)
+    assert id_a == id_b
+
+
+def test_handle_da_href_profilo_facebook_profile_php_con_id():
+    """Stesso bug già risolto in bonifica_social.py per il follow: i
+    profili senza username personalizzato usano profile.php?id=NNN — va
+    identificato dall'id, non dal segmento letterale 'profile.php' (che
+    collasserebbe profili diversi sullo stesso handle-fasullo)."""
+    href = "https://www.facebook.com/profile.php?id=100087914714647&__cft__[0]=AZY5uj9Ai1EP"
+    assert feed_social._handle_da_href_profilo(href, "facebook") == "profile.php?id=100087914714647"
