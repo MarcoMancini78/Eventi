@@ -387,6 +387,39 @@ def cmd_sync_seguiti(args: argparse.Namespace) -> None:
         print("Controlla il foglio/coda_follow per assegnare il comune corretto ai nuovi profili prima che diventino fonti attive.")
 
 
+def cmd_feed_social(args: argparse.Namespace) -> None:
+    """M10: lettura passiva del feed cronologico (14.5b), attribuzione
+    handle->comune (12.3) ed estrazione LLM, riusando la pipeline
+    esistente. Rispetta la separazione minima di un'ora dal follow
+    (14.5b) e la stessa verifica di identità già scritta per il follow."""
+    from src import feed_social
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+    extractor = None if args.no_llm else _crea_extractor_se_configurato(config, conn)
+
+    try:
+        post = feed_social.leggi_feed_reale(args.platform, config, conn)
+    except feed_social.SessioneTroppoVicinaAlFollowError as exc:
+        print(f"Impossibile procedere: {exc}")
+        sys.exit(1)
+
+    print(f"Post nuovi letti dal feed {args.platform}: {len(post)}")
+    if not post:
+        return
+
+    conteggio: dict[str, int] = {}
+    for p in post:
+        esito = feed_social.elabora_post(p, conn, config, extractor)
+        conteggio[esito] = conteggio.get(esito, 0) + 1
+        print(f"  {p.handle_autore:30} {esito:28} {p.url}")
+
+    print("\nRiepilogo:")
+    for esito, n in sorted(conteggio.items(), key=lambda kv: -kv[1]):
+        print(f"  {esito:28} {n}")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -460,6 +493,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_sync = sub.add_parser("sync-seguiti", help="Legge la lista 'seguiti' reale e aggiorna coda_follow (M9, sola lettura)")
     p_sync.add_argument("--platform", required=True, choices=["facebook", "instagram"])
     p_sync.set_defaults(func=cmd_sync_seguiti)
+
+    p_feed = sub.add_parser("feed-social", help="Lettura cronologica del feed, attribuzione ed estrazione eventi (M10, sola lettura)")
+    p_feed.add_argument("--platform", required=True, choices=["facebook", "instagram"])
+    p_feed.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: elenca solo i post letti")
+    p_feed.set_defaults(func=cmd_feed_social)
 
     p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
     p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])
