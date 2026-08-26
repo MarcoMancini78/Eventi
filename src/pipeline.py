@@ -124,16 +124,28 @@ def esegui_fonte(
 
         riepilogo["chiamate_llm"] += 1
         for evento_estratto in risposta.eventi:
-            if evento_estratto.ricorrenza.e_ricorrente:
-                n_occorrenze = _gestisci_evento_ricorrente(evento_estratto, art, fonte, conn, config)
-                riepilogo["occorrenze_generate"] += n_occorrenze
-                continue
+            try:
+                if evento_estratto.ricorrenza.e_ricorrente:
+                    n_occorrenze = _gestisci_evento_ricorrente(evento_estratto, art, fonte, conn, config)
+                    riepilogo["occorrenze_generate"] += n_occorrenze
+                    continue
 
-            esito = _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte, conn, config)
-            if esito == "pubblicato":
-                riepilogo["eventi_pubblicati"] += 1
-            elif esito == "quarantena":
-                riepilogo["eventi_in_quarantena"] += 1
+                esito = _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte, conn, config)
+                if esito == "pubblicato":
+                    riepilogo["eventi_pubblicati"] += 1
+                elif esito == "quarantena":
+                    riepilogo["eventi_in_quarantena"] += 1
+            except Exception as exc:
+                # Isolamento totale (15.1 regola 4): un dato malformato in
+                # un singolo evento estratto (bug reale osservato,
+                # 2026-08-26: giorno della settimana fuori formato che
+                # fermava l'intero run multi-fonte) non deve mai propagarsi
+                # oltre questo evento — logga e prosegue con gli altri.
+                logger.warning(
+                    "Evento estratto scartato per errore di normalizzazione (fonte %s): %s",
+                    fonte["source_id"], exc,
+                )
+                riepilogo["errore"] = riepilogo["errore"] or f"evento scartato: {exc}"
 
     return riepilogo
 

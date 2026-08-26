@@ -13,7 +13,14 @@ from datetime import date
 
 from .extractor.schema import Ricorrenza
 from .normalizer import dedup_key, titolo_normalizzato, titolo_visualizzato
-from .recurrence import RegolaRicorrenza, costruisci_rrule, espandi_occorrenze, regola_leggibile, stato_decadimento
+from .recurrence import (
+    RegolaRicorrenza,
+    costruisci_rrule,
+    espandi_occorrenze,
+    normalizza_giorno_settimana,
+    regola_leggibile,
+    stato_decadimento,
+)
 
 
 def _serie_id(titolo_normalizzato_: str, comune: str, luogo: str | None) -> str:
@@ -37,13 +44,26 @@ def upsert_serie(
     if ricorrenza.frequenza not in ("settimanale", "mensile") or not ricorrenza.giorni_settimana:
         return None
 
+    # Bug reale osservato (2026-08-26): l'LLM può restituire il nome del
+    # giorno per esteso ("mercoledì") invece del codice RFC5545 atteso,
+    # nonostante il prompt lo richieda esplicitamente — normalizzato qui,
+    # una sola volta, prima che il valore raggiunga costruisci_rrule/
+    # regola_leggibile (che altrimenti sollevano KeyError e fermano
+    # l'intero run, violando 15.1 regola 4). Giorni non riconosciuti
+    # vengono scartati silenziosamente, non l'intera serie.
+    giorni_normalizzati = [
+        g for g in (normalizza_giorno_settimana(g) for g in ricorrenza.giorni_settimana) if g
+    ]
+    if not giorni_normalizzati:
+        return None
+
     oggi = oggi or date.today()
     titolo_norm = titolo_normalizzato(titolo, comune)
     sid = _serie_id(titolo_norm, comune, luogo)
 
     regola = RegolaRicorrenza(
         frequenza=ricorrenza.frequenza,
-        giorni_settimana=ricorrenza.giorni_settimana,
+        giorni_settimana=giorni_normalizzati,
         ordinale=ricorrenza.ordinale,
         mesi_inclusi=ricorrenza.mesi_inclusi or list(range(1, 13)),
         valida_dal=oggi.isoformat(),

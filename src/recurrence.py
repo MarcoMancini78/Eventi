@@ -15,6 +15,34 @@ from dateutil.rrule import rrule, rrulestr, MONTHLY, WEEKLY, MO, TU, WE, TH, FR,
 _GIORNO_SETTIMANA = {"MO": MO, "TU": TU, "WE": WE, "TH": TH, "FR": FR, "SA": SA, "SU": SU}
 _FREQ = {"settimanale": WEEKLY, "mensile": MONTHLY}
 
+# Bug reale osservato (2026-08-26): nonostante il prompt richieda i codici
+# RFC5545 (MO/TU/.../SU), un'estrazione LLM ha restituito il nome italiano
+# per esteso ("mercoledì"), facendo sollevare KeyError e fermare l'intero
+# run multi-fonte (violazione di 15.1 regola 4: nessuna eccezione qui
+# doveva mai poter propagarsi fino a interrompere le altre fonti). Difesa
+# in profondità: non fidarsi ciecamente del formato anche dopo aver
+# chiarito il prompt — normalizza le varianti più prevedibili (italiano,
+# inglese, minuscolo) prima di validare.
+_ALIAS_GIORNO_SETTIMANA = {
+    "lunedì": "MO", "lunedi": "MO", "monday": "MO",
+    "martedì": "TU", "martedi": "TU", "tuesday": "TU",
+    "mercoledì": "WE", "mercoledi": "WE", "wednesday": "WE",
+    "giovedì": "TH", "giovedi": "TH", "thursday": "TH",
+    "venerdì": "FR", "venerdi": "FR", "friday": "FR",
+    "sabato": "SA", "saturday": "SA",
+    "domenica": "SU", "sunday": "SU",
+}
+
+
+def normalizza_giorno_settimana(valore: str) -> str | None:
+    """Converte un giorno in codice RFC5545 (MO/TU/.../SU). Ritorna None se
+    non riconosciuto, invece di sollevare — il chiamante deve poterlo
+    scartare senza far fallire l'intera estrazione (15.1 regola 4)."""
+    codice = (valore or "").strip().upper()
+    if codice in _GIORNO_SETTIMANA:
+        return codice
+    return _ALIAS_GIORNO_SETTIMANA.get((valore or "").strip().lower())
+
 
 @dataclass
 class RegolaRicorrenza:

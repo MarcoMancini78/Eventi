@@ -74,6 +74,38 @@ def test_upsert_serie_frequenza_annuale_non_supportata_ritorna_none():
     assert sid is None
 
 
+def test_upsert_serie_normalizza_giorno_settimana_per_esteso():
+    """Bug reale (2026-08-26): l'LLM ha restituito 'mercoledì' invece del
+    codice RFC5545 'WE' nonostante il prompt lo richieda esplicitamente,
+    facendo sollevare KeyError in regola_leggibile e fermare l'intero run
+    multi-fonte. Deve essere normalizzato in silenzio, non far fallire."""
+    conn = _conn_di_prova()
+    ricorrenza = Ricorrenza(
+        e_ricorrente=True, frequenza="settimanale", giorni_settimana=["mercoledì"],
+        mesi_inclusi=list(range(1, 13)),
+    )
+    sid = series.upsert_serie(
+        conn, ricorrenza, titolo="Mercato settimanale", tipologia="fiera",
+        comune="Calosso", luogo=None, fonte="comune-calosso", oggi=date(2026, 8, 22),
+    )
+    assert sid is not None
+    riga = conn.execute("SELECT rrule, regola_leggibile FROM series WHERE serie_id=?", (sid,)).fetchone()
+    assert "BYDAY=WE" in riga["rrule"]
+    assert "mercoledì" in riga["regola_leggibile"]
+
+
+def test_upsert_serie_giorno_non_riconosciuto_scarta_senza_fallire():
+    conn = _conn_di_prova()
+    ricorrenza = Ricorrenza(
+        e_ricorrente=True, frequenza="settimanale", giorni_settimana=["giorno-inventato"],
+        mesi_inclusi=list(range(1, 13)),
+    )
+    sid = series.upsert_serie(
+        conn, ricorrenza, "Evento boh", "altro", "Calosso", None, "fonte-a", oggi=date(2026, 8, 22),
+    )
+    assert sid is None
+
+
 def test_espandi_serie_in_eventi_genera_occorrenze_future():
     conn = _conn_di_prova()
     ricorrenza = Ricorrenza(e_ricorrente=True, frequenza="mensile", giorni_settimana=["SU"], ordinale=1, mesi_inclusi=list(range(1, 13)))

@@ -27,6 +27,9 @@ REGOLE
    del mese") -> imposta ricorrenza.e_ricorrente=true e compila i campi
    strutturati. In data_inizio metti la PRIMA occorrenza futura.
    Non elencare tu le occorrenze: le calcola il sistema.
+   giorni_settimana usa SEMPRE i codici a due lettere maiuscole
+   MO/TU/WE/TH/FR/SA/SU (mai il nome del giorno per esteso, in
+   nessuna lingua).
    ordinale vale 1..4 per "prima/seconda/terza/quarta", -1 per
    "ultima". Se un mese è escluso ("tranne agosto"), omettilo da
    mesi_inclusi.

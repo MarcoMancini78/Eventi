@@ -99,7 +99,14 @@ def cmd_run(args: argparse.Namespace) -> None:
 
     for riga in fonti:
         fonte = {"source_id": riga["source_id"], "endpoint": riga["endpoint"], "metodo": riga["tier"], "comune_riferimento": None}
-        riepilogo = pipeline.esegui_fonte(fonte, conn, config, extractor)
+        try:
+            riepilogo = pipeline.esegui_fonte(fonte, conn, config, extractor)
+        except Exception as exc:
+            # Ultima rete di sicurezza (15.1 regola 4): esegui_fonte non
+            # dovrebbe mai sollevare, ma un bug imprevisto in una fonte non
+            # deve comunque poter fermare il giro sulle altre 700+.
+            print({"source_id": fonte["source_id"], "errore": f"eccezione non gestita: {exc}"})
+            continue
         print(riepilogo)
 
 
