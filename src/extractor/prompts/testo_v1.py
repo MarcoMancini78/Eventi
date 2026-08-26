@@ -35,6 +35,15 @@ REGOLE
    mesi_inclusi.
 5. Un testo può contenere PIÙ eventi (es. programma di una rassegna):
    restituiscili tutti separatamente.
+5b. titolo: se l'unica etichetta vicina alla data è una CATEGORIA
+   generica ripetuta identica su più eventi (es. "Evento culturale",
+   "Eventi Sportivi", "Eventi di affari o commerciali" — tipico di
+   calendari comunali che elencano categoria+data senza un vero titolo
+   evidenziato), NON usarla come titolo. Cerca invece la frase
+   descrittiva più specifica associata a quell'evento (di norma nella
+   riga successiva) e usala come titolo. Se non trovi nulla di più
+   specifico, usa comunque la categoria ma marca "titolo_generico"
+   in campi_incerti.
 6. comune_testuale: riporta il toponimo come scritto. Se il testo non
    indica alcun luogo, usa COMUNE_FONTE.
 7. tipologia: scegli dalla lista. Nel dubbio "altro".
