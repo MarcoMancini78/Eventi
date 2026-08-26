@@ -149,6 +149,65 @@ def cmd_populate_coda_follow(args: argparse.Namespace) -> None:
         print(f"Foglio CodaFollow aggiornato: {len(corpo)} righe scritte.")
 
 
+def cmd_import_fonti(args: argparse.Namespace) -> None:
+    """M11/12.8 (parziale): import base delle fonti in sources, primo passo
+    per un giro di ricerca eventi multi-fonte reale.
+
+    L'elenco delle fonti è già disponibile (decisione D10, 12.8): non
+    scoperta da zero, ma importato dagli stessi CSV già usati per la
+    bonifica social (Comuni.csv: SitoIstituzionale, copertura 683/683 sul
+    perimetro; ProLoco.csv: Sito, solo dove presente — la maggioranza delle
+    Pro Loco vive solo su Facebook, che richiede feed_social.py di M10, non
+    ancora costruito). Tutte importate con metodo T1_html (l'adattatore
+    generico già collaudato): l'arricchimento verso T0 (feed strutturati,
+    fingerprinting per famiglia) resta un passo successivo."""
+    import csv
+
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    cartella = Path(args.raw_dir)
+    comuni_csv = cartella / "Comuni.csv"
+    proloco_csv = cartella / "ProLoco.csv"
+    for f in (comuni_csv, proloco_csv):
+        if not f.exists():
+            print(f"File non trovato: {f}")
+            sys.exit(1)
+
+    comuni_perimetro = {
+        r["comune"].strip().lower() for r in conn.execute("SELECT comune FROM comuni WHERE attivo='si'").fetchall()
+    }
+
+    fonti = []
+    with open(comuni_csv, encoding="utf-8-sig", newline="") as f:
+        for riga in csv.DictReader(f, delimiter=";"):
+            nome = riga.get("Comune", "").strip()
+            url = riga.get("SitoIstituzionale", "").strip()
+            if nome.lower() in comuni_perimetro and url:
+                fonti.append((f"comune-{nome.lower().replace(' ', '-')}", url))
+
+    with open(proloco_csv, encoding="utf-8-sig", newline="") as f:
+        for riga in csv.DictReader(f, delimiter=";"):
+            nome_comune = riga.get("Comune", "").strip()
+            url = riga.get("Sito", "").strip()
+            if nome_comune.lower() in comuni_perimetro and url:
+                fonti.append((f"proloco-{nome_comune.lower().replace(' ', '-')}-sito", url))
+
+    for source_id, endpoint in fonti:
+        conn.execute(
+            """
+            INSERT INTO sources (source_id, endpoint, tier)
+            VALUES (?, ?, 'T1_html')
+            ON CONFLICT(source_id) DO UPDATE SET endpoint=excluded.endpoint, tier=excluded.tier
+            """,
+            (source_id, endpoint),
+        )
+    conn.commit()
+
+    print(f"Fonti importate/aggiornate in sources: {len(fonti)} (tutte T1_html).")
+    print("Lancia 'python run.py run' per il primo giro multi-fonte, oppure 'python run.py run --no-llm' per un test senza consumare quota LLM.")
+
+
 def cmd_fingerprint_comuni(args: argparse.Namespace) -> None:
     """M8, 12.5: fingerprinting batch dei siti comunali nel perimetro.
 
@@ -328,6 +387,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_coda.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv, Social.csv")
     p_coda.add_argument("--publish", action="store_true", help="Scrive anche il foglio CodaFollow su Google Sheets")
     p_coda.set_defaults(func=cmd_populate_coda_follow)
+
+    p_imp = sub.add_parser("import-fonti", help="Import base di Comuni/ProLoco in sources per un giro di ricerca eventi (12.8)")
+    p_imp.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv")
+    p_imp.set_defaults(func=cmd_import_fonti)
 
     p_fp = sub.add_parser("fingerprint-comuni", help="Fingerprinting batch dei siti comunali per famiglia CMS (M8, 12.5)")
     p_fp.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv (colonna SitoIstituzionale)")
