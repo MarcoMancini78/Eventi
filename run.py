@@ -159,6 +159,46 @@ def cmd_populate_coda_follow(args: argparse.Namespace) -> None:
         print(f"Foglio CodaFollow aggiornato: {len(corpo)} righe scritte.")
 
 
+def cmd_prober(args: argparse.Namespace) -> None:
+    """M8/12.8, discovery (04.2): trova la vera pagina eventi per ogni
+    fonte già importata in sources, invece di restare fermi alla
+    homepage. Isolamento totale per fonte (15.1 regola 4): un sito
+    irraggiungibile non deve fermare il probing sulle altre."""
+    from src.prober import prova_fonte
+
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    righe = conn.execute("SELECT source_id, endpoint FROM sources WHERE endpoint IS NOT NULL").fetchall()
+    if args.limite:
+        righe = righe[: args.limite]
+
+    trovate = 0
+    con_feed = 0
+    errori = 0
+    for riga in righe:
+        try:
+            risultato = prova_fonte(riga["endpoint"])
+        except Exception as exc:
+            print(f"  {riga['source_id']:40} errore: {exc}")
+            errori += 1
+            continue
+
+        nuovo_endpoint = risultato.endpoint_strutturato or risultato.pagina_eventi
+        if risultato.fonte_scoperta != "nessuna":
+            trovate += 1
+        if risultato.tipo_endpoint:
+            con_feed += 1
+            print(f"  {riga['source_id']:40} {risultato.fonte_scoperta:10} feed={risultato.tipo_endpoint}: {nuovo_endpoint}")
+        else:
+            print(f"  {riga['source_id']:40} {risultato.fonte_scoperta:10} -> {nuovo_endpoint}")
+
+        conn.execute("UPDATE sources SET endpoint=? WHERE source_id=?", (nuovo_endpoint, riga["source_id"]))
+        conn.commit()
+
+    print(f"\nProbing completato: {len(righe)} fonti, {trovate} con pagina eventi migliorata, {con_feed} con feed strutturato, {errori} errori.")
+
+
 def cmd_import_fonti(args: argparse.Namespace) -> None:
     """M11/12.8 (parziale): import base delle fonti in sources, primo passo
     per un giro di ricerca eventi multi-fonte reale.
@@ -398,6 +438,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_coda.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv, Social.csv")
     p_coda.add_argument("--publish", action="store_true", help="Scrive anche il foglio CodaFollow su Google Sheets")
     p_coda.set_defaults(func=cmd_populate_coda_follow)
+
+    p_prober = sub.add_parser("prober", help="Discovery della vera pagina eventi/feed per le fonti già importate (04.2, 12.8)")
+    p_prober.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti (0 = tutte)")
+    p_prober.set_defaults(func=cmd_prober)
 
     p_imp = sub.add_parser("import-fonti", help="Import base di Comuni/ProLoco in sources per un giro di ricerca eventi (12.8)")
     p_imp.add_argument("--raw-dir", default="data/raw_import", help="Cartella con Comuni.csv, ProLoco.csv")
