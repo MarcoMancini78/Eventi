@@ -14,8 +14,14 @@ from src.extractor.providers import ProviderLLM
 
 
 def _conn_di_prova() -> sqlite3.Connection:
+    """PRAGMA foreign_keys=ON: bug reale (2026-08-27) mai intercettato dai
+    test perché store.connect() lo attiva ma i test usavano una connessione
+    diretta senza — elabora_post falliva con IntegrityError solo in
+    produzione (artifacts.source_id ha una foreign key su sources, mai
+    popolata per gli artefatti del feed prima del fix)."""
     conn = sqlite3.connect(":memory:")
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA foreign_keys = ON")
     conn.executescript(store.SCHEMA_SQL)
     return conn
 

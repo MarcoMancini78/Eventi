@@ -41,7 +41,7 @@ from .follow import (
     _chiudi_sessione_browser,
     verifica_identita_instagram,
 )
-from .pipeline import _pubblica_o_metti_in_quarantena, _registra_artefatto
+from .pipeline import _assicura_source, _pubblica_o_metti_in_quarantena, _registra_artefatto
 from .prefilter import scarta_testo
 
 
@@ -394,6 +394,12 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
         text=post.testo,
         image_paths=post.image_paths,
     )
+    # Bug reale osservato (2026-08-27): artifacts.source_id ha una foreign
+    # key su sources — a differenza di pipeline.esegui_fonte (che chiama
+    # _assicura_source prima di registrare un artefatto), qui la fonte
+    # "feed-{piattaforma}-{handle}" non esiste mai in sources, causando
+    # IntegrityError al primo post con testo utile.
+    _assicura_source(conn, art.source_id)
     artifact_id = _registra_artefatto(conn, art, art.source_id)
     fonte = {"source_id": art.source_id, "comune_riferimento": comune_riferimento, "categoria": "social"}
 
