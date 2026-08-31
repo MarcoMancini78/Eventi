@@ -1,7 +1,9 @@
 """Configurazione centrale. Nessun numero magico altrove nel codice (15.1.1).
 
-I default qui sotto rispecchiano il foglio `Config` (03.1.6) e vengono
-sovrascritti dai valori letti dal foglio a ogni run (registry.py).
+Caricata solo da `.env` (`load_config`). Il foglio `Config` e il modulo
+`registry.py` che l'avrebbe riletto da Sheets sono stati rimossi il
+2026-08-28 (richiesto dall'utente): erano scritti ma mai collegati a
+`run.py`, codice morto senza alcun test.
 """
 from __future__ import annotations
 
@@ -56,6 +58,13 @@ class Config:
     budget_llm_giornaliero: int = 1200
     max_post_social: int = 15
     max_polling_diretto: int = 100
+
+    # Parallelismo del giro multi-fonte (M11, richiesto dall'utente
+    # 2026-08-27): ogni worker apre la propria connessione SQLite (WAL
+    # abilitato in store.connect), quindi il numero non è vincolato dalla
+    # sola CPU ma dalla rete/LLM — 6 è il valore indicato dall'utente come
+    # sicuro, non misurato empiricamente qui.
+    run_paralleli: int = 6
 
     # Follow (14.4). Default doc: 40/giorno; l'utente ha chiesto 50/giorno,
     # poi (2026-08-25, riscaldamento ancora in corso fino a ~2026-09-05,
@@ -132,5 +141,5 @@ class Config:
 
 
 def load_config() -> Config:
-    """Carica la configurazione di default. registry.py la aggiorna dal foglio `Config`."""
+    """Carica la configurazione da `.env`."""
     return Config()

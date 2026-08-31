@@ -1,11 +1,8 @@
 config/.env
 config/credentials.json
 config/token.json
-data/eventi.db
-data/cache/
-data/logs/
-data/sessions/
-data/raw_import/
+data/
+webapp/mappa.html
 __pycache__/
 *.pyc
 .pytest_cache/

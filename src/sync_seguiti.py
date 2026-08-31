@@ -25,6 +25,7 @@ from .follow import (
     verifica_identita_instagram,
 )
 from .config import Config
+from .perimetro import risolvi_comune
 
 
 @dataclass
@@ -34,14 +35,37 @@ class EsitoSync:
     handle_letti: int  # totale handle raccolti dalla piattaforma
 
 
-def confronta_e_aggiorna(conn: sqlite3.Connection, piattaforma: str, handle_seguiti: list[str]) -> EsitoSync:
-    """Funzione pura (testabile senza browser): dato l'elenco reale degli
-    handle seguiti, allinea coda_follow.
+_PAROLE_CHIAVE_PERTINENTI = ("proloco", "pro loco", "comune")
+
+
+@dataclass
+class ProfiloVerificato:
+    soggetto: str | None
+    comune: str | None
+
+
+def confronta_e_aggiorna(
+    conn: sqlite3.Connection,
+    piattaforma: str,
+    handle_seguiti: list[str],
+    verifica_profilo=None,
+) -> EsitoSync:
+    """Funzione pura (testabile senza browser tramite `verifica_profilo`
+    iniettato): dato l'elenco reale degli handle seguiti, allinea
+    coda_follow.
 
     - handle già presenti in coda_follow, in qualunque stato diverso da
       'seguito' -> marcati 'seguito' con data_follow di oggi
-    - handle non presenti -> nuova riga in quarantena, comune vuoto (da
-      verificare a mano prima che diventi una fonte attiva)
+    - handle non presenti -> se `verifica_profilo` è passata (richiesto
+      dall'utente 2026-08-29, sostituisce l'apertura manuale del link),
+      apre il profilo e legge nome pagina + comune dall'indirizzo. Se il
+      nome contiene una parola chiave pertinente (proloco/comune) E il
+      comune è risolvibile nel perimetro, la fonte va direttamente a
+      'da_seguire' (pronta per il prossimo lotto di follow) invece che
+      in quarantena — altrimenti (nome non pertinente, o comune non
+      trovato, o verifica fallita/non disponibile) resta 'quarantena'
+      come prima, ma con soggetto/comune già popolati quando trovati:
+      chi rivede la riga non deve più aprire il link a mano.
     """
     oggi = datetime.now().isoformat()
     handle_normalizzati = {h.strip().lower().lstrip("@") for h in handle_seguiti if h.strip()}
@@ -62,18 +86,42 @@ def confronta_e_aggiorna(conn: sqlite3.Connection, piattaforma: str, handle_segu
             )
             if cur.rowcount > 0:
                 aggiornati += 1
-        else:
-            source_id = f"sconosciuto-{piattaforma}-{handle}"
-            conn.execute(
-                """
-                INSERT INTO coda_follow (source_id, piattaforma, handle, url, soggetto, comune, fascia, categoria, stato, data_follow, note)
-                VALUES (?, ?, ?, ?, ?, '', '', 'sconosciuto', 'quarantena', ?, 'trovato nella lista seguiti, comune da verificare')
-                ON CONFLICT(source_id, piattaforma) DO NOTHING
-                """,
-                (source_id, piattaforma, handle, _url_da_handle(piattaforma, handle), handle, oggi),
-            )
-            if conn.execute("SELECT changes()").fetchone()[0] > 0:
-                nuovi += 1
+            continue
+
+        source_id = f"sconosciuto-{piattaforma}-{handle}"
+        url = _url_da_handle(piattaforma, handle)
+
+        soggetto = handle
+        comune = ""
+        stato = "quarantena"
+        note = "trovato nella lista seguiti, comune da verificare"
+
+        if verifica_profilo is not None:
+            esito = verifica_profilo(url)
+            if esito and esito.soggetto:
+                soggetto = esito.soggetto
+                note = "trovato nella lista seguiti, verificato automaticamente"
+            if esito and esito.comune:
+                comune_risolto = risolvi_comune(esito.comune, conn)
+                if comune_risolto:
+                    comune = comune_risolto["comune"]
+                    nome_norm = (esito.soggetto or "").lower()
+                    if any(parola in nome_norm for parola in _PAROLE_CHIAVE_PERTINENTI):
+                        stato = "da_seguire"
+                        note = "trovato nella lista seguiti, verificato automaticamente: nome e comune pertinenti"
+                else:
+                    note = f"trovato nella lista seguiti, comune letto ('{esito.comune}') ma non risolto nel perimetro"
+
+        conn.execute(
+            """
+            INSERT INTO coda_follow (source_id, piattaforma, handle, url, soggetto, comune, fascia, categoria, stato, data_follow, note)
+            VALUES (?, ?, ?, ?, ?, ?, '', 'sconosciuto', ?, ?, ?)
+            ON CONFLICT(source_id, piattaforma) DO NOTHING
+            """,
+            (source_id, piattaforma, handle, url, soggetto, comune, stato, oggi, note),
+        )
+        if conn.execute("SELECT changes()").fetchone()[0] > 0:
+            nuovi += 1
 
     conn.commit()
     return EsitoSync(aggiornati=aggiornati, nuovi=nuovi, handle_letti=len(handle_normalizzati))
@@ -83,6 +131,53 @@ def _url_da_handle(piattaforma: str, handle: str) -> str:
     if piattaforma == "instagram":
         return f"https://www.instagram.com/{handle}"
     return f"https://www.facebook.com/{handle}"
+
+
+_PATTERN_INDIRIZZO_ITALIA = re.compile(r",\s*([A-Za-zÀ-ÿ' ]+),\s*Italy")
+
+
+def verifica_profilo_facebook(contesto: dict, url: str) -> ProfiloVerificato | None:
+    """Apre un profilo Facebook sconosciuto (es. profile.php?id=NNN, senza
+    username leggibile) e legge nome pagina + comune dalla sede indicata,
+    così l'operatore non deve più aprire il link a mano per capire chi
+    sia (richiesto dall'utente 2026-08-29). Verificato dal vivo su due
+    casi reali: 'Pro loco Ponti' con indirizzo 'Piazza Caduti 10, Ponti,
+    Italy' e 'La Nuova Drogheria' con 'piazza Caracco 1, Cassinasco,
+    Italy' (quest'ultimo un bar, non una Pro Loco — conferma che il nome
+    pagina va comunque controllato, non solo il comune).
+
+    Solo Facebook: il pattern indirizzo/nome pagina non è mai stato
+    collaudato su Instagram, che ha una struttura di profilo diversa
+    (bio libera, non un campo indirizzo strutturato) — non si estende
+    per analogia senza averlo verificato dal vivo (15.1).
+
+    Ritorna None se la pagina non carica o non ha né nome né indirizzo
+    riconoscibile: mai un errore bloccante, il chiamante ricade sul
+    comportamento di quarantena esistente.
+    """
+    pagina = contesto["browser"].new_page()
+    try:
+        pagina.goto(url, timeout=20000)
+        pagina.wait_for_timeout(3000)
+        testo = pagina.inner_text("body")
+    except Exception:
+        return None
+    finally:
+        pagina.close()
+
+    righe = [r.strip() for r in testo.split("\n") if r.strip()]
+    soggetto = None
+    for i, riga in enumerate(righe):
+        if riga == "Numero di notifiche non lette" and i + 2 < len(righe):
+            soggetto = righe[i + 2]
+            break
+
+    m = _PATTERN_INDIRIZZO_ITALIA.search(testo)
+    comune = m.group(1).strip() if m else None
+
+    if not soggetto and not comune:
+        return None
+    return ProfiloVerificato(soggetto=soggetto, comune=comune)
 
 
 # --- Interazione browser reale: isolata qui, mai chiamata dai test automatici ---

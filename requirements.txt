@@ -10,3 +10,7 @@ tenacity
 pytest
 google-genai
 playwright
+psutil
+Pillow
+numpy
+imagehash

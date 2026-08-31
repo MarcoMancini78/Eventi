@@ -1,16 +1,63 @@
-"""Deduplica, livello 1: chiave esatta (07.6). I livelli 2 (pHash) e 3 (fuzzy) arrivano con M5."""
+"""Deduplica, livello 1: chiave esatta (07.6). Livello 3 (fuzzy) trova un
+evento simile nello stesso comune+data quando la chiave esatta non
+matcha (dedup_key tronca lo slug a 20 caratteri: una singola parola
+diversa può bastare a mancare un duplicato reale) — confronta titolo,
+descrizione e fonte insieme (`normalizer.eventi_duplicati`, 2026-08-30:
+il solo titolo mancava casi reali dove il titolo aggiunge solo un
+dettaglio organizzativo breve, es. "Gruppi di Cammino" vs "Gruppi di
+Cammino promossi dall'A.S.L. CN1"). Livello 2 (pHash) arriva con M5."""
 from __future__ import annotations
 
 import sqlite3
 from datetime import date, datetime, timedelta
 
-from .normalizer import dedup_key, event_id
+from .normalizer import dedup_key, event_id, eventi_duplicati, titolo_normalizzato
 
 _CAMPI_OPZIONALI_DEFAULT = {"serie_id": None, "occorrenza": None}
 
 
+def _trova_duplicato_fuzzy(
+    conn: sqlite3.Connection,
+    titolo_norm: str,
+    descrizione: str | None,
+    source_id: str,
+    data_inizio: str,
+    comune: str,
+) -> str | None:
+    """Cerca un evento esistente nello stesso comune+data simile per
+    titolo+descrizione+fonte (07.6 livello 3, trovato con casi reali
+    2026-08-28/30). Limita la ricerca a comune+data invece di scorrere
+    tutti gli eventi: due eventi diversi con titolo simile ma
+    date/comuni diversi non sono un duplicato, e la finestra ristretta
+    tiene il costo trascurabile anche a migliaia di righe."""
+    candidati = conn.execute(
+        "SELECT event_id, titolo, descrizione FROM events WHERE data_inizio = ? AND comune = ? AND archiviato = 'no'",
+        (data_inizio, comune),
+    ).fetchall()
+
+    for candidato in candidati:
+        fonti_candidato = {
+            r["source_id"]
+            for r in conn.execute(
+                "SELECT source_id FROM event_sources WHERE event_id = ?", (candidato["event_id"],)
+            ).fetchall()
+        }
+        if eventi_duplicati(
+            titolo_norm,
+            titolo_normalizzato(candidato["titolo"]),
+            descrizione,
+            candidato["descrizione"],
+            {source_id},
+            fonti_candidato,
+        ):
+            return candidato["event_id"]
+    return None
+
+
 def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str:
-    """Inserisce o aggiorna un evento per dedup_key esatta. Ritorna l'event_id.
+    """Inserisce o aggiorna un evento per dedup_key esatta, con un
+    controllo fuzzy di riserva (livello 3) quando la chiave esatta non
+    trova nulla. Ritorna l'event_id.
 
     Se l'evento esiste già, aggiorna solo i campi calcolati (mai le colonne
     utente: stato/note/bloccato/soppressa restano quelle già in DB — le
@@ -24,6 +71,19 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
     oggi = date.today().isoformat()
 
     esistente = conn.execute("SELECT bloccato FROM events WHERE event_id = ?", (eid,)).fetchone()
+
+    if not esistente:
+        eid_fuzzy = _trova_duplicato_fuzzy(
+            conn,
+            evento["titolo_normalizzato"],
+            evento.get("descrizione"),
+            source_id,
+            evento["data_inizio"],
+            evento["comune"],
+        )
+        if eid_fuzzy:
+            eid = eid_fuzzy
+            esistente = conn.execute("SELECT bloccato FROM events WHERE event_id = ?", (eid,)).fetchone()
 
     if esistente and esistente["bloccato"] == "si":
         conn.execute("UPDATE events SET ultimo_visto = ? WHERE event_id = ?", (oggi, eid))

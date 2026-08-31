@@ -189,7 +189,13 @@ def follow_batch(
 
 def _registra_esito(conn: sqlite3.Connection, candidato: sqlite3.Row, esito: str, dettaglio: str) -> None:
     oggi = datetime.now().isoformat()
-    if esito == "seguito":
+    if esito in ("seguito", "gia_seguito"):
+        # Bug reale trovato in collaudo (2026-08-28): 'gia_seguito' cadeva
+        # nel ramo 'else' sotto, trattato come un errore transitorio — dopo
+        # 3 letture (tutte corrette: il pulsante 'Segui già' era stato
+        # trovato ogni volta) il candidato veniva marcato stato='fallito',
+        # nascondendo un vero successo. 121 profili Instagram realmente
+        # seguiti risultavano così "falliti" in coda_follow.
         conn.execute(
             "UPDATE coda_follow SET stato='seguito', data_follow=? WHERE rowid=?",
             (oggi, candidato["rowid"]),

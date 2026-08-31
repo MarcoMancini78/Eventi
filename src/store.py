@@ -33,7 +33,29 @@ CREATE TABLE IF NOT EXISTS sources (
     last_hash TEXT,
     consecutive_errors INTEGER DEFAULT 0,
     stats_json TEXT,
-    piattaforma TEXT  -- famiglia di CMS rilevata dal fingerprinting (M8, 12.5)
+    piattaforma TEXT,  -- famiglia di CMS rilevata dal fingerprinting (M8, 12.5)
+    -- Coda a priorità dinamica (M11, 08.3): eventi_totali/eventi_utili
+    -- alimentano resa_storica, primo_errore la tassonomia degli errori
+    -- (transitorio/blocco/permanente, 08.4), stato distingue 'rotta' da
+    -- 'attiva' (una fonte rotta resta in coda ma a priorità quasi nulla).
+    eventi_totali INTEGER DEFAULT 0,
+    eventi_utili INTEGER DEFAULT 0,
+    primo_errore TEXT,
+    stato TEXT DEFAULT 'attiva',
+    -- categoria (03: campo previsto dal modello dati per il foglio Fonti,
+    -- mai popolato finora) — comune/proloco/teatro/compagnia_itinerante/
+    -- progetto_itinerante/aggregatore/festa. Aggiunta 2026-08-28 per
+    -- distinguere teatri con cartellone proprio da compagnie/progetti
+    -- itineranti senza introdurre tabelle separate: restano tutti fonti
+    -- T0/T1 gestite dallo stesso giro, solo filtrabili/priorizzabili per
+    -- categoria. 'festa' aggiunta 2026-08-28 (sagre/feste patronali con
+    -- fonte propria, distinte da comune/proloco che le organizzano).
+    categoria TEXT,
+    -- polling_diretto (03, 08.3: flag manuale mai popolato prima):
+    -- l'operatore marca 'si' sul foglio Fonti per una fonte con pagina
+    -- eventi diretta nota, riletta da run.py pull-fonti e usata nella
+    -- formula di priorità al posto dell'approssimazione per fascia.
+    polling_diretto TEXT
 );
 
 -- M8, 12.5: censimento del fingerprinting batch sui siti comunali del
@@ -200,9 +222,17 @@ CREATE TABLE IF NOT EXISTS app_state (
 
 def connect(db_path: Path) -> sqlite3.Connection:
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(db_path)
+    # timeout piu' lungo del default (5s): con piu' thread che processano
+    # fonti in parallelo (M11, run.py run --paralleli, ognuno con la propria
+    # connessione: SQLite non e' sicuro se condivisa tra thread) una breve
+    # attesa su un lock e' normale, non un errore da propagare.
+    conn = sqlite3.connect(db_path, timeout=30)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    # WAL: i lettori non bloccano gli scrittori e viceversa (a differenza del
+    # default 'DELETE' journal, che serializza tutto il DB) - necessario per
+    # processare piu' fonti in parallelo senza 'database is locked' costanti.
+    conn.execute("PRAGMA journal_mode = WAL")
     return conn
 
 
@@ -225,3 +255,16 @@ def migrate(conn: sqlite3.Connection) -> None:
     if "prompt_utente" not in colonne_extractions:
         conn.execute("ALTER TABLE extractions ADD COLUMN prompt_utente TEXT")
         conn.commit()
+
+    colonne_sources = {r["name"] for r in conn.execute("PRAGMA table_info(sources)").fetchall()}
+    for colonna, definizione in [
+        ("eventi_totali", "INTEGER DEFAULT 0"),
+        ("eventi_utili", "INTEGER DEFAULT 0"),
+        ("primo_errore", "TEXT"),
+        ("stato", "TEXT DEFAULT 'attiva'"),
+        ("categoria", "TEXT"),
+        ("polling_diretto", "TEXT"),
+    ]:
+        if colonna not in colonne_sources:
+            conn.execute(f"ALTER TABLE sources ADD COLUMN {colonna} {definizione}")
+            conn.commit()

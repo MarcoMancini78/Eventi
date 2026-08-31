@@ -12,7 +12,7 @@ import sqlite3
 from datetime import date
 
 from .extractor.schema import Ricorrenza
-from .normalizer import dedup_key, titolo_normalizzato, titolo_visualizzato
+from .normalizer import dedup_key, titoli_simili, titolo_normalizzato, titolo_visualizzato
 from .recurrence import (
     RegolaRicorrenza,
     costruisci_rrule,
@@ -26,6 +26,42 @@ from .recurrence import (
 def _serie_id(titolo_normalizzato_: str, comune: str, luogo: str | None) -> str:
     base = f"{titolo_normalizzato_}|{comune}|{luogo or ''}"
     return hashlib.sha1(base.encode("utf-8")).hexdigest()[:12]
+
+
+def _titolo_serie_simile(titolo_norm_a: str, titolo_norm_b: str) -> bool:
+    """`titoli_simili` da sola manca lo stesso caso limite già trovato per
+    gli eventi singoli ('Gruppi di Cammino' vs 'Gruppi di Cammino
+    promossi dall'A.S.L. CN1': overlap titolo 1.0 ma solo 2 token nel
+    titolo corto, sotto la soglia di 3 pensata per titoli brevi
+    genuinamente diversi). Per gli eventi il segnale aggiuntivo era
+    descrizione/fonte (`eventi_duplicati`); le Serie non hanno una
+    descrizione, ma qui il confronto è già ristretto allo stesso comune
+    (meno margine per falsi positivi di quanto ne avrebbe un confronto
+    globale) — overlap perfetto senza il vincolo dei 3 token basta."""
+    if titoli_simili(titolo_norm_a, titolo_norm_b):
+        return True
+    token_a = set(titolo_norm_a.split())
+    token_b = set(titolo_norm_b.split())
+    if not token_a or not token_b:
+        return False
+    overlap = len(token_a & token_b) / min(len(token_a), len(token_b))
+    return overlap >= 1.0
+
+
+def _trova_serie_fuzzy(conn: sqlite3.Connection, titolo_norm: str, comune: str) -> str | None:
+    """Dedup livello 3 per le Serie (2026-08-30, richiesto dall'utente
+    dopo aver notato 3 righe 'Gruppi di Cammino' a Envie): `_serie_id` fa
+    match esatto sul titolo normalizzato, lo stesso limite già risolto
+    per gli eventi singoli in dedup.py, ma mai esteso qui. Cerca tra le
+    serie attive dello stesso comune un titolo simile, prima di crearne
+    una nuova."""
+    candidate = conn.execute(
+        "SELECT serie_id, titolo FROM series WHERE comune = ? AND stato != 'sospesa'", (comune,)
+    ).fetchall()
+    for candidata in candidate:
+        if _titolo_serie_simile(titolo_norm, titolo_normalizzato(candidata["titolo"], comune)):
+            return candidata["serie_id"]
+    return None
 
 
 def upsert_serie(
@@ -60,6 +96,11 @@ def upsert_serie(
     oggi = oggi or date.today()
     titolo_norm = titolo_normalizzato(titolo, comune)
     sid = _serie_id(titolo_norm, comune, luogo)
+
+    if not conn.execute("SELECT 1 FROM series WHERE serie_id = ?", (sid,)).fetchone():
+        sid_fuzzy = _trova_serie_fuzzy(conn, titolo_norm, comune)
+        if sid_fuzzy:
+            sid = sid_fuzzy
 
     regola = RegolaRicorrenza(
         frequenza=ricorrenza.frequenza,

@@ -13,14 +13,12 @@ Regola di separazione esplicita (14.5b): mai follow e lettura del feed
 nella stessa sessione, almeno un'ora di distanza — verificata qui come
 precondizione, non solo enunciata.
 
-Selettori DOM (Facebook: scheda "Feed → Più recenti"; Instagram: vista
-"Seguiti"/cronologica) NON ancora verificati contro l'interfaccia reale
-— a differenza di sync_seguiti.py, i cui selettori sono stati corretti in
-14 giri di collaudo dal vivo. Vanno considerati un primo tentativo
-ragionevole (basato su attributi ARIA/ruoli standard), da aggiustare al
-primo collaudo reale seguendo lo stesso principio già applicato altrove
-in questo progetto: fermarsi e chiedere l'HTML reale dopo un paio di
-fallimenti, non continuare a indovinare.
+Selettori DOM: Facebook collaudato dal vivo il 2026-08-27 (3 giri di bug
+reali), Instagram collaudato il 2026-08-28 (selettore riscritto da zero
+dopo ispezione diretta della sessione reale con Playwright — 0 post letti
+al primo tentativo, l'assunzione iniziale su <header> era sbagliata).
+Entrambi seguono lo stesso principio del progetto: fermarsi e ispezionare
+i dati reali dopo un paio di fallimenti, non continuare a indovinare.
 """
 from __future__ import annotations
 
@@ -43,6 +41,9 @@ from .follow import (
 )
 from .pipeline import _assicura_source, _pubblica_o_metti_in_quarantena, _registra_artefatto
 from .prefilter import scarta_testo
+from .extractor.schema import RispostaEstrazione
+from .prefilter_immagini import cerca_in_cache, salva_in_cache, scarta_immagine
+from .perimetro import risolvi_comune
 
 
 class SessioneTroppoVicinaAlFollowError(Exception):
@@ -192,17 +193,41 @@ _JS_RACCOGLI_POST_FACEBOOK = """
 }
 """
 
+# Riscritto dopo il primo collaudo dal vivo (2026-08-28): il feed reale non
+# ha alcun <header> dentro <article> (l'assunzione iniziale era sbagliata,
+# 0 post letti al primo tentativo) — verificato ispezionando la sessione
+# Instagram reale con Playwright. L'autore è il link immediatamente
+# precedente al permalink (/p/... o /reel/...) nell'ordine dei link
+# dell'articolo, filtrato per essere un profilo (un solo segmento di path,
+# non /explore/... o /reels/audio/...). La didascalia vive in
+# span._ap3a, ma quella classe compare DUE VOLTE per post (prima
+# sull'username-link, poi sul vero testo) — va preso l'ULTIMO elemento,
+# non il primo (querySelector prendeva sempre l'username per errore).
 _JS_RACCOGLI_POST_INSTAGRAM = """
 () => {
     const risultati = [];
     for (const articolo of document.querySelectorAll('article')) {
-        const linkAutore = articolo.querySelector('header a[href]');
-        if (!linkAutore) continue;
-        const href = linkAutore.getAttribute('href') || '';
         const linkPost = articolo.querySelector('a[href*="/p/"], a[href*="/reel/"]');
-        const permalink = linkPost ? linkPost.getAttribute('href') : href;
-        const caption = articolo.querySelector('h1, span[dir="auto"]');
-        risultati.push({href, permalink, testo: caption ? caption.innerText : ''});
+        if (!linkPost) continue;
+        const links = Array.from(articolo.querySelectorAll('a[href]'));
+        const idxPost = links.indexOf(linkPost);
+        let linkAutore = null;
+        for (let i = idxPost - 1; i >= 0; i--) {
+            const href = links[i].getAttribute('href') || '';
+            if (href.startsWith('/') && !href.includes('/explore/') && !href.includes('/reels/audio/')
+                && href.split('/').filter(Boolean).length === 1) {
+                linkAutore = links[i];
+                break;
+            }
+        }
+        if (!linkAutore) continue;
+        const captionEls = articolo.querySelectorAll('span._ap3a');
+        const captionEl = captionEls.length > 0 ? captionEls[captionEls.length - 1] : null;
+        risultati.push({
+            href: linkAutore.getAttribute('href'),
+            permalink: linkPost.getAttribute('href'),
+            testo: captionEl ? captionEl.innerText : '',
+        });
     }
     return risultati;
 }
@@ -345,11 +370,31 @@ def _leggi_feed_facebook(contesto: dict, config: Config, ultimo_visto: str | Non
         pagina.close()
 
 
+def _seleziona_tab_seguiti_instagram(pagina) -> None:
+    """Bug reale trovato dall'utente (2026-08-29): la home Instagram apre
+    di default sulla tab 'Per te' (algoritmo misto, aria-selected=true),
+    non sui soli account seguiti — a differenza di Facebook, che ha un
+    parametro URL diretto (?sk=h_chr) per il cronologico. Instagram non
+    ha un URL equivalente: bisogna cliccare la tab 'Seguiti' dentro
+    div[role="tablist"] (2 tab: 'Per te' e 'Seguiti', verificato dal vivo
+    2026-08-29). Se le tab non ci sono (UI cambiata, o già su 'Seguiti'
+    da una sessione precedente), non solleva errore: il resto del giro
+    prosegue comunque, coerente con l'isolamento totale degli errori."""
+    tabs = pagina.query_selector_all('div[role="tab"]')
+    for tab in tabs:
+        if tab.inner_text().strip() == "Seguiti":
+            if tab.get_attribute("aria-selected") != "true":
+                tab.click()
+                pagina.wait_for_timeout(1500)
+            return
+
+
 def _leggi_feed_instagram(contesto: dict, config: Config, ultimo_visto: str | None) -> list[PostFeed]:
     pagina = contesto["browser"].new_page()
     try:
         pagina.goto("https://www.instagram.com/", timeout=20000)
         pagina.wait_for_timeout(2000)
+        _seleziona_tab_seguiti_instagram(pagina)
         return _scroll_feed_e_raccogli(pagina, _JS_RACCOGLI_POST_INSTAGRAM, "instagram", ultimo_visto)
     finally:
         pagina.close()
@@ -377,12 +422,26 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
             return "candidato"
         comune_riferimento = riga_fonte["comune"]
 
-    if not post.testo:
+    if not post.testo and not post.image_paths:
         return "senza_testo"
 
-    scarta, _motivo = scarta_testo(post.testo, ha_immagine=bool(post.image_paths))
-    if scarta:
-        return "scartato"
+    phash_immagine = None
+    if post.testo:
+        scarta, _motivo = scarta_testo(post.testo, ha_immagine=bool(post.image_paths))
+        if scarta:
+            return "scartato"
+    elif post.image_paths:
+        # Pre-filtro grafico (M4, 12.10, 2026-08-28): applicato solo qui,
+        # non anche quando c'è testo — con un testo utile il post passa già
+        # dal ramo estrai_da_testo, l'immagine non viene mai inviata al VLM
+        # in quel caso (M4 riguarda solo il ramo immagine-sola). Il phash è
+        # calcolato una sola volta qui e riusato sotto per la cache, invece
+        # di riaprire il file una seconda volta.
+        with open(post.image_paths[0], "rb") as fh:
+            _bytes_prefiltro = fh.read()
+        scarta, _motivo, phash_immagine = scarta_immagine(_bytes_prefiltro)
+        if scarta:
+            return "scartato"
 
     if extractor is None:
         return "scartato"
@@ -403,14 +462,48 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     artifact_id = _registra_artefatto(conn, art, art.source_id)
     fonte = {"source_id": art.source_id, "comune_riferimento": comune_riferimento, "categoria": "social"}
 
-    risposta = extractor.estrai_da_testo(
-        testo=post.testo,
-        artifact_id=artifact_id,
-        fonte=art.source_id,
-        categoria_fonte="social",
-        comune_fonte=comune_riferimento or "",
-        url=post.url,
-    )
+    # Approssimazione di 08.5 con la sola fascia geografica (2026-08-27, vedi
+    # extractor/client.py decidi_degradazione_quota): il comune è già noto
+    # qui dall'attribuzione handle->fonte, a differenza di pipeline.py dove
+    # va derivato dal source_id.
+    riga_comune = risolvi_comune(comune_riferimento, conn) if comune_riferimento else None
+    fascia_fonte = riga_comune["fascia"] if riga_comune else None
+
+    if post.testo:
+        risposta = extractor.estrai_da_testo(
+            testo=post.testo,
+            artifact_id=artifact_id,
+            fonte=art.source_id,
+            categoria_fonte="social",
+            comune_fonte=comune_riferimento or "",
+            url=post.url,
+            fascia_fonte=fascia_fonte,
+        )
+    else:
+        # Post senza didascalia utile ma con locandina/immagine allegata,
+        # già passata dal pre-filtro grafico sopra (M4). Prima di spendere
+        # una chiamata VLM, controlla la cache pHash (12.10: "la stessa
+        # locandina compare su 5-10 canali... è questo componente che
+        # decide se il budget regge") — un match entro la soglia di Hamming
+        # riusa l'estrazione già fatta, zero chiamate aggiuntive.
+        da_cache = cerca_in_cache(conn, phash_immagine) if phash_immagine else None
+        if da_cache:
+            extraction_json_cache, _model_used = da_cache
+            risposta = RispostaEstrazione.model_validate_json(extraction_json_cache)
+        else:
+            with open(post.image_paths[0], "rb") as fh:
+                immagine_bytes = fh.read()
+            risposta = extractor.estrai_da_immagine(
+                immagine_bytes=immagine_bytes,
+                artifact_id=artifact_id,
+                fonte=art.source_id,
+                categoria_fonte="social",
+                comune_fonte=comune_riferimento or "",
+                url=post.url,
+                fascia_fonte=fascia_fonte,
+            )
+            if phash_immagine:
+                salva_in_cache(conn, phash_immagine, risposta.model_dump_json(), model_used="vlm")
 
     esiti = []
     for evento_estratto in risposta.eventi:

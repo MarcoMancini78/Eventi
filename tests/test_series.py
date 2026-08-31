@@ -53,6 +53,25 @@ def test_upsert_serie_stessa_ricorrenza_non_duplica():
     assert totale == 1
 
 
+def test_upsert_serie_titolo_riformulato_non_duplica():
+    """Caso reale trovato dall'utente (2026-08-30, Envie): 3 righe
+    'Gruppi di Cammino' finite come serie separate perché _serie_id fa
+    match esatto sul titolo — stesso limite già risolto per gli eventi
+    singoli con titoli_simili, mai esteso qui."""
+    conn = _conn_di_prova()
+    ricorrenza = Ricorrenza(e_ricorrente=True, frequenza="settimanale", giorni_settimana=["TH"], mesi_inclusi=list(range(1, 13)))
+
+    sid1 = series.upsert_serie(conn, ricorrenza, "Gruppi di Cammino", "sportivo", "Calosso", None, "fonte-a", oggi=date(2026, 8, 26))
+    sid2 = series.upsert_serie(
+        conn, ricorrenza, "Gruppi di Cammino promossi dall'A.S.L. CN1", "sportivo", "Calosso", None, "fonte-b",
+        oggi=date(2026, 8, 27),
+    )
+
+    assert sid1 == sid2
+    totale = conn.execute("SELECT COUNT(*) FROM series").fetchone()[0]
+    assert totale == 1
+
+
 def test_upsert_serie_bloccata_non_viene_modificata():
     conn = _conn_di_prova()
     ricorrenza = Ricorrenza(e_ricorrente=True, frequenza="mensile", giorni_settimana=["SU"], ordinale=1, mesi_inclusi=list(range(1, 13)))

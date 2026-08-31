@@ -108,3 +108,83 @@ def test_aggiungi_parametro_query_su_url_con_query_string_esistente():
 def test_aggiungi_parametro_query_su_url_senza_query_string():
     url = sync_seguiti._aggiungi_parametro_query("https://www.facebook.com/nomepagina", "sk", "following")
     assert url == "https://www.facebook.com/nomepagina?sk=following"
+
+
+def test_verifica_profilo_pertinente_passa_a_da_seguire():
+    """Richiesto dall'utente (2026-08-29): un profilo con nome/comune
+    riconoscibili come Pro Loco/Comune non deve più fermarsi in
+    quarantena — la verifica automatica sostituisce l'apertura manuale
+    del link."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Ponti', '', 'AL', 44.7, 8.5, 50.0, 60, 'B', 'si')"
+    )
+    conn.commit()
+
+    def verifica_finta(url):
+        return sync_seguiti.ProfiloVerificato(soggetto="Pro loco Ponti", comune="Ponti")
+
+    esito = sync_seguiti.confronta_e_aggiorna(
+        conn, "facebook", ["sconosciuto123"], verifica_profilo=verifica_finta
+    )
+
+    assert esito.nuovi == 1
+    riga = conn.execute("SELECT stato, comune, soggetto FROM coda_follow WHERE handle='sconosciuto123'").fetchone()
+    assert riga["stato"] == "da_seguire"
+    assert riga["comune"] == "Ponti"
+    assert riga["soggetto"] == "Pro loco Ponti"
+
+
+def test_verifica_profilo_non_pertinente_resta_in_quarantena():
+    """Caso reale trovato nel collaudo: 'La Nuova Drogheria' a Cassinasco
+    e' un bar, non una Pro Loco — il comune si risolve ma il nome non
+    contiene una parola chiave pertinente, quindi resta da rivedere a
+    mano invece di passare automaticamente a da_seguire."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Cassinasco', '', 'AT', 44.7, 8.3, 20.0, 30, 'A', 'si')"
+    )
+    conn.commit()
+
+    def verifica_finta(url):
+        return sync_seguiti.ProfiloVerificato(soggetto="La Nuova Drogheria", comune="Cassinasco")
+
+    esito = sync_seguiti.confronta_e_aggiorna(
+        conn, "facebook", ["lanuovadrogheria"], verifica_profilo=verifica_finta
+    )
+
+    riga = conn.execute("SELECT stato, comune, soggetto FROM coda_follow WHERE handle='lanuovadrogheria'").fetchone()
+    assert riga["stato"] == "quarantena"
+    assert riga["comune"] == "Cassinasco"  # popolato comunque: chi rivede non deve piu' cercarlo
+    assert riga["soggetto"] == "La Nuova Drogheria"
+
+
+def test_verifica_profilo_comune_non_risolvibile_resta_in_quarantena():
+    conn = _conn_di_prova()
+
+    def verifica_finta(url):
+        return sync_seguiti.ProfiloVerificato(soggetto="Pro loco Qualcosa", comune="Comune Inesistente Xyz")
+
+    esito = sync_seguiti.confronta_e_aggiorna(
+        conn, "facebook", ["handle_test"], verifica_profilo=verifica_finta
+    )
+
+    riga = conn.execute("SELECT stato, comune FROM coda_follow WHERE handle='handle_test'").fetchone()
+    assert riga["stato"] == "quarantena"
+    assert riga["comune"] == ""  # mai inventato: il comune letto non e' nel perimetro
+
+
+def test_verifica_profilo_fallita_ricade_su_comportamento_esistente():
+    """verifica_profilo che ritorna None (pagina non aperta/nessun dato
+    letto) non deve rompere nulla: stesso comportamento di prima."""
+    conn = _conn_di_prova()
+
+    esito = sync_seguiti.confronta_e_aggiorna(
+        conn, "facebook", ["handle_irraggiungibile"], verifica_profilo=lambda url: None
+    )
+
+    riga = conn.execute("SELECT stato, comune FROM coda_follow WHERE handle='handle_irraggiungibile'").fetchone()
+    assert riga["stato"] == "quarantena"
+    assert riga["comune"] == ""

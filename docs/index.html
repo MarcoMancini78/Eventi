@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eventi Langhe — Mappa</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --border: #ddd8cc;
+    --text: #23211d;
+    --text-2: #6b6558;
+    --accent: #5c6b3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .controlli {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  label {
+    font-size: 13px;
+    color: var(--text-2);
+  }
+
+  input[type="date"] {
+    font-size: 14px;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+  }
+
+  button {
+    font-size: 13px;
+    padding: 5px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+  }
+  button:hover { border-color: var(--accent); }
+
+  #stato {
+    font-size: 12.5px;
+    color: var(--text-2);
+  }
+
+  #mappa {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .info-popup {
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    max-width: 280px;
+  }
+  .info-popup h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+  }
+  .info-popup .evento {
+    padding: 6px 0;
+    border-top: 1px solid #eee;
+  }
+  .info-popup .evento:first-of-type { border-top: none; }
+  .info-popup .evento .titolo { font-weight: 600; font-size: 13px; }
+  .info-popup .evento .dettaglio { font-size: 12px; color: #666; }
+  .info-popup .evento a { color: #5c6b3f; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Eventi Langhe</h1>
+  <div class="controlli">
+    <label for="data-osservazione">Data</label>
+    <input type="date" id="data-osservazione">
+    <button id="btn-oggi">Oggi</button>
+    <button id="btn-carica-file">Carica eventi_mappa.json…</button>
+    <input type="file" id="input-file" accept="application/json" style="display:none">
+  </div>
+  <span id="stato">Nessun dato caricato.</span>
+</header>
+
+<div id="mappa"></div>
+
+<script>
+// GitHub Pages: HTML e JSON sono serviti dallo stesso dominio, quindi un
+// path relativo funziona senza CORS (a differenza del link di condivisione
+// Drive usato in precedenza, bloccato con 403 — vedi
+// Documentazione/16-webapp-mappa.md, T8/T10).
+const URL_DATI_REMOTI = "eventi_mappa.json";
+
+const CASA = { lat: 44.739837, lon: 8.227501 }; // Calosso (AT) — src/config.py
+
+let eventiTotali = [];
+let markerAttivi = [];
+let mappa;
+let infoWindow;
+
+function initMappa() {
+  mappa = new google.maps.Map(document.getElementById("mappa"), {
+    center: { lat: CASA.lat, lng: CASA.lon },
+    zoom: 9,
+  });
+  infoWindow = new google.maps.InfoWindow();
+
+  new google.maps.Marker({
+    position: { lat: CASA.lat, lng: CASA.lon },
+    map: mappa,
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 6,
+      fillColor: "#5c6b3f",
+      fillOpacity: 1,
+      strokeColor: "#ffffff",
+      strokeWeight: 2,
+    },
+    title: "Casa",
+  });
+
+  const inputData = document.getElementById("data-osservazione");
+  const oggi = new Date().toISOString().slice(0, 10);
+  inputData.value = oggi;
+  inputData.addEventListener("change", () => disegnaMarker(inputData.value));
+
+  document.getElementById("btn-oggi").addEventListener("click", () => {
+    inputData.value = new Date().toISOString().slice(0, 10);
+    disegnaMarker(inputData.value);
+  });
+
+  document.getElementById("btn-carica-file").addEventListener("click", () => {
+    document.getElementById("input-file").click();
+  });
+  document.getElementById("input-file").addEventListener("change", (ev) => {
+    const file = ev.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        caricaDati(JSON.parse(reader.result));
+        impostaStato(`Caricati ${eventiTotali.length} eventi da file locale.`);
+      } catch (e) {
+        impostaStato("File non valido: " + e.message, true);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  provaCaricamentoAutomatico();
+}
+
+function impostaStato(testo, errore) {
+  const el = document.getElementById("stato");
+  el.textContent = testo;
+  el.style.color = errore ? "#a24a3d" : "";
+}
+
+async function provaCaricamentoAutomatico() {
+  if (!URL_DATI_REMOTI) {
+    impostaStato("Nessuna sorgente automatica configurata — usa \"Carica eventi_mappa.json…\".");
+    return;
+  }
+  try {
+    const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
+    if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+    const dati = await risposta.json();
+    caricaDati(dati);
+    impostaStato(`Caricati ${eventiTotali.length} eventi (automatico, generato il ${dati.generato_il || "?"}).`);
+  } catch (e) {
+    impostaStato("Caricamento automatico non riuscito (" + e.message + ") — usa \"Carica eventi_mappa.json…\".", true);
+  }
+}
+
+function caricaDati(dati) {
+  eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
+  disegnaMarker(document.getElementById("data-osservazione").value);
+}
+
+function disegnaMarker(dataOsservazione) {
+  markerAttivi.forEach((m) => m.setMap(null));
+  markerAttivi = [];
+  if (!dataOsservazione || eventiTotali.length === 0) return;
+
+  const perComune = new Map();
+  for (const ev of eventiTotali) {
+    if (ev.data_inizio <= dataOsservazione && dataOsservazione <= (ev.data_fine || ev.data_inizio)) {
+      if (!perComune.has(ev.comune)) perComune.set(ev.comune, { lat: ev.lat, lon: ev.lon, eventi: [] });
+      perComune.get(ev.comune).eventi.push(ev);
+    }
+  }
+
+  for (const [comune, gruppo] of perComune) {
+    const marker = new google.maps.Marker({
+      position: { lat: gruppo.lat, lng: gruppo.lon },
+      map: mappa,
+      title: `${comune} (${gruppo.eventi.length} evento/i)`,
+    });
+    marker.addListener("click", () => {
+      infoWindow.setContent(popupHtml(comune, gruppo.eventi));
+      infoWindow.open(mappa, marker);
+    });
+    markerAttivi.push(marker);
+  }
+
+  impostaStato(`${perComune.size} comuni con eventi il ${dataOsservazione} (su ${eventiTotali.length} eventi totali caricati).`);
+}
+
+function popupHtml(comune, eventi) {
+  const righe = eventi.map((ev) => `
+    <div class="evento">
+      <div class="titolo">${escapeHtml(ev.titolo)}</div>
+      <div class="dettaglio">${escapeHtml(ev.tipologia || "")}</div>
+      ${ev.url ? `<div class="dettaglio"><a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a></div>` : ""}
+    </div>`).join("");
+  return `<div class="info-popup"><h3>${escapeHtml(comune)}</h3>${righe}</div>`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+window.initMappa = initMappa;
+</script>
+
+<!-- Key pubblica per design (GitHub Pages serve tutto in chiaro): protetta
+     dalle restrizioni HTTP referrer in Google Cloud Console, limitate al
+     dominio *.github.io — vedi Documentazione/16-webapp-mappa.md, 16.2.3/T10. -->
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcLumER2VVGuyGLdxcp6cu46WQ7N-VGws&callback=initMappa"></script>
+
+</body>
+</html>

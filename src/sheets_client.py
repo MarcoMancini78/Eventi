@@ -42,11 +42,20 @@ def _load_user_credentials(config: Config) -> Credentials:
     token_path.write_text(creds.to_json())
     return creds
 
-# Spreadsheet -> fogli che contiene (08.8: ripartizione obbligatoria a questa scala)
+# Spreadsheet -> fogli che contiene. Un solo file (2026-08-28, richiesta
+# dell'utente): ai volumi attuali (683 comuni, poche migliaia di righe Fonti)
+# la ripartizione su piu' spreadsheet prevista da 08.8 per scala 1000+ comuni
+# non era ancora necessaria, e un file unico e' piu' semplice da navigare.
+# I tre nomi logici (principale/anagrafiche/esteso) restano nel codice per
+# compatibilita' con run.py/config.py, ma puntano tutti allo stesso file.
 STRUTTURA = {
-    "principale": ["Eventi", "Quarantena", "Config", "Tipologie", "Log", "Serie", "Stato", "Newsletter", "CodaFollow"],
-    "anagrafiche": ["Perimetro", "Fonti"],
-    "esteso": ["Eventi_estesi", "Archivio"],
+    "principale": [
+        "Eventi", "Quarantena", "Log", "Serie", "Stato",
+        "Newsletter", "CodaFollow", "Perimetro", "Fonti", "Eventi_estesi",
+        "Archivio", "DaVerificare", "CoperturaComuni", "CoperturaAltreEntita",
+    ],
+    "anagrafiche": [],
+    "esteso": [],
 }
 
 INTESTAZIONI = {
@@ -57,8 +66,6 @@ INTESTAZIONI = {
         "fonti", "confidenza", "stato", "note", "primo_visto", "ultimo_visto",
         "bloccato", "soppressa",
     ],
-    "Config": ["chiave", "valore", "descrizione"],
-    "Tipologie": ["tipologia", "sinonimi", "attiva"],
     "Perimetro": ["comune", "alias", "provincia", "lat", "lon", "istat", "km", "minuti", "fascia", "attivo"],
     "Fonti": [
         "source_id", "soggetto", "categoria", "comune_riferimento", "fascia",
@@ -84,6 +91,13 @@ INTESTAZIONI = {
         "source_id", "piattaforma", "handle", "url", "soggetto", "comune",
         "fascia", "priorita", "stato", "tentativi", "data_follow", "note",
     ],
+    "DaVerificare": [
+        "source_id", "piattaforma", "handle", "url", "comune", "note",
+    ],
+    "CoperturaComuni": [
+        "fascia", "comune", "sito_istituzionale", "fb_comune", "fb_proloco", "ig_proloco",
+    ],
+    "CoperturaAltreEntita": ["tipologia", "nome", "sito", "facebook", "instagram"],
     "Eventi_estesi": [
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "ora_inizio",
         "data_fine", "ora_fine", "serie_id", "occorrenza", "comune", "luogo",

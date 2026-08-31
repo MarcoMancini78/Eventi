@@ -143,8 +143,10 @@ def test_post_id_da_permalink_instagram():
 class _ProviderFinto(ProviderLLM):
     def __init__(self, risposte):
         self._risposte = list(risposte)
+        self.chiamate_con_immagini = []
 
     def estrai(self, prompt_sistema, prompt_utente, immagini=None):
+        self.chiamate_con_immagini.append(immagini)
         return self._risposte.pop(0)
 
 
@@ -217,6 +219,123 @@ def test_elabora_post_pubblica_evento_con_estrattore():
     riga = conn.execute("SELECT titolo, comune FROM events").fetchone()
     assert riga["titolo"] == "Sagra del Tartufo"
     assert riga["comune"] == "Calosso"
+
+
+def test_elabora_post_senza_testo_con_immagine_usa_vlm(tmp_path):
+    """Post senza didascalia utile ma con locandina allegata: deve passare
+    per estrai_da_immagine (VLM) invece di essere scartato come
+    'senza_testo' — collegamento mancante segnalato in STATO-PROGETTO.md."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    immagine = tmp_path / "locandina.jpg"
+    immagine.write_bytes(b"\xff\xd8\xff\xe0finto-jpeg")
+
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo=None, image_paths=[str(immagine)],
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+    assert esito == "pubblicato"
+    assert provider.chiamate_con_immagini[0] is not None
+    assert provider.chiamate_con_immagini[0][0] == immagine.read_bytes()
+
+
+def test_elabora_post_immagine_scartata_dal_prefiltro_grafico_non_chiama_vlm(tmp_path):
+    """M4 collegato (2026-08-28): un'immagine troppo piccola (chiaramente
+    non una locandina) deve essere scartata PRIMA di spendere una chiamata
+    VLM, non dopo — verifica che il provider non venga mai invocato."""
+    import io
+
+    from PIL import Image
+
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([])  # nessuna risposta pronta: se venisse chiamato, il test fallirebbe con IndexError
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    piccola = Image.new("RGB", (50, 50), color=(200, 200, 200))
+    buf = io.BytesIO()
+    piccola.save(buf, format="PNG")
+    immagine = tmp_path / "troppo_piccola.png"
+    immagine.write_bytes(buf.getvalue())
+
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo=None, image_paths=[str(immagine)],
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+    assert esito == "scartato"
+    assert provider.chiamate_con_immagini == []
+
+
+def _locandina_reale_come_bytes():
+    """Immagine reale (non finta) che supera tutte le regole del pre-filtro
+    grafico: dimensioni valide, aspect ratio plausibile, molti bordi/testo
+    simulati con righe ad alto contrasto."""
+    import io
+
+    from PIL import Image, ImageDraw
+
+    img = Image.new("RGB", (800, 1000), color=(255, 255, 255))
+    draw = ImageDraw.Draw(img)
+    for y in range(50, 950, 15):
+        draw.line([(50, y), (750, y)], fill=(0, 0, 0), width=3)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    return buf.getvalue()
+
+
+def test_elabora_post_riusa_cache_pHash_senza_richiamare_il_provider(tmp_path):
+    """M4 (12.10 'la leva più efficace di tutte'): la stessa locandina letta
+    una seconda volta (stesso pHash, es. ripubblicata da un altro canale)
+    non deve chiamare di nuovo il VLM — riusa l'estrazione già in cache."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+
+    immagine_bytes = _locandina_reale_come_bytes()
+    immagine1 = tmp_path / "locandina1.png"
+    immagine1.write_bytes(immagine_bytes)
+    immagine2 = tmp_path / "locandina2.png"
+    immagine2.write_bytes(immagine_bytes)  # bytes identici -> stesso pHash
+
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])  # una sola risposta pronta
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    post1 = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo=None, image_paths=[str(immagine1)],
+    )
+    esito1 = feed_social.elabora_post(post1, conn, Config(), extractor)
+    assert esito1 == "pubblicato"
+    assert len(provider.chiamate_con_immagini) == 1  # prima chiamata reale
+
+    post2 = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="2",
+        url="https://www.facebook.com/prolococalosso/posts/2",
+        testo=None, image_paths=[str(immagine2)],
+    )
+    # provider ha una sola risposta pronta: se venisse richiamato solleverebbe IndexError
+    esito2 = feed_social.elabora_post(post2, conn, Config(), extractor)
+    assert esito2 == "pubblicato"
+    assert len(provider.chiamate_con_immagini) == 1  # nessuna seconda chiamata, riusata la cache
 
 
 def test_elabora_post_gruppo_senza_comune_esplicito_non_pubblica():
@@ -309,3 +428,62 @@ def test_handle_da_href_profilo_facebook_profile_php_con_id():
     collasserebbe profili diversi sullo stesso handle-fasullo)."""
     href = "https://www.facebook.com/profile.php?id=100087914714647&__cft__[0]=AZY5uj9Ai1EP"
     assert feed_social._handle_da_href_profilo(href, "facebook") == "profile.php?id=100087914714647"
+
+
+class _TabFinta:
+    def __init__(self, testo: str, selezionata: bool):
+        self._testo = testo
+        self._selezionata = selezionata
+        self.click_chiamato = False
+
+    def inner_text(self) -> str:
+        return self._testo
+
+    def get_attribute(self, nome: str) -> str | None:
+        if nome == "aria-selected":
+            return "true" if self._selezionata else "false"
+        return None
+
+    def click(self) -> None:
+        self.click_chiamato = True
+        self._selezionata = True
+
+
+class _PaginaFinta:
+    def __init__(self, tabs: list[_TabFinta]):
+        self._tabs = tabs
+        self.wait_calls = 0
+
+    def query_selector_all(self, selettore: str):
+        return self._tabs if selettore == 'div[role="tab"]' else []
+
+    def wait_for_timeout(self, ms: int) -> None:
+        self.wait_calls += 1
+
+
+def test_seleziona_tab_seguiti_clicca_se_non_selezionata():
+    """Bug reale trovato dall'utente (2026-08-29): la home Instagram apre
+    di default su 'Per te' (algoritmo misto), non sui soli seguiti."""
+    tab_per_te = _TabFinta("Per te", selezionata=True)
+    tab_seguiti = _TabFinta("Seguiti", selezionata=False)
+    pagina = _PaginaFinta([tab_per_te, tab_seguiti])
+
+    feed_social._seleziona_tab_seguiti_instagram(pagina)
+
+    assert tab_seguiti.click_chiamato is True
+
+
+def test_seleziona_tab_seguiti_non_clicca_se_gia_selezionata():
+    tab_seguiti = _TabFinta("Seguiti", selezionata=True)
+    pagina = _PaginaFinta([tab_seguiti])
+
+    feed_social._seleziona_tab_seguiti_instagram(pagina)
+
+    assert tab_seguiti.click_chiamato is False
+
+
+def test_seleziona_tab_seguiti_non_solleva_errore_se_tab_assente():
+    """UI cambiata o tab non trovata: il giro deve proseguire comunque
+    (isolamento totale degli errori), non bloccarsi."""
+    pagina = _PaginaFinta([])
+    feed_social._seleziona_tab_seguiti_instagram(pagina)  # non deve sollevare

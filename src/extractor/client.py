@@ -3,12 +3,22 @@
 L'LLM fa una cosa sola: dato un artefatto, restituisce zero o più eventi in
 JSON (06.1). Tutta la logica deterministica (perimetro, distanze, dedup,
 pubblicazione) resta fuori da qui.
+
+Nota sulla concorrenza (M11, run.py run --paralleli): il lock _LOCK_QUOTA
+protegge solo il momento del check (leggi 'usate', confronta col limite),
+non l'intera finestra fino al commit della chiamata LLM (che può durare
+secondi). Due thread possono quindi, in rari casi, superare il budget di
+qualche chiamata in un giorno di picco — accettabile perché il tetto è un
+freno operativo sui costi, non un vincolo di fatturazione rigido, e il
+costo di un lock a copertura totale (serializzare ogni estrazione) andrebbe
+contro lo scopo stesso della parallelizzazione.
 """
 from __future__ import annotations
 
 import hashlib
 import json
 import sqlite3
+import threading
 from datetime import date, datetime, timedelta
 
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
@@ -21,9 +31,49 @@ from .schema import RispostaEstrazione
 _LIMITE_TITOLO_MIN = 3
 _LIMITE_TITOLO_MAX = 200
 
+# Lock a livello di processo: quando piu' thread processano fonti in
+# parallelo (M11, run.py run --paralleli), ognuno con la propria connessione
+# SQLite, il controllo-e-incremento della quota LLM deve restare atomico
+# altrimenti due thread possono leggere lo stesso 'usate' ed entrambi
+# procedere, sforando budget_llm_giornaliero. Un Lock in memoria basta
+# perche' i worker vivono nello stesso processo Python (thread, non processi
+# separati) — non serve un lock a livello di file/DB.
+_LOCK_QUOTA = threading.Lock()
+
 
 class ErroreQuotaEsaurita(Exception):
     """Sollevato quando il budget LLM giornaliero è a 100% (08.5)."""
+
+
+class EstrazioneSospesaPerQuota(Exception):
+    """Sollevato dalle soglie 70%/85% di 08.5 (degradazione progressiva prima
+    dell'esaurimento totale) — a differenza di ErroreQuotaEsaurita non
+    significa 'niente è più possibile', solo 'non per questa fonte adesso'.
+    L'artefatto resta in staging (08.5: 'non vanno persi'), ripreso al
+    prossimo giro secondo la stessa logica del 100%."""
+
+
+def decidi_degradazione_quota(percentuale_usata: float, fascia: str | None, e_immagine: bool) -> str | None:
+    """08.5, approssimato con la sola fascia geografica (A/B/C, già popolata
+    su ogni fonte) al posto dei campi 'priorita' (1-3) e 'polling_diretto'
+    previsti dalla specifica ma non ancora assegnati da nessuna parte
+    (richiedono un giudizio manuale dell'utente, non automatizzabile) —
+    decisione presa esplicitamente con l'utente il 2026-08-27.
+
+    Ritorna il motivo del blocco, o None se l'estrazione può procedere.
+    fascia=None (fonte senza fascia nota, es. social con comune non ancora
+    risolto) è trattato come non-A: prudente, non privilegiato.
+    """
+    if percentuale_usata >= 1.0:
+        return None  # ErroreQuotaEsaurita se ne occupa a monte, non qui
+
+    if percentuale_usata >= 0.85 and fascia != "A":
+        return f"quota all'{percentuale_usata:.0%}: sotto la soglia 85% restano attive solo le fonti di fascia A"
+
+    if percentuale_usata >= 0.70 and e_immagine and fascia != "A":
+        return f"quota al {percentuale_usata:.0%}: sopra la soglia 70% le estrazioni da immagine sono sospese per le fonti non di fascia A"
+
+    return None
 
 
 class RateLimitError(Exception):
@@ -89,7 +139,8 @@ class ExtractorClient:
 
     def budget_rimanente(self) -> tuple[int, int]:
         oggi = date.today().isoformat()
-        usate = _conta_chiamate_oggi(self._conn, oggi)
+        with _LOCK_QUOTA:
+            usate = _conta_chiamate_oggi(self._conn, oggi)
         return usate, self._config.budget_llm_giornaliero
 
     def estrai_da_testo(
@@ -101,10 +152,15 @@ class ExtractorClient:
         comune_fonte: str,
         url: str,
         data_riferimento: date | None = None,
+        fascia_fonte: str | None = None,
     ) -> RispostaEstrazione:
         usate, limite = self.budget_rimanente()
         if usate >= limite:
             raise ErroreQuotaEsaurita(f"Budget LLM giornaliero esaurito: {usate}/{limite}")
+
+        motivo = decidi_degradazione_quota(usate / limite, fascia_fonte, e_immagine=False)
+        if motivo:
+            raise EstrazioneSospesaPerQuota(motivo)
 
         data_rif = data_riferimento or date.today()
         prompt_utente = costruisci_prompt_utente(
@@ -130,10 +186,15 @@ class ExtractorClient:
         url: str,
         caption: str | None = None,
         data_riferimento: date | None = None,
+        fascia_fonte: str | None = None,
     ) -> RispostaEstrazione:
         usate, limite = self.budget_rimanente()
         if usate >= limite:
             raise ErroreQuotaEsaurita(f"Budget LLM giornaliero esaurito: {usate}/{limite}")
+
+        motivo = decidi_degradazione_quota(usate / limite, fascia_fonte, e_immagine=True)
+        if motivo:
+            raise EstrazioneSospesaPerQuota(motivo)
 
         from .prompts.testo_v1 import REGOLE_LOCANDINA_AGGIUNTIVE
 

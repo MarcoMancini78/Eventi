@@ -396,3 +396,50 @@ def test_verifica_identita_instagram_case_insensitive():
     contesto = _ContestoInstagramFinto("Eventi.Langa")
     config = Config()
     follow.verifica_identita_instagram(contesto, config)  # non deve sollevare
+
+
+def test_registra_esito_gia_seguito_marca_stato_seguito():
+    """Bug reale trovato in collaudo (2026-08-28): 'gia_seguito' cadeva nel
+    ramo else di _registra_esito, trattato come un errore transitorio —
+    dopo 3 letture (tutte corrette, il pulsante 'Segui già' era stato
+    trovato ogni volta) il candidato veniva marcato stato='fallito',
+    nascondendo un vero successo. 121 profili Instagram realmente seguiti
+    risultavano così "falliti" in coda_follow."""
+    conn = _conn_di_prova()
+    _inserisci_candidato(conn, "proloco-test-instagram", piattaforma="instagram")
+    candidato = conn.execute("SELECT rowid, * FROM coda_follow WHERE source_id='proloco-test-instagram'").fetchone()
+
+    follow._registra_esito(conn, candidato, "gia_seguito", "nessun pulsante Segui trovato")
+
+    riga = conn.execute("SELECT stato, data_follow FROM coda_follow WHERE source_id='proloco-test-instagram'").fetchone()
+    assert riga["stato"] == "seguito"
+    assert riga["data_follow"] is not None
+
+
+def test_registra_esito_gia_seguito_ripetuto_non_diventa_fallito():
+    """Anche dopo 3+ letture consecutive di 'gia_seguito' lo stato deve
+    restare 'seguito', mai degradare a 'fallito' come nel bug originale."""
+    conn = _conn_di_prova()
+    _inserisci_candidato(conn, "proloco-test-instagram", piattaforma="instagram")
+
+    for _ in range(5):
+        candidato = conn.execute("SELECT rowid, * FROM coda_follow WHERE source_id='proloco-test-instagram'").fetchone()
+        follow._registra_esito(conn, candidato, "gia_seguito", "nessun pulsante Segui trovato")
+
+    riga = conn.execute("SELECT stato FROM coda_follow WHERE source_id='proloco-test-instagram'").fetchone()
+    assert riga["stato"] == "seguito"
+
+
+def test_registra_esito_errore_vero_diventa_fallito_dopo_3_tentativi():
+    """Un vero errore transitorio (non 'gia_seguito'/'seguito') deve ancora
+    degradare a 'fallito' dopo 3 tentativi — il fix non deve rompere questo
+    comportamento esistente e legittimo."""
+    conn = _conn_di_prova()
+    _inserisci_candidato(conn, "proloco-test-facebook", piattaforma="facebook")
+
+    for _ in range(3):
+        candidato = conn.execute("SELECT rowid, * FROM coda_follow WHERE source_id='proloco-test-facebook'").fetchone()
+        follow._registra_esito(conn, candidato, "errore_rete", "timeout")
+
+    riga = conn.execute("SELECT stato FROM coda_follow WHERE source_id='proloco-test-facebook'").fetchone()
+    assert riga["stato"] == "fallito"

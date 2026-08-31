@@ -16,6 +16,7 @@ import logging
 import sqlite3
 from datetime import datetime, timezone
 
+from .adapters.aggregatore_regionale import AggregatoreRegionalePlaywrightAdapter
 from .adapters.email_imap import EmailImapAdapter
 from .adapters.html import HtmlAdapter
 from .adapters.ical import ICalAdapter
@@ -36,6 +37,10 @@ _ADAPTER_PER_TIER = {
     "T0_jsonld": JsonLdAdapter(),
     "T0_rss": RssAdapter(),
     "T1_html": HtmlAdapter(),
+    # M3, 2026-08-28: aggregatori regionali con JSON-LD iniettato via JS
+    # (visitlmr.it) — browser reale, costoso per richiesta, va usato con
+    # parsimonia (poche fonti di questo tipo, non l'intero perimetro).
+    "T0_aggregatore_playwright": AggregatoreRegionalePlaywrightAdapter(),
 }
 
 
@@ -105,6 +110,8 @@ def esegui_fonte(
 
         artifact_id = _registra_artefatto(conn, art, fonte["source_id"])
         try:
+            from .scheduling import fascia_da_source_id
+
             risposta = extractor.estrai_da_testo(
                 testo=art.text,
                 artifact_id=artifact_id,
@@ -112,6 +119,7 @@ def esegui_fonte(
                 categoria_fonte=fonte.get("categoria", "altro"),
                 comune_fonte=fonte.get("comune_riferimento") or "",
                 url=art.url,
+                fascia_fonte=fascia_da_source_id(conn, fonte["source_id"]),
             )
         except ErroreQuotaEsaurita as exc:
             # 08.5: l'artefatto resta con processed_at=null, ripreso il giorno dopo.
