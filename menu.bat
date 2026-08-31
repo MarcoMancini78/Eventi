@@ -22,7 +22,7 @@ echo   1. Ricerca eventi (follow + siti + social + pubblica)
 echo   2. Dettaglio ricerche (solo siti, solo social, sola pubblicazione)
 echo   3. Social - Follow (login, follow, sync-seguiti)
 echo   4. Utilita' (perimetro, coda follow, fingerprinting - uso raro)
-echo   5. Apri mappa eventi (webapp/mappa.html)
+echo   5. Apri mappa eventi (online, GitHub Pages)
 echo   0. Esci
 echo.
 set /p SCELTA="Scelta: "
@@ -182,35 +182,22 @@ goto MENU_UTILITA
 
 
 :APRI_MAPPA
-REM Webapp mappa (16): Google Drive non esegue mappa.html come pagina ne'
-REM serve eventi_mappa.json via fetch (bloccato da CORS - collaudo 2026-08-31,
-REM vedi Documentazione/16-webapp-mappa.md, T8) - va servita da un webserver
-REM locale. Avviato in una finestra separata cosi' resta attivo mentre si usa
-REM la mappa, senza bloccare questo menu.
+REM Webapp mappa (16): pubblicata su GitHub Pages (docs/index.html +
+REM docs/eventi_mappa.json, stesso dominio quindi nessun blocco CORS -
+REM Google Drive non era utilizzabile per questo, collaudo 2026-08-31, T8/T10).
+REM Ogni "run.py publish" aggiorna docs/eventi_mappa.json in locale: va
+REM comunque pubblicato con "git push" perche' la mappa online si aggiorni.
 cls
 echo ================================================================
 echo   Mappa eventi
 echo ================================================================
 echo.
-if not exist "%~dp0webapp\mappa.html" (
-    echo webapp\mappa.html non trovato.
-    echo Copia webapp\mappa.template.html in webapp\mappa.html e inserisci
-    echo la tua API key Google Maps prima di usare questa voce
-    echo ^(Documentazione\16-webapp-mappa.md, 16.2.2/T4^).
-    goto FINE_COMANDO
-)
-echo Avvio del webserver locale su http://localhost:8000/ ...
-echo (si apre in una finestra separata: chiuderla per fermarlo)
+echo Apertura di https://marcomancini78.github.io/Eventi/
 echo.
-echo Dopo l'apertura della pagina nel browser, usa il pulsante
-echo "Carica eventi_mappa.json..." per selezionare data\eventi_mappa.json
-echo (rigenerato a ogni "run.py publish").
+echo Ricorda: dopo ogni "run.py publish" serve anche "git push" (dalla
+echo cartella del progetto) perche' i dati aggiornati arrivino online.
 echo.
-pushd "%~dp0webapp"
-start "Mappa eventi - webserver locale" cmd /k %PYTHON_EXE% -m http.server 8000
-popd
-timeout /t 1 /nobreak >nul
-start "" "http://localhost:8000/mappa.html"
+start "" "https://marcomancini78.github.io/Eventi/"
 goto FINE_COMANDO
 
 
