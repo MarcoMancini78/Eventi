@@ -188,6 +188,37 @@ def test_righe_eventi_per_mappa_include_descrizione_minuti_fonti():
     assert righe[0]["fonti"] == "comune-calosso"
 
 
+def test_righe_eventi_per_mappa_segnala_quarantena(tmp_path):
+    """2026-08-31, richiesto dall'utente: gli eventi in quarantena
+    comparivano su Eventi/mappa senza alcun segnale — restano visibili
+    (non nascosti), ma vanno marcati come 'da verificare' invece di
+    sembrare confermati."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, fascia, attivo, lat, lon) "
+        "VALUES ('1', 'Calosso', 'A', 'si', 44.7975, 8.2686)"
+    )
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Evento culturale', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'quarantena')"
+    )
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev2', 'Sagra confermata', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'ok')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_eventi_per_mappa(conn)
+    percorso = tmp_path / "eventi_mappa.json"
+    publisher.scrivi_eventi_mappa_json(righe, percorso)
+
+    import json
+    corpo = json.loads(percorso.read_text(encoding="utf-8"))
+    per_id = {e["id"]: e for e in corpo["eventi"]}
+    assert per_id["ev1"]["quarantena"] is True
+    assert per_id["ev2"]["quarantena"] is False
+
+
 def test_righe_eventi_per_mappa_esclude_comune_senza_coordinate():
     """04.7: vuoto non è un errore, mai un valore indovinato — un comune
     senza lat/lon non deve piazzare un evento a 0,0."""

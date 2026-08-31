@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-08-31T23:37:22",
+  "generato_il": "2026-08-31T23:53:23",
   "eventi": [
     {
       "id": "215d35247178",
@@ -14,7 +14,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/eventi-top/langhe/agosto/fiera-nazionale-della-nocciola-di-cortemilia",
-      "fonti": "aggregatore-visitlmr"
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
     },
     {
       "id": "3ee72fc3ac05",
@@ -29,7 +30,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://comune.treiso.cn.it/",
-      "fonti": "comune-treiso"
+      "fonti": "comune-treiso",
+      "quarantena": false
     },
     {
       "id": "a5ca2cf1fb0e",
@@ -44,7 +46,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "mostra",
       "url": "https://comune.garessio.cn.it/it-it/vivere-il-comune/eventi/oggi",
-      "fonti": "comune-garessio"
+      "fonti": "comune-garessio",
+      "quarantena": false
     },
     {
       "id": "394b74c48e3e",
@@ -59,7 +62,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://www.comune.torino.it/vivere-comune/eventi",
-      "fonti": "comune-torino"
+      "fonti": "comune-torino",
+      "quarantena": false
     },
     {
       "id": "c21c3ba7213c",
@@ -74,7 +78,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://comune.pavarolo.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-pavarolo"
+      "fonti": "comune-pavarolo",
+      "quarantena": false
     },
     {
       "id": "fd83ca65ac97",
@@ -89,7 +94,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-varazze"
+      "fonti": "comune-varazze",
+      "quarantena": false
     },
     {
       "id": "0a01d12644bd",
@@ -104,7 +110,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "altro",
       "url": "https://www.comune.alessandria.it/vivere-comune/eventi",
-      "fonti": "comune-alessandria"
+      "fonti": "comune-alessandria",
+      "quarantena": false
     },
     {
       "id": "fc81869abf09",
@@ -119,7 +126,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/prolococastellettomonferrato?__cft__[0]=AZZxsLgB48_2iJsF9lPN2L1BV8hsFTkKyRYlTpsD-EG-nJ1m9REHnmYuwyumno8KFN6jNVruCRraJO2IK6lE88YIYrXksVolNDTDN9CLm88-Gd3qH8HQZnxCZRNgTCSt28Su0ZNnFziTbjZeH8MUhHgUK9D1uigenazk7xmHYBPTsgnAVwvH-7Wth86ryNFEi7at78hLtoQiKrKaWCxorwWy46sdIolS1isJKQf2jzHYxQFrT1gFmEVzwnVH6jOohxL22WU1QheLPWb3wBwyDY1A&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolococastellettomonferrato"
+      "fonti": "feed-facebook-prolococastellettomonferrato",
+      "quarantena": false
     },
     {
       "id": "8131327ab7a1",
@@ -134,7 +142,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/prolococastellettomonferrato?__cft__[0]=AZbgRy2A9g5oJHvuuOkf-X0Ihog4maz_Zs2nDgyUA7B5ipa0oGGXh1r0Sbmlf_bvIzzTuK5w_Jg-8SaunHE0IDuoXkR5BtyzpmRVEMFQkh9mfrqDQY6a5t0uEGD51y1BL8_x5tjqK0pgvXjukUqb7M2SxlraPOilJiQI6zoZWg5l2gzCeRQQJteUlAnutb0e7Qd_eD_VK4lIM4-zjVjZHTc9&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolococastellettomonferrato"
+      "fonti": "feed-facebook-prolococastellettomonferrato",
+      "quarantena": false
     },
     {
       "id": "2950635eb05d",
@@ -149,7 +158,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "gastronomia",
       "url": "https://comune.fubinemonferrato.al.it/Eventi",
-      "fonti": "comune-fubine-monferrato"
+      "fonti": "comune-fubine-monferrato",
+      "quarantena": false
     },
     {
       "id": "0eb44b8ec469",
@@ -164,7 +174,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "fiera",
       "url": "https://comune.boscomarengo.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-bosco-marengo"
+      "fonti": "comune-bosco-marengo",
+      "quarantena": false
     },
     {
       "id": "2ccfc92cb65e",
@@ -179,7 +190,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "teatro",
       "url": "https://comune.parodiligure.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-parodi-ligure"
+      "fonti": "comune-parodi-ligure",
+      "quarantena": false
     },
     {
       "id": "fda1e7c2abee",
@@ -194,7 +206,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-varazze"
+      "fonti": "comune-varazze",
+      "quarantena": false
     },
     {
       "id": "dc2c82a9268f",
@@ -209,7 +222,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZaJ4Uruh6TW7aBVxb8pHNv5aQpLIgClGgZwgR2XqMbUljTbZSFfbvQQlOQ_M-bAnZoHNPomwgKt-xP6PYla1JNw_pX-XEhxJpHnnT37BJjL62yRHvEEaDFKpBg3vhhZxnH-9Bjp81Yc6kkn2W8GpCHDLGDUUtKKM8TzgAHTA00rexf0cb_vgrtNf3L9XDdb0wgBKwPLCCwc_Pe4ytG65Psl&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-radiopnr"
+      "fonti": "feed-facebook-radiopnr",
+      "quarantena": false
     },
     {
       "id": "246b282b2bd4",
@@ -224,7 +238,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.facebook.com/prolocofarigliano?__cft__[0]=AZZyQGOI-Cw2wfnR6Y0iuBmGRb6O4nxW7TyuNmpddsAmAqT_eGriTttiE1N_5vQkOZ_Z4jsBwl54ak-IZDF_ztLhpYBmqNd_j-U3drMxO4RtDlzICI2Kd8G4k5RvydMXsZEPBmFhcdtKjUZBQnV7USkqPP-OXfHq-jKeTDcgwOuLFmugLgVqwGRqDw08MUlI94rA0OoT5ZtKGLvelSeNNk-I&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocofarigliano"
+      "fonti": "feed-facebook-prolocofarigliano",
+      "quarantena": false
     },
     {
       "id": "415e97511f84",
@@ -239,7 +254,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/prolococastellettomonferrato?__cft__[0]=AZbhd6hrriOrZdc06DJzKT8depbaI7C7rc5-1mKV-RI5Yt2UPVIksjRTPtdLUIeeHD8Q-S80FLu8-oG5030YfiSJWYbES6hGL7EZdGLmQet5xaW9W2WFmfIL07tXwSkX8-dV7cWl0BYD2HxZQtPa5_rf9mNvu1Iaw8--vopwVh_NWjPYJ1-BmdWc-qCurgWZsA_e_pJdUa7ozvmRD9S2N1-wO_LskoVJnuB0I9s5APbxx5CdYd2dmE4pXGJrQVaDmeAXYnIvLJIuwFTvrVLHa_HR&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolococastellettomonferrato"
+      "fonti": "feed-facebook-prolococastellettomonferrato",
+      "quarantena": false
     },
     {
       "id": "31a50e9e4794",
@@ -254,7 +270,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.comune.lamorra.cn.it/",
-      "fonti": "comune-la-morra"
+      "fonti": "comune-la-morra",
+      "quarantena": false
     },
     {
       "id": "5059411dce0f",
@@ -269,7 +286,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedicanale?__cft__[0]=AZZ2UpkYodh5mBmKIuDiXwC_29lGPojf6bFvritz3ciLEnBx4fJbgU-MRJ1Gq7H9ZMPfMp5hzclBvAoYD1qLlzO0joXSek5SiI4Ci-WxBJ09qOVdMr5MkTNj9KlxlWtB3upIDvahG1tLsTJW3bQYTIU1zy6wFZnixO3OXpOCJCQAhoizPFQPXttbQV5Bu2t_0siZdFLP__Luxzwk3a_scdJ2&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunedicanale"
+      "fonti": "feed-facebook-comunedicanale",
+      "quarantena": false
     },
     {
       "id": "26ce3569585c",
@@ -284,7 +302,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://comune.garessio.cn.it/it-it/vivere-il-comune/eventi/oggi",
-      "fonti": "comune-garessio"
+      "fonti": "comune-garessio",
+      "quarantena": false
     },
     {
       "id": "79ca50963669",
@@ -299,7 +318,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "concerto",
       "url": "https://comune.garessio.cn.it/it-it/vivere-il-comune/eventi/oggi",
-      "fonti": "comune-garessio"
+      "fonti": "comune-garessio",
+      "quarantena": false
     },
     {
       "id": "86e8fe6e0263",
@@ -314,7 +334,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZZ45bcJA8JslHakKR6CA3WpSOWxzlheU2FaxwUkkDLSvkg_4HuzX77r9Z0ynLT1K-chUQ3IDRnNosHnpHL5FiibWsW4CHXWi3CT1nsJwbOYf0RBlWGwLUaUM4jbYt_kZ_Z0KsW2QlLhTkIrbYXC0vIEheUW_dQpz3v03wjRRAbD8hygiNqeRWUmZ8yoauC17ps&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
     },
     {
       "id": "52d80ae9888a",
@@ -329,7 +350,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://comune.fubinemonferrato.al.it/Eventi",
-      "fonti": "comune-fubine-monferrato"
+      "fonti": "comune-fubine-monferrato",
+      "quarantena": false
     },
     {
       "id": "c751d2b02248",
@@ -344,7 +366,8 @@
       "data_fine": "2026-08-29",
       "tipologia": "altro",
       "url": "https://www.facebook.com/rocchettatanaro?__cft__[0]=AZbDI_hY-DCf_W-CaSywF2bxdzEnWlKTYgTIzjGRylrkUzpkM5UdDJT0CKySDTRt2qNLOy1QRlHjw6xbZhJy1zcerHXWrDrEXAJw7M18ALiGwbUkXZdml-GzwwwvgItbp88XrKLR_ijONbVBbMJo3NnPmuaFh5DTu9tval20WgiclAUz0OfzcOrHUQ9EjcPSEvGpHynMYED2IZENbW6Pu2UL&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-rocchettatanaro"
+      "fonti": "feed-facebook-rocchettatanaro",
+      "quarantena": false
     },
     {
       "id": "388167e02ba4",
@@ -359,7 +382,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/lanuovaprolocoottigliese?__cft__[0]=AZZAiCo4HgMbfbAvEpnVZ_GPAvabwoM2FHJVVrjmkkL6BpI4jveOqKzhUy6HLmmSJihpxnbRkJ81lhrcqV-QG-ZaXC0_3W8DZSppFr323LaWod2W75Egnh9FlI8Asy8uW9wWQuny8svyg9SPAgnO37h-cyCrxBFyJ08XWLGnvT6emX0qe6UbgnxnPgx2nR_Qq4aqDgNh23F7kcT75w_6hkSh8ZpbXIRwhJK1Ot45qbi0Pw&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-lanuovaprolocoottigliese"
+      "fonti": "feed-facebook-lanuovaprolocoottigliese",
+      "quarantena": false
     },
     {
       "id": "90723863a768",
@@ -374,7 +398,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/lanuovaprolocoottigliese?__cft__[0]=AZarwpY7cUVFHXmOff2yw2RXcXUuIcuLXDM2U86z2KKZZkU10r1LX6fjOp16Yrl9TmrvSqAHvWifEjbTJXSrXwCnTVaDvmEolVaPA48CeYjjq6BfAnP6hKuad9AsmBKabSwjX2fBvjqkSy5hP513udxY6Xy_sFr1WM8l6gpK38JbX7pUhEvWDH_oTJmLbtdcX-dAPPWRxczBlBt8uAm1mK4DufzSGV1MA5Vg1rBPvX8mNg&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-lanuovaprolocoottigliese"
+      "fonti": "feed-facebook-lanuovaprolocoottigliese",
+      "quarantena": false
     },
     {
       "id": "fee9a1b1a396",
@@ -389,7 +414,8 @@
       "data_fine": "2026-09-25",
       "tipologia": "altro",
       "url": "https://www.comune.rivalta.to.it/vivere-comune/eventi",
-      "fonti": "comune-rivalta-di-torino"
+      "fonti": "comune-rivalta-di-torino",
+      "quarantena": false
     },
     {
       "id": "7d4ceba20ce1",
@@ -404,7 +430,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "teatro",
       "url": "https://www.facebook.com/comunediborgoratto.alessandrino?__cft__[0]=AZbWOKSN28u-dlOLLGDZ3Q6Yb1NiS2yewwmUFTjN9i2ReVC-p9Mw-HTWuvJK2wPe5V_8Mat-ma9Q9qS_7GR6yGSv-xGfrtNHZ-Iyh3w2DbSng_rlq-Znw_C5YtM88aLwUr4i5651F5xzaQRswhHemnnMv4qCpT7PClf2kf45G42lMqma9n18qzdwSyIPdyQpLZHTuDNMCvWvEFLEIZl8SzaS&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunediborgoratto.alessandrino"
+      "fonti": "feed-facebook-comunediborgoratto.alessandrino",
+      "quarantena": false
     },
     {
       "id": "2a7881f0803c",
@@ -419,7 +446,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZa7luMl2LvSbYDmv7czuY64LP5QnYCd1dCqhKrqvip4SAN38m7IhtdjDXt7mcVaq0bG_0rjSLV4t1IQKmKZR3hnbwnAC9fQrh2elC7eiBvQ1CJFR55N9lEFWIHDQjoqIqVSjDdLGn-dAER32o76huycWM54qMkNCAjFCOKai_BNdCRxK4FEXOY2KjIzk6MhnqIuLS_nDmp64YYlGIs4pxBT&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-radiopnr"
+      "fonti": "feed-facebook-radiopnr",
+      "quarantena": false
     },
     {
       "id": "85516cfbc1f7",
@@ -434,7 +462,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZa7luMl2LvSbYDmv7czuY64LP5QnYCd1dCqhKrqvip4SAN38m7IhtdjDXt7mcVaq0bG_0rjSLV4t1IQKmKZR3hnbwnAC9fQrh2elC7eiBvQ1CJFR55N9lEFWIHDQjoqIqVSjDdLGn-dAER32o76huycWM54qMkNCAjFCOKai_BNdCRxK4FEXOY2KjIzk6MhnqIuLS_nDmp64YYlGIs4pxBT&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-radiopnr"
+      "fonti": "feed-facebook-radiopnr",
+      "quarantena": false
     },
     {
       "id": "6a86ea9f9ea8",
@@ -449,7 +478,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "gastronomia",
       "url": "https://comune.gavi.al.it/it-it/vivere-il-comune/eventi/oggi",
-      "fonti": "comune-gavi"
+      "fonti": "comune-gavi",
+      "quarantena": false
     },
     {
       "id": "59491c84d3c7",
@@ -464,7 +494,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "concerto",
       "url": "https://comune.garessio.cn.it/it-it/vivere-il-comune/eventi/oggi",
-      "fonti": "comune-garessio"
+      "fonti": "comune-garessio",
+      "quarantena": false
     },
     {
       "id": "730472e356db",
@@ -479,7 +510,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/mostra-non-ti-curar-di-loro-sergio-ragalzi-archeologia-del-possibile-alba",
-      "fonti": "aggregatore-visitlmr"
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
     },
     {
       "id": "06c6ed5741ae",
@@ -494,7 +526,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/trifolao-in-bianco-e-nero-alba",
-      "fonti": "aggregatore-visitlmr"
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
     },
     {
       "id": "9872e5197055",
@@ -509,7 +542,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "teatro",
       "url": "https://www.facebook.com/cittadidronero?__cft__[0]=AZYUH-asZVnutbkYyXzAyDKIndESpJFLl2fpl4ZaUPgw74N6aQ4t7uJU9pNCcLjlLXURJmo2RcTZFAsD2a7YDMx1kExaKFDccBmT4G1iw_uUEZoIKTOcYST5XKRYQAZpVxF1K4TKPUltisbDhE36WWH71EmGoJ5gDKES7Zz68Ed5qjgmQ4utrKf2ffxyDKSYAkFwqw6iMBqdk7Y1-2n60ZVb&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-cittadidronero"
+      "fonti": "feed-facebook-cittadidronero",
+      "quarantena": false
     },
     {
       "id": "5a86d6c13af7",
@@ -524,7 +558,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "fiera",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZaABZ91D_r8jbDkmyflOZMh1m3qBMw3wohtqLbr0ItDuUwYIMruhY7IZ6TMTiNxAnXVltAVpWnqrVVAYGtQV-w_AurMV5w87bG3TVCMkLXJZzKugN-QblKQnF8uPrtcvA_LZqDp51Pow7BZypS-ju6TCYWiXC83UxntN2ty738f5iFpbZdFzd5c7W0UVqxY2h1el22SnnSzNIaqqw7Ws88HmYAz0LjgoF8vKHQNkrb7ow&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
     },
     {
       "id": "b39dabdcecbb",
@@ -539,7 +574,8 @@
       "data_fine": "2026-08-30",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZZtuiIAKHkx1X1Stw-5WjLEr4RGIYB3g7pwaex54J895Ls47wn796vj8FlWXXT-BKBLFCUeMAx0V18yHtLeSdkC3Ag3a4Yby4GPuT1xqRMouUCBUTZ67ZITeoJXwoprpF2VWEhPtKQ5wOEvaMgTn4pD_T2k9zTU6fqRUQFFiBzznmRcttgbnfccigM2_yX5BfI&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
     },
     {
       "id": "c97c1032ffce",
@@ -554,7 +590,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "concerto",
       "url": "https://www.instagram.com/p/DcVXfyEv_Dn/",
-      "fonti": "feed-instagram-proloco_cunico"
+      "fonti": "feed-instagram-proloco_cunico",
+      "quarantena": true
     },
     {
       "id": "e56a4aa356d6",
@@ -569,7 +606,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/trifolao-in-bianco-e-nero-alba",
-      "fonti": "aggregatore-visitlmr"
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
     },
     {
       "id": "9153f4e16dc7",
@@ -584,7 +622,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "gastronomia",
       "url": "https://www.instagram.com/p/Dcqe7T8lUMX/",
-      "fonti": "feed-facebook-proloco.valfenera, feed-instagram-prolocovalfenera"
+      "fonti": "feed-facebook-proloco.valfenera, feed-instagram-prolocovalfenera",
+      "quarantena": true
     },
     {
       "id": "f40df8ca91cb",
@@ -599,7 +638,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "sagra",
       "url": "https://www.instagram.com/p/Dcntx-OCJIU/",
-      "fonti": "feed-instagram-pro_loco_mongardino"
+      "fonti": "feed-instagram-pro_loco_mongardino",
+      "quarantena": true
     },
     {
       "id": "f8d53fa74637",
@@ -614,7 +654,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "concerto",
       "url": "https://www.instagram.com/p/DclXHfMAW5M/",
-      "fonti": "feed-instagram-prolocobelfortemonferrato"
+      "fonti": "feed-instagram-prolocobelfortemonferrato",
+      "quarantena": true
     },
     {
       "id": "9fe1838ab70a",
@@ -629,7 +670,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "gastronomia",
       "url": "https://www.instagram.com/p/DcgFRQoiPR4/",
-      "fonti": "feed-instagram-pro_loco_mongardino"
+      "fonti": "feed-instagram-pro_loco_mongardino",
+      "quarantena": true
     },
     {
       "id": "d6d01a7a0cbc",
@@ -644,7 +686,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "concerto",
       "url": "https://www.instagram.com/p/DcbYNDsNvqD/",
-      "fonti": "feed-instagram-proloco_trino"
+      "fonti": "feed-instagram-proloco_trino",
+      "quarantena": true
     },
     {
       "id": "45969511b092",
@@ -659,7 +702,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "fiera",
       "url": "https://www.facebook.com/prolocofrassineto?__cft__[0]=AZZNnWiwPSdaNEwKDNHY6Ts6ZHccCivoPg8BW9xtlllYKjChirfreFoJd99dvBYmQJm9kMlhurJJU1z0HXQeinT863vJa_UtMVQZ2u5turG0P8xj5t_MflSpzvl_pZYewO85GtZlxwOn0PGfkMpJ2ZVMxR7AqNa7ZZvWRgK41kf0gU-11eX0iYEDPV0OhIKx1If47GZbubG903PmRigKUokm&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocofrassineto"
+      "fonti": "feed-facebook-prolocofrassineto",
+      "quarantena": true
     },
     {
       "id": "33cf35f0ab61",
@@ -674,7 +718,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "fiera",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZbvNoryU1FDJTGoxdUcUfaOsy8cE-DLeqK-O1401RiOM5AbOp1ry-EZQW6OxfVepEfItcsbMXVpAHh1WUwSDu5pb8x_oB3fTJ0LZObqIsdTrC_eWQcVF8jlA65xIlkqg7YBQ3NqLCxpEIIt0JjVpu3ZtfJtXg3WGpR78lSFXzRlS7CsPhXD4svqZ9K5xOXH8kTQccMEf_SZe67Xr9EYardGNSBn2ZEq8F1t6PSSYMe6gA&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
     },
     {
       "id": "64f302873ed1",
@@ -689,7 +734,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/festivalcontrocastagnolelanze?__cft__[0]=AZbo58sOBS0t8QzjytMF4EdIrCW8g7YE9OIhntC57GHddBp0QqYHm12r_Qes4YsCNndPDAG0akyfSPyxSbD34B5O3RSAc_UCJEJPfyxffytDX3-HF3ogTeLDVek_YZQwPXkF_II69PVarBvgQosQBu-s3Ki8rkjXaanhbk7Dulg-y5p9M4DWusiW43B_Uy_mgah5tqpOTfhnE0MPMVaNiDMf&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-festivalcontrocastagnolelanze"
+      "fonti": "feed-facebook-festivalcontrocastagnolelanze",
+      "quarantena": true
     },
     {
       "id": "ebf816564d83",
@@ -704,7 +750,8 @@
       "data_fine": "2026-09-02",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZZ2DoPBL2QEgBQDrVvBtlynZmYCL5nCrKIe9QhGY8FmDuYprib97I9rtdKx8Ay3m742jbAo69r0KL0jGBrossnIjaYs_U5xODH4-XVU4CCPv-EeZ9RzxFEUqrJcz4oYWSWBu14IICEBTyNj3nJ-C8CQV3e3qbWEVcF4LaAWt6oQVcPgsycdq4J3PQUDKvyt1yk&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
     },
     {
       "id": "9f2bbe3c3e59",
@@ -719,7 +766,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZaQUiIz4pi7uvXRLqnxyQvWB0cIfyOqJlW12dtkDClq7HwRCvNMskdmE4Ul27upTCqKqaoo0I9k0Fsp6POnHvukWkfmflh0S_pYMB7UmgV37ZkbijybHPGr1js2l1zGPDVFKol84VNKTOflSct9pc7G8aFoMrZ9N88yKWtR9LwiDd5Aaj-OP87iTFb87eBnLj4iM4D1NNnynTstKgT-lFyiX1cz0XlwR4NvdkdQfu_jGA&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunesandamianodasti"
+      "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": true
     },
     {
       "id": "2fcbbbd62b0f",
@@ -734,7 +782,8 @@
       "data_fine": "2026-08-31",
       "tipologia": "teatro",
       "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZZeIAGawHUmwBkSxWspCwlGTanYPolHRTZ4dlQi5DlxgiOxxiMrtWN60as6L6bT5o_xu5ogfmnJODkexxRNXf_Te4zsqtJq7fRKf4eya6xXfqqpwiA2Hlrio3S5Yap0qVpH1PRQBXBbOBfEyC51hxcG5ZEHvaZLx2n65fxvQ5YiDHmGpy-61XqJrreNhzuwi1pCl_K8qzUWV8BcJ1MveLBc&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocomongardino1976"
+      "fonti": "feed-facebook-prolocomongardino1976",
+      "quarantena": true
     },
     {
       "id": "5ed56e76f011",
@@ -749,7 +798,8 @@
       "data_fine": "2026-09-01",
       "tipologia": "altro",
       "url": "https://comune.busca.cn.it/vivere-il-comune/eventi/",
-      "fonti": "comune-busca"
+      "fonti": "comune-busca",
+      "quarantena": false
     },
     {
       "id": "3c19ebd7522f",
@@ -764,7 +814,8 @@
       "data_fine": "2026-09-01",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "1c3315cdf4e8",
@@ -779,7 +830,8 @@
       "data_fine": "2026-09-01",
       "tipologia": "concerto",
       "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
-      "fonti": "feed-instagram-prolocovalfenera"
+      "fonti": "feed-instagram-prolocovalfenera",
+      "quarantena": true
     },
     {
       "id": "3d5e69383ed8",
@@ -794,7 +846,8 @@
       "data_fine": "2026-09-01",
       "tipologia": "sportivo",
       "url": "https://www.instagram.com/p/DcdJOktAbzI/",
-      "fonti": "feed-instagram-prolocovalfenera"
+      "fonti": "feed-instagram-prolocovalfenera",
+      "quarantena": true
     },
     {
       "id": "f973ae892e1f",
@@ -809,7 +862,8 @@
       "data_fine": "2026-09-01",
       "tipologia": "altro",
       "url": "https://www.facebook.com/profile.php?id=100089880949365&__cft__[0]=AZYm4L8eB-XEXxqZB9homIheybdNgUZxrNOkv84EwVf10X9ZVbe8riSVFt3wOgL2jE2fzQZIDDamjDFV5VzvcwBVcaMTzHCtDHjJitWr-99QyfUAWZWR4YnmPvohH_kxH6ZWLmTWiZMIfbECawBqJGpv-UskGExnUUSXCLDI3sJQXcJ8ys8kKzUlrjkNoFunITc16_PKxqN2c_wu4iQqapZA&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-profile.php?id=100089880949365"
+      "fonti": "feed-facebook-profile.php?id=100089880949365",
+      "quarantena": true
     },
     {
       "id": "15b7818fa471",
@@ -824,7 +878,8 @@
       "data_fine": "2026-10-28",
       "tipologia": "altro",
       "url": "https://comune.montaldotorinese.to.it/it-it/appuntamenti",
-      "fonti": "comune-montaldo-torinese"
+      "fonti": "comune-montaldo-torinese",
+      "quarantena": false
     },
     {
       "id": "f52d4e26a836",
@@ -839,7 +894,8 @@
       "data_fine": "2026-09-03",
       "tipologia": "teatro",
       "url": "https://comune.vaglioserra.at.it/",
-      "fonti": "comune-vaglio-serra"
+      "fonti": "comune-vaglio-serra",
+      "quarantena": false
     },
     {
       "id": "243dff42eae5",
@@ -854,7 +910,8 @@
       "data_fine": "2026-09-03",
       "tipologia": "mostra",
       "url": "https://www.facebook.com/vaglioserra?__cft__[0]=AZa-ih3vCGoqXuYkN83zJofQQmcPhPwhBii830s3HteTIdqwPdWluDxAN2sPAF7_LMPIOPL_i4-WMpZ6Q3dKBDRBVR5GlgSXcFyZk_Y2kop0eLMj_nT7HAGZqZ1a1GDvlAWjUpH5wqy0xjbGhkem0A4fi7U1VBAEUpGZTtifD1djntSYwLA4q7i2X83af8x2ExsHGyYZplvDaAoj8GlfG2SoDfA3CkIWDu9UiFnPN69lSuxQOX-zh-lgjvnDMC0KuQNkpeKBfglD-eeh9io4hEVm&__tn__=-UC%2CP-R",
-      "fonti": "comune-vaglio-serra, feed-facebook-vaglioserra"
+      "fonti": "comune-vaglio-serra, feed-facebook-vaglioserra",
+      "quarantena": false
     },
     {
       "id": "a234da313ce9",
@@ -869,7 +926,8 @@
       "data_fine": "2026-09-07",
       "tipologia": "sagra",
       "url": "https://comune.busca.cn.it/vivere-il-comune/eventi/",
-      "fonti": "comune-busca"
+      "fonti": "comune-busca",
+      "quarantena": false
     },
     {
       "id": "0a111cf745a9",
@@ -884,7 +942,8 @@
       "data_fine": "2026-09-03",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "1382be897746",
@@ -899,7 +958,8 @@
       "data_fine": "2026-09-03",
       "tipologia": "altro",
       "url": "https://www.facebook.com/2.0insiemeperleggere?__cft__[0]=AZbrEga5gic7dEzkI9vFhmZUcrdoPsu9S8ciXx5gEC4beR8siZN8R2t1LspxRpUME8EGNoXAOAAzgoqyrn7E4J4lY0yxWOQSkn-43usRQsyWH8xcmdHtFFrqcwyu9ZgmklyexpYswVqOFyVYsSxaPCPRxLfGm25ufXENaDG4MZf9xZEbber3WzwanKpiEBYKjoPOJ5OKu5U2LCnl7Ew_-1SE&__tn__=-]C%2CP-R",
-      "fonti": "feed-facebook-2.0insiemeperleggere"
+      "fonti": "feed-facebook-2.0insiemeperleggere",
+      "quarantena": false
     },
     {
       "id": "5f339786a9c4",
@@ -914,7 +974,8 @@
       "data_fine": "2026-09-03",
       "tipologia": "altro",
       "url": "https://www.facebook.com/vaglioserra?__cft__[0]=AZatyvDxcQfITlIEQf0ZOs6PyWxg9m39USG1xIZ4Oz4jbbCHEmoZHk4qwTYWUrlI7zW59NkOe2wUhsn7F_dhxryPN5m3akw8YOzlkWjYsy16DiqWnfCMr_n6eB6R1TCC_V8GWA1z_BgH2Wtdgdg_gDhdaCDa89SX3bqzIMcV1c9lIrQSmdoqZvhE07OZ3Np2BL43BMX2A8nUuqd3N9SYQZ3_6GxHbmr7yH9aIEc6qK2ktc3AeIPFoIGCLSBxoq-TOVLMp9lepKIR-eigXroHDHnh&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-vaglioserra"
+      "fonti": "feed-facebook-vaglioserra",
+      "quarantena": true
     },
     {
       "id": "672600276918",
@@ -929,7 +990,8 @@
       "data_fine": "2026-09-27",
       "tipologia": "mostra",
       "url": "https://www.comune.rivoli.to.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-rivoli"
+      "fonti": "comune-rivoli",
+      "quarantena": false
     },
     {
       "id": "4ab59ea6b5c7",
@@ -944,7 +1006,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
       "url": "https://comune.cozzo.pv.it/",
-      "fonti": "comune-cozzo"
+      "fonti": "comune-cozzo",
+      "quarantena": false
     },
     {
       "id": "c32f374c135a",
@@ -959,7 +1022,8 @@
       "data_fine": "2026-09-04",
       "tipologia": "altro",
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-varazze"
+      "fonti": "comune-varazze",
+      "quarantena": false
     },
     {
       "id": "eda6a4491d40",
@@ -974,7 +1038,8 @@
       "data_fine": "2026-09-04",
       "tipologia": "altro",
       "url": "https://comune.santena.to.it/Eventi",
-      "fonti": "comune-santena"
+      "fonti": "comune-santena",
+      "quarantena": true
     },
     {
       "id": "171ee912389d",
@@ -989,7 +1054,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://comune.cairomontenotte.sv.it/it/events",
-      "fonti": "comune-cairo-montenotte"
+      "fonti": "comune-cairo-montenotte",
+      "quarantena": false
     },
     {
       "id": "11e8d9fe935b",
@@ -1004,7 +1070,8 @@
       "data_fine": "2026-09-04",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/prolocosantena?__cft__[0]=AZYAorZIJ4mOikhtLhseFuhreCnNloXb126kNG51hUm00monPMt4nd_qpIyyqO2WBAFh1tZnaN4AhQD1UA6QVtZ-NJYUiyFdHZixyWfFNcIvcWI2S4AoHVGfi9t62MmaL86BFlMsU_vZSN0aTNjf-LjXp4Q66EEgKIG5famYdhFbIEojvzUvCq7Msad7BgP7UWt03HShl-gKn37uorU6F4oJ&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocosantena"
+      "fonti": "feed-facebook-prolocosantena",
+      "quarantena": false
     },
     {
       "id": "2fcfe7091f07",
@@ -1019,7 +1086,8 @@
       "data_fine": "2026-09-05",
       "tipologia": "sportivo",
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
-      "fonti": "comune-moncalieri"
+      "fonti": "comune-moncalieri",
+      "quarantena": false
     },
     {
       "id": "ae875a6ec373",
@@ -1034,7 +1102,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "mostra",
       "url": "https://comune.parodiligure.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-parodi-ligure"
+      "fonti": "comune-parodi-ligure",
+      "quarantena": false
     },
     {
       "id": "76fb449d605d",
@@ -1049,7 +1118,8 @@
       "data_fine": "2026-09-05",
       "tipologia": "altro",
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-varazze"
+      "fonti": "comune-varazze",
+      "quarantena": false
     },
     {
       "id": "e467cd15a139",
@@ -1064,7 +1134,8 @@
       "data_fine": "2026-09-05",
       "tipologia": "altro",
       "url": "https://comune.trana.to.it/Eventi",
-      "fonti": "comune-trana"
+      "fonti": "comune-trana",
+      "quarantena": true
     },
     {
       "id": "c8facf53d77c",
@@ -1079,7 +1150,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://www.comune.asti.it/",
-      "fonti": "comune-asti"
+      "fonti": "comune-asti",
+      "quarantena": false
     },
     {
       "id": "38efac1adc08",
@@ -1094,7 +1166,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "sportivo",
       "url": "https://comune.boscomarengo.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-bosco-marengo"
+      "fonti": "comune-bosco-marengo",
+      "quarantena": false
     },
     {
       "id": "ea02aa6ba00e",
@@ -1109,7 +1182,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-lauriano"
+      "fonti": "comune-lauriano",
+      "quarantena": false
     },
     {
       "id": "5cc48f69dcd8",
@@ -1124,7 +1198,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "concerto",
       "url": "https://www.comune.torino.it/vivere-comune/eventi",
-      "fonti": "comune-torino"
+      "fonti": "comune-torino",
+      "quarantena": false
     },
     {
       "id": "e02ba5970746",
@@ -1139,7 +1214,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/eventi-top/monferrato/settembre/il-palio-di-asti-asti",
-      "fonti": "aggregatore-visitlmr"
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
     },
     {
       "id": "dea2fc50a426",
@@ -1154,7 +1230,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://comune.castagnetopo.to.it/Eventi",
-      "fonti": "comune-castagneto-po"
+      "fonti": "comune-castagneto-po",
+      "quarantena": true
     },
     {
       "id": "6d3153cb6cd5",
@@ -1169,7 +1246,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://www.facebook.com/etm.cortemilia?__cft__[0]=AZZvXDdcF-vX-RErFPXOVPQD_I8HGqcgvVtk5KbGG0lpy0HQtZfesRsAUreJ_wYfb2MtrTOByFlihhaCcv40OOm5E66lNvYgTC6qmRCojW_NNwc4jEjmGT2GBiwccshVr4ObQf6OROGk2kG3XLSWQZgb1-lCYi-A-rpi1rTnemv-Zc7qLUULdIJvGYFUQendFZ1E03oMRUyn9kf_RErrmwjD&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-etm.cortemilia"
+      "fonti": "feed-facebook-etm.cortemilia",
+      "quarantena": true
     },
     {
       "id": "161a38e7470a",
@@ -1184,7 +1262,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "altro",
       "url": "https://comune.villalvernia.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-villalvernia"
+      "fonti": "comune-villalvernia",
+      "quarantena": false
     },
     {
       "id": "c11937e75371",
@@ -1199,7 +1278,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "bambini",
       "url": "https://www.facebook.com/comunedicastagnetopo?__cft__[0]=AZaMfLxTj5F57acwQq5MeyK1PKrNBoxQzfV1SPs7rlbBs97OREf9hUGD9_BhU31DOj-yJtfiMnvUNlfX66MzUQeVyKr-FtqCnB-IAM87qsVGfEh4irjzwynyK0fsfyzDAwxYxwheigPYFQO91N0fG_I-OM_oDOL9TYmby76yAd2hakkLgiHUcW2ZGzZh2HDzSOgwUzqu_xktMMQlZEOp-DIh&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunedicastagnetopo"
+      "fonti": "feed-facebook-comunedicastagnetopo",
+      "quarantena": false
     },
     {
       "id": "94cc79463bdc",
@@ -1214,7 +1294,8 @@
       "data_fine": "2026-09-06",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZa61sxviku8x96ZTcY2FgUjRCBxEDgBVg-poF1dUazb_tHu_VqzVo3DMoFUayGZ8fY2aJlFB1J78pKabxUFH3ZyDbfoRSUG-1cQIWmRw27di6wj2M70lYKq1blsX7cOrt6qraSr28EyAdT_3XC0knROg-Ki6Rj3Iojc1smg31dOTSxiaNdL9VUUfteLbi1-HNhjGlYcc-Ud4u9SNAWFE015EY-dpIBhTvH6LcD8pSwARQ&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunedimioglia"
+      "fonti": "feed-facebook-comunedimioglia",
+      "quarantena": true
     },
     {
       "id": "b966f4502d21",
@@ -1229,7 +1310,8 @@
       "data_fine": "2026-09-08",
       "tipologia": "altro",
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
-      "fonti": "comune-moncalieri"
+      "fonti": "comune-moncalieri",
+      "quarantena": false
     },
     {
       "id": "644bedce8bcf",
@@ -1244,7 +1326,8 @@
       "data_fine": "2026-09-08",
       "tipologia": "altro",
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
-      "fonti": "comune-varazze"
+      "fonti": "comune-varazze",
+      "quarantena": false
     },
     {
       "id": "a310963a9668",
@@ -1259,7 +1342,8 @@
       "data_fine": "2026-09-08",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "f66f954855f0",
@@ -1274,7 +1358,8 @@
       "data_fine": "2026-09-08",
       "tipologia": "bambini",
       "url": "https://www.facebook.com/cittadiorbassano?__cft__[0]=AZYow7MriLa-h6tCM0t_lJPX96RhouPzHdk9m4UnIJePHBg2whYg5Drn93-l3UGEMgBkdID39sfylJtNSjx0Jyh7xQNA2OTRyQ3rC0fDEjySiallqoYkwpLqFIgsFDJjqzE0Yi9w1-_2WdKnodptPoAUXvPYtJAqb28JwfVr3-9vuBlnJBxk8VFnJAHPR5XTCUT3G8rZ_I_b_ovNTOFC7z5O&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-cittadiorbassano"
+      "fonti": "feed-facebook-cittadiorbassano",
+      "quarantena": false
     },
     {
       "id": "9e394abfcfbd",
@@ -1289,7 +1374,8 @@
       "data_fine": "2026-09-10",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "76de825f43cf",
@@ -1304,7 +1390,8 @@
       "data_fine": "2026-09-17",
       "tipologia": "sagra",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
-      "fonti": "comune-caselette"
+      "fonti": "comune-caselette",
+      "quarantena": false
     },
     {
       "id": "64fa7fa5448e",
@@ -1319,7 +1406,8 @@
       "data_fine": "2026-09-10",
       "tipologia": "cinema",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
-      "fonti": "comune-caselette"
+      "fonti": "comune-caselette",
+      "quarantena": false
     },
     {
       "id": "eb3ac93f7867",
@@ -1334,7 +1422,8 @@
       "data_fine": "2026-09-11",
       "tipologia": "altro",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
-      "fonti": "comune-caselette"
+      "fonti": "comune-caselette",
+      "quarantena": false
     },
     {
       "id": "b0caf6e28ebd",
@@ -1349,7 +1438,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "sportivo",
       "url": "https://www.comune.torino.it/vivere-comune/eventi",
-      "fonti": "comune-torino"
+      "fonti": "comune-torino",
+      "quarantena": false
     },
     {
       "id": "07562f2b8446",
@@ -1364,7 +1454,8 @@
       "data_fine": "2026-09-14",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/proloco.dronero?__cft__[0]=AZb42JUckKVGCrNDhAFu8_gfsoXt2ZIOtIhzCWXi2BlTgzmXZfRAZxgnNdWD63fIuGNK3r0qO87f1VIRLqrLKPpEBSudxyfgHgEtil1YvFjSLwMNlslXzpFPTMwKOcBJ2xV_bamCKXAe1au32nh3fnvJ91OvOzD3sGLrg3_VCiV9cja17_hJJVtBsGsBWga2sHKziJsM1e88pX5rAxWlgoYl&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-proloco.dronero"
+      "fonti": "feed-facebook-proloco.dronero",
+      "quarantena": false
     },
     {
       "id": "1f0a9d0f0735",
@@ -1379,7 +1470,8 @@
       "data_fine": "2026-09-11",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/ilburgundo?__cft__[0]=AZZoly6UCp4LTMtospmeX5_RawXAFchJN47HpN51D0snNM4OBLWrT6kEMhK44rcMjfSt06prWmyBTba50u24-QH5gfWpyqUbjUjoE3oFDELHue66es1iaymedDvEG0zc58TAz4N-Zfij7LxdJMeU3djVWSD4hPuprLHzetV7T39ByruU37rVxqS6WNzIi2xBNcrfET2lFq6LO7vBIJF3jubA&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-ilburgundo"
+      "fonti": "feed-facebook-ilburgundo",
+      "quarantena": false
     },
     {
       "id": "d41cae55aab6",
@@ -1394,7 +1486,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "2be17849904b",
@@ -1409,7 +1502,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "sagra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "7a8c72e23843",
@@ -1424,7 +1518,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "degustazione",
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
-      "fonti": "comune-moncalieri"
+      "fonti": "comune-moncalieri",
+      "quarantena": false
     },
     {
       "id": "0ccb12a2ac02",
@@ -1439,7 +1534,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "altro",
       "url": "https://comune.montaldotorinese.to.it/it-it/appuntamenti",
-      "fonti": "comune-montaldo-torinese"
+      "fonti": "comune-montaldo-torinese",
+      "quarantena": false
     },
     {
       "id": "272614985a67",
@@ -1454,7 +1550,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "altro",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
-      "fonti": "comune-caselette"
+      "fonti": "comune-caselette",
+      "quarantena": true
     },
     {
       "id": "190c7554e96d",
@@ -1469,7 +1566,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "altro",
       "url": "https://www.facebook.com/prolocovisone?__cft__[0]=AZYxzUrwykFcB-H8JlSvQ93Ve0O2tgEch1WvWthzNBR58hSxnLgR2omoxM3LvgLrXaU_ySXvcpjrrqnrCxAFSDLnHgZ5IDuawjdej622AFORVZsWNMGI_N0vKInh31LrsjZ7zaNuXzHf6pjtzlc9mVMVrkAzrhmemTpcWHEGd0ZJGyPQYdz1hrzk_UnSL7GQSM570c4BCBGH07hHZ_2Bpt4h&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocovisone"
+      "fonti": "feed-facebook-prolocovisone",
+      "quarantena": false
     },
     {
       "id": "90e63dbc3ebb",
@@ -1484,7 +1582,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "altro",
       "url": "https://comune.trana.to.it/Eventi",
-      "fonti": "comune-trana"
+      "fonti": "comune-trana",
+      "quarantena": true
     },
     {
       "id": "f6a410d4ffd9",
@@ -1499,7 +1598,8 @@
       "data_fine": "2026-09-12",
       "tipologia": "altro",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
-      "fonti": "comune-caselette"
+      "fonti": "comune-caselette",
+      "quarantena": false
     },
     {
       "id": "43867c3d4c1e",
@@ -1514,7 +1614,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "4d7ab6104215",
@@ -1529,7 +1630,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "b13d2859c0ae",
@@ -1544,7 +1646,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/proloco.langosco?__cft__[0]=AZZN8j3sWkZhJaL5xnCIyhS7iNGRFB2-400K_fI_P55zKisFSbwitCE-RYkmTy9b9wyTjk-aM9_AO0_QqgNvZncuWn-ISQRc81J_hx0PceGXnz_SmO_FYA7ywxGAtZ2Pp1UNROaErtoEl4MepwwRAwbjP0dqsxemgsWQAHjomj3-ptYliumDEVt5zwxSFulJOS2JZWyDX7qIWe41smePrBHeCkmiaQMpDBm5yf2w_IZVjg&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-proloco.langosco"
+      "fonti": "feed-facebook-proloco.langosco",
+      "quarantena": false
     },
     {
       "id": "78311187f194",
@@ -1559,7 +1662,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "941af1668198",
@@ -1574,7 +1678,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/proloco.pralormo?__cft__[0]=AZZ2Q5weetMKbhw_CSYeWRnHzlxxOUPaYQ2Pk8puMWKiCjEWdJy8d-kCquLk3FA5CDg7QtfMV6PEJg_MsHR67iTNaXufWKNdo2HEa-Fd09PzFKWKCZGwsoQL35-xFlco8aO5edc4MgR-spAchdCTWsg2UsNWhNoQohmsnjybvmtGVIzudCl4lkvehvZ0MEOOZGrhOp10F6Eq3gTvVT2MOVC1&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-proloco.pralormo"
+      "fonti": "feed-facebook-proloco.pralormo",
+      "quarantena": false
     },
     {
       "id": "b185450ddcf6",
@@ -1589,7 +1694,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://comune.buttigliera.at.it/Eventi",
-      "fonti": "comune-buttigliera-d'asti"
+      "fonti": "comune-buttigliera-d'asti",
+      "quarantena": true
     },
     {
       "id": "2a4516cb8ad5",
@@ -1604,7 +1710,8 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://www.facebook.com/proloco.langosco?__cft__[0]=AZZXGJnBS6txd-sqKLrefKNwxno0fZUUHS5Xp7J7eUvei3jZdaR6LemcvQsrHm-tI2A6bPX4joVwyQ9YdLauMUv0FyH6u28LXz32kbMDYHXX9JR09au6PHXWWj8mWsnQe4l7TEFeCzT5RPpfioOOoo01Gxnq6R7iV2M9dcv2l6FTFhYMR5d5XqCdHW8GUw_bGL3VZgem5ydFrcxfV64y5YZt&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-proloco.langosco"
+      "fonti": "feed-facebook-proloco.langosco",
+      "quarantena": true
     },
     {
       "id": "1053b213d313",
@@ -1619,7 +1726,8 @@
       "data_fine": "2026-09-15",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "81c547f077b1",
@@ -1634,7 +1742,8 @@
       "data_fine": "2026-09-17",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "ca65b9ecf597",
@@ -1649,7 +1758,8 @@
       "data_fine": "2026-09-18",
       "tipologia": "altro",
       "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-valenza"
+      "fonti": "comune-valenza",
+      "quarantena": false
     },
     {
       "id": "6b80e27e46dc",
@@ -1664,7 +1774,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "28167d1b2796",
@@ -1679,7 +1790,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "sagra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "519573c5fbd6",
@@ -1694,7 +1806,8 @@
       "data_fine": "2026-09-19",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunechieri?__cft__[0]=AZb_8ZEps-FJbFh04ovz5-DmjQtQLhGKF2Fj1iHrbW56lDUgkqCB6Z2Lw5zHCvkyqZWnlEhSgWoYkw3HYIVsLrk88U_8mDetBMC7HXbwXjaMK2Pyw0csI_VUU2j6qbKlj_N3AJCVJEm07QJTm2U26vip5zYuPAMYlEMRVQJTg0wqf1CP6ge6YTwktd-pJ5bxJ4epSIsjvalsgrxdGzUJZe4M&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-comunechieri"
+      "fonti": "feed-facebook-comunechieri",
+      "quarantena": false
     },
     {
       "id": "abc1e642ffaa",
@@ -1709,7 +1822,8 @@
       "data_fine": "2026-09-19",
       "tipologia": "teatro",
       "url": "http://www.teatrocambiano.com/",
-      "fonti": "teatro-cambiano-teatro-comunale"
+      "fonti": "teatro-cambiano-teatro-comunale",
+      "quarantena": false
     },
     {
       "id": "a31c58c9e091",
@@ -1724,7 +1838,8 @@
       "data_fine": "2026-09-19",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/prolocoterritoriocostarossa?__cft__[0]=AZYjoYg5MYlKqqQgUghP8fmAx0uedCEHb577Mv0906F1cICH5DI4axEs9TWNMAJld9QhI0-aij7-N3OxBW1gM3CPCsHCwyyq7Jw8GdeYJGkllNFBt9NU3aH5CdX3tIDTHBMudkmYGVC8cJuONIjG5nxPb_lQ-H6miKyzHl731Xf7SaAFE-_ECGSbN0c9DJe9I3q57r7b_D2zsjlP2APRqL5I&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-prolocoterritoriocostarossa"
+      "fonti": "feed-facebook-prolocoterritoriocostarossa",
+      "quarantena": false
     },
     {
       "id": "fafd6745c314",
@@ -1739,7 +1854,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "sagra",
       "url": "https://www.comune.rivalta.to.it/vivere-comune/eventi",
-      "fonti": "comune-rivalta-di-torino"
+      "fonti": "comune-rivalta-di-torino",
+      "quarantena": false
     },
     {
       "id": "67c7b12f9164",
@@ -1754,7 +1870,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
       "url": "https://www.comune.torino.it/vivere-comune/eventi",
-      "fonti": "comune-torino"
+      "fonti": "comune-torino",
+      "quarantena": false
     },
     {
       "id": "d7fc0b3cf7a7",
@@ -1769,7 +1886,8 @@
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
       "url": "https://comune.brandizzo.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-brandizzo"
+      "fonti": "comune-brandizzo",
+      "quarantena": false
     },
     {
       "id": "f1df80b1820c",
@@ -1784,7 +1902,8 @@
       "data_fine": "2026-09-22",
       "tipologia": "altro",
       "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-valenza"
+      "fonti": "comune-valenza",
+      "quarantena": false
     },
     {
       "id": "3f3e51ab4af3",
@@ -1799,7 +1918,8 @@
       "data_fine": "2026-09-22",
       "tipologia": "altro",
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
-      "fonti": "comune-moncalieri"
+      "fonti": "comune-moncalieri",
+      "quarantena": false
     },
     {
       "id": "f76d733add31",
@@ -1814,7 +1934,8 @@
       "data_fine": "2026-09-22",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "6663db390e86",
@@ -1829,7 +1950,8 @@
       "data_fine": "2026-09-24",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "6e55addfa80b",
@@ -1844,7 +1966,8 @@
       "data_fine": "2026-09-27",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "182241c091a6",
@@ -1859,7 +1982,8 @@
       "data_fine": "2026-09-26",
       "tipologia": "fiera",
       "url": "https://comune.brandizzo.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-brandizzo"
+      "fonti": "comune-brandizzo",
+      "quarantena": true
     },
     {
       "id": "5e9eebe33fa9",
@@ -1874,7 +1998,8 @@
       "data_fine": "2026-09-27",
       "tipologia": "sportivo",
       "url": "https://comune.reano.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-reano"
+      "fonti": "comune-reano",
+      "quarantena": false
     },
     {
       "id": "15557429ca7a",
@@ -1889,7 +2014,8 @@
       "data_fine": "2026-09-27",
       "tipologia": "sagra",
       "url": "https://www.comune.montalenghe.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-montalenghe"
+      "fonti": "comune-montalenghe",
+      "quarantena": false
     },
     {
       "id": "a6e3fbd2013b",
@@ -1904,7 +2030,8 @@
       "data_fine": "2026-09-27",
       "tipologia": "altro",
       "url": "https://comune.trana.to.it/Eventi",
-      "fonti": "comune-trana"
+      "fonti": "comune-trana",
+      "quarantena": true
     },
     {
       "id": "95a267a88205",
@@ -1919,7 +2046,8 @@
       "data_fine": "2026-09-29",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "f5b3afded6fe",
@@ -1934,7 +2062,8 @@
       "data_fine": "2026-10-01",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "8f874db7ce56",
@@ -1949,7 +2078,8 @@
       "data_fine": "2026-10-04",
       "tipologia": "sagra",
       "url": "https://www.comune.sciolze.to.it/it-it/vivere-il-comune/eventi",
-      "fonti": "comune-sciolze"
+      "fonti": "comune-sciolze",
+      "quarantena": false
     },
     {
       "id": "1f990c388e2f",
@@ -1964,7 +2094,8 @@
       "data_fine": "2026-10-04",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-lauriano"
+      "fonti": "comune-lauriano",
+      "quarantena": false
     },
     {
       "id": "26217c85bbed",
@@ -1979,7 +2110,8 @@
       "data_fine": "2026-10-06",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "2cf39a01d3d6",
@@ -1994,7 +2126,8 @@
       "data_fine": "2026-10-08",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "db041f438f2a",
@@ -2009,7 +2142,8 @@
       "data_fine": "2026-10-10",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "820bb7bd90e9",
@@ -2024,7 +2158,8 @@
       "data_fine": "2026-10-10",
       "tipologia": "degustazione",
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
-      "fonti": "comune-moncalieri"
+      "fonti": "comune-moncalieri",
+      "quarantena": false
     },
     {
       "id": "4fbab2fa424f",
@@ -2039,7 +2174,8 @@
       "data_fine": "2026-10-11",
       "tipologia": "altro",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "d20148155434",
@@ -2054,7 +2190,8 @@
       "data_fine": "2026-10-11",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "6c2bc69afb71",
@@ -2069,7 +2206,8 @@
       "data_fine": "2026-10-13",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "2c6efe35883d",
@@ -2084,7 +2222,8 @@
       "data_fine": "2026-10-15",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "b7bf9e46071b",
@@ -2099,7 +2238,8 @@
       "data_fine": "2026-10-18",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "af1a8aaebc5e",
@@ -2114,7 +2254,8 @@
       "data_fine": "2026-10-20",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "1a5b389f1d55",
@@ -2129,7 +2270,8 @@
       "data_fine": "2026-10-22",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "f6066594ee1e",
@@ -2144,7 +2286,8 @@
       "data_fine": "2026-10-25",
       "tipologia": "sportivo",
       "url": "https://comune.cartignano.cn.it/Eventi",
-      "fonti": "comune-cartignano"
+      "fonti": "comune-cartignano",
+      "quarantena": true
     },
     {
       "id": "e47a00b8c24b",
@@ -2159,7 +2302,8 @@
       "data_fine": "2026-10-27",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "e8d608b3196a",
@@ -2174,7 +2318,8 @@
       "data_fine": "2026-10-29",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "e008b208c7f5",
@@ -2189,7 +2334,8 @@
       "data_fine": "2026-11-01",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-lauriano"
+      "fonti": "comune-lauriano",
+      "quarantena": false
     },
     {
       "id": "18ba1d5613ac",
@@ -2204,7 +2350,8 @@
       "data_fine": "2026-11-03",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "a6088cb2dbfc",
@@ -2219,7 +2366,8 @@
       "data_fine": "2026-11-29",
       "tipologia": "altro",
       "url": "https://comune.trino.vc.it/Eventi",
-      "fonti": "comune-trino"
+      "fonti": "comune-trino",
+      "quarantena": true
     },
     {
       "id": "bfa448b6f3b2",
@@ -2234,7 +2382,8 @@
       "data_fine": "2026-11-05",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "d054bab00af2",
@@ -2249,7 +2398,8 @@
       "data_fine": "2026-11-07",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "0731c62aef03",
@@ -2264,7 +2414,8 @@
       "data_fine": "2026-11-08",
       "tipologia": "teatro",
       "url": "https://www.comune.asti.it/vivere-comune/eventi",
-      "fonti": "comune-asti"
+      "fonti": "comune-asti",
+      "quarantena": false
     },
     {
       "id": "080d609b85a2",
@@ -2279,7 +2430,8 @@
       "data_fine": "2026-11-10",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "142ed342ae60",
@@ -2294,7 +2446,8 @@
       "data_fine": "2026-11-12",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "1c80107bd05e",
@@ -2309,7 +2462,8 @@
       "data_fine": "2026-11-17",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "d7b9fe137389",
@@ -2324,7 +2478,8 @@
       "data_fine": "2026-11-19",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "01148d5ccd35",
@@ -2339,7 +2494,8 @@
       "data_fine": "2026-11-24",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "3911a7f55d41",
@@ -2354,7 +2510,8 @@
       "data_fine": "2026-11-26",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "f0fb416403bb",
@@ -2369,7 +2526,8 @@
       "data_fine": "2026-12-01",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "40812c2ae289",
@@ -2384,7 +2542,8 @@
       "data_fine": "2026-12-03",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "59dc3be5a599",
@@ -2399,7 +2558,8 @@
       "data_fine": "2026-12-06",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-lauriano"
+      "fonti": "comune-lauriano",
+      "quarantena": false
     },
     {
       "id": "a86f333b392f",
@@ -2414,7 +2574,8 @@
       "data_fine": "2026-12-08",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "e668ebe45c8f",
@@ -2429,7 +2590,8 @@
       "data_fine": "2026-12-10",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "67c23b395ab4",
@@ -2444,7 +2606,8 @@
       "data_fine": "2026-12-12",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "bbce8630184d",
@@ -2459,7 +2622,8 @@
       "data_fine": "2026-12-12",
       "tipologia": "teatro",
       "url": "http://www.teatrocambiano.com/",
-      "fonti": "teatro-cambiano-teatro-comunale"
+      "fonti": "teatro-cambiano-teatro-comunale",
+      "quarantena": false
     },
     {
       "id": "2617a408e4cd",
@@ -2474,7 +2638,8 @@
       "data_fine": "2026-12-13",
       "tipologia": "mostra",
       "url": "https://comune.chieri.to.it/it/events",
-      "fonti": "comune-chieri"
+      "fonti": "comune-chieri",
+      "quarantena": false
     },
     {
       "id": "bcb5cd998c2e",
@@ -2489,7 +2654,8 @@
       "data_fine": "2026-12-15",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "61e534a0da08",
@@ -2504,7 +2670,8 @@
       "data_fine": "2026-12-17",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "7f301324b5fd",
@@ -2519,7 +2686,8 @@
       "data_fine": "2026-12-22",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "38f4b8c49733",
@@ -2534,7 +2702,8 @@
       "data_fine": "2026-12-24",
       "tipologia": "sportivo",
       "url": "",
-      "fonti": "comune-envie"
+      "fonti": "comune-envie",
+      "quarantena": false
     },
     {
       "id": "ab1789ebc58f",
@@ -2549,7 +2718,8 @@
       "data_fine": "2026-12-29",
       "tipologia": "altro",
       "url": "",
-      "fonti": "comune-alpignano"
+      "fonti": "comune-alpignano",
+      "quarantena": false
     },
     {
       "id": "62fb056ea89c",
@@ -2564,7 +2734,8 @@
       "data_fine": "2027-06-06",
       "tipologia": "altro",
       "url": "https://comune.monesiglio.cn.it/Eventi",
-      "fonti": "comune-monesiglio"
+      "fonti": "comune-monesiglio",
+      "quarantena": true
     },
     {
       "id": "1cfbfa64be5b",
@@ -2579,7 +2750,8 @@
       "data_fine": "2027-08-30",
       "tipologia": "sagra",
       "url": "https://www.facebook.com/lanuovaprolocoottigliese?__cft__[0]=AZaZhSBcLbuzaVm3RKZ_ircxG1UgroBmzQQClIJKNY_oxpQqGWdB_nwoJeg8UwKNI36dpQAaN5dN3diuF-ixPqzK1ItQMnIycwR_MWzPEpXCNxkOOmx-HbsZPalTTxniv06qbdS87fwYUs8KI4f8aX6IQjsxVOFt7-YFLxyd-_K3CZ0GsomRYoXxsslM05991aO9jhmfhy6-7FXToXzrbd26uLhKaYiI8o-Uz9cG8cCzOQ&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-lanuovaprolocoottigliese"
+      "fonti": "feed-facebook-lanuovaprolocoottigliese",
+      "quarantena": true
     }
   ]
 }

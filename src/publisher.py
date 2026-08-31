@@ -680,12 +680,16 @@ def righe_eventi_per_mappa(conn: sqlite3.Connection) -> list[dict]:
     `descrizione`/`minuti`/fonti aggiunte 2026-08-31 (richiesto dall'utente
     per il dettaglio del popup) — fonti con lo stesso pattern già usato in
     `righe_da_sqlite` (JOIN su event_sources, non incluso nella query
-    principale per evitare righe duplicate da una JOIN diretta)."""
+    principale per evitare righe duplicate da una JOIN diretta).
+    `stato` aggiunto 2026-08-31 (richiesto dall'utente): gli eventi in
+    quarantena (candidati incerti, non ancora promossi — 03.1.2) restano
+    visibili sulla mappa invece di sparire, ma il popup segnala
+    esplicitamente "da verificare" invece di presentarli come confermati."""
     cur = conn.execute(
         """
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia,
                e.data_inizio, e.data_fine, e.ora_inizio, e.comune, e.url,
-               c.lat, c.lon, c.km, c.minuti
+               e.stato, c.lat, c.lon, c.km, c.minuti
         FROM events e
         JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
         WHERE e.archiviato = 'no' AND c.lat IS NOT NULL AND c.lon IS NOT NULL
@@ -726,6 +730,7 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
                 "tipologia": r["tipologia"],
                 "url": r["url"] or "",
                 "fonti": r.get("fonti") or "",
+                "quarantena": r.get("stato") == "quarantena",
             }
             for r in righe
         ],

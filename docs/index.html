@@ -116,6 +116,16 @@
     border-top: 1px solid #eee;
   }
   .info-popup .evento:first-of-type { border-top: none; }
+  .info-popup .badge-quarantena {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #92400e;
+    background: #fef3c7;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-bottom: 4px;
+  }
   .info-popup .evento .titolo { font-weight: 600; font-size: 13px; }
   .info-popup .evento .descrizione { font-size: 12px; color: #444; margin-top: 3px; }
   .info-popup .evento .dettaglio { font-size: 12px; color: #666; margin-top: 2px; }
@@ -339,6 +349,7 @@ function popupHtml(comune, eventi) {
     ].filter(Boolean).join(" · ");
     return `
     <div class="evento">
+      ${ev.quarantena ? `<div class="badge-quarantena">⚠️ Da verificare</div>` : ""}
       <div class="titolo">${escapeHtml(ev.titolo)}</div>
       <div class="dettaglio">${escapeHtml(ev.tipologia || "")} — ${escapeHtml(periodo)}</div>
       ${ev.descrizione ? `<div class="descrizione">${escapeHtml(ev.descrizione)}</div>` : ""}
