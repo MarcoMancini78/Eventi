@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-08-31T19:00:23",
+  "generato_il": "2026-08-31T19:38:28",
   "eventi": [
     {
       "id": "215d35247178",
@@ -687,8 +687,8 @@
       "minuti": 14.0,
       "data_inizio": "2026-08-31",
       "data_fine": "2026-08-31",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/festivalcontrocastagnolelanze?__cft__[0]=AZYu7gqZV0sPgm0QWmf5M7ke_-KsIRCyUWvAOi5uO8D12BOGmmLPUJwvt2aFAQp94zxn8xxsVPGK8xzGmHgCUUGorAjDgS-o169dcvAbMpkCFFxAtk6EVSPk0siY-L2heDwq36gPKbrN20c7qNNoZuYW6gd9JtQ--notvXcHwxPMM0kSKW8KzK384thkI96Uk5boMg-dEdOH0I3ZgzR6-h6w&__tn__=-UC%2CP-R",
+      "tipologia": "concerto",
+      "url": "https://www.facebook.com/festivalcontrocastagnolelanze?__cft__[0]=AZbo58sOBS0t8QzjytMF4EdIrCW8g7YE9OIhntC57GHddBp0QqYHm12r_Qes4YsCNndPDAG0akyfSPyxSbD34B5O3RSAc_UCJEJPfyxffytDX3-HF3ogTeLDVek_YZQwPXkF_II69PVarBvgQosQBu-s3Ki8rkjXaanhbk7Dulg-y5p9M4DWusiW43B_Uy_mgah5tqpOTfhnE0MPMVaNiDMf&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-festivalcontrocastagnolelanze"
     },
     {
@@ -703,7 +703,7 @@
       "data_inizio": "2026-08-31",
       "data_fine": "2026-09-02",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZbsbfcflNQfkW0RAZofdr0l35JjJ6oA8ZDqSp4fQ5OtWHS2YoFgo8kkXppACT3YA4epl9NNiJqnd_ACkwWTzT59pd9vSAyQ9G9KGP6h1XkmeFYNl8AzZ6fexROolvHh0Xe_6QyHv4N67-z4jN0r53qhH52gwsXfgxRLcHQdBgwaPAurblcyrsxHzH4AQ109CQM&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZZ2DoPBL2QEgBQDrVvBtlynZmYCL5nCrKIe9QhGY8FmDuYprib97I9rtdKx8Ay3m742jbAo69r0KL0jGBrossnIjaYs_U5xODH4-XVU4CCPv-EeZ9RzxFEUqrJcz4oYWSWBu14IICEBTyNj3nJ-C8CQV3e3qbWEVcF4LaAWt6oQVcPgsycdq4J3PQUDKvyt1yk&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunesandamianodasti"
     },
     {
@@ -718,13 +718,13 @@
       "data_inizio": "2026-08-31",
       "data_fine": "2026-08-31",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZYs8TVlJ5lM3OMZ3-f__0KM9DazvJM-rKp44i11RjCrgRerJAON4I2UJacF2HSj7Lktwj8t03V11v7DKiQNBhOeGaxFH4N8SXC8UgiWeY2IznJjPGcq9Ex9kE5f8WUKaAPfdpdbpXJ8ICS2IU4IlAr66sKQzTkLGRq_Vfr5GUamTjuen399GL8kT65P5vD4rAKYc4r89ZBWUVkWp1UlDk6eM7eK71hHcexdpStFBGp8Zg&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZaQUiIz4pi7uvXRLqnxyQvWB0cIfyOqJlW12dtkDClq7HwRCvNMskdmE4Ul27upTCqKqaoo0I9k0Fsp6POnHvukWkfmflh0S_pYMB7UmgV37ZkbijybHPGr1js2l1zGPDVFKol84VNKTOflSct9pc7G8aFoMrZ9N88yKWtR9LwiDd5Aaj-OP87iTFb87eBnLj4iM4D1NNnynTstKgT-lFyiX1cz0XlwR4NvdkdQfu_jGA&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunesandamianodasti"
     },
     {
       "id": "2fcbbbd62b0f",
       "titolo": "Stasera tutti a Teatro!",
-      "descrizione": "Pro Loco Mongardino - Stasera tutti a Teatro!",
+      "descrizione": "",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -733,7 +733,7 @@
       "data_inizio": "2026-08-31",
       "data_fine": "2026-08-31",
       "tipologia": "teatro",
-      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZZgCNDHeiZ141HXivtanbnt-y_JVUpA4H8VR463zKTqizBzi6Kwo_AkQ8j-qonDxpdrg9AbeUpvX7AEv507Fid4S1uplmLAdCxuIiL-SopGJ2d_suBhfYLZQQHtPWTyLvmTyuvyqFOjGSlq-hWYvcFla2Q2DYjMaYLsFclqEA_hxazSsjY1Jm2nX3RO71_GpsOKDsQGaU6cirvD-t8JhRq8&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZZeIAGawHUmwBkSxWspCwlGTanYPolHRTZ4dlQi5DlxgiOxxiMrtWN60as6L6bT5o_xu5ogfmnJODkexxRNXf_Te4zsqtJq7fRKf4eya6xXfqqpwiA2Hlrio3S5Yap0qVpH1PRQBXBbOBfEyC51hxcG5ZEHvaZLx2n65fxvQ5YiDHmGpy-61XqJrreNhzuwi1pCl_K8qzUWV8BcJ1MveLBc&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-prolocomongardino1976"
     },
     {
@@ -1084,7 +1084,7 @@
     {
       "id": "38efac1adc08",
       "titolo": "Inaugurazione stagione calcistica A.C. Boschese 2026/2027",
-      "descrizione": "L' A.C. Boschese inaugurerà la stagione calcistica 2026/27 Domenica 6 SETTEMBRE 2026 c/o il Sagrato della Chiesa Parrocchiale",
+      "descrizione": "L' A.C. Boschese inaugurerà la stagione calcistica 2026/27 c/o il Sagrato della Chiesa Parrocchiale",
       "comune": "Bosco Marengo",
       "lat": 44.825551,
       "lon": 8.677248,
