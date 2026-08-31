@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 import gspread
@@ -710,7 +710,7 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
     sono eventi con coordinate — così la pagina mostra 'nessun evento',
     non un errore di caricamento."""
     corpo = {
-        "generato_il": date.today().isoformat() + "T00:00:00",
+        "generato_il": datetime.now().replace(microsecond=0).isoformat(),
         "eventi": [
             {
                 "id": r["id"],
