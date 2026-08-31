@@ -319,14 +319,46 @@ def _pulisci_testo_post(testo: str) -> str:
     return "\n".join(righe_pulite).strip()
 
 
+_JS_ESPANDI_VEDI_ALTRO = {
+    "facebook": """
+    () => {
+        const bottoni = Array.from(document.querySelectorAll('div[role="button"]'))
+            .filter(el => (el.innerText || '').trim().startsWith('Altro'));
+        bottoni.forEach(b => b.click());
+        return bottoni.length;
+    }
+    """,
+    "instagram": """
+    () => {
+        const bottoni = Array.from(document.querySelectorAll('div[role="button"]'))
+            .filter(el => (el.innerText || '').trim().toLowerCase() === 'altro');
+        bottoni.forEach(b => b.click());
+        return bottoni.length;
+    }
+    """,
+}
+
+
 def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_visto: str | None, max_scroll: int = 40) -> list[PostFeed]:
     """Scroll cronologico fino all'ultimo post già visto (change detection
     sul post ID, 12.3) o max_scroll (circuit-breaker anti-loop, coerente
-    con lo stesso principio già applicato in sync_seguiti._scroll_e_raccogli)."""
+    con lo stesso principio già applicato in sync_seguiti._scroll_e_raccogli).
+
+    Prima di leggere il testo di ogni gruppo di post appena caricato, clicca
+    i pulsanti "Vedi altro" (2026-09-01, richiesto dall'utente dopo aver
+    trovato un evento in quarantena a bassa confidenza per un post
+    troncato): non è un'interazione social visibile ad altri utenti (non è
+    un like/commento/follow, coerente con 14.5b), solo l'espansione del
+    testo che fa anche chi legge normalmente il feed. Collaudato dal vivo
+    2026-09-01: su 3 post del feed reale, 2 troncati sono passati da
+    292/666 a 979/777 caratteri dopo il click."""
     trovati: dict[str, PostFeed] = {}
     ordine: list[str] = []
+    script_espandi = _JS_ESPANDI_VEDI_ALTRO[piattaforma]
 
     for _ in range(max_scroll):
+        pagina.evaluate(script_espandi)
+        pagina.wait_for_timeout(500)
         grezzi = pagina.evaluate(script_js)
         fermato = False
         for g in grezzi:

@@ -487,3 +487,60 @@ def test_seleziona_tab_seguiti_non_solleva_errore_se_tab_assente():
     (isolamento totale degli errori), non bloccarsi."""
     pagina = _PaginaFinta([])
     feed_social._seleziona_tab_seguiti_instagram(pagina)  # non deve sollevare
+
+
+class _PaginaScrollFinta:
+    """Simula pagina.evaluate() alternando lo script di espansione 'Vedi
+    altro' (ignorato, ritorna solo un conteggio) e lo script di raccolta
+    post (ritorna la lista grezza dell'iterazione corrente)."""
+
+    def __init__(self, script_espandi_atteso: str, iterazioni: list[list[dict]]):
+        self._script_espandi_atteso = script_espandi_atteso
+        self._iterazioni = iterazioni
+        self.chiamate_espandi = 0
+        self.chiamate_raccogli = 0
+        self.mouse = self
+        self._indice = 0
+
+    def evaluate(self, script: str):
+        if script == self._script_espandi_atteso:
+            self.chiamate_espandi += 1
+            return 0
+        self.chiamate_raccogli += 1
+        if self._indice >= len(self._iterazioni):
+            return []
+        risultato = self._iterazioni[self._indice]
+        self._indice += 1
+        return risultato
+
+    def wheel(self, x, y):
+        pass
+
+    def wait_for_timeout(self, ms):
+        pass
+
+
+def test_scroll_feed_espande_vedi_altro_prima_di_leggere():
+    """2026-09-01, richiesto dall'utente: un evento reale (Festival Contro,
+    Castagnole delle Lanze) è finito in quarantena a bassa confidenza
+    perché il post letto dal feed era troncato ('...Altro...') — l'LLM
+    vedeva solo un frammento. Verificato dal vivo (Playwright, sessione
+    reale) che cliccare i pulsanti 'Vedi altro' prima di leggere il testo
+    espande davvero il contenuto (292→979 caratteri su un post reale)."""
+    grezzi = [{
+        "href": "/prolococastagnole",
+        "permalink": "/prolococastagnole/posts/123",
+        "testo": "Festival Contro. Castagnole delle Lanze. Lunedì 31 agosto.",
+    }]
+    pagina = _PaginaScrollFinta(
+        feed_social._JS_ESPANDI_VEDI_ALTRO["facebook"],
+        [grezzi, []],
+    )
+
+    risultato = feed_social._scroll_feed_e_raccogli(
+        pagina, feed_social._JS_RACCOGLI_POST_FACEBOOK, "facebook", ultimo_visto=None, max_scroll=2
+    )
+
+    assert pagina.chiamate_espandi >= 1
+    assert pagina.chiamate_espandi <= pagina.chiamate_raccogli
+    assert len(risultato) == 1
