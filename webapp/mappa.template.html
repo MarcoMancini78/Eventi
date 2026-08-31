@@ -53,6 +53,12 @@
     color: var(--text-2);
   }
 
+  .nav-data {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
   input[type="date"] {
     font-size: 14px;
     padding: 4px 8px;
@@ -60,6 +66,18 @@
     border-radius: 6px;
     background: var(--surface);
     color: var(--text);
+  }
+
+  #data-testo {
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    min-width: 9ch;
+    text-align: center;
   }
 
   button {
@@ -73,6 +91,12 @@
   }
   button:hover { border-color: var(--accent); }
 
+  .btn-giorno {
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 1;
+  }
+
   #stato {
     font-size: 12.5px;
     color: var(--text-2);
@@ -85,19 +109,20 @@
 
   .info-popup {
     font-family: -apple-system, "Segoe UI", sans-serif;
-    max-width: 280px;
+    max-width: 300px;
   }
   .info-popup h3 {
     margin: 0 0 6px;
     font-size: 14px;
   }
   .info-popup .evento {
-    padding: 6px 0;
+    padding: 8px 0;
     border-top: 1px solid #eee;
   }
   .info-popup .evento:first-of-type { border-top: none; }
   .info-popup .evento .titolo { font-weight: 600; font-size: 13px; }
-  .info-popup .evento .dettaglio { font-size: 12px; color: #666; }
+  .info-popup .evento .descrizione { font-size: 12px; color: #444; margin-top: 3px; }
+  .info-popup .evento .dettaglio { font-size: 12px; color: #666; margin-top: 2px; }
   .info-popup .evento a { color: #5c6b3f; }
 </style>
 </head>
@@ -106,10 +131,15 @@
 <header>
   <h1>Eventi Langhe</h1>
   <div class="controlli">
-    <label for="data-osservazione">Data</label>
-    <input type="date" id="data-osservazione">
-    <button id="btn-oggi">Oggi</button>
-    <button id="btn-carica-file">Carica eventi_mappa.json…</button>
+    <label for="data-testo">Data</label>
+    <div class="nav-data">
+      <button type="button" id="btn-giorno-prec" class="btn-giorno" title="Giorno precedente" aria-label="Giorno precedente">◀</button>
+      <span id="data-testo" role="status" aria-live="polite"></span>
+      <button type="button" id="btn-giorno-succ" class="btn-giorno" title="Giorno successivo" aria-label="Giorno successivo">▶</button>
+    </div>
+    <input type="date" id="data-osservazione" style="position:absolute; opacity:0; width:1px; height:1px; pointer-events:none;" tabindex="-1" aria-hidden="true">
+    <button type="button" id="btn-oggi">Oggi</button>
+    <button type="button" id="btn-carica-file">Carica eventi_mappa.json…</button>
     <input type="file" id="input-file" accept="application/json" style="display:none">
   </div>
   <span id="stato">Nessun dato caricato.</span>
@@ -118,10 +148,11 @@
 <div id="mappa"></div>
 
 <script>
-// URL opzionale da cui provare a caricare eventi_mappa.json automaticamente
-// (es. un link di condivisione diretto di Drive). Lasciare vuoto per saltare
-// il tentativo e usare solo "Carica file" — vedi Documentazione/16-webapp-mappa.md, 16.4.2/16.4.3.
-const URL_DATI_REMOTI = "https://drive.google.com/uc?export=download&id=1VwsM8wQ3b10s-9i6Wsqg81lsPDG_CLjc";
+// GitHub Pages: HTML e JSON sono serviti dallo stesso dominio, quindi un
+// path relativo funziona senza CORS (a differenza del link di condivisione
+// Drive usato in precedenza, bloccato con 403 — vedi
+// Documentazione/16-webapp-mappa.md, T8/T10).
+const URL_DATI_REMOTI = "eventi_mappa.json";
 
 const CASA = { lat: 44.739837, lon: 8.227501 }; // Calosso (AT) — src/config.py
 
@@ -129,6 +160,35 @@ let eventiTotali = [];
 let markerAttivi = [];
 let mappa;
 let infoWindow;
+let dataOsservazione; // Date, sempre a mezzanotte locale
+
+const NOMI_MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+  "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+
+function dataAIso(d) {
+  const anno = d.getFullYear();
+  const mese = String(d.getMonth() + 1).padStart(2, "0");
+  const giorno = String(d.getDate()).padStart(2, "0");
+  return `${anno}-${mese}-${giorno}`;
+}
+
+function formattaDataItaliana(d) {
+  const giorno = String(d.getDate()).padStart(2, "0");
+  return `${giorno} ${NOMI_MESI[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function impostaData(d) {
+  dataOsservazione = d;
+  document.getElementById("data-testo").textContent = formattaDataItaliana(d);
+  document.getElementById("data-osservazione").value = dataAIso(d);
+  disegnaMarker(dataAIso(d));
+}
+
+function spostaGiorno(delta) {
+  const nuova = new Date(dataOsservazione);
+  nuova.setDate(nuova.getDate() + delta);
+  impostaData(nuova);
+}
 
 function initMappa() {
   mappa = new google.maps.Map(document.getElementById("mappa"), {
@@ -151,14 +211,13 @@ function initMappa() {
     title: "Casa",
   });
 
-  const inputData = document.getElementById("data-osservazione");
-  const oggi = new Date().toISOString().slice(0, 10);
-  inputData.value = oggi;
-  inputData.addEventListener("change", () => disegnaMarker(inputData.value));
+  impostaData(new Date());
+
+  document.getElementById("btn-giorno-prec").addEventListener("click", () => spostaGiorno(-1));
+  document.getElementById("btn-giorno-succ").addEventListener("click", () => spostaGiorno(1));
 
   document.getElementById("btn-oggi").addEventListener("click", () => {
-    inputData.value = new Date().toISOString().slice(0, 10);
-    disegnaMarker(inputData.value);
+    impostaData(new Date());
   });
 
   document.getElementById("btn-carica-file").addEventListener("click", () => {
@@ -206,17 +265,17 @@ async function provaCaricamentoAutomatico() {
 
 function caricaDati(dati) {
   eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
-  disegnaMarker(document.getElementById("data-osservazione").value);
+  disegnaMarker(dataAIso(dataOsservazione));
 }
 
-function disegnaMarker(dataOsservazione) {
+function disegnaMarker(isoOsservazione) {
   markerAttivi.forEach((m) => m.setMap(null));
   markerAttivi = [];
-  if (!dataOsservazione || eventiTotali.length === 0) return;
+  if (!isoOsservazione || eventiTotali.length === 0) return;
 
   const perComune = new Map();
   for (const ev of eventiTotali) {
-    if (ev.data_inizio <= dataOsservazione && dataOsservazione <= (ev.data_fine || ev.data_inizio)) {
+    if (ev.data_inizio <= isoOsservazione && isoOsservazione <= (ev.data_fine || ev.data_inizio)) {
       if (!perComune.has(ev.comune)) perComune.set(ev.comune, { lat: ev.lat, lon: ev.lon, eventi: [] });
       perComune.get(ev.comune).eventi.push(ev);
     }
@@ -235,16 +294,35 @@ function disegnaMarker(dataOsservazione) {
     markerAttivi.push(marker);
   }
 
-  impostaStato(`${perComune.size} comuni con eventi il ${dataOsservazione} (su ${eventiTotali.length} eventi totali caricati).`);
+  impostaStato(`${perComune.size} comuni con eventi il ${formattaDataItaliana(dataOsservazione)} (su ${eventiTotali.length} eventi totali caricati).`);
+}
+
+function formattaDataItalianaBreve(iso) {
+  // 'YYYY-MM-DD' -> 'GG/MM/AAAA', senza passare per Date/fuso orario.
+  if (!iso) return "";
+  const [anno, mese, giorno] = iso.split("-");
+  return `${giorno}/${mese}/${anno}`;
 }
 
 function popupHtml(comune, eventi) {
-  const righe = eventi.map((ev) => `
+  const righe = eventi.map((ev) => {
+    const periodo = ev.data_fine && ev.data_fine !== ev.data_inizio
+      ? `dal ${formattaDataItalianaBreve(ev.data_inizio)} al ${formattaDataItalianaBreve(ev.data_fine)}`
+      : formattaDataItalianaBreve(ev.data_inizio);
+    const distanza = [
+      ev.km != null ? `${ev.km} km` : "",
+      ev.minuti != null ? `${ev.minuti} min` : "",
+    ].filter(Boolean).join(" · ");
+    return `
     <div class="evento">
       <div class="titolo">${escapeHtml(ev.titolo)}</div>
-      <div class="dettaglio">${escapeHtml(ev.tipologia || "")}</div>
+      <div class="dettaglio">${escapeHtml(ev.tipologia || "")} — ${escapeHtml(periodo)}</div>
+      ${ev.descrizione ? `<div class="descrizione">${escapeHtml(ev.descrizione)}</div>` : ""}
+      ${distanza ? `<div class="dettaglio">${escapeHtml(distanza)} da Calosso</div>` : ""}
+      ${ev.fonti ? `<div class="dettaglio">Fonte: ${escapeHtml(ev.fonti)}</div>` : ""}
       ${ev.url ? `<div class="dettaglio"><a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a></div>` : ""}
-    </div>`).join("");
+    </div>`;
+  }).join("");
   return `<div class="info-popup"><h3>${escapeHtml(comune)}</h3>${righe}</div>`;
 }
 
@@ -257,10 +335,9 @@ function escapeHtml(s) {
 window.initMappa = initMappa;
 </script>
 
-<!-- Sostituire YOUR_API_KEY_HERE con una key reale (Google Cloud Console:
-     Maps JavaScript API abilitata, restrizioni HTTP referrer applicate —
-     vedi Documentazione/16-webapp-mappa.md, 16.2.3/T4). Non committare mai
-     questo file con una key reale al suo interno. -->
+<!-- Key pubblica per design (GitHub Pages serve tutto in chiaro): protetta
+     dalle restrizioni HTTP referrer in Google Cloud Console, limitate al
+     dominio *.github.io — vedi Documentazione/16-webapp-mappa.md, 16.2.3/T10. -->
 <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY_HERE&callback=initMappa"></script>
 
 </body>

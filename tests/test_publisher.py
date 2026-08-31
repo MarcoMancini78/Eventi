@@ -165,6 +165,29 @@ def test_righe_eventi_per_mappa_include_coordinate():
     assert righe[0]["lon"] == 8.2686
 
 
+def test_righe_eventi_per_mappa_include_descrizione_minuti_fonti():
+    """2026-08-31, richiesto dall'utente per il dettaglio del popup sulla mappa."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, fascia, attivo, lat, lon, km, minuti) "
+        "VALUES ('1', 'Calosso', 'A', 'si', 44.7975, 8.2686, 5.0, 8)"
+    )
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, descrizione, data_inizio, data_fine, comune, archiviato) "
+        "VALUES ('ev1', 'Sagra del Tartufo', 'Stand gastronomici e musica.', '2026-09-12', '2026-09-13', 'Calosso', 'no')"
+    )
+    conn.execute(
+        "INSERT INTO event_sources (event_id, source_id, url, seen_at) "
+        "VALUES ('ev1', 'comune-calosso', 'https://x', '2026-08-27')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_eventi_per_mappa(conn)
+    assert righe[0]["descrizione"] == "Stand gastronomici e musica."
+    assert righe[0]["minuti"] == 8
+    assert righe[0]["fonti"] == "comune-calosso"
+
+
 def test_righe_eventi_per_mappa_esclude_comune_senza_coordinate():
     """04.7: vuoto non è un errore, mai un valore indovinato — un comune
     senza lat/lon non deve piazzare un evento a 0,0."""
@@ -214,6 +237,8 @@ def test_scrivi_eventi_mappa_json_scrive_file_valido(tmp_path):
     assert len(dati["eventi"]) == 1
     assert dati["eventi"][0]["comune"] == "Calosso"
     assert dati["eventi"][0]["lat"] == 44.7975
+    assert dati["eventi"][0]["descrizione"] == ""
+    assert dati["eventi"][0]["fonti"] == ""
 
 
 def test_scrivi_eventi_mappa_json_vuoto_non_omesso(tmp_path):

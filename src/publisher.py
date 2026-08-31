@@ -676,18 +676,31 @@ def righe_eventi_per_mappa(conn: sqlite3.Connection) -> list[dict]:
     evento senza comune risolvibile in perimetro viene escluso, mai
     piazzato a 0,0 (04.7: 'vuoto non è un errore, mai un valore
     indovinato'). Solo Eventi + Eventi_estesi (non Archivio, 16.6): la
-    mappa serve a decidere dove andare, non a consultare lo storico."""
+    mappa serve a decidere dove andare, non a consultare lo storico.
+    `descrizione`/`minuti`/fonti aggiunte 2026-08-31 (richiesto dall'utente
+    per il dettaglio del popup) — fonti con lo stesso pattern già usato in
+    `righe_da_sqlite` (JOIN su event_sources, non incluso nella query
+    principale per evitare righe duplicate da una JOIN diretta)."""
     cur = conn.execute(
         """
-        SELECT e.event_id AS id, e.titolo, e.tipologia, e.data_inizio, e.data_fine,
-               e.ora_inizio, e.comune, e.url, c.lat, c.lon, c.km
+        SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia,
+               e.data_inizio, e.data_fine, e.ora_inizio, e.comune, e.url,
+               c.lat, c.lon, c.km, c.minuti
         FROM events e
         JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
         WHERE e.archiviato = 'no' AND c.lat IS NOT NULL AND c.lon IS NOT NULL
         ORDER BY e.data_inizio ASC
         """
     )
-    return [dict(row) for row in cur.fetchall()]
+    righe = [dict(row) for row in cur.fetchall()]
+
+    fonti_per_evento: dict[str, list[str]] = {}
+    for r in conn.execute("SELECT event_id, source_id FROM event_sources").fetchall():
+        fonti_per_evento.setdefault(r["event_id"], []).append(r["source_id"])
+    for riga in righe:
+        riga["fonti"] = ", ".join(fonti_per_evento.get(riga["id"], []))
+
+    return righe
 
 
 def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
@@ -702,14 +715,17 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
             {
                 "id": r["id"],
                 "titolo": r["titolo"],
+                "descrizione": r.get("descrizione") or "",
                 "comune": r["comune"],
                 "lat": r["lat"],
                 "lon": r["lon"],
                 "km": r["km"],
+                "minuti": r.get("minuti"),
                 "data_inizio": r["data_inizio"],
                 "data_fine": r["data_fine"] or r["data_inizio"],
                 "tipologia": r["tipologia"],
                 "url": r["url"] or "",
+                "fonti": r.get("fonti") or "",
             }
             for r in righe
         ],
