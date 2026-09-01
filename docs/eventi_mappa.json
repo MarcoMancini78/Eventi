@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T07:39:20",
+  "generato_il": "2026-09-01T08:40:45",
   "eventi": [
     {
       "id": "215d35247178",
@@ -691,8 +691,8 @@
     },
     {
       "id": "be671c1a56bd",
-      "titolo": "Inaugurazione di \"Germoglio\", scultura di Alessandra Bonoli",
-      "descrizione": "Inaugurazione della scultura \"Germoglio\" di Alessandra Bonoli installata nella nuova Piazza Piacentino a Rocchetta Tanaro.",
+      "titolo": "Inaugurazione della scultura \"Germoglio\" di Alessandra Bonoli",
+      "descrizione": "Inaugurazione della scultura \"Germoglio\" di Alessandra Bonoli installata nella nuova Piazza Piacentino.",
       "comune": "Rocchetta Tanaro",
       "lat": 44.858671,
       "lon": 8.345706,
@@ -701,7 +701,7 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/rocchettatanaro?__cft__[0]=AZjrHKwnIQoo8g1orahdky2s2ESR8VkB3qG-fQ7OiAtwy5uyCKb2a5xw-fEJrymQt5BdedqFYPyGDAynHfe_MDSat8u7v5X56vXCNN3A8k5HEkxn4HYNwX7wc-T5iQV95xZyjkm4_3ky83l3HXvFnSPAYSEeLSNMLi-x0gXIolrWvO8i63AOHTJxzJAYhmudwEAKdDRFP4P0U2PCNN9aeUZz&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/rocchettatanaro?__cft__[0]=AZic7egorgQ5kfj1yoEMp090Aa4qyBtEDy4q6YvJzY-3ZJ-bbm_NWxi3ux0YxGg6jb5RLi0aGX9iIhjEhhmlKlgVXkT19dmuMk-3vEY8QjpjpeMmiuMvSRPEkgpSatPXzHuR_9j6gHRBjrBPsxYLd17-qaWs87FACWNBC0xQ0jsmkxNlF-9JzCmGaY0VY18eTpLXAIjtPSSWI4XUDokBiVc0&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-rocchettatanaro",
       "quarantena": false
     },
@@ -755,8 +755,8 @@
     },
     {
       "id": "2a6ea6a2df3f",
-      "titolo": "Mini Sagre - Seconda Serata",
-      "descrizione": "Seconda serata di Mini Sagre con piatti della tradizione, buon vino e tanta musica.",
+      "titolo": "Mini Sagre - Seconda serata",
+      "descrizione": "Piatti della tradizione, buon vino, tanta musica e bella gente!",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -787,8 +787,8 @@
     },
     {
       "id": "862f46b7b03e",
-      "titolo": "Festeggiamenti patronali di San Bartolomeo: Serata enogastronomica",
-      "descrizione": "Prima delle serate enogastronomiche nell'ambito dei festeggiamenti patronali di San Bartolomeo.",
+      "titolo": "Serata eno gastronomica - Festeggiamenti patronali di San Bartolomeo",
+      "descrizione": "Prima delle serate eno gastronomiche nell'ambito dei festeggiamenti patronali di San Bartolomeo.",
       "comune": "Bruno",
       "lat": 44.793248,
       "lon": 8.440543,
@@ -836,7 +836,7 @@
     {
       "id": "b98a34ca4bdd",
       "titolo": "Serate gastronomiche",
-      "descrizione": "Inizio delle serate gastronomiche con antipasti freschi, pizze e il Mon",
+      "descrizione": "Antipasti freschi, le nostre pizze e il Mon!",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -852,7 +852,7 @@
     {
       "id": "84180a62a24b",
       "titolo": "Stasera tutti a Teatro!",
-      "descrizione": "",
+      "descrizione": "Stasera tutti a Teatro!",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -861,7 +861,7 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "teatro",
-      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZj7NegY3V8a0xkipcpOF4OsJJv0Gy5lHmrcsQA4CrnQwHbiij4sQCvKdM-3UV-5XWyv_Ag2L2GW48iosHH1TD4j17w22pFIFS8m7MbD3K9hgIyay1zZSd0l7apK5E0oS3RRSt2pjHp0oqy3QaLABOn3su2IP4dVX_WIq7r1_cn1_2LXw_oh3bdxKcGxLuZUHA&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZjVC9bAkfvIwAbJJqMCKb0xFd--O_mWpEyc-SttsuTy52jk_P7xRSU9XCwGjI64upHKCHJs0Zyo3xWK83nW75MWK9ywrlVCiolowFIx3jZKAMD1s871eiOtDgNWuYWeN22AACb3y7Dfp__-LovJjUbUaReEQhViZIstdWeKGzJKtuLJZH2XltdfVxJJ59E5Fg&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-prolocomongardino1976",
       "quarantena": true
     },
@@ -946,6 +946,22 @@
       "quarantena": true
     },
     {
+      "id": "c2bd00e8d2b6",
+      "titolo": "Piemonte Documenteur: sfida tra Roddino e Monforte",
+      "descrizione": "Serata di festa, goliardia e proiezione del documenteur in gara con la partecipazione delle comunità di Roddino e Monforte d'Alba.",
+      "comune": "Roddino",
+      "lat": 44.573849,
+      "lon": 8.019119,
+      "km": 37.2,
+      "minuti": 44.0,
+      "data_inizio": "2026-09-01",
+      "data_fine": "2026-09-01",
+      "tipologia": "cinema",
+      "url": "https://www.instagram.com/p/DcntS4_Dd3P/",
+      "fonti": "feed-instagram-prolocoroddino",
+      "quarantena": true
+    },
+    {
       "id": "15b7818fa471",
       "titolo": "Knitting in biblioteca - Settembre e Ottobre 2026",
       "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca. Le date sono indicate nella locandina allegata",
@@ -963,8 +979,8 @@
     },
     {
       "id": "3f6316fce589",
-      "titolo": "Simone Carè - Piano & Voce",
-      "descrizione": "Serata speciale con l’esibizione Piano & Voce di Simone Carè alla Vineria.",
+      "titolo": "Piano & Voce con Simone Carè",
+      "descrizione": "Serata speciale con l'apertura Piano & Voce di Simone Carè, protagonista di importanti palchi, con la sua voce e il pianoforte.",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -1363,8 +1379,8 @@
     },
     {
       "id": "540608df5bdf",
-      "titolo": "Sagra del bollito",
-      "descrizione": "Due serate dedicate al bollito con bagnet e altre salse, oltre ad alternative gastronomiche e musica dal vivo: prima sera Wow Band, seconda serata Massimo Della Bianca.",
+      "titolo": "Sagra del Bollito",
+      "descrizione": "Weekend gastronomico a base di bollito con bagnet e salse, con alternative nel menù. Due serate con musica e ballo al coperto: prima sera con la Wow Band, seconda serata con Massimo Della Bianca.",
       "comune": "Mioglia",
       "lat": 44.49046,
       "lon": 8.412473,
@@ -1373,7 +1389,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/prolocodimioglia?__cft__[0]=AZhT7wVGh4HF3xv47AQWgMXeigsCEVW_dSQMSw5DYpVmVT10-cSP9zI7_N6x9GUC3usz8L3dAGytte2pq82o1TFUp_JwsPU5UJd5jQqOWSKCZ-8wsNgrA2QuhCT_eSJ15Nbxdhvy5PQ9CojB7INK1HwXuQ70q7hNNldvm4RfcxdaJPHi15TEoL6XE11wyoLH&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocodimioglia?__cft__[0]=AZh3MjTgv_Kc-pUI61o9_OZuLQHw9JPV1g5v10t8gptbm_VyIajBzZhkmIHIHwfDmQnaLawAtH1z9IM17607KQzyxSraF9Yt-b0GZ3t-rXqtEPXvuN0cnoUKL2_gfHMZEeH6i0njtetbUO9GqYZ76jeYAOZqbQo0S6qCIK83NcuaSdNJ761Ij__oxfbxNA1H&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunedimioglia, feed-facebook-prolocodimioglia",
       "quarantena": false
     },
@@ -1476,7 +1492,7 @@
     {
       "id": "ee497aa84b95",
       "titolo": "Alien Cut alla 76ª Fiera Gallese",
-      "descrizione": "Street Food & Cocktail Bar dalle 19:30, DJ set con @itsncl e spettacolo di Alien Cut dalle 22:30.",
+      "descrizione": "Serata di musica ed energia con DJ set di Alien Cut (dalle 22:30), opening e closing DJ set di @itsncl, e Street Food & Cocktail Bar a partire dalle 19:30.",
       "comune": "Grinzane Cavour",
       "lat": 44.65334,
       "lon": 7.995036,
@@ -1684,7 +1700,7 @@
     {
       "id": "fa0a25217b16",
       "titolo": "Festa dello Sport",
-      "descrizione": "Seconda edizione della Festa dello Sport.",
+      "descrizione": "Seconda edizione della Festa dello Sport a Mioglia.",
       "comune": "Mioglia",
       "lat": 44.49046,
       "lon": 8.412473,
@@ -1693,7 +1709,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZjOcx7NUUGG6ITTNGEKA8T7h1MvyK5W30Keles1Wv9OsvJWBG0inwhPfYiA7A7phPhQTYJvg6m1p1NW5Hhmjvh__XerSWWunetTXT5OiDtZRc9ISI6dQsfVc9AVB0IINLj2Mg3toPCnpKonMS805gLDf4ii-T7W_7rVhXxHwNy0-BpRqhjnymdAlEvW8d8fbV1ZHYFF9cn2mydiwABAhsKD9g&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZiCIaQ7rLanlDgd5fqSUv5C1v9qvXOk9cGtdaYGDiKfJeFRFziVcc07DMU3Ocfnz_qr5XVOHT8-VwiZ369SgBh6CNl2WPIc3uPtXSXH-YrpAm_7V09KpdRTp1qkOgZreqtZhI9xQwK1IL9Ybm83OG_-PHZk3dBsmFPOtEKXW4OU6ICYHZVGrm_6CXf01L-mxqjyvFEuA4yQKVZD7vlrOuWsSw&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunedimioglia",
       "quarantena": false
     },
@@ -1711,6 +1727,22 @@
       "tipologia": "concerto",
       "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZZiN71CrliQgY-jr_phH18uhW1mtGmXi_NvBVq1GVP37BYa4l3buWADmgfL2N5fpTtSJbnjZLnqGaOJ0J1P9eTPVQALzuezRoGyiQyW4sNIFq5v7ZBpUyFUQRm1y1aQNnF4ey9PRGbDY-K3L_DvQvr3ncYlvOpK9vgPxUaTURdnOwNrBsYj9zQ1cM5LGYITKYy_VOdX72a33jYvrvt8SEWM&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-cittadirivalta",
+      "quarantena": false
+    },
+    {
+      "id": "8f90722a6d7d",
+      "titolo": "Giornata di ciclismo nell'Alessandrino",
+      "descrizione": "La ASD Sanetti Sport Grisù organizza una giornata di ciclismo su percorso spettacolare sulle strade dove è transitato il Giro d'Italia.",
+      "comune": "Bergamasco",
+      "lat": 44.827249,
+      "lon": 8.454743,
+      "km": 26.7,
+      "minuti": 34.0,
+      "data_inizio": "2026-09-06",
+      "data_fine": "2026-09-06",
+      "tipologia": "sportivo",
+      "url": "https://www.facebook.com/proberga?__cft__[0]=AZhN9ylDvPaPwttDiTB_WinOZtv36LXekDnn3VnUTJyK1mE6kpM55GNnkKazZLPbWB8sAmKxrnjlZX2jg_CpyA19AClh6MJlwufuIt3yEwfU09SDJA7Ki5qOx1OBlEC7pJJkBRCrlMObD57_Fyl5FRJ7PxW8B1S30zK0h7aIVxjgnNfVejdrie3R5-4rndhrGo_GH_n-sKxgk-owbYmFnBpv&__tn__=-UC%2CP-R",
+      "fonti": "feed-facebook-proberga",
       "quarantena": false
     },
     {
@@ -2500,7 +2532,7 @@
     {
       "id": "ff468777ab2c",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine e pollo, contorno, acqua e vino inclusi; menù bambini salsiccia e patate) e gelati della pasticceria Il Dolce Sogno. Dalle 21:00 danze con Aurelio Seimandi e la sua Orchestra.",
+      "descrizione": "Apertura della festa patronale con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino) e, dalle 21:00, serata danzante con Aurelio Seimandi e la sua Orchestra. Disponibile menù bambini e gelati artigianali.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2612,7 +2644,7 @@
     {
       "id": "0b3d1b2f2052",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "Giochi Senza Frontiere alle 16:00 presso il Campo Sportivo con il Progetto Trame. Dalle 19:30 apertura stand gastronomico con cena animata. A seguire discoteca mobile FM Disco Explosion di Radio Vallebelbo.",
+      "descrizione": "Programma della giornata: ore 16:00 Giochi Senza Frontiere in collaborazione con Progetto Trame; ore 19:30 apertura stand gastronomico con cena animata servita al tavolo (menu alla carta) e gelati de Il Dolce Sogno; dopocena musica con FM Disco Explosion di Radio Vallebelbo.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2644,7 +2676,7 @@
     {
       "id": "b63a9750727b",
       "titolo": "Masca 2026",
-      "descrizione": "Festa e convegno dedicati al mondo delle streghe, tra storia, simboli, racconti e tradizioni, con piazze, musica, spettacoli, artigiani, sapori e intrattenimento nel borgo.",
+      "descrizione": "Festa dedicata al mondo delle streghe e al folklore, con convegno storico, piazze animate, musica, spettacoli, artigiani, sapori e attrazioni per bambini nel borgo di Spigno Monferrato.",
       "comune": "Spigno Monferrato",
       "lat": 44.543141,
       "lon": 8.333946,
@@ -2652,7 +2684,7 @@
       "minuti": 45.0,
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-20",
-      "tipologia": "altro",
+      "tipologia": "fiera",
       "url": "https://www.instagram.com/p/DcfqCTYju_x/",
       "fonti": "feed-instagram-proloco_spignomonferrato",
       "quarantena": false
@@ -2723,8 +2755,8 @@
     },
     {
       "id": "6a86323f1140",
-      "titolo": "80 anni della Vespa - Raduno Vespa",
-      "descrizione": "Un evento speciale per festeggiare insieme gli 80 anni della Vespa con colazione, aperitivo, tour del Roero, pranzo, gadget e tanto divertimento.",
+      "titolo": "Raduno per gli 80 anni della Vespa",
+      "descrizione": "Colazione, aperitivo, tour del Roero, pranzo, gadget e divertimento per festeggiare gli 80 anni della Vespa.",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
       "lon": 7.900633,
@@ -2772,7 +2804,7 @@
     {
       "id": "da4a1856f136",
       "titolo": "1° Raduno di Trattori e Macchine Agricole",
-      "descrizione": "Pranzo offerto dall’organizzazione per chi espone il mezzo. Una giornata da vivere insieme tra tradizione, passione e divertimento.",
+      "descrizione": "Raduno di trattori e macchine agricole nell'ambito della Festa Patronale di Santa Croce. Pranzo offerto dall'organizzazione per chi espone il mezzo.",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
       "lon": 7.900633,
@@ -2787,8 +2819,8 @@
     },
     {
       "id": "48e1a213b21e",
-      "titolo": "Camminata Metabolica per la Festa Patronale di Santa Croce",
-      "descrizione": "Attività di Camminata Metabolica all'aria aperta con il trainer Eva Fea, adatta a tutte le età. Due turni con ritrovo alle 9:45 e alle 15:45 (partenze alle 10:00 e alle 16:00). Possibilità di pranzo a cura della Pro Loco.",
+      "titolo": "Camminata Metabolica® - Festa Patronale di Santa Croce",
+      "descrizione": "Attività all'aria aperta di Camminata Metabolica® insieme al trainer @fea.eva_, con possibilità di pranzo preparato dalla Pro Loco. Due sessioni (mattina e pomeriggio).",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
       "lon": 7.900633,
@@ -2804,7 +2836,7 @@
     {
       "id": "67253da091fa",
       "titolo": "Tour in e-bike - Festa Patronale di Santa Croce",
-      "descrizione": "Tour in e-bike alla scoperta del territorio con i cicloturisti della Regione Piemonte in occasione della Festa Patronale di Santa Croce. Esperienza per tutta la famiglia (ragazzi 14-18 anni accompagnati). Possibilità di pranzo al PalaFragola e noleggio e-bike.",
+      "descrizione": "Tour in e-bike alla scoperta del territorio accompagnati dai cicloturisti della Regione Piemonte, in occasione della Festa Patronale di Santa Croce. Possibilità di pranzo all'arrivo nel PalaFragola.",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
       "lon": 7.900633,
@@ -3332,7 +3364,7 @@
     {
       "id": "0731c62aef03",
       "titolo": "Festival AstiLirica 2026 - Armonie Celesti",
-      "descrizione": "Cortile della Biblioteca Astense",
+      "descrizione": "Lunedì 8 giugno ore 21.15 - Cortile della Biblioteca Astense",
       "comune": "Asti",
       "lat": 44.826013,
       "lon": 8.202686,
@@ -3667,7 +3699,7 @@
     },
     {
       "id": "62fb056ea89c",
-      "titolo": "Presentazione del restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
+      "titolo": "Presentazione del progetto di restauro del Castello Caldera Saluzzo e incontro culturale \"Dinastie all'ombra del",
       "descrizione": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo di Monesiglio e incontro culturale \"Dinastie all'ombra del Castello\".",
       "comune": "Monesiglio",
       "lat": 44.465037,
@@ -3683,8 +3715,8 @@
     },
     {
       "id": "3b1438ce69a5",
-      "titolo": "Festa patronale",
-      "descrizione": "Fritto di pesce o grigliata di carne in occasione della festa patronale.",
+      "titolo": "Festa Patronale",
+      "descrizione": "Fritto di pesce o grigliata di carne. Vi aspettiamo in festa il 28, il 29 e il 30 agosto!",
       "comune": "Montechiaro d'Asti",
       "lat": 45.007816,
       "lon": 8.112152,
