@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T02:40:33",
+  "generato_il": "2026-09-01T03:38:39",
   "eventi": [
     {
       "id": "215d35247178",
@@ -756,7 +756,7 @@
     {
       "id": "2a6ea6a2df3f",
       "titolo": "Mini Sagre - Seconda serata",
-      "descrizione": "Seconda serata di Mini Sagre con piatti della tradizione, buon vino e musica.",
+      "descrizione": "Piatti della tradizione, buon vino, tanta musica e bella gente!",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -819,8 +819,8 @@
     },
     {
       "id": "06159ee3a370",
-      "titolo": "Cena e ballo con Enrico Cremon & Dina Manfred",
-      "descrizione": "Serata con cena al coperto e ballo con Enrico Cremon & Dina Manfred.",
+      "titolo": "Cena e serata danzante con Enrico Cremon & Dina Manfred",
+      "descrizione": "Cena al coperto e ballo con Enrico Cremon & Dina Manfred.",
       "comune": "Belforte Monferrato",
       "lat": 44.625046,
       "lon": 8.661251,
@@ -828,7 +828,7 @@
       "minuti": 62.0,
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
-      "tipologia": "sagra",
+      "tipologia": "gastronomia",
       "url": "https://www.instagram.com/p/DciiJAoARgJ/",
       "fonti": "feed-instagram-prolocobelfortemonferrato",
       "quarantena": false
@@ -883,7 +883,7 @@
     },
     {
       "id": "5f505922b274",
-      "titolo": "Serata di festa a Belforte",
+      "titolo": "Serata a Belforte: si mangia e si balla",
       "descrizione": "Si mangia, si balla, si vive questa lunghissima estate!",
       "comune": "Belforte Monferrato",
       "lat": 44.625046,
@@ -898,9 +898,41 @@
       "quarantena": true
     },
     {
+      "id": "e14ece9b023b",
+      "titolo": "Settembre Sannazzarese 2026",
+      "descrizione": "Calendario ricco di iniziative, appuntamenti culturali, sportivi, musicali e momenti dedicati alla comunità.",
+      "comune": "Sannazzaro de' Burgondi",
+      "lat": 45.102259,
+      "lon": 8.906348,
+      "km": 98.1,
+      "minuti": 83.0,
+      "data_inizio": "2026-09-01",
+      "data_fine": "2026-09-30",
+      "tipologia": "altro",
+      "url": "https://www.comune.sannazzarodeburgondi.pv.it/it-it/vivere-il-comune/eventi",
+      "fonti": "comune-sannazzaro-de'-burgondi",
+      "quarantena": false
+    },
+    {
+      "id": "ccc703fb0a6a",
+      "titolo": "Serata Piemonte Documenteur a Monforte d'Alba",
+      "descrizione": "Serata di festa, goliardia e proiezione cortometraggi/film del Piemonte Documenteur con la sfida tra paesi e la partecipazione di Roddino.",
+      "comune": "Monforte d'Alba",
+      "lat": 44.582438,
+      "lon": 7.969637,
+      "km": 43.0,
+      "minuti": 50.0,
+      "data_inizio": "2026-09-01",
+      "data_fine": "2026-09-01",
+      "tipologia": "cinema",
+      "url": "https://www.instagram.com/p/DcntS4_Dd3P/",
+      "fonti": "feed-instagram-prolocoroddino",
+      "quarantena": true
+    },
+    {
       "id": "15b7818fa471",
-      "titolo": "Knitting in biblioteca - Settembre e Ottobre 2026",
-      "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca. Le date sono indicate nella locandina allegata",
+      "titolo": "Knitting in biblioteca",
+      "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -915,8 +947,8 @@
     },
     {
       "id": "3f6316fce589",
-      "titolo": "Simone Carè Piano & Voce",
-      "descrizione": "Serata speciale con l’apertura Piano & Voce di Simone Carè, protagonista di importanti palchi tra cui Tor Vergata in apertura ai concerti di Ultimo.",
+      "titolo": "Simone Carè - Piano & Voce",
+      "descrizione": "Serata speciale con l’esibizione Piano & Voce di Simone Carè alla Vineria.",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -927,6 +959,22 @@
       "tipologia": "concerto",
       "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
       "fonti": "feed-instagram-prolocovalfenera",
+      "quarantena": false
+    },
+    {
+      "id": "77c86879339d",
+      "titolo": "Stuzzicando e Fuochi d'Artificio",
+      "descrizione": "Chiusura in bellezza con la Stuzzicando in collaborazione con gli esercenti cavallermaggioresi e i fuochi d'artificio realizzati con il supporto dei F.lli Reinaudo.",
+      "comune": "Cavallermaggiore",
+      "lat": 44.709839,
+      "lon": 7.686329,
+      "km": 59.3,
+      "minuti": 62.0,
+      "data_inizio": "2026-09-02",
+      "data_fine": "2026-09-02",
+      "tipologia": "gastronomia",
+      "url": "https://www.instagram.com/p/Dctn3caAoGa/",
+      "fonti": "feed-instagram-proloco.cavallermaggiore",
       "quarantena": false
     },
     {
@@ -1252,7 +1300,7 @@
     {
       "id": "ae875a6ec373",
       "titolo": "Mostra di pittura - Espone Giovanni Origone",
-      "descrizione": "Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre.",
+      "descrizione": "Dal 5 al 20 settembre 2026. Abbazia di San Remigio. Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre ore...",
       "comune": "Parodi Ligure",
       "lat": 44.669748,
       "lon": 8.758652,
@@ -1444,7 +1492,7 @@
     {
       "id": "38efac1adc08",
       "titolo": "Inaugurazione stagione calcistica A.C. Boschese 2026/2027",
-      "descrizione": "L' A.C. Boschese inaugurerà la stagione calcistica 2026/27 c/o il Sagrato della Chiesa Parrocchiale",
+      "descrizione": "L' A.C. Boschese inaugurerà la stagione calcistica 2026/27 Domenica 6 SETTEMBRE 2026 c/o il Sagrato della Chiesa Parrocchiale",
       "comune": "Bosco Marengo",
       "lat": 44.825551,
       "lon": 8.677248,
@@ -1780,7 +1828,7 @@
     {
       "id": "64fa7fa5448e",
       "titolo": "Proiezione filmati storici sulla Croce del Musinè",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce 2026",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -1844,7 +1892,7 @@
     {
       "id": "eb3ac93f7867",
       "titolo": "Sindon - Immersi nella trama della passione",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce 2026",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -1908,7 +1956,7 @@
     {
       "id": "8b31910a547e",
       "titolo": "Inaugurazione Arena Sport Sannazzaro e Torneo di Basket 3vs3",
-      "descrizione": "Inaugurazione ufficiale della nuova struttura Arena Sport Sannazzaro seguita da un torneo di basket 3vs3 a scopo benefico per la P.A. Croce d'Oro, nell'ambito del Settembre Sannazzarese 2026.",
+      "descrizione": "Inaugurazione del nuovo spazio dedicato allo sport e alla comunità con Torneo di Basket 3vs3.",
       "comune": "Sannazzaro de' Burgondi",
       "lat": 45.102259,
       "lon": 8.906348,
@@ -1917,8 +1965,8 @@
       "data_inizio": "2026-09-11",
       "data_fine": "2026-09-11",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/ilburgundo?__cft__[0]=AZb3RX5T065ltn6F1yStp5pefKM4_s-zY8EgSSVz5TNgQFh-P0pH3qTQ9usd8r57NRL146my76yAhjrzYM2y9iHvgkMf3NF6DWnWaOpUAxm9k_nzpS1LKrvaiwDa2A24qOUHtMPSofcLW3xEfFOVBo-JQp1AC0s9QaEsOEdZYn0gUSgJ8-_LVeOmSOmJaWhxLSrJ32S5nPZmCH4lX0dPTWFJ&__tn__=-UC%2CP-R",
-      "fonti": "feed-facebook-ilburgundo",
+      "url": "https://www.comune.sannazzarodeburgondi.pv.it/it-it/vivere-il-comune/eventi",
+      "fonti": "comune-sannazzaro-de'-burgondi, feed-facebook-ilburgundo",
       "quarantena": false
     },
     {
@@ -1940,7 +1988,7 @@
     {
       "id": "2be17849904b",
       "titolo": "Pessione Festa Patronale dei 4 Borghi - 12 e 13 settembre 2026",
-      "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
+      "descrizione": "quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1971,8 +2019,8 @@
     },
     {
       "id": "0ccb12a2ac02",
-      "titolo": "Giornata della prevenzione a Montaldo Torinese",
-      "descrizione": "Sabato 12 settembre dalle 9 alle 17 in Via Trinità 17 (davanti al Palazzo Comunale) si terrà la Giornata della Prevenzione, una giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
+      "titolo": "Giornata della prevenzione",
+      "descrizione": "Giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -2100,7 +2148,7 @@
     {
       "id": "4d7ab6104215",
       "titolo": "Alpignano: Associazioni in festa!",
-      "descrizione": "La Festa delle Associazioni si terrà domenica 13 settembre, dalle ore 10 alle 17, nella splendida cornice del Parco della Pace in via Collegno.",
+      "descrizione": "La Festa delle Associazioni si terrà domenica 13 settembre, dalle ore 10 alle 17, nella splendida cornice del Parco della Pace in via Collegno. L'evento, organizzato dal Comune di Alpignano,...",
       "comune": "Alpignano",
       "lat": 45.095724,
       "lon": 7.525403,
@@ -2306,6 +2354,22 @@
       "quarantena": false
     },
     {
+      "id": "6e1e5d5bc696",
+      "titolo": "Festa di San Maurizio - Grigliata mista e serata danzante",
+      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine e pollo, contorno, acqua e vino inclusi a 25 €; menù bambini salsiccia e patate a 7 €), gelati de Il Dolce Sogno Pasticceria e danze con Aurelio Seimandi e la sua Orchestra.",
+      "comune": "Magliano Alfieri",
+      "lat": 44.769244,
+      "lon": 8.070136,
+      "km": 23.5,
+      "minuti": 31.0,
+      "data_inizio": "2026-09-18",
+      "data_fine": "2026-09-18",
+      "tipologia": "sagra",
+      "url": "https://www.instagram.com/p/Dcq-rg_KYUc/",
+      "fonti": "feed-instagram-prolocomaglianoalfieri",
+      "quarantena": false
+    },
+    {
       "id": "6b80e27e46dc",
       "titolo": "Apertura StArt Gallery - 19 e 20 settembre 2026",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
@@ -2356,7 +2420,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (realizzato in ricordo di Ester Delforno): 'Non ce lo dicono', 'Niurant' e 'Comodissimo e facilissimo'.",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -2364,7 +2428,7 @@
       "minuti": 57.0,
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "http://www.teatrocambiano.com/",
       "fonti": "teatro-cambiano-teatro-comunale",
       "quarantena": false
@@ -2388,7 +2452,7 @@
     {
       "id": "0b3d1b2f2052",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "La festa di San Maurizio continua sabato 19",
+      "descrizione": "Programma di sabato 19: alle 16:00 Giochi Senza Frontiere in collaborazione con il Progetto Trame; dalle 19:30 stand gastronomico con cena animata e gelati; dopocena musica con FM Disco Explosion di Radio Vallebelbo.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2404,7 +2468,7 @@
     {
       "id": "9f4831a9d5a5",
       "titolo": "The Gathering Truck Show - Terza Edizione",
-      "descrizione": "Due giornate dedicate alla passione per i camion e per i motori con esposizione, benedizione dei mezzi, dj set, aperitivi e momenti gastronomici.",
+      "descrizione": "Due giornate dedicate alla passione per i camion e i motori con benedizione dei mezzi, aperitivi, pranzi, cene e DJ set di DJ Niko.",
       "comune": "Pagno",
       "lat": 44.611734,
       "lon": 7.425725,
@@ -2436,7 +2500,7 @@
     {
       "id": "fafd6745c314",
       "titolo": "Sagra del Tomino 2026",
-      "descrizione": "Nel centro storico di Rivalta di Torino - Avviso rivolto agli operatori commerciali e agli hobbisti",
+      "descrizione": "Domenica 20 settembre 2026 nel centro storico di Rivalta di Torino - Avviso rivolto agli operatori commerciali e agli hobbisti",
       "comune": "Rivalta di Torino",
       "lat": 45.034045,
       "lon": 7.518419,
@@ -2467,7 +2531,7 @@
     },
     {
       "id": "d7fc0b3cf7a7",
-      "titolo": "Festa della Nascita - Reggia di Venaria",
+      "titolo": "Festa della Nascita",
       "descrizione": "Torna nei Giardini della Reggia di Venaria la gioiosa festa di “benvenuto alla vita” organizzata per celebrare ed accogliere l’arrivo dei nuovi nati.",
       "comune": "Venaria Reale",
       "lat": 45.134811,
@@ -2499,7 +2563,7 @@
     },
     {
       "id": "6a86323f1140",
-      "titolo": "80 anni della Vespa - Raduno e Tour del Roero",
+      "titolo": "80 anni della Vespa - Raduno Vespa",
       "descrizione": "Un evento speciale per festeggiare insieme gli 80 anni della Vespa con colazione, aperitivo, tour del Roero, pranzo, gadget e tanto divertimento.",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
@@ -2515,8 +2579,8 @@
     },
     {
       "id": "513a0248f8e3",
-      "titolo": "Camminata Metabolica®",
-      "descrizione": "Attività all'aria aperta in occasione della Festa Patronale di Santa Croce con il trainer Eva Fea. Possibilità di pranzo all'arrivo preparato dalla Pro Loco.",
+      "titolo": "Camminata Metabolica",
+      "descrizione": "Attività all'aria aperta in occasione della Festa Patronale di Santa Croce insieme al trainer Eva Fea, con possibilità di pranzo all'arrivo preparato dalla Pro Loco. Partenze alle ore 10:00 e 16:00 (ritrovo alle 9:45 e 15:45). Durata 1 ora.",
       "comune": "Sommariva Perno",
       "lat": 44.745642,
       "lon": 7.900633,
@@ -2676,7 +2740,7 @@
     {
       "id": "182241c091a6",
       "titolo": "Territori d'Infanzia - I servizi 0-6 di Bi-To NORD EST. III° edizione",
-      "descrizione": "Forti del grande successo delle edizioni precedenti e della rete intersettoriale che ne è nata, siamo lieti di annunciare la terza edizione di Territori d'Infanzia.",
+      "descrizione": "Forti del grande successo delle edizioni precedenti e della rete intersettoriale che ne è nata, siamo lieti di annunciare la terza edizione di...",
       "comune": "Brandizzo",
       "lat": 45.176606,
       "lon": 7.838004,
@@ -2692,7 +2756,7 @@
     {
       "id": "5e9eebe33fa9",
       "titolo": "SPORT a Reano",
-      "descrizione": "Domenica 27 Settembre: Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive; Ore 12:30 / 14:00 Pranzo condiviso; Ore 14:00: Ripresa pratiche sportive; Ore 18:00: Musica DJ set ed...",
+      "descrizione": "Domenica 27 Settembre:\nOre 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive \nOre 12:30 / 14:00 Pranzo condiviso \nOre 14:00: Ripresa pratiche sportive\nOre 18:00: Musica DJ set ed...",
       "comune": "Reano",
       "lat": 45.052056,
       "lon": 7.430403,
@@ -2771,8 +2835,8 @@
     },
     {
       "id": "8f874db7ce56",
-      "titolo": "Sagra della Zucca",
-      "descrizione": "Domenica 4 ottobre 2026 nel Comune di Sciolze avrà luogo la 24^ Sagra della Zucca, con fiera mercato presso il Polo Educativo a partire dalle ore 9.30.",
+      "titolo": "24^ Sagra della Zucca",
+      "descrizione": "Nel Comune di Sciolze avrà luogo la 24^ Sagra della Zucca, con fiera mercato presso il Polo Educativo a partire dalle ore 9.30.",
       "comune": "Sciolze",
       "lat": 45.09325,
       "lon": 7.880426,
@@ -2980,7 +3044,7 @@
     {
       "id": "f6066594ee1e",
       "titolo": "Giornata formativa con Tiziano Dones (maestro e istruttore nazionale AM bike)",
-      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB.",
+      "descrizione": "Si terrà sabato 25 ottobre la giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB.",
       "comune": "Cartignano",
       "lat": 44.477654,
       "lon": 7.287771,
@@ -3315,8 +3379,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "titolo": "Rappresentazione testi vincitori Concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi vincitori del concorso Mezz'ora da Ridere ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo') ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3443,7 +3507,7 @@
     },
     {
       "id": "62fb056ea89c",
-      "titolo": "Presentazione del restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
+      "titolo": "Presentazione del progetto di restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
       "descrizione": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo di Monesiglio e incontro culturale \"Dinastie all'ombra del Castello\".",
       "comune": "Monesiglio",
       "lat": 44.465037,
