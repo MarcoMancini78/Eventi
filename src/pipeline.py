@@ -226,9 +226,9 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
 
     confidenza_finale = evento_estratto.confidenza + penalita_comune
     if not evento_estratto.anno_esplicito:
-        confidenza_finale -= 15
+        confidenza_finale -= config.penalita_anno_non_esplicito
     if not evento_estratto.luogo_testuale:
-        confidenza_finale -= 10
+        confidenza_finale -= config.penalita_luogo_assente
 
     titolo_norm = titolo_normalizzato(evento_estratto.titolo, comune_riga["comune"])
     evento = {

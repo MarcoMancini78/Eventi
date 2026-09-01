@@ -41,8 +41,14 @@ class Config:
     serie_decadimento_da_verificare_giorni: int = 120
     serie_decadimento_sospesa_giorni: int = 400
 
-    # Confidenza ed estrazione (06.6)
+    # Confidenza ed estrazione (06.6). Penalità applicate in pipeline.py
+    # quando l'LLM non trova un anno esplicito o un luogo testuale nel
+    # post — ridotte da 15/10 a 5/5 il 2026-09-01 (richiesto dall'utente:
+    # "stasera"/comune-solo sono normali per un post social, non un
+    # segnale forte di scarsa affidabilità).
     soglia_confidenza: int = 70
+    penalita_anno_non_esplicito: int = 5
+    penalita_luogo_assente: int = 5
 
     # Controllo di sanità 06.8: sopra questa soglia di eventi estratti da un
     # solo artefatto, l'intera risposta è scartata come probabile

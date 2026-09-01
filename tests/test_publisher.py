@@ -785,3 +785,143 @@ def test_pubblica_eventi_fissa_font_size_su_intera_colonna():
 
     formati = dict(ws.chiamate_format)
     assert formati["A:Z"] == {"textFormat": {"fontSize": 8}}
+
+
+def _evento_finto(event_id: str, **override) -> dict:
+    base = {
+        "id": event_id, "titolo": "Sagra", "descrizione": "", "tipologia": "sagra",
+        "data_inizio": "2026-09-12", "ora_inizio": "", "data_fine": "2026-09-12", "ora_fine": "",
+        "serie_id": "", "occorrenza": "", "comune": "Calosso", "luogo": "", "km": 0, "minuti": 0,
+        "prezzo": "", "organizzatore": "", "url": "", "url_immagine": "", "fonti": "comune-calosso",
+        "confidenza": 40, "stato": "quarantena", "note": "", "primo_visto": "", "ultimo_visto": "",
+        "bloccato": "no", "soppressa": "no",
+    }
+    base.update(override)
+    return base
+
+
+def test_pubblica_quarantena_include_colonna_azione():
+    ws = _WorksheetFinto()
+    publisher.pubblica_quarantena(ws, [_evento_finto("ev1")])
+
+    intestazione, riga = ws.righe_scritte
+    assert "azione" in intestazione
+    diz = dict(zip(intestazione, riga))
+    assert diz["azione"] == ""
+
+
+def test_pubblica_quarantena_preserva_azione_scritta_dall_operatore():
+    ws = _WorksheetFinto(righe_esistenti=[{"id": "ev1", "azione": "promuovi"}])
+    publisher.pubblica_quarantena(ws, [_evento_finto("ev1")])
+
+    intestazione, riga = ws.righe_scritte
+    diz = dict(zip(intestazione, riga))
+    assert diz["azione"] == "promuovi"
+
+
+def test_pull_azioni_quarantena_ignora_valori_non_validi():
+    """04.7: un valore non riconosciuto va ignorato, mai interpretato a caso."""
+    ws = _WorksheetFinto(righe_esistenti=[
+        {"id": "ev1", "azione": "promuovi"},
+        {"id": "ev2", "azione": "boh"},
+        {"id": "ev3", "azione": ""},
+    ])
+    azioni = publisher.pull_azioni_quarantena(ws)
+    assert azioni == {"ev1": "promuovi"}
+
+
+def test_applica_azioni_quarantena_promuovi():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Sagra', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'quarantena')"
+    )
+    conn.commit()
+
+    esiti = publisher.applica_azioni_quarantena(conn, {"ev1": "promuovi"})
+
+    stato = conn.execute("SELECT stato FROM events WHERE event_id='ev1'").fetchone()["stato"]
+    assert stato == "ok"
+    assert esiti["promossi"] == 1
+
+
+def test_applica_azioni_quarantena_scarta_esclude_da_righe_da_sqlite():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Sagra', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'quarantena')"
+    )
+    conn.commit()
+
+    publisher.applica_azioni_quarantena(conn, {"ev1": "scarta"})
+
+    stato = conn.execute("SELECT stato FROM events WHERE event_id='ev1'").fetchone()["stato"]
+    assert stato == "scartato"
+    assert publisher.righe_da_sqlite(conn) == []  # riga resta in DB, esclusa dalle viste
+
+
+def test_applica_azioni_quarantena_elimina_rimuove_dal_db():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Sagra', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'quarantena')"
+    )
+    conn.execute(
+        "INSERT INTO event_sources (event_id, source_id, url, seen_at) "
+        "VALUES ('ev1', 'comune-calosso', 'https://x', '2026-08-27')"
+    )
+    conn.commit()
+
+    esiti = publisher.applica_azioni_quarantena(conn, {"ev1": "elimina"})
+
+    assert conn.execute("SELECT 1 FROM events WHERE event_id='ev1'").fetchone() is None
+    assert conn.execute("SELECT 1 FROM event_sources WHERE event_id='ev1'").fetchone() is None
+    assert esiti["eliminati"] == 1
+
+
+def test_applica_azioni_quarantena_ignora_fonte_esclude_la_fonte():
+    conn = _conn_di_prova()
+    conn.execute("INSERT INTO sources (source_id, tier) VALUES ('feed-facebook-rumoroso', 'social')")
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Rumore', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'quarantena')"
+    )
+    conn.execute(
+        "INSERT INTO event_sources (event_id, source_id, url, seen_at) "
+        "VALUES ('ev1', 'feed-facebook-rumoroso', 'https://x', '2026-08-27')"
+    )
+    conn.commit()
+
+    esiti = publisher.applica_azioni_quarantena(conn, {"ev1": "ignora_fonte"})
+
+    stato_evento = conn.execute("SELECT stato FROM events WHERE event_id='ev1'").fetchone()["stato"]
+    stato_fonte = conn.execute("SELECT stato FROM sources WHERE source_id='feed-facebook-rumoroso'").fetchone()["stato"]
+    assert stato_evento == "scartato"
+    assert stato_fonte == "esclusa"
+    assert esiti["fonti_escluse"] == 1
+
+
+def test_righe_da_sqlite_esclude_eventi_scartati():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Scartato', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'scartato')"
+    )
+    conn.commit()
+
+    assert publisher.righe_da_sqlite(conn) == []
+
+
+def test_righe_eventi_per_mappa_esclude_eventi_scartati():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, fascia, attivo, lat, lon) "
+        "VALUES ('1', 'Calosso', 'A', 'si', 44.7975, 8.2686)"
+    )
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, stato) "
+        "VALUES ('ev1', 'Scartato', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'scartato')"
+    )
+    conn.commit()
+
+    assert publisher.righe_eventi_per_mappa(conn) == []

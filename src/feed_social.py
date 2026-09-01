@@ -478,8 +478,19 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     if extractor is None:
         return "scartato"
 
+    source_id = f"feed-{post.piattaforma}-{post.handle_autore}"
+    # 2026-09-01, richiesto dall'utente: azione 'ignora_fonte' sul foglio
+    # Quarantena marca sources.stato='esclusa' — una fonte che produce
+    # sistematicamente rumore non deve più spendere budget LLM sui post
+    # successivi (publisher.applica_azioni_quarantena).
+    riga_source = conn.execute(
+        "SELECT stato FROM sources WHERE source_id = ?", (source_id,)
+    ).fetchone()
+    if riga_source and riga_source["stato"] == "esclusa":
+        return "scartato"
+
     art = Artefatto(
-        source_id=f"feed-{post.piattaforma}-{post.handle_autore}",
+        source_id=source_id,
         url=post.url,
         kind="social",
         text=post.testo,

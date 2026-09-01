@@ -84,15 +84,15 @@ class _ProviderFinto(ProviderLLM):
         return self._risposte.pop(0)
 
 
-def _risposta_json(titolo="Sagra del Tartufo", comune="Comune Prova", confidenza=92, luogo="Piazza Roma"):
+def _risposta_json(titolo="Sagra del Tartufo", comune="Comune Prova", confidenza=92, luogo="Piazza Roma", anno_esplicito=True):
     return (
         '{"eventi": [{"titolo": "%s", "descrizione": "Degustazioni", "tipologia": "sagra", '
         '"data_inizio": "2026-09-12", "data_fine": "2026-09-12", "ora_inizio": "21:00", "ora_fine": null, '
         '"ricorrenza": {"e_ricorrente": false}, "luogo_testuale": %s, "comune_testuale": "%s", '
-        '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": true, '
+        '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": %s, '
         '"confidenza": %d, "campi_incerti": [], "note_estrazione": null}], '
         '"non_e_un_evento": false, "motivo": null}'
-    ) % (titolo, f'"{luogo}"' if luogo else "null", comune, confidenza)
+    ) % (titolo, f'"{luogo}"' if luogo else "null", comune, "true" if anno_esplicito else "false", confidenza)
 
 
 def test_fonte_t0_email_instradata_come_t1_e_pubblica_con_estrattore():
@@ -168,6 +168,30 @@ def test_fonte_t1_con_confidenza_bassa_va_in_quarantena():
 
     riga = conn.execute("SELECT stato FROM events").fetchone()
     assert riga["stato"] == "quarantena"
+
+
+def test_penalita_anno_e_luogo_ridotte_a_5_5():
+    """2026-09-01, richiesto dall'utente: -15/-10 (per anno non esplicito
+    e luogo assente) erano troppo severi per un post social tipico
+    ('stasera', solo nome comune) — ridotte a -5/-5. Confidenza LLM 80,
+    senza anno né luogo: con le vecchie penalità sarebbe finita a 55
+    (sotto soglia 70, quarantena), con le nuove resta a 70 (pubblicato)."""
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_risposta_json(confidenza=80, luogo=None, anno_esplicito=False)])
+    config = Config(soglia_confidenza=70)
+    extractor = ExtractorClient(config, conn, provider=provider)
+
+    fonte = {"source_id": "sito-prova", "metodo": "T1_html", "endpoint": "https://sito-prova.it/eventi", "comune_riferimento": "Comune Prova"}
+    html = (FIXTURES / "esempio_pagina_eventi.html").read_text(encoding="utf-8")
+
+    with patch("src.adapters.html.HtmlAdapter.fetch", return_value=parse_html(html, "sito-prova", fonte["endpoint"])):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, config, extractor)
+
+    assert riepilogo["eventi_pubblicati"] == 1
+    assert riepilogo["eventi_in_quarantena"] == 0
+    riga = conn.execute("SELECT stato, confidenza FROM events").fetchone()
+    assert riga["stato"] != "quarantena"
+    assert riga["confidenza"] == 70
 
 
 def test_fonte_t1_con_comune_irrisolvibile_va_in_quarantena_senza_sollevare():

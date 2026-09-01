@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T06:42:15",
+  "generato_il": "2026-09-01T07:17:23",
   "eventi": [
     {
       "id": "215d35247178",
@@ -543,7 +543,7 @@
       "tipologia": "concerto",
       "url": "https://www.facebook.com/festivalcontrocastagnolelanze?__cft__[0]=AZbo58sOBS0t8QzjytMF4EdIrCW8g7YE9OIhntC57GHddBp0QqYHm12r_Qes4YsCNndPDAG0akyfSPyxSbD34B5O3RSAc_UCJEJPfyxffytDX3-HF3ogTeLDVek_YZQwPXkF_II69PVarBvgQosQBu-s3Ki8rkjXaanhbk7Dulg-y5p9M4DWusiW43B_Uy_mgah5tqpOTfhnE0MPMVaNiDMf&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-festivalcontrocastagnolelanze",
-      "quarantena": true
+      "quarantena": false
     },
     {
       "id": "ebf816564d83",

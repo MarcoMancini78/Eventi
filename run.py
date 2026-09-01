@@ -465,7 +465,7 @@ def cmd_publish(args: argparse.Namespace) -> None:
 
     ws_quarantena = spreadsheet_principale.worksheet("Quarantena")
     righe_quarantena = publisher.righe_quarantena_da_sqlite(conn)
-    publisher.pubblica_eventi(ws_quarantena, righe_quarantena)
+    publisher.pubblica_quarantena(ws_quarantena, righe_quarantena)
     print(f"Foglio Quarantena aggiornato: {len(righe_quarantena)} righe scritte.")
 
     ws_archivio = spreadsheet_principale.worksheet("Archivio")
@@ -545,6 +545,19 @@ def cmd_pull_fonti(args: argparse.Namespace) -> None:
     print(f"DaVerificare aggiornate da Sheets: {esito_dv['aggiornate']}")
     if esito_dv["ignorate"]:
         print(f"Righe ignorate (source_id non trovato in coda_follow): {esito_dv['ignorate']}")
+
+    # 2026-09-01, richiesto dall'utente: colonna 'azione' del foglio
+    # Quarantena (03.1.2), applicata qui — stesso verso Sheets -> SQLite
+    # delle altre righe di questo comando, prima del prossimo 'publish'.
+    ws_quarantena = spreadsheet_principale.worksheet("Quarantena")
+    azioni = publisher.pull_azioni_quarantena(ws_quarantena)
+    if azioni:
+        esito_azioni = publisher.applica_azioni_quarantena(conn, azioni)
+        print(
+            f"Azioni Quarantena applicate: {esito_azioni['promossi']} promossi, "
+            f"{esito_azioni['scartati']} scartati, {esito_azioni['eliminati']} eliminati, "
+            f"{esito_azioni['fonti_escluse']} fonti escluse."
+        )
 
 
 def cmd_run_and_publish(args: argparse.Namespace) -> None:
@@ -939,7 +952,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_publish.set_defaults(func=cmd_publish)
 
     p_pull_fonti = sub.add_parser(
-        "pull-fonti", help="Rilegge da Sheets verso SQLite: categoria/polling_diretto (Fonti), comune/stato (DaVerificare)"
+        "pull-fonti",
+        help="Rilegge da Sheets verso SQLite: categoria/polling_diretto (Fonti), comune/stato (DaVerificare), azione (Quarantena)",
     )
     p_pull_fonti.set_defaults(func=cmd_pull_fonti)
 

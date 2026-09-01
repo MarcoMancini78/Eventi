@@ -33,15 +33,19 @@ COLONNE_EVENTI = [
 COLONNE_UTENTE = {"stato", "note", "bloccato", "soppressa", "comune"}
 
 
-def _leggi_overrides_utente(worksheet: gspread.Worksheet) -> dict[str, dict[str, str]]:
-    """Rilettura preventiva: id evento -> {colonna_utente: valore}."""
+def _leggi_overrides_utente(
+    worksheet: gspread.Worksheet, colonne_utente: set[str] = COLONNE_UTENTE
+) -> dict[str, dict[str, str]]:
+    """Rilettura preventiva: id evento -> {colonna_utente: valore}.
+    `colonne_utente` parametrico (2026-09-01) — `pubblica_quarantena`
+    passa `COLONNE_UTENTE_QUARANTENA` per preservare anche `azione`."""
     valori = worksheet.get_all_records()
     overrides: dict[str, dict[str, str]] = {}
     for riga in valori:
         event_id = riga.get("id")
         if not event_id:
             continue
-        overrides[event_id] = {col: riga.get(col, "") for col in COLONNE_UTENTE}
+        overrides[event_id] = {col: riga.get(col, "") for col in colonne_utente}
     return overrides
 
 
@@ -84,6 +88,97 @@ def pubblica_eventi(worksheet: gspread.Worksheet, righe: list[dict]) -> None:
     # l'ultima colonna usata) la rende indipendente da quante righe
     # esistono o in che ordine sono.
     worksheet.format("A:Z", {"textFormat": {"fontSize": 8}})
+
+
+# 2026-09-01, richiesto dall'utente: colonna 'azione' prevista dal modello
+# dati (03.1.2) ma mai implementata — solo sul foglio Quarantena, non su
+# Eventi/Eventi_estesi dove non avrebbe senso per eventi già confermati.
+COLONNE_QUARANTENA = COLONNE_EVENTI + ["azione"]
+COLONNE_UTENTE_QUARANTENA = COLONNE_UTENTE | {"azione"}
+
+_VALORI_AZIONE_VALIDI = {"promuovi", "scarta", "elimina", "ignora_fonte"}
+
+
+def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None:
+    """Scrive il foglio `Quarantena`: stesse colonne di `Eventi` più
+    `azione` (03.1.2), la scelta dell'operatore su ciascun candidato
+    incerto — letta da `pull_azioni_quarantena` e applicata da
+    `applica_azioni_quarantena` (2026-09-01)."""
+    overrides = _leggi_overrides_utente(worksheet, COLONNE_UTENTE_QUARANTENA)
+
+    corpo = []
+    for riga in righe:
+        event_id = riga["id"]
+        utente = overrides.get(event_id, {})
+        riga_finale = dict(riga)
+        for col in COLONNE_UTENTE_QUARANTENA:
+            if col in utente and utente[col] != "":
+                riga_finale[col] = utente[col]
+        corpo.append([riga_finale.get(col, "") for col in COLONNE_QUARANTENA])
+
+    worksheet.clear()
+    worksheet.update([COLONNE_QUARANTENA] + corpo, value_input_option="USER_ENTERED")
+    worksheet.format("B:C", {"wrapStrategy": "WRAP"})
+    worksheet.format("A:Z", {"textFormat": {"fontSize": 8}})
+
+
+def pull_azioni_quarantena(worksheet: gspread.Worksheet) -> dict[str, str]:
+    """Rilegge la colonna `azione` dal foglio `Quarantena`: id evento ->
+    azione, solo per le righe con un valore riconosciuto (04.7: un valore
+    non valido/vuoto viene ignorato, mai interpretato a caso)."""
+    valori = worksheet.get_all_records()
+    azioni: dict[str, str] = {}
+    for riga in valori:
+        event_id = riga.get("id")
+        azione = (riga.get("azione") or "").strip()
+        if event_id and azione in _VALORI_AZIONE_VALIDI:
+            azioni[event_id] = azione
+    return azioni
+
+
+def applica_azioni_quarantena(conn: sqlite3.Connection, azioni: dict[str, str]) -> dict[str, int]:
+    """Applica le azioni scelte dall'operatore sul foglio Quarantena
+    (2026-09-01, implementa la colonna 'azione' prevista da 03.1.2 ma mai
+    realizzata):
+
+    - 'promuovi': stato -> 'ok', l'evento esce dalla quarantena e resta
+      confermato su Eventi/mappa.
+    - 'scarta': stato -> 'scartato'. La riga resta in SQLite (mai un dato
+      perso, 04.7) ma esce da ogni vista (righe_da_sqlite/
+      righe_eventi_per_mappa filtrano stato != 'scartato').
+    - 'elimina': DELETE reale dalla tabella events (e da event_sources per
+      la foreign key) — a differenza di 'scarta', qui l'operatore chiede
+      esplicitamente che il dato sparisca, non solo che sia nascosto.
+    - 'ignora_fonte': come 'scarta', più sources.stato -> 'esclusa' per
+      tutte le fonti collegate a quell'evento — una fonte che produce
+      sistematicamente rumore (tipicamente un feed-* non pertinente) non
+      genererà più eventi da elabora_post ai prossimi giri.
+    """
+    esiti = {"promossi": 0, "scartati": 0, "eliminati": 0, "fonti_escluse": 0}
+    for event_id, azione in azioni.items():
+        if azione == "promuovi":
+            conn.execute("UPDATE events SET stato = 'ok' WHERE event_id = ?", (event_id,))
+            esiti["promossi"] += 1
+        elif azione == "scarta":
+            conn.execute("UPDATE events SET stato = 'scartato' WHERE event_id = ?", (event_id,))
+            esiti["scartati"] += 1
+        elif azione == "elimina":
+            conn.execute("DELETE FROM event_sources WHERE event_id = ?", (event_id,))
+            conn.execute("DELETE FROM events WHERE event_id = ?", (event_id,))
+            esiti["eliminati"] += 1
+        elif azione == "ignora_fonte":
+            conn.execute("UPDATE events SET stato = 'scartato' WHERE event_id = ?", (event_id,))
+            esiti["scartati"] += 1
+            fonti = conn.execute(
+                "SELECT source_id FROM event_sources WHERE event_id = ?", (event_id,)
+            ).fetchall()
+            for r in fonti:
+                conn.execute(
+                    "UPDATE sources SET stato = 'esclusa' WHERE source_id = ?", (r["source_id"],)
+                )
+                esiti["fonti_escluse"] += 1
+    conn.commit()
+    return esiti
 
 
 COLONNE_PERIMETRO = ["comune", "alias", "provincia", "lat", "lon", "istat", "km", "minuti", "fascia", "attivo"]
@@ -559,15 +654,21 @@ def pubblica_stato(worksheet: gspread.Worksheet, indicatori) -> int:
 
 
 def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
-    """Tutti gli eventi attivi (non archiviati), con la fascia del comune
-    già risolta (03: `Eventi` = vista sui prossimi giorni/fasce A-B,
-    `Eventi_estesi` = tutto il resto — serve la fascia per separarli,
-    2026-08-31, richiesto dall'utente dopo aver notato che entrambi i
-    fogli 'estesi' risultavano vuoti). `events` non ha una colonna
-    fascia propria: risolta con un JOIN su `comuni.comune`, la stessa
-    chiave già usata altrove nel progetto per collegare un evento al suo
-    comune (nessuna colonna comune_id in events, il nome resta la fonte
-    di verità)."""
+    """Tutti gli eventi attivi (non archiviati, non scartati), con la
+    fascia del comune già risolta (03: `Eventi` = vista sui prossimi
+    giorni/fasce A-B, `Eventi_estesi` = tutto il resto — serve la fascia
+    per separarli, 2026-08-31, richiesto dall'utente dopo aver notato che
+    entrambi i fogli 'estesi' risultavano vuoti). `events` non ha una
+    colonna fascia propria: risolta con un JOIN su `comuni.comune`, la
+    stessa chiave già usata altrove nel progetto per collegare un evento
+    al suo comune (nessuna colonna comune_id in events, il nome resta la
+    fonte di verità).
+
+    `stato != 'scartato'` (2026-09-01, richiesto dall'utente): la colonna
+    `azione` del foglio Quarantena (03.1.2) permette di scartare un
+    candidato incerto senza cancellarlo dal DB — resta la riga, ma esce
+    da ogni vista (Eventi/Eventi_estesi/Quarantena/mappa) finché qualcuno
+    non lo promuove esplicitamente."""
     cur = conn.execute(
         """
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia, e.data_inizio,
@@ -577,7 +678,7 @@ def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
                e.bloccato, e.soppressa, c.fascia
         FROM events e
         LEFT JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
-        WHERE e.archiviato = 'no'
+        WHERE e.archiviato = 'no' AND e.stato != 'scartato'
         ORDER BY e.data_inizio ASC, e.km ASC
         """
     )
@@ -692,7 +793,8 @@ def righe_eventi_per_mappa(conn: sqlite3.Connection) -> list[dict]:
                e.stato, c.lat, c.lon, c.km, c.minuti
         FROM events e
         JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
-        WHERE e.archiviato = 'no' AND c.lat IS NOT NULL AND c.lon IS NOT NULL
+        WHERE e.archiviato = 'no' AND e.stato != 'scartato'
+              AND c.lat IS NOT NULL AND c.lon IS NOT NULL
         ORDER BY e.data_inizio ASC
         """
     )
