@@ -819,6 +819,21 @@ def test_pubblica_quarantena_preserva_azione_scritta_dall_operatore():
     assert diz["azione"] == "promuovi"
 
 
+def test_pubblica_quarantena_scrive_legenda():
+    """2026-09-01, richiesto dall'utente: i valori validi di 'azione'
+    (promuovi/scarta/elimina/ignora_fonte) non sono autoesplicativi senza
+    una legenda a fianco, stesso principio già usato per CoperturaComuni."""
+    ws = _WorksheetFinto()
+    publisher.pubblica_quarantena(ws, [_evento_finto("ev1")])
+
+    assert len(ws.chiamate_update_con_range) == 1
+    range_name, valori = ws.chiamate_update_con_range[0]
+    assert range_name.startswith("AB1:AB")
+    testo_legenda = " ".join(riga[0] for riga in valori)
+    assert "promuovi" in testo_legenda
+    assert "elimina" in testo_legenda
+
+
 def test_pull_azioni_quarantena_ignora_valori_non_validi():
     """04.7: un valore non riconosciuto va ignorato, mai interpretato a caso."""
     ws = _WorksheetFinto(righe_esistenti=[

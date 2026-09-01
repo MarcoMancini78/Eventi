@@ -139,7 +139,7 @@ echo   3. Import fonti da Comuni.csv/ProLoco.csv - solo per aggiungere nuove fon
 echo   4. Popola coda follow (senza pubblicare) - solo con nuovi dati anagrafici
 echo   5. Popola coda follow e pubblica su Sheets
 echo   6. Fingerprinting comuni (tutti) - solo se cambiano molti siti comunali
-echo   7. Aggiorna da Google Sheets: Fonti e DaVerificare (pull-fonti)
+echo   7. Aggiorna da Google Sheets: Fonti, DaVerificare, azioni Quarantena (pull-fonti)
 echo   8. Verifica configurazione (database, credenziali Google, .env)
 echo   0. Indietro
 echo.

@@ -99,11 +99,27 @@ COLONNE_UTENTE_QUARANTENA = COLONNE_UTENTE | {"azione"}
 _VALORI_AZIONE_VALIDI = {"promuovi", "scarta", "elimina", "ignora_fonte"}
 
 
+_LEGENDA_AZIONE_QUARANTENA = [
+    ["Legenda colonna 'azione'"],
+    ["promuovi     evento confermato, esce dalla quarantena (stato -> ok)"],
+    ["scarta       nascosto ovunque, ma resta nel database (recuperabile)"],
+    ["elimina      cancellato definitivamente dal database"],
+    ["ignora_fonte come scarta, e blocca la fonte per gli eventi futuri"],
+    ["(vuoto)      nessuna azione, resta in quarantena"],
+    [""],
+    ["Dopo aver scritto l'azione: menu -> Utilita' -> voce 7 (pull-fonti),"],
+    ["poi Dettaglio ricerche -> voce 7 (pubblica) per vedere l'effetto."],
+]
+
+
 def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None:
     """Scrive il foglio `Quarantena`: stesse colonne di `Eventi` più
     `azione` (03.1.2), la scelta dell'operatore su ciascun candidato
     incerto — letta da `pull_azioni_quarantena` e applicata da
-    `applica_azioni_quarantena` (2026-09-01)."""
+    `applica_azioni_quarantena` (2026-09-01). Legenda scritta a fianco
+    (colonna AB, subito dopo 'azione'), stesso principio delle legende
+    di CoperturaComuni/CoperturaAltreEntita: il foglio cresce per righe,
+    una legenda sotto verrebbe riscritta sopra ai dati veri."""
     overrides = _leggi_overrides_utente(worksheet, COLONNE_UTENTE_QUARANTENA)
 
     corpo = []
@@ -120,6 +136,11 @@ def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None
     worksheet.update([COLONNE_QUARANTENA] + corpo, value_input_option="USER_ENTERED")
     worksheet.format("B:C", {"wrapStrategy": "WRAP"})
     worksheet.format("A:Z", {"textFormat": {"fontSize": 8}})
+    worksheet.update(
+        _LEGENDA_AZIONE_QUARANTENA,
+        f"AB1:AB{len(_LEGENDA_AZIONE_QUARANTENA)}",
+        value_input_option="USER_ENTERED",
+    )
 
 
 def pull_azioni_quarantena(worksheet: gspread.Worksheet) -> dict[str, str]:
