@@ -1,7 +1,18 @@
 """Prompt per artefatti testuali, versione 1 (06.3). Versionato: il nome del
-modulo è prompt_version, salvato in extractions per confrontare le rese."""
+modulo è prompt_version, salvato in extractions per confrontare le rese.
 
-PROMPT_VERSION = "testo_v1"
+Regola 1 rinforzata 2026-09-01 (caso reale trovato dall'utente): il post
+Instagram "Ieri sera seconda serata di festeggiamenti patronali di San
+Bartolomeo con la Gara a Scala 40." è stato letto come un ANNUNCIO futuro
+("questa sera", nella nota di estrazione) invece che come un resoconto —
+titolo e descrizione interamente inventati ("Serata enogastronomica"),
+nessuna delle due parole presente nel testo originale. Il fallimento non
+era la regola 1 in sé (già presente, cita esplicitamente "resoconti di
+eventi passati"), ma la sua applicazione: nessun elenco di segnali
+linguistici concreti da riconoscere, e nessun divieto esplicito di
+generalizzare oltre le parole scritte. Aggiunti entrambi."""
+
+PROMPT_VERSION = "testo_v1.1"
 
 SISTEMA = """Estrai eventi pubblici da testi italiani. Rispondi SOLO con JSON valido
 conforme allo schema. Nessun testo prima o dopo.
@@ -10,6 +21,21 @@ REGOLE
 1. Estrai solo eventi PUBBLICI con una data futura o in corso.
    Non estrarre: resoconti di eventi passati, ringraziamenti, auguri,
    avvisi amministrativi, offerte commerciali, post di sole foto.
+1a. Segnali di RESOCONTO (evento già avvenuto, non un annuncio) da
+   riconoscere sempre, anche se il resto del post sembra promozionale:
+   "ieri", "ieri sera", "stanotte", "sabato scorso", "che serata!",
+   "grazie a tutti per...", "è stata una splendida serata/giornata",
+   foto/video di un evento con verbi al passato ("abbiamo festeggiato",
+   "si è svolta"). Se anche solo la prima frase del testo colloca i fatti
+   nel passato rispetto a DATA_RIFERIMENTO, l'intero post è un resoconto:
+   non_e_un_evento=true, anche se nomina un festeggiamento/sagra che in
+   teoria potrebbe proseguire nei giorni successivi — un'eventuale serata
+   successiva va estratta solo se il testo la annuncia esplicitamente
+   con una propria data, mai dedotta o inventata a partire dal resoconto.
+   Esempio reale: "Ieri sera seconda serata di festeggiamenti patronali
+   di San Bartolomeo con la Gara a Scala 40." → resoconto, non_e_un_evento
+   =true. NON estrarre "una terza serata" o un titolo come "Serata
+   enogastronomica": nel testo non c'è, sarebbe un'invenzione.
 1b. NON estrarre la programmazione cinematografica ordinaria di sala
    (il film delle 21 al cinema, gli orari degli spettacoli, i titoli
    in cartellone). Estrai SOLO le proiezioni-evento: cinema all'aperto,
@@ -17,6 +43,10 @@ REGOLE
    Nel dubbio: se è un film in programmazione normale, non è un evento.
 2. Non inventare mai. Campo non deducibile -> null.
    È molto meglio un null che un valore plausibile ma sbagliato.
+   Vale anche per titolo e descrizione: usa SOLO parole/concetti presenti
+   nel testo, anche riformulati — mai un dettaglio non scritto (es. il
+   nome di una portata, un sottotitolo "ad effetto") solo perché sembra
+   plausibile per quel tipo di evento.
 3. Date: usa DATA_RIFERIMENTO per risolvere date relative
    ("sabato prossimo", "il 12"). Se manca l'anno, assumi il
    prossimo anno in cui quella data cade nel futuro e imposta

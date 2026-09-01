@@ -10,6 +10,7 @@ from src import store
 from src.config import Config
 from src.extractor.client import ErroreQuotaEsaurita, ExtractorClient, RateLimitError, _chiama_con_retry
 from src.extractor.providers import ProviderLLM
+from src.extractor.prompts.testo_v1 import SISTEMA
 
 
 def _conn_di_prova() -> sqlite3.Connection:
@@ -72,7 +73,7 @@ def test_estrai_da_testo_valida_e_salva_extraction():
     assert risposta.eventi[0].titolo == "Sagra del Tartufo"
 
     salvato = conn.execute("SELECT prompt_version, confidence FROM extractions").fetchone()
-    assert salvato["prompt_version"] == "testo_v1"
+    assert salvato["prompt_version"] == "testo_v1.1"
     assert salvato["confidence"] == 92
 
 
@@ -145,3 +146,16 @@ def test_retry_su_rate_limit_poi_successo():
 
     assert provider.tentativi == 2
     assert "Sagra del Tartufo" in risultato
+
+
+def test_prompt_riconosce_resoconti_al_passato():
+    """2026-09-01, richiesto dall'utente: caso reale trovato (post
+    Instagram Pro Loco di Bruno, 'Ieri sera seconda serata di
+    festeggiamenti...') letto come annuncio futuro invece che come
+    resoconto, con titolo/descrizione interamente inventati. Guardia
+    contro una futura riscrittura del prompt che perda questi segnali
+    senza che nessun test se ne accorga — il vero collaudo resta l'esito
+    su casi reali, questo test protegge solo la regressione più ovvia."""
+    assert "ieri sera" in SISTEMA.lower()
+    assert "resoconto" in SISTEMA.lower()
+    assert "san bartolomeo" in SISTEMA.lower()  # l'esempio reale è nel prompt
