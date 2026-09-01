@@ -144,9 +144,11 @@ class _ProviderFinto(ProviderLLM):
     def __init__(self, risposte):
         self._risposte = list(risposte)
         self.chiamate_con_immagini = []
+        self.chiamate_prompt_utente = []
 
     def estrai(self, prompt_sistema, prompt_utente, immagini=None):
         self.chiamate_con_immagini.append(immagini)
+        self.chiamate_prompt_utente.append(prompt_utente)
         return self._risposte.pop(0)
 
 
@@ -246,6 +248,84 @@ def test_elabora_post_senza_testo_con_immagine_usa_vlm(tmp_path):
     assert esito == "pubblicato"
     assert provider.chiamate_con_immagini[0] is not None
     assert provider.chiamate_con_immagini[0][0] == immagine.read_bytes()
+
+
+def test_elabora_post_con_testo_e_immagine_manda_entrambi_al_vlm(tmp_path):
+    """2026-09-01, richiesto dall'utente dopo due casi reali (San Damiano,
+    Valfenera): un post con testo breve ma un'immagine allegata con il
+    dettaglio vero (programma con le date corrette) veniva letto SOLO dal
+    testo — l'immagine non veniva mai nemmeno scaricata. Ora entrambi
+    vanno all'estrattore nella stessa chiamata (VLM con caption)."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    immagine = tmp_path / "locandina.jpg"
+    immagine.write_bytes(b"\xff\xd8\xff\xe0finto-jpeg")
+
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo="Stasera ultima serata, vedi programma allegato.",
+        image_paths=[str(immagine)],
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+
+    assert esito == "pubblicato"
+    assert provider.chiamate_con_immagini[0] is not None  # è passata l'immagine
+    assert "programma allegato" in provider.chiamate_prompt_utente[0]  # ed è passata la caption
+
+
+def test_scarica_immagine_post_popola_image_paths(tmp_path, monkeypatch):
+    """2026-09-01: post.image_url (letto dal DOM del feed) deve essere
+    scaricato e trasformato in un file locale prima dell'elaborazione."""
+    import httpx
+
+    class _RispostaFinta:
+        status_code = 200
+        content = b"\xff\xd8\xff\xe0contenuto-immagine-finta"
+
+        def raise_for_status(self):
+            pass
+
+    class _ClientFinto:
+        def __init__(self, *a, **kw):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def get(self, url):
+            return _RispostaFinta()
+
+    monkeypatch.setattr(feed_social, "_CARTELLA_IMMAGINI_FEED", tmp_path)
+    monkeypatch.setattr(httpx, "Client", _ClientFinto)
+
+    post = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocotest", post_id="abc123",
+        url="https://www.instagram.com/p/abc123/",
+        image_url="https://cdninstagram.com/finta.jpg",
+    )
+    percorso = feed_social._scarica_immagine_post(post)
+
+    assert percorso is not None
+    assert Path(percorso).exists()
+    assert Path(percorso).read_bytes() == b"\xff\xd8\xff\xe0contenuto-immagine-finta"
+
+
+def test_scarica_immagine_post_nessun_url_ritorna_none():
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="x", post_id="1", url="https://x.it/1",
+    )
+    assert feed_social._scarica_immagine_post(post) is None
 
 
 def test_elabora_post_immagine_scartata_dal_prefiltro_grafico_non_chiama_vlm(tmp_path):

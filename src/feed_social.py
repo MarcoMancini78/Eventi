@@ -31,6 +31,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
+import httpx
+
 from .adapters.base import Artefatto
 from .config import Config
 from .follow import (
@@ -60,6 +62,13 @@ class PostFeed:
     url: str
     testo: str | None = None
     image_paths: list[str] = field(default_factory=list)
+    # URL dell'immagine allegata al post, letto dal DOM (2026-09-01, trovato
+    # con casi reali — San Damiano e Valfenera: il testo del post non
+    # bastava, la locandina/il programma con le date corrette era solo
+    # nell'immagine, mai scaricata prima d'ora). Scaricato in elabora_post,
+    # non qui: _scroll_feed_e_raccogli non deve fare I/O di rete oltre allo
+    # scroll della pagina.
+    image_url: str | None = None
 
 
 def verifica_separazione_da_follow(conn: sqlite3.Connection, piattaforma: str, minuti_minimi: int = 60) -> None:
@@ -187,7 +196,10 @@ _JS_RACCOGLI_POST_FACEBOOK = """
             }
         }
         if (!scelto) continue;
-        risultati.push({href, permalink: href, testo: scelto.innerText || ''});
+        const immagini = Array.from(scelto.querySelectorAll('img'))
+            .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150);
+        const immagineUrl = immagini.length > 0 ? immagini[0].src : null;
+        risultati.push({href, permalink: href, testo: scelto.innerText || '', immagineUrl});
     }
     return risultati;
 }
@@ -223,10 +235,14 @@ _JS_RACCOGLI_POST_INSTAGRAM = """
         if (!linkAutore) continue;
         const captionEls = articolo.querySelectorAll('span._ap3a');
         const captionEl = captionEls.length > 0 ? captionEls[captionEls.length - 1] : null;
+        const immagini = Array.from(articolo.querySelectorAll('img'))
+            .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150);
+        const immagineUrl = immagini.length > 0 ? immagini[0].src : null;
         risultati.push({
             href: linkAutore.getAttribute('href'),
             permalink: linkPost.getAttribute('href'),
             testo: captionEl ? captionEl.innerText : '',
+            immagineUrl,
         });
     }
     return risultati;
@@ -378,6 +394,7 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                     post_id=post_id,
                     url=permalink if permalink.startswith("http") else f"https://www.{'facebook' if piattaforma=='facebook' else 'instagram'}.com{permalink}",
                     testo=(g.get("testo") or "").strip() or None,
+                    image_url=g.get("immagineUrl") or None,
                 )
                 ordine.append(post_id)
         if fermato:
@@ -432,6 +449,38 @@ def _leggi_feed_instagram(contesto: dict, config: Config, ultimo_visto: str | No
         pagina.close()
 
 
+_CARTELLA_IMMAGINI_FEED = Path(__file__).resolve().parent.parent / "data" / "cache" / "images"
+_TIMEOUT_DOWNLOAD_IMMAGINE_SEC = 15
+
+
+def _scarica_immagine_post(post: PostFeed) -> str | None:
+    """Scarica l'immagine allegata al post, se presente (2026-09-01,
+    trovato con casi reali — San Damiano e Valfenera: il testo del post
+    non bastava, i dettagli/il programma con le date corrette erano solo
+    nell'immagine, mai scaricata prima d'ora perché post.image_url non
+    veniva mai letto dal DOM). Stesso pattern di
+    email_imap._salva_allegati_immagine: file su disco in
+    data/cache/images/{source_id}/, l'interpretazione visiva resta
+    compito dell'estrattore (04.3). Isolamento totale (15.1 regola 4): un
+    download fallito non deve bloccare l'elaborazione del post, ritorna
+    None e si prosegue con il solo testo."""
+    if not post.image_url:
+        return None
+    try:
+        with httpx.Client(timeout=_TIMEOUT_DOWNLOAD_IMMAGINE_SEC, follow_redirects=True) as client:
+            risposta = client.get(post.image_url)
+            risposta.raise_for_status()
+    except httpx.HTTPError:
+        return None
+
+    cartella = _CARTELLA_IMMAGINI_FEED / f"{post.piattaforma}-{post.handle_autore}"
+    cartella.mkdir(parents=True, exist_ok=True)
+    nome_file = f"{post.post_id}.jpg"
+    percorso = cartella / nome_file
+    percorso.write_bytes(risposta.content)
+    return str(percorso)
+
+
 def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extractor=None) -> str:
     """Attribuzione (12.3) + pre-filtro + estrazione LLM + pubblicazione,
     riusando la stessa logica già collaudata in pipeline.py invece di
@@ -454,24 +503,35 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
             return "candidato"
         comune_riferimento = riga_fonte["comune"]
 
+    # 2026-09-01, richiesto dall'utente: post con testo breve ma un'immagine
+    # allegata con il dettaglio vero (programma, locandina) — prima
+    # l'immagine non veniva mai scaricata. Se il download fallisce (rete,
+    # URL scaduto), si prosegue con il solo testo (isolamento totale).
+    if not post.image_paths and post.image_url:
+        percorso_immagine = _scarica_immagine_post(post)
+        if percorso_immagine:
+            post.image_paths = [percorso_immagine]
+
     if not post.testo and not post.image_paths:
         return "senza_testo"
 
     phash_immagine = None
-    if post.testo:
-        scarta, _motivo = scarta_testo(post.testo, ha_immagine=bool(post.image_paths))
-        if scarta:
-            return "scartato"
-    elif post.image_paths:
-        # Pre-filtro grafico (M4, 12.10, 2026-08-28): applicato solo qui,
-        # non anche quando c'è testo — con un testo utile il post passa già
-        # dal ramo estrai_da_testo, l'immagine non viene mai inviata al VLM
-        # in quel caso (M4 riguarda solo il ramo immagine-sola). Il phash è
-        # calcolato una sola volta qui e riusato sotto per la cache, invece
-        # di riaprire il file una seconda volta.
+    if post.image_paths:
+        # Pre-filtro grafico (M4, 12.10, 2026-08-28), applicato ogni volta
+        # che c'è un'immagine — anche con testo presente (2026-09-01: prima
+        # l'immagine con testo era ignorata del tutto, ora viene sempre
+        # passata all'estrattore insieme al testo come caption, vedi sotto).
         with open(post.image_paths[0], "rb") as fh:
             _bytes_prefiltro = fh.read()
         scarta, _motivo, phash_immagine = scarta_immagine(_bytes_prefiltro)
+        if scarta:
+            post.image_paths = []
+            phash_immagine = None
+    if not post.image_paths:
+        # Nessuna immagine (mai avuta, o scartata dal prefiltro sopra):
+        # a questo punto post.testo esiste per forza (altrimenti si
+        # sarebbe già usciti con 'senza_testo' sopra).
+        scarta, _motivo = scarta_testo(post.testo, ha_immagine=False)
         if scarta:
             return "scartato"
 
@@ -512,23 +572,19 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     riga_comune = risolvi_comune(comune_riferimento, conn) if comune_riferimento else None
     fascia_fonte = riga_comune["fascia"] if riga_comune else None
 
-    if post.testo:
-        risposta = extractor.estrai_da_testo(
-            testo=post.testo,
-            artifact_id=artifact_id,
-            fonte=art.source_id,
-            categoria_fonte="social",
-            comune_fonte=comune_riferimento or "",
-            url=post.url,
-            fascia_fonte=fascia_fonte,
-        )
-    else:
-        # Post senza didascalia utile ma con locandina/immagine allegata,
-        # già passata dal pre-filtro grafico sopra (M4). Prima di spendere
+    if post.image_paths:
+        # Immagine presente (con o senza testo, 2026-09-01: prima un post
+        # con testo ignorava sempre l'immagine, perdendo dettagli come un
+        # programma/locandina allegati — caso reale trovato dall'utente).
+        # Il testo, se presente, viaggia come caption dentro lo stesso
+        # prompt (estrai_da_immagine già lo supporta). Prima di spendere
         # una chiamata VLM, controlla la cache pHash (12.10: "la stessa
         # locandina compare su 5-10 canali... è questo componente che
         # decide se il budget regge") — un match entro la soglia di Hamming
-        # riusa l'estrazione già fatta, zero chiamate aggiuntive.
+        # riusa l'estrazione già fatta, zero chiamate aggiuntive. La cache
+        # è per-immagine: non riusata se il testo differisce, ma un
+        # eventuale falso positivo qui è già accettato dal progetto per il
+        # caso senza-testo (stesso principio, non nuovo).
         da_cache = cerca_in_cache(conn, phash_immagine) if phash_immagine else None
         if da_cache:
             extraction_json_cache, _model_used = da_cache
@@ -543,10 +599,21 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
                 categoria_fonte="social",
                 comune_fonte=comune_riferimento or "",
                 url=post.url,
+                caption=post.testo,
                 fascia_fonte=fascia_fonte,
             )
             if phash_immagine:
                 salva_in_cache(conn, phash_immagine, risposta.model_dump_json(), model_used="vlm")
+    else:
+        risposta = extractor.estrai_da_testo(
+            testo=post.testo,
+            artifact_id=artifact_id,
+            fonte=art.source_id,
+            categoria_fonte="social",
+            comune_fonte=comune_riferimento or "",
+            url=post.url,
+            fascia_fonte=fascia_fonte,
+        )
 
     esiti = []
     for evento_estratto in risposta.eventi:
