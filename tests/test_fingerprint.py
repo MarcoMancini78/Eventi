@@ -11,7 +11,13 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.fingerprint import classifica_html, fingerprint_batch, url_prevedibile_comune
+from src.fingerprint import (
+    classifica_html,
+    fingerprint_batch,
+    url_prevedibile_comune,
+    verifica_jsonld_batch,
+    verifica_pa_design_system_batch,
+)
 
 
 def test_classifica_wordpress_da_wp_content():
@@ -132,3 +138,60 @@ def test_fingerprint_batch_isola_i_fallimenti_per_comune():
     assert risultati[1].piattaforma is None
     assert risultati[1].errore is not None  # isolato, non ha fermato gli altri
     assert risultati[2].piattaforma == "drupal"
+
+
+def test_verifica_jsonld_batch_rileva_blocco_ld_json():
+    """L3 (2026-09-01): promuovere una fonte a T0_jsonld richiede aver
+    verificato che la pagina reale contenga davvero un blocco
+    <script type="application/ld+json">, non fidarsi del solo pattern URL
+    (04.7: mai un valore indovinato)."""
+    fonti = [
+        {"source_id": "comune-con-jsonld", "endpoint": "https://a.example/eventi"},
+        {"source_id": "comune-senza-jsonld", "endpoint": "https://b.example/eventi"},
+        {"source_id": "comune-irraggiungibile", "endpoint": "https://c.example/eventi"},
+    ]
+    risposte = {
+        "https://a.example/eventi": _RispostaFinta(
+            200, '<script type="application/ld+json">{"@type":"Event"}</script>'
+        ),
+        "https://b.example/eventi": _RispostaFinta(200, "<html><body>Nessun evento</body></html>"),
+        "https://c.example/eventi": _RispostaFinta(500, "errore server"),
+    }
+
+    with patch("httpx.Client", lambda **kw: _ClientFinto(risposte)):
+        risultati = verifica_jsonld_batch(fonti)
+
+    assert len(risultati) == 3
+    assert risultati[0].ha_jsonld is True
+    assert risultati[0].errore is None
+    assert risultati[1].ha_jsonld is False
+    assert risultati[1].errore is None
+    assert risultati[2].ha_jsonld is False
+    assert risultati[2].errore is not None  # isolato, non ha fermato gli altri
+
+
+def test_verifica_pa_design_system_batch_rileva_markup_card_wrapper():
+    """L3 (2026-09-01): promuovere una fonte a T0_pa_design_system
+    richiede il markup .card-wrapper nella pagina reale, non solo il
+    pattern URL '.../Eventi' (04.7)."""
+    fonti = [
+        {"source_id": "comune-con-markup", "endpoint": "https://a.example/Eventi"},
+        {"source_id": "comune-senza-markup", "endpoint": "https://b.example/Eventi"},
+        {"source_id": "comune-irraggiungibile", "endpoint": "https://c.example/Eventi"},
+    ]
+    risposte = {
+        "https://a.example/Eventi": _RispostaFinta(200, '<div class="card-wrapper"><h3>x</h3></div>'),
+        "https://b.example/Eventi": _RispostaFinta(200, "<html><body>Sito diverso</body></html>"),
+        "https://c.example/Eventi": _RispostaFinta(500, "errore server"),
+    }
+
+    with patch("httpx.Client", lambda **kw: _ClientFinto(risposte)):
+        risultati = verifica_pa_design_system_batch(fonti)
+
+    assert len(risultati) == 3
+    assert risultati[0].ha_markup is True
+    assert risultati[0].errore is None
+    assert risultati[1].ha_markup is False
+    assert risultati[1].errore is None
+    assert risultati[2].ha_markup is False
+    assert risultati[2].errore is not None  # isolato, non ha fermato gli altri

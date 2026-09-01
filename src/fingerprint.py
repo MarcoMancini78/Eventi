@@ -149,3 +149,109 @@ def fingerprint_batch(comuni: list[dict], pausa_secondi: float = 0.0) -> list[Ri
         if pausa_secondi:
             time.sleep(pausa_secondi)
     return risultati
+
+
+@dataclass
+class RisultatoVerificaJsonld:
+    source_id: str
+    endpoint: str
+    ha_jsonld: bool
+    errore: str | None
+
+
+def verifica_jsonld_batch(fonti: list[dict], pausa_secondi: float = 0.0) -> list[RisultatoVerificaJsonld]:
+    """L3 (17-lavoro-residuo.md, 2026-09-01): verifica quali fonti T1_html
+    espongono già JSON-LD schema.org/Event valido, per promuoverle a
+    T0_jsonld senza indovinare — un endpoint verificato prima, non un
+    pattern URL preso per buono (04.7: 'vuoto non è un errore, mai un
+    valore indovinato', vale anche al contrario: non promuovere una
+    fonte senza averla verificata).
+
+    Trovato analizzando il perimetro reale: un sottoinsieme di comuni
+    `pa_design_system` (template ComWeb/ePublic, URL
+    /it-it/vivere-il-comune/eventi) espone JSON-LD anche quando la pagina
+    non ha eventi oggi — per questo il criterio qui non è 'ha trovato
+    almeno un evento adesso' (falserebbe negativo le fonti vuote) ma 'il
+    parser ha trovato il blocco JSON-LD e non è andato in errore', letto
+    dalla pagina reale, non dal solo pattern URL.
+
+    Isolamento totale per fonte (15.1 regola 4): un sito irraggiungibile
+    o con HTML malformato non ferma il batch."""
+    import time
+
+    from .adapters.jsonld import _SCRIPT_LD_JSON
+
+    risultati: list[RisultatoVerificaJsonld] = []
+    for fonte in fonti:
+        try:
+            with httpx.Client(timeout=_TIMEOUT_SECONDI, follow_redirects=True) as client:
+                risposta = client.get(fonte["endpoint"], headers={"User-Agent": _USER_AGENT_BROWSER})
+                risposta.raise_for_status()
+            ha_jsonld = bool(_SCRIPT_LD_JSON.search(risposta.text))
+            risultati.append(
+                RisultatoVerificaJsonld(
+                    source_id=fonte["source_id"], endpoint=fonte["endpoint"],
+                    ha_jsonld=ha_jsonld, errore=None,
+                )
+            )
+        except Exception as exc:
+            risultati.append(
+                RisultatoVerificaJsonld(
+                    source_id=fonte["source_id"], endpoint=fonte["endpoint"],
+                    ha_jsonld=False, errore=str(exc),
+                )
+            )
+        if pausa_secondi:
+            time.sleep(pausa_secondi)
+    return risultati
+
+
+@dataclass
+class RisultatoVerificaPaDesignSystem:
+    source_id: str
+    endpoint: str
+    ha_markup: bool
+    errore: str | None
+
+
+def verifica_pa_design_system_batch(
+    fonti: list[dict], pausa_secondi: float = 0.0
+) -> list[RisultatoVerificaPaDesignSystem]:
+    """L3 (17-lavoro-residuo.md, 2026-09-01): verifica quali fonti T1_html
+    con endpoint '.../Eventi' hanno il markup della variante legacy del
+    template pa_design_system (`.card-wrapper`, adapters/pa_design_system.py)
+    prima di promuoverle a T0_pa_design_system. Il criterio è la presenza
+    del markup, non 'almeno un evento oggi' (falserebbe negativo i tanti
+    comuni piccoli che non pubblicano nulla in un dato momento — verificato
+    su un campione reale: 13 pagine vuote su 15, tutte comunque con lo
+    stesso markup)."""
+    import time
+
+    import lxml.html
+
+    from .adapters.pa_design_system import _con_classe
+
+    risultati: list[RisultatoVerificaPaDesignSystem] = []
+    for fonte in fonti:
+        try:
+            with httpx.Client(timeout=_TIMEOUT_SECONDI, follow_redirects=True) as client:
+                risposta = client.get(fonte["endpoint"], headers={"User-Agent": _USER_AGENT_BROWSER})
+                risposta.raise_for_status()
+            albero = lxml.html.fromstring(risposta.text)
+            ha_markup = len(_con_classe(albero, "card-wrapper")) > 0
+            risultati.append(
+                RisultatoVerificaPaDesignSystem(
+                    source_id=fonte["source_id"], endpoint=fonte["endpoint"],
+                    ha_markup=ha_markup, errore=None,
+                )
+            )
+        except Exception as exc:
+            risultati.append(
+                RisultatoVerificaPaDesignSystem(
+                    source_id=fonte["source_id"], endpoint=fonte["endpoint"],
+                    ha_markup=False, errore=str(exc),
+                )
+            )
+        if pausa_secondi:
+            time.sleep(pausa_secondi)
+    return risultati

@@ -21,6 +21,7 @@ from .adapters.email_imap import EmailImapAdapter
 from .adapters.html import HtmlAdapter
 from .adapters.ical import ICalAdapter
 from .adapters.jsonld import JsonLdAdapter
+from .adapters.pa_design_system import PaDesignSystemAdapter
 from .adapters.rss import RssAdapter
 from .adapters.telegram import TelegramAdapter
 from .config import Config
@@ -41,6 +42,11 @@ _ADAPTER_PER_TIER = {
     # (visitlmr.it) — browser reale, costoso per richiesta, va usato con
     # parsimonia (poche fonti di questo tipo, non l'intero perimetro).
     "T0_aggregatore_playwright": AggregatoreRegionalePlaywrightAdapter(),
+    # L3 (12.5, 17-lavoro-residuo.md, 2026-09-01): variante legacy del
+    # template AGID pa_design_system, senza JSON-LD ma con una struttura
+    # HTML identica su centinaia di comuni (verificato su un campione di
+    # più province) — selettori dedicati invece del generico T1_html+LLM.
+    "T0_pa_design_system": PaDesignSystemAdapter(),
 }
 
 

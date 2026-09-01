@@ -676,6 +676,97 @@ def cmd_fingerprint_comuni(args: argparse.Namespace) -> None:
         print(f"  {piattaforma:20} {n:4}  ({percentuale:.1f}%)")
 
 
+def cmd_promuovi_jsonld(args: argparse.Namespace) -> None:
+    """L3 (17-lavoro-residuo.md, 2026-09-01): promuove a T0_jsonld le
+    fonti T1_html che espongono davvero JSON-LD schema.org/Event —
+    verificato con una richiesta reale (fingerprint.verifica_jsonld_batch),
+    non un pattern URL indovinato. Riusabile: nuove fonti comunali con lo
+    stesso template (trovato: ComWeb/ePublic, URL
+    /it-it/vivere-il-comune/eventi) possono essere ripromosse allo stesso
+    modo in futuro, senza duplicare questo giro a mano."""
+    from src.fingerprint import verifica_jsonld_batch
+
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    query = "SELECT source_id, endpoint FROM sources WHERE tier = 'T1_html' AND endpoint IS NOT NULL"
+    if args.filtro_url:
+        query += " AND endpoint LIKE ?"
+        fonti = conn.execute(query, (f"%{args.filtro_url}%",)).fetchall()
+    else:
+        fonti = conn.execute(query).fetchall()
+
+    fonti = [dict(r) for r in fonti]
+    if args.limite:
+        fonti = fonti[: args.limite]
+    print(f"Verifica JSON-LD su {len(fonti)} fonti T1_html...")
+
+    risultati = verifica_jsonld_batch(fonti, pausa_secondi=args.pausa)
+
+    promosse = 0
+    errori = 0
+    for r in risultati:
+        if r.errore:
+            errori += 1
+            continue
+        if r.ha_jsonld:
+            conn.execute("UPDATE sources SET tier = 'T0_jsonld' WHERE source_id = ?", (r.source_id,))
+            promosse += 1
+    conn.commit()
+
+    print(f"Promosse a T0_jsonld: {promosse}/{len(fonti)} (errori/irraggiungibili: {errori}).")
+
+
+def cmd_promuovi_pa_design_system(args: argparse.Namespace) -> None:
+    """L3 (17-lavoro-residuo.md, 2026-09-01): promuove a T0_pa_design_system
+    le fonti T1_html con endpoint '.../Eventi' che espongono davvero il
+    markup `.card-wrapper` del template legacy AGID — verificato con una
+    richiesta reale, non un pattern URL preso per buono. Distinto da
+    promuovi-jsonld: qui non c'è JSON-LD, il selettore è CSS/XPath dedicato
+    (adapters/pa_design_system.py)."""
+    from src.fingerprint import verifica_pa_design_system_batch
+
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    fonti = conn.execute(
+        "SELECT source_id, endpoint FROM sources WHERE tier = 'T1_html' AND endpoint LIKE '%/Eventi'"
+    ).fetchall()
+    fonti = [dict(r) for r in fonti]
+    if args.limite:
+        fonti = fonti[: args.limite]
+    print(f"Verifica markup pa_design_system su {len(fonti)} fonti T1_html...")
+
+    # Una fonte alla volta con commit incrementale (2026-09-01, batch di
+    # 330 fonti reali osservato bloccarsi per un tempo anomalo — probabile
+    # sito con connessione che ignora il timeout httpx dichiarato):
+    # progresso visibile riga per riga e nessun lavoro perso se va
+    # interrotto a metà (15.1 regola 4, isolamento anche del progresso).
+    promosse = 0
+    errori = 0
+    for i, fonte in enumerate(fonti, start=1):
+        risultato = verifica_pa_design_system_batch([fonte], pausa_secondi=0)[0]
+        if risultato.errore:
+            errori += 1
+            esito = f"errore: {risultato.errore[:60]}"
+        elif risultato.ha_markup:
+            conn.execute(
+                "UPDATE sources SET tier = 'T0_pa_design_system' WHERE source_id = ?", (fonte["source_id"],)
+            )
+            conn.commit()
+            promosse += 1
+            esito = "promossa"
+        else:
+            esito = "markup assente"
+        print(f"[{i}/{len(fonti)}] {fonte['source_id']:35} {esito}")
+        if args.pausa:
+            import time
+
+            time.sleep(args.pausa)
+
+    print(f"Promosse a T0_pa_design_system: {promosse}/{len(fonti)} (errori/irraggiungibili: {errori}).")
+
+
 def cmd_follow(args: argparse.Namespace) -> None:
     from src import follow
 
@@ -926,6 +1017,25 @@ def build_parser() -> argparse.ArgumentParser:
     p_fp.add_argument("--limite", type=int, default=0, help="Limita il numero di comuni (0 = tutti, utile per un primo test)")
     p_fp.add_argument("--pausa", type=float, default=0.2, help="Pausa in secondi tra una richiesta e l'altra")
     p_fp.set_defaults(func=cmd_fingerprint_comuni)
+
+    p_pj = sub.add_parser(
+        "promuovi-jsonld",
+        help="L3: verifica e promuove a T0_jsonld le fonti T1_html che espongono già schema.org/Event",
+    )
+    p_pj.add_argument(
+        "--filtro-url", default="", help="Solo fonti con questo testo nell'endpoint (es. 'vivere-il-comune/eventi')"
+    )
+    p_pj.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti verificate (0 = tutte)")
+    p_pj.add_argument("--pausa", type=float, default=0.2, help="Pausa in secondi tra una richiesta e l'altra")
+    p_pj.set_defaults(func=cmd_promuovi_jsonld)
+
+    p_ppds = sub.add_parser(
+        "promuovi-pa-design-system",
+        help="L3: verifica e promuove a T0_pa_design_system le fonti /Eventi con markup .card-wrapper",
+    )
+    p_ppds.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti verificate (0 = tutte)")
+    p_ppds.add_argument("--pausa", type=float, default=0.2, help="Pausa in secondi tra una richiesta e l'altra")
+    p_ppds.set_defaults(func=cmd_promuovi_pa_design_system)
 
     p_login = sub.add_parser("login", help="Apre il browser per il login manuale una tantum (M9, 14.3)")
     p_login.add_argument("--platform", required=True, choices=["facebook", "instagram"])
