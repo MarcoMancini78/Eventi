@@ -28,8 +28,23 @@ def _estrai_data(valore) -> str | None:
 
 
 def _estrai_luogo(location) -> str | None:
+    """Bug reale trovato (2026-09-01, template ePublic/ComWeb — variante di
+    pa_design_system usata da diversi comuni, es. comune.parodiligure.al.it):
+    'address' è talvolta una LISTA di un solo elemento invece di un dict
+    (schema.org lo permette, la maggior parte dei siti non lo fa). Un
+    location.get('address', {}) presumeva sempre un dict e sollevava
+    AttributeError, facendo fallire l'intera fonte silenziosamente in
+    produzione (isolata da esegui_fonte, ma zero eventi estratti)."""
     if isinstance(location, dict):
-        return location.get("name") or (location.get("address", {}) or {}).get("addressLocality")
+        nome = location.get("name")
+        if nome:
+            return nome
+        indirizzo = location.get("address")
+        if isinstance(indirizzo, list):
+            indirizzo = indirizzo[0] if indirizzo else None
+        if isinstance(indirizzo, dict):
+            return indirizzo.get("addressLocality")
+        return None
     if isinstance(location, str):
         return location
     return None

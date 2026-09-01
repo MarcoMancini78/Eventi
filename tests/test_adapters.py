@@ -50,3 +50,20 @@ def test_parse_jsonld_estrae_campi_strutturati_senza_llm():
     assert art.data_inizio == "2026-10-05"
     assert art.luogo_testuale == "Teatro Comunale"
     assert art.url == "https://teatro-prova.it/eventi/rassegna-autunnale"
+
+
+def test_parse_jsonld_non_solleva_se_address_e_una_lista():
+    """Bug reale trovato (2026-09-01, L3 — template ComWeb/ePublic, usato
+    da ~68 comuni del perimetro, es. comune.parodiligure.al.it): 'address'
+    è talvolta una LISTA di un solo elemento invece di un dict (valido per
+    schema.org, ma _estrai_luogo presumeva sempre un dict) — sollevava
+    AttributeError, facendo fallire l'intera fonte senza estrarre nulla."""
+    html = (FIXTURES / "esempio_jsonld_address_lista.html").read_text(encoding="utf-8")
+    artefatti = parse_jsonld(html, source_id="comune-prova", fetch_url="https://comune-prova.it/eventi")
+
+    assert len(artefatti) == 1
+    art = artefatti[0]
+    assert art.titolo == "Mostra di pittura - Espone un artista"
+    assert art.data_inizio == "2026-09-05"
+    assert art.data_fine == "2026-09-20"
+    assert art.luogo_testuale is None  # nessun addressLocality nel campione, ma nessun crash
