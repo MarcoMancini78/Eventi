@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T04:37:00",
+  "generato_il": "2026-09-01T05:37:40",
   "eventi": [
     {
       "id": "215d35247178",
@@ -740,7 +740,7 @@
     {
       "id": "a997a6265d91",
       "titolo": "Ultimo round di mangiare e ballare",
-      "descrizione": "Stasera ultimo round di mangiare e ballare!",
+      "descrizione": "Stasera ultimo round di mangiare e ballare! Vi aspettiamo dalle 19!",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -1140,7 +1140,7 @@
     {
       "id": "4ab59ea6b5c7",
       "titolo": "Festa Patronale - Sagra della porchetta",
-      "descrizione": "",
+      "descrizione": "Dal 4 al 6 Settembre 2026",
       "comune": "Cozzo",
       "lat": 45.192659,
       "lon": 8.61104,
@@ -1300,7 +1300,7 @@
     {
       "id": "ae875a6ec373",
       "titolo": "Mostra di pittura - Espone Giovanni Origone",
-      "descrizione": "Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre.",
+      "descrizione": "Mostra di pittura di Giovanni Origone presso l'Abbazia di San Remigio. Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5, 6, 13, 14, 19 e 20 settembre. Incontro con il pittore sabato 5 settembre.",
       "comune": "Parodi Ligure",
       "lat": 44.669748,
       "lon": 8.758652,
@@ -1524,7 +1524,7 @@
     {
       "id": "5cc48f69dcd8",
       "titolo": "MITO SettembreMusica",
-      "descrizione": "MITO SettembreMusica celebra vent’anni: il tema 2026 è “Harmonia”. A Torino dal dal 7 al 20 settembre.",
+      "descrizione": "MITO SettembreMusica celebra vent’anni: il tema 2026 è “Harmonia”. A Torino dal 7 al 20 settembre.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -1828,7 +1828,7 @@
     {
       "id": "64fa7fa5448e",
       "titolo": "Proiezione filmati storici sulla Croce del Musinè",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce 2026",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -1892,7 +1892,7 @@
     {
       "id": "eb3ac93f7867",
       "titolo": "Sindon - Immersi nella trama della passione",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce 2026",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -1971,7 +1971,7 @@
     },
     {
       "id": "d41cae55aab6",
-      "titolo": "Apertura StArt Gallery - 12 e 13 settembre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -1987,7 +1987,7 @@
     },
     {
       "id": "2be17849904b",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi - 12 e 13 settembre 2026",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi",
       "descrizione": "quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2019,8 +2019,8 @@
     },
     {
       "id": "0ccb12a2ac02",
-      "titolo": "Giornata della prevenzione a Montaldo Torinese",
-      "descrizione": "Una giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
+      "titolo": "Giornata della Prevenzione",
+      "descrizione": "Sabato 12 settembre dalle 9 alle 17 in Via Trinità 17 (davanti al Palazzo Comunale) si terrà la Giornata della Prevenzione, una giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -2131,7 +2131,7 @@
     },
     {
       "id": "43867c3d4c1e",
-      "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 13 settembre 2026",
+      "titolo": "MAChieri - Mostra Archeologica Chieri",
       "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2148,7 +2148,7 @@
     {
       "id": "4d7ab6104215",
       "titolo": "Alpignano: Associazioni in festa!",
-      "descrizione": "La Festa delle Associazioni si terrà nella splendida cornice del Parco della Pace in via Collegno. Evento organizzato dal Comune di Alpignano.",
+      "descrizione": "La Festa delle Associazioni si terrà domenica 13 settembre, dalle ore 10 alle 17, nella splendida cornice del Parco della Pace in via Collegno. L'evento, organizzato dal Comune di Alpignano,...",
       "comune": "Alpignano",
       "lat": 45.095724,
       "lon": 7.525403,
@@ -2340,7 +2340,7 @@
     {
       "id": "ff468777ab2c",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino inclusi) a 25 € (menù bambini 7 €), dolci e gelati. Dalle 21:00 serata danzante con Aurelio Seimandi e la sua Orchestra.",
+      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino inclusi) a 25 € (menù bambini 7 €), dolci e gelati. Dalle 21:00 musica e danze con Aurelio Seimandi e la sua Orchestra.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2371,7 +2371,7 @@
     },
     {
       "id": "6b80e27e46dc",
-      "titolo": "Apertura StArt Gallery - 19 e 20 settembre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2387,7 +2387,7 @@
     },
     {
       "id": "28167d1b2796",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi - 19 e 20 settembre 2026",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi",
       "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2419,8 +2419,8 @@
     },
     {
       "id": "abc1e642ffaa",
-      "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo').",
+      "titolo": "Aspettando Montmartre - Premiazione concorso Mezz'ora da ridere",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (realizzato in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -2500,7 +2500,7 @@
     {
       "id": "fafd6745c314",
       "titolo": "Sagra del Tomino 2026",
-      "descrizione": "Domenica 20 settembre 2026 nel centro storico di Rivalta di Torino - Avviso rivolto agli operatori commerciali e agli hobbisti",
+      "descrizione": "Nel centro storico di Rivalta di Torino - Avviso rivolto agli operatori commerciali e agli hobbisti",
       "comune": "Rivalta di Torino",
       "lat": 45.034045,
       "lon": 7.518419,
@@ -2532,7 +2532,7 @@
     {
       "id": "d7fc0b3cf7a7",
       "titolo": "Festa della Nascita",
-      "descrizione": "Torna nei Giardini della Reggia di Venaria la gioiosa festa di “benvenuto alla vita” organizzata per celebrare ed accogliere l’arrivo dei nuovi nati.",
+      "descrizione": "Torna nei Giardini della Reggia di Venaria la gioiosa festa di “benvenuto alla vita” organizzata per celebrare ed accogliere l’arrivo dei nuovi...",
       "comune": "Venaria Reale",
       "lat": 45.134811,
       "lon": 7.626866,
@@ -2723,7 +2723,7 @@
     },
     {
       "id": "6e55addfa80b",
-      "titolo": "Apertura StArt Gallery - 26 e 27 settembre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2739,7 +2739,7 @@
     },
     {
       "id": "182241c091a6",
-      "titolo": "Territori d'Infanzia - I servizi 0-6 di Bi-To NORD EST. III° edizione",
+      "titolo": "Territori d'Infanzia - I servizi 0-6 di Bi-To NORD EST. III° edizione.",
       "descrizione": "Forti del grande successo delle edizioni precedenti e della rete intersettoriale che ne è nata, siamo lieti di annunciare la terza edizione di...",
       "comune": "Brandizzo",
       "lat": 45.176606,
@@ -2756,7 +2756,7 @@
     {
       "id": "5e9eebe33fa9",
       "titolo": "SPORT a Reano",
-      "descrizione": "Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive. Ore 12:30 / 14:00 Pranzo condiviso. Ore 14:00: Ripresa pratiche sportive. Ore 18:00: Musica DJ set ed...",
+      "descrizione": "Domenica 27 Settembre: Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive; Ore 12:30 / 14:00 Pranzo condiviso; Ore 14:00: Ripresa pratiche sportive; Ore 18:00: Musica DJ set ed...",
       "comune": "Reano",
       "lat": 45.052056,
       "lon": 7.430403,
@@ -2836,7 +2836,7 @@
     {
       "id": "8f874db7ce56",
       "titolo": "24^ Sagra della Zucca",
-      "descrizione": "Nel Comune di Sciolze avrà luogo la 24^ Sagra della Zucca, con fiera mercato presso il Polo Educativo a partire dalle ore 9.30.",
+      "descrizione": "Domenica 4 ottobre 2026 nel Comune di Sciolze avrà luogo la 24^ Sagra della Zucca, con fiera mercato presso il Polo Educativo a partire dalle ore 9.30.",
       "comune": "Sciolze",
       "lat": 45.09325,
       "lon": 7.880426,
@@ -2899,7 +2899,7 @@
     },
     {
       "id": "db041f438f2a",
-      "titolo": "Apertura StArt Gallery - 9 e 10 ottobre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2947,7 +2947,7 @@
     },
     {
       "id": "d20148155434",
-      "titolo": "Apertura StArt Gallery - 11 ottobre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -2995,7 +2995,7 @@
     },
     {
       "id": "b7bf9e46071b",
-      "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 18 ottobre 2026",
+      "titolo": "MAChieri - Mostra Archeologica Chieri",
       "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -3044,7 +3044,7 @@
     {
       "id": "f6066594ee1e",
       "titolo": "Giornata formativa con Tiziano Dones",
-      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB con Tiziano Dones (maestro e istruttore nazionale AM bike).",
+      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB con il maestro e istruttore nazionale AM bike Tiziano Dones.",
       "comune": "Cartignano",
       "lat": 44.477654,
       "lon": 7.287771,
@@ -3155,7 +3155,7 @@
     },
     {
       "id": "d054bab00af2",
-      "titolo": "Apertura StArt Gallery - 7 novembre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -3363,7 +3363,7 @@
     },
     {
       "id": "67c23b395ab4",
-      "titolo": "Apertura StArt Gallery - 12 dicembre 2026",
+      "titolo": "Apertura StArt Gallery",
       "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -3379,8 +3379,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Mezz'ora da ridere - Rappresentazione dei testi",
-      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori del concorso: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "titolo": "Rappresentazione testi concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi vincitori del concorso ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo') a cura del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3507,7 +3507,7 @@
     },
     {
       "id": "62fb056ea89c",
-      "titolo": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo e incontro culturale \"Dinastie all'ombra",
+      "titolo": "Presentazione del progetto di restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
       "descrizione": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo di Monesiglio e incontro culturale \"Dinastie all'ombra del Castello\".",
       "comune": "Monesiglio",
       "lat": 44.465037,
