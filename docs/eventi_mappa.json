@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T07:17:23",
+  "generato_il": "2026-09-01T07:39:20",
   "eventi": [
     {
       "id": "215d35247178",
@@ -691,8 +691,8 @@
     },
     {
       "id": "be671c1a56bd",
-      "titolo": "Inaugurazione della scultura \"Germoglio\" di Alessandra Bonoli",
-      "descrizione": "\"Germoglio\", la scultura di Alessandra Bonoli installata nella nuova Piazza Piacentino di Rocchetta Tanaro (AT) verrà inaugurata oggi alle 19.30.",
+      "titolo": "Inaugurazione di \"Germoglio\", scultura di Alessandra Bonoli",
+      "descrizione": "Inaugurazione della scultura \"Germoglio\" di Alessandra Bonoli installata nella nuova Piazza Piacentino a Rocchetta Tanaro.",
       "comune": "Rocchetta Tanaro",
       "lat": 44.858671,
       "lon": 8.345706,
@@ -701,14 +701,14 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/rocchettatanaro?__cft__[0]=AZY7xanRax-oNrW-ewzM_0PboKVHegGTPmjMnaMDVIJkKGAWcPm6-nONF-waxAKS0ThjiS0YAmJXiDSihIfvlR0Pw7u2zgtExAUvgnUX6zqBHFvQUyp7Wi8bojpDuefCE7tPcw91CWKFvGUycGbUgZ7uYlYsu_QRgr7E5GEBXxQDX0rl5WJFu3dOE-LuyyGAyyaAGsvYSOAmqUEnX-ntcaM2NwgjZRjS3Ul4HkAUKiFmVQ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/rocchettatanaro?__cft__[0]=AZjrHKwnIQoo8g1orahdky2s2ESR8VkB3qG-fQ7OiAtwy5uyCKb2a5xw-fEJrymQt5BdedqFYPyGDAynHfe_MDSat8u7v5X56vXCNN3A8k5HEkxn4HYNwX7wc-T5iQV95xZyjkm4_3ky83l3HXvFnSPAYSEeLSNMLi-x0gXIolrWvO8i63AOHTJxzJAYhmudwEAKdDRFP4P0U2PCNN9aeUZz&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-rocchettatanaro",
       "quarantena": false
     },
     {
       "id": "5b5ccc9e6c80",
       "titolo": "Settembre 2026 con San Remigio",
-      "descrizione": "Calendario degli eventi che animano la città nel mese di settembre: appuntamenti culturali, commemorativi, sportivi e sociali pensati per coinvolgere la cittadinanza e valorizzare le tradizioni e la vita comunitaria.",
+      "descrizione": "Programma di appuntamenti culturali, commemorativi, sportivi e sociali per il mese di settembre a Carignano.",
       "comune": "Carignano",
       "lat": 44.906943,
       "lon": 7.673225,
@@ -716,15 +716,15 @@
       "minuti": 72.0,
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-30",
-      "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunecarignano?__cft__[0]=AZbExNi3TIunFH9P2tdYnnnJtBw6oCNyBjKOXMurtYlBe5fB1Y_yE2HSPvUcSf75Cu3YWt0mZ3haQG3gKz20OMtV0AdTBUxdLChurjhQj_aPIkWKdGglIj9uT8fSaOAVSWhmaPALegtkdP977ZnCmkz42QEBSv2N80A8RZ1l3h_AvLslYDtFg6GdKB0hlBzMjGHzpZHACS_Y0-AtcVgGliQ7&__tn__=-UC%2CP-R",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/comunecarignano?__cft__[0]=AZhbO_SjahKbu5dW7tB2-rPBjjbLWI8BQD-FD97DyU2_oHccNawp3NkjS3QjPf2PkrQwDdjHEMSE1n7TM8y8PuYhxREqhGy2UY-Bo7JrQQYbNOR_EorCvdNvY9Lzk1YagQN16YIpShcYDv8NlG6V9cYeLE452HNH-_kigHBwQV5SfhhEP3YsTZUoM7jz_xkcyyhgQNd6UvJy&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunecarignano",
       "quarantena": false
     },
     {
       "id": "c1a0523f122a",
       "titolo": "Settimana del Palio 2026 - I Cenini",
-      "descrizione": "Inizia la settimana del Palio con i Cenini e gli appuntamenti del Gruppo rosso blu di San Damiano d'Asti.",
+      "descrizione": "Inizio della settimana del Palio 2026 con i Cenini e gli appuntamenti del Gruppo rosso blu.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -732,8 +732,8 @@
       "minuti": 34.0,
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
-      "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZbGtKEFHEs4LwYkrZwg8VaZS_mfnRh3TVgF8Iy6HxWM4Ks2bvIaaVTqqSlJVh7K62mEagOchJeuaSdMXMIPPAnkGjhq47sUVbFOeSLB7bvYEDlz3JAVn59d1Zd4IWqJvEfKZ5r35N-nJqP6VsY5NxhABayb8aWsKr0NiGk9dgFFiTfqM2ZjURC4sso9pWsaXyLc_JsWUJd_bGqj6ybf4xpCMpiXsBUYW4XAy5p-d0NJTA&__tn__=-UC%2CP-R",
+      "tipologia": "gastronomia",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZjmwud0AbI1bTScdGQHVA_ulcEWuWNtowdag0mYxQnP1MKEM44c_97jy0w8tjCLTS8E0MnZzn02gkY-dXpxmrGXLt9PHmsbz4MPPlnB5_wg1I1kX28_B1O_eOwxap47Zemo5HxOKX_ovOxEJ04R5gGIhminknluhAUd82CdSfQVaWJZAKd5_9uPE3IEeRdgu-uUMhRNj6V0ZHZkJJJ07La-&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunesandamianodasti",
       "quarantena": false
     },
@@ -851,8 +851,8 @@
     },
     {
       "id": "84180a62a24b",
-      "titolo": "Tutti a Teatro!",
-      "descrizione": "Stasera tutti a Teatro!",
+      "titolo": "Stasera tutti a Teatro!",
+      "descrizione": "",
       "comune": "Mongardino",
       "lat": 44.849233,
       "lon": 8.218475,
@@ -861,7 +861,7 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "teatro",
-      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZbSGkXXyWKklS3lhVWlSH0Y1-dM4f4ITf-V9myBzLZ-E4hjjTyNY14z2Lhbqo9cZHEKdM69OzoSfY0RJLDaCrp5PlFduVrNDSuoVN0COAlK_-aGb8qq6T1o2EeiRYV9hTICIG4pfcbtt2cOGOjK7DFeSjYElwPR7H5EI0jjK-GCrjWOKUj4IQIB6XHThpCqKzoYNOly8XhhI5mdomoeTNMC&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZj7NegY3V8a0xkipcpOF4OsJJv0Gy5lHmrcsQA4CrnQwHbiij4sQCvKdM-3UV-5XWyv_Ag2L2GW48iosHH1TD4j17w22pFIFS8m7MbD3K9hgIyay1zZSd0l7apK5E0oS3RRSt2pjHp0oqy3QaLABOn3su2IP4dVX_WIq7r1_cn1_2LXw_oh3bdxKcGxLuZUHA&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-prolocomongardino1976",
       "quarantena": true
     },
@@ -1092,7 +1092,7 @@
     {
       "id": "c92b0d1fff49",
       "titolo": "Snorkeling a Spotorno",
-      "descrizione": "Attività di snorkeling a cura del Centro Educazione Ambientale Riviera del Beigua, rimandata a giovedì 3 settembre.",
+      "descrizione": "Attività di snorkeling rimandata per avverse condizioni marine a giovedì 3 settembre. Per info e prenotazioni: cell. 366 6221213 - 327 8818713, mail info@cearivierabeigua.it",
       "comune": "Spotorno",
       "lat": 44.227257,
       "lon": 8.419177,
@@ -1101,7 +1101,7 @@
       "data_inizio": "2026-09-03",
       "data_fine": "2026-09-03",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/comunedispotorno?__cft__[0]=AZZEVX4YDFA_Cils-rJ3hVXXOW8kPT3VKycKz-qQqze99AHGm8kmW4Aq2cyO4G1_WJ3x-V4BqOUWTuYHEYooA8Kl_RlM1tyyFC8MbgN41WvV6BnGjJ3poZA2MxvKYUeRjY4RW69xiWVGoQ8knxFeL3X7UdUSIDmGuceBAARgr7KqKjxDQi0Ry8zlXljb1EQ5hJOQrCpDn6ZJGZw0oAE7VsnSYsbfKPWIdmOgi60bqPwfPg&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedispotorno?__cft__[0]=AZiYlagyq74udEjSZ6DjUjYdET4f-DwOmQ4qEfQLFYp4PG-P0MJOgscldqjaues8ig6oytzT7aaDoJGsG0T84h8FVnzCipitsB2zuPLu9aewzgIKojMTICdbBPZ9feg2unfAYo8FvF1Lv9wTpLAJSsUngm0zoZRVKsbn_lSTkxaM0p1zIOqRB57T2otlkFsLBlnKQoNa3g9kKuRDEiOmeMZn&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunedispotorno",
       "quarantena": false
     },
@@ -1140,7 +1140,7 @@
     {
       "id": "672600276918",
       "titolo": "\"The Beauty of Chaos\": le opere di Giuseppe Adornetto e Diego Scursatone in mostra alla Casa del Conte Verde",
-      "descrizione": "mostra di pittura dal 4 al 27 settembre 2026 presso il Museo Civico Casa del Conte Verde",
+      "descrizione": "Mostra di pittura dal 4 al 27 settembre 2026 presso il Museo Civico Casa del Conte Verde",
       "comune": "Rivoli",
       "lat": 45.069715,
       "lon": 7.517676,
@@ -1171,7 +1171,7 @@
     },
     {
       "id": "c32f374c135a",
-      "titolo": "Riscoprire il profumo della meraviglia",
+      "titolo": "Riscoprire Il Profumo della Meraviglia",
       "descrizione": "Sinestesìe: Varazze Cult Fest 2026",
       "comune": "Varazze",
       "lat": 44.3593,
@@ -1316,7 +1316,7 @@
     {
       "id": "ae875a6ec373",
       "titolo": "Mostra di pittura - Espone Giovanni Origone",
-      "descrizione": "Mostra di pittura di Giovanni Origone presso l'Abbazia di San Remigio. Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre.",
+      "descrizione": "Dal 5 al 20 settembre 2026. Abbazia di San Remigio. Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre.",
       "comune": "Parodi Ligure",
       "lat": 44.669748,
       "lon": 8.758652,
@@ -1331,7 +1331,7 @@
     },
     {
       "id": "76fb449d605d",
-      "titolo": "Respirare la natura e danzare la preistoria",
+      "titolo": "Respirare La Natura e Danzare La Preistoria",
       "descrizione": "Sinestesìe: Varazze Cult Fest 2026",
       "comune": "Varazze",
       "lat": 44.3593,
@@ -1363,8 +1363,8 @@
     },
     {
       "id": "540608df5bdf",
-      "titolo": "Sagra del Bollito",
-      "descrizione": "Weekend gastronomico con bollito accompagnato dal classico bagnet e altre salse, oltre ad alternative per tutti i gusti. Musica e ballo al coperto con Wow Band (prima serata) e Massimo Della Bianca (seconda serata). Casse aperte dalle 18:30, cucina dalle 19:15.",
+      "titolo": "Sagra del bollito",
+      "descrizione": "Due serate dedicate al bollito con bagnet e altre salse, oltre ad alternative gastronomiche e musica dal vivo: prima sera Wow Band, seconda serata Massimo Della Bianca.",
       "comune": "Mioglia",
       "lat": 44.49046,
       "lon": 8.412473,
@@ -1373,7 +1373,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/prolocodimioglia?__cft__[0]=AZYy1Mn24jI9N7ksmJJbuMaDuAPm2dUGpaxfJ_UNcvUZ23FKxbZi8Z6Na0NETnWx1QTJWy6pI9m-JYpigb_afO0by63lqHDts3yxlk2vv9e6iiPA7qQmCRTIc0L7z5Aej8v8ru_0AjrtByODtJA1WN_6Uj-2_Niyv5etGy25ruoWBrLgDBttoX1T74UMPODKyzrlmgW1Oai25Y011-cK2wc4&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocodimioglia?__cft__[0]=AZhT7wVGh4HF3xv47AQWgMXeigsCEVW_dSQMSw5DYpVmVT10-cSP9zI7_N6x9GUC3usz8L3dAGytte2pq82o1TFUp_JwsPU5UJd5jQqOWSKCZ-8wsNgrA2QuhCT_eSJ15Nbxdhvy5PQ9CojB7INK1HwXuQ70q7hNNldvm4RfcxdaJPHi15TEoL6XE11wyoLH&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunedimioglia, feed-facebook-prolocodimioglia",
       "quarantena": false
     },
@@ -1652,7 +1652,7 @@
     {
       "id": "1ef45efc0241",
       "titolo": "43^ Sagra dei Fassini e dei Tourcett",
-      "descrizione": "Giornata dedicata ai sapori della tradizione con Tourcett, torta di riso DE.CO., zimin, fagioli con salsiccia, fassini, tire e dolci tradizionali in occasione di “Cose d’altri tempi”.",
+      "descrizione": "Degustazione dei tradizionali Tourcett e torta di riso (prodotti DE.CO. di Mallare), oltre a zimin, fagioli con salsiccia, fassini, tire e dolci della tradizione, in occasione della manifestazione 'Cose d'altri tempi'.",
       "comune": "Mallare",
       "lat": 44.290982,
       "lon": 8.296649,
@@ -1661,7 +1661,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/prolocomallare?__cft__[0]=AZbHv2AygDSV-30HWyS_1bY3j-7UOS8iA1piVXpBvRdClSqOrBuq8Re8OQNl1-zK0f_fWoe14SsJZg1tZioC2QqqSvdT6aPg7BBm1jONMJ-Bqh3jRmW0VImYO9nqNzEw99-3ocZMLx-CQAUNcDNJgG5SYAiHF5c5m1mWwOjyDHVyUthPGvWJOai0XJ0YD1-oOXPQXcKDAd46AnWp_NmI-zEb&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocomallare?__cft__[0]=AZiuvOKMKT8unJnS-YQ4MdnRyf5oIAgnGwmVZtv6ucrXFmdDo7szFiUyhv3URt_vW-RSwLgHM5HJFZL7wO3NvcCUYKNZPTUTO8RmaAc0ikhy498tQHdIGX5baLlmpBO8Y3F32UgVmBe3gxvX-8aV4xZ4h0HvgxtkOsCwG-dfuLZeZ2f3s1X3f6wPXv4KUd9J&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-prolocomallare",
       "quarantena": false
     },
@@ -1693,7 +1693,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZZN6N4PJPwiAPaqpsIS8Fi5GTczRp_JMPcdK1dfnKErBknZ8E3ivvMK-RSy9HDL01TJj8i6Jp20W7PRyK8exbzqLMie9pnY7WzGBiIRCHUMSbAzTP0rWZViXQNjnO6PA6uSLboeeV45hlSujbvJ3GiZ66qn-zeI4SrpHwiTT8jh8Knp-jEbtC1jGIcOFIwd2lGwDHIbh-fopUt_cNUJFkk96P-AuZUOqnp8Ulsybvq0vw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZjOcx7NUUGG6ITTNGEKA8T7h1MvyK5W30Keles1Wv9OsvJWBG0inwhPfYiA7A7phPhQTYJvg6m1p1NW5Hhmjvh__XerSWWunetTXT5OiDtZRc9ISI6dQsfVc9AVB0IINLj2Mg3toPCnpKonMS805gLDf4ii-T7W_7rVhXxHwNy0-BpRqhjnymdAlEvW8d8fbV1ZHYFF9cn2mydiwABAhsKD9g&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunedimioglia",
       "quarantena": false
     },
@@ -1731,7 +1731,7 @@
     },
     {
       "id": "644bedce8bcf",
-      "titolo": "Presentazione piano utilizzo del demanio",
+      "titolo": "Presentazione Piano Utilizzo del Demanio",
       "descrizione": "Strategie e prospettive per il futuro delle nostre spiagge",
       "comune": "Varazze",
       "lat": 44.3593,
@@ -1860,7 +1860,7 @@
     {
       "id": "ddea487a6bcf",
       "titolo": "Presentazione del volume “Sacri, Santi, Inviolabili. Parole dette e non dette dai Caminanti di Sicilia”",
-      "descrizione": "Presentazione del volume “Sacri, Santi, Inviolabili. Parole dette e non dette dai Caminanti di Sicilia”, edito da Tau, nell'ambito del programma del Festival dell’Accoglienza ’26.",
+      "descrizione": "Presentazione del volume edito da Tau, nell'ambito del programma del Festival dell’Accoglienza ’26.",
       "comune": "Carignano",
       "lat": 44.906943,
       "lon": 7.673225,
@@ -1869,7 +1869,7 @@
       "data_inizio": "2026-09-10",
       "data_fine": "2026-09-10",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunecarignano?__cft__[0]=AZYGiHKJP47pGIArHvKTIvj2TGYTJdJxROOExixPjfKAev5S-jbxucVP9nSZ4HiDSJqJy4pU9JdT-sFpGw6RJgB0u470JIyz5JsSWMEc2mecQIO63sZxh72_y4zjNcE41h02LY4UBIA7CKTucb_ESpiLv2Do0nM1_70VRKJ_M8yH9qvjCdNohKgyfRE8bVzMw22O9CSitvFL1iakk-aIQrgu&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecarignano?__cft__[0]=AZigG3eiJhcXoJ6q3ibaYhZ1wAxYJnlv6eilxI5aVJxoSYMnr2TV8W--KiHxCVYtP99GSnJfpZdvCvvzp9hnJdd5iFaO_Z6c6edMYcjNIVodDgM1opfsbNNWWBxlSg2JxgKgUprUiAeMarsw6YapoxXVmyKr9XKsmSInoagCysKPOFueOYirleuwcqVGGicpkPtKQcPkoxV-&__tn__=-UC%2CP-R",
       "fonti": "feed-facebook-comunecarignano",
       "quarantena": false
     },
@@ -2099,8 +2099,8 @@
     },
     {
       "id": "272614985a67",
-      "titolo": "Santa Messa per il 125° anniversario Festa della Croce",
-      "descrizione": "Iniziativa nell'ambito del 125° anniversario della Festa della Croce 2026.",
+      "titolo": "Santa.",
+      "descrizione": "Iniziativa nell'ambito del 125° anniversario della Festa della Croce 2026 (testo parzialmente troncato).",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -2244,7 +2244,7 @@
     {
       "id": "4d7ab6104215",
       "titolo": "Alpignano: Associazioni in festa!",
-      "descrizione": "La Festa delle Associazioni si terrà nella splendida cornice del Parco della Pace in via Collegno.",
+      "descrizione": "La Festa delle Associazioni si terrà nella splendida cornice del Parco della Pace in via Collegno. L'evento è organizzato dal Comune di Alpignano.",
       "comune": "Alpignano",
       "lat": 45.095724,
       "lon": 7.525403,
@@ -2579,8 +2579,8 @@
     },
     {
       "id": "abc1e642ffaa",
-      "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da Ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere in ricordo di Ester Delforno.",
+      "titolo": "Aspettando Montmartre - Premiazione concorso Mezz'ora da ridere",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere in ricordo di Ester Delforno: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -2612,7 +2612,7 @@
     {
       "id": "0b3d1b2f2052",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "Giochi Senza Frontiere in collaborazione con il Progetto Trame alle 16:00, apertura stand gastronomico con cena animata alle 19:30 e dopocena con FM Disco Explosion di Radio Vallebelbo.",
+      "descrizione": "Giochi Senza Frontiere alle 16:00 presso il Campo Sportivo con il Progetto Trame. Dalle 19:30 apertura stand gastronomico con cena animata. A seguire discoteca mobile FM Disco Explosion di Radio Vallebelbo.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2660,7 +2660,7 @@
     {
       "id": "fafd6745c314",
       "titolo": "Sagra del Tomino 2026",
-      "descrizione": "Avviso rivolto agli operatori commerciali e agli hobbisti per la sagra nel centro storico di Rivalta di Torino",
+      "descrizione": "Avviso rivolto agli operatori commerciali e agli hobbisti",
       "comune": "Rivalta di Torino",
       "lat": 45.034045,
       "lon": 7.518419,
@@ -2916,7 +2916,7 @@
     {
       "id": "5e9eebe33fa9",
       "titolo": "SPORT a Reano",
-      "descrizione": "Domenica 27 Settembre: Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive. Ore 12:30 / 14:00 Pranzo condiviso. Ore 14:00: Ripresa pratiche sportive. Ore 18:00: Musica DJ set ed...",
+      "descrizione": "Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive. Ore 12:30 / 14:00 Pranzo condiviso. Ore 14:00: Ripresa pratiche sportive. Ore 18:00: Musica DJ set ed...",
       "comune": "Reano",
       "lat": 45.052056,
       "lon": 7.430403,
@@ -3204,7 +3204,7 @@
     {
       "id": "f6066594ee1e",
       "titolo": "Giornata formativa con Tiziano Dones",
-      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB con Tiziano Dones (maestro e istruttore nazionale AM bike).",
+      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB.",
       "comune": "Cartignano",
       "lat": 44.477654,
       "lon": 7.287771,
@@ -3539,8 +3539,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Mezz'ora da Ridere - Rappresentazione dei testi vincitori",
-      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori: Non ce lo dicono (Flavio Vasile), Niurant (Massimo Brusasco), Comodissimo e facilissimo (Sabrina Piazzon).",
+      "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi vincitori del concorso Mezz'ora da Ridere ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo') ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3667,7 +3667,7 @@
     },
     {
       "id": "62fb056ea89c",
-      "titolo": "Presentazione del progetto di restauro del Castello Caldera Saluzzo e incontro Dinastie all'ombra del Castello",
+      "titolo": "Presentazione del restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
       "descrizione": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo di Monesiglio e incontro culturale \"Dinastie all'ombra del Castello\".",
       "comune": "Monesiglio",
       "lat": 44.465037,
