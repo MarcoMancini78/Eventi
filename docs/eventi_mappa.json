@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-01T03:38:39",
+  "generato_il": "2026-09-01T04:37:00",
   "eventi": [
     {
       "id": "215d35247178",
@@ -740,7 +740,7 @@
     {
       "id": "a997a6265d91",
       "titolo": "Ultimo round di mangiare e ballare",
-      "descrizione": "Stasera ultimo round di mangiare e ballare! Vi aspettiamo dalle 19!",
+      "descrizione": "Stasera ultimo round di mangiare e ballare!",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -931,8 +931,8 @@
     },
     {
       "id": "15b7818fa471",
-      "titolo": "Knitting in biblioteca",
-      "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca.",
+      "titolo": "Knitting in biblioteca - Settembre e Ottobre 2026",
+      "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca. Le date sono indicate nella locandina allegata",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -1300,7 +1300,7 @@
     {
       "id": "ae875a6ec373",
       "titolo": "Mostra di pittura - Espone Giovanni Origone",
-      "descrizione": "Dal 5 al 20 settembre 2026. Abbazia di San Remigio. Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre ore...",
+      "descrizione": "Orari visite: dalle 10 alle 12 e dalle 16 alle 18 dei giorni 5/6/13/14/19/20 settembre. Incontro con il pittore sabato 5 settembre.",
       "comune": "Parodi Ligure",
       "lat": 44.669748,
       "lon": 8.758652,
@@ -2019,8 +2019,8 @@
     },
     {
       "id": "0ccb12a2ac02",
-      "titolo": "Giornata della prevenzione",
-      "descrizione": "Giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
+      "titolo": "Giornata della prevenzione a Montaldo Torinese",
+      "descrizione": "Una giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -2148,7 +2148,7 @@
     {
       "id": "4d7ab6104215",
       "titolo": "Alpignano: Associazioni in festa!",
-      "descrizione": "La Festa delle Associazioni si terrà domenica 13 settembre, dalle ore 10 alle 17, nella splendida cornice del Parco della Pace in via Collegno. L'evento, organizzato dal Comune di Alpignano,...",
+      "descrizione": "La Festa delle Associazioni si terrà nella splendida cornice del Parco della Pace in via Collegno. Evento organizzato dal Comune di Alpignano.",
       "comune": "Alpignano",
       "lat": 45.095724,
       "lon": 7.525403,
@@ -2339,8 +2339,8 @@
     },
     {
       "id": "ff468777ab2c",
-      "titolo": "Festa di San Maurizio - Grigliata e Danze",
-      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino inclusi) e gelati. Dalle 21:00 serata danzante con Aurelio Seimandi e la sua Orchestra.",
+      "titolo": "Festa di San Maurizio",
+      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino inclusi) a 25 € (menù bambini 7 €), dolci e gelati. Dalle 21:00 serata danzante con Aurelio Seimandi e la sua Orchestra.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2420,7 +2420,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo').",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -2452,7 +2452,7 @@
     {
       "id": "0b3d1b2f2052",
       "titolo": "Festa di San Maurizio",
-      "descrizione": "Programma di sabato 19: alle 16:00 Giochi Senza Frontiere in collaborazione con il Progetto Trame; dalle 19:30 stand gastronomico con cena animata e gelati; dopocena musica con FM Disco Explosion di Radio Vallebelbo.",
+      "descrizione": "La festa di San Maurizio continua sabato 19",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -2756,7 +2756,7 @@
     {
       "id": "5e9eebe33fa9",
       "titolo": "SPORT a Reano",
-      "descrizione": "Domenica 27 Settembre:\nOre 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive \nOre 12:30 / 14:00 Pranzo condiviso \nOre 14:00: Ripresa pratiche sportive\nOre 18:00: Musica DJ set ed...",
+      "descrizione": "Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive. Ore 12:30 / 14:00 Pranzo condiviso. Ore 14:00: Ripresa pratiche sportive. Ore 18:00: Musica DJ set ed...",
       "comune": "Reano",
       "lat": 45.052056,
       "lon": 7.430403,
@@ -3043,8 +3043,8 @@
     },
     {
       "id": "f6066594ee1e",
-      "titolo": "Giornata formativa con Tiziano Dones (maestro e istruttore nazionale AM bike)",
-      "descrizione": "Si terrà sabato 25 ottobre la giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB.",
+      "titolo": "Giornata formativa con Tiziano Dones",
+      "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB con Tiziano Dones (maestro e istruttore nazionale AM bike).",
       "comune": "Cartignano",
       "lat": 44.477654,
       "lon": 7.287771,
@@ -3379,8 +3379,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione testi vincitori Concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi vincitori del concorso Mezz'ora da Ridere ('Non ce lo dicono', 'Niurant', 'Comodissimo e facilissimo') ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Mezz'ora da ridere - Rappresentazione dei testi",
+      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori del concorso: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3395,7 +3395,7 @@
     },
     {
       "id": "2617a408e4cd",
-      "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 14 dicembre 2026",
+      "titolo": "MAChieri - Mostra Archeologica Chieri",
       "descrizione": "Attività laboratoriale",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -3507,7 +3507,7 @@
     },
     {
       "id": "62fb056ea89c",
-      "titolo": "Presentazione del progetto di restauro del Castello Caldera Saluzzo e incontro \"Dinastie all'ombra del Castello\"",
+      "titolo": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo e incontro culturale \"Dinastie all'ombra",
       "descrizione": "Presentazione pubblica del progetto di restauro del Castello Caldera Saluzzo di Monesiglio e incontro culturale \"Dinastie all'ombra del Castello\".",
       "comune": "Monesiglio",
       "lat": 44.465037,
