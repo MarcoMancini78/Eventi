@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-02T17:26:10",
+  "generato_il": "2026-09-02T18:53:56",
   "eventi": [
     {
       "id": "215d35247178",
@@ -752,7 +752,7 @@
     {
       "id": "48bda3a3c4dc",
       "titolo": "Summer Festival",
-      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerti e balli a San Damiano d'Asti.",
+      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerto, balli.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -761,8 +761,8 @@
       "data_inizio": "2026-09-02",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZg1-8hrubYN3TOestlS2lDIMzGxUsyRwUCI1R2cYH3bPFvhYz0HcvU14Wv2VPCYDOoHY95j6ldpnpjuxcI6P28up6ID_MW6gnJ0TOvC6DaugCUT7lQ8iQqj2Zeg6gAds8OYJSbjq8M43PdbxwoRnR262teAVfO0rbTfzFQi63FDou2OKasKTgjE5Ij9_Ss9Knx1x4rUn932oKZM_uiMnOBQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZitB2zOir5iAJS0KiZ6t_K4g4OU_IOwXddc6juJkNGRyJ6cOspXjMZBRQshOvvDCb8RXeIrYmp5D3gjKD5jcJpTMhqa0epH65AcSMWJKXMgULDNerECi38ilC_7-gnz_GoPE63zYicFu1LsNXbvGIZodJ1q7tZTNGik3V0cv4MwzKdgNOw08WcayOhaGT8oLS-uQub-UI7M1AVQ2XqGHqMD&__tn__=-UC%2CP-R",
+      "url_approfondimento": "https://www.facebook.com/share/p/1G39fRhqVk/",
       "fonti": "feed-facebook-comunesandamianodasti",
       "quarantena": false
     },
@@ -1517,7 +1517,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno con dj set, concerti e animazioni, con palchi aperti alla città e una programmazione diffusa.",
+      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e programmazione diffusa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1750,6 +1750,23 @@
       "url": "https://www.facebook.com/cambiano1991?__cft__[0]=AZjvtI_nI9hRdrE9VQNNcGtXjuHA25e830gm7zBTQIqMB8kfSLMoNVU2z0tpPt1bL0C1dPf0qxIVxPEH2sZltQjmrAtZ4Zpq_kcxJVpgJvkjCJ6pAxOHTNHhlYvWLrC3IZd6bdS235naXKVdUp6foL96kpOw8EwpmQJsDgENoDP5Z03IpC3VuEnBx4VeYxy2jg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-cambiano1991",
+      "quarantena": false
+    },
+    {
+      "id": "52be38b3437e",
+      "titolo": "Festa delle Feste",
+      "descrizione": "Partecipazione della Pro Loco di Morbello alla Festa delle Feste con stand di dolci di produzione locale (torta di nocciole e torta di castagne). Sabato 5 settembre a cena, domenica 6 settembre a pranzo e cena.",
+      "comune": "Acqui Terme",
+      "lat": 44.675145,
+      "lon": 8.467546,
+      "km": 29.6,
+      "minuti": 40.0,
+      "data_inizio": "2026-09-05",
+      "data_fine": "2026-09-06",
+      "tipologia": "sagra",
+      "url": "https://www.facebook.com/proloco.morbello?__cft__[0]=AZhULuUxO1DA41cOAb9VeOetwVhYMZK_mshhByhBcFLXLTr_xBDMFT23qVn5KQDjqU_TcuYLaB_x1kaFI-P6kpOx61_LBd1jyhT4tH5yLtfmKUdCre40v2qi5q4yiSJQIvkg1wYZmD1Wlg9HGdFNLcSpu7YxiOeoRcZVuTTDhHvWswG1KFydnQxGMOzPVfps&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-proloco.morbello",
       "quarantena": false
     },
     {
@@ -2621,8 +2638,8 @@
     },
     {
       "id": "0ba5d6f749d7",
-      "titolo": "“Ares Trio” in concerto - 49ª Stagione di Musica da Camera",
-      "descrizione": "Ares Trio in concerto ad Alba apre la 49ª Stagione di Musica da Camera.",
+      "titolo": "“Ares Trio” in concerto",
+      "descrizione": "Apertura della 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3722,7 +3739,7 @@
       "url": "https://comune.alba.cn.it/it",
       "url_approfondimento": "",
       "fonti": "comune-alba",
-      "quarantena": false
+      "quarantena": true
     },
     {
       "id": "047d0406a79d",
@@ -4235,6 +4252,23 @@
       "quarantena": false
     },
     {
+      "id": "2480fc3da2c7",
+      "titolo": "MASCA – Il ritorno della strega",
+      "descrizione": "Racconti, musica, danze, sapori e magia a Spigno Monferrato, il borgo delle streghe.",
+      "comune": "Spigno Monferrato",
+      "lat": 44.543141,
+      "lon": 8.333946,
+      "km": 36.6,
+      "minuti": 45.0,
+      "data_inizio": "2026-09-19",
+      "data_fine": "2026-09-20",
+      "tipologia": "altro",
+      "url": "https://www.instagram.com/p/DcyjlO7toO4/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-proloco_spignomonferrato",
+      "quarantena": false
+    },
+    {
       "id": "fafd6745c314",
       "titolo": "Sagra del Tomino 2026",
       "descrizione": "Avviso rivolto agli operatori commerciali e agli hobbisti",
@@ -4623,6 +4657,23 @@
       "url": "https://www.instagram.com/p/DclS5lFKNDH/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-proloco_sommariva_perno",
+      "quarantena": false
+    },
+    {
+      "id": "a2d3ce61bf37",
+      "titolo": "Settime, sulle tracce del delfino",
+      "descrizione": "Seconda edizione della camminata turistica adatta a tutti (lunghezza 5,9 km, dislivello 103 m) guidata da escursionisti abilitati. Al termine aperitivo offerto dalla Proloco di Settime e possibilità di proseguire alla festa di paese tra stand gastronomici, musica e vino.",
+      "comune": "Settime",
+      "lat": 44.962466,
+      "lon": 8.11397,
+      "km": 33.8,
+      "minuti": 41.0,
+      "data_inizio": "2026-09-20",
+      "data_fine": "2026-09-20",
+      "tipologia": "sportivo",
+      "url": "https://www.instagram.com/p/DcypWRVA5Ef/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-prolocosettime",
       "quarantena": false
     },
     {
@@ -5512,7 +5563,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica) aperto a tutti.",
+      "descrizione": "Lettura (pubblica) aperto a tutti",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
