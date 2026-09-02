@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-02T15:56:19",
+  "generato_il": "2026-09-02T17:26:10",
   "eventi": [
     {
       "id": "215d35247178",
@@ -70,23 +70,6 @@
       "quarantena": false
     },
     {
-      "id": "c97c1032ffce",
-      "titolo": "Grande serata liscio con l’Orchestra Luigi Gallia",
-      "descrizione": "STASERA GRANDE SERATA LISCIO CON L’ORCHESTRA LUIGI GALLIA! VI ASPETTIAMO",
-      "comune": "Cunico",
-      "lat": 45.03995,
-      "lon": 8.096731,
-      "km": 46.4,
-      "minuti": 52.0,
-      "data_inizio": "2026-08-31",
-      "data_fine": "2026-08-31",
-      "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcVXfyEv_Dn/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-proloco_cunico",
-      "quarantena": true
-    },
-    {
       "id": "e56a4aa356d6",
       "titolo": "Eventi - Trifolao in bianco e nero - Alba - Langhe",
       "descrizione": "Eventi culturali, musicali e sportivi in Langhe. Trifolao in bianco e nero - Alba: date, orari, programma e dettagli.",
@@ -104,40 +87,6 @@
       "quarantena": false
     },
     {
-      "id": "9153f4e16dc7",
-      "titolo": "Ultimo round di mangiare e ballare",
-      "descrizione": "Stasera ultimo round di mangiare e ballare!",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-08-31",
-      "data_fine": "2026-08-31",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/Dcqe7T8lUMX/",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-proloco.valfenera, feed-instagram-prolocovalfenera",
-      "quarantena": true
-    },
-    {
-      "id": "f40df8ca91cb",
-      "titolo": "Mini Sagre - Seconda serata",
-      "descrizione": "Seconda serata di Mini Sagre con piatti della tradizione, buon vino e tanta musica.",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-08-31",
-      "data_fine": "2026-08-31",
-      "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcntx-OCJIU/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": true
-    },
-    {
       "id": "f8d53fa74637",
       "titolo": "La dance che è un capolavoro",
       "descrizione": "La dance che è un capolavoro stasera a #belforte",
@@ -152,23 +101,6 @@
       "url": "https://www.instagram.com/p/DclXHfMAW5M/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocobelfortemonferrato",
-      "quarantena": true
-    },
-    {
-      "id": "9fe1838ab70a",
-      "titolo": "Serate gastronomiche",
-      "descrizione": "Stasera iniziamo con le serate gastronomiche , antipasti freschi, le nostre pizze e il Mon!",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-08-31",
-      "data_fine": "2026-08-31",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/DcgFRQoiPR4/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
       "quarantena": true
     },
     {
@@ -327,7 +259,7 @@
     {
       "id": "0942d414978d",
       "titolo": "Sorelle. O alla fine del mondo",
-      "descrizione": "Una riflessione semiseria sulla comunità. Spettacolo di Casa degli Alfieri / Luna e Gnac con Federica Molteni, Patrizia Camatel e Michele Eynard nell'ambito del Festival Corti, Colline, Comunità...",
+      "descrizione": "Spettacolo teatrale con Federica Molteni, Patrizia Camatel e Michele Eynard, una riflessione semiseria sulla comunità nell'ambito del festival Corti, Colline, Comunità.",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -336,8 +268,8 @@
       "data_inizio": "2026-08-31",
       "data_fine": "2026-08-31",
       "tipologia": "teatro",
-      "url": "https://www.instagram.com/p/DciNQZaFZUO/",
-      "url_approfondimento": "http://ecomuseobma.it",
+      "url": "https://www.instagram.com/p/Dcqe7T8lUMX/",
+      "url_approfondimento": "www.ecomuseobma.it",
       "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     },
@@ -374,40 +306,6 @@
       "url_approfondimento": "",
       "fonti": "comune-alpignano",
       "quarantena": false
-    },
-    {
-      "id": "1c3315cdf4e8",
-      "titolo": "Serata alla Vineria",
-      "descrizione": "🎶 CON GRANDE ONORE, DOMANI SERA ALLA VINERIA! 🍷",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": true
-    },
-    {
-      "id": "3d5e69383ed8",
-      "titolo": "Alla scoperta dei nostri sentieri",
-      "descrizione": "Domani tocca a noi: vi aspettiamo alle 20.30 per partire alle 21 alla scoperta dei nostri sentieri.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "sportivo",
-      "url": "https://www.instagram.com/p/DcdJOktAbzI/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": true
     },
     {
       "id": "f973ae892e1f",
@@ -478,40 +376,6 @@
       "quarantena": false
     },
     {
-      "id": "a997a6265d91",
-      "titolo": "Ultimo round di mangiare e ballare",
-      "descrizione": "Stasera ultimo round di mangiare e ballare! Vi aspettiamo dalle 19!",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/Dcqe7T8lUMX/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": true
-    },
-    {
-      "id": "2a6ea6a2df3f",
-      "titolo": "Seconda serata di Mini Sagre",
-      "descrizione": "Piatti della tradizione, buon vino, tanta musica e bella gente!",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcntx-OCJIU/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": true
-    },
-    {
       "id": "cc4b1e5afbfb",
       "titolo": "La dance che è un capolavoro",
       "descrizione": "Terza serata in arrivo!",
@@ -580,23 +444,6 @@
       "quarantena": false
     },
     {
-      "id": "b98a34ca4bdd",
-      "titolo": "Serate gastronomiche",
-      "descrizione": "Antipasti freschi, le nostre pizze e il Mon!",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/DcgFRQoiPR4/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": true
-    },
-    {
       "id": "84180a62a24b",
       "titolo": "Stasera tutti a Teatro!",
       "descrizione": "Stasera tutti a Teatro!",
@@ -611,23 +458,6 @@
       "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZjVC9bAkfvIwAbJJqMCKb0xFd--O_mWpEyc-SttsuTy52jk_P7xRSU9XCwGjI64upHKCHJs0Zyo3xWK83nW75MWK9ywrlVCiolowFIx3jZKAMD1s871eiOtDgNWuYWeN22AACb3y7Dfp__-LovJjUbUaReEQhViZIstdWeKGzJKtuLJZH2XltdfVxJJ59E5Fg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocomongardino1976",
-      "quarantena": true
-    },
-    {
-      "id": "f49fb7d8079c",
-      "titolo": "Piemonte Documenteur: Proiezione a Monforte",
-      "descrizione": "Serata e sfida goliardica con proiezione del cortometraggio per Piemonte Documenteur con Roddino e Monforte d'Alba.",
-      "comune": "Monforte d'Alba",
-      "lat": 44.582438,
-      "lon": 7.969637,
-      "km": 43.0,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "cinema",
-      "url": "https://www.instagram.com/p/DcntS4_Dd3P/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocoroddino",
       "quarantena": true
     },
     {
@@ -665,23 +495,6 @@
       "quarantena": false
     },
     {
-      "id": "ccc703fb0a6a",
-      "titolo": "Serata Piemonte Documenteur a Monforte d'Alba",
-      "descrizione": "Serata di festa, goliardia e proiezione cortometraggi/film del Piemonte Documenteur con la sfida tra paesi e la partecipazione di Roddino.",
-      "comune": "Monforte d'Alba",
-      "lat": 44.582438,
-      "lon": 7.969637,
-      "km": 43.0,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "cinema",
-      "url": "https://www.instagram.com/p/DcntS4_Dd3P/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocoroddino",
-      "quarantena": true
-    },
-    {
       "id": "e344a6d540eb",
       "titolo": "Settembre in Valle Maira - Attività per over 65, caregiver e comunità",
       "descrizione": "Attività per over 65, caregiver e comunità.",
@@ -696,23 +509,6 @@
       "url": "https://www.facebook.com/cittadidronero?__cft__[0]=AZaTUnx_8hzVuhAqtyJaAYgrtbvQdF43LnuCtGDq19nYJO7ihb6khim8ju5cn3soxF4qfcL5ZSloFyial6ipLhmzf7zbfTieZhSdDzEY4AUT8NE-hOSy6GPZT7fuvBoBxcKKBbQehPlEUOjghEodiMmJaHUwHFaRn8G2vioBW6LSrsY5Xpy7XXDWxWjukOWihGXsI27HFI5Bd6dYnOhI-Xp4&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-cittadidronero",
-      "quarantena": true
-    },
-    {
-      "id": "c2bd00e8d2b6",
-      "titolo": "Piemonte Documenteur: sfida tra Roddino e Monforte",
-      "descrizione": "Serata di festa, goliardia e proiezione del documenteur in gara con la partecipazione delle comunità di Roddino e Monforte d'Alba.",
-      "comune": "Roddino",
-      "lat": 44.573849,
-      "lon": 8.019119,
-      "km": 37.2,
-      "minuti": 44.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "cinema",
-      "url": "https://www.instagram.com/p/DcntS4_Dd3P/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocoroddino",
       "quarantena": true
     },
     {
@@ -733,23 +529,6 @@
       "quarantena": true
     },
     {
-      "id": "f3f3df5a2c89",
-      "titolo": "Serata gastronomica",
-      "descrizione": "Antipasti freschi, pizze e il Mon.",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-01",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/DcgFRQoiPR4/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": false
-    },
-    {
       "id": "0da06c36c79d",
       "titolo": "1946-2026: Ottant'anni dal primo voto alle donne",
       "descrizione": "Mostra fotografica in occasione dell'80° anniversario dello storico voto del 2 giugno 1946, che racconta la partecipazione femminile al voto.",
@@ -768,8 +547,8 @@
     },
     {
       "id": "a888d71084ab",
-      "titolo": "Concerto Banda Musicale La Giovine",
-      "descrizione": "Concerto della Banda Musicale La Giovine di Cambiano diretta dal Maestro Paolo Bosa.",
+      "titolo": "Concerto della Banda Musicale La Giovine Cambiano",
+      "descrizione": "Concerto diretto dal Maestro Paolo Bosa. Musica, passione, comunità.",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -778,7 +557,7 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DciNQZaFZUO/",
+      "url": "https://www.instagram.com/p/DcshGXtFZ2g/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
@@ -798,23 +577,6 @@
       "url": "https://comune.montaldotorinese.to.it/it-it/appuntamenti",
       "url_approfondimento": "",
       "fonti": "comune-montaldo-torinese",
-      "quarantena": false
-    },
-    {
-      "id": "3f6316fce589",
-      "titolo": "Piano & Voce con Simone Carè",
-      "descrizione": "Serata speciale di musica dal vivo con Simone Carè al pianoforte e voce.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-02",
-      "data_fine": "2026-09-02",
-      "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     },
     {
@@ -920,40 +682,6 @@
       "quarantena": false
     },
     {
-      "id": "703a2708258b",
-      "titolo": "Seconda serata di Mini Sagre",
-      "descrizione": "Piatti della tradizione, buon vino, tanta musica e bella gente!",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-09-02",
-      "data_fine": "2026-09-02",
-      "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcntx-OCJIU/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": true
-    },
-    {
-      "id": "876009e1f135",
-      "titolo": "Sapore d'Oviglio",
-      "descrizione": "Pen tradizionali",
-      "comune": "Oviglio",
-      "lat": 44.86125,
-      "lon": 8.487743,
-      "km": 32.7,
-      "minuti": 41.0,
-      "data_inizio": "2026-09-02",
-      "data_fine": "2026-09-03",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/Dckr-MgN7du/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-proloco.oviglio",
-      "quarantena": true
-    },
-    {
       "id": "7963e75263c8",
       "titolo": "XXVII Sagra delle Trofie al Pesto - Enrico Cremon e Dina Manfred",
       "descrizione": "Serata con Enrico Cremon e Dina Manfred Music Band nell'ambito della Sagra delle Trofie al Pesto.",
@@ -1005,23 +733,6 @@
       "quarantena": false
     },
     {
-      "id": "3cb552ac5e6f",
-      "titolo": "Serate gastronomiche",
-      "descrizione": "Antipasti freschi, le nostre pizze e il Mon.",
-      "comune": "Mongardino",
-      "lat": 44.849233,
-      "lon": 8.218475,
-      "km": 18.3,
-      "minuti": 26.0,
-      "data_inizio": "2026-09-02",
-      "data_fine": "2026-09-02",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/DcgFRQoiPR4/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-pro_loco_mongardino",
-      "quarantena": true
-    },
-    {
       "id": "fe4866ed5f11",
       "titolo": "San Damiano Summer Festival - Cenino Rosso Blu e 2° Summer Festival Canoro",
       "descrizione": "Ore 19:30 apertura stand gastronomico, ore 20:00 Cenino Rosso Blu, ore 21:00 2° Summer festival canoro.",
@@ -1056,9 +767,9 @@
       "quarantena": false
     },
     {
-      "id": "28094e0367ba",
-      "titolo": "Tra Boschi e Stelle - Camminata notturna a Ferrere",
-      "descrizione": "Camminata notturna con intrattenimento culturale artistico e ristoro finale. Ritrovo ore 20:30, partenza ore 21:00.",
+      "id": "34c46b04d0c6",
+      "titolo": "Tra Boschi e Stelle - Ferrere",
+      "descrizione": "Camminata notturna con ritrovo alle ore 20.30 e partenza alle 21.00, intrattenimento culturale/artistico e ristoro finale.",
       "comune": "Ferrere",
       "lat": 44.875446,
       "lon": 7.994732,
@@ -1258,40 +969,6 @@
       "url_approfondimento": "",
       "fonti": "feed-facebook-visitacquiterme",
       "quarantena": false
-    },
-    {
-      "id": "75187153191a",
-      "titolo": "Piano & Voce con Simone Carè",
-      "descrizione": "Serata speciale con l’apertura Piano & Voce di Simone Carè, protagonista di importanti palchi tra cui Tor Vergata in apertura ai concerti di Ultimo.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-03",
-      "data_fine": "2026-09-03",
-      "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": false
-    },
-    {
-      "id": "0123df830574",
-      "titolo": "Serata alla Vineria",
-      "descrizione": "🎶 CON GRANDE ONORE, DOMANI SERA ALLA VINERIA! 🍷",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-03",
-      "data_fine": "2026-09-03",
-      "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcjN4rgF9Ju/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": true
     },
     {
       "id": "271e0fd503c3",
@@ -6255,23 +5932,6 @@
       "url": "https://www.instagram.com/p/Dcoei_RtwN2/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-carrosioproloco",
-      "quarantena": false
-    },
-    {
-      "id": "d49dc77610a6",
-      "titolo": "Sorelle. O alla fine del mondo",
-      "descrizione": "Una riflessione semiseria sulla Comunità. Di e con Federica Molteni, Patrizia Camatel, Michele Eynard (Casa degli Alfieri / Luna e GNAC). All'interno del Festival Corti, Colline, Comunità.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2027-08-31",
-      "data_fine": "2027-08-31",
-      "tipologia": "teatro",
-      "url": "https://www.instagram.com/p/DcshGXtFZ2g/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     }
   ]
