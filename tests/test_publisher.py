@@ -12,11 +12,14 @@ from src import publisher, store
 
 
 class _WorksheetFinto:
-    def __init__(self, righe_esistenti=None):
+    def __init__(self, righe_esistenti=None, row_count=100, col_count=27):
         self._righe_esistenti = righe_esistenti or []
         self.righe_scritte = None
         self.chiamate_format = []
         self.chiamate_update_con_range = []
+        self.row_count = row_count
+        self.col_count = col_count
+        self.chiamate_resize = []
 
     def get_all_records(self):
         return self._righe_esistenti
@@ -37,6 +40,13 @@ class _WorksheetFinto:
 
     def format(self, range_name, formato):
         self.chiamate_format.append((range_name, formato))
+
+    def resize(self, rows=None, cols=None):
+        self.chiamate_resize.append((rows, cols))
+        if rows is not None:
+            self.row_count = rows
+        if cols is not None:
+            self.col_count = cols
 
 
 def _conn_di_prova() -> sqlite3.Connection:
@@ -822,16 +832,38 @@ def test_pubblica_quarantena_preserva_azione_scritta_dall_operatore():
 def test_pubblica_quarantena_scrive_legenda():
     """2026-09-01, richiesto dall'utente: i valori validi di 'azione'
     (promuovi/scarta/elimina/ignora_fonte) non sono autoesplicativi senza
-    una legenda a fianco, stesso principio già usato per CoperturaComuni."""
+    una legenda.
+
+    2026-09-02, bug reale trovato dall'utente: la prima versione scriveva
+    la legenda in colonna AB (28ª), ma il foglio Quarantena ha solo 27
+    colonne fisiche su Sheets — l'errore API di 'range fuori dai bordi'
+    faceva crashare l'intero cmd_publish, lasciando docs/eventi_mappa.json
+    fermo al giorno prima senza alcun segnale visibile. Corretto scrivendo
+    la legenda SOTTO i dati (colonna A, riga calcolata dinamicamente dopo
+    l'ultima riga), non più a fianco."""
     ws = _WorksheetFinto()
     publisher.pubblica_quarantena(ws, [_evento_finto("ev1")])
 
     assert len(ws.chiamate_update_con_range) == 1
     range_name, valori = ws.chiamate_update_con_range[0]
-    assert range_name.startswith("AB1:AB")
+    assert range_name.startswith("A4:A")  # 1 riga dati + 1 intestazione + 2 margine = riga 4
     testo_legenda = " ".join(riga[0] for riga in valori)
     assert "promuovi" in testo_legenda
     assert "elimina" in testo_legenda
+
+
+def test_pubblica_quarantena_ridimensiona_foglio_se_la_legenda_non_ci_sta():
+    """Difensivo (2026-09-02): stesso bug del test sopra, ma in verticale
+    — con molte righe in quarantena la legenda potrebbe finire oltre il
+    row_count esistente. Verifica che il foglio venga ridimensionato
+    invece di far fallire di nuovo la scrittura."""
+    ws = _WorksheetFinto(row_count=10)  # deliberatamente troppo piccolo
+    eventi = [_evento_finto(f"ev{i}") for i in range(10)]  # 10 righe dati
+
+    publisher.pubblica_quarantena(ws, eventi)
+
+    assert len(ws.chiamate_resize) == 1
+    assert ws.row_count >= 10 + 3 + len(publisher._LEGENDA_AZIONE_QUARANTENA) - 1
 
 
 def test_pull_azioni_quarantena_ignora_valori_non_validi():

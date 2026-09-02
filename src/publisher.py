@@ -116,10 +116,22 @@ def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None
     """Scrive il foglio `Quarantena`: stesse colonne di `Eventi` più
     `azione` (03.1.2), la scelta dell'operatore su ciascun candidato
     incerto — letta da `pull_azioni_quarantena` e applicata da
-    `applica_azioni_quarantena` (2026-09-01). Legenda scritta a fianco
-    (colonna AB, subito dopo 'azione'), stesso principio delle legende
-    di CoperturaComuni/CoperturaAltreEntita: il foglio cresce per righe,
-    una legenda sotto verrebbe riscritta sopra ai dati veri."""
+    `applica_azioni_quarantena` (2026-09-01).
+
+    Legenda scritta SOTTO i dati, non a fianco (2026-09-02, bug trovato
+    dall'utente): un tentativo precedente la scriveva in colonna AB (28ª,
+    subito dopo 'azione'), ma il foglio Quarantena ha solo 27 colonne
+    fisiche allocate su Sheets — `worksheet.update` su un range oltre il
+    bordo esistente fallisce con un errore API, e quell'errore mandava in
+    crash l'intero `cmd_publish` (Quarantena viene prima di Archivio/
+    mappa nell'ordine di pubblicazione), lasciando `docs/eventi_mappa.json`
+    fermo al giorno prima senza che nessun log lo segnalasse come 'la
+    mappa non si aggiorna'. La riga di partenza è calcolata dinamicamente
+    (dopo l'ultima riga dati + margine), non una posizione fissa: un
+    numero di candidati in quarantena che cresce non deve mai sovrascrivere
+    né essere sovrascritto (diversamente da CoperturaComuni/
+    CoperturaAltreEntita, che crescono per righe ma restano sotto ~700 —
+    Quarantena può oscillare molto di più in poco tempo)."""
     overrides = _leggi_overrides_utente(worksheet, COLONNE_UTENTE_QUARANTENA)
 
     corpo = []
@@ -136,9 +148,19 @@ def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None
     worksheet.update([COLONNE_QUARANTENA] + corpo, value_input_option="USER_ENTERED")
     worksheet.format("B:C", {"wrapStrategy": "WRAP"})
     worksheet.format("A:Z", {"textFormat": {"fontSize": 8}})
+
+    riga_inizio_legenda = len(corpo) + 3  # +1 intestazione, +2 righe vuote di margine
+    riga_fine_legenda = riga_inizio_legenda + len(_LEGENDA_AZIONE_QUARANTENA) - 1
+    if worksheet.row_count < riga_fine_legenda:
+        # Difensivo: lo stesso bug che ha causato questo redesign (un
+        # range che eccede i bordi del foglio fa fallire l'intera
+        # scrittura, bloccando publish a valle) può ripresentarsi in
+        # verticale se la quarantena cresce molto — resize esplicito
+        # invece di sperare che 'update' lo faccia da solo.
+        worksheet.resize(rows=riga_fine_legenda)
     worksheet.update(
         _LEGENDA_AZIONE_QUARANTENA,
-        f"AB1:AB{len(_LEGENDA_AZIONE_QUARANTENA)}",
+        f"A{riga_inizio_legenda}:A{riga_fine_legenda}",
         value_input_option="USER_ENTERED",
     )
 
