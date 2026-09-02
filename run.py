@@ -767,6 +767,23 @@ def cmd_promuovi_pa_design_system(args: argparse.Namespace) -> None:
     print(f"Promosse a T0_pa_design_system: {promosse}/{len(fonti)} (errori/irraggiungibili: {errori}).")
 
 
+def cmd_backup_sheets(args: argparse.Namespace) -> None:
+    """17.2.2 (17-lavoro-residuo.md, 2026-09-01): mitiga il rischio "foglio
+    corrotto da un bug di publish" (11.1), esplicitamente accettato in
+    documentazione ma mai mitigato in codice. Copia lo spreadsheet
+    principale in una cartella Drive dedicata, nome con la data — nessuna
+    cancellazione automatica delle copie vecchie (deciso con l'utente:
+    l'operatore ripulisce a mano quando vuole)."""
+    from src import sheets_client
+    from src.drive_backup import backup_spreadsheet
+
+    config = load_config()
+    client = sheets_client.get_client(config)
+
+    backup_id = backup_spreadsheet(client, config.spreadsheet_id_principale)
+    print(f"Backup creato: https://docs.google.com/spreadsheets/d/{backup_id}")
+
+
 def cmd_follow(args: argparse.Namespace) -> None:
     from src import follow
 
@@ -1036,6 +1053,11 @@ def build_parser() -> argparse.ArgumentParser:
     p_ppds.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti verificate (0 = tutte)")
     p_ppds.add_argument("--pausa", type=float, default=0.2, help="Pausa in secondi tra una richiesta e l'altra")
     p_ppds.set_defaults(func=cmd_promuovi_pa_design_system)
+
+    p_backup = sub.add_parser(
+        "backup-sheets", help="Copia lo spreadsheet principale in una cartella Drive dedicata (17.2.2, mitiga 11.1)"
+    )
+    p_backup.set_defaults(func=cmd_backup_sheets)
 
     p_login = sub.add_parser("login", help="Apre il browser per il login manuale una tantum (M9, 14.3)")
     p_login.add_argument("--platform", required=True, choices=["facebook", "instagram"])
