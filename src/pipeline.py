@@ -255,6 +255,7 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
         "organizzatore": evento_estratto.organizzatore,
         "url": art.url,
         "url_immagine": art.image_paths[0] if art.image_paths else None,
+        "url_approfondimento": evento_estratto.url_approfondimento,
         "confidenza": max(0, min(100, confidenza_finale)),
     }
 

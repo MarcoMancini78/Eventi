@@ -263,3 +263,52 @@ def test_fonte_t1_con_evento_ricorrente_genera_serie_e_occorrenze():
     assert len(occorrenze) == riepilogo["occorrenze_generate"]
     for occ in occorrenze:
         assert occ["comune"] == "Comune Prova"
+
+
+# --- url_approfondimento (2026-09-02, richiesto dall'utente: caso Acqui
+# Terme 1a538328a340, un repost con "SCOPRI IL PROGRAMMA COMPLETO:
+# www.sito.it" nel testo, mai catturato prima perché lo schema di
+# estrazione non aveva un campo dedicato) ---
+
+_RISPOSTA_CON_APPROFONDIMENTO = (
+    '{"eventi": [{"titolo": "Sagra del Tartufo", "descrizione": "Degustazioni", "tipologia": "sagra", '
+    '"data_inizio": "2026-09-12", "data_fine": "2026-09-12", "ora_inizio": "21:00", "ora_fine": null, '
+    '"ricorrenza": {"e_ricorrente": false}, "luogo_testuale": "Piazza Roma", "comune_testuale": "Comune Prova", '
+    '"indirizzo": null, "prezzo": null, "organizzatore": null, '
+    '"url_approfondimento": "https://www.associazionearchicultura.it/", '
+    '"anno_esplicito": true, "confidenza": 92, "campi_incerti": [], "note_estrazione": null}], '
+    '"non_e_un_evento": false, "motivo": null}'
+)
+
+
+def test_url_approfondimento_propagato_da_estrazione_a_events():
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_RISPOSTA_CON_APPROFONDIMENTO])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    fonte = {"source_id": "sito-prova", "metodo": "T1_html", "endpoint": "https://sito-prova.it/eventi", "comune_riferimento": "Comune Prova"}
+    html = (FIXTURES / "esempio_pagina_eventi.html").read_text(encoding="utf-8")
+
+    with patch("src.adapters.html.HtmlAdapter.fetch", return_value=parse_html(html, "sito-prova", fonte["endpoint"])):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, Config(), extractor)
+
+    assert riepilogo["eventi_pubblicati"] == 1
+    riga = conn.execute("SELECT url, url_approfondimento FROM events").fetchone()
+    assert riga["url_approfondimento"] == "https://www.associazionearchicultura.it/"
+    assert riga["url"] != riga["url_approfondimento"]  # 'url' resta sempre il link del post sorgente
+
+
+def test_url_approfondimento_assente_resta_null_non_indovinato():
+    """04.7: vuoto non è un errore, mai un valore indovinato."""
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])  # senza url_approfondimento nel JSON
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    fonte = {"source_id": "sito-prova", "metodo": "T1_html", "endpoint": "https://sito-prova.it/eventi", "comune_riferimento": "Comune Prova"}
+    html = (FIXTURES / "esempio_pagina_eventi.html").read_text(encoding="utf-8")
+
+    with patch("src.adapters.html.HtmlAdapter.fetch", return_value=parse_html(html, "sito-prova", fonte["endpoint"])):
+        pipeline.esegui_fonte(fonte, conn, Config(), extractor)
+
+    riga = conn.execute("SELECT url_approfondimento FROM events").fetchone()
+    assert riga["url_approfondimento"] is None

@@ -19,8 +19,8 @@ COLONNE_EVENTI = [
     "id", "titolo", "descrizione", "tipologia", "data_inizio", "ora_inizio",
     "data_fine", "ora_fine", "serie_id", "occorrenza", "comune", "luogo",
     "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
-    "fonti", "confidenza", "stato", "note", "primo_visto", "ultimo_visto",
-    "bloccato", "soppressa",
+    "url_approfondimento", "fonti", "confidenza", "stato", "note",
+    "primo_visto", "ultimo_visto", "bloccato", "soppressa",
 ]
 
 # Colonne che appartengono all'utente: un run non le sovrascrive mai con un
@@ -717,7 +717,7 @@ def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia, e.data_inizio,
                e.ora_inizio, e.data_fine, e.ora_fine, e.serie_id, e.occorrenza, e.comune,
                e.luogo, e.km, e.minuti, e.prezzo, e.organizzatore, e.url, e.url_immagine,
-               e.confidenza, e.stato, e.note, e.primo_visto, e.ultimo_visto,
+               e.url_approfondimento, e.confidenza, e.stato, e.note, e.primo_visto, e.ultimo_visto,
                e.bloccato, e.soppressa, c.fascia
         FROM events e
         LEFT JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
@@ -777,8 +777,8 @@ def righe_archivio_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
     cur = conn.execute(
         """
         SELECT event_id AS id, titolo, descrizione, tipologia, data_inizio,
-               data_fine, comune, luogo, organizzatore, url, serie_id,
-               stato, note
+               data_fine, comune, luogo, organizzatore, url, url_approfondimento,
+               serie_id, stato, note
         FROM events
         WHERE archiviato = 'si'
         ORDER BY data_fine DESC
@@ -797,8 +797,8 @@ def righe_archivio_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
 
 COLONNE_ARCHIVIO = [
     "id", "titolo", "descrizione", "tipologia", "data_inizio", "data_fine",
-    "comune", "luogo", "organizzatore", "url", "fonti", "serie_id",
-    "stato", "note",
+    "comune", "luogo", "organizzatore", "url", "url_approfondimento",
+    "fonti", "serie_id", "stato", "note",
 ]
 
 
@@ -833,7 +833,7 @@ def righe_eventi_per_mappa(conn: sqlite3.Connection) -> list[dict]:
         """
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia,
                e.data_inizio, e.data_fine, e.ora_inizio, e.comune, e.url,
-               e.stato, c.lat, c.lon, c.km, c.minuti
+               e.url_approfondimento, e.stato, c.lat, c.lon, c.km, c.minuti
         FROM events e
         JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
         WHERE e.archiviato = 'no' AND e.stato != 'scartato'
@@ -874,6 +874,7 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
                 "data_fine": r["data_fine"] or r["data_inizio"],
                 "tipologia": r["tipologia"],
                 "url": r["url"] or "",
+                "url_approfondimento": r.get("url_approfondimento") or "",
                 "fonti": r.get("fonti") or "",
                 "quarantena": r.get("stato") == "quarantena",
             }

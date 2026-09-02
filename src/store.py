@@ -147,6 +147,7 @@ CREATE TABLE IF NOT EXISTS events (
     organizzatore TEXT,
     url TEXT,
     url_immagine TEXT,
+    url_approfondimento TEXT,
     confidenza INTEGER,
     stato TEXT DEFAULT 'nuovo',
     note TEXT,
@@ -268,3 +269,12 @@ def migrate(conn: sqlite3.Connection) -> None:
         if colonna not in colonne_sources:
             conn.execute(f"ALTER TABLE sources ADD COLUMN {colonna} {definizione}")
             conn.commit()
+
+    # 2026-09-02, richiesto dall'utente: link "per saperne di più" trovato
+    # nel testo di un post (es. un repost con "SCOPRI IL PROGRAMMA
+    # COMPLETO: www.sito.it"), distinto da 'url' che resta sempre il link
+    # del post sorgente.
+    colonne_events = {r["name"] for r in conn.execute("PRAGMA table_info(events)").fetchall()}
+    if "url_approfondimento" not in colonne_events:
+        conn.execute("ALTER TABLE events ADD COLUMN url_approfondimento TEXT")
+        conn.commit()

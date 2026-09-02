@@ -157,6 +157,21 @@ def test_righe_da_sqlite_include_fascia_dal_comune():
     assert righe[0]["fascia"] == "A"
 
 
+def test_righe_da_sqlite_include_url_approfondimento():
+    """2026-09-02, richiesto dall'utente: caso Acqui Terme 1a538328a340."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, url, url_approfondimento) "
+        "VALUES ('ev1', 'Acqui Terme si accende di cultura', '2026-09-02', '2026-09-12', 'Acqui Terme', 'no', "
+        "'https://www.facebook.com/visitacquiterme', 'https://www.associazionearchicultura.it/')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_da_sqlite(conn)
+    assert righe[0]["url_approfondimento"] == "https://www.associazionearchicultura.it/"
+    assert righe[0]["url"] != righe[0]["url_approfondimento"]
+
+
 def test_righe_eventi_per_mappa_include_coordinate():
     conn = _conn_di_prova()
     conn.execute(
@@ -280,6 +295,27 @@ def test_scrivi_eventi_mappa_json_scrive_file_valido(tmp_path):
     assert dati["eventi"][0]["lat"] == 44.7975
     assert dati["eventi"][0]["descrizione"] == ""
     assert dati["eventi"][0]["fonti"] == ""
+    assert dati["eventi"][0]["url_approfondimento"] == ""
+
+
+def test_scrivi_eventi_mappa_json_con_url_approfondimento():
+    righe = [{
+        "id": "ev1", "titolo": "Acqui Terme si accende di cultura", "comune": "Acqui Terme",
+        "lat": 44.67, "lon": 8.47, "km": 20.0,
+        "data_inizio": "2026-09-02", "data_fine": "2026-09-12",
+        "tipologia": "cultura", "url": "https://www.facebook.com/visitacquiterme",
+        "url_approfondimento": "https://www.associazionearchicultura.it/",
+    }]
+    import json
+    from pathlib import Path
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as d:
+        percorso = Path(d) / "eventi_mappa.json"
+        publisher.scrivi_eventi_mappa_json(righe, percorso)
+        dati = json.loads(percorso.read_text(encoding="utf-8"))
+
+    assert dati["eventi"][0]["url_approfondimento"] == "https://www.associazionearchicultura.it/"
 
 
 def test_scrivi_eventi_mappa_json_vuoto_non_omesso(tmp_path):

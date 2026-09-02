@@ -77,6 +77,13 @@ REGOLE
 6. comune_testuale: riporta il toponimo come scritto. Se il testo non
    indica alcun luogo, usa COMUNE_FONTE.
 7. tipologia: scegli dalla lista. Nel dubbio "altro".
+7b. url_approfondimento: se il testo contiene un indirizzo web esplicito
+   per saperne di più (es. "SCOPRI IL PROGRAMMA COMPLETO: www.sito.it",
+   un link a un sito di biglietteria, una pagina dedicata all'evento
+   diversa dal profilo dell'autore del post), riportalo qui. Non è
+   l'URL del post stesso (quello lo gestisce il sistema): solo un link
+   AGGIUNTIVO scritto nel testo. Se non c'è, lascia null — non
+   inventare né dedurre un URL plausibile.
 8. Confidenza: 90+ se tutto è esplicito; 60-80 se hai inferito
    qualcosa; <60 se il testo è ambiguo."""
 

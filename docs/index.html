@@ -355,7 +355,8 @@ function popupHtml(comune, eventi) {
       ${ev.descrizione ? `<div class="descrizione">${escapeHtml(ev.descrizione)}</div>` : ""}
       ${distanza ? `<div class="dettaglio">${escapeHtml(distanza)} da Calosso</div>` : ""}
       ${ev.fonti ? `<div class="dettaglio">Fonte: ${escapeHtml(ev.fonti)}</div>` : ""}
-      ${ev.url ? `<div class="dettaglio"><a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a></div>` : ""}
+      ${ev.url ? `<div class="dettaglio"><a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri fonte</a></div>` : ""}
+      ${ev.url_approfondimento ? `<div class="dettaglio"><a href="${escapeHtml(ev.url_approfondimento)}" target="_blank" rel="noopener">programma / approfondimento</a></div>` : ""}
     </div>`;
   }).join("");
   return `<div class="info-popup"><h3>${escapeHtml(comune)}</h3>${righe}</div>`;

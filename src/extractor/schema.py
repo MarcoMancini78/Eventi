@@ -35,6 +35,13 @@ class EventoEstratto(BaseModel):
     indirizzo: str | None = None
     prezzo: str | None = None
     organizzatore: str | None = None
+    # 2026-09-02, richiesto dall'utente: un post spesso rimanda a un sito
+    # esterno per il programma completo (es. un repost di un'associazione
+    # organizzatrice con "SCOPRI IL PROGRAMMA COMPLETO: www.sito.it" nel
+    # testo) — 'url' nel resto della pipeline resta sempre il link del
+    # POST sorgente (Facebook/Instagram), mai sovrascritto da questo
+    # campo. Solo se un URL esplicito compare nel testo, mai indovinato.
+    url_approfondimento: str | None = None
     anno_esplicito: bool = True
     confidenza: int = Field(ge=0, le=100)
     campi_incerti: list[str] = Field(default_factory=list)

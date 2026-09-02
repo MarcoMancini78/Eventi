@@ -178,7 +178,7 @@ class ExtractorClient:
 
     def estrai_da_immagine(
         self,
-        immagine_bytes: bytes,
+        immagine_bytes: bytes | list[bytes],
         artifact_id: str,
         fonte: str,
         categoria_fonte: str,
@@ -210,7 +210,8 @@ class ExtractorClient:
         )
         prompt_sistema = SISTEMA + REGOLE_LOCANDINA_AGGIUNTIVE
 
-        grezzo = _chiama_con_retry(self._provider, prompt_sistema, prompt_utente, [immagine_bytes])
+        immagini = immagine_bytes if isinstance(immagine_bytes, list) else [immagine_bytes]
+        grezzo = _chiama_con_retry(self._provider, prompt_sistema, prompt_utente, immagini)
         risposta = self._valida_e_salva(grezzo, artifact_id, data_rif, prompt_utente)
         return risposta
 

@@ -281,9 +281,44 @@ def test_elabora_post_con_testo_e_immagine_manda_entrambi_al_vlm(tmp_path):
     assert "programma allegato" in provider.chiamate_prompt_utente[0]  # ed è passata la caption
 
 
+def test_elabora_post_carosello_manda_tutte_le_immagini_al_vlm(tmp_path):
+    """2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un
+    carosello Instagram di più immagini deve arrivare all'estrattore
+    TUTTO insieme in una chiamata, non solo la prima — il dettaglio utile
+    (le date dell'evento) era solo nella terza immagine."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'instagram', 'prolocovalfenera', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    img1 = tmp_path / "1.jpg"
+    img1.write_bytes(b"\xff\xd8\xff\xe0prima-immagine")
+    img2 = tmp_path / "2.jpg"
+    img2.write_bytes(b"\xff\xd8\xff\xe0seconda-immagine")
+    img3 = tmp_path / "3.jpg"
+    img3.write_bytes(b"\xff\xd8\xff\xe0terza-immagine-con-le-date")
+
+    post = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocovalfenera", post_id="1",
+        url="https://www.instagram.com/p/abc123/",
+        testo="Stasera vi aspettiamo dalle 19.30!",
+        image_paths=[str(img1), str(img2), str(img3)],
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+
+    assert esito == "pubblicato"
+    immagini_passate = provider.chiamate_con_immagini[0]
+    assert len(immagini_passate) == 3
+    assert immagini_passate[2] == img3.read_bytes()
+
+
 def test_scarica_immagine_post_popola_image_paths(tmp_path, monkeypatch):
-    """2026-09-01: post.image_url (letto dal DOM del feed) deve essere
-    scaricato e trasformato in un file locale prima dell'elaborazione."""
+    """2026-09-01: post.image_urls (letto dal DOM del feed) deve essere
+    scaricato e trasformato in file locali prima dell'elaborazione."""
     import httpx
 
     class _RispostaFinta:
@@ -312,20 +347,67 @@ def test_scarica_immagine_post_popola_image_paths(tmp_path, monkeypatch):
     post = feed_social.PostFeed(
         piattaforma="instagram", handle_autore="prolocotest", post_id="abc123",
         url="https://www.instagram.com/p/abc123/",
-        image_url="https://cdninstagram.com/finta.jpg",
+        image_urls=["https://cdninstagram.com/finta.jpg"],
     )
-    percorso = feed_social._scarica_immagine_post(post)
+    percorsi = feed_social._scarica_immagine_post(post)
 
-    assert percorso is not None
-    assert Path(percorso).exists()
-    assert Path(percorso).read_bytes() == b"\xff\xd8\xff\xe0contenuto-immagine-finta"
+    assert len(percorsi) == 1
+    assert Path(percorsi[0]).exists()
+    assert Path(percorsi[0]).read_bytes() == b"\xff\xd8\xff\xe0contenuto-immagine-finta"
 
 
-def test_scarica_immagine_post_nessun_url_ritorna_none():
+def test_scarica_immagine_post_carosello_scarica_tutte_le_immagini(tmp_path, monkeypatch):
+    """2026-09-02: caso Valfenera f39bb10a29e1, il dettaglio utile (le
+    date) era solo nella terza immagine del carosello — tutte le immagini
+    di post.image_urls vanno scaricate, non solo la prima."""
+    import httpx
+
+    class _RispostaFinta:
+        status_code = 200
+
+        def __init__(self, contenuto):
+            self.content = contenuto
+
+        def raise_for_status(self):
+            pass
+
+    class _ClientFinto:
+        def __init__(self, *a, **kw):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def get(self, url):
+            return _RispostaFinta(f"contenuto-{url}".encode())
+
+    monkeypatch.setattr(feed_social, "_CARTELLA_IMMAGINI_FEED", tmp_path)
+    monkeypatch.setattr(httpx, "Client", _ClientFinto)
+
+    post = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocotest", post_id="carosello1",
+        url="https://www.instagram.com/p/carosello1/",
+        image_urls=[
+            "https://cdninstagram.com/1.jpg",
+            "https://cdninstagram.com/2.jpg",
+            "https://cdninstagram.com/3.jpg",
+        ],
+    )
+    percorsi = feed_social._scarica_immagine_post(post)
+
+    assert len(percorsi) == 3
+    for p in percorsi:
+        assert Path(p).exists()
+
+
+def test_scarica_immagine_post_nessun_url_ritorna_lista_vuota():
     post = feed_social.PostFeed(
         piattaforma="facebook", handle_autore="x", post_id="1", url="https://x.it/1",
     )
-    assert feed_social._scarica_immagine_post(post) is None
+    assert feed_social._scarica_immagine_post(post) == []
 
 
 def test_elabora_post_immagine_scartata_dal_prefiltro_grafico_non_chiama_vlm(tmp_path):

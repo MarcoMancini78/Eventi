@@ -62,13 +62,20 @@ class PostFeed:
     url: str
     testo: str | None = None
     image_paths: list[str] = field(default_factory=list)
-    # URL dell'immagine allegata al post, letto dal DOM (2026-09-01, trovato
+    # URL delle immagini allegate al post, lette dal DOM (2026-09-01, trovato
     # con casi reali — San Damiano e Valfenera: il testo del post non
     # bastava, la locandina/il programma con le date corrette era solo
-    # nell'immagine, mai scaricata prima d'ora). Scaricato in elabora_post,
+    # nell'immagine, mai scaricata prima d'ora). Scaricate in elabora_post,
     # non qui: _scroll_feed_e_raccogli non deve fare I/O di rete oltre allo
     # scroll della pagina.
-    image_url: str | None = None
+    #
+    # 2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un
+    # post Instagram con carosello ha più immagini, e non è detto che la
+    # prima sia quella col dettaglio utile (in quel caso erano le date,
+    # visibili solo nella terza immagine). Lista invece di singolo valore
+    # — solo per Instagram per ora (collaudato dal vivo il click sul
+    # bottone "Avanti"), Facebook non ancora verificato in questa sessione.
+    image_urls: list[str] = field(default_factory=list)
 
 
 def verifica_separazione_da_follow(conn: sqlite3.Connection, piattaforma: str, minuti_minimi: int = 60) -> None:
@@ -236,16 +243,41 @@ _JS_RACCOGLI_POST_INSTAGRAM = """
         const captionEls = articolo.querySelectorAll('span._ap3a');
         const captionEl = captionEls.length > 0 ? captionEls[captionEls.length - 1] : null;
         const immagini = Array.from(articolo.querySelectorAll('img'))
-            .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150);
-        const immagineUrl = immagini.length > 0 ? immagini[0].src : null;
+            .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150)
+            .map(img => img.src);
         risultati.push({
             href: linkAutore.getAttribute('href'),
             permalink: linkPost.getAttribute('href'),
             testo: captionEl ? captionEl.innerText : '',
-            immagineUrl,
+            immagineUrls: immagini,
         });
     }
     return risultati;
+}
+"""
+
+# 2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un post
+# con carosello mostra solo la prima immagine finché non si clicca
+# "Avanti" — collaudato dal vivo con Playwright sul post reale
+# (instagram.com/p/DciNQZaFZUO/): risalendo 4 livelli di parentElement dal
+# bottone si trova il contenitore del carosello di QUEL post, e cliccare
+# accumula nuove <img> nel DOM finché il bottone non sparisce più (ultima
+# slide). Nel feed (a differenza del post isolato) ci sono più <article>
+# contemporaneamente, ognuno col proprio eventuale bottone "Avanti" — la
+# ricerca va quindi scoping per articolo, non globale sulla pagina (un
+# querySelector globale prenderebbe sempre il bottone del primo carosello
+# trovato). Click su "Avanti"/"Next" è giudicato accettabile (14.5b): non
+# produce tracce pubbliche a differenza di like/commento/follow, stesso
+# principio già applicato al click "Vedi altro" (_JS_ESPANDI_VEDI_ALTRO).
+_JS_ESPANDI_CAROSELLI_INSTAGRAM = """
+() => {
+    const bottoni = [];
+    for (const articolo of document.querySelectorAll('article')) {
+        const btn = articolo.querySelector('button[aria-label="Avanti"], button[aria-label="Next"]');
+        if (btn) bottoni.push(btn);
+    }
+    for (const btn of bottoni) btn.click();
+    return bottoni.length;
 }
 """
 
@@ -371,10 +403,34 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
     trovati: dict[str, PostFeed] = {}
     ordine: list[str] = []
     script_espandi = _JS_ESPANDI_VEDI_ALTRO[piattaforma]
+    # Solo Instagram per ora (collaudato dal vivo, 2026-09-02): Facebook non
+    # ancora verificato in questa sessione, meglio non rischiare un
+    # comportamento non ispezionato sul carosello Facebook.
+    espandi_caroselli = piattaforma == "instagram"
+    # Circuit-breaker sui click "Avanti": un carosello Instagram ha al
+    # massimo 10 slide (limite noto della piattaforma), quindi 10 giri
+    # bastano a esaurirlo per ogni post del gruppo appena caricato.
+    max_giri_carosello = 10
 
     for _ in range(max_scroll):
         pagina.evaluate(script_espandi)
         pagina.wait_for_timeout(500)
+
+        immagini_extra: dict[str, list[str]] = {}
+        if espandi_caroselli:
+            for _giro in range(max_giri_carosello):
+                n_cliccati = pagina.evaluate(_JS_ESPANDI_CAROSELLI_INSTAGRAM)
+                if not n_cliccati:
+                    break
+                pagina.wait_for_timeout(400)
+                grezzi_parziali = pagina.evaluate(script_js)
+                for g in grezzi_parziali:
+                    permalink = g.get("permalink") or g["href"]
+                    urls_finora = immagini_extra.setdefault(permalink, [])
+                    for u in g.get("immagineUrls") or []:
+                        if u not in urls_finora:
+                            urls_finora.append(u)
+
         grezzi = pagina.evaluate(script_js)
         fermato = False
         for g in grezzi:
@@ -388,13 +444,17 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                 fermato = True
                 break
             if post_id not in trovati:
+                urls_carosello = immagini_extra.get(permalink) or []
+                for u in g.get("immagineUrls") or []:
+                    if u not in urls_carosello:
+                        urls_carosello.append(u)
                 trovati[post_id] = PostFeed(
                     piattaforma=piattaforma,
                     handle_autore=handle,
                     post_id=post_id,
                     url=permalink if permalink.startswith("http") else f"https://www.{'facebook' if piattaforma=='facebook' else 'instagram'}.com{permalink}",
                     testo=(g.get("testo") or "").strip() or None,
-                    image_url=g.get("immagineUrl") or None,
+                    image_urls=urls_carosello,
                 )
                 ordine.append(post_id)
         if fermato:
@@ -453,8 +513,8 @@ _CARTELLA_IMMAGINI_FEED = Path(__file__).resolve().parent.parent / "data" / "cac
 _TIMEOUT_DOWNLOAD_IMMAGINE_SEC = 15
 
 
-def _scarica_immagine_post(post: PostFeed) -> str | None:
-    """Scarica l'immagine allegata al post, se presente (2026-09-01,
+def _scarica_immagine_post(post: PostFeed) -> list[str]:
+    """Scarica tutte le immagini allegate al post, se presenti (2026-09-01,
     trovato con casi reali — San Damiano e Valfenera: il testo del post
     non bastava, i dettagli/il programma con le date corrette erano solo
     nell'immagine, mai scaricata prima d'ora perché post.image_url non
@@ -462,23 +522,28 @@ def _scarica_immagine_post(post: PostFeed) -> str | None:
     email_imap._salva_allegati_immagine: file su disco in
     data/cache/images/{source_id}/, l'interpretazione visiva resta
     compito dell'estrattore (04.3). Isolamento totale (15.1 regola 4): un
-    download fallito non deve bloccare l'elaborazione del post, ritorna
-    None e si prosegue con il solo testo."""
-    if not post.image_url:
-        return None
-    try:
-        with httpx.Client(timeout=_TIMEOUT_DOWNLOAD_IMMAGINE_SEC, follow_redirects=True) as client:
-            risposta = client.get(post.image_url)
-            risposta.raise_for_status()
-    except httpx.HTTPError:
-        return None
+    download fallito per una singola immagine non deve bloccare le altre
+    né l'elaborazione del post — si prosegue con quelle riuscite.
 
+    2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un
+    carosello Instagram può avere più immagini, e non è detto che la
+    prima sia quella col dettaglio utile — scarica tutta la lista, non
+    solo image_urls[0]."""
+    percorsi: list[str] = []
     cartella = _CARTELLA_IMMAGINI_FEED / f"{post.piattaforma}-{post.handle_autore}"
-    cartella.mkdir(parents=True, exist_ok=True)
-    nome_file = f"{post.post_id}.jpg"
-    percorso = cartella / nome_file
-    percorso.write_bytes(risposta.content)
-    return str(percorso)
+    for indice, url in enumerate(post.image_urls):
+        try:
+            with httpx.Client(timeout=_TIMEOUT_DOWNLOAD_IMMAGINE_SEC, follow_redirects=True) as client:
+                risposta = client.get(url)
+                risposta.raise_for_status()
+        except httpx.HTTPError:
+            continue
+        cartella.mkdir(parents=True, exist_ok=True)
+        nome_file = f"{post.post_id}.jpg" if indice == 0 else f"{post.post_id}-{indice}.jpg"
+        percorso = cartella / nome_file
+        percorso.write_bytes(risposta.content)
+        percorsi.append(str(percorso))
+    return percorsi
 
 
 def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extractor=None) -> str:
@@ -507,10 +572,10 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     # allegata con il dettaglio vero (programma, locandina) — prima
     # l'immagine non veniva mai scaricata. Se il download fallisce (rete,
     # URL scaduto), si prosegue con il solo testo (isolamento totale).
-    if not post.image_paths and post.image_url:
-        percorso_immagine = _scarica_immagine_post(post)
-        if percorso_immagine:
-            post.image_paths = [percorso_immagine]
+    # 2026-09-02: post.image_urls può contenere più immagini (carosello
+    # Instagram, caso Valfenera f39bb10a29e1) — scarica tutte.
+    if not post.image_paths and post.image_urls:
+        post.image_paths = _scarica_immagine_post(post)
 
     if not post.testo and not post.image_paths:
         return "senza_testo"
@@ -521,6 +586,10 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
         # che c'è un'immagine — anche con testo presente (2026-09-01: prima
         # l'immagine con testo era ignorata del tutto, ora viene sempre
         # passata all'estrattore insieme al testo come caption, vedi sotto).
+        # Il prefiltro grafico valuta solo la prima immagine (2026-09-02:
+        # con un carosello, la prima resta un buon proxy per lo scarto —
+        # es. "solo loghi/banner" — anche se le altre possono contenere il
+        # dettaglio vero che l'LLM vedrà comunque tutte insieme sotto).
         with open(post.image_paths[0], "rb") as fh:
             _bytes_prefiltro = fh.read()
         scarta, _motivo, phash_immagine = scarta_immagine(_bytes_prefiltro)
@@ -590,10 +659,15 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
             extraction_json_cache, _model_used = da_cache
             risposta = RispostaEstrazione.model_validate_json(extraction_json_cache)
         else:
-            with open(post.image_paths[0], "rb") as fh:
-                immagine_bytes = fh.read()
+            # 2026-09-02: tutte le immagini del post (carosello incluso)
+            # in un'unica chiamata — i tre provider LLM già supportano
+            # liste di immagini in un solo prompt (extractor/providers.py).
+            immagini_bytes = []
+            for percorso in post.image_paths:
+                with open(percorso, "rb") as fh:
+                    immagini_bytes.append(fh.read())
             risposta = extractor.estrai_da_immagine(
-                immagine_bytes=immagine_bytes,
+                immagine_bytes=immagini_bytes,
                 artifact_id=artifact_id,
                 fonte=art.source_id,
                 categoria_fonte="social",

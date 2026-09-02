@@ -63,8 +63,8 @@ INTESTAZIONI = {
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "ora_inizio",
         "data_fine", "ora_fine", "serie_id", "occorrenza", "comune", "luogo",
         "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
-        "fonti", "confidenza", "stato", "note", "primo_visto", "ultimo_visto",
-        "bloccato", "soppressa",
+        "url_approfondimento", "fonti", "confidenza", "stato", "note",
+        "primo_visto", "ultimo_visto", "bloccato", "soppressa",
     ],
     "Perimetro": ["comune", "alias", "provincia", "lat", "lon", "istat", "km", "minuti", "fascia", "attivo"],
     "Fonti": [
@@ -102,13 +102,13 @@ INTESTAZIONI = {
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "ora_inizio",
         "data_fine", "ora_fine", "serie_id", "occorrenza", "comune", "luogo",
         "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
-        "fonti", "confidenza", "stato", "note", "primo_visto", "ultimo_visto",
-        "bloccato", "soppressa",
+        "url_approfondimento", "fonti", "confidenza", "stato", "note",
+        "primo_visto", "ultimo_visto", "bloccato", "soppressa",
     ],
     "Archivio": [
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "data_fine",
-        "comune", "luogo", "organizzatore", "url", "fonti", "serie_id",
-        "stato", "note",
+        "comune", "luogo", "organizzatore", "url", "url_approfondimento",
+        "fonti", "serie_id", "stato", "note",
     ],
 }
 

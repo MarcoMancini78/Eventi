@@ -13,7 +13,7 @@ from datetime import date, datetime, timedelta
 
 from .normalizer import dedup_key, event_id, eventi_duplicati, titolo_normalizzato
 
-_CAMPI_OPZIONALI_DEFAULT = {"serie_id": None, "occorrenza": None}
+_CAMPI_OPZIONALI_DEFAULT = {"serie_id": None, "occorrenza": None, "url_approfondimento": None}
 
 
 def _trova_duplicato_fuzzy(
@@ -100,6 +100,7 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
                 ora_fine=:ora_fine, serie_id=:serie_id, occorrenza=:occorrenza,
                 comune=:comune, luogo=:luogo, km=:km, minuti=:minuti,
                 prezzo=:prezzo, organizzatore=:organizzatore, url=:url, url_immagine=:url_immagine,
+                url_approfondimento=:url_approfondimento,
                 confidenza=:confidenza, ultimo_visto=:oggi
             WHERE event_id=:event_id
             """,
@@ -111,13 +112,13 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
             INSERT INTO events (
                 event_id, dedup_key, titolo, descrizione, tipologia, data_inizio,
                 ora_inizio, data_fine, ora_fine, serie_id, occorrenza, comune, luogo,
-                km, minuti, prezzo, organizzatore, url, url_immagine, confidenza,
-                stato, primo_visto, ultimo_visto, bloccato, soppressa, archiviato
+                km, minuti, prezzo, organizzatore, url, url_immagine, url_approfondimento,
+                confidenza, stato, primo_visto, ultimo_visto, bloccato, soppressa, archiviato
             ) VALUES (
                 :event_id, :dedup_key, :titolo, :descrizione, :tipologia, :data_inizio,
                 :ora_inizio, :data_fine, :ora_fine, :serie_id, :occorrenza, :comune, :luogo,
-                :km, :minuti, :prezzo, :organizzatore, :url, :url_immagine, :confidenza,
-                'nuovo', :oggi, :oggi, 'no', 'no', 'no'
+                :km, :minuti, :prezzo, :organizzatore, :url, :url_immagine, :url_approfondimento,
+                :confidenza, 'nuovo', :oggi, :oggi, 'no', 'no', 'no'
             )
             """,
             {**evento, "event_id": eid, "dedup_key": chiave, "oggi": oggi},
