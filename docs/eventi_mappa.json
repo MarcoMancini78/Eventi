@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-02T12:42:26",
+  "generato_il": "2026-09-02T15:56:19",
   "eventi": [
     {
       "id": "215d35247178",
@@ -322,6 +322,23 @@
       "url": "https://www.facebook.com/prolocomongardino1976?__cft__[0]=AZgtVQ3y-RMp7uWOjewpWRUbAFE3s0HwU9QdsaHQR-AD8wqY_88ueO515kookav_Rur0BVYlcJTL_S-U5Gi0fPGrUaPWLTR8GRn77NDFfjzt8lTa5K__0ARrAEjIuqLXhLGieSUlQ1MqEquXy4OrBOYCQ1WdncTRiHFtKGAo-TFQfg58a112UnC7vdUUXnfHbg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocomongardino1976",
+      "quarantena": false
+    },
+    {
+      "id": "0942d414978d",
+      "titolo": "Sorelle. O alla fine del mondo",
+      "descrizione": "Una riflessione semiseria sulla comunità. Spettacolo di Casa degli Alfieri / Luna e Gnac con Federica Molteni, Patrizia Camatel e Michele Eynard nell'ambito del Festival Corti, Colline, Comunità...",
+      "comune": "Valfenera",
+      "lat": 44.901746,
+      "lon": 7.964331,
+      "km": 36.2,
+      "minuti": 50.0,
+      "data_inizio": "2026-08-31",
+      "data_fine": "2026-08-31",
+      "tipologia": "teatro",
+      "url": "https://www.instagram.com/p/DciNQZaFZUO/",
+      "url_approfondimento": "http://ecomuseobma.it",
+      "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     },
     {
@@ -750,6 +767,23 @@
       "quarantena": false
     },
     {
+      "id": "a888d71084ab",
+      "titolo": "Concerto Banda Musicale La Giovine",
+      "descrizione": "Concerto della Banda Musicale La Giovine di Cambiano diretta dal Maestro Paolo Bosa.",
+      "comune": "Valfenera",
+      "lat": 44.901746,
+      "lon": 7.964331,
+      "km": 36.2,
+      "minuti": 50.0,
+      "data_inizio": "2026-09-01",
+      "data_fine": "2026-09-01",
+      "tipologia": "concerto",
+      "url": "https://www.instagram.com/p/DciNQZaFZUO/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-prolocovalfenera",
+      "quarantena": false
+    },
+    {
       "id": "15b7818fa471",
       "titolo": "Knitting in biblioteca - Settembre e Ottobre 2026",
       "descrizione": "Ferri, uncinetto e chiacchiere in biblioteca. Le date sono indicate nella locandina allegata",
@@ -954,23 +988,6 @@
       "quarantena": false
     },
     {
-      "id": "f39bb10a29e1",
-      "titolo": "Vineria in Piazza",
-      "descrizione": "Degustazione con le cantine presenti: Costa Giuseppe, Terre dei santi, Venturel del Fer, Az. agricola Antonella Natta, Cantina Nebbia Tommaso, Ca' d' giaculot, Valsania vini, Calorio vini, Vigne dei mastri, Vini veglio, Carlin de Paolo, Roggero vini.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-02",
-      "data_fine": "2026-09-02",
-      "tipologia": "degustazione",
-      "url": "https://www.instagram.com/p/DciNQZaFZUO/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": false
-    },
-    {
       "id": "6c0a0f1249d3",
       "titolo": "Eventi - Trifolao in bianco e nero - Alba - Langhe",
       "descrizione": "Eventi culturali, musicali e sportivi in Langhe. Trifolao in bianco e nero - Alba: date, orari, programma e dettagli.",
@@ -1024,7 +1041,7 @@
     {
       "id": "48bda3a3c4dc",
       "titolo": "Summer Festival",
-      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerto, balli.",
+      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerti e balli a San Damiano d'Asti.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -1032,10 +1049,27 @@
       "minuti": 34.0,
       "data_inizio": "2026-09-02",
       "data_fine": "2026-09-06",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZgCVpPU3RHBGD9caP9_t-giYR9NQDD-ZBu6JxTUH_1_3iEQ952Ibb5pC3NN6Pud89jO_BgV9-PpXAxLJLCb2mxBTEohK6TKySfS1ngN2-nAKIuqhlPICwT1pitkhx9zQS7z7gpGqB_sUUWorh3XEVQY5WNiV4ivJepA8T9PYkPlgbvlWM_xb1i7dlcSS6dH9Jb96nCq5-odA1N7HSZo2AG_&__tn__=-UC%2CP-R",
+      "tipologia": "sagra",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZg1-8hrubYN3TOestlS2lDIMzGxUsyRwUCI1R2cYH3bPFvhYz0HcvU14Wv2VPCYDOoHY95j6ldpnpjuxcI6P28up6ID_MW6gnJ0TOvC6DaugCUT7lQ8iQqj2Zeg6gAds8OYJSbjq8M43PdbxwoRnR262teAVfO0rbTfzFQi63FDou2OKasKTgjE5Ij9_Ss9Knx1x4rUn932oKZM_uiMnOBQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunesandamianodasti",
+      "quarantena": false
+    },
+    {
+      "id": "28094e0367ba",
+      "titolo": "Tra Boschi e Stelle - Camminata notturna a Ferrere",
+      "descrizione": "Camminata notturna con intrattenimento culturale artistico e ristoro finale. Ritrovo ore 20:30, partenza ore 21:00.",
+      "comune": "Ferrere",
+      "lat": 44.875446,
+      "lon": 7.994732,
+      "km": 32.0,
+      "minuti": 46.0,
+      "data_inizio": "2026-09-02",
+      "data_fine": "2026-09-02",
+      "tipologia": "sportivo",
+      "url": "https://www.instagram.com/p/DcdJOktAbzI/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     },
     {
@@ -1258,23 +1292,6 @@
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": true
-    },
-    {
-      "id": "0f87943e0a15",
-      "titolo": "Vineria in Piazza - Festa patronale di San Bartolomeo",
-      "descrizione": "Menù con degustazioni vini, taglieri, primi piatti tradizionali, secondi e dolci in occasione della festa patronale di San Bartolomeo.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-03",
-      "data_fine": "2026-09-04",
-      "tipologia": "degustazione",
-      "url": "https://www.instagram.com/p/DcgYQDSgdTR/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": false
     },
     {
       "id": "271e0fd503c3",
@@ -1823,7 +1840,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni.",
+      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno con dj set, concerti e animazioni, con palchi aperti alla città e una programmazione diffusa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2928,7 +2945,7 @@
     {
       "id": "0ba5d6f749d7",
       "titolo": "“Ares Trio” in concerto - 49ª Stagione di Musica da Camera",
-      "descrizione": "“Ares Trio” in concerto ad Alba apre la 49ª Stagione di Musica da Camera",
+      "descrizione": "Ares Trio in concerto ad Alba apre la 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3963,6 +3980,23 @@
       "quarantena": false
     },
     {
+      "id": "6ed342273e42",
+      "titolo": "Serata Porchetta",
+      "descrizione": "Menù con tris antipasti, porchetta di Tarcisio con patate, dolce, caffè. Acqua e vino compresi.",
+      "comune": "Monchiero",
+      "lat": 44.570538,
+      "lon": 7.920236,
+      "km": 44.4,
+      "minuti": 51.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "gastronomia",
+      "url": "https://www.instagram.com/p/DcyX54qqk6S/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-proloco_monchiero",
+      "quarantena": false
+    },
+    {
       "id": "eacb8b13912b",
       "titolo": "11° Palio del Verro e Sagra della Porchetta",
       "descrizione": "Sfilata dei Borghi dal Piazzale del Santuario con gli Sbandieratori e Musici di Borgo Viatosto di Asti, seguita dalla Sagra della Porchetta.",
@@ -4007,7 +4041,7 @@
       "minuti": 32.0,
       "data_inizio": "2026-09-15",
       "data_fine": "2026-09-15",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "https://comune.alba.cn.it/it",
       "url_approfondimento": "",
       "fonti": "comune-alba",
@@ -5801,7 +5835,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura pubblica aperto a tutti.",
+      "descrizione": "Lettura (pubblica) aperto a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
