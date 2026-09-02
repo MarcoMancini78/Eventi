@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-02T18:53:56",
+  "generato_il": "2026-09-02T19:42:00",
   "eventi": [
     {
       "id": "215d35247178",
@@ -1517,7 +1517,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e programmazione diffusa.",
+      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno a ingresso gratuito, con dj set, concerti e animazioni.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2638,8 +2638,8 @@
     },
     {
       "id": "0ba5d6f749d7",
-      "titolo": "“Ares Trio” in concerto",
-      "descrizione": "Apertura della 49ª Stagione di Musica da Camera.",
+      "titolo": "“Ares Trio” in concerto - 49ª Stagione di Musica da Camera",
+      "descrizione": "“Ares Trio” in concerto ad Alba apre la 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3735,7 +3735,7 @@
       "minuti": 32.0,
       "data_inizio": "2026-09-15",
       "data_fine": "2026-09-15",
-      "tipologia": "altro",
+      "tipologia": "teatro",
       "url": "https://comune.alba.cn.it/it",
       "url_approfondimento": "",
       "fonti": "comune-alba",
@@ -5563,7 +5563,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica) aperto a tutti",
+      "descrizione": "Lettura (pubblica), aperto a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
