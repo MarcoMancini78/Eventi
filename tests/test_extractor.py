@@ -73,7 +73,7 @@ def test_estrai_da_testo_valida_e_salva_extraction():
     assert risposta.eventi[0].titolo == "Sagra del Tartufo"
 
     salvato = conn.execute("SELECT prompt_version, confidence FROM extractions").fetchone()
-    assert salvato["prompt_version"] == "testo_v1.1"
+    assert salvato["prompt_version"] == "testo_v1.2"
     assert salvato["confidence"] == 92
 
 

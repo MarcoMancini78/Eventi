@@ -12,7 +12,7 @@ eventi passati"), ma la sua applicazione: nessun elenco di segnali
 linguistici concreti da riconoscere, e nessun divieto esplicito di
 generalizzare oltre le parole scritte. Aggiunti entrambi."""
 
-PROMPT_VERSION = "testo_v1.1"
+PROMPT_VERSION = "testo_v1.2"
 
 SISTEMA = """Estrai eventi pubblici da testi italiani. Rispondi SOLO con JSON valido
 conforme allo schema. Nessun testo prima o dopo.
@@ -98,6 +98,21 @@ REGOLE_LOCANDINA_AGGIUNTIVE = """
     coincidono in nessun anno vicino, segnala data in campi_incerti.
 11. Se la locandina contiene un PROGRAMMA con più serate/spettacoli
     datati, restituisci un evento per ciascuno.
+11b. Se ricevi PIÙ immagini insieme (carosello di un post): ognuna può
+    essere la locandina di un evento COMPLETAMENTE DIVERSO, non
+    correlato alle altre (es. un post riepilogativo settimanale di una
+    Pro Loco con locandine di eventi diversi accodate). Leggi ogni
+    immagine come un documento a sé: titolo, data, orario e luogo
+    DEVONO provenire tutti dalla STESSA immagine. Non associare mai la
+    data letta in un'immagine al titolo letto in un'altra, anche se
+    sembrano collegati o riguardano lo stesso organizzatore/luogo.
+    Caso reale (2026-09-02): un carosello con locandine di "Vineria in
+    Piazza" (27-28 agosto), "Festa Patronale San Bartolomeo" (29-30
+    agosto), uno spettacolo teatrale (31 agosto) e un concerto (1
+    settembre) è stato letto come 2 soli eventi con date sbagliate,
+    probabilmente per aver mescolato il titolo di un'immagine con la
+    data di un'altra — estrai invece un evento per ogni immagine che è
+    una locandina valida (regola 13), ciascuno con i propri dati.
 12. Ignora testo decorativo, slogan, hashtag, sponsor.
 13. Se l'immagine non è una locandina (foto, logo, grafica di auguri),
     imposta non_e_un_evento=true."""
