@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-02T10:51:43",
+  "generato_il": "2026-09-02T12:42:26",
   "eventi": [
     {
       "id": "215d35247178",
@@ -1024,7 +1024,7 @@
     {
       "id": "48bda3a3c4dc",
       "titolo": "Summer Festival",
-      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerto e balli.",
+      "descrizione": "Musica, divertimento, enogastronomia, spettacoli, concerto, balli.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -1033,7 +1033,7 @@
       "data_inizio": "2026-09-02",
       "data_fine": "2026-09-06",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZgmzBPkLv6DwLfAF_nQgWKruIDDcgieBUOSPsIbIsxv5nPL6Xe5KFWU0-JeHUWtfjpMmm3x3aVadoHcCV9YmsR4dNcTOQHjFqPQGYuNm4o-EARd5frt-MZqcqnNyPX-9tUg3dvrJtiQvLofydx_bEWtzDQi6-hKyGmzpb5cIC7D7qTrVz-CNLvgg7WCw-8Q5tLOComEqCcUXlm_wkgmFLsS&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunesandamianodasti?__cft__[0]=AZgCVpPU3RHBGD9caP9_t-giYR9NQDD-ZBu6JxTUH_1_3iEQ952Ibb5pC3NN6Pud89jO_BgV9-PpXAxLJLCb2mxBTEohK6TKySfS1ngN2-nAKIuqhlPICwT1pitkhx9zQS7z7gpGqB_sUUWorh3XEVQY5WNiV4ivJepA8T9PYkPlgbvlWM_xb1i7dlcSS6dH9Jb96nCq5-odA1N7HSZo2AG_&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunesandamianodasti",
       "quarantena": false
@@ -1823,7 +1823,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e programmazione diffusa per salutare l’estate.",
+      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1848,7 +1848,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -2928,7 +2928,7 @@
     {
       "id": "0ba5d6f749d7",
       "titolo": "“Ares Trio” in concerto - 49ª Stagione di Musica da Camera",
-      "descrizione": "Concerto di apertura della 49ª Stagione di Musica da Camera.",
+      "descrizione": "“Ares Trio” in concerto ad Alba apre la 49ª Stagione di Musica da Camera",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3124,7 +3124,7 @@
       "data_inizio": "2026-09-11",
       "data_fine": "2026-09-11",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/visitacquiterme?__cft__[0]=AZiYOX9tm0gMnpet5oXnrxIEc7Kju4m4lDtl1FFwz68CafPWlTbp-rD4XBCnJ0gcMS_E77XyvtMhOk3LdqtCf9h5BTus70TJm9SCiwuD7YMdPgVZ_rUsFoRc_L7wvI64M-UcRnwlkOogt8nqt4NdRgEnrXhzhay092zJqWfCwsI-0cj9Cpw9tffoMo0bXvBc&__tn__=-]C%2CP-R",
+      "url": "https://www.facebook.com/visitacquiterme?__cft__[0]=AZjfbO46saLJ9Ik-H4BFLUe8tGo_Yc8TlOZPEwsGGFcZ0UktHyEiEHY5Y5ivUBvW4wu5YFeqi-y2TX0y0FZ4cSwYHqlUlEoHXkmCfy0cPEgI7vBlvln3HSSk2pLJIpfmtI-2gxPchjAgQuK6KyVMzdugjoyoSBHKIH0rehqsDBNXuik4AhJP7H5jGei6nUh1&__tn__=-]C%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-visitacquiterme",
       "quarantena": false
@@ -5801,7 +5801,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura pubblica aperta a tutti.",
+      "descrizione": "Lettura pubblica aperto a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
