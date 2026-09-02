@@ -27,7 +27,7 @@ import re
 import sqlite3
 import unicodedata
 from dataclasses import dataclass, field
-from datetime import datetime, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -76,6 +76,18 @@ class PostFeed:
     # — solo per Instagram per ora (collaudato dal vivo il click sul
     # bottone "Avanti"), Facebook non ancora verificato in questa sessione.
     image_urls: list[str] = field(default_factory=list)
+    # 2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): senza
+    # questo campo, un testo relativo ("stasera", "vi aspettiamo dalle
+    # 19.30") veniva ancorato a date.today() — la data in cui la pipeline
+    # GIRA, non quella in cui il post è stato PUBBLICATO. Un post letto 5
+    # giorni dopo la pubblicazione con "stasera" produceva quindi una data
+    # sbagliata di 5 giorni. Letto dall'attributo datetime (ISO, assoluto)
+    # dell'elemento <time> del post — non dal testo relativo visualizzato
+    # ("6 g", "6 giorni fa"), che dipende da lingua/formato e non è
+    # affidabile da parsare. Collaudato dal vivo su Instagram 2026-09-02
+    # (post e feed reali). Solo la data (non l'ora) serve come riferimento
+    # per l'LLM, coerente con costruisci_prompt_utente(data_riferimento=...).
+    data_pubblicazione: date | None = None
 
 
 def verifica_separazione_da_follow(conn: sqlite3.Connection, piattaforma: str, minuti_minimi: int = 60) -> None:
@@ -245,11 +257,13 @@ _JS_RACCOGLI_POST_INSTAGRAM = """
         const immagini = Array.from(articolo.querySelectorAll('img'))
             .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150)
             .map(img => img.src);
+        const timeEl = articolo.querySelector('time');
         risultati.push({
             href: linkAutore.getAttribute('href'),
             permalink: linkPost.getAttribute('href'),
             testo: captionEl ? captionEl.innerText : '',
             immagineUrls: immagini,
+            dataPubblicazione: timeEl ? timeEl.getAttribute('datetime') : null,
         });
     }
     return risultati;
@@ -280,6 +294,20 @@ _JS_ESPANDI_CAROSELLI_INSTAGRAM = """
     return bottoni.length;
 }
 """
+
+
+def _data_da_iso(valore_iso: str | None) -> date | None:
+    """Converte l'attributo datetime ISO dell'elemento <time> del post
+    (es. '2026-08-27T07:03:46.000Z') nella data (locale, 07.2) da passare
+    come data_riferimento all'estrattore. Isolamento totale (15.1 regola
+    4): un formato inatteso non deve bloccare l'elaborazione del post,
+    ritorna None e si ricade sul default date.today() in client.py."""
+    if not valore_iso:
+        return None
+    try:
+        return datetime.fromisoformat(valore_iso.replace("Z", "+00:00")).date()
+    except ValueError:
+        return None
 
 
 def _handle_da_href_profilo(href: str, piattaforma: str) -> str:
@@ -455,6 +483,7 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                     url=permalink if permalink.startswith("http") else f"https://www.{'facebook' if piattaforma=='facebook' else 'instagram'}.com{permalink}",
                     testo=(g.get("testo") or "").strip() or None,
                     image_urls=urls_carosello,
+                    data_pubblicazione=_data_da_iso(g.get("dataPubblicazione")),
                 )
                 ordine.append(post_id)
         if fermato:
@@ -674,6 +703,7 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
                 comune_fonte=comune_riferimento or "",
                 url=post.url,
                 caption=post.testo,
+                data_riferimento=post.data_pubblicazione,
                 fascia_fonte=fascia_fonte,
             )
             if phash_immagine:
@@ -686,6 +716,7 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
             categoria_fonte="social",
             comune_fonte=comune_riferimento or "",
             url=post.url,
+            data_riferimento=post.data_pubblicazione,
             fascia_fonte=fascia_fonte,
         )
 

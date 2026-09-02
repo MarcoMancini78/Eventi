@@ -281,6 +281,50 @@ def test_elabora_post_con_testo_e_immagine_manda_entrambi_al_vlm(tmp_path):
     assert "programma allegato" in provider.chiamate_prompt_utente[0]  # ed è passata la caption
 
 
+def test_data_da_iso_converte_datetime_instagram():
+    """2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un
+    post letto giorni dopo la pubblicazione con testo relativo ('stasera')
+    va ancorato alla data di PUBBLICAZIONE, non a quella di lettura —
+    formato reale collaudato dal vivo su Instagram."""
+    from datetime import date
+
+    assert feed_social._data_da_iso("2026-08-27T07:03:46.000Z") == date(2026, 8, 27)
+
+
+def test_data_da_iso_formato_inatteso_ritorna_none():
+    """Isolamento totale (15.1 regola 4): un formato inatteso non deve
+    sollevare, solo far ricadere sul default date.today() a valle."""
+    assert feed_social._data_da_iso("non-una-data") is None
+    assert feed_social._data_da_iso(None) is None
+
+
+def test_elabora_post_usa_data_pubblicazione_come_riferimento():
+    """2026-09-02: post.data_pubblicazione deve arrivare all'estrattore
+    come data_riferimento, non il default date.today() — verificato
+    guardando il prompt costruito (DATA_RIFERIMENTO: ...)."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'instagram', 'prolocovalfenera', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    from datetime import date
+
+    post = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocovalfenera", post_id="1",
+        url="https://www.instagram.com/p/abc123/",
+        testo="Sagra del Tartufo stasera dalle 19.30 in Piazza Roma a Calosso, degustazioni e musica dal vivo.",
+        data_pubblicazione=date(2026, 8, 27),
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+
+    assert esito == "pubblicato"
+    assert "DATA_RIFERIMENTO: 2026-08-27" in provider.chiamate_prompt_utente[0]
+
+
 def test_elabora_post_carosello_manda_tutte_le_immagini_al_vlm(tmp_path):
     """2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): un
     carosello Instagram di più immagini deve arrivare all'estrattore
@@ -706,3 +750,54 @@ def test_scroll_feed_espande_vedi_altro_prima_di_leggere():
     assert pagina.chiamate_espandi >= 1
     assert pagina.chiamate_espandi <= pagina.chiamate_raccogli
     assert len(risultato) == 1
+
+
+class _PaginaScrollInstagramFinta:
+    """Come _PaginaScrollFinta ma distingue anche lo script di espansione
+    caroselli (solo Instagram, 2026-09-02) — ritorna 0 bottoni cliccati
+    per fermare subito il ciclo interno di _scroll_feed_e_raccogli."""
+
+    def __init__(self, iterazioni: list[list[dict]]):
+        self._iterazioni = iterazioni
+        self.mouse = self
+        self._indice = 0
+
+    def evaluate(self, script: str):
+        if script == feed_social._JS_ESPANDI_VEDI_ALTRO["instagram"]:
+            return 0
+        if script == feed_social._JS_ESPANDI_CAROSELLI_INSTAGRAM:
+            return 0  # nessun bottone "Avanti" da cliccare in questo test
+        if self._indice >= len(self._iterazioni):
+            return []
+        risultato = self._iterazioni[self._indice]
+        self._indice += 1
+        return risultato
+
+    def wheel(self, x, y):
+        pass
+
+    def wait_for_timeout(self, ms):
+        pass
+
+
+def test_scroll_feed_instagram_legge_data_pubblicazione_dal_time_element():
+    """2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): il
+    post grezzo raccolto dallo script JS espone dataPubblicazione (dal
+    datetime dell'elemento <time>, collaudato dal vivo) — verifica che
+    _scroll_feed_e_raccogli lo converta in PostFeed.data_pubblicazione."""
+    grezzi = [{
+        "href": "/prolocovalfenera",
+        "permalink": "/p/DciNQZaFZUO/",
+        "testo": "Stasera vi aspettiamo dalle 19.30!",
+        "immagineUrls": ["https://cdninstagram.com/1.jpg"],
+        "dataPubblicazione": "2026-08-27T07:03:46.000Z",
+    }]
+    pagina = _PaginaScrollInstagramFinta([grezzi, []])
+
+    risultato = feed_social._scroll_feed_e_raccogli(
+        pagina, feed_social._JS_RACCOGLI_POST_INSTAGRAM, "instagram", ultimo_visto=None, max_scroll=2
+    )
+
+    assert len(risultato) == 1
+    from datetime import date
+    assert risultato[0].data_pubblicazione == date(2026, 8, 27)
