@@ -734,3 +734,152 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     if "quarantena" in esiti:
         return "quarantena"
     return esiti[0]
+
+
+class ErroreRiprocessaEvento(Exception):
+    """Sollevato quando un event_id non può essere ricorretto (es. non
+    trovato, non proveniente da Instagram)."""
+
+
+def riprocessa_eventi_instagram(
+    event_ids: list[str], conn: sqlite3.Connection, config: Config, extractor
+) -> list[dict]:
+    """Utility di correzione mirata (2026-09-03, richiesto dall'utente
+    dopo i casi Valfenera/carosello e Vaglio Serra): un post già letto
+    NON viene mai riletto dal giro normale — leggi_feed_reale si ferma al
+    primo post già visto (change detection su post_id, 12.3), quindi un
+    evento sbagliato per un bug ormai corretto nel codice (es. prompt
+    v1.2, data_pubblicazione) resta sbagliato per sempre finché non lo si
+    ri-processa a mano. Qui si riapre il permalink diretto del post (sola
+    lettura, 14.5b — nessuna interazione visibile oltre l'espansione
+    carosello già accettata) e si richiama elabora_post con gli stessi
+    dati raccolti dal vivo, sostituendo l'evento sbagliato solo se la
+    nuova estrazione produce davvero un risultato (mai un buco silenzioso
+    se il ri-processo fallisce, 04.7).
+
+    Solo Instagram: l'URL salvato per Facebook è il link della PAGINA
+    dell'autore con parametri di tracking (__cft__), non un permalink al
+    singolo post — non riapribile direttamente. Investigato a fondo
+    (2026-09-03): Facebook offusca anche il timestamp relativo del post
+    con testo duplicato in un <span> nascosto e uno <svg><text> separato,
+    non correlabile in modo affidabile al post giusto — anti-scraping
+    intenzionale, non un selettore sbagliato da correggere. Per Facebook
+    resta solo la correzione manuale (riaprire il feed, cercare il post).
+
+    Ritorna una lista di dict {event_id, esito, dettaglio} — mai solleva
+    per un singolo fallimento (isolamento totale, 15.1 regola 4): un
+    event_id sbagliato non deve bloccare la correzione degli altri."""
+    risultati = []
+    for event_id in event_ids:
+        try:
+            risultati.append(_riprocessa_un_evento_instagram(event_id, conn, config, extractor))
+        except ErroreRiprocessaEvento as exc:
+            risultati.append({"event_id": event_id, "esito": "errore", "dettaglio": str(exc)})
+    return risultati
+
+
+def _riprocessa_un_evento_instagram(event_id: str, conn: sqlite3.Connection, config: Config, extractor) -> dict:
+    riga = conn.execute(
+        "SELECT url FROM events WHERE event_id = ?", (event_id,)
+    ).fetchone()
+    if not riga:
+        raise ErroreRiprocessaEvento("event_id non trovato in events")
+    url = riga["url"]
+
+    riga_source = conn.execute(
+        "SELECT source_id FROM event_sources WHERE event_id = ? LIMIT 1", (event_id,)
+    ).fetchone()
+    if not riga_source or "feed-instagram-" not in riga_source["source_id"]:
+        raise ErroreRiprocessaEvento(
+            "non è un evento da feed Instagram — per Facebook il post non è riapribile "
+            "direttamente (URL salvato è la pagina dell'autore, non un permalink), serve "
+            "correzione manuale"
+        )
+    source_id = riga_source["source_id"]
+    handle = source_id.replace("feed-instagram-", "")
+    post_slug = url.rstrip("/").split("/")[-1]
+
+    verifica_separazione_da_follow(conn, "instagram")
+
+    contesto = _apri_sessione_browser("instagram", None)
+    try:
+        verifica_identita_instagram(contesto, config)
+        pagina = contesto["browser"].new_page()
+        pagina.goto(url, timeout=20000)
+        pagina.wait_for_timeout(2500)
+
+        for _ in range(10):
+            n = pagina.evaluate("""
+            () => {
+                const btn = document.querySelector('button[aria-label="Avanti"], button[aria-label="Next"]');
+                if (btn) { btn.click(); return 1; }
+                return 0;
+            }
+            """)
+            if not n:
+                break
+            pagina.wait_for_timeout(500)
+
+        grezzo = pagina.evaluate("""
+        () => {
+            const articolo = document.querySelector('article') || document.body;
+            const captionEls = articolo.querySelectorAll('span._ap3a');
+            const captionEl = captionEls.length > 0 ? captionEls[captionEls.length - 1] : null;
+            const immagini = Array.from(articolo.querySelectorAll('img'))
+                .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150)
+                .map(img => img.src);
+            const timeEl = articolo.querySelector('time');
+            return {
+                testo: captionEl ? captionEl.innerText : '',
+                immagineUrls: immagini,
+                dataPubblicazione: timeEl ? timeEl.getAttribute('datetime') : null,
+            };
+        }
+        """)
+        pagina.close()
+    finally:
+        _chiudi_sessione_browser(contesto)
+
+    post = PostFeed(
+        piattaforma="instagram",
+        handle_autore=handle,
+        post_id=post_slug,
+        url=url,
+        testo=(grezzo.get("testo") or "").strip() or None,
+        image_urls=grezzo.get("immagineUrls") or [],
+        data_pubblicazione=_data_da_iso(grezzo.get("dataPubblicazione")),
+    )
+    if post.image_urls:
+        post.image_paths = _scarica_immagine_post(post)
+
+    vecchi = conn.execute(
+        "SELECT event_id FROM events WHERE url = ? AND archiviato = 'no'", (url,)
+    ).fetchall()
+    vecchi_ids = {v["event_id"] for v in vecchi}
+
+    esito = elabora_post(post, conn, config, extractor)
+
+    if vecchi_ids:
+        placeholders = ",".join("?" * len(vecchi_ids))
+        nuovi = conn.execute(
+            f"SELECT event_id FROM events WHERE url = ? AND archiviato = 'no' AND event_id NOT IN ({placeholders})",
+            [url, *vecchi_ids],
+        ).fetchall()
+    else:
+        nuovi = conn.execute(
+            "SELECT event_id FROM events WHERE url = ? AND archiviato = 'no'", (url,)
+        ).fetchall()
+    nuovi_ids = {n["event_id"] for n in nuovi}
+
+    if nuovi_ids:
+        for eid in vecchi_ids:
+            conn.execute(
+                "UPDATE events SET archiviato='si', "
+                "note=COALESCE(note || ' | ', '') || 'archiviato: sostituito da ricorrezione manuale (' || date('now') || ')' "
+                "WHERE event_id=?",
+                (eid,),
+            )
+        conn.commit()
+        return {"event_id": event_id, "esito": esito, "dettaglio": f"sostituito da {len(nuovi_ids)} nuovo/i evento/i: {sorted(nuovi_ids)}"}
+
+    return {"event_id": event_id, "esito": esito, "dettaglio": "nessun nuovo evento creato, riga originale NON toccata"}

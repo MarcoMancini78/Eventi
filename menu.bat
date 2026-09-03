@@ -141,6 +141,7 @@ echo   5. Popola coda follow e pubblica su Sheets
 echo   6. Fingerprinting comuni (tutti) - solo se cambiano molti siti comunali
 echo   7. Aggiorna da Google Sheets: Fonti, DaVerificare, azioni Quarantena (pull-fonti)
 echo   8. Verifica configurazione (database, credenziali Google, .env)
+echo   9. Ricorreggi eventi Instagram (solo un post gia' letto, con un bug ormai risolto)
 echo   0. Indietro
 echo.
 set /p SCELTA="Scelta: "
@@ -175,6 +176,11 @@ if "%SCELTA%"=="7" (
 )
 if "%SCELTA%"=="8" (
     %PYTHON_EXE% run.py doctor
+    goto FINE_COMANDO
+)
+if "%SCELTA%"=="9" (
+    set /p EVENTID="Event_id da ricorreggere (separati da spazio): "
+    %PYTHON_EXE% run.py correggi-post !EVENTID!
     goto FINE_COMANDO
 )
 if "%SCELTA%"=="0" goto MENU_PRINCIPALE

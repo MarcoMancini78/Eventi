@@ -935,6 +935,36 @@ def cmd_feed_social(args: argparse.Namespace) -> None:
             print(f"  {esito:28} {n}")
 
 
+def cmd_correggi_post(args: argparse.Namespace) -> None:
+    """M10: utility di correzione mirata (2026-09-03, richiesto dall'utente
+    dopo i casi Valfenera/carosello e Vaglio Serra) — un post già letto
+    non viene mai riletto dal giro normale (change detection sul
+    post_id), quindi un evento sbagliato per un bug ormai risolto nel
+    codice resta sbagliato finché non lo si ricorregge esplicitamente.
+    Solo Instagram: per Facebook l'URL salvato non è un permalink
+    riapribile (vedi feed_social.riprocessa_eventi_instagram)."""
+    from src import feed_social
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+    extractor = _crea_extractor_se_configurato(config, conn)
+    if extractor is None:
+        print("Estrattore LLM non configurato: impossibile ricorreggere (serve llm_api_key).")
+        sys.exit(1)
+
+    try:
+        risultati = feed_social.riprocessa_eventi_instagram(args.event_id, conn, config, extractor)
+    except feed_social.SessioneTroppoVicinaAlFollowError as exc:
+        print(f"Impossibile procedere: {exc}")
+        sys.exit(1)
+
+    print("\nRisultati:")
+    for r in risultati:
+        print(f"  {r['event_id']:16} {r['esito']:12} {r['dettaglio']}")
+    print("\nRicorda: 'run.py publish' per riflettere le correzioni su Sheets e sulla mappa.")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -1071,6 +1101,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_feed.add_argument("--platform", required=True, choices=["facebook", "instagram"])
     p_feed.add_argument("--no-llm", action="store_true", help="Disabilita l'estrazione LLM: elenca solo i post letti")
     p_feed.set_defaults(func=cmd_feed_social)
+
+    p_correggi = sub.add_parser(
+        "correggi-post",
+        help="Ricorregge uno o più eventi social (solo Instagram): riapre il post dal vivo e ri-estrae, "
+        "usa quando un bug già corretto nel codice ha lasciato un evento vecchio sbagliato in giro "
+        "(la lettura normale del feed non torna mai indietro sui post già visti)",
+    )
+    p_correggi.add_argument("event_id", nargs="+", help="Uno o più event_id da ricorreggere")
+    p_correggi.set_defaults(func=cmd_correggi_post)
 
     p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
     p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])

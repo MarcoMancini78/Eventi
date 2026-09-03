@@ -801,3 +801,177 @@ def test_scroll_feed_instagram_legge_data_pubblicazione_dal_time_element():
     assert len(risultato) == 1
     from datetime import date
     assert risultato[0].data_pubblicazione == date(2026, 8, 27)
+
+
+# --- riprocessa_eventi_instagram (2026-09-03, richiesto dall'utente dopo
+# i casi Valfenera/carosello e Vaglio Serra): un post già letto non viene
+# mai riletto dal giro normale, serve una utility esplicita di correzione. ---
+
+class _PaginaCorreggiFinta:
+    """Simula pagina.goto/evaluate/wait_for_timeout/close per un singolo
+    permalink Instagram — nessun browser reale (15.1 regola 8)."""
+
+    def __init__(self, grezzo: dict, ha_bottone_avanti: bool = False):
+        self._grezzo = grezzo
+        self._ha_bottone_avanti = ha_bottone_avanti
+        self.chiusa = False
+        self.url_visitato = None
+
+    def goto(self, url, timeout=None):
+        self.url_visitato = url
+
+    def wait_for_timeout(self, ms):
+        pass
+
+    def evaluate(self, script):
+        if "Avanti" in script and "return 1" in script:
+            if self._ha_bottone_avanti:
+                self._ha_bottone_avanti = False  # solo un giro
+                return 1
+            return 0
+        return self._grezzo
+
+    def close(self):
+        self.chiusa = True
+
+
+def _contesto_correggi_finto(pagina):
+    class _Browser:
+        def new_page(self_inner):
+            return pagina
+
+    return {"browser": _Browser()}
+
+
+def test_riprocessa_eventi_instagram_sostituisce_evento_sbagliato(tmp_path, monkeypatch):
+    """Caso reale Valfenera: un evento con data sbagliata (bug ormai
+    corretto nel codice) viene sostituito da uno corretto, ri-leggendo il
+    post dal vivo — solo qui, non nel giro normale (change detection)."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'instagram', 'prolocotest', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+
+    # Evento vecchio, sbagliato, da sostituire.
+    provider_vecchio = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor_vecchio = ExtractorClient(Config(), conn, provider=provider_vecchio)
+    post_vecchio = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocotest", post_id="abc123",
+        url="https://www.instagram.com/p/abc123/",
+        testo="Sagra del Tartufo sabato 12 settembre in Piazza Roma a Calosso, degustazioni e musica.",
+    )
+    feed_social.elabora_post(post_vecchio, conn, Config(), extractor_vecchio)
+    vecchio = conn.execute("SELECT event_id FROM events WHERE archiviato='no'").fetchone()
+    assert vecchio is not None
+
+    # Ri-processo: nuova estrazione con titolo diverso (simula il fix che
+    # ora legge correttamente il contenuto).
+    grezzo = {
+        "testo": "Sagra della Nocciola domenica 20 settembre in Piazza Roma a Calosso.",
+        "immagineUrls": [],
+        "dataPubblicazione": "2026-09-01T10:00:00.000Z",
+    }
+    pagina = _PaginaCorreggiFinta(grezzo)
+    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir: _contesto_correggi_finto(pagina))
+    monkeypatch.setattr(feed_social, "_chiudi_sessione_browser", lambda contesto: None)
+    monkeypatch.setattr(feed_social, "verifica_identita_instagram", lambda contesto, config: None)
+
+    # Titolo E data diversi dal vecchio evento (non "Sagra del Tartufo",
+    # 12/09): la stessa fixture standard produrrebbe la stessa dedup_key
+    # (comune+data), facendo aggiornare la riga esistente invece di
+    # crearne una nuova — il caso reale (Valfenera) aveva titolo/data
+    # diversi tra la vecchia estrazione sbagliata e quella corretta.
+    risposta_nuova = (
+        '{"eventi": [{"titolo": "Sagra della Nocciola", "descrizione": "Degustazioni", "tipologia": "sagra", '
+        '"data_inizio": "2026-09-20", "data_fine": "2026-09-20", "ora_inizio": "21:00", "ora_fine": null, '
+        '"ricorrenza": {"e_ricorrente": false}, "luogo_testuale": "Piazza Roma", "comune_testuale": "Calosso", '
+        '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": true, '
+        '"confidenza": 90, "campi_incerti": [], "note_estrazione": null}], '
+        '"non_e_un_evento": false, "motivo": null}'
+    )
+    provider_nuovo = _ProviderFinto([risposta_nuova])
+    extractor_nuovo = ExtractorClient(Config(), conn, provider=provider_nuovo)
+
+    risultati = feed_social.riprocessa_eventi_instagram([vecchio["event_id"]], conn, Config(), extractor_nuovo)
+
+    assert len(risultati) == 1
+    assert risultati[0]["esito"] == "pubblicato"
+    assert pagina.url_visitato == "https://www.instagram.com/p/abc123/"
+
+    vecchia_riga = conn.execute("SELECT archiviato FROM events WHERE event_id=?", (vecchio["event_id"],)).fetchone()
+    assert vecchia_riga["archiviato"] == "si"
+
+    nuovi = conn.execute("SELECT titolo FROM events WHERE archiviato='no'").fetchall()
+    assert len(nuovi) == 1
+
+
+def test_riprocessa_eventi_instagram_rifiuta_facebook():
+    """Per Facebook l'URL salvato non è un permalink riapribile (link
+    della pagina autore con parametri di tracking) — investigato a fondo
+    (2026-09-03): anche il timestamp è offuscato deliberatamente. Deve
+    fallire con un messaggio chiaro, non tentare di aprire un URL sbagliato."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO events (event_id, titolo, data_inizio, data_fine, comune, archiviato, url) "
+        "VALUES ('ev1', 'Evento', '2026-09-12', '2026-09-12', 'Calosso', 'no', 'https://www.facebook.com/pagina?__cft__=x')"
+    )
+    conn.execute(
+        "INSERT INTO event_sources (event_id, source_id, url, seen_at) "
+        "VALUES ('ev1', 'feed-facebook-pagina', 'https://www.facebook.com/pagina?__cft__=x', '2026-08-27')"
+    )
+    conn.commit()
+
+    risultati = feed_social.riprocessa_eventi_instagram(["ev1"], conn, Config(), extractor=None)
+
+    assert len(risultati) == 1
+    assert risultati[0]["esito"] == "errore"
+    assert "Facebook" in risultati[0]["dettaglio"] or "facebook" in risultati[0]["dettaglio"]
+
+    riga = conn.execute("SELECT archiviato FROM events WHERE event_id='ev1'").fetchone()
+    assert riga["archiviato"] == "no"  # non toccato
+
+
+def test_riprocessa_eventi_instagram_event_id_inesistente():
+    conn = _conn_con_comune()
+    risultati = feed_social.riprocessa_eventi_instagram(["non-esiste"], conn, Config(), extractor=None)
+    assert len(risultati) == 1
+    assert risultati[0]["esito"] == "errore"
+    assert "non trovato" in risultati[0]["dettaglio"]
+
+
+def test_riprocessa_eventi_instagram_isola_errori_tra_piu_id(monkeypatch):
+    """15.1 regola 4: un event_id sbagliato non deve bloccare gli altri."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'instagram', 'prolocotest', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+    post = feed_social.PostFeed(
+        piattaforma="instagram", handle_autore="prolocotest", post_id="abc123",
+        url="https://www.instagram.com/p/abc123/",
+        testo="Sagra del Tartufo sabato 12 settembre in Piazza Roma a Calosso, degustazioni e musica.",
+    )
+    feed_social.elabora_post(post, conn, Config(), extractor)
+    valido = conn.execute("SELECT event_id FROM events WHERE archiviato='no'").fetchone()
+
+    grezzo = {"testo": "Sagra della Nocciola domenica 20 settembre in Piazza Roma a Calosso.", "immagineUrls": [], "dataPubblicazione": None}
+    pagina = _PaginaCorreggiFinta(grezzo)
+    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir: _contesto_correggi_finto(pagina))
+    monkeypatch.setattr(feed_social, "_chiudi_sessione_browser", lambda contesto: None)
+    monkeypatch.setattr(feed_social, "verifica_identita_instagram", lambda contesto, config: None)
+
+    provider2 = _ProviderFinto([_risposta_json(comune="Calosso", confidenza=90)])
+    extractor2 = ExtractorClient(Config(), conn, provider=provider2)
+
+    risultati = feed_social.riprocessa_eventi_instagram(
+        ["non-esiste", valido["event_id"]], conn, Config(), extractor2
+    )
+
+    assert len(risultati) == 2
+    assert risultati[0]["esito"] == "errore"
+    assert risultati[1]["esito"] == "pubblicato"
