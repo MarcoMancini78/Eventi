@@ -41,6 +41,12 @@ CREATE TABLE IF NOT EXISTS sources (
     eventi_totali INTEGER DEFAULT 0,
     eventi_utili INTEGER DEFAULT 0,
     primo_errore TEXT,
+    -- 2026-09-03, richiesto dall'utente: il foglio Fonti mostrava solo il
+    -- conteggio 'giorni_in_errore' (consecutive_errors), mai il MESSAGGIO
+    -- dell'errore — esisteva solo a console durante il run, perso subito
+    -- dopo. Messaggio dell'ULTIMO fallimento (si aggiorna ad ogni errore,
+    -- non "primo" come primo_errore, mai popolata da nessun codice).
+    ultimo_errore TEXT,
     stato TEXT DEFAULT 'attiva',
     -- categoria (03: campo previsto dal modello dati per il foglio Fonti,
     -- mai popolato finora) — comune/proloco/teatro/compagnia_itinerante/
@@ -262,6 +268,7 @@ def migrate(conn: sqlite3.Connection) -> None:
         ("eventi_totali", "INTEGER DEFAULT 0"),
         ("eventi_utili", "INTEGER DEFAULT 0"),
         ("primo_errore", "TEXT"),
+        ("ultimo_errore", "TEXT"),
         ("stato", "TEXT DEFAULT 'attiva'"),
         ("categoria", "TEXT"),
         ("polling_diretto", "TEXT"),

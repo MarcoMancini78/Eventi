@@ -77,6 +77,25 @@ def test_pubblica_fonti_scrive_intestazione_e_righe():
     assert diz["giorni_in_errore"] == 0
 
 
+def test_pubblica_fonti_include_ultimo_errore():
+    """2026-09-03, richiesto dall'utente: il foglio mostrava solo il
+    conteggio giorni_in_errore, mai il messaggio — impossibile capire
+    perché una fonte fosse rotta senza guardare i log della console."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO sources (source_id, tier, endpoint, consecutive_errors, ultimo_errore) "
+        "VALUES ('sito-rotto', 'T1_html', 'https://sito-rotto.it/eventi', 3, 'HTTPError: 404 Not Found')"
+    )
+    conn.commit()
+
+    ws = _WorksheetFinto()
+    publisher.pubblica_fonti(ws, conn)
+
+    intestazione, riga = ws.righe_scritte
+    diz = dict(zip(intestazione, riga))
+    assert diz["ultimo_errore"] == "HTTPError: 404 Not Found"
+
+
 def test_pubblica_fonti_categoria_vuota_resta_vuota():
     """categoria non è ancora popolata per una fonte appena creata (03):
     non va inventata, resta vuota finché non c'è un dato reale."""

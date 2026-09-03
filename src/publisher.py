@@ -246,7 +246,7 @@ COLONNE_FONTI = [
     "source_id", "soggetto", "categoria", "comune_riferimento", "fascia",
     "polling_diretto", "canale", "url", "piattaforma",
     "metodo", "tier", "endpoint", "stato",
-    "ultimo_run", "giorni_in_errore", "eventi_totali", "eventi_utili",
+    "ultimo_run", "giorni_in_errore", "ultimo_errore", "eventi_totali", "eventi_utili",
 ]
 
 # 10 colonne rimosse dal foglio il 2026-08-28 (richiesto dall'utente):
@@ -271,6 +271,7 @@ _MAPPA_COLONNE_FONTI_DA_SOURCES = {
     "endpoint": "endpoint",
     "ultimo_run": "last_run",
     "giorni_in_errore": "consecutive_errors",
+    "ultimo_errore": "ultimo_errore",
     "eventi_totali": "eventi_totali",
     "eventi_utili": "eventi_utili",
     "stato": "stato",

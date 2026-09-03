@@ -208,8 +208,8 @@ def _esegui_giro_multi_fonte(fonti, config, no_llm: bool, budget_minuti: int, ti
         if riepilogo.get("errore"):
             fonti_errore += 1
             conn.execute(
-                "UPDATE sources SET last_run=?, consecutive_errors=consecutive_errors+1 WHERE source_id=?",
-                (ora, riepilogo["source_id"]),
+                "UPDATE sources SET last_run=?, consecutive_errors=consecutive_errors+1, ultimo_errore=? WHERE source_id=?",
+                (ora, riepilogo["errore"], riepilogo["source_id"]),
             )
         else:
             fonti_ok += 1
@@ -219,7 +219,7 @@ def _esegui_giro_multi_fonte(fonti, config, no_llm: bool, budget_minuti: int, ti
             in_quarantena += riepilogo.get("eventi_in_quarantena", 0)
             conn.execute(
                 """
-                UPDATE sources SET last_run=?, consecutive_errors=0,
+                UPDATE sources SET last_run=?, consecutive_errors=0, ultimo_errore=NULL,
                     eventi_totali=eventi_totali+?, eventi_utili=eventi_utili+?
                 WHERE source_id=?
                 """,
