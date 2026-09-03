@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-03T03:41:24",
+  "generato_il": "2026-09-03T04:46:35",
   "eventi": [
     {
       "id": "215d35247178",
@@ -275,8 +275,8 @@
     },
     {
       "id": "a888d71084ab",
-      "titolo": "Concerto della Banda Musicale La Giovine Cambiano",
-      "descrizione": "Concerto diretto dal Maestro Paolo Bosa. Musica, passione, comunità.",
+      "titolo": "Concerto Banda Musicale La Giovine Cambiano",
+      "descrizione": "Concerto della Banda Musicale La Giovine Cambiano diretta dal Maestro Paolo Bosa. Musica, passione, comunità.",
       "comune": "Valfenera",
       "lat": 44.901746,
       "lon": 7.964331,
@@ -285,7 +285,7 @@
       "data_inizio": "2026-09-01",
       "data_fine": "2026-09-01",
       "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/Dcv8ppdKtGm/",
+      "url": "https://www.instagram.com/p/DcvZtHLFY1p/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
@@ -769,7 +769,7 @@
     {
       "id": "4ab59ea6b5c7",
       "titolo": "Festa Patronale - Sagra della porchetta",
-      "descrizione": "",
+      "descrizione": "Festa Patronale - Sagra della porchetta dal 4 al 6 Settembre 2026",
       "comune": "Cozzo",
       "lat": 45.192659,
       "lon": 8.61104,
@@ -905,7 +905,7 @@
     {
       "id": "63778cc923bf",
       "titolo": "Vate fidè dij bacialè!",
-      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola, nell'ambito della rassegna CONNESSIONI. Per i partecipanti è previsto anche un aperitivo.",
+      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola, nell'ambito del progetto CONNESSIONI. Previsto anche un aperitivo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -922,7 +922,7 @@
     {
       "id": "f422e346049a",
       "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
-      "descrizione": "Incontro con il pubblico dal titolo 'La (vera) storia di San Francesco', dedicato alla figura di San Francesco d’Assisi nell'anno dell'ottavo centenario dalla sua morte, a cura del professore Alessandro Barbero.",
+      "descrizione": "Incontro con il pubblico dal titolo 'La (vera) storia di San Francesco', dedicato alla figura di San Francesco d’Assisi nell’anno dell'ottavo centenario dalla sua morte, con lo storico e professore Alessandro Barbero.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -1227,7 +1227,7 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "La Mezza Notte Bianca dei Bambini",
+      "titolo": "MezzaNotte bianca dei Bambini",
       "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini lungo le vie del centro storico e Piazza Umberto I.",
       "comune": "Orbassano",
       "lat": 45.007263,
@@ -1262,7 +1262,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e una programmazione diffusa.",
+      "descrizione": "Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e una programmazione diffusa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1313,7 +1313,7 @@
     {
       "id": "58989ce99e25",
       "titolo": "Panorami dell'anima",
-      "descrizione": "Mostra personale in cui Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca Civica.",
+      "descrizione": "Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca nel corso della mostra personale \"Panorami dell'anima\".",
       "comune": "Rivanazzano Terme",
       "lat": 44.930767,
       "lon": 9.014159,
@@ -2314,6 +2314,23 @@
       "quarantena": false
     },
     {
+      "id": "8b09517434ef",
+      "titolo": "Gran Galà della Musica da Ballo",
+      "descrizione": "Gran Galà della Musica da Ballo in piazza.",
+      "comune": "Bergamasco",
+      "lat": 44.827249,
+      "lon": 8.454743,
+      "km": 26.7,
+      "minuti": 34.0,
+      "data_inizio": "2026-09-08",
+      "data_fine": "2026-09-08",
+      "tipologia": "concerto",
+      "url": "https://www.instagram.com/p/Dcyyn_XNjOu/",
+      "url_approfondimento": "",
+      "fonti": "feed-instagram-proloco_bergamasco",
+      "quarantena": false
+    },
+    {
       "id": "ce5198eac65a",
       "titolo": "Cerimonia di consegna della Costituzione ai neo-diciottenni",
       "descrizione": "L'Amministrazione Comunale di Carignano invita i giovani residenti che nel corso del 2026 hanno raggiunto o raggiungeranno il traguardo dei 18 anni a partecipare alla Cerimonia di consegna della Costituzione della Repubblica Italiana.",
@@ -2401,7 +2418,7 @@
     {
       "id": "76de825f43cf",
       "titolo": "125° anniversario Festa della Croce 2026",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce si terranno iniziative tra cui: 10/09 ore 20.45 Piazzetta Don Pautasso proiezioni filmati storici sulla Croce del Musinè, 11/09 ore 20.45 Parrocchia San Giorgio Sindon - Immersi nella trama della passione, 12/09 ore 18.00 Piazzetta Don Pautasso Santa Messa.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce si terranno varie iniziative: proiezione filmati storici sulla Croce del Musinè, Sindon - Immersi nella trama della passione, e celebrazioni.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -2409,7 +2426,7 @@
       "minuti": 86.0,
       "data_inizio": "2026-09-10",
       "data_fine": "2026-09-17",
-      "tipologia": "altro",
+      "tipologia": "sagra",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
       "url_approfondimento": "",
       "fonti": "comune-caselette",
@@ -2503,7 +2520,7 @@
     {
       "id": "0ba5d6f749d7",
       "titolo": "“Ares Trio” in concerto",
-      "descrizione": "“Ares Trio” in concerto ad Alba apre la 49ª Stagione di Musica da Camera.",
+      "descrizione": "Concerto di apertura della 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2520,7 +2537,7 @@
     {
       "id": "c7be4e26d6ad",
       "titolo": "Eleazaro Rossi - Kamikaze",
-      "descrizione": "Eleazaro Rossi torna sul palco con Kamikaze, uno show comico feroce e senza filtri. Uno sguardo spietato sul mondo, tra satira esistenziale e ironia distruttiva. Monologo comico.",
+      "descrizione": "Eleazaro Rossi torna sul palco con Kamikaze, uno show comico feroce e senza filtri. Uno sguardo spietato sul mondo, tra satira esistenziale e ironia distruttiva.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -2775,7 +2792,7 @@
     {
       "id": "f040dd3e08ec",
       "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell’orchestra giovanile Saxmania dedicato al jazz e al blues, nell'ambito del progetto CONNESSIONI. Al termine dell'esibizione la serata proseguirà con musica da ballo. In caso di maltempo, l'evento si svolgerà all'interno del centro.",
+      "descrizione": "Nell'ambito del progetto CONNESSIONI, concerto dell’orchestra giovanile Saxmania dedicato al jazz e al blues. Al termine dell'esibizione la serata prosegue con musica da ballo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -3029,8 +3046,8 @@
     },
     {
       "id": "a05700be8211",
-      "titolo": "Da Voghera a New York",
-      "descrizione": "Spettacolo di danza, moda e canto presentato da Tarditi Studio Dance.",
+      "titolo": "da VOGHERA a NEW YORK - Spettacolo di danza, moda e canto",
+      "descrizione": "Tarditi Studio Dance presenta: da VOGHERA a NEW YORK, spettacolo di danza, moda e canto.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -3693,7 +3710,7 @@
     {
       "id": "9af7cff0830e",
       "titolo": "Patrimonio culturale",
-      "descrizione": "",
+      "descrizione": "Evento al Teatro sociale G.Busca di Alba.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3701,7 +3718,7 @@
       "minuti": 32.0,
       "data_inizio": "2026-09-15",
       "data_fine": "2026-09-15",
-      "tipologia": "altro",
+      "tipologia": "teatro",
       "url": "https://comune.alba.cn.it/it",
       "url_approfondimento": "",
       "fonti": "comune-alba",
@@ -3828,8 +3845,8 @@
     },
     {
       "id": "6e1e5d5bc696",
-      "titolo": "Festa di San Maurizio - Grigliata mista e danze con Aurelio Seimandi",
-      "descrizione": "Stand gastronomico con grigliata mista a cura della Pro Loco con i gelati di Il Dolce Sogno. Ore 21:00 danze con Aurelio Seimandi e la sua orchestra.",
+      "titolo": "Festa di San Maurizio - Grigliata mista",
+      "descrizione": "Apertura della Festa di San Maurizio con grigliata mista (antipasto, salsiccia, costine, pollo, contorno, acqua e vino inclusi) e menù bambini. Dalle 21:00 musica e danze con Aurelio Seimandi & la sua orchestra.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -3838,7 +3855,7 @@
       "data_inizio": "2026-09-18",
       "data_fine": "2026-09-18",
       "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcy0zexK_Z1/",
+      "url": "https://www.instagram.com/p/Dcq-rg_KYUc/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocomaglianoalfieri",
       "quarantena": false
@@ -3930,8 +3947,8 @@
     },
     {
       "id": "abc1e642ffaa",
-      "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno.",
+      "titolo": "Aspettando Montmartre - Premiazione concorso Mezz'ora da ridere",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno, in occasione della serata di Aspettando Montmartre.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3964,8 +3981,8 @@
     },
     {
       "id": "0b3d1b2f2052",
-      "titolo": "Festa di San Maurizio - Giochi senza frontiere, Cena animata e FM Disco Explosion",
-      "descrizione": "Ore 16:00 Giochi senza frontiere presso il Campo Sportivo di Magliano in collaborazione con Progetto Trame. Dalle 19:30 apertura stand gastronomico con cena animata servita al tavolo e a seguire DJ set con FM Disco Explosion di Radio Vallebelbo.",
+      "titolo": "Festa di San Maurizio: Giochi Senza Frontiere, Cena Animata e FM Disco Explosion",
+      "descrizione": "Programma della giornata di festa di San Maurizio: alle ore 16:00 Giochi Senza Frontiere presso il Campo Sportivo (in collaborazione con Progetto Trame); dalle ore 19:30 apertura stand gastronomico con cena animata servita al tavolo (menu alla carta e gelati Pasticceria Il Dolce Sogno); a seguire dj set con FM Disco Explosion di Radio Vallebelbo.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -3974,7 +3991,7 @@
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
       "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcy0zexK_Z1/",
+      "url": "https://www.instagram.com/p/DctgAaAKHs3/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocomaglianoalfieri",
       "quarantena": false
@@ -4457,8 +4474,8 @@
     },
     {
       "id": "b78611532e80",
-      "titolo": "Festa di San Maurizio - Santa Messa e Pranzo di San Maurizio",
-      "descrizione": "Ore 09:00 Santa Messa presso la Parrocchia di SS. Antonio e Maurizio con la banda musicale La Maglianese. Ore 12:30 Pranzo di San Maurizio con menù di pesce. Prenotazione obbligatoria entro mercoledì 16 settembre.",
+      "titolo": "Pranzo di San Maurizio",
+      "descrizione": "Chiusura della festa con menù di pesce a 35€ (acqua e vino inclusi). Alle ore 09:00 Santa Messa presso la Parrocchia di S. Antonio e Maurizio in collaborazione con la banda musicale La Maglianese; alle ore 12:30 Pranzo di San Maurizio. Prenotazione obbligatoria entro mercoledì 16 settembre.",
       "comune": "Magliano Alfieri",
       "lat": 44.769244,
       "lon": 8.070136,
@@ -4466,8 +4483,8 @@
       "minuti": 31.0,
       "data_inizio": "2026-09-20",
       "data_fine": "2026-09-20",
-      "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/Dcy0zexK_Z1/",
+      "tipologia": "gastronomia",
+      "url": "https://www.instagram.com/p/DcwF7x-KGi0/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocomaglianoalfieri",
       "quarantena": false
@@ -4798,7 +4815,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Programma per camperisti con accoglienza equipaggi, aperipranzo con degustazione di prodotti e vini locali, visita guidata del borgo antico, presentazione libraria, colazione, visita al MiCeM e trekking tra i siti di archeologia industriale.",
+      "descrizione": "Raduno ed eventi dedicati ai camperisti con accoglienza, aperipranzo con degustazione di prodotti e vini locali, visite guidate del borgo antico e del MiCeM, trekking archeologico-industriale e degustazione in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -5342,7 +5359,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, Light designer Marco Filibeck, Scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
+      "descrizione": "di Stefano Benni con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità, che avrà ricostruito davanti a tutti il suo corpo e la sua umanità.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -5648,7 +5665,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica) aperto a tutti",
+      "descrizione": "Lettura pubblica, aperto a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -5818,7 +5835,7 @@
     {
       "id": "bbce8630184d",
       "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi vincitori (Non ce lo dicono di Flavio Vasile, Niurant di Massimo Brusasco, Comodissimo e facilissimo di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
+      "descrizione": "Rappresentazione dei tre testi classificati (Non ce lo dicono, Niurant, Comodissimo e facilissimo) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
