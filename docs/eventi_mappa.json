@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-03T07:00:06",
+  "generato_il": "2026-09-03T07:12:52",
   "eventi": [
     {
       "id": "215d35247178",
@@ -628,23 +628,6 @@
       "url": "https://www.facebook.com/comunealessandria?__cft__[0]=AZbMyIH-i_x_G0NfLhi0gSg_aDtxe5SIWc3y9srhe29kLxnKLm4xa3Tmu4zsm74xQqj8vKcYUOyjope4NKwBm37Rt4uaRIxveANp0G01jDOkNuZCUIzS-xK8DKXPubqICHT65bcmvnpy6xNfA88lS6Z58ZOTTZcde1YnlRJf4vp6LgonIq5MIxrhpjdC9xJe0bNcs262FbxlHkyMWCxneCrV&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunealessandria",
-      "quarantena": false
-    },
-    {
-      "id": "6dd500214265",
-      "titolo": "Vineria in piazza",
-      "descrizione": "",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2026-09-03",
-      "data_fine": "2026-09-04",
-      "tipologia": "degustazione",
-      "url": "https://www.instagram.com/p/DcgYQDSgdTR/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
       "quarantena": false
     },
     {
