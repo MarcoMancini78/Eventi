@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-03T00:48:11",
+  "generato_il": "2026-09-03T03:41:24",
   "eventi": [
     {
       "id": "215d35247178",
@@ -716,6 +716,40 @@
       "quarantena": false
     },
     {
+      "id": "d98bb6f1a846",
+      "titolo": "Eventi - Mostra: \"Non ti curar di loro. Sergio Ragalzi: archeologia del pos",
+      "descrizione": "Eventi culturali, musicali e sportivi in Langhe. Mostra: \"Non ti curar di loro. Sergio Ragalzi: archeologia del possibile\"- Alba: date, orari, programma e detta",
+      "comune": "Alba",
+      "lat": 44.700724,
+      "lon": 8.035779,
+      "km": 24.3,
+      "minuti": 32.0,
+      "data_inizio": "2026-09-03",
+      "data_fine": "2026-09-03",
+      "tipologia": "altro",
+      "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/mostra-non-ti-curar-di-loro-sergio-ragalzi-archeologia-del-possibile-alba",
+      "url_approfondimento": "",
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
+    },
+    {
+      "id": "e5017e5ac7b0",
+      "titolo": "Eventi - Trifolao in bianco e nero - Alba - Langhe",
+      "descrizione": "Eventi culturali, musicali e sportivi in Langhe. Trifolao in bianco e nero - Alba: date, orari, programma e dettagli.",
+      "comune": "Alba",
+      "lat": 44.700724,
+      "lon": 8.035779,
+      "km": 24.3,
+      "minuti": 32.0,
+      "data_inizio": "2026-09-03",
+      "data_fine": "2026-09-03",
+      "tipologia": "altro",
+      "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/trifolao-in-bianco-e-nero-alba",
+      "url_approfondimento": "",
+      "fonti": "aggregatore-visitlmr",
+      "quarantena": false
+    },
+    {
       "id": "672600276918",
       "titolo": "\"The Beauty of Chaos\": le opere di Giuseppe Adornetto e Diego Scursatone in mostra alla Casa del Conte Verde",
       "descrizione": "Mostra di pittura dal 4 al 27 settembre 2026 presso il Museo Civico Casa del Conte Verde",
@@ -871,7 +905,7 @@
     {
       "id": "63778cc923bf",
       "titolo": "Vate fidè dij bacialè!",
-      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola, nell'ambito della rassegna CONNESSIONI. Previsto anche un aperitivo per i partecipanti.",
+      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola, nell'ambito della rassegna CONNESSIONI. Per i partecipanti è previsto anche un aperitivo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -888,7 +922,7 @@
     {
       "id": "f422e346049a",
       "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
-      "descrizione": "Incontro con il celebre storico e professore Alessandro Barbero dedicato alla figura di San Francesco d’Assisi nell'anno dell'ottavo centenario dalla sua morte, ispirato al saggio pubblicato nel 2025 dal professore.",
+      "descrizione": "Incontro con il pubblico dal titolo 'La (vera) storia di San Francesco', dedicato alla figura di San Francesco d’Assisi nell'anno dell'ottavo centenario dalla sua morte, a cura del professore Alessandro Barbero.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -1193,7 +1227,7 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "Mezza Notte Bianca dei Bambini",
+      "titolo": "La Mezza Notte Bianca dei Bambini",
       "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini lungo le vie del centro storico e Piazza Umberto I.",
       "comune": "Orbassano",
       "lat": 45.007263,
@@ -1228,7 +1262,7 @@
     {
       "id": "e35eb26f8d28",
       "titolo": "Notte Bianca «Fino all'Alba»",
-      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno con dj set, concerti e animazioni, con palchi aperti alla città e una programmazione diffusa.",
+      "descrizione": "Festa in musica nelle piazze del centro per salutare l’estate. Sette piazze del centro storico si animeranno per una festa musicale a ingresso gratuito, con dj set, concerti e animazioni. Palchi aperti alla città e una programmazione diffusa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1279,7 +1313,7 @@
     {
       "id": "58989ce99e25",
       "titolo": "Panorami dell'anima",
-      "descrizione": "Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca Civica nel corso della mostra personale 'Panorami dell'anima'. Inaugurazione sabato 5 settembre alle ore 17:00.",
+      "descrizione": "Mostra personale in cui Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca Civica.",
       "comune": "Rivanazzano Terme",
       "lat": 44.930767,
       "lon": 9.014159,
@@ -1483,7 +1517,7 @@
     {
       "id": "6143eb00ecb7",
       "titolo": "Festa patronale della Beata Vergine delle Grazie",
-      "descrizione": "Dal 5 al 15 settembre 2026 le celebrazioni della patrona di Chieri.",
+      "descrizione": "Dal 5 al 15 settembre 2026 le celebrazioni della patrona di Chieri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2367,7 +2401,7 @@
     {
       "id": "76de825f43cf",
       "titolo": "125° anniversario Festa della Croce 2026",
-      "descrizione": "Iniziative in occasione del 125° anniversario della Festa della Croce, tra cui proiezione di filmati storici sulla Croce del Musinè e appuntamenti religiosi e culturali.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce si terranno iniziative tra cui: 10/09 ore 20.45 Piazzetta Don Pautasso proiezioni filmati storici sulla Croce del Musinè, 11/09 ore 20.45 Parrocchia San Giorgio Sindon - Immersi nella trama della passione, 12/09 ore 18.00 Piazzetta Don Pautasso Santa Messa.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -2469,7 +2503,7 @@
     {
       "id": "0ba5d6f749d7",
       "titolo": "“Ares Trio” in concerto",
-      "descrizione": "Concerto dell'Ares Trio che apre la 49ª Stagione di Musica da Camera.",
+      "descrizione": "“Ares Trio” in concerto ad Alba apre la 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2486,7 +2520,7 @@
     {
       "id": "c7be4e26d6ad",
       "titolo": "Eleazaro Rossi - Kamikaze",
-      "descrizione": "Eleazaro Rossi torna sul palco con Kamikaze, uno show comico feroce e senza filtri. Uno sguardo spietato sul mondo, tra satira esistenziale e ironia distruttiva. Il suo undicesimo monologo comico affronta la vita, la morte, il capitalismo e molto altro.",
+      "descrizione": "Eleazaro Rossi torna sul palco con Kamikaze, uno show comico feroce e senza filtri. Uno sguardo spietato sul mondo, tra satira esistenziale e ironia distruttiva. Monologo comico.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -2741,7 +2775,7 @@
     {
       "id": "f040dd3e08ec",
       "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell'orchestra giovanile Saxmania, composta da 20 elementi, con repertorio dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo.",
+      "descrizione": "Concerto dell’orchestra giovanile Saxmania dedicato al jazz e al blues, nell'ambito del progetto CONNESSIONI. Al termine dell'esibizione la serata proseguirà con musica da ballo. In caso di maltempo, l'evento si svolgerà all'interno del centro.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -2792,7 +2826,7 @@
     {
       "id": "d41cae55aab6",
       "titolo": "Apertura StArt Gallery - 12 e 13 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2809,7 +2843,7 @@
     {
       "id": "2be17849904b",
       "titolo": "Pessione Festa Patronale dei 4 Borghi - 12 e 13 settembre 2026",
-      "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
+      "descrizione": "quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3234,7 +3268,7 @@
     {
       "id": "43867c3d4c1e",
       "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 13 settembre 2026",
-      "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico.",
+      "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3667,7 +3701,7 @@
       "minuti": 32.0,
       "data_inizio": "2026-09-15",
       "data_fine": "2026-09-15",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "https://comune.alba.cn.it/it",
       "url_approfondimento": "",
       "fonti": "comune-alba",
@@ -3693,7 +3727,7 @@
     {
       "id": "aa2b9c5fa6d7",
       "titolo": "“Tessile e Tecnologia” al Museo del Tessile di Chieri",
-      "descrizione": "Martedì 15 settembre una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono.",
+      "descrizione": "Martedì 15 settembre una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3846,7 +3880,7 @@
     {
       "id": "6b80e27e46dc",
       "titolo": "Apertura StArt Gallery - 19 e 20 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3897,7 +3931,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere in ricordo di Ester Delforno: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -3905,7 +3939,7 @@
       "minuti": 57.0,
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "http://www.teatrocambiano.com/",
       "url_approfondimento": "",
       "fonti": "teatro-cambiano-teatro-comunale",
@@ -4764,7 +4798,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Raduno per camperisti con visite guidate al borgo antico e al MiCeM, degustazioni di prodotti e vini locali, trekking sui sentieri di archeologia industriale e presentazioni librarie.",
+      "descrizione": "Programma per camperisti con accoglienza equipaggi, aperipranzo con degustazione di prodotti e vini locali, visita guidata del borgo antico, presentazione libraria, colazione, visita al MiCeM e trekking tra i siti di archeologia industriale.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -4781,7 +4815,7 @@
     {
       "id": "6e55addfa80b",
       "titolo": "Apertura StArt Gallery - 26 e 27 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5121,7 +5155,7 @@
     {
       "id": "db041f438f2a",
       "titolo": "Apertura StArt Gallery - 9 e 10 ottobre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5172,7 +5206,7 @@
     {
       "id": "4fbab2fa424f",
       "titolo": "Relazioni che generano futuro: un percorso per crescere insieme",
-      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno.",
+      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5189,7 +5223,7 @@
     {
       "id": "d20148155434",
       "titolo": "Apertura StArt Gallery - 11 ottobre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5257,7 +5291,7 @@
     {
       "id": "b7bf9e46071b",
       "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 18 ottobre 2026",
-      "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico.",
+      "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5308,7 +5342,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, Light designer Marco Filibeck, Scenografia Chiara Modolo, Con le creazioni artistiche di Cracking Art, Regia Ambra Angiolini.",
+      "descrizione": "di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, Light designer Marco Filibeck, Scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -5495,7 +5529,7 @@
     {
       "id": "d054bab00af2",
       "titolo": "Apertura StArt Gallery - 7 novembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5615,6 +5649,23 @@
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
       "descrizione": "Lettura (pubblica) aperto a tutti",
+      "comune": "Canelli",
+      "lat": 44.719278,
+      "lon": 8.287138,
+      "km": 7.5,
+      "minuti": 13.0,
+      "data_inizio": "2026-11-20",
+      "data_fine": "2026-11-20",
+      "tipologia": "altro",
+      "url": "https://comune.canelli.at.it/it/events-category/67137",
+      "url_approfondimento": "",
+      "fonti": "comune-canelli",
+      "quarantena": false
+    },
+    {
+      "id": "543207a7c2f9",
+      "titolo": "Canelli si racconta - Lettura (pubblica)",
+      "descrizione": "Lettura pubblica, evento aperto a tutti nell'ambito delle iniziative di cultura e tempo libero.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -5750,7 +5801,7 @@
     {
       "id": "67c23b395ab4",
       "titolo": "Apertura StArt Gallery - 12 dicembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5766,8 +5817,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Mezz'ora da ridere - Rappresentazione dei testi vincitori",
-      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori del concorso Mezz'ora da Ridere: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi vincitori (Non ce lo dicono di Flavio Vasile, Niurant di Massimo Brusasco, Comodissimo e facilissimo di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
