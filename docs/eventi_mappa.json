@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-03T07:12:52",
+  "generato_il": "2026-09-03T08:23:17",
   "eventi": [
     {
       "id": "215d35247178",
@@ -6120,23 +6120,6 @@
       "url_approfondimento": "",
       "fonti": "comune-envie",
       "quarantena": false
-    },
-    {
-      "id": "6c30c352fb6a",
-      "titolo": "Grigliatissima",
-      "descrizione": "Grigliatissima e tanto altro con Dj.",
-      "comune": "Valfenera",
-      "lat": 44.901746,
-      "lon": 7.964331,
-      "km": 36.2,
-      "minuti": 50.0,
-      "data_inizio": "2027-05-29",
-      "data_fine": "2027-05-29",
-      "tipologia": "gastronomia",
-      "url": "https://www.instagram.com/p/Dcmj2WClTqM/",
-      "url_approfondimento": "",
-      "fonti": "feed-instagram-prolocovalfenera",
-      "quarantena": true
     },
     {
       "id": "62fb056ea89c",
