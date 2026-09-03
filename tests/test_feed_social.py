@@ -975,3 +975,113 @@ def test_riprocessa_eventi_instagram_isola_errori_tra_piu_id(monkeypatch):
     assert len(risultati) == 2
     assert risultati[0]["esito"] == "errore"
     assert risultati[1]["esito"] == "pubblicato"
+
+
+# --- Timestamp Facebook via hover + tooltip (2026-09-03, richiesto
+# dall'utente): il timestamp relativo ("N min/h/g") ha i caratteri
+# deliberatamente mescolati nel DOM (verificato confrontando innerText e
+# textContent con l'HTML grezzo reale — anti-scraping intenzionale). La
+# data assoluta è leggibile solo tramite il tooltip DOM che compare al
+# passaggio del mouse sopra il link, collaudato dal vivo 3/3 volte. ---
+
+def test_data_da_tooltip_facebook_formato_reale():
+    """Formato reale osservato dal vivo 2026-09-03."""
+    from datetime import date
+    assert feed_social._data_da_tooltip_facebook(
+        "Giovedì 3 settembre 2026 alle ore 15:52"
+    ) == date(2026, 9, 3)
+
+
+def test_data_da_tooltip_facebook_altro_mese():
+    from datetime import date
+    assert feed_social._data_da_tooltip_facebook(
+        "Lunedì 31 agosto 2026 alle ore 22:34"
+    ) == date(2026, 8, 31)
+
+
+def test_data_da_tooltip_facebook_formato_inatteso_ritorna_none():
+    """Isolamento totale (15.1 regola 4): mai sollevare, ricade sul
+    default date.today() in client.py."""
+    assert feed_social._data_da_tooltip_facebook("qualcosa di diverso") is None
+    assert feed_social._data_da_tooltip_facebook("") is None
+    assert feed_social._data_da_tooltip_facebook(None) is None
+
+
+class _LocatorFinto:
+    def __init__(self, box, tooltip_testo):
+        self._box = box
+        self._tooltip_testo = tooltip_testo
+
+    def bounding_box(self, timeout=None):
+        return self._box
+
+
+class _PaginaHoverFinta:
+    """Simula pagina.locator/.mouse.move/.evaluate per testare l'hover
+    sul link timestamp senza un browser reale (15.1 regola 8)."""
+
+    def __init__(self, box, tooltip_testo):
+        self._box = box
+        self._tooltip_testo = tooltip_testo
+        self.mosse = []
+
+    def locator(self, selettore):
+        return _LocatorFinto(self._box, self._tooltip_testo)
+
+    class _Mouse:
+        def __init__(self, pagina):
+            self._pagina = pagina
+
+        def move(self, x, y):
+            self._pagina.mosse.append((x, y))
+
+    @property
+    def mouse(self):
+        return _PaginaHoverFinta._Mouse(self)
+
+    def wait_for_timeout(self, ms):
+        pass
+
+    def evaluate(self, script):
+        return [self._tooltip_testo] if self._tooltip_testo else []
+
+
+def test_leggi_data_pubblicazione_hover_facebook_successo():
+    from datetime import date
+    pagina = _PaginaHoverFinta(
+        box={"x": 100, "y": 50, "width": 30, "height": 17},
+        tooltip_testo="Giovedì 3 settembre 2026 alle ore 15:52",
+    )
+    risultato = feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1)
+    assert risultato == date(2026, 9, 3)
+    assert len(pagina.mosse) == 2  # hover sul link + spostamento finale
+
+
+def test_leggi_data_pubblicazione_hover_facebook_idx_assente():
+    pagina = _PaginaHoverFinta(box=None, tooltip_testo=None)
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=None) is None
+
+
+def test_leggi_data_pubblicazione_hover_facebook_nessun_bounding_box():
+    """Isolamento totale: elemento non trovato non deve sollevare."""
+    pagina = _PaginaHoverFinta(box=None, tooltip_testo=None)
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) is None
+
+
+def test_leggi_data_pubblicazione_hover_facebook_nessun_tooltip():
+    """Isolamento totale: hover senza tooltip (es. timing) non deve sollevare."""
+    pagina = _PaginaHoverFinta(
+        box={"x": 100, "y": 50, "width": 30, "height": 17}, tooltip_testo=None
+    )
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) is None
+
+
+def test_leggi_data_pubblicazione_hover_facebook_eccezione_isolata():
+    """Isolamento totale (15.1 regola 4): un errore imprevisto durante
+    l'hover (es. pagina chiusa a metà) non deve bloccare l'elaborazione
+    degli altri post."""
+    class _PaginaCheEsplode:
+        def locator(self, selettore):
+            raise RuntimeError("simulato")
+
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(_PaginaCheEsplode(), idx_timestamp=1) is None

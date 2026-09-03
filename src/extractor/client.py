@@ -19,6 +19,7 @@ import hashlib
 import json
 import sqlite3
 import threading
+import uuid
 from datetime import date, datetime, timedelta
 
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
@@ -233,7 +234,15 @@ class ExtractorClient:
         # locale italiana"). Un mismatch di fuso qui rompe il conteggio a
         # cavallo di mezzanotte tra locale e UTC.
         adesso_locale = datetime.now()
-        extraction_id = hashlib.sha1(f"{artifact_id}|{adesso_locale.isoformat()}".encode()).hexdigest()[:16]
+        # 2026-09-03, bug reale trovato in test intermittenti: isoformat()
+        # da solo non basta a garantire unicità — due estrazioni ravvicinate
+        # (stesso artifact_id, stesso microsecondo) collidevano su
+        # extraction_id (UNIQUE), causando IntegrityError. uuid4 elimina la
+        # collisione senza cambiare la semantica dell'ID (resta un hash
+        # derivato, non un contatore da mantenere sincronizzato).
+        extraction_id = hashlib.sha1(
+            f"{artifact_id}|{adesso_locale.isoformat()}|{uuid.uuid4()}".encode()
+        ).hexdigest()[:16]
         self._conn.execute(
             """
             INSERT INTO extractions (extraction_id, artifact_id, model, prompt_version, prompt_utente, raw_output, parsed_json, confidence, created_at)

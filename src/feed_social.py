@@ -200,6 +200,7 @@ def leggi_feed_reale(
 _JS_RACCOGLI_POST_FACEBOOK = """
 () => {
     const risultati = [];
+    let idxTs = 0;
     for (const link of document.querySelectorAll('h3 a[href]')) {
         const href = link.getAttribute('href') || '';
         let nodo = link.closest('h3');
@@ -218,7 +219,41 @@ _JS_RACCOGLI_POST_FACEBOOK = """
         const immagini = Array.from(scelto.querySelectorAll('img'))
             .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150);
         const immagineUrl = immagini.length > 0 ? immagini[0].src : null;
-        risultati.push({href, permalink: href, testo: scelto.innerText || '', immagineUrl});
+
+        // 2026-09-03, richiesto dall'utente: la data di pubblicazione non è
+        // mai leggibile come testo (il timestamp relativo "N min/h/g" ha i
+        // caratteri deliberatamente mescolati nel DOM, anti-scraping) ma
+        // solo tramite il tooltip che compare al passaggio del mouse sopra
+        // il link. Qui si marca solo il link — l'hover vero e la lettura
+        // del tooltip li fa il chiamante Python (serve un mouse reale,
+        // non ottenibile da dentro evaluate()).
+        let headerNodo = link.closest('h3');
+        let header = null;
+        for (let i = 0; i < 10 && headerNodo; i++) {
+            headerNodo = headerNodo.parentElement;
+            if (!headerNodo) break;
+            const rect = headerNodo.getBoundingClientRect();
+            if (rect.width > 200 && rect.height > 20 && rect.height < 60) {
+                header = headerNodo;
+                break;
+            }
+        }
+        let idxTimestamp = null;
+        if (header) {
+            const linksInHeader = Array.from(header.querySelectorAll('a[href]'));
+            for (const a of linksInHeader) {
+                if (a === link) continue;
+                const hrefA = a.getAttribute('href') || '';
+                if (hrefA.startsWith('?__cft__') || hrefA.startsWith('#')) {
+                    idxTs++;
+                    a.setAttribute('data-claude-ts-idx', String(idxTs));
+                    idxTimestamp = idxTs;
+                    break;
+                }
+            }
+        }
+
+        risultati.push({href, permalink: href, testo: scelto.innerText || '', immagineUrl, idxTimestamp});
     }
     return risultati;
 }
@@ -307,6 +342,84 @@ def _data_da_iso(valore_iso: str | None) -> date | None:
     try:
         return datetime.fromisoformat(valore_iso.replace("Z", "+00:00")).date()
     except ValueError:
+        return None
+
+
+_MESI_ITALIANI = {
+    "gennaio": 1, "febbraio": 2, "marzo": 3, "aprile": 4, "maggio": 5, "giugno": 6,
+    "luglio": 7, "agosto": 8, "settembre": 9, "ottobre": 10, "novembre": 11, "dicembre": 12,
+}
+_PATTERN_TOOLTIP_DATA_FACEBOOK = re.compile(
+    r"(\d{1,2})\s+(\w+)\s+(\d{4})", re.IGNORECASE
+)
+
+
+def _data_da_tooltip_facebook(testo_tooltip: str | None) -> date | None:
+    """Converte il tooltip assoluto di Facebook (es. 'Giovedì 3 settembre
+    2026 alle ore 15:52') nella data (locale, 07.2). Isolamento totale
+    (15.1 regola 4): un formato inatteso non deve bloccare l'elaborazione
+    del post, ritorna None e si ricade sul default date.today() in
+    client.py — coerente con _data_da_iso per Instagram."""
+    if not testo_tooltip:
+        return None
+    m = _PATTERN_TOOLTIP_DATA_FACEBOOK.search(testo_tooltip)
+    if not m:
+        return None
+    giorno, mese_nome, anno = m.groups()
+    mese = _MESI_ITALIANI.get(mese_nome.lower())
+    if not mese:
+        return None
+    try:
+        return date(int(anno), mese, int(giorno))
+    except ValueError:
+        return None
+
+
+def _leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp: int | None) -> date | None:
+    """Il timestamp relativo di un post Facebook ("N min/h/g") ha i
+    caratteri deliberatamente mescolati nel DOM (anti-scraping, verificato
+    2026-09-03 confrontando innerText/textContent con l'HTML grezzo:
+    entrambi restituiscono la stessa sequenza mescolata) — irraggiungibile
+    come testo, da nessun punto del codice. La data assoluta compare però
+    in un vero tooltip DOM ([role="tooltip"], testo pulito) al passaggio
+    del mouse sopra quel link. Collaudato dal vivo: 3/3 hover riusciti nel
+    test di verifica, formato 'Giovedì 3 settembre 2026 alle ore 15:52'.
+
+    Isolamento totale: un fallimento (elemento non trovato, tooltip che
+    non compare) ritorna None senza sollevare — il chiamante ricade sul
+    default date.today() in client.py, coerente con _data_da_iso.
+
+    2026-09-03: nel primo collaudo su un giro reale di più post il
+    tooltip non sempre faceva in tempo a comparire entro 1.2s (2/5
+    riusciti) — il selettore trovava sempre il link giusto (verificato),
+    quindi il problema era di timing, non di identificazione. Un secondo
+    tentativo con attesa più lunga (1.8s) recupera i casi lenti senza
+    appesantire troppo il caso comune (il primo tentativo resta a 1.2s)."""
+    if idx_timestamp is None:
+        return None
+    try:
+        loc = pagina.locator(f'[data-claude-ts-idx="{idx_timestamp}"]')
+        box = loc.bounding_box(timeout=3000)
+        if not box:
+            return None
+        cx, cy = box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
+        for attesa_ms in (1200, 1800):
+            pagina.mouse.move(cx, cy)
+            pagina.wait_for_timeout(attesa_ms)
+            tooltip = pagina.evaluate(
+                """() => Array.from(document.querySelectorAll('[role="tooltip"]'))
+                    .map(e => (e.innerText || '').trim()).filter(t => t)"""
+            )
+            if tooltip:
+                break
+            pagina.mouse.move(0, 0)
+            pagina.wait_for_timeout(300)
+        pagina.mouse.move(0, 0)
+        pagina.wait_for_timeout(300)
+        if not tooltip:
+            return None
+        return _data_da_tooltip_facebook(tooltip[0])
+    except Exception:
         return None
 
 
@@ -476,6 +589,16 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                 for u in g.get("immagineUrls") or []:
                     if u not in urls_carosello:
                         urls_carosello.append(u)
+                # 2026-09-03: per Facebook il timestamp relativo ("N min/h/g")
+                # ha i caratteri deliberatamente mescolati nel DOM — mai
+                # leggibile come testo. La data assoluta si ottiene solo con
+                # un hover reale sul link e la lettura del tooltip che
+                # compare (vedi _leggi_data_pubblicazione_hover_facebook).
+                data_pubblicazione = (
+                    _leggi_data_pubblicazione_hover_facebook(pagina, g.get("idxTimestamp"))
+                    if piattaforma == "facebook"
+                    else _data_da_iso(g.get("dataPubblicazione"))
+                )
                 trovati[post_id] = PostFeed(
                     piattaforma=piattaforma,
                     handle_autore=handle,
@@ -483,7 +606,7 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                     url=permalink if permalink.startswith("http") else f"https://www.{'facebook' if piattaforma=='facebook' else 'instagram'}.com{permalink}",
                     testo=(g.get("testo") or "").strip() or None,
                     image_urls=urls_carosello,
-                    data_pubblicazione=_data_da_iso(g.get("dataPubblicazione")),
+                    data_pubblicazione=data_pubblicazione,
                 )
                 ordine.append(post_id)
         if fermato:
