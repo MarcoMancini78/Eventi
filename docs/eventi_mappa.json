@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T16:19:02",
+  "generato_il": "2026-09-04T16:29:40",
   "eventi": [
     {
       "id": "215d35247178",
@@ -697,23 +697,6 @@
       "url_approfondimento": "",
       "fonti": "comune-varazze",
       "quarantena": false
-    },
-    {
-      "id": "e467cd15a139",
-      "titolo": "Evento culturale",
-      "descrizione": "",
-      "comune": "Trana",
-      "lat": 45.039044,
-      "lon": 7.421817,
-      "km": 93.2,
-      "minuti": 91.0,
-      "data_inizio": "2026-09-05",
-      "data_fine": "2026-09-05",
-      "tipologia": "altro",
-      "url": "https://comune.trana.to.it/Eventi",
-      "url_approfondimento": "",
-      "fonti": "comune-trana",
-      "quarantena": true
     },
     {
       "id": "540608df5bdf",
@@ -3589,23 +3572,6 @@
       "quarantena": false
     },
     {
-      "id": "90e63dbc3ebb",
-      "titolo": "Evento culturale",
-      "descrizione": "",
-      "comune": "Trana",
-      "lat": 45.039044,
-      "lon": 7.421817,
-      "km": 93.2,
-      "minuti": 91.0,
-      "data_inizio": "2026-09-12",
-      "data_fine": "2026-09-12",
-      "tipologia": "altro",
-      "url": "https://comune.trana.to.it/Eventi",
-      "url_approfondimento": "",
-      "fonti": "comune-trana",
-      "quarantena": true
-    },
-    {
       "id": "f6a410d4ffd9",
       "titolo": "Santa Messa",
       "descrizione": "Iniziativa per il 125° anniversario della Festa della Croce.",
@@ -6222,23 +6188,6 @@
       "url_approfondimento": "",
       "fonti": "comune-montalenghe",
       "quarantena": false
-    },
-    {
-      "id": "a6e3fbd2013b",
-      "titolo": "Evento culturale",
-      "descrizione": "",
-      "comune": "Trana",
-      "lat": 45.039044,
-      "lon": 7.421817,
-      "km": 93.2,
-      "minuti": 91.0,
-      "data_inizio": "2026-09-27",
-      "data_fine": "2026-09-27",
-      "tipologia": "altro",
-      "url": "https://comune.trana.to.it/Eventi",
-      "url_approfondimento": "",
-      "fonti": "comune-trana",
-      "quarantena": true
     },
     {
       "id": "947256eb7214",
