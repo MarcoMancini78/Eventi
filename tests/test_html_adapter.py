@@ -88,3 +88,114 @@ def test_html_adapter_fetch_segue_link_dettaglio_quando_indice_senza_date():
     assert len(artefatti) == 5
     assert "Piazza Roma" in artefatti[0].text
     assert artefatti[0].url == "https://festival-prova.it/eventi/spettacolo-cinque/"  # ordine alfabetico dei link trovati
+
+
+# --- 2026-09-05, richiesto dall'utente (caso Alba 9af7cff0830e): i link di
+# dettaglio vanno seguiti SEMPRE, non solo quando l'indice non basta da
+# solo — un indice con più anteprime brevi produce comunque un artefatto,
+# ma titolo/descrizione/URL/immagine del dettaglio sono sempre più precisi. ---
+
+_HTML_INDICE_CON_DATE_E_LINK_DOMINANTI = """<html><body>
+<main>
+<h1>Prossimi eventi</h1>
+<article><h2>Sagra del Tartufo</h2><p>Sabato 12 settembre 2026, Piazza Roma.</p></article>
+<article><h2>Mercatino</h2><p>Domenica 20/09, Via Garibaldi.</p></article>
+</main>
+<a href="https://comune-prova.it/eventi/sagra-del-tartufo/">Sagra del Tartufo</a>
+<a href="https://comune-prova.it/eventi/mercatino-antiquariato/">Mercatino</a>
+<a href="https://comune-prova.it/eventi/concerto-piazza/">Concerto</a>
+<a href="https://comune-prova.it/eventi/mostra-fotografica/">Mostra</a>
+<a href="https://comune-prova.it/eventi/festa-patronale/">Festa patronale</a>
+</body></html>"""
+
+
+def test_html_adapter_fetch_segue_link_dettaglio_anche_se_indice_ha_gia_date():
+    """Il caso reale Alba: l'indice ha già >= 2 pattern di data (produrrebbe
+    un artefatto da solo, con titolo/descrizione generici), ma esiste un
+    prefisso di link dominante -> fetch deve preferire i dettagli."""
+    html_dettaglio = (FIXTURES / "esempio_pagina_dettaglio_evento.html").read_text(encoding="utf-8")
+
+    risposta_indice = Mock(status_code=200, text=_HTML_INDICE_CON_DATE_E_LINK_DOMINANTI)
+    risposta_indice.raise_for_status = Mock()
+    risposta_dettaglio = Mock(status_code=200, text=html_dettaglio)
+    risposta_dettaglio.raise_for_status = Mock()
+
+    client_finto = Mock()
+    client_finto.get = Mock(side_effect=[risposta_indice] + [risposta_dettaglio] * 5)
+    client_finto.__enter__ = Mock(return_value=client_finto)
+    client_finto.__exit__ = Mock(return_value=False)
+
+    with patch("src.adapters.html.httpx.Client", return_value=client_finto):
+        artefatti = HtmlAdapter().fetch({"source_id": "comune-prova", "endpoint": "https://comune-prova.it/eventi/"})
+
+    # 5 artefatti dai dettagli, non 1 dall'indice: url punta alla notizia
+    # vera, non alla pagina elenco generica.
+    assert len(artefatti) == 5
+    assert all(a.url.startswith("https://comune-prova.it/eventi/") and a.url != "https://comune-prova.it/eventi/" for a in artefatti)
+
+
+def test_html_adapter_fetch_scarica_og_image_dal_dettaglio(tmp_path, monkeypatch):
+    """2026-09-05: la pagina di dettaglio con <meta og:image> deve produrre
+    un artefatto con image_paths popolato (file scaricato in locale),
+    stesso pattern già usato per le immagini social."""
+    import src.adapters.html as html_mod
+
+    monkeypatch.setattr(html_mod, "_CARTELLA_IMMAGINI_HTML", tmp_path)
+
+    html_dettaglio_con_immagine = """<html><head>
+    <meta property="og:image" content="https://comune-prova.it/img/locandina.jpg" />
+    </head><body>
+    <h1>Sagra del Tartufo</h1>
+    <p>Sabato 12 settembre 2026, ore 21:00, Piazza Roma.</p>
+    </body></html>"""
+
+    risposta_indice = Mock(status_code=200, text=_HTML_INDICE_CON_DATE_E_LINK_DOMINANTI)
+    risposta_indice.raise_for_status = Mock()
+    risposta_dettaglio = Mock(status_code=200, text=html_dettaglio_con_immagine)
+    risposta_dettaglio.raise_for_status = Mock()
+    risposta_immagine = Mock(status_code=200, content=b"\xff\xd8\xff\xe0finto-jpeg")
+    risposta_immagine.raise_for_status = Mock()
+
+    client_finto = Mock()
+    client_finto.get = Mock(side_effect=[risposta_indice] + [risposta_dettaglio, risposta_immagine] * 5)
+    client_finto.__enter__ = Mock(return_value=client_finto)
+    client_finto.__exit__ = Mock(return_value=False)
+
+    with patch("src.adapters.html.httpx.Client", return_value=client_finto):
+        artefatti = HtmlAdapter().fetch({"source_id": "comune-prova", "endpoint": "https://comune-prova.it/eventi/"})
+
+    assert len(artefatti) == 5
+    assert artefatti[0].image_paths
+    assert Path(artefatti[0].image_paths[0]).read_bytes() == b"\xff\xd8\xff\xe0finto-jpeg"
+
+
+def test_estrai_og_image_trova_meta_tag():
+    html = '<html><head><meta property="og:image" content="https://x.it/img.jpg"/></head></html>'
+    from src.adapters.html import estrai_og_image
+
+    assert estrai_og_image(html, "https://x.it/") == "https://x.it/img.jpg"
+
+
+def test_estrai_og_image_assente_ritorna_none():
+    html = "<html><head></head></html>"
+    from src.adapters.html import estrai_og_image
+
+    assert estrai_og_image(html, "https://x.it/") is None
+
+
+def test_trova_link_dettaglio_dominanti_gestisce_prefisso_lingua():
+    """Caso reale Alba: primo segmento di path sempre 'it' (lingua) per
+    menu E notizie, con un gruppo parallelo di slug numerici (pagine
+    categoria) che confonderebbe una soglia puramente quantitativa."""
+    html = "<html><body>" + "".join(
+        f'<a href="https://x.it/it/news/notizia-vera-numero-{i}">n{i}</a>' for i in range(6)
+    ) + "".join(
+        f'<a href="https://x.it/it/news-category/{1000+i}">c{i}</a>' for i in range(6)
+    ) + '<a href="https://x.it/it/contatti">Contatti</a>' + "</body></html>"
+
+    from src.adapters.html import trova_link_dettaglio_dominanti
+
+    link = trova_link_dettaglio_dominanti(html, "https://x.it/it/news/")
+    assert len(link) == 6
+    assert all("/it/news/notizia-vera" in l for l in link)
+    assert not any("news-category" in l for l in link)
