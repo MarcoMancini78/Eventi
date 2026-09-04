@@ -33,7 +33,7 @@ class Config:
     # Vista e archiviazione (03.1.6)
     vista_principale_giorni: int = 21
     vista_principale_fasce: tuple[str, ...] = ("A", "B")
-    giorni_archiviazione: int = 2
+    giorni_archiviazione: int = 0
     limite_sanita_anni: int = 2
 
     # Ricorrenze (03.1.6, 07.9)
