@@ -223,6 +223,39 @@ def test_elabora_post_pubblica_evento_con_estrattore():
     assert riga["comune"] == "Calosso"
 
 
+def test_elabora_post_senza_url_approfondimento_usa_url_immagine_remoto(tmp_path):
+    """Richiesto dall'utente 2026-09-04: se l'LLM non trova un link
+    esplicito 'scopri di più' nel testo, url_approfondimento deve comunque
+    puntare all'URL remoto originale dell'immagine (non al solo path
+    locale, che resta in url_immagine) — un link navigabile è meglio di
+    niente."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_risposta_json(confidenza=92)])  # senza url_approfondimento nel JSON
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    immagine = tmp_path / "locandina.jpg"
+    immagine.write_bytes(b"\xff\xd8\xff\xe0finto-jpeg")
+
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo="Sagra del Tartufo sabato 12 settembre in Piazza Roma a Calosso, degustazioni e musica.",
+        image_paths=[str(immagine)],
+        image_urls=["https://scontent.cdninstagram.com/locandina-originale.jpg"],
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+    assert esito == "pubblicato"
+
+    riga = conn.execute("SELECT url_immagine, url_approfondimento FROM events").fetchone()
+    assert riga["url_immagine"] == str(immagine)
+    assert riga["url_approfondimento"] == "https://scontent.cdninstagram.com/locandina-originale.jpg"
+
+
 def test_elabora_post_senza_testo_con_immagine_usa_vlm(tmp_path):
     """Post senza didascalia utile ma con locandina allegata: deve passare
     per estrai_da_immagine (VLM) invece di essere scartato come

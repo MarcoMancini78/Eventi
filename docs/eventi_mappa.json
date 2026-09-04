@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T13:58:52",
+  "generato_il": "2026-09-04T15:16:53",
   "eventi": [
     {
       "id": "215d35247178",
@@ -633,7 +633,7 @@
     {
       "id": "4ab59ea6b5c7",
       "titolo": "Festa Patronale - Sagra della porchetta",
-      "descrizione": "Festa Patronale - Sagra della porchetta",
+      "descrizione": "Dal 4 al 6 Settembre 2026",
       "comune": "Cozzo",
       "lat": 45.192659,
       "lon": 8.61104,
@@ -769,7 +769,7 @@
     {
       "id": "63778cc923bf",
       "titolo": "Vate fidè dij bacialè!",
-      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola. Una storia ricca di equivoci e situazioni comiche con protagonista la dottoressa Francesca Busia. Per i partecipanti è previsto anche un aperitivo.",
+      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola nell'ambito della rassegna CONNESSIONI. Al termine dello spettacolo è previsto un aperitivo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -786,7 +786,7 @@
     {
       "id": "f422e346049a",
       "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
-      "descrizione": "Incontro-lezione con il celebre storico Alessandro Barbero dedicato alla figura di San Francesco d’Assisi nell’anno dell’ottavo centenario dalla sua morte.",
+      "descrizione": "Incontro con il pubblico dal titolo 'La (vera) storia di San Francesco', dedicato alla figura di San Francesco d’Assisi nell'anno dell'ottavo centenario dalla sua morte, a cura del celebre storico professore Alessandro Barbero.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -1017,7 +1017,7 @@
       "data_fine": "2026-09-04",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZh8wTBIgSpqy2DcyWHkQFpk-ffucp7SnF0YnRnPoMnFyP77dtWelgfAmbbQp8RUdfFEU8p2eG6KgpGTxB97Cwx9NwYZRk9L-dRI-yCN9XtVWIRQ_0uEsMS56-EPC_Cr4mvVHT63qeQ2Iszv66Nse0SSz5E_s9rW3g8M5BVPvbZ9_6YzTg_S9miMbTa4KIJB&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.busca.cn.it",
+      "url_approfondimento": "https://www.comune.busca.cn.it",
       "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
@@ -1210,8 +1210,8 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "La Mezza Notte Bianca dei Bambini",
-      "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini lungo le vie del centro storico e Piazza Umberto I.",
+      "titolo": "MezzaNotte bianca dei Bambini",
+      "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini, lungo le vie del centro storico e Piazza Umberto I.",
       "comune": "Orbassano",
       "lat": 45.007263,
       "lon": 7.536919,
@@ -1270,7 +1270,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -1296,7 +1296,7 @@
     {
       "id": "58989ce99e25",
       "titolo": "Panorami dell'anima",
-      "descrizione": "Mostra personale di dipinti di Maurizia Assanelli.",
+      "descrizione": "Mostra personale di dipinti di Maurizia Assanelli. Inaugurazione sabato 5 settembre alle ore 17:00.",
       "comune": "Rivanazzano Terme",
       "lat": 44.930767,
       "lon": 9.014159,
@@ -1500,7 +1500,7 @@
     {
       "id": "6143eb00ecb7",
       "titolo": "Festa patronale della Beata Vergine delle Grazie",
-      "descrizione": "Dal 5 al 15 settembre 2026 le celebrazioni della patrona di Chieri",
+      "descrizione": "Celebrazioni della patrona di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1561,7 +1561,7 @@
       "data_fine": "2026-09-05",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZi_-8EYDI5nZa5OQXvsyuzrrPExyUe8yul_jcfhu0YGoLS0gSbIhX5iAKNDQpM8Ue0RuvdTFzsNLLNufcHjhOkUzer6Hcwm1izQmMe9qKiaO5x-2t4JfRtdtDelMhL7ha9meVsRtd-g7fmDMwOzg-jXAqGM84YQK1pKJVCG8HDHLBBDJlMX8mdGmrZcVxRI8chWeCVwqHvK&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.tinyurl.com/estate-rivalta-2026",
+      "url_approfondimento": "https://www.tinyurl.com/estate-rivalta-2026",
       "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
     },
@@ -1680,7 +1680,7 @@
       "data_fine": "2026-09-05",
       "tipologia": "gastronomia",
       "url": "https://www.facebook.com/provillaverzuolo?__cft__[0]=AZihX_dycTQea2f7IbfS18xkQyjhpryS0Iq18Lmu9kaYu0-AV3gZTUaSO8n_vsrzS_mhDxAndlIcbVK1G9v6AiUeEiuWcPy_QMZvprn6j1bS5QL_x9QQS0xCKGXyQmq4XVriHByoiQrgrbOFoD7eS2v7Bf3CM7m5q3yUc2uLgwwjzF3eZiPI3f41_dgHTi2HGg&__tn__=-]C%2CP-R",
-      "url_approfondimento": "www.villadiverzuolo.it",
+      "url_approfondimento": "https://www.villadiverzuolo.it",
       "fonti": "feed-facebook-provillaverzuolo",
       "quarantena": false
     },
@@ -1697,7 +1697,7 @@
       "data_fine": "2026-09-05",
       "tipologia": "altro",
       "url": "https://www.facebook.com/provillaverzuolo?__cft__[0]=AZihX_dycTQea2f7IbfS18xkQyjhpryS0Iq18Lmu9kaYu0-AV3gZTUaSO8n_vsrzS_mhDxAndlIcbVK1G9v6AiUeEiuWcPy_QMZvprn6j1bS5QL_x9QQS0xCKGXyQmq4XVriHByoiQrgrbOFoD7eS2v7Bf3CM7m5q3yUc2uLgwwjzF3eZiPI3f41_dgHTi2HGg&__tn__=-]C%2CP-R",
-      "url_approfondimento": "www.villadiverzuolo.it",
+      "url_approfondimento": "https://www.villadiverzuolo.it",
       "fonti": "feed-facebook-provillaverzuolo",
       "quarantena": false
     },
@@ -2654,6 +2654,23 @@
       "quarantena": false
     },
     {
+      "id": "81a3b04e09b9",
+      "titolo": "Mercatino di via Vittorio",
+      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre",
+      "comune": "Bra",
+      "lat": 44.697678,
+      "lon": 7.854271,
+      "km": 41.0,
+      "minuti": 49.0,
+      "data_inizio": "2026-09-06",
+      "data_fine": "2026-09-06",
+      "tipologia": "fiera",
+      "url": "https://www.comune.bra.cn.it/it/events",
+      "url_approfondimento": "",
+      "fonti": "comune-bra",
+      "quarantena": false
+    },
+    {
       "id": "1d6fa84885bd",
       "titolo": "Passi nel Cuore",
       "descrizione": "Camminata benefica per le vie del paese con Naturaltrek.",
@@ -2893,8 +2910,8 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "Egitto. Sulle tracce degli dei",
-      "descrizione": "Mostra a Palazzo Mathis con un percorso unico tra reperti e amuleti inediti.",
+      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2903,7 +2920,7 @@
       "data_inizio": "2026-09-08",
       "data_fine": "2027-01-06",
       "tipologia": "mostra",
-      "url": "https://www.comune.bra.cn.it/it",
+      "url": "https://www.comune.bra.cn.it/it/events",
       "url_approfondimento": "",
       "fonti": "comune-bra",
       "quarantena": false
@@ -3006,7 +3023,7 @@
       "data_fine": "2026-09-09",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZh8wTBIgSpqy2DcyWHkQFpk-ffucp7SnF0YnRnPoMnFyP77dtWelgfAmbbQp8RUdfFEU8p2eG6KgpGTxB97Cwx9NwYZRk9L-dRI-yCN9XtVWIRQ_0uEsMS56-EPC_Cr4mvVHT63qeQ2Iszv66Nse0SSz5E_s9rW3g8M5BVPvbZ9_6YzTg_S9miMbTa4KIJB&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.busca.cn.it",
+      "url_approfondimento": "https://www.comune.busca.cn.it",
       "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
@@ -3023,7 +3040,7 @@
       "data_fine": "2026-09-09",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZh8wTBIgSpqy2DcyWHkQFpk-ffucp7SnF0YnRnPoMnFyP77dtWelgfAmbbQp8RUdfFEU8p2eG6KgpGTxB97Cwx9NwYZRk9L-dRI-yCN9XtVWIRQ_0uEsMS56-EPC_Cr4mvVHT63qeQ2Iszv66Nse0SSz5E_s9rW3g8M5BVPvbZ9_6YzTg_S9miMbTa4KIJB&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.busca.cn.it",
+      "url_approfondimento": "https://www.comune.busca.cn.it",
       "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
@@ -3047,7 +3064,7 @@
     {
       "id": "76de825f43cf",
       "titolo": "125° anniversario Festa della Croce 2026",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce si svolgono diverse iniziative tra cui la proiezione di filmati storici sulla Croce del Musinè e appuntamenti religiosi e culturali.",
+      "descrizione": "Iniziative in occasione del 125° anniversario della Festa della Croce con proiezione filmati storici sulla Croce del Musinè, Sindon e celebrazioni.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -3346,7 +3363,7 @@
       "data_fine": "2026-09-10",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZh8wTBIgSpqy2DcyWHkQFpk-ffucp7SnF0YnRnPoMnFyP77dtWelgfAmbbQp8RUdfFEU8p2eG6KgpGTxB97Cwx9NwYZRk9L-dRI-yCN9XtVWIRQ_0uEsMS56-EPC_Cr4mvVHT63qeQ2Iszv66Nse0SSz5E_s9rW3g8M5BVPvbZ9_6YzTg_S9miMbTa4KIJB&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.busca.cn.it",
+      "url_approfondimento": "https://www.comune.busca.cn.it",
       "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
@@ -3590,8 +3607,8 @@
     },
     {
       "id": "f040dd3e08ec",
-      "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell'orchestra giovanile Saxmania, composta da 20 elementi, con repertorio dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo. Iniziativa del progetto diffuso CONNESSIONI.",
+      "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio - Concerto di Saxmania",
+      "descrizione": "Concerto dell’orchestra giovanile Saxmania dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo. In caso di maltempo, l'evento si svolgerà all'interno del centro.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -3618,7 +3635,7 @@
       "data_fine": "2026-09-13",
       "tipologia": "gastronomia",
       "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZi9ydV3GaUkFdHXdUFaCOOH_EDYU_9L8fkd7wLaoLMar6B0kTnE50MPvYd5fNICyo8fBuA5NmPT4P86ghxbcQRbtOd5BGxoT5ChBTzVP9vVh6g8uL_LSOXqQK3GNKMB5xvnr6Xi838anZ-jD2j51qsranKFouBbVVIwJXYR7PZORJAyhc0gCKDHNaIUXNlr&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.gauchitos.it",
+      "url_approfondimento": "https://www.gauchitos.it",
       "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
     },
@@ -3635,7 +3652,7 @@
       "data_fine": "2026-09-11",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZi-dOuqTmyGudGFfK7mO-GjgTf_m8y3CrEYhf24eF5NDOI39LpQ-owQ1p-ZkLc4e5dIjsidE6LmpSCaOFZxCUeBjQWj5ID2_Xdo8zOQOJMJ17FToS8RCzEa7vj03JVF8WM6y_jIBEGZoquWCsYnwLeFlMszZ148D9knrmckeE77et5-AmLyryFZ8O9iWoY&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.piobesi.to.it",
+      "url_approfondimento": "https://www.comune.piobesi.to.it",
       "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
@@ -3652,7 +3669,7 @@
       "data_fine": "2026-09-11",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZiH6fqRCLBIpfQGsV0SZb-cGDkH0epTzcIMTamgSLduAmU41oZRHkMJe3HoELrl-KQBlj29EmAzIHdBof2rmIzrXBVGRpd6rQyKzZBfGQi7cbA5U_F5KAZSkCkmGcTRYgJqM-xVHaVxp78GkPSnKEnfEjsj7qCXre_woeF8bzwpmgRu56hW-AhdispL6Z0&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.piobesi.to.it",
+      "url_approfondimento": "https://www.comune.piobesi.to.it",
       "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
@@ -3828,8 +3845,8 @@
     },
     {
       "id": "d41cae55aab6",
-      "titolo": "Apertura StArt Gallery - 12 e 13 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3845,8 +3862,8 @@
     },
     {
       "id": "2be17849904b",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi - 12 e 13 settembre 2026",
-      "descrizione": "quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi",
+      "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4383,7 +4400,7 @@
       "data_fine": "2026-09-13",
       "tipologia": "sagra",
       "url": "https://www.instagram.com/p/Dc3EZ76jZVa/",
-      "url_approfondimento": "visit.asti.it/settembre-astigiano/festival-delle-sagre",
+      "url_approfondimento": "https://visit.asti.it/settembre-astigiano/festival-delle-sagre",
       "fonti": "feed-instagram-prolocomontechiaro",
       "quarantena": false
     },
@@ -4402,6 +4419,23 @@
       "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
+      "quarantena": false
+    },
+    {
+      "id": "88a4b7bb0d6a",
+      "titolo": "Mostra fotografica “Ricordé”",
+      "descrizione": "Oltre 30mila immagini storiche in mostra dal 12 settembre al 25 ottobre. Ingresso gratuito",
+      "comune": "Bra",
+      "lat": 44.697678,
+      "lon": 7.854271,
+      "km": 41.0,
+      "minuti": 49.0,
+      "data_inizio": "2026-09-12",
+      "data_fine": "2026-10-25",
+      "tipologia": "mostra",
+      "url": "https://www.comune.bra.cn.it/it/events",
+      "url_approfondimento": "",
+      "fonti": "comune-bra",
       "quarantena": false
     },
     {
@@ -4808,7 +4842,7 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://www.facebook.com/provillaverzuolo?__cft__[0]=AZihX_dycTQea2f7IbfS18xkQyjhpryS0Iq18Lmu9kaYu0-AV3gZTUaSO8n_vsrzS_mhDxAndlIcbVK1G9v6AiUeEiuWcPy_QMZvprn6j1bS5QL_x9QQS0xCKGXyQmq4XVriHByoiQrgrbOFoD7eS2v7Bf3CM7m5q3yUc2uLgwwjzF3eZiPI3f41_dgHTi2HGg&__tn__=-]C%2CP-R",
-      "url_approfondimento": "www.villadiverzuolo.it",
+      "url_approfondimento": "https://www.villadiverzuolo.it",
       "fonti": "feed-facebook-provillaverzuolo",
       "quarantena": false
     },
@@ -4910,14 +4944,14 @@
       "data_fine": "2026-09-13",
       "tipologia": "altro",
       "url": "https://www.instagram.com/p/Dc3EZ76jZVa/",
-      "url_approfondimento": "visit.asti.it/settembre-astigiano/festival-delle-sagre",
+      "url_approfondimento": "https://visit.asti.it/settembre-astigiano/festival-delle-sagre",
       "fonti": "feed-instagram-prolocomontechiaro",
       "quarantena": false
     },
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio (AT), con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
+      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio, con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4934,7 +4968,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4943,7 +4977,7 @@
       "data_inizio": "2026-09-13",
       "data_fine": "2026-09-13",
       "tipologia": "sportivo",
-      "url": "https://www.comune.bra.cn.it/it",
+      "url": "https://www.comune.bra.cn.it/it/events",
       "url_approfondimento": "",
       "fonti": "comune-bra",
       "quarantena": false
@@ -5036,7 +5070,7 @@
     {
       "id": "aa2b9c5fa6d7",
       "titolo": "“Tessile e Tecnologia” al Museo del Tessile di Chieri",
-      "descrizione": "Martedì 15 settembre una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono",
+      "descrizione": "Una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5080,7 +5114,7 @@
       "data_fine": "2026-09-15",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZh8wTBIgSpqy2DcyWHkQFpk-ffucp7SnF0YnRnPoMnFyP77dtWelgfAmbbQp8RUdfFEU8p2eG6KgpGTxB97Cwx9NwYZRk9L-dRI-yCN9XtVWIRQ_0uEsMS56-EPC_Cr4mvVHT63qeQ2Iszv66Nse0SSz5E_s9rW3g8M5BVPvbZ9_6YzTg_S9miMbTa4KIJB&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.busca.cn.it",
+      "url_approfondimento": "https://www.comune.busca.cn.it",
       "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
@@ -5150,6 +5184,23 @@
       "url": "https://www.facebook.com/profile.php?id=100080229957596&__cft__[0]=AZjo8kpvD8kR5EQlnshbh6vfDnWqWMPr6v9GQRYN0LDPeOiHJP0HQkpTlYkjdkluzsVO4ljqI5CZkDjpmBNPqzgzdpXNKyL30brWFHh3eS1y76KmLIAHzsWWdTkHL5VZlKMBGgVyg4qaHBwn5DPKbTpsvhZoEKmun_zHb1M-N-7hrNhso3TM5zfhjcuLsjvn&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-profile.php?id=100080229957596",
+      "quarantena": false
+    },
+    {
+      "id": "ae5dfacf9b82",
+      "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
+      "descrizione": "Dal 17 al 20 settembre 2026 ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
+      "comune": "Bra",
+      "lat": 44.697678,
+      "lon": 7.854271,
+      "km": 41.0,
+      "minuti": 49.0,
+      "data_inizio": "2026-09-17",
+      "data_fine": "2026-09-20",
+      "tipologia": "gastronomia",
+      "url": "https://www.comune.bra.cn.it/it/events",
+      "url_approfondimento": "",
+      "fonti": "comune-bra",
       "quarantena": false
     },
     {
@@ -5239,8 +5290,8 @@
     },
     {
       "id": "6b80e27e46dc",
-      "titolo": "Apertura StArt Gallery - 19 e 20 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5256,7 +5307,7 @@
     },
     {
       "id": "28167d1b2796",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi - 19 e 20 settembre 2026",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi",
       "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -5291,7 +5342,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Serata Aspettando Montmartre con premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (realizzato in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "descrizione": "In occasione della serata di Aspettando Montmartre si terrà la premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -5454,7 +5505,7 @@
       "data_fine": "2026-09-19",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZgiFAsXY4uqZX4G1Yhagzdsx_1JHWFcNxTDEcy2DIjPcrq0qC093vU6pdEFnG5S-fnL-MvbTUKSoBf3al2Iz8mzJnlQXJbfFTP4PN6-m4y1ixkR6fax1p9n9NGaUXfllGqxff01oQ-d-XEpEz2v8_kmif8UqUwteVwkVJ_QMyc0GQU17u9GrDt5zwuyKTkaCA&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.tinyurl.com/bicincomune26",
+      "url_approfondimento": "https://www.tinyurl.com/bicincomune26",
       "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
     },
@@ -5624,7 +5675,7 @@
       "data_fine": "2026-09-20",
       "tipologia": "sportivo",
       "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZiQXHTsy3Dqh2nOHusIfwH_MqIpJol5ZMmgZ8pRehxHBnR3xrv2Shv4i0YWwz_mYaVUc20aSB_PZBk39fmmTULYUbjMdIJWMbUnlIJRgRv4l1fiDWovr7VudnBaRHCKvjaPY9VZtQvIek4QEtA6A0uo7PcWF8LEdNnAVeTPvOcvSg-BMC6nbQhP2ZGbKt6enQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.pedalanpo.com",
+      "url_approfondimento": "https://www.pedalanpo.com",
       "fonti": "feed-facebook-comunechivasso",
       "quarantena": false
     },
@@ -5658,7 +5709,7 @@
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
       "url": "https://www.facebook.com/provillaverzuolo?__cft__[0]=AZihX_dycTQea2f7IbfS18xkQyjhpryS0Iq18Lmu9kaYu0-AV3gZTUaSO8n_vsrzS_mhDxAndlIcbVK1G9v6AiUeEiuWcPy_QMZvprn6j1bS5QL_x9QQS0xCKGXyQmq4XVriHByoiQrgrbOFoD7eS2v7Bf3CM7m5q3yUc2uLgwwjzF3eZiPI3f41_dgHTi2HGg&__tn__=-]C%2CP-R",
-      "url_approfondimento": "www.villadiverzuolo.it",
+      "url_approfondimento": "https://www.villadiverzuolo.it",
       "fonti": "feed-facebook-provillaverzuolo",
       "quarantena": false
     },
@@ -5869,7 +5920,7 @@
     {
       "id": "5c573d7dd168",
       "titolo": "Festa della Nascita 2026",
-      "descrizione": "Una giornata speciale per dare il benvenuto alle nuove vite nate nel 2025 e nel 2026. Letture condivise, musica, canto, giochi, laboratori sensoriali ed esperienze nella natura per bambine e bambini. Il tema della giornata sarà il Tempo.",
+      "descrizione": "Torna la Festa della Nascita alla Reggia di Venaria, dedicata alle famiglie delle nuove nate e dei nuovi nati nel 2025 e nel 2026. Iscrizioni entro il 18 settembre.",
       "comune": "Venaria Reale",
       "lat": 45.134811,
       "lon": 7.626866,
@@ -5878,8 +5929,8 @@
       "data_inizio": "2026-09-20",
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
-      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZjRyafsx5ECjV4UpHXj5f3UOt3kfOqJMcKqZ4m485Z6WUJsw9cf8Lo6OY44I3C61ojwyJN6bePlqy_tCRTbEzYTcKwRpYhtyN0czza6U48ITa8_5wFYgAZC2HRQ48rCpAHlGAEyrSOdKvgqtzrfzzfl6tPEpQaT6QufncbJL7z8yXxkCBpLE_pzsGHHoddM&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.tinyurl.com/festa-della-nascita-2026",
+      "url": "https://comune.venariareale.to.it/it",
+      "url_approfondimento": "",
       "fonti": "comune-venaria-reale, feed-facebook-cittadirivalta",
       "quarantena": false
     },
@@ -6151,7 +6202,7 @@
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
       "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZiLgv9SnZ0kby9toAD0frhKpUAQ3c3AusmXulVXrXsTl__F9KQpUSMJOaiF0K8Dp78nrbwXNYRYa199UVDMc4dq3JsR_BZpvJHMYHqRmRuWEUkk8deswApwvOSqX2H5NIYviQticK-FUiVAqOYt-Ya-0fx00rkUtkvZyBr091ENCHwRNcIvBauRkIUqY8tI&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.tinyurl.com/festa-della-nascita-2026",
+      "url_approfondimento": "https://www.tinyurl.com/festa-della-nascita-2026",
       "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
     },
@@ -6379,7 +6430,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Raduno per camperisti con accoglienza, aperipranzo, visite guidate al borgo antico e al MiCeM, trekking sul percorso archeologico industriale e degustazione in cantina.",
+      "descrizione": "Tre giorni dedicati ai camperisti con accoglienza, visite guidate del borgo antico e del MiCeM, trekking sul percorso archeologico-industriale, aperipranzo, colazione e degustazione in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -6395,8 +6446,8 @@
     },
     {
       "id": "23e8752fc9ef",
-      "titolo": "Incontri al quadrato - La Divisa Bianca",
-      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema 'La Divisa Bianca', nell'ambito del ciclo 'Incontri al quadrato' del progetto CONNESSIONI.",
+      "titolo": "Incontri al quadrato: “La Divisa Bianca” con Silvestro Catacchio",
+      "descrizione": "Nell'ambito del progetto CONNESSIONI, appuntamento del ciclo 'Incontri al quadrato' proposto dall'associazione I Delfini ODV. Protagonista dell'incontro sarà Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema 'La Divisa Bianca'.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -6412,8 +6463,8 @@
     },
     {
       "id": "6e55addfa80b",
-      "titolo": "Apertura StArt Gallery - 26 e 27 settembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6593,7 +6644,7 @@
       "data_fine": "2026-09-27",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunecarignano?__cft__[0]=AZhcI6XLV--pMaZ2wa0fj5WlXpagTFk7KwTKTd_Th6PEQR5Ce7aXwg2TwRIUJSRIq1sJPsWxuBAnqnS6Ts7VBanKmmlGiVIQQdmhS4dZ-FLvcKvC2P8O2H1VbTVrSLYI9cTCiJTT-iW4pko9tVS3IPCUJm0KWDH2Ta6fSqE3SPpYeShhwP38y43zHeyXrX3FZTJjmXydJXwe5w&__tn__=-UC%2CP-R",
-      "url_approfondimento": "comune.carignano.to.it",
+      "url_approfondimento": "https://comune.carignano.to.it",
       "fonti": "feed-facebook-comunecarignano",
       "quarantena": false
     },
@@ -6814,7 +6865,7 @@
       "data_fine": "2026-10-04",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZi-dOuqTmyGudGFfK7mO-GjgTf_m8y3CrEYhf24eF5NDOI39LpQ-owQ1p-ZkLc4e5dIjsidE6LmpSCaOFZxCUeBjQWj5ID2_Xdo8zOQOJMJ17FToS8RCzEa7vj03JVF8WM6y_jIBEGZoquWCsYnwLeFlMszZ148D9knrmckeE77et5-AmLyryFZ8O9iWoY&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.piobesi.to.it",
+      "url_approfondimento": "https://www.comune.piobesi.to.it",
       "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
@@ -6831,7 +6882,7 @@
       "data_fine": "2026-10-04",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZi-dOuqTmyGudGFfK7mO-GjgTf_m8y3CrEYhf24eF5NDOI39LpQ-owQ1p-ZkLc4e5dIjsidE6LmpSCaOFZxCUeBjQWj5ID2_Xdo8zOQOJMJ17FToS8RCzEa7vj03JVF8WM6y_jIBEGZoquWCsYnwLeFlMszZ148D9knrmckeE77et5-AmLyryFZ8O9iWoY&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.piobesi.to.it",
+      "url_approfondimento": "https://www.comune.piobesi.to.it",
       "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
@@ -6848,7 +6899,7 @@
       "data_fine": "2026-10-04",
       "tipologia": "concerto",
       "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZiH6fqRCLBIpfQGsV0SZb-cGDkH0epTzcIMTamgSLduAmU41oZRHkMJe3HoELrl-KQBlj29EmAzIHdBof2rmIzrXBVGRpd6rQyKzZBfGQi7cbA5U_F5KAZSkCkmGcTRYgJqM-xVHaVxp78GkPSnKEnfEjsj7qCXre_woeF8bzwpmgRu56hW-AhdispL6Z0&__tn__=-UC%2CP-R",
-      "url_approfondimento": "www.comune.piobesi.to.it",
+      "url_approfondimento": "https://www.comune.piobesi.to.it",
       "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
@@ -6922,8 +6973,8 @@
     },
     {
       "id": "db041f438f2a",
-      "titolo": "Apertura StArt Gallery - 9 e 10 ottobre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6974,7 +7025,7 @@
     {
       "id": "4fbab2fa424f",
       "titolo": "Relazioni che generano futuro: un percorso per crescere insieme",
-      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno",
+      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6990,8 +7041,8 @@
     },
     {
       "id": "d20148155434",
-      "titolo": "Apertura StArt Gallery - 11 ottobre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7110,7 +7161,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, Light designer Marco Filibeck, Scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità, che avrà ricostruito davanti a tutti il suo corpo e la sua umanità, in un mondo apparentemente tr",
+      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia di Ambra Angiolini.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -7313,8 +7364,8 @@
     },
     {
       "id": "d054bab00af2",
-      "titolo": "Apertura StArt Gallery - 7 novembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7433,7 +7484,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura pubblica, aperto a tutti.",
+      "descrizione": "Lettura (pubblica) aperto a tutti",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7585,8 +7636,8 @@
     },
     {
       "id": "67c23b395ab4",
-      "titolo": "Apertura StArt Gallery - 12 dicembre 2026",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
+      "titolo": "Apertura StArt Gallery",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7602,8 +7653,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione dei testi vincitori di Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi classificati nel concorso Mezz'ora da Ridere ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi classificati al concorso Mezz'ora da Ridere ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,

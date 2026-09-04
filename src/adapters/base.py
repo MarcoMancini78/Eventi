@@ -18,6 +18,12 @@ class Artefatto:
     text: str | None = None
     context_date: str | None = None  # data di pubblicazione, se disponibile (04.3 rss)
     image_paths: list[str] = field(default_factory=list)
+    # URL remoti originali corrispondenti a image_paths (stesso ordine),
+    # quando disponibili (es. feed social: immagine scaricata da un URL
+    # pubblico). Usato per popolare url_approfondimento quando l'LLM non
+    # ne trova uno esplicito nel testo — così l'utente può risalire alla
+    # locandina/immagine originale online invece che al solo file locale.
+    image_urls: list[str] = field(default_factory=list)
     raw_hash: str | None = None
     fetched_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     # Campi già strutturati quando l'adattatore è T0 puro (ical/jsonld): se

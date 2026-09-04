@@ -255,7 +255,13 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
         "organizzatore": evento_estratto.organizzatore,
         "url": art.url,
         "url_immagine": art.image_paths[0] if art.image_paths else None,
-        "url_approfondimento": evento_estratto.url_approfondimento,
+        # Se l'LLM non ha trovato un link esplicito "scopri di più" nel
+        # testo, usa l'URL remoto originale dell'immagine (locandina/post)
+        # come approfondimento — meglio di niente, e sempre un link reale
+        # navigabile invece del solo file scaricato in locale.
+        "url_approfondimento": evento_estratto.url_approfondimento or (
+            art.image_urls[0] if art.image_urls else None
+        ),
         "confidenza": max(0, min(100, confidenza_finale)),
     }
 

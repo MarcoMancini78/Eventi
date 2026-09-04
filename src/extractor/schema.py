@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 Tipologia = Literal[
     "sagra", "gastronomia", "degustazione", "concerto", "teatro", "cinema",
@@ -46,6 +46,24 @@ class EventoEstratto(BaseModel):
     confidenza: int = Field(ge=0, le=100)
     campi_incerti: list[str] = Field(default_factory=list)
     note_estrazione: str | None = None
+
+    @field_validator("url_approfondimento")
+    @classmethod
+    def _normalizza_url_approfondimento(cls, v: str | None) -> str | None:
+        # Il modello spesso restituisce un dominio senza schema (es.
+        # "www.comune.busca.cn.it"): lo normalizziamo con https://.
+        # Se invece non somiglia a un URL/dominio (es. un path locale
+        # con backslash o lettera di unità tipo "C:\..."), lo scartiamo.
+        if v is None:
+            return None
+        v = v.strip()
+        if not v:
+            return None
+        if v.lower().startswith(("http://", "https://")):
+            return v
+        if "\\" in v or ":" in v.split("/")[0]:
+            return None
+        return f"https://{v}"
 
 
 class RispostaEstrazione(BaseModel):

@@ -776,6 +776,7 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
         kind="social",
         text=post.testo,
         image_paths=post.image_paths,
+        image_urls=post.image_urls,
     )
     # Bug reale osservato (2026-08-27): artifacts.source_id ha una foreign
     # key su sources — a differenza di pipeline.esegui_fonte (che chiama
