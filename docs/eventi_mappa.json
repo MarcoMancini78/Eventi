@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T15:59:37",
+  "generato_il": "2026-09-04T16:19:02",
   "eventi": [
     {
       "id": "215d35247178",
@@ -102,23 +102,6 @@
       "url_approfondimento": "",
       "fonti": "comune-sannazzaro-de'-burgondi",
       "quarantena": false
-    },
-    {
-      "id": "e344a6d540eb",
-      "titolo": "Settembre in Valle Maira - Attività per over 65, caregiver e comunità",
-      "descrizione": "Attività per over 65, caregiver e comunità.",
-      "comune": "Dronero",
-      "lat": 44.465942,
-      "lon": 7.367256,
-      "km": 92.7,
-      "minuti": 99.0,
-      "data_inizio": "2026-09-01",
-      "data_fine": "2026-09-30",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/cittadidronero?__cft__[0]=AZaTUnx_8hzVuhAqtyJaAYgrtbvQdF43LnuCtGDq19nYJO7ihb6khim8ju5cn3soxF4qfcL5ZSloFyial6ipLhmzf7zbfTieZhSdDzEY4AUT8NE-hOSy6GPZT7fuvBoBxcKKBbQehPlEUOjghEodiMmJaHUwHFaRn8G2vioBW6LSrsY5Xpy7XXDWxWjukOWihGXsI27HFI5Bd6dYnOhI-Xp4&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-cittadidronero",
-      "quarantena": true
     },
     {
       "id": "0da06c36c79d",
@@ -1532,6 +1515,23 @@
       "quarantena": false
     },
     {
+      "id": "2b1ac322d488",
+      "titolo": "Eventi estivi del Giardino Rea 2026 - 5 settembre",
+      "descrizione": "Eventi estivi tenuti al Giardino Rea nel periodo estivo",
+      "comune": "Trana",
+      "lat": 45.039044,
+      "lon": 7.421817,
+      "km": 93.2,
+      "minuti": 91.0,
+      "data_inizio": "2026-09-05",
+      "data_fine": "2026-09-05",
+      "tipologia": "altro",
+      "url": "https://comune.trana.to.it/Dettaglionews?IDNews=406372",
+      "url_approfondimento": "",
+      "fonti": "comune-trana",
+      "quarantena": false
+    },
+    {
       "id": "c8facf53d77c",
       "titolo": "Palio di Asti",
       "descrizione": "Corsa del Palio di Asti",
@@ -1634,23 +1634,6 @@
       "quarantena": true
     },
     {
-      "id": "6d3153cb6cd5",
-      "titolo": "Premio \"Fautor Langae\"",
-      "descrizione": "Il premio \"Fautor Langae\" chiuderà la stagione.",
-      "comune": "Cortemilia",
-      "lat": 44.579471,
-      "lon": 8.193302,
-      "km": 25.7,
-      "minuti": 32.0,
-      "data_inizio": "2026-09-06",
-      "data_fine": "2026-09-06",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/etm.cortemilia?__cft__[0]=AZZvXDdcF-vX-RErFPXOVPQD_I8HGqcgvVtk5KbGG0lpy0HQtZfesRsAUreJ_wYfb2MtrTOByFlihhaCcv40OOm5E66lNvYgTC6qmRCojW_NNwc4jEjmGT2GBiwccshVr4ObQf6OROGk2kG3XLSWQZgb1-lCYi-A-rpi1rTnemv-Zc7qLUULdIJvGYFUQendFZ1E03oMRUyn9kf_RErrmwjD&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-etm.cortemilia",
-      "quarantena": true
-    },
-    {
       "id": "161a38e7470a",
       "titolo": "Inaugurazione nuovo Fiat Doblò e sedia motorizzata",
       "descrizione": "Domenica 6 settembre ore 17:30 Piazza Sicbaldi inaugurazione nuovo Fiat Doblò e sedia motorizzata",
@@ -1683,23 +1666,6 @@
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedicastagnetopo",
       "quarantena": false
-    },
-    {
-      "id": "94cc79463bdc",
-      "titolo": "Mioglialonga",
-      "descrizione": "Evento in programma in collaborazione con Moto Club Segno.",
-      "comune": "Mioglia",
-      "lat": 44.49046,
-      "lon": 8.412473,
-      "km": 48.6,
-      "minuti": 59.0,
-      "data_inizio": "2026-09-06",
-      "data_fine": "2026-09-06",
-      "tipologia": "sportivo",
-      "url": "https://www.facebook.com/comunedimioglia?__cft__[0]=AZa61sxviku8x96ZTcY2FgUjRCBxEDgBVg-poF1dUazb_tHu_VqzVo3DMoFUayGZ8fY2aJlFB1J78pKabxUFH3ZyDbfoRSUG-1cQIWmRw27di6wj2M70lYKq1blsX7cOrt6qraSr28EyAdT_3XC0knROg-Ki6Rj3Iojc1smg31dOTSxiaNdL9VUUfteLbi1-HNhjGlYcc-Ud4u9SNAWFE015EY-dpIBhTvH6LcD8pSwARQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-comunedimioglia",
-      "quarantena": true
     },
     {
       "id": "1ef45efc0241",
@@ -2345,6 +2311,40 @@
       "url": "https://www.instagram.com/p/DcyjlO7toO4/",
       "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/783608325_18118315601489544_2303562597697235807_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzk3MDk1MjAzMTk3MDMwODQzMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KeJnpgwnDIkQ7kNvwHjRzm6&_nc_oc=AdphiNLSmlQ0ZNBD_LqPPrKjLmiKuaCGXiRx93KzYQFtXVFaMcidbfUQbc_74y4P9Bg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=eo-ywCrKyoRaIUCl4Y07iA&_nc_ss=7a22e&oh=00_AQLuOOEPgcqENI1xtmw2wi_HMF2OAK3Ol9QmLpOxBqD98w&oe=6AA0B7DC",
       "fonti": "feed-instagram-proloco_spignomonferrato",
+      "quarantena": false
+    },
+    {
+      "id": "e5c6631e89cb",
+      "titolo": "La tua passione in piazza 4^ edizione",
+      "descrizione": "La tua passione in piazza 4^ edizione",
+      "comune": "Castagneto Po",
+      "lat": 45.159251,
+      "lon": 7.889425,
+      "km": 70.1,
+      "minuti": 79.0,
+      "data_inizio": "2026-09-06",
+      "data_fine": "2026-09-06",
+      "tipologia": "altro",
+      "url": "https://comune.castagnetopo.to.it/Dettaglionews?IDNews=408264",
+      "url_approfondimento": "",
+      "fonti": "comune-castagneto-po",
+      "quarantena": false
+    },
+    {
+      "id": "17a108dfdb11",
+      "titolo": "Festa dello sport",
+      "descrizione": "Domenica 6 settembre torna la Festa dello Sport, il pomeriggio che trasforma Piazza Garibaldi e Palazzo Paleologo in un unico grande campo da gioco, aperto a tutti e per tutti i gusti.",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-09-06",
+      "data_fine": "2026-09-06",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=383103",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
       "quarantena": false
     },
     {
@@ -3079,40 +3079,6 @@
       "quarantena": false
     },
     {
-      "id": "dd99892fa49d",
-      "titolo": "Corsi di Guida sicura",
-      "descrizione": "Corsi di guida sicura ed educazione stradale promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS (sold out).",
-      "comune": "Chivasso",
-      "lat": 45.190959,
-      "lon": 7.887186,
-      "km": 76.1,
-      "minuti": 83.0,
-      "data_inizio": "2026-09-10",
-      "data_fine": "2026-09-10",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhw0nNXX7LDyZ65vcGH5_fqBoQE-gBpgpm9R28qAtWSMpxVf-d3MgT0NwRucMmNRWsqU4Ib7jnpyFTxx9INDSKvNWBR3Us64yrMoMKnTnmK8tp7NKcRise1AxUjIIZpzB9dcNUiUAR4eIM3kutX-K1QyW4bJ4PdZXQxvINrGjiMfVihqUcfgJMrTbEGu6KJnupKsuplNXOJ9agdIOeXxuN-1g&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-comunechivasso",
-      "quarantena": true
-    },
-    {
-      "id": "8c11fd9879cc",
-      "titolo": "Corso di guida sicura - Tappa di Giaveno",
-      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS (sold out).",
-      "comune": "Chivasso",
-      "lat": 45.190959,
-      "lon": 7.887186,
-      "km": 76.1,
-      "minuti": 83.0,
-      "data_inizio": "2026-09-10",
-      "data_fine": "2026-09-10",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-comunechivasso",
-      "quarantena": true
-    },
-    {
       "id": "eb3ac93f7867",
       "titolo": "Sindon - Immersi nella trama della passione",
       "descrizione": "Iniziativa in occasione del 125° anniversario della Festa della Croce.",
@@ -3504,23 +3470,6 @@
       "quarantena": false
     },
     {
-      "id": "393f8cbd6056",
-      "titolo": "Corsi di Guida sicura",
-      "descrizione": "Corsi di guida sicura ed educazione stradale promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS.",
-      "comune": "Chivasso",
-      "lat": 45.190959,
-      "lon": 7.887186,
-      "km": 76.1,
-      "minuti": 83.0,
-      "data_inizio": "2026-09-11",
-      "data_fine": "2026-09-11",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhw0nNXX7LDyZ65vcGH5_fqBoQE-gBpgpm9R28qAtWSMpxVf-d3MgT0NwRucMmNRWsqU4Ib7jnpyFTxx9INDSKvNWBR3Us64yrMoMKnTnmK8tp7NKcRise1AxUjIIZpzB9dcNUiUAR4eIM3kutX-K1QyW4bJ4PdZXQxvINrGjiMfVihqUcfgJMrTbEGu6KJnupKsuplNXOJ9agdIOeXxuN-1g&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-comunechivasso",
-      "quarantena": true
-    },
-    {
       "id": "1e67db8922cb",
       "titolo": "Sagra della Noce e della Frutta a Guscio",
       "descrizione": "Programma della giornata di venerdì: dalle 16 in Piazza Pairotti apertura dell'angolo frutta a guscio e legno; alle 17 convegno 'La Frutta a Guscio tra agricoltura, salute e sostenibilità'; alle 19 inaugurazione ufficiale. Dalle 20 al PalaNoce Cena della Noce (35€, prenotazione obbligatoria entro il 9 settembre) e dalle 21.30 serata danzante e spettacolo 'Ballando le Cupole in Tour'.",
@@ -3536,23 +3485,6 @@
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocovillanovasolaro",
       "quarantena": false
-    },
-    {
-      "id": "7fb6ad828b28",
-      "titolo": "Corso di guida sicura - Tappa di Sant'Antonino di Susa",
-      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS.",
-      "comune": "Chivasso",
-      "lat": 45.190959,
-      "lon": 7.887186,
-      "km": 76.1,
-      "minuti": 83.0,
-      "data_inizio": "2026-09-11",
-      "data_fine": "2026-09-11",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-comunechivasso",
-      "quarantena": true
     },
     {
       "id": "d41cae55aab6",
@@ -4133,6 +4065,40 @@
       "quarantena": false
     },
     {
+      "id": "fb09a2027239",
+      "titolo": "Eventi estivi del Giardino Rea 2026 - 12 settembre",
+      "descrizione": "Eventi estivi tenuti al Giardino Rea nel periodo estivo",
+      "comune": "Trana",
+      "lat": 45.039044,
+      "lon": 7.421817,
+      "km": 93.2,
+      "minuti": 91.0,
+      "data_inizio": "2026-09-12",
+      "data_fine": "2026-09-12",
+      "tipologia": "altro",
+      "url": "https://comune.trana.to.it/Dettaglionews?IDNews=406379",
+      "url_approfondimento": "",
+      "fonti": "comune-trana",
+      "quarantena": false
+    },
+    {
+      "id": "b3aadc59ad42",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-09-12",
+      "data_fine": "2026-09-12",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413440",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "43867c3d4c1e",
       "titolo": "MAChieri - Mostra Archeologica Chieri - Domenica 13 settembre 2026",
       "descrizione": "Terrecotte, vetri, ma ancora monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico",
@@ -4232,23 +4198,6 @@
       "url": "https://comune.buttigliera.at.it/Eventi",
       "url_approfondimento": "",
       "fonti": "comune-buttigliera-d'asti",
-      "quarantena": true
-    },
-    {
-      "id": "2a4516cb8ad5",
-      "titolo": "Incontro con Carlo Pagani, \"Il maestro giardiniere\"",
-      "descrizione": "Incontro pubblico con Carlo Pagani, noto come \"Il maestro giardiniere\".",
-      "comune": "Langosco",
-      "lat": 45.214367,
-      "lon": 8.56373,
-      "km": 96.5,
-      "minuti": 82.0,
-      "data_inizio": "2026-09-13",
-      "data_fine": "2026-09-13",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/proloco.langosco?__cft__[0]=AZZXGJnBS6txd-sqKLrefKNwxno0fZUUHS5Xp7J7eUvei3jZdaR6LemcvQsrHm-tI2A6bPX4joVwyQ9YdLauMUv0FyH6u28LXz32kbMDYHXX9JR09au6PHXWWj8mWsnQe4l7TEFeCzT5RPpfioOOoo01Gxnq6R7iV2M9dcv2l6FTFhYMR5d5XqCdHW8GUw_bGL3VZgem5ydFrcxfV64y5YZt&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-proloco.langosco",
       "quarantena": true
     },
     {
@@ -4691,6 +4640,57 @@
       "url": "https://www.instagram.com/p/DcyjlO7toO4/",
       "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/783608325_18118315601489544_2303562597697235807_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzk3MDk1MjAzMTk3MDMwODQzMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KeJnpgwnDIkQ7kNvwHjRzm6&_nc_oc=AdphiNLSmlQ0ZNBD_LqPPrKjLmiKuaCGXiRx93KzYQFtXVFaMcidbfUQbc_74y4P9Bg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=eo-ywCrKyoRaIUCl4Y07iA&_nc_ss=7a22e&oh=00_AQLuOOEPgcqENI1xtmw2wi_HMF2OAK3Ol9QmLpOxBqD98w&oe=6AA0B7DC",
       "fonti": "feed-instagram-proloco_spignomonferrato",
+      "quarantena": false
+    },
+    {
+      "id": "6e6b11e49f2d",
+      "titolo": "Ritorna Pompieropoli a Buttigliera d’Asti: un giorno da piccoli vigili del fuoco!",
+      "descrizione": "Il Comune di Buttigliera d’Asti, in collaborazione con l’Associazione Nazionale Vigili del Fuoco del Corpo Nazionale - Sezione di Asti, è lieto di invitare tutti i bambini e le famiglie all'evento \"Pompieropoli\".",
+      "comune": "Buttigliera d'Asti",
+      "lat": 45.022638,
+      "lon": 7.950799,
+      "km": 60.5,
+      "minuti": 62.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "altro",
+      "url": "https://comune.buttigliera.at.it/Dettaglionews?IDNews=414150",
+      "url_approfondimento": "",
+      "fonti": "comune-buttigliera-d'asti",
+      "quarantena": false
+    },
+    {
+      "id": "c3abd433799f",
+      "titolo": "Camminata Sportiva con Cuffie Silent e Merenda Finale",
+      "descrizione": "La Pro Loco di Buttigliera d'Asti, con il patrocinio del Comune di Buttigliera d'Asti e in collaborazione con Accendi lo Spirito, vi invita a una giornata all'insegna dello sport, della musica e della convivialità!",
+      "comune": "Buttigliera d'Asti",
+      "lat": 45.022638,
+      "lon": 7.950799,
+      "km": 60.5,
+      "minuti": 62.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "altro",
+      "url": "https://comune.buttigliera.at.it/Dettaglionews?IDNews=411010",
+      "url_approfondimento": "",
+      "fonti": "comune-buttigliera-d'asti",
+      "quarantena": false
+    },
+    {
+      "id": "19a0fdd8b7ff",
+      "titolo": "Trino divino",
+      "descrizione": "13 settembre 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=383105",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
       "quarantena": false
     },
     {
@@ -6173,6 +6173,23 @@
       "quarantena": false
     },
     {
+      "id": "935b370a829b",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-09-26",
+      "data_fine": "2026-09-26",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413441",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "5e9eebe33fa9",
       "titolo": "SPORT a Reano",
       "descrizione": "Ore 09:30: Ritrovo campo sportivo Reano: inizio pratiche sportive. Ore 12:30 / 14:00 Pranzo condiviso. Ore 14:00: Ripresa pratiche sportive. Ore 18:00: Musica DJ set ed...",
@@ -6326,6 +6343,23 @@
       "quarantena": false
     },
     {
+      "id": "2c2188e7ac62",
+      "titolo": "Eventi estivi del Giardino Rea 2026 - 27 settembre",
+      "descrizione": "Eventi estivi tenuti al Giardino Rea nel periodo estivo",
+      "comune": "Trana",
+      "lat": 45.039044,
+      "lon": 7.421817,
+      "km": 93.2,
+      "minuti": 91.0,
+      "data_inizio": "2026-09-27",
+      "data_fine": "2026-09-27",
+      "tipologia": "altro",
+      "url": "https://comune.trana.to.it/Dettaglionews?IDNews=406381",
+      "url_approfondimento": "",
+      "fonti": "comune-trana",
+      "quarantena": false
+    },
+    {
       "id": "887b5571112a",
       "titolo": "Open Day Ginnastica Ritmica",
       "descrizione": "Open day a cura di ASD Ginnastica Ritmica Sannazzarese.",
@@ -6426,23 +6460,6 @@
       "url_approfondimento": "http://COMUNE.CARIGNANO.TO.IT",
       "fonti": "feed-facebook-comunecarignano",
       "quarantena": false
-    },
-    {
-      "id": "cccc8457d9ae",
-      "titolo": "Sagra del Riso",
-      "descrizione": "Manca ufficialmente un mese alla Sagra del Riso! Nuova edizione 2026.",
-      "comune": "Sanfrè",
-      "lat": 44.749384,
-      "lon": 7.803374,
-      "km": 56.3,
-      "minuti": 57.0,
-      "data_inizio": "2026-10-03",
-      "data_fine": "2026-10-03",
-      "tipologia": "sagra",
-      "url": "https://www.facebook.com/profile.php?id=100064730614664&__cft__[0]=AZhN8U0-pXOBv5qxX1p15QQku0jtk4-4zB5QL0Dd2ibpD0-bcrmYScxqGrJQF_rtIqjCTLX2ekUYZgKQaAvyoJ7OZ5BXlI5RSJ5mQZlUUlWAZDHcYpYmUL-vNiIqVdVHfeb8CzJcgSU7AtrXNiCo2oRrSgwESBbxMvdA-9NNtXaJ6Os5Wk4n-iDCy9cX9frp&__tn__=-]C%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-profile.php?id=100064730614664",
-      "quarantena": true
     },
     {
       "id": "609338c1d132",
@@ -6666,6 +6683,23 @@
       "quarantena": false
     },
     {
+      "id": "096949667656",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-10-10",
+      "data_fine": "2026-10-10",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413442",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "4fbab2fa424f",
       "titolo": "Relazioni che generano futuro: un percorso per crescere insieme",
       "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno",
@@ -6853,6 +6887,23 @@
       "quarantena": false
     },
     {
+      "id": "089ec57a1f20",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-10-24",
+      "data_fine": "2026-10-24",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413443",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "f6066594ee1e",
       "titolo": "Giornata formativa con Tiziano Dones",
       "descrizione": "Giornata formativa rivolta ad acquisire, o ad approfondire, le competenze sull’utilizzo delle E-MTB.",
@@ -6938,6 +6989,23 @@
       "quarantena": false
     },
     {
+      "id": "5afac728b701",
+      "titolo": "Trinoween",
+      "descrizione": "1 novembre 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-11-01",
+      "data_fine": "2026-11-01",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=383106",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "18ba1d5613ac",
       "titolo": "Quando il viaggio diventa poesia",
       "descrizione": "",
@@ -7020,6 +7088,23 @@
       "url": "https://comune.chieri.to.it/it/events",
       "url_approfondimento": "",
       "fonti": "comune-chieri",
+      "quarantena": false
+    },
+    {
+      "id": "a649767fff8c",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-11-07",
+      "data_fine": "2026-11-07",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413447",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
       "quarantena": false
     },
     {
@@ -7159,6 +7244,23 @@
       "quarantena": false
     },
     {
+      "id": "4118972a3d74",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-11-21",
+      "data_fine": "2026-11-21",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413449",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "01148d5ccd35",
       "titolo": "Quando il viaggio diventa poesia",
       "descrizione": "",
@@ -7210,6 +7312,23 @@
       "quarantena": false
     },
     {
+      "id": "5b32e7cbae85",
+      "titolo": "Natale a Trino",
+      "descrizione": "dicembre",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-12-01",
+      "data_fine": "2026-12-01",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=383107",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "40812c2ae289",
       "titolo": "Gruppi di Cammino",
       "descrizione": "",
@@ -7224,6 +7343,23 @@
       "url": "",
       "url_approfondimento": "",
       "fonti": "comune-envie",
+      "quarantena": false
+    },
+    {
+      "id": "17483a549811",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-12-05",
+      "data_fine": "2026-12-05",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413451",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
       "quarantena": false
     },
     {
@@ -7397,6 +7533,23 @@
       "quarantena": false
     },
     {
+      "id": "40573a58238e",
+      "titolo": "Sentieri della salute e della conoscenza",
+      "descrizione": "Stagione autunnale 2026",
+      "comune": "Trino",
+      "lat": 45.19394,
+      "lon": 8.296987,
+      "km": 63.6,
+      "minuti": 67.0,
+      "data_inizio": "2026-12-19",
+      "data_fine": "2026-12-19",
+      "tipologia": "altro",
+      "url": "https://comune.trino.vc.it/Dettaglionews?IDNews=413454",
+      "url_approfondimento": "",
+      "fonti": "comune-trino",
+      "quarantena": false
+    },
+    {
       "id": "7f301324b5fd",
       "titolo": "Quando il viaggio diventa poesia",
       "descrizione": "",
@@ -7497,23 +7650,6 @@
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocomontechiaro",
       "quarantena": false
-    },
-    {
-      "id": "1cfbfa64be5b",
-      "titolo": "Storico ballo a palchetto in Frazione Molino",
-      "descrizione": "La Frazione Molino si trasforma nel suo storico ballo a palchetto, tra sapori di una volta e musica dal vivo.",
-      "comune": "Ottiglio",
-      "lat": 45.054321,
-      "lon": 8.338375,
-      "km": 49.8,
-      "minuti": 58.0,
-      "data_inizio": "2027-08-29",
-      "data_fine": "2027-08-30",
-      "tipologia": "sagra",
-      "url": "https://www.facebook.com/lanuovaprolocoottigliese?__cft__[0]=AZaZhSBcLbuzaVm3RKZ_ircxG1UgroBmzQQClIJKNY_oxpQqGWdB_nwoJeg8UwKNI36dpQAaN5dN3diuF-ixPqzK1ItQMnIycwR_MWzPEpXCNxkOOmx-HbsZPalTTxniv06qbdS87fwYUs8KI4f8aX6IQjsxVOFt7-YFLxyd-_K3CZ0GsomRYoXxsslM05991aO9jhmfhy6-7FXToXzrbd26uLhKaYiI8o-Uz9cG8cCzOQ&__tn__=-UC%2CP-R",
-      "url_approfondimento": "",
-      "fonti": "feed-facebook-lanuovaprolocoottigliese",
-      "quarantena": true
     },
     {
       "id": "b911adfbe694",
