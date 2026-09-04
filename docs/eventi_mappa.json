@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T16:46:15",
+  "generato_il": "2026-09-04T17:55:03",
   "eventi": [
     {
       "id": "215d35247178",
@@ -361,7 +361,7 @@
     {
       "id": "63778cc923bf",
       "titolo": "Vate fidè dij bacialè!",
-      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola nell'ambito del progetto CONNESSIONI. Per i partecipanti è previsto anche un aperitivo.",
+      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola, nell'ambito del progetto CONNESSIONI. Previsto aperitivo per i partecipanti; in caso di maltempo lo spettacolo si svolgerà all'interno.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -377,8 +377,8 @@
     },
     {
       "id": "f422e346049a",
-      "titolo": "Alessandro Barbero: La (vera) storia di San Francesco",
-      "descrizione": "Incontro con il pubblico del celebre storico Alessandro Barbero, dedicato alla figura di San Francesco d'Assisi nell'anno dell'ottavo centenario dalla sua morte, ispirato al saggio pubblicato dal professore.",
+      "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
+      "descrizione": "Incontro con il pubblico con il celebre storico Alessandro Barbero, dedicato alla figura di San Francesco d’Assisi nell’anno dell’ottavo centenario dalla sua morte, ispirato al saggio pubblicato nel 2025.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -480,7 +480,7 @@
     {
       "id": "c42624b74ce8",
       "titolo": "Djs From Mars a San Damiano",
-      "descrizione": "Una delle coppie di DJ più famose della scena internazionale fa tappa a San Damiano d'Asti. Prima e dopo lo show: DJ Christopher. Vocalist: Ale Morbelli.",
+      "descrizione": "Dj set con i Djs From Mars, prima e dopo lo show DJ Christopher e vocalist Ale Morbelli.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -489,7 +489,7 @@
       "data_inizio": "2026-09-04",
       "data_fine": "2026-09-04",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/prolocosandamiano2.0?__cft__[0]=AZgrmraFC-kknwlcnlxqcsVSC29e1t-myG6tAbGAAaRuIpFqttqWz0DOvWl126_jRFo6_X_-TNxHN_5padFc4GSfc6QdzYwJFbXI6gH_9a24BCJ_zGj9pudIJp1SyVVFZkV0OnW7fbax6TcZiHgMiz1JlZQnn20-B7UOXhYV11mB1GbZzPe_RSnvYu_DHztEwylY4O3DPadesHrr3EGzqI9PTRMTgWzIWHteZFw5YQWme6EOm7HAk_jVM-Mkz2rmug&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocosandamiano2.0?__cft__[0]=AZjvRgZHsnCc47Z_EmU7zbPba8CRedFBrBm7uM7tR2WT9D7mu3SNln-XCosdJQ7KbVR5tiqKZtkwfC5OYw0bsNACaSgliCx5H_hwtnLCRh_DDQnTzHP5rWKl9fBvdrVas4_ctAFfIAba68F2PU8zQM9b6dKMr74LLsu6Y3DaCjBo3xhLJqAcZNi1NQr5-6Qr4CtHkn2Qol00hB9gaUtAwRZGPrspXP7d3HtdfPYgY8yUnyAAXOTRobmgSPv_zLhchA&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunesandamianodasti, feed-facebook-prolocosandamiano2.0",
       "quarantena": false
@@ -802,8 +802,8 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "Mezza Notte bianca dei Bambini",
-      "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini lungo le vie del centro storico e Piazza Umberto I.",
+      "titolo": "Mezza Notte Bianca dei Bambini",
+      "descrizione": "Iniziative dedicate ai bambini con negozi aperti, spettacoli, punti musicali, bolle di sapone giganti, bancarelle, stand, street food, sculture di palloncini, spettacoli di magia, laboratori circensi, mercatino dei bambini, raduno mini auto elettriche, baby dance, trucca bimbi, supereroi, mascotte giganti, gonfiabili, tappeti elastici, artisti di strada, trenino Walt Disney.",
       "comune": "Orbassano",
       "lat": 45.007263,
       "lon": 7.536919,
@@ -812,7 +812,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "bambini",
-      "url": "https://comune.orbassano.to.it/it/news",
+      "url": "https://www.facebook.com/cittadiorbassano?__cft__[0]=AZhA3Q7w6h4hGQPwpn46uwF5vdLCxLCMBG_5JG6fZY0cHnTXFnpkW1dfmGS9HmY9uK4c0zV_r6mMO2K-G5O-D5q_Nxq2c-BOy_RMHhtKbKdScWOoa4DX_ewgtJrFNuf5ilCnFvqmaKPJkEzgJOU_sfvcRc-l_YYIa7DxzXNLNYUwxLLzJPJCCOMTiUiYNp7t&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "comune-orbassano, feed-facebook-cittadiorbassano",
       "quarantena": false
@@ -862,7 +862,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -888,7 +888,7 @@
     {
       "id": "58989ce99e25",
       "titolo": "Panorami dell'anima",
-      "descrizione": "Mostra personale in cui Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca.",
+      "descrizione": "Maurizia Assanelli esporrà i suoi dipinti presso la Sala Manifestazioni della Biblioteca nel corso della mostra personale \"Panorami dell'anima\". Inaugurazione sabato 5 settembre alle ore 17:00.",
       "comune": "Rivanazzano Terme",
       "lat": 44.930767,
       "lon": 9.014159,
@@ -1100,7 +1100,7 @@
       "minuti": 60.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-14",
-      "tipologia": "sagra",
+      "tipologia": "altro",
       "url": "https://comune.chieri.to.it/it/events",
       "url_approfondimento": "",
       "fonti": "comune-chieri",
@@ -1517,7 +1517,7 @@
     {
       "id": "635a9f197de6",
       "titolo": "Open Day del Museo Multimediale TraMe – Tracce Medievali in Liguria",
-      "descrizione": "Open Day per scoprire il nuovo museo multimediale e immergersi nella storia e nelle tracce medievali del territorio. Gratuito per i residenti dei Comuni della Valle Stura e Orba, con riduzioni e agevolazioni per gli altri visitatori. Orari: 10.30–12.00 e 16.00–18.00.",
+      "descrizione": "Open Day per scoprire il nuovo museo multimediale e immergersi nella storia e nelle tracce medievali del territorio. Gratuito per i residenti dei Comuni della Valle Stura e Orba, con riduzioni e agevolazioni per tutti gli altri visitatori.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -1526,7 +1526,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZhHOSauVaJ8xur0uVrZYWFOj_0zlrF_LqZb84zgp_-RDLziHNvFQc3NHjpR24p_ygB_pbK3abFMYKwjJV2eGB-5fpvqnq645T6n7g7E3Fq3U_q-GGBX8CZjh85GkHFijYWXFKNKofvIDGyXxzJD520fSdMKQcw2exJrkFERQPCK_GgG-YvvHhMlf3SspPLmAQ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZjBipxpxuQYww_TGB9cNwswJ11xtF9l9NeRdcjIGoQtaxDHnQqUjp1RX3jG_YltiYNjZW7DKx2e8QrONQFpfBqgsY3EcQBbek2e102BAzd9YijjyPMduiTABVGf7fpjhkjyxFJfF_u2PI0x4EBCEUxXLd5eGUC7ASSG_Sl2thHX6w9a_bz85s7YXHKh9Sd_tw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -2077,8 +2077,8 @@
     },
     {
       "id": "bd285593b4a3",
-      "titolo": "Maratona Fenogliana: letture da “Il partigiano Johnny”",
-      "descrizione": "Al Liceo Classico Govone saranno letti ad alta voce brani de “Il partigiano Johnny”.",
+      "titolo": "Maratona Fenogliana: lettura de \"Il partigiano Johnny\"",
+      "descrizione": "Saranno letti ad alta voce brani de “Il partigiano Johnny” nell'ambito della Maratona Fenogliana.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2587,8 +2587,8 @@
     },
     {
       "id": "e4149cb6cec5",
-      "titolo": "Concerto dei C.S.I. - Chiusura Maratona Fenogliana",
-      "descrizione": "In piazza Medford si chiude la Maratona Fenogliana con il concerto dei C.S.I.",
+      "titolo": "Concerto dei C.S.I.",
+      "descrizione": "Chiusura della Maratona Fenogliana con il concerto dei C.S.I.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2604,8 +2604,8 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "EGITTO. Sulle tracce degli dèi",
-      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti, in collaborazione con il Museo Egizio.",
+      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi”",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti con il Museo Egizio.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2775,7 +2775,7 @@
     {
       "id": "76de825f43cf",
       "titolo": "125° anniversario Festa della Croce 2026",
-      "descrizione": "Iniziative in occasione del 125° anniversario della Festa della Croce con proiezione filmati storici sulla Croce del Musinè, Sindon e celebrazioni.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce si terranno varie iniziative: proiezione filmati storici sulla Croce del Musinè, incontri e celebrazioni.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -3285,7 +3285,7 @@
     {
       "id": "f040dd3e08ec",
       "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell’orchestra giovanile Saxmania, composta da 20 elementi, con un programma dedicato al jazz e al blues pensato per un pubblico di tutte le età. Al termine dell'esibizione la serata proseguirà con musica da ballo. Iniziativa nell'ambito del progetto CONNESSIONI.",
+      "descrizione": "Concerto dell'orchestra giovanile Saxmania (20 elementi) con un repertorio dedicato al jazz e al blues nell'ambito del progetto CONNESSIONI. Al termine dell'esibizione la serata prosegue con musica da ballo. In caso di maltempo l'evento si svolgerà all'interno.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -3999,7 +3999,7 @@
     {
       "id": "4282aeefcb86",
       "titolo": "Festival delle Sagre Astigiane - Villaggio Gastronomico",
-      "descrizione": "Il grande villaggio gastronomico delle Pro Loco astigiane con piatti e dolci tipici della tradizione piemontese.",
+      "descrizione": "Villaggio gastronomico con gli stand delle Pro Loco astigiane e piatti tipici della tradizione piemontese.",
       "comune": "Asti",
       "lat": 44.826013,
       "lon": 8.202686,
@@ -4526,7 +4526,7 @@
     {
       "id": "6f7cb7ceec68",
       "titolo": "Cerimonia in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Cerimonia in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager.",
+      "descrizione": "Cerimonia di commemorazione organizzata da Comune di Alba, Associazione Beato Girotti, Centro Culturale San Giuseppe, Associazioni Combattentistiche Albesi, Gruppo ANA e ANPI di Alba.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4559,8 +4559,8 @@
     },
     {
       "id": "22eabc42d171",
-      "titolo": "Sfilata storica contadina",
-      "descrizione": "Sfilata storica contadina delle Pro Loco con partenza da corso Matteotti e arrivo in piazza Campo del Palio. Possibilità di assistere alla sfilata seduti in tribuna in piazza Alfieri.",
+      "titolo": "Sfilata Storica Contadina",
+      "descrizione": "Sfilata storica contadina con carri ed elementi tradizionali. Percorso: Piazza Marconi, Via Cavour, Piazza San Secondo, Via Garibaldi, Piazza Alfieri, Corso Alfieri, Via Calosso, Viale alla Vittoria e arrivo in Piazza Campo del Palio.",
       "comune": "Asti",
       "lat": 44.826013,
       "lon": 8.202686,
@@ -4569,7 +4569,7 @@
       "data_inizio": "2026-09-13",
       "data_fine": "2026-09-13",
       "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/DcqNGI9ALDA/",
+      "url": "https://www.instagram.com/p/Dc3EZ76jZVa/",
       "url_approfondimento": "https://visit.asti.it/settembre-astigiano/festival-delle-sagre",
       "fonti": "feed-instagram-proloco_nizza_monferrato, feed-instagram-prolocomontechiaro",
       "quarantena": false
@@ -4577,7 +4577,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "A cura dell'«IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS» di Cassine e dell'«Associazione Culturale Davide Lajolo» di Vinchio (AT) con il patrocinio del Comune di Cassine e la collaborazione del «Club per l’UNESCO di...».",
+      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio (AT) con il patrocinio del Comune di Cassine.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4730,7 +4730,7 @@
     {
       "id": "9af7cff0830e",
       "titolo": "Patrimonio culturale",
-      "descrizione": "",
+      "descrizione": "Evento al Teatro Sociale G. Busca di Alba.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4980,6 +4980,23 @@
       "url": "https://www.instagram.com/p/DcvKYNhK9hf/",
       "url_approfondimento": "https://scontent-mxp2-1.cdninstagram.com/v/t51.82787-15/790540758_18430261750181072_7883032984121936422_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzk3NjQ0MjY0MDIzOTE1NTI5NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTI1NC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=VVhHy_xdffkQ7kNvwFsSH4z&_nc_oc=AdrZFpv_3X4okgw-Gr_6kZPvR8GscRDecaWEcK9f1A4XzoeccRgRu_5UNyyrVVseX3Q&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp2-1.cdninstagram.com&_nc_gid=f2d6Od4UTDDnnqWWa3ZSlw&_nc_ss=7a22e&oh=00_AQIkI1i_Ca4uTiz70cfAOLg47GTF6BmhG7oonhiwVceKXg&oe=6AA0AF95",
       "fonti": "feed-instagram-proloco_sommariva_perno",
+      "quarantena": false
+    },
+    {
+      "id": "dd9b7b6c18ce",
+      "titolo": "Aspettando la Sagra",
+      "descrizione": "Appuntamenti in preparazione della Sagra del Tomino.",
+      "comune": "Rivalta di Torino",
+      "lat": 45.034045,
+      "lon": 7.518419,
+      "km": 84.7,
+      "minuti": 78.0,
+      "data_inizio": "2026-09-18",
+      "data_fine": "2026-09-19",
+      "tipologia": "sagra",
+      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZgfDCvb7AjokmIPWG85dWP_BDe_To0X43g5UZG-tpxUS27k2EhqfjTk7s11fIAMREdwtU9rRkuJ66IINtasv4rp3kxfHWQUzuBnmBV_IdjMicrduO3VGqrJHBGrJu0KhBKdhV00Fjd62_zAKyiuLCVj2n8bXUVIZ6aKOW0mX4_sU5bR3SMgDfBEPlSwNkaG&__tn__=-UC%2CP-R",
+      "url_approfondimento": "https://www.tinyurl.com/sagra-del-tomino-2026",
+      "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
     },
     {
@@ -5290,18 +5307,18 @@
     },
     {
       "id": "b8f1e4ba3f31",
-      "titolo": "Festa della Nocciola - Cena di corte in corte",
-      "descrizione": "Cena itinerante nei cortili del paese con piatti a base di nocciola e non solo. Intrattenimenti musicali con band e DJ, spettacoli itineranti di hip hop e street dance a cura di Danz'Asti.",
+      "titolo": "La Festa della Nocciola - Nocciole, sapori e dintorni: Cena di corte in corte",
+      "descrizione": "Percorso enogastronomico nei cortili e nelle piazzette di Settime con stand di piatti a base di nocciola e specialità locali, vini, cocktail, birra, spettacoli itineranti di danza hip hop e street dance e musica dal vivo.",
       "comune": "Settime",
       "lat": 44.962466,
       "lon": 8.11397,
       "km": 33.8,
       "minuti": 41.0,
       "data_inizio": "2026-09-19",
-      "data_fine": "2026-09-19",
+      "data_fine": "2026-09-20",
       "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/DcvC0CCAH1v/",
-      "url_approfondimento": "https://scontent-mxp2-1.cdninstagram.com/v/t51.82787-15/791683595_17896235073668610_6250452052048234195_n.webp?_nc_cat=111&ig_cache_key=Mzk3NjQwNTcxMzUyNTIzNDU2OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=sYumeoBfFbUQ7kNvwEl7XNY&_nc_oc=Adrkz80ghN8FVJvzpaJu3nRJBWv_Z7WRNY761XiOMjyppdntSvlbjUC_rZQNykcVHAo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp2-1.cdninstagram.com&_nc_gid=Mj1eYEO4ruml9zCk5XvCbg&_nc_ss=7a22e&oh=00_AQIPipBspp5Gc3uYDV3jDKuXmaKi7LdFRI3YcMOCmFMS4A&oe=6AA0A88F",
+      "url": "https://www.instagram.com/p/Dc3TpxFAa6T/",
+      "url_approfondimento": "https://scontent-mxp2-1.cdninstagram.com/v/t51.82787-15/793351225_17896826493668610_89910407485363522_n.webp?_nc_cat=101&ig_cache_key=Mzk3ODczNTIyODg4NDcyNTM5NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=sKiYimm2FTYQ7kNvwHNQKUO&_nc_oc=AdpGVE0r0BniQ3hJSRwbFw07Wg09f1woAtx5_qoDNv-iIZ0jTnUg_6d7uczlQADHOK4&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp2-1.cdninstagram.com&_nc_gid=MDIjZIA83qTFAFGxC_haCw&_nc_ss=7a22e&oh=00_AQIrACrpsnePgSm0vyu-s-CqcJq8NMSdMgaznMXEhHcT4A&oe=6AA0BB6F",
       "fonti": "feed-instagram-prolocosettime",
       "quarantena": false
     },
@@ -5410,7 +5427,7 @@
     {
       "id": "b6b83c4c808b",
       "titolo": "Aspettando Montmartre",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso 'Mezz'ora da Ridere' (in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere realizzato in ricordo di Ester Delforno.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -5418,7 +5435,7 @@
       "minuti": 57.0,
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "http://www.teatrocambiano.com/",
       "url_approfondimento": "",
       "fonti": "teatro-cambiano-teatro-comunale",
@@ -5833,6 +5850,23 @@
       "quarantena": false
     },
     {
+      "id": "56e028be9667",
+      "titolo": "38ª Sagra del Tomino",
+      "descrizione": "Tradizionale sagra con specialità gastronomiche a base di tomino, stand enogastronomici, mercatino degli hobbisti, negozi aperti, spettacoli di magia, animazione, mega giochi, mostre di bonsai e sculture in legno, balli e canti folk, musica dal vivo, visite guidate al Castello e tornei sportivi.",
+      "comune": "Rivalta di Torino",
+      "lat": 45.034045,
+      "lon": 7.518419,
+      "km": 84.7,
+      "minuti": 78.0,
+      "data_inizio": "2026-09-20",
+      "data_fine": "2026-09-20",
+      "tipologia": "sagra",
+      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZgfDCvb7AjokmIPWG85dWP_BDe_To0X43g5UZG-tpxUS27k2EhqfjTk7s11fIAMREdwtU9rRkuJ66IINtasv4rp3kxfHWQUzuBnmBV_IdjMicrduO3VGqrJHBGrJu0KhBKdhV00Fjd62_zAKyiuLCVj2n8bXUVIZ6aKOW0mX4_sU5bR3SMgDfBEPlSwNkaG&__tn__=-UC%2CP-R",
+      "url_approfondimento": "https://www.tinyurl.com/sagra-del-tomino-2026",
+      "fonti": "feed-facebook-cittadirivalta",
+      "quarantena": false
+    },
+    {
       "id": "e52535868a39",
       "titolo": "Polenta e salsiccia",
       "descrizione": "Polenta e salsiccia proposta dai polentàu sommarivesi e la Pro Loco.",
@@ -6056,7 +6090,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Tre giorni dedicati ai camperisti con accoglienza equipaggi, aperipranzo con degustazione di prodotti e vini locali, visite guidate del borgo antico e del MiCeM, presentazione libraria, trekking e visita in cantina.",
+      "descrizione": "Raduno per camperisti con accoglienza equipaggi, visite guidate del borgo antico e del MiCeM, trekking archeologico-industriale, aperipranzo, colazione e degustazione in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -6072,8 +6106,8 @@
     },
     {
       "id": "23e8752fc9ef",
-      "titolo": "Incontri al quadrato: La Divisa Bianca con Silvestro Catacchio",
-      "descrizione": "Nell'ambito del progetto CONNESSIONI, nuovo appuntamento del ciclo 'Incontri al quadrato' proposto dall'associazione I Delfini ODV. Protagonista Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, che interverrà sul tema 'La Divisa Bianca'. Incontro registrato e pubblicato su YouTube.",
+      "titolo": "Incontri al quadrato: La Divisa Bianca",
+      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, che interverrà sul tema 'La Divisa Bianca'. Evento del ciclo 'Incontri al quadrato' all'interno del progetto CONNESSIONI.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -6804,7 +6838,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Spettacolo teatrale di Stefano Benni con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, con le creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
+      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -7178,7 +7212,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica), aperto a tutti.",
+      "descrizione": "Lettura pubblica aperta a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7398,8 +7432,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione testi vincitori concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi vincitori ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Rappresentazione testi concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi classificati nel concorso Mezz'ora da Ridere (Non ce lo dicono di Flavio Vasile, Niurant di Massimo Brusasco, Comodissimo e facilissimo di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
