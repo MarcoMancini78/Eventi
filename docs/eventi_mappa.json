@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T13:02:24",
+  "generato_il": "2026-09-04T13:58:52",
   "eventi": [
     {
       "id": "215d35247178",
@@ -633,7 +633,7 @@
     {
       "id": "4ab59ea6b5c7",
       "titolo": "Festa Patronale - Sagra della porchetta",
-      "descrizione": "",
+      "descrizione": "Festa Patronale - Sagra della porchetta",
       "comune": "Cozzo",
       "lat": 45.192659,
       "lon": 8.61104,
@@ -769,7 +769,7 @@
     {
       "id": "63778cc923bf",
       "titolo": "Vate fidè dij bacialè!",
-      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola nell'ambito del progetto diffuso CONNESSIONI. A seguire è previsto un aperitivo.",
+      "descrizione": "Commedia brillante in due atti di Anna Maria Carena portata in scena dalla compagnia teatrale amatoriale J’Amis del Teatro di Carmagnola. Una storia ricca di equivoci e situazioni comiche con protagonista la dottoressa Francesca Busia. Per i partecipanti è previsto anche un aperitivo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -786,7 +786,7 @@
     {
       "id": "f422e346049a",
       "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
-      "descrizione": "Incontro con il pubblico dal titolo \"La (vera) storia di San Francesco\", dedicato alla figura di San Francesco d'Assisi nell'anno dell'ottavo centenario dalla sua morte, con il celebre storico e professore Alessandro Barbero.",
+      "descrizione": "Incontro-lezione con il celebre storico Alessandro Barbero dedicato alla figura di San Francesco d’Assisi nell’anno dell’ottavo centenario dalla sua morte.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -888,7 +888,7 @@
     {
       "id": "c42624b74ce8",
       "titolo": "Djs From Mars a San Damiano",
-      "descrizione": "Dj set con Djs From Mars, prima e dopo lo show DJ Christopher e vocalist Ale Morbelli nell'ambito del San Damiano Summer Festival.",
+      "descrizione": "Dj set con i Djs From Mars. Prima e dopo lo show: DJ Christopher. Vocalist: Ale Morbelli.",
       "comune": "San Damiano d'Asti",
       "lat": 44.833445,
       "lon": 8.063534,
@@ -897,7 +897,7 @@
       "data_inizio": "2026-09-04",
       "data_fine": "2026-09-04",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/prolocosandamiano2.0?__cft__[0]=AZiTQsb6vY0w1Fs8cQTefcrbEy2Y78EaCI5IusNtI91fjEZMAUc67DACuyeENDlTUagPibIPOv32k1rLMojuMqYa6IuKDOcfSherc8RXOHa8n0zABdn3-IcpRnTUeU_jxHC9RSyxsq4n1szYIrONsoUQrBsgvI3CQbpblmkvKksT-Wnv3xB6M99ysCpCi9siCAyJvlkXp3IzQt9C3_iBsh2jZaUxbkYvWRYdWzqYsDfbttnUpnlX-YkmO2FMaGBBVg&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/prolocosandamiano2.0?__cft__[0]=AZgYg_jJ4eup9-wHgiHIGZGpFGUYUQE565ogJWPiwgoWi8x4ARXWyqqRluXaRtLJa6gYH56VBt20MQ0PoZRnuFFQ1V7T9UWKO4WROZqN_TYy81b5OkWNB67ZEs_daLxstpi85qxPmbh187ziT6mOfsQIrNijKSObhL9M9micyPsw6Ahi0TIiHfjuV4vioCihVYVpWGoe-bYH26o735lWYQX25tx1JcMGT1PpG431CV9Ib67CtqU8E1eAdxglG95zEg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunesandamianodasti, feed-facebook-prolocosandamiano2.0",
       "quarantena": false
@@ -1024,7 +1024,7 @@
     {
       "id": "07a06143c0e6",
       "titolo": "Notti di fine estate",
-      "descrizione": "Tre serate all’insegna di musica, gusto e divertimento a cura dell’associazione Unione commercianti e artigiani, con il patrocinio del Comune di Avigliana e del Distretto del Commercio di Avigliana.",
+      "descrizione": "Tre serate all’insegna di musica, gusto e divertimento a cura dell’associazione Unione commercianti e artigiani.",
       "comune": "Avigliana",
       "lat": 45.077944,
       "lon": 7.39839,
@@ -1033,7 +1033,7 @@
       "data_inizio": "2026-09-04",
       "data_fine": "2026-09-06",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZgL_0iljc5qWEE9Q9lbMNxU_8wIhLC-1UYIwjHd2fXrrUL_WmHIb3Z-TuSPiwOYOqvdRJkHmXzc96YcRLdK8n-AJjpvs4ssII3f_i5eWwudTCpDDyCbGIiW5-6Po4AZsz0Ix--nTMTjsv6-QxCxbcci0NpxogMtMHumMEOHbXdpe73l0sELLSu5iUq5ixNoTw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZiKufBvvrYxf5ZTkyWCoP0Ewjm4-vicwerqgbTLiakJCQHT3w8URRFI1oL_ONHLcnEuQx2nppb39j_NKnSmyrpkBwzVoJtqUhaD2fEvBgk3a_7jiwtiNCvzFI6_IjpU1utr3Huyv2XrbwG-4a7bALAKHGIwv3op7kPimHC4iGRQSygpA8t8C09CgGU7JT7F-w&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://avigliananotizie.it/tornano-le-notti-di-fine-estate/",
       "fonti": "feed-facebook-comune.avigliana",
       "quarantena": false
@@ -1186,7 +1186,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunedicambiano?__cft__[0]=AZjM885E1zjJ5J-cJAFUNcY8DEukHnHMgEZ0RIc0CQrEjSvcUdDQbMys9brrnzOYQqZEDqFMDGqiub5BXyrYnw9Kn3FoGYpK6GtrSGR4fsCoTqqzEEtn8S9ENanHah6HwbezUt5eKP0AL9Xncc7OqaL_xxmXMiVpHnj7GGKMcuHIngC04CUGwJg2ujeu5nb7LQ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedicambiano?__cft__[0]=AZgkcmv3wjm8lFhAEeMjRlgNkDun9p3-IpR2jX-oSETC2NNt5OkyAZ-ctb22ievLfTCRLklhn4mab1LgbZNvb8Ga6nqxGqscp_k7mo7fRszADh6cKvWMFJ5RK-ZbThr6g_zW8gNux_i3cDNlrjOcmGt8xp_zfKz10xcvCTpuBtem7E9JaHswiPHHqE9FYNprdQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://comune.cambiano.to.it/.../quarantanove-edizioni.../",
       "fonti": "feed-facebook-cambiano1991, feed-facebook-comunedicambiano",
       "quarantena": false
@@ -1210,7 +1210,7 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "Mezza Notte Bianca dei Bambini",
+      "titolo": "La Mezza Notte Bianca dei Bambini",
       "descrizione": "A Orbassano torna la Mezza Notte Bianca dei Bambini lungo le vie del centro storico e Piazza Umberto I.",
       "comune": "Orbassano",
       "lat": 45.007263,
@@ -1270,7 +1270,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "sportivo",
+      "tipologia": "altro",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -1296,7 +1296,7 @@
     {
       "id": "58989ce99e25",
       "titolo": "Panorami dell'anima",
-      "descrizione": "Mostra personale di pittura di Maurizia Assanelli esposta presso la Sala Manifestazioni della Biblioteca Civica.",
+      "descrizione": "Mostra personale di dipinti di Maurizia Assanelli.",
       "comune": "Rivanazzano Terme",
       "lat": 44.930767,
       "lon": 9.014159,
@@ -1500,7 +1500,7 @@
     {
       "id": "6143eb00ecb7",
       "titolo": "Festa patronale della Beata Vergine delle Grazie",
-      "descrizione": "Celebrazioni della patrona di Chieri.",
+      "descrizione": "Dal 5 al 15 settembre 2026 le celebrazioni della patrona di Chieri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1508,7 +1508,7 @@
       "minuti": 60.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-14",
-      "tipologia": "altro",
+      "tipologia": "sagra",
       "url": "https://comune.chieri.to.it/it/events",
       "url_approfondimento": "",
       "fonti": "comune-chieri",
@@ -1772,7 +1772,7 @@
     {
       "id": "e9ddbfc2d3d2",
       "titolo": "Festa del Borgo San Rocco",
-      "descrizione": "Due giorni di tradizione, musica e buon cibo con Pescheria del Borgo, polenta e spezzatino preparata dagli Alpini, tornei di calcio balilla, musica con Silver e Max e Dj Frankie, gara bocciofila e giochi.",
+      "descrizione": "Due giorni di tradizione, musica, giochi e buon cibo. Sabato: Pescheria del Borgo (fritto misto, polpo, hamburger), musica con Silver e Max e Torneo Calcio Balilla. Domenica: Giochi del Borgo, polenta e spezzatino con gli Alpini di Druento, finale del torneo e serata musica con DJ Frankie. Entrambe le sere gara bocciofila al punto e gioco della toma.",
       "comune": "Druento",
       "lat": 45.134748,
       "lon": 7.576618,
@@ -1781,7 +1781,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/comunedidruento?__cft__[0]=AZjleCz6xFf9E3l7tlQOSB2utdyPUaNffih8HNld5dz0SxcUVExqZkMq1wAG3ddIBw51UOOesmH9cHpNYng9ExyzVohvHczfn3lZWPRK2ouMpB7JpTyRkS9RTaj2xisTM4WKBFoNWYZpxK5eYUxO-mxxDSWu2Oq79uHTXGH7n8OSj5aEMBPE0g9rkEU_oIo&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedidruento?__cft__[0]=AZhFfdHOVUNUuCKiOZG6WXC6jClWawMuce3B1VA3qJEzGEBM2eTBdXlcxcmxPSqsTxi3e9X4byAROwTzZbERebKM_cUU9PQAKcEGBP0Ih7lNTj7w5D1DwETwN8DHUPefWHugm-bPvjX3mdnvcWEpz-rkUCUk-IRBgX0jR26hcvvhYC359rL2LE4J6-TCe8o&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedidruento",
       "quarantena": false
@@ -1789,7 +1789,7 @@
     {
       "id": "9e1dd13b5984",
       "titolo": "Io, Frate Francesco – 800 anni di una grande avventura",
-      "descrizione": "Mostra realizzata in occasione della 46ª edizione del Meeting per l’Amicizia fra i Popoli, incentrata sul Testamento di San Francesco. Visitabile nei seguenti orari: 10.00–12.00 / 16.00–19.00.",
+      "descrizione": "Mostra realizzata in occasione della 46ª edizione del Meeting per l’Amicizia fra i Popoli. Al centro del percorso narrativo è posto il Testamento di San Francesco.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -1798,7 +1798,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-13",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZhztgZUbGLXf2C4tIms-QQg_mOkHaZ4nOqzcgejP3ZlgR8BphTnChfiUbgy2Ngn0DvdYfImRYq9EDcw4GWghjUQGSyNSzgN1NbWSzVfY2EvRsxbvdJIzW_SimvsaB9pWuUc_REv59TDN7g4AuyvEb8YB1zPXtS6yNhvUpIzVCtfXlZvaDBXq_CH12dCkevqaA&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZiUFGD2XN7LIdqM6SOIdT53Z6G8Mz-PzVbGYwfz76WARF2D7OfSUTluOCh_qUKy5WBvDNFV6NHiRwBNhNgm7Qxln_u5OzdVVrtEm7Uw9VWUTEPBs9wl_zH4ZGjzsbhaN730Gx3Qpww3vUGJ2glupbWgawg5UnsqrUuFbfFTxuzkKgONLVgq-HPuac7e_YzqCg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -1806,7 +1806,7 @@
     {
       "id": "038d20f23b46",
       "titolo": "San Francesco, Giotto: una storia che diventa presente",
-      "descrizione": "Incontro di presentazione della mostra con interventi di Debora Catarozzolo, Flavia Cellerino, Alessandro Rivali e Giovanni Oliveri.",
+      "descrizione": "Incontro di presentazione nell'ambito della mostra su San Francesco. Intervengono Debora Catarozzolo, Flavia Cellerino, Alessandro Rivali e il Sindaco Giovanni Oliveri.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -1815,7 +1815,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZhztgZUbGLXf2C4tIms-QQg_mOkHaZ4nOqzcgejP3ZlgR8BphTnChfiUbgy2Ngn0DvdYfImRYq9EDcw4GWghjUQGSyNSzgN1NbWSzVfY2EvRsxbvdJIzW_SimvsaB9pWuUc_REv59TDN7g4AuyvEb8YB1zPXtS6yNhvUpIzVCtfXlZvaDBXq_CH12dCkevqaA&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZiUFGD2XN7LIdqM6SOIdT53Z6G8Mz-PzVbGYwfz76WARF2D7OfSUTluOCh_qUKy5WBvDNFV6NHiRwBNhNgm7Qxln_u5OzdVVrtEm7Uw9VWUTEPBs9wl_zH4ZGjzsbhaN730Gx3Qpww3vUGJ2glupbWgawg5UnsqrUuFbfFTxuzkKgONLVgq-HPuac7e_YzqCg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -1840,7 +1840,7 @@
     {
       "id": "97281a9aaa08",
       "titolo": "Osservare il cielo estivo con l'Associazione Astrofili Bisalta",
-      "descrizione": "Appuntamento con l’Associazione Astrofili Bisalta per osservare il cielo estivo e scoprire i suoi protagonisti. Attività aperta a tutti.",
+      "descrizione": "Appuntamento con l’Associazione Astrofili Bisalta per osservare il cielo estivo e scoprire i suoi protagonisti. Attività gratuita e aperta a tutti.",
       "comune": "Chiusa di Pesio",
       "lat": 44.32643,
       "lon": 7.675436,
@@ -1849,7 +1849,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunedichiusadipesio?__cft__[0]=AZjRx2R0zLUyZWX1KYhq5ZH4-DVRbiMym2NEcCRzl6nYhn-lan-Sh2z3noTxU8u8V6u7OQ1uXWjQ8a6rbrm-3nN4YtQ7R1MFBeATO_pD2naNBRIapERLnCwcsgpU6WyUmM0n30Kwz-_F9UKLoM4sajnTuejw86u6dsqOsAjEo8Aygn611hnYm8vS0Cze6ARn&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedichiusadipesio?__cft__[0]=AZgDNqou-jJEXjDkmR2ffoUJ8nuKhDkCxMSre0mLF12edUyqI5cA2eZAabKUO-JJwyDs_SgPWfqn11_tiDnGLpqUKa2B6Wz3U6BvQYhUjwS9f7UXYPDjjx6HN7CM5v31Y-0Fqc-UADLBFuSlc4vXkJwIvZlkXceLG6xEdGlOWECDufMJjxuZN7hOWUQ11o4L&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedichiusadipesio",
       "quarantena": false
@@ -1857,7 +1857,7 @@
     {
       "id": "8a9db2f8fa6e",
       "titolo": "Pieve in Musica: Concerto inaugurale",
-      "descrizione": "Concerto inaugurale con due capolavori per pianoforte e strumenti a fiato: il Quintetto di Mozart e il Sestetto di Poulenc.",
+      "descrizione": "Concerto inaugurale con due capolavori per pianoforte e strumenti a fiato: il Quintetto di Mozart e il Sestetto di Poulenc nell'ambito della rassegna Pieve in Musica.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -1866,7 +1866,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -1874,7 +1874,7 @@
     {
       "id": "75c1c6e18158",
       "titolo": "La natura dell’amore",
-      "descrizione": "La nuova mostra di Serena Zanardo alla Galleria Arte per voi.",
+      "descrizione": "Nuova mostra di Serena Zanardo.",
       "comune": "Avigliana",
       "lat": 45.077944,
       "lon": 7.39839,
@@ -1883,7 +1883,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-10-11",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZgL_0iljc5qWEE9Q9lbMNxU_8wIhLC-1UYIwjHd2fXrrUL_WmHIb3Z-TuSPiwOYOqvdRJkHmXzc96YcRLdK8n-AJjpvs4ssII3f_i5eWwudTCpDDyCbGIiW5-6Po4AZsz0Ix--nTMTjsv6-QxCxbcci0NpxogMtMHumMEOHbXdpe73l0sELLSu5iUq5ixNoTw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZiKufBvvrYxf5ZTkyWCoP0Ewjm4-vicwerqgbTLiakJCQHT3w8URRFI1oL_ONHLcnEuQx2nppb39j_NKnSmyrpkBwzVoJtqUhaD2fEvBgk3a_7jiwtiNCvzFI6_IjpU1utr3Huyv2XrbwG-4a7bALAKHGIwv3op7kPimHC4iGRQSygpA8t8C09CgGU7JT7F-w&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://avigliananotizie.it/la-natura-dellamore/",
       "fonti": "feed-facebook-comune.avigliana",
       "quarantena": false
@@ -2570,8 +2570,8 @@
     },
     {
       "id": "8a6e24957ebc",
-      "titolo": "Celle Varazze – Derthona (Serie D Girone A)",
-      "descrizione": "Partita di Serie D Girone A: Celle Varazze – Derthona arbitrata da Youness Ghanim della sezione di Saronno.",
+      "titolo": "Celle Varazze – Derthona",
+      "descrizione": "Partita di Serie D Girone A arbitrata dal signor Youness Ghanim della sezione di Saronno.",
       "comune": "Pozzolo Formigaro",
       "lat": 44.795154,
       "lon": 8.784849,
@@ -2580,7 +2580,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "sportivo",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZif3eNiztM7dj60u-Omy5C8Vpc9nmC_2hguUvKi7XN9Sn31AI7VlupTAHbd_ykhm0cTnDdBqH8TyicLqCemDadYlJAZyiOpwShMMZAQt34miPbl539IMSe6cLKczJ7GFyoUt9cDIzRn1rvRMiFt_OFk8KJ2lVe9kZb05TjwJ2R37oZLoxP2ZDfAewFc4yVI&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZik75PANkieioxjZZX-dJolpNgnlX4vuljjUk9HPA3_1r5zJYsEhDpIy9aXtf5ZywsL52KiTeUcRPaCrg34FcjFDKDvEN7TFVvvHX7d5BXaxAG2V9MinvncBo4K-dv9DK4KLRKQH4-7T2bGi8J1Jxln4BXXj-FNFCESMkyW_QDf54YZ7dP2dHxmEcaFKGY6&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -2621,8 +2621,8 @@
     },
     {
       "id": "cce0940cb7fa",
-      "titolo": "Pieve in Musica: Esibizione di Ulrich Biersack",
-      "descrizione": "Esibizione del flautista tedesco Ulrich Biersack, in un programma dedicato alle molteplici possibilità espressive del flauto.",
+      "titolo": "Pieve in Musica: Ulrich Biersack",
+      "descrizione": "Esibizione del flautista tedesco Ulrich Biersack, in un programma dedicato alle molteplici possibilità espressive del flauto nell'ambito della rassegna Pieve in Musica.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -2631,7 +2631,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -2639,7 +2639,7 @@
     {
       "id": "af240261dc46",
       "titolo": "I concerti di Vita e pace",
-      "descrizione": "Nella suggestiva cornice della chiesa di Santa Maria Maggiore in Borgo Vecchio, riprendono i concerti di Avigliana… insieme.",
+      "descrizione": "Riprendono i concerti di Avigliana… insieme.",
       "comune": "Avigliana",
       "lat": 45.077944,
       "lon": 7.39839,
@@ -2648,7 +2648,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZgL_0iljc5qWEE9Q9lbMNxU_8wIhLC-1UYIwjHd2fXrrUL_WmHIb3Z-TuSPiwOYOqvdRJkHmXzc96YcRLdK8n-AJjpvs4ssII3f_i5eWwudTCpDDyCbGIiW5-6Po4AZsz0Ix--nTMTjsv6-QxCxbcci0NpxogMtMHumMEOHbXdpe73l0sELLSu5iUq5ixNoTw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZiKufBvvrYxf5ZTkyWCoP0Ewjm4-vicwerqgbTLiakJCQHT3w8URRFI1oL_ONHLcnEuQx2nppb39j_NKnSmyrpkBwzVoJtqUhaD2fEvBgk3a_7jiwtiNCvzFI6_IjpU1utr3Huyv2XrbwG-4a7bALAKHGIwv3op7kPimHC4iGRQSygpA8t8C09CgGU7JT7F-w&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://avigliananotizie.it/i-concerti-di-vita-e-pace/",
       "fonti": "feed-facebook-comune.avigliana",
       "quarantena": false
@@ -2894,7 +2894,7 @@
     {
       "id": "f44624985227",
       "titolo": "Egitto. Sulle tracce degli dei",
-      "descrizione": "Un percorso unico tra reperti e amuleti inediti ospitato a Palazzo Mathis.",
+      "descrizione": "Mostra a Palazzo Mathis con un percorso unico tra reperti e amuleti inediti.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2911,7 +2911,7 @@
     {
       "id": "4f2d4a7870ef",
       "titolo": "Quanta beltà – il liuto alla Corte dei Gonzaga",
-      "descrizione": "Concerto con il liutista Massimo Marchese, interprete di liuto e musica antica.",
+      "descrizione": "Concerto con il liutista Massimo Marchese, interprete di liuto e musica antica, nell'ambito degli eventi della mostra su San Francesco.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -2920,7 +2920,7 @@
       "data_inizio": "2026-09-08",
       "data_fine": "2026-09-08",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZhztgZUbGLXf2C4tIms-QQg_mOkHaZ4nOqzcgejP3ZlgR8BphTnChfiUbgy2Ngn0DvdYfImRYq9EDcw4GWghjUQGSyNSzgN1NbWSzVfY2EvRsxbvdJIzW_SimvsaB9pWuUc_REv59TDN7g4AuyvEb8YB1zPXtS6yNhvUpIzVCtfXlZvaDBXq_CH12dCkevqaA&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZiUFGD2XN7LIdqM6SOIdT53Z6G8Mz-PzVbGYwfz76WARF2D7OfSUTluOCh_qUKy5WBvDNFV6NHiRwBNhNgm7Qxln_u5OzdVVrtEm7Uw9VWUTEPBs9wl_zH4ZGjzsbhaN730Gx3Qpww3vUGJ2glupbWgawg5UnsqrUuFbfFTxuzkKgONLVgq-HPuac7e_YzqCg&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -3047,7 +3047,7 @@
     {
       "id": "76de825f43cf",
       "titolo": "125° anniversario Festa della Croce 2026",
-      "descrizione": "In occasione del 125° anniversario della Festa della Croce si terranno iniziative ed eventi, tra cui proiezioni storiche sulla Croce del Musinè e appuntamenti presso la parrocchia San Giorgio e piazzetta Don Pautasso.",
+      "descrizione": "In occasione del 125° anniversario della Festa della Croce si svolgono diverse iniziative tra cui la proiezione di filmati storici sulla Croce del Musinè e appuntamenti religiosi e culturali.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -3268,7 +3268,7 @@
     {
       "id": "d8199cc73bb4",
       "titolo": "Ruota e Canta!",
-      "descrizione": "Sfida di improvvisazione canora che coinvolge le Pro Loco del circondario, anteprima musicale della Sagra della Noce e della Frutta a Guscio. Conduce Andrea Caponnetto con Simone Marchesani.",
+      "descrizione": "Sfida di improvvisazione canora che coinvolge le Pro Loco del circondario e apre la Sagra della Noce e Frutta a guscio. Conduce Andrea Caponnetto con Simone Marchesani. In caso di maltempo si terrà sotto il PalaNoce.",
       "comune": "Villanova Solaro",
       "lat": 44.729938,
       "lon": 7.574426,
@@ -3277,7 +3277,7 @@
       "data_inizio": "2026-09-10",
       "data_fine": "2026-09-10",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZgKsdiqGdo7r2UV1nFebBjkk_HTRknvbac3OhabumyMBXfa_HUcJsdc48S4hv8ljM4XfBM8WrwSR3wzVXcZ8PyXSj-U2E4F9sNUAD7TuUSwV79Mkh4lISWxy2Vczbru4iK2uLLma8xBR8BsIjNXp_ZBptMr0toa7221SN7QJn1Qp8eLe4Je-JU6biWg6W-2dXlEm5N_J1zFndg6AMTtnJbczw&__tn__=-]C%2CP-R",
+      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZgIcdqS89cEdk0POHnKhLpwj1VCpJ_arUtPw_yD6vcxhAPUaMEgaqr5GCHVAjMnpaN4GGGSETFC3XyTHBV0A6hY7_ng6eojI6vjReXEXC3Udk8zbslD5Tw_Jl8Xj7PlhSv-rAYxC0UlnaoMyN-1yZuhgtvAPq8vGlF-dnSI8EYNyyvEwI4i3tY4uMFf8udjxdXVxpPC_-gGjq1CYA8YIBr-cQ&__tn__=-]C%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocovillanovasolaro",
       "quarantena": false
@@ -3285,7 +3285,7 @@
     {
       "id": "3477c3c860e2",
       "titolo": "II Edizione della Sagra della Noce e della Frutta a Guscio",
-      "descrizione": "Sagra con appuntamenti gastronomici, spettacoli, iniziative ed Arena del gusto formato Street-food.",
+      "descrizione": "Sagra con appuntamenti gastronomici, spettacoli e iniziative, tra cui il format street-food Mangirula.",
       "comune": "Villanova Solaro",
       "lat": 44.729938,
       "lon": 7.574426,
@@ -3294,7 +3294,7 @@
       "data_inizio": "2026-09-10",
       "data_fine": "2026-09-14",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZgKsdiqGdo7r2UV1nFebBjkk_HTRknvbac3OhabumyMBXfa_HUcJsdc48S4hv8ljM4XfBM8WrwSR3wzVXcZ8PyXSj-U2E4F9sNUAD7TuUSwV79Mkh4lISWxy2Vczbru4iK2uLLma8xBR8BsIjNXp_ZBptMr0toa7221SN7QJn1Qp8eLe4Je-JU6biWg6W-2dXlEm5N_J1zFndg6AMTtnJbczw&__tn__=-]C%2CP-R",
+      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZgIcdqS89cEdk0POHnKhLpwj1VCpJ_arUtPw_yD6vcxhAPUaMEgaqr5GCHVAjMnpaN4GGGSETFC3XyTHBV0A6hY7_ng6eojI6vjReXEXC3Udk8zbslD5Tw_Jl8Xj7PlhSv-rAYxC0UlnaoMyN-1yZuhgtvAPq8vGlF-dnSI8EYNyyvEwI4i3tY4uMFf8udjxdXVxpPC_-gGjq1CYA8YIBr-cQ&__tn__=-]C%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocovillanovasolaro",
       "quarantena": false
@@ -3363,6 +3363,23 @@
       "data_fine": "2026-09-10",
       "tipologia": "altro",
       "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhw0nNXX7LDyZ65vcGH5_fqBoQE-gBpgpm9R28qAtWSMpxVf-d3MgT0NwRucMmNRWsqU4Ib7jnpyFTxx9INDSKvNWBR3Us64yrMoMKnTnmK8tp7NKcRise1AxUjIIZpzB9dcNUiUAR4eIM3kutX-K1QyW4bJ4PdZXQxvINrGjiMfVihqUcfgJMrTbEGu6KJnupKsuplNXOJ9agdIOeXxuN-1g&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunechivasso",
+      "quarantena": true
+    },
+    {
+      "id": "8c11fd9879cc",
+      "titolo": "Corso di guida sicura - Tappa di Giaveno",
+      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS (sold out).",
+      "comune": "Chivasso",
+      "lat": 45.190959,
+      "lon": 7.887186,
+      "km": 76.1,
+      "minuti": 83.0,
+      "data_inizio": "2026-09-10",
+      "data_fine": "2026-09-10",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunechivasso",
       "quarantena": true
@@ -3574,7 +3591,7 @@
     {
       "id": "f040dd3e08ec",
       "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell'orchestra giovanile Saxmania composta da 20 elementi, con un repertorio dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo. In caso di maltempo si svolgerà all'interno.",
+      "descrizione": "Concerto dell'orchestra giovanile Saxmania, composta da 20 elementi, con repertorio dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo. Iniziativa del progetto diffuso CONNESSIONI.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -3727,7 +3744,7 @@
     {
       "id": "cb1175139386",
       "titolo": "Pieve in Musica: Duo Renda-Trucco ed Espace 900",
-      "descrizione": "Doppio appuntamento con il duo chitarristico Renda-Trucco (dalle musiche legate a Leonardo da Vinci ai contemporanei) e a seguire il duo clarinetto e pianoforte “Espace 900” con brani di Poulenc e Nino Rota.",
+      "descrizione": "Doppio appuntamento con il duo chitarristico Renda-Trucco e a seguire il duo clarinetto e pianoforte Espace 900 con brani di Poulenc e Nino Rota.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -3736,7 +3753,7 @@
       "data_inizio": "2026-09-11",
       "data_fine": "2026-09-11",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -3753,7 +3770,7 @@
       "data_inizio": "2026-09-11",
       "data_fine": "2026-09-13",
       "tipologia": "gastronomia",
-      "url": "https://www.facebook.com/comunedifontanettopo?__cft__[0]=AZjiBztCzsF3bzgsSVqPPq1qJA715mz7SAbCbVKEup8dQKUqUAOYo7BO77PSzBluCM0XsXEteTvhARPx9-vN0RP1Q2AZpYmIgVoGfRz24Y070XRxWcz1YVk78QOP360ctcnOUW3ZImgCBqzAKRfr9Ds75ySgVP3Klb4eO2t1Wyarx91qAdM2fabMjlGWauamTg&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedifontanettopo?__cft__[0]=AZjtYmCoyuKq_02MYRdNvFdEeJh6oOG3BJV-RmI4agJRqu2GsZtRqaLXrY3y59a14kTYI4kOEZsyibnLwJ6KYPt6cnY6ZsLbwhCsEN1cZfLmT3KIjG8NvlRltqsPBVJPb2Mc3tKIqjJVxRETV5YFSx2I08o3c6RT0OleFL8PkwZ2nx62oeygd6CwyNrBV80RvQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedifontanettopo",
       "quarantena": false
@@ -3778,7 +3795,7 @@
     {
       "id": "1e67db8922cb",
       "titolo": "Sagra della Noce e della Frutta a Guscio",
-      "descrizione": "Giornata inaugurale della seconda edizione della sagra con apertura dell'angolo della frutta a guscio e del legno (ore 16), convegno 'La Frutta a Guscio tra agricoltura, salute e sostenibilità' (ore 17), inaugurazione ufficiale con Andrea Caponnetto e Daniela Cavanna (ore 19), Cena della Noce a menu fisso al PalaNoce (ore 20) e serata danzante 'Ballando le Cupole in Tour' con orchestra, ospiti ed ",
+      "descrizione": "Programma della giornata di venerdì: dalle 16 in Piazza Pairotti apertura dell'angolo frutta a guscio e legno; alle 17 convegno 'La Frutta a Guscio tra agricoltura, salute e sostenibilità'; alle 19 inaugurazione ufficiale. Dalle 20 al PalaNoce Cena della Noce (35€, prenotazione obbligatoria entro il 9 settembre) e dalle 21.30 serata danzante e spettacolo 'Ballando le Cupole in Tour'.",
       "comune": "Villanova Solaro",
       "lat": 44.729938,
       "lon": 7.574426,
@@ -3787,15 +3804,32 @@
       "data_inizio": "2026-09-11",
       "data_fine": "2026-09-11",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZhs5jhGsvH8eW8BrzWH57Am8lagFoJl_eF7jgP6_l-vnzsRs-V0z8yYIf3DI3kzHzlIVG4HDKbIMuBm1eGXl8UmD9KzNmy8pPSkBMzJ3erY2uWmWt5cXzEjzor5T41pyzbn6s2MdkIcshXRQ_4LW5Tvv7Oj1WwpbEre_AJ7pcgVoFjJAF9J9jmU9qeFJDoB&__tn__=-]C%2CP-R",
+      "url": "https://www.facebook.com/prolocovillanovasolaro?__cft__[0]=AZgm72saseIak1fUaV1yLpLR7SBThkxkL6FDqwuz4E7VPSFt1cqs_pQegy9BxKO4_RT-2xhF_b4lA0RO2v3JfzHjXS2FCNXUvbcJiUpD7VWBJpJbocFZ7vem9NvUFNT79lOs47pvviWemgMb3Tm3OZCX1C37-gq1_aWdJh5trJpkZWRGLutC5cuREGNbwAWp&__tn__=-]C%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-prolocovillanovasolaro",
       "quarantena": false
     },
     {
+      "id": "7fb6ad828b28",
+      "titolo": "Corso di guida sicura - Tappa di Sant'Antonino di Susa",
+      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS.",
+      "comune": "Chivasso",
+      "lat": 45.190959,
+      "lon": 7.887186,
+      "km": 76.1,
+      "minuti": 83.0,
+      "data_inizio": "2026-09-11",
+      "data_fine": "2026-09-11",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunechivasso",
+      "quarantena": true
+    },
+    {
       "id": "d41cae55aab6",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 12 e 13 settembre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3811,8 +3845,8 @@
     },
     {
       "id": "2be17849904b",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi",
-      "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi - 12 e 13 settembre 2026",
+      "descrizione": "quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3948,7 +3982,7 @@
     {
       "id": "d95390f0d7fe",
       "titolo": "Festa della Birra",
-      "descrizione": "Serata all'insegna di buon cibo, ottima birra e musica dal vivo con I Keily's Folk. Menù con cavatelli speck e porri, stinchi alla birra (anche 100% gluten-free), salsiccia, patatine, crauti e strudel.",
+      "descrizione": "Serata all'insegna del gusto e del divertimento con buon cibo, ottima birra (anche opzioni 100% gluten-free) e intrattenimento musicale dal vivo con I Keily's Folk.",
       "comune": "Carcare",
       "lat": 44.357473,
       "lon": 8.290162,
@@ -3957,7 +3991,7 @@
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-12",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/proloco.dicarcare?__cft__[0]=AZg7tCdZdNCJBWaFjDAAEgW18ewMPlOT548FodI6H18q4tRp64BRPQkzcv-Fm3L6JWvGcf6MsZPxMCXcuTs7LRcqprwjHOAeo0LqTgxPfTRZoihjg2tP2jGec_g3APtuQLnsXlOGvo1PMESGSuy6XnPfLyfCEItDvvy-6NgJvh_cbhPtkPGC8n_VEHfDhAuK&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/proloco.dicarcare?__cft__[0]=AZi4n336vlD-K1XI8tNCx7xOkf3NoA_lHFJ0CEl_aJVTrSc7oPcMsAmSHVDvkbbd3AxDqGart5w9lI3rJMtciRmbCbfuUkhEA1NECSuZ8Dkhz2BaQz5eqqI63-mUqPuAUpxPVSQ9HVRs6Lh71njsRNY3UEteLA2DfFFL_ECUUvs65IJXiX2IDUGWAWyrFSVk&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-proloco.dicarcare",
       "quarantena": false
@@ -4212,7 +4246,7 @@
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-12",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/proloco.pievedelcairo?__cft__[0]=AZglQB_WJcwWvHKBCUyez0VLOrWCWPTxZGLxqFHcNYyDj3dTncsiShZtZAtbDfVmHTLQRbQhZ1Ohu-uN-5YtwoH25HJDrMM3Rq5TPRfnYiGH3iul30QxlF_D1u9HuCbJfzgJy_0pUgYkCK1DpzEUnuXWwGlcXaZcqypbnM8vrmkhb3DRvW_2qgh8TclUqP_TXNtnWXF45A-gg0rRajI1sXiwQbwJ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/proloco.pievedelcairo?__cft__[0]=AZi_uBoBgzIOe3UAjKOvLQbk794xlmfsbmUbb9CngGydl4ILy9JN0Mq3J0RdfZPrGgiTuvmaORsre7IBeIDR0-rep5gmIjrLbCCdZQeDmsN97BqZ-JqnbT-a7EWezUq2pxwNp4WSHEZ1F-Ykr2kFJmXDdcKBEi0VNj57TvH3wOLnjvNh8xjuHX2-zGT4o7hi6r2jIlBIEBeTz0hOCy5KtkzzpfqF&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-proloco.pievedelcairo",
       "quarantena": false
@@ -4287,8 +4321,8 @@
     },
     {
       "id": "d31ccfa7b34a",
-      "titolo": "Serata Anni 80",
-      "descrizione": "Clamorosa serata anni 80 a Pieve del Cairo.",
+      "titolo": "Serata anni 80",
+      "descrizione": "Una clamorosa serata anni 80 a Pieve del Cairo",
       "comune": "Pieve del Cairo",
       "lat": 45.049957,
       "lon": 8.804146,
@@ -4296,8 +4330,8 @@
       "minuti": 78.0,
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-12",
-      "tipologia": "altro",
-      "url": "https://www.facebook.com/proloco.pievedelcairo?__cft__[0]=AZjIvdMg6B3nnYnKD4DMBjPuOV79IucJp2sgwye0sENhpxBgANPm92HdA2aErYWpI42dCFeeqZyuP41We77yowdGjAkjGvsdYEc_jVSQWsx7YMFeNaXZxZOYUZht8opJOzJh7Jj3LM3v8kOAaHaqPnEb5Ur-FYNssbg2Z-qPzdPEIH1-yL0CzvsiTzdA2VlCHA&__tn__=-UC%2CP-R",
+      "tipologia": "concerto",
+      "url": "https://www.facebook.com/proloco.pievedelcairo?__cft__[0]=AZjBk6Cdw8sLGAed2Rij3MmgsYWDYtDVKOG_FDCY3Fa4Pz8esCGwIsY3HoEGckf5teFneD_nBkgKNjliwaL_yxV-koIi2E8zxCQxG-RuTgdVV12yb-7JE2617hrllKiRGtcgXFmklzOdL2q_nJP0ycIM2p0s1aWD9Pp-JJVLhIpc7tGXgZEyumFrExiD9FawNQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-proloco.pievedelcairo",
       "quarantena": false
@@ -4322,7 +4356,7 @@
     {
       "id": "e65d33c90dcb",
       "titolo": "Grande festa alla nuova scuola del Borgo Nuovo",
-      "descrizione": "Festa e visita in anteprima della nuova scuola con laboratori gratuiti, letture, visite guidate e alle 17.30 lo spettacolo teatrale 'Servizio favole' nell'auditorium-palestra.",
+      "descrizione": "Visita in anteprima della nuova scuola del Borgo Nuovo con laboratori gratuiti, letture, visite guidate e alle 17.30 lo spettacolo teatrale 'Servizio favole' nell'auditorium-palestra.",
       "comune": "Settimo Torinese",
       "lat": 45.137335,
       "lon": 7.771015,
@@ -4331,7 +4365,7 @@
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-12",
       "tipologia": "bambini",
-      "url": "https://www.facebook.com/comunedisettimotorinese?__cft__[0]=AZj2X13c-E-_N6GAGer6zL9AUpbT7FmBT93Oxrg1VF7fadiowsEnJ1-59wrKToO_eIsjgtpEBqwtRVdLduQX49CL2nmr6s_TqChD7lbOU4JqO39pIkrAQBZlMumUArBzdmC7c_QUhq55w1ptSdvBDzaBuU_jYD0UWmFVZdw85WSYaCrY8i9IpCgG4gXQjKmaDPxQATkbcowS&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedisettimotorinese?__cft__[0]=AZgIeqYsSTrZ0le4dtf7B38bIL4-0ekHWNM-nDF9UxlNnBqyeuYzq9Thyys25rCBTAR_2Y_RwebgpxzK9jsN9w3KgZZTfzkcOclgweHdcuci5wYgM2gyaORRvkhc_zmXA-bsNXvIpPdqeg_vJ4muSoSP55qLMcF_amtS2NHSvJoHPQUpkxT4LdJ0KRHqdiaElezl7LmMv8TQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedisettimotorinese",
       "quarantena": false
@@ -4355,8 +4389,8 @@
     },
     {
       "id": "1b40b898d6a3",
-      "titolo": "Pieve in Musica: Recital del duo pianistico Costa-Casanova",
-      "descrizione": "Recital del duo pianistico Costa-Casanova, impegnati in un repertorio per pianoforte a quattro mani.",
+      "titolo": "Pieve in Musica: Duo Costa-Casanova",
+      "descrizione": "Recital del duo pianistico Costa-Casanova impegnati in un repertorio per pianoforte a quattro mani nell'ambito della rassegna Pieve in Musica.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -4365,7 +4399,7 @@
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-12",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -4576,7 +4610,7 @@
     },
     {
       "id": "58869ea9944e",
-      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
+      "titolo": "Mercato del piccolo antiquariato",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -4832,7 +4866,7 @@
     {
       "id": "6f7cb7ceec68",
       "titolo": "Cerimonia in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "",
+      "descrizione": "Cerimonia in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4849,7 +4883,7 @@
     {
       "id": "a62563122fa3",
       "titolo": "Pranzo, bancarelle e incontro con Carlo Pagani",
-      "descrizione": "Giornata con pranzo, bancarelle e incontro con Carlo Pagani.",
+      "descrizione": "Pranzo con chiusura prenotazioni, bancarelle e incontro con Carlo Pagani.",
       "comune": "Langosco",
       "lat": 45.214367,
       "lon": 8.56373,
@@ -4857,8 +4891,8 @@
       "minuti": 82.0,
       "data_inizio": "2026-09-13",
       "data_fine": "2026-09-13",
-      "tipologia": "sagra",
-      "url": "https://www.facebook.com/proloco.langosco?__cft__[0]=AZjSxeTQjTX8iD9uZOUnpJ8u0Ls7uN0rUrIoqQ1xXQ32c_cGO2rv5drEmYWDY_mzjZwVsiiEnSyAQokfhp19eDc42EUrYuaiBgryGCU7jMTL4pWENmXnMy2NiSryIVCwhMhd54EBGerCIf2WomMp7uVR4G3WSKPscsTZa3TI3ltjsNIM4VD87VdzSIuh0Ab7&__tn__=-UC%2CP-R",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/proloco.langosco?__cft__[0]=AZhaYs7MdR7s_dfM8KqVQnttgjvaZcwZayuEcEP32jddYj1kFYNYIl9rwp-Ht4SiLzZXyyRnyK11FBI4BMuuAETzUkkEwM6I8XWmC6Y8n-XmVXWRKmx9luhFauDv4PTKGcapVNf9Pa3H9jTrF2sMaEE4cz7pm-r1aN-Drh-vXyLYr_NvYzp41fmezsS63vID&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-proloco.langosco",
       "quarantena": false
@@ -4883,7 +4917,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio (AT) con il patrocinio del Comune di Cassine e la collaborazione del Club per l’UNESCO.",
+      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio (AT), con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4895,6 +4929,23 @@
       "url": "https://comune.cassine.al.it/it-it/appuntamenti",
       "url_approfondimento": "",
       "fonti": "comune-cassine",
+      "quarantena": false
+    },
+    {
+      "id": "59bd18f158f4",
+      "titolo": "Sport in piazza",
+      "descrizione": "Attenzione al divertimento e alla salute nel parco Atleti Azzurri d’Italia.",
+      "comune": "Bra",
+      "lat": 44.697678,
+      "lon": 7.854271,
+      "km": 41.0,
+      "minuti": 49.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "sportivo",
+      "url": "https://www.comune.bra.cn.it/it",
+      "url_approfondimento": "",
+      "fonti": "comune-bra",
       "quarantena": false
     },
     {
@@ -4917,7 +4968,7 @@
     {
       "id": "e37f6679e2c4",
       "titolo": "Inaugurazione della scuola Italo Calvino",
-      "descrizione": "L'Amministrazione comunale, la dirigente scolastica e il personale della scuola accoglieranno studenti e famiglie per inaugurare ufficialmente la rinnovata scuola Italo Calvino prima dell'inizio delle lezioni.",
+      "descrizione": "L'Amministrazione comunale, la dirigente scolastica e il personale della scuola accoglieranno studenti e famiglie per inaugurare ufficialmente la scuola Italo Calvino, completamente ristrutturata.",
       "comune": "Avigliana",
       "lat": 45.077944,
       "lon": 7.39839,
@@ -4926,7 +4977,7 @@
       "data_inizio": "2026-09-14",
       "data_fine": "2026-09-14",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZhITZiXhBv61OLKWyasI7FQlPJ7S0DA71dGJifsIDvfbOyUU6h6Yvt6UMep4JSNMuDh8kyTiIfNj4KOXszVhMxDIJJORNHCFbX8WxKtvetTwQGWZLkEjlWQll7WNBaUu-Jvt5nmenG2FDkAvPOXupIzVWV29A6Zf7D8F-ixXAF0qnqX9vwR_eT_iZhmZfKkMw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comune.avigliana?__cft__[0]=AZh1lH9VEv5IqoQdDOeYL4GWxkhS1ZtgOhkEEL0mnMIJgtE9H8Y2Aef3x4EY14Ybgqtf7H_zScha34Y5oaA3fRTi96rqZWah3Sr6GZyLjUwsXHcAxg0eUL7uDRofOm8f0NyoJUoVUF9zs5tMuvuHm60o7ieZWgVuUg3EZ0Lb1uX5sOG4IjLi_yn18Ang0h0XKA&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://avigliananotizie.it/inizia-la-scuola-2026-2027/",
       "fonti": "feed-facebook-comune.avigliana",
       "quarantena": false
@@ -4985,7 +5036,7 @@
     {
       "id": "aa2b9c5fa6d7",
       "titolo": "“Tessile e Tecnologia” al Museo del Tessile di Chieri",
-      "descrizione": "Martedì 15 settembre una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono.",
+      "descrizione": "Martedì 15 settembre una giornata di studio con esperti e artisti per esplorare nuove connessioni tra telai, arte, tecnologie digitali e suono",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5096,7 +5147,7 @@
       "data_inizio": "2026-09-17",
       "data_fine": "2026-09-20",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/profile.php?id=100080229957596&__cft__[0]=AZhj-SfzXHvsC8swe6awQvUzkm6nxU9s4FUS9C8JQh8V63jFgaJFL9In9lRBX-sXxa3XTgIioZlfdruToAXtYQfFEHqoDLDoVYCjqiC_f43_dgIYftBo0TbUKlQxHDDHdoo4DZhBXMGI8Glb8MCExoPCg9yQqA7vRnNBnHW5pg3WZG3AcX6w06uAbWepbQVE&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/profile.php?id=100080229957596&__cft__[0]=AZjo8kpvD8kR5EQlnshbh6vfDnWqWMPr6v9GQRYN0LDPeOiHJP0HQkpTlYkjdkluzsVO4ljqI5CZkDjpmBNPqzgzdpXNKyL30brWFHh3eS1y76KmLIAHzsWWdTkHL5VZlKMBGgVyg4qaHBwn5DPKbTpsvhZoEKmun_zHb1M-N-7hrNhso3TM5zfhjcuLsjvn&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-profile.php?id=100080229957596",
       "quarantena": false
@@ -5188,8 +5239,8 @@
     },
     {
       "id": "6b80e27e46dc",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 19 e 20 settembre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5205,7 +5256,7 @@
     },
     {
       "id": "28167d1b2796",
-      "titolo": "Pessione Festa Patronale dei 4 Borghi",
+      "titolo": "Pessione Festa Patronale dei 4 Borghi - 19 e 20 settembre 2026",
       "descrizione": "Quattro giornate di sport, tradizione, musica, gastronomia e divertimento per tutta la famiglia.",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -5240,7 +5291,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (in ricordo di Ester Delforno): Non ce lo dicono di Flavio Vasile, Niurant di Massimo Brusasco e Comodissimo e facilissimo di Sabrina Piazzon.",
+      "descrizione": "Serata Aspettando Montmartre con premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (realizzato in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -5248,7 +5299,7 @@
       "minuti": 57.0,
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
-      "tipologia": "teatro",
+      "tipologia": "altro",
       "url": "http://www.teatrocambiano.com/",
       "url_approfondimento": "",
       "fonti": "teatro-cambiano-teatro-comunale",
@@ -5511,17 +5562,17 @@
     },
     {
       "id": "b8f1e4ba3f31",
-      "titolo": "Festa della Nocciola - Cena di corte in corte",
-      "descrizione": "Cena itinerante nei cortili del paese con piatti a base di nocciola e non solo. Intrattenimenti musicali con band e DJ, spettacoli itineranti di hip hop e street dance a cura di Danz'Asti.",
+      "titolo": "La Festa della Nocciola - Nocciole, sapori e dintorni: Cena di corte in corte",
+      "descrizione": "Percorso enogastronomico nei cortili e nelle piazzette di Settime con stand di piatti a base di nocciola e specialità locali, vini, cocktail, birra, spettacoli itineranti di danza hip hop e street dance e musica dal vivo.",
       "comune": "Settime",
       "lat": 44.962466,
       "lon": 8.11397,
       "km": 33.8,
       "minuti": 41.0,
       "data_inizio": "2026-09-19",
-      "data_fine": "2026-09-19",
+      "data_fine": "2026-09-20",
       "tipologia": "sagra",
-      "url": "https://www.instagram.com/p/DcvC0CCAH1v/",
+      "url": "https://www.instagram.com/p/Dc3TpxFAa6T/",
       "url_approfondimento": "",
       "fonti": "feed-instagram-prolocosettime",
       "quarantena": false
@@ -5631,7 +5682,7 @@
     {
       "id": "d365647da232",
       "titolo": "Pieve in Musica: Anna Karapetyan",
-      "descrizione": "Recital della pianista armena Anna Karapetyan, con un programma che affianca il pianoforte solo a pagine per viola e contralto.",
+      "descrizione": "Concerto della pianista armena Anna Karapetyan con un programma che affianca il pianoforte solo a pagine per viola e contralto.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -5640,7 +5691,7 @@
       "data_inizio": "2026-09-19",
       "data_fine": "2026-09-19",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -5818,7 +5869,7 @@
     {
       "id": "5c573d7dd168",
       "titolo": "Festa della Nascita 2026",
-      "descrizione": "Torna la Festa della Nascita alla Reggia di Venaria, dedicata alle famiglie delle nuove nate e dei nuovi nati nel 2025 e nel 2026. Iscrizioni entro il 18 settembre.",
+      "descrizione": "Una giornata speciale per dare il benvenuto alle nuove vite nate nel 2025 e nel 2026. Letture condivise, musica, canto, giochi, laboratori sensoriali ed esperienze nella natura per bambine e bambini. Il tema della giornata sarà il Tempo.",
       "comune": "Venaria Reale",
       "lat": 45.134811,
       "lon": 7.626866,
@@ -5827,9 +5878,9 @@
       "data_inizio": "2026-09-20",
       "data_fine": "2026-09-20",
       "tipologia": "bambini",
-      "url": "https://comune.venariareale.to.it/it",
-      "url_approfondimento": "",
-      "fonti": "comune-venaria-reale",
+      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZjRyafsx5ECjV4UpHXj5f3UOt3kfOqJMcKqZ4m485Z6WUJsw9cf8Lo6OY44I3C61ojwyJN6bePlqy_tCRTbEzYTcKwRpYhtyN0czza6U48ITa8_5wFYgAZC2HRQ48rCpAHlGAEyrSOdKvgqtzrfzzfl6tPEpQaT6QufncbJL7z8yXxkCBpLE_pzsGHHoddM&__tn__=-UC%2CP-R",
+      "url_approfondimento": "www.tinyurl.com/festa-della-nascita-2026",
+      "fonti": "comune-venaria-reale, feed-facebook-cittadirivalta",
       "quarantena": false
     },
     {
@@ -6073,7 +6124,7 @@
     {
       "id": "8ebab8da3c51",
       "titolo": "Pieve in Musica: Gran finale di rassegna",
-      "descrizione": "Gran finale di rassegna con l’esecuzione dei Quartetti per pianoforte e archi di Mozart e Schumann.",
+      "descrizione": "Gran finale di rassegna con l’esecuzione dei Quartetti per pianoforte e archi di Mozart e Schumann nell'ambito di Pieve in Musica.",
       "comune": "Viguzzolo",
       "lat": 44.905507,
       "lon": 8.918616,
@@ -6082,7 +6133,7 @@
       "data_inizio": "2026-09-20",
       "data_fine": "2026-09-20",
       "tipologia": "concerto",
-      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZh0KtV6Rc4hDpEGLhHyDNnsPehkHN5UvjDzztgv-nbAp_PF8ny_Sn26QsmvQxqBkKF1QYO02fvxT0T_8AZOsOrLHF7zFDw1WWTo0eOpTWwKi2MHW58egyIiK1wT9MuCXN0ZfiT59G6Glx0FMkf_-rXJ3F_cpJQglyFHBLy38DNrdXscZdYy4PbJ9juFM7ObIw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/radiopnr?__cft__[0]=AZg762nlQEaO_NrmhBP70P5AH38DopSCgmEH71NH0lUWQVDlMbPbLkavbjwWHw-K3bqhOOBvX_SkduOAonubTSdmOcIJmb8q5PYdGFdiW10ygt0auioVGtCY7d2cU6QXrmcNTSpy69IwUDDeOpadfTI3p5sHfVU_8B0kFlbpb6mV7JUenSY7yq9lsWRAobryMw&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-radiopnr",
       "quarantena": false
@@ -6207,6 +6258,23 @@
       "quarantena": false
     },
     {
+      "id": "14d7249127d5",
+      "titolo": "Corso di guida sicura - Tappa di Torino",
+      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS (entrambe le date sold out).",
+      "comune": "Torino",
+      "lat": 45.067755,
+      "lon": 7.682489,
+      "km": 78.1,
+      "minuti": 76.0,
+      "data_inizio": "2026-09-22",
+      "data_fine": "2026-09-23",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunechivasso",
+      "quarantena": false
+    },
+    {
       "id": "78e1505205b5",
       "titolo": "72° Gran Premio Ciclistico di Sannazzaro",
       "descrizione": "Gara ciclistica per categorie Elite e Under 23.",
@@ -6260,7 +6328,7 @@
     {
       "id": "8ee50a288af7",
       "titolo": "Evento online Hikikomori",
-      "descrizione": "Incontro informativo sul tema degli Hikikomori e confronto con i genitori dell'associazione Hikikomori Italia Genitori della Liguria ETS, con il contributo del Dott. Attilio Rossi, psicologo.",
+      "descrizione": "Incontro online informativo sul tema degli Hikikomori per confrontarsi con i genitori dell'associazione Hikikomori Italia Genitori della Liguria ETS e con il Dott. Attilio Rossi, psicologo dell’associazione Hikikomori Italia.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -6269,7 +6337,7 @@
       "data_inizio": "2026-09-24",
       "data_fine": "2026-09-24",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZh-y9w39H_Z45kp6srkkVkDU5n2DuMPvv_V9DyxdxzaYC7IjhURZ2VolP_mUVBnD1EpSa0tsz0ZaTFHcttzhrnOKvFDJvl9O8UTzKUCvCmw56PG_qYaBEAK7O9ZrBy7mK0Am2IiLCl9tEFlUKln6WVonGXZVfewh4bdwB2KqHYWkg04J5fSwCJT3g1pqWU&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZijHIXL1vAHw38gYKG7W6fp6ZWWIbW11y4SotaHdc1x44oWHmVa2aq7jvrTA7wg_RTPjA6Q6G4imtZhcd3EcVeZNDHeQXEEgAXKuiRWuSozh2D3VMjP-jx7SAg5Z4hQ_Wuau1x9w4H-oJW3na_hF2Njn7RHlbR9cXlANDZbaLrf4U6yHAS62vlDHPARfXs&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://docs.google.com/.../1FAIpQLSfOK.../viewform...",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -6292,9 +6360,26 @@
       "quarantena": false
     },
     {
+      "id": "a2ab21171085",
+      "titolo": "Corso di guida sicura - Tappa di Settimo Torinese",
+      "descrizione": "Corsi di Guida sicura promossi dalla Città metropolitana di Torino e dalla Fondazione SADA ETS.",
+      "comune": "Settimo Torinese",
+      "lat": 45.137335,
+      "lon": 7.771015,
+      "km": 77.0,
+      "minuti": 84.0,
+      "data_inizio": "2026-09-24",
+      "data_fine": "2026-09-25",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/comunechivasso?__cft__[0]=AZhAuZXEcTWocSbAstyah5XjQw7u0gB7d5VC92Wg9RWTDzPm1wlQn6HFegA9WBChXKwiTE0y9eXcz6QifuW02-4ZWJtATMrZTD1lGxotTOqAk7r_jsc-5Iq8NvvDuMi2x-0nD6ZxTwfTr2_BvPWRayIpUdpbEv4z340y_rsovikdaeNZv_LB9KpgOwqbs2u0-KY2VopWWT-kSkDaF_lP1hbeTQ&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunechivasso",
+      "quarantena": false
+    },
+    {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Raduno per camperisti con accoglienza, aperipranzo con prodotti locali, visite guidate del borgo antico e del MiCeM, trekking sul percorso archeologico-industriale e degustazioni in cantina.",
+      "descrizione": "Raduno per camperisti con accoglienza, aperipranzo, visite guidate al borgo antico e al MiCeM, trekking sul percorso archeologico industriale e degustazione in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -6311,7 +6396,7 @@
     {
       "id": "23e8752fc9ef",
       "titolo": "Incontri al quadrato - La Divisa Bianca",
-      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, che interverrà sul tema \"La Divisa Bianca\". Evento nell'ambito del progetto CONNESSIONI.",
+      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema 'La Divisa Bianca', nell'ambito del ciclo 'Incontri al quadrato' del progetto CONNESSIONI.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -6327,8 +6412,8 @@
     },
     {
       "id": "6e55addfa80b",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 26 e 27 settembre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6668,7 +6753,7 @@
     {
       "id": "609338c1d132",
       "titolo": "Fiera Nazionale della Zucca di Piozzo",
-      "descrizione": "Mostra tecnico-scientifica con oltre 650 varietà di zucche coltivate a Piozzo.",
+      "descrizione": "Mostra tecnico-scientifica con oltre 650 varietà di zucche coltivate a Piozzo in occasione della Fiera Nazionale della Zucca.",
       "comune": "Piozzo",
       "lat": 44.515655,
       "lon": 7.892257,
@@ -6677,7 +6762,7 @@
       "data_inizio": "2026-10-03",
       "data_fine": "2026-10-04",
       "tipologia": "fiera",
-      "url": "https://www.facebook.com/fierazucca?__cft__[0]=AZghzU2U8iHkAmnm8ECPb3KtuTwdk924EyVjZNfZtTNFLBn63cYSCGjHy3CR2IsCO1N_uPPKRGQGdiMbIBcdGOECRqS22H5ZI6UTdeqj9mxXA3bbaHhEZqU72BwsdtA_fTnf-_ov52vmo0y-YYvSLU7Tf9GRjf-drZ72xMLPk81giAfyn35YSWB_eSXBT3IIWQ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/fierazucca?__cft__[0]=AZj3FQw73FC_UjoEWX16frjxyQYSq8n5vDQ33Nufh-hqMdLvfEI5N3MyF-2JIwp4nH9giKzYKRrlZOicdEWjxN3W2vU40DDS-l3fz716d7vUsQp8k4pFPleTPsHstrf3H4KmEq3cHs_WGv51dEWEH7xBL3aKE9jMbvXUqBTRhgUx99oP0Blx4CUgGFsOV9XXAQ&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-fierazucca",
       "quarantena": false
@@ -6837,8 +6922,8 @@
     },
     {
       "id": "db041f438f2a",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 9 e 10 ottobre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6889,7 +6974,7 @@
     {
       "id": "4fbab2fa424f",
       "titolo": "Relazioni che generano futuro: un percorso per crescere insieme",
-      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno.",
+      "descrizione": "Un incontro gratuito dedicato all'affettività, alla vita di coppia e alla costruzione di relazioni più consapevoli, con lo psicologo e psicoterapeuta Simone Bruno",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6905,8 +6990,8 @@
     },
     {
       "id": "d20148155434",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 11 ottobre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6922,7 +7007,7 @@
     },
     {
       "id": "04b950a527d2",
-      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
+      "titolo": "Mercato del piccolo antiquariato",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -7025,7 +7110,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità, che avrà ricostruito davanti a tutti il suo corpo e la sua umanità.",
+      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, Light designer Marco Filibeck, Scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità, che avrà ricostruito davanti a tutti il suo corpo e la sua umanità, in un mondo apparentemente tr",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -7228,8 +7313,8 @@
     },
     {
       "id": "d054bab00af2",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 7 novembre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7262,7 +7347,7 @@
     },
     {
       "id": "05982a785968",
-      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
+      "titolo": "Mercato del piccolo antiquariato",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -7348,7 +7433,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica), aperto a tutti",
+      "descrizione": "Lettura pubblica, aperto a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7500,8 +7585,8 @@
     },
     {
       "id": "67c23b395ab4",
-      "titolo": "Apertura StArt Gallery",
-      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri.",
+      "titolo": "Apertura StArt Gallery - 12 dicembre 2026",
+      "descrizione": "Apertura straordinaria della StArt Gallery all’ex Convento di San Filippo Neri",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7517,8 +7602,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione dei testi del Concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi vincitori del concorso Mezz'ora da Ridere (Non ce lo dicono, Niurant, Comodissimo e facilissimo) ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Rappresentazione dei testi vincitori di Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi classificati nel concorso Mezz'ora da Ridere ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -7551,7 +7636,7 @@
     },
     {
       "id": "7681759f2e1b",
-      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
+      "titolo": "Mercato del piccolo antiquariato",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
