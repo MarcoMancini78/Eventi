@@ -155,6 +155,9 @@ CREATE TABLE IF NOT EXISTS events (
     url_immagine TEXT,
     url_approfondimento TEXT,
     confidenza INTEGER,
+    dettaglio_confidenza TEXT,
+    campi_incerti TEXT,
+    note_estrazione TEXT,
     stato TEXT DEFAULT 'nuovo',
     note TEXT,
     primo_visto TEXT,
@@ -285,3 +288,14 @@ def migrate(conn: sqlite3.Connection) -> None:
     if "url_approfondimento" not in colonne_events:
         conn.execute("ALTER TABLE events ADD COLUMN url_approfondimento TEXT")
         conn.commit()
+
+    # 2026-09-04, richiesto dall'utente: un evento in quarantena mostrava
+    # solo il punteggio finale di confidenza, senza spiegare quali penalità
+    # sono state applicate (comune inferito, anno non esplicito, luogo
+    # assente) né quali campi l'LLM stesso segnala come incerti — bisognava
+    # indovinare cosa mancasse per decidere se promuovere o scartare.
+    colonne_events = {r["name"] for r in conn.execute("PRAGMA table_info(events)").fetchall()}
+    for colonna in ("dettaglio_confidenza", "campi_incerti", "note_estrazione"):
+        if colonna not in colonne_events:
+            conn.execute(f"ALTER TABLE events ADD COLUMN {colonna} TEXT")
+            conn.commit()

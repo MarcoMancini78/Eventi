@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T15:44:14",
+  "generato_il": "2026-09-04T15:59:37",
   "eventi": [
     {
       "id": "215d35247178",
@@ -394,8 +394,8 @@
     },
     {
       "id": "f422e346049a",
-      "titolo": "Alessandro Barbero - La (vera) storia di San Francesco",
-      "descrizione": "Incontro con il pubblico dal titolo 'La (vera) storia di San Francesco', dedicato alla figura di San Francesco d’Assisi nell'anno dell'ottavo centenario dalla sua morte, a cura del celebre storico professore Alessandro Barbero.",
+      "titolo": "Alessandro Barbero: La (vera) storia di San Francesco",
+      "descrizione": "Incontro con il pubblico del celebre storico Alessandro Barbero, dedicato alla figura di San Francesco d'Assisi nell'anno dell'ottavo centenario dalla sua morte, ispirato al saggio pubblicato dal professore.",
       "comune": "Alessandria",
       "lat": 44.834953,
       "lon": 8.74503,
@@ -5425,6 +5425,23 @@
       "quarantena": false
     },
     {
+      "id": "b6b83c4c808b",
+      "titolo": "Aspettando Montmartre",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso 'Mezz'ora da Ridere' (in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "comune": "Cambiano",
+      "lat": 44.971416,
+      "lon": 7.778698,
+      "km": 60.5,
+      "minuti": 57.0,
+      "data_inizio": "2026-09-19",
+      "data_fine": "2026-09-19",
+      "tipologia": "teatro",
+      "url": "http://www.teatrocambiano.com/",
+      "url_approfondimento": "",
+      "fonti": "teatro-cambiano-teatro-comunale",
+      "quarantena": false
+    },
+    {
       "id": "fafd6745c314",
       "titolo": "Sagra del Tomino 2026",
       "descrizione": "Avviso rivolto agli operatori commerciali e agli hobbisti",
@@ -6787,7 +6804,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia di Ambra Angiolini.",
+      "descrizione": "Spettacolo teatrale di Stefano Benni con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, con le creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -7279,8 +7296,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione dei testi del concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi classificati al concorso Mezz'ora da Ridere ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Rappresentazione testi vincitori concorso Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi vincitori ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,

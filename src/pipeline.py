@@ -231,10 +231,20 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
         return "quarantena"  # 07.3.7: comune_ambiguo
 
     confidenza_finale = evento_estratto.confidenza + penalita_comune
+    # 2026-09-04, richiesto dall'utente: un evento in quarantena mostrava
+    # solo il punteggio finale, senza spiegare quali penalità l'hanno
+    # portato sotto soglia — bisognava indovinare cosa mancasse per
+    # decidere se promuovere o scartare.
+    dettagli_penalita = [f"confidenza LLM: {evento_estratto.confidenza}"]
+    if penalita_comune:
+        dettagli_penalita.append(f"comune inferito dalla fonte, non dal testo ({penalita_comune})")
     if not evento_estratto.anno_esplicito:
         confidenza_finale -= config.penalita_anno_non_esplicito
+        dettagli_penalita.append(f"anno non esplicito nel testo (-{config.penalita_anno_non_esplicito})")
     if not evento_estratto.luogo_testuale:
         confidenza_finale -= config.penalita_luogo_assente
+        dettagli_penalita.append(f"luogo assente (-{config.penalita_luogo_assente})")
+    dettaglio_confidenza = "; ".join(dettagli_penalita)
 
     titolo_norm = titolo_normalizzato(evento_estratto.titolo, comune_riga["comune"])
     evento = {
@@ -263,6 +273,9 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
             art.image_urls[0] if art.image_urls else None
         ),
         "confidenza": max(0, min(100, confidenza_finale)),
+        "dettaglio_confidenza": dettaglio_confidenza,
+        "campi_incerti": ", ".join(evento_estratto.campi_incerti) or None,
+        "note_estrazione": evento_estratto.note_estrazione,
     }
 
     eid = upsert_evento(conn, evento, source_id=fonte["source_id"])

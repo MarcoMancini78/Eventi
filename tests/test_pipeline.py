@@ -312,3 +312,42 @@ def test_url_approfondimento_assente_resta_null_non_indovinato():
 
     riga = conn.execute("SELECT url_approfondimento FROM events").fetchone()
     assert riga["url_approfondimento"] is None
+
+
+# --- dettaglio_confidenza / campi_incerti / note_estrazione (2026-09-04,
+# richiesto dall'utente: un evento in quarantena mostrava solo il
+# punteggio finale, senza spiegare cosa mancasse) ---
+
+_RISPOSTA_QUARANTENA_CON_DETTAGLIO = (
+    '{"eventi": [{"titolo": "Evento incerto", "descrizione": null, "tipologia": "altro", '
+    '"data_inizio": "2026-09-12", "data_fine": "2026-09-12", "ora_inizio": null, "ora_fine": null, '
+    '"ricorrenza": {"e_ricorrente": false}, "luogo_testuale": null, "comune_testuale": null, '
+    '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": false, '
+    '"confidenza": 60, "campi_incerti": ["data_inizio", "organizzatore"], '
+    '"note_estrazione": "titolo generico, poche informazioni nel post"}], '
+    '"non_e_un_evento": false, "motivo": null}'
+)
+
+
+def test_dettaglio_confidenza_e_campi_incerti_propagati_a_events():
+    conn = _conn_di_prova()
+    provider = _ProviderFinto([_RISPOSTA_QUARANTENA_CON_DETTAGLIO])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    fonte = {"source_id": "sito-prova", "metodo": "T1_html", "endpoint": "https://sito-prova.it/eventi", "comune_riferimento": "Comune Prova"}
+    html = (FIXTURES / "esempio_pagina_eventi.html").read_text(encoding="utf-8")
+
+    with patch("src.adapters.html.HtmlAdapter.fetch", return_value=parse_html(html, "sito-prova", fonte["endpoint"])):
+        pipeline.esegui_fonte(fonte, conn, Config(), extractor)
+
+    riga = conn.execute(
+        "SELECT stato, confidenza, dettaglio_confidenza, campi_incerti, note_estrazione FROM events"
+    ).fetchone()
+    assert riga["stato"] == "quarantena"
+    # comune_testuale assente -> inferito dal comune_riferimento della fonte (-10);
+    # anno non esplicito (-5, default config); luogo assente (-5, default config)
+    assert "comune inferito dalla fonte" in riga["dettaglio_confidenza"]
+    assert "anno non esplicito" in riga["dettaglio_confidenza"]
+    assert "luogo assente" in riga["dettaglio_confidenza"]
+    assert riga["campi_incerti"] == "data_inizio, organizzatore"
+    assert riga["note_estrazione"] == "titolo generico, poche informazioni nel post"

@@ -12,7 +12,7 @@ from src import publisher, store
 
 
 class _WorksheetFinto:
-    def __init__(self, righe_esistenti=None, row_count=100, col_count=27):
+    def __init__(self, righe_esistenti=None, row_count=100, col_count=31):
         self._righe_esistenti = righe_esistenti or []
         self.righe_scritte = None
         self.chiamate_format = []

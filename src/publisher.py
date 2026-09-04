@@ -93,7 +93,15 @@ def pubblica_eventi(worksheet: gspread.Worksheet, righe: list[dict]) -> None:
 # 2026-09-01, richiesto dall'utente: colonna 'azione' prevista dal modello
 # dati (03.1.2) ma mai implementata — solo sul foglio Quarantena, non su
 # Eventi/Eventi_estesi dove non avrebbe senso per eventi già confermati.
-COLONNE_QUARANTENA = COLONNE_EVENTI + ["azione"]
+# 2026-09-04, richiesto dall'utente: 'dettaglio_confidenza' (penalità
+# applicate: comune inferito, anno non esplicito, luogo assente),
+# 'campi_incerti' e 'note_estrazione' (segnalati dall'LLM stesso) — un
+# candidato in quarantena mostrava solo il punteggio finale, senza dire
+# cosa mancava per decidere se promuoverlo o scartarlo. Solo Quarantena,
+# stesso motivo di 'azione': non ha senso su eventi già confermati.
+COLONNE_QUARANTENA = COLONNE_EVENTI + [
+    "dettaglio_confidenza", "campi_incerti", "note_estrazione", "azione",
+]
 COLONNE_UTENTE_QUARANTENA = COLONNE_UTENTE | {"azione"}
 
 _VALORI_AZIONE_VALIDI = {"promuovi", "scarta", "elimina", "ignora_fonte"}
@@ -143,6 +151,13 @@ def pubblica_quarantena(worksheet: gspread.Worksheet, righe: list[dict]) -> None
             if col in utente and utente[col] != "":
                 riga_finale[col] = utente[col]
         corpo.append([riga_finale.get(col, "") for col in COLONNE_QUARANTENA])
+
+    # Stesso bug già preso per le righe della legenda (vedi sopra): un
+    # range che eccede i bordi fisici del foglio fa fallire l'intera
+    # scrittura. Con 'dettaglio_confidenza'/'campi_incerti'/
+    # 'note_estrazione' (2026-09-04) le colonne sono salite da 27 a 30.
+    if worksheet.col_count < len(COLONNE_QUARANTENA):
+        worksheet.resize(cols=len(COLONNE_QUARANTENA))
 
     worksheet.clear()
     worksheet.update([COLONNE_QUARANTENA] + corpo, value_input_option="USER_ENTERED")
@@ -718,7 +733,8 @@ def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia, e.data_inizio,
                e.ora_inizio, e.data_fine, e.ora_fine, e.serie_id, e.occorrenza, e.comune,
                e.luogo, e.km, e.minuti, e.prezzo, e.organizzatore, e.url, e.url_immagine,
-               e.url_approfondimento, e.confidenza, e.stato, e.note, e.primo_visto, e.ultimo_visto,
+               e.url_approfondimento, e.confidenza, e.dettaglio_confidenza, e.campi_incerti,
+               e.note_estrazione, e.stato, e.note, e.primo_visto, e.ultimo_visto,
                e.bloccato, e.soppressa, c.fascia
         FROM events e
         LEFT JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'

@@ -13,7 +13,10 @@ from datetime import date, datetime, timedelta
 
 from .normalizer import dedup_key, event_id, eventi_duplicati, titolo_normalizzato
 
-_CAMPI_OPZIONALI_DEFAULT = {"serie_id": None, "occorrenza": None, "url_approfondimento": None}
+_CAMPI_OPZIONALI_DEFAULT = {
+    "serie_id": None, "occorrenza": None, "url_approfondimento": None,
+    "dettaglio_confidenza": None, "campi_incerti": None, "note_estrazione": None,
+}
 
 
 def _trova_duplicato_fuzzy(
@@ -101,7 +104,8 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
                 comune=:comune, luogo=:luogo, km=:km, minuti=:minuti,
                 prezzo=:prezzo, organizzatore=:organizzatore, url=:url, url_immagine=:url_immagine,
                 url_approfondimento=:url_approfondimento,
-                confidenza=:confidenza, ultimo_visto=:oggi
+                confidenza=:confidenza, dettaglio_confidenza=:dettaglio_confidenza,
+                campi_incerti=:campi_incerti, note_estrazione=:note_estrazione, ultimo_visto=:oggi
             WHERE event_id=:event_id
             """,
             {**evento, "event_id": eid, "oggi": oggi},
@@ -113,12 +117,14 @@ def upsert_evento(conn: sqlite3.Connection, evento: dict, source_id: str) -> str
                 event_id, dedup_key, titolo, descrizione, tipologia, data_inizio,
                 ora_inizio, data_fine, ora_fine, serie_id, occorrenza, comune, luogo,
                 km, minuti, prezzo, organizzatore, url, url_immagine, url_approfondimento,
-                confidenza, stato, primo_visto, ultimo_visto, bloccato, soppressa, archiviato
+                confidenza, dettaglio_confidenza, campi_incerti, note_estrazione,
+                stato, primo_visto, ultimo_visto, bloccato, soppressa, archiviato
             ) VALUES (
                 :event_id, :dedup_key, :titolo, :descrizione, :tipologia, :data_inizio,
                 :ora_inizio, :data_fine, :ora_fine, :serie_id, :occorrenza, :comune, :luogo,
                 :km, :minuti, :prezzo, :organizzatore, :url, :url_immagine, :url_approfondimento,
-                :confidenza, 'nuovo', :oggi, :oggi, 'no', 'no', 'no'
+                :confidenza, :dettaglio_confidenza, :campi_incerti, :note_estrazione,
+                'nuovo', :oggi, :oggi, 'no', 'no', 'no'
             )
             """,
             {**evento, "event_id": eid, "dedup_key": chiave, "oggi": oggi},
