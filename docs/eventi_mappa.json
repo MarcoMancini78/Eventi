@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T21:54:07",
+  "generato_il": "2026-09-04T23:13:59",
   "eventi": [
     {
       "id": "215d35247178",
@@ -862,7 +862,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -2077,8 +2077,8 @@
     },
     {
       "id": "bd285593b4a3",
-      "titolo": "Maratona Fenogliana: Lettura ad alta voce di brani de “Il partigiano Johnny”",
-      "descrizione": "Nel contesto della Maratona Fenogliana in città, saranno letti ad alta voce brani de “Il partigiano Johnny”.",
+      "titolo": "Maratona Fenogliana - Lettura brani de “Il partigiano Johnny”",
+      "descrizione": "Nell'ambito della Maratona Fenogliana, saranno letti ad alta voce brani de “Il partigiano Johnny”.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2349,7 +2349,7 @@
     },
     {
       "id": "8393be48775c",
-      "titolo": "25° Anniversario di Fondazione del Gruppo Comunale di Protezione Civile",
+      "titolo": "25° Anniversario di Fondazione della Protezione Civile",
       "descrizione": "Il Gruppo Comunale di Protezione Civile di Quattordio festeggia il 25° anniversario di fondazione.",
       "comune": "Quattordio",
       "lat": 44.89635,
@@ -2605,7 +2605,7 @@
     {
       "id": "e4149cb6cec5",
       "titolo": "Concerto dei C.S.I.",
-      "descrizione": "Concerto di chiusura della Maratona Fenogliana in città.",
+      "descrizione": "Chiusura della Maratona Fenogliana con il concerto dei C.S.I.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2621,7 +2621,7 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
+      "titolo": "EGITTO. Sulle tracce degli dèi",
       "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti.",
       "comune": "Bra",
       "lat": 44.697678,
@@ -2995,7 +2995,7 @@
     },
     {
       "id": "8bc3003d5255",
-      "titolo": "Percorso di partecipazione per la revisione del Piano Regolatore",
+      "titolo": "Percorso di partecipazione dedicato alla revisione del Piano Regolatore",
       "descrizione": "Sei incontri dal 10 settembre al 1° ottobre per confrontarsi sulla città dei prossimi anni.",
       "comune": "Alba",
       "lat": 44.700724,
@@ -4594,7 +4594,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "A cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
+      "descrizione": "A cura dell'«IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS» di Cassine e dell'«Associazione Culturale Davide Lajolo» di Vinchio (AT) con il patrocinio del Comune di Cassine e la collaborazione del «Club per l’UNESCO di...»",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4611,7 +4611,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute. Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Divertimento e salute nel parco Atleti Azzurri d’Italia.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4899,8 +4899,8 @@
     },
     {
       "id": "ae5dfacf9b82",
-      "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
-      "descrizione": "Dal 17 al 20 settembre 2026 ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
+      "titolo": "Bra's",
+      "descrizione": "Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -7229,7 +7229,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica) aperta a tutti.",
+      "descrizione": "Lettura (pubblica), aperto a tutti",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
