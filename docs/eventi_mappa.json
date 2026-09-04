@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-04T21:00:48",
+  "generato_il": "2026-09-04T21:54:07",
   "eventi": [
     {
       "id": "215d35247178",
@@ -862,7 +862,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "sportivo",
+      "tipologia": "altro",
       "url": "https://comune.quargnento.al.it/it",
       "url_approfondimento": "",
       "fonti": "comune-quargnento",
@@ -2078,7 +2078,7 @@
     {
       "id": "bd285593b4a3",
       "titolo": "Maratona Fenogliana: Lettura ad alta voce di brani de “Il partigiano Johnny”",
-      "descrizione": "Nell'ambito della Maratona Fenogliana, saranno letti ad alta voce brani de “Il partigiano Johnny”.",
+      "descrizione": "Nel contesto della Maratona Fenogliana in città, saranno letti ad alta voce brani de “Il partigiano Johnny”.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2298,8 +2298,8 @@
     },
     {
       "id": "24663fffec26",
-      "titolo": "Serata musicale con Lui Lei L'Altro",
-      "descrizione": "Serata musicale con Lui Lei L'Altro. Dalle 19:00 apertura stand gastronomico e servizio bar.",
+      "titolo": "Lui, Lei e L'Altro",
+      "descrizione": "Spettacolo musicale nell'ambito del Settembre Spignese con apertura dello stand gastronomico alle 19:00 e show musicale alle 21:00.",
       "comune": "Spigno Monferrato",
       "lat": 44.543141,
       "lon": 8.333946,
@@ -2308,8 +2308,8 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "concerto",
-      "url": "https://www.instagram.com/p/DcyjlO7toO4/",
-      "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/783608325_18118315601489544_2303562597697235807_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzk3MDk1MjAzMTk3MDMwODQzMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KeJnpgwnDIkQ7kNvwHjRzm6&_nc_oc=AdphiNLSmlQ0ZNBD_LqPPrKjLmiKuaCGXiRx93KzYQFtXVFaMcidbfUQbc_74y4P9Bg&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=eo-ywCrKyoRaIUCl4Y07iA&_nc_ss=7a22e&oh=00_AQLuOOEPgcqENI1xtmw2wi_HMF2OAK3Ol9QmLpOxBqD98w&oe=6AA0B7DC",
+      "url": "https://www.instagram.com/p/Dc1l0UEtlrh/",
+      "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/793580712_18119628245489544_6034426331064263886_n.heic?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzk3ODI1MjE2ODUzOTI5ODUyOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=GYKkc7ct27sQ7kNvwGRAABB&_nc_oc=AdrYlCflDW00XoSfkXsfTzRgU-eHaHLW_12_ueLva7PUllJ9sjT7GHNswGYS7venxj8&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=okLLSTMSEGDFxmPmLj9mhw&_nc_ss=7a22e&oh=00_AQJGIlz6A0daOLC1ze9gSWXJEuyyXmIPw6gBHbwbmScDKA&oe=6AA0F2CD",
       "fonti": "feed-instagram-proloco_spignomonferrato",
       "quarantena": false
     },
@@ -2350,7 +2350,7 @@
     {
       "id": "8393be48775c",
       "titolo": "25° Anniversario di Fondazione del Gruppo Comunale di Protezione Civile",
-      "descrizione": "Il Gruppo Comunale di Protezione Civile di Quattordio festeggia il 25° Anniversario di Fondazione.",
+      "descrizione": "Il Gruppo Comunale di Protezione Civile di Quattordio festeggia il 25° anniversario di fondazione.",
       "comune": "Quattordio",
       "lat": 44.89635,
       "lon": 8.404941,
@@ -2605,7 +2605,7 @@
     {
       "id": "e4149cb6cec5",
       "titolo": "Concerto dei C.S.I.",
-      "descrizione": "Chiusura della Maratona Fenogliana con il concerto dei C.S.I. in piazza Medford.",
+      "descrizione": "Concerto di chiusura della Maratona Fenogliana in città.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2621,8 +2621,8 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "EGITTO. Sulle tracce degli dèi",
-      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti con il Museo Egizio.",
+      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4543,7 +4543,7 @@
     {
       "id": "6f7cb7ceec68",
       "titolo": "Cerimonia in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Cerimonia commemorativa in ricordo dell’eccidio all’ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager.",
+      "descrizione": "Cerimonia commemorativa organizzata da Comune di Alba, Associazione Beato Girotti, Centro Culturale San Giuseppe, Associazioni Combattentistiche Albesi, Gruppo ANA e ANPI di Alba.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4594,7 +4594,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno a cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio (AT) con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
+      "descrizione": "A cura dell'IRSAC Istituto per la Ricostruzione Storica delle Arti e dei Costumi APS di Cassine e dell'Associazione Culturale Davide Lajolo di Vinchio con il patrocinio del Comune di Cassine e la collaborazione del Club per l'UNESCO.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4611,7 +4611,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute dalle 10 alle 18 nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Attenzione al divertimento e alla salute. Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4747,7 +4747,7 @@
     {
       "id": "9af7cff0830e",
       "titolo": "Patrimonio culturale",
-      "descrizione": "Incontro/evento sul patrimonio culturale al Teatro Sociale G. Busca.",
+      "descrizione": "",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4900,7 +4900,7 @@
     {
       "id": "ae5dfacf9b82",
       "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
-      "descrizione": "Ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra: la città della Zizzola diventa capitale del gusto.",
+      "descrizione": "Dal 17 al 20 settembre 2026 ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -7229,7 +7229,7 @@
     {
       "id": "82a781a4e339",
       "titolo": "Canelli si racconta",
-      "descrizione": "Lettura (pubblica) aperto a tutti.",
+      "descrizione": "Lettura (pubblica) aperta a tutti.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
