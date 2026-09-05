@@ -51,7 +51,7 @@ def test_trova_link_dettaglio_dominanti_rispetta_il_limite_massimo():
     ) + "</body></html>"
     link = trova_link_dettaglio_dominanti(html, "https://x.it/programma/")
 
-    assert len(link) == 10  # _MAX_LINK_DETTAGLIO
+    assert len(link) == 15  # _MAX_LINK_DETTAGLIO
 
 
 def test_trova_link_dettaglio_dominanti_nessun_prefisso_dominante():

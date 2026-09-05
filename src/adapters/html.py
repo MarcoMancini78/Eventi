@@ -40,7 +40,12 @@ import trafilatura
 from .base import Adapter, Artefatto
 
 _TIMEOUT_SECONDI = 15
-_MAX_LINK_DETTAGLIO = 10  # limite rigido per fonte per run (04.3)
+# 2026-09-05, richiesto dall'utente (caso Alba, evento 9af7cff0830e): con
+# il fallback ora seguito sempre (non solo quando l'indice non basta),
+# 10 tagliava fuori notizie reali su siti con più di 10 news nell'indice
+# (Alba ne aveva 15-16) — alzato a 15, ancora un limite rigido per fonte
+# per run, non per pagina di dettaglio raggiunta.
+_MAX_LINK_DETTAGLIO = 15  # limite rigido per fonte per run (04.3)
 _SOGLIA_LINK_DOMINANTE = 5
 
 _PATTERN_DATA = [
