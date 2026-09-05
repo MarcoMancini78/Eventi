@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-05T08:59:45",
+  "generato_il": "2026-09-05T11:28:10",
   "eventi": [
     {
       "id": "215d35247178",
@@ -556,7 +556,7 @@
       "minuti": 52.0,
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.quargnento.al.it/it/menu/news",
       "url_approfondimento": "https://quargnento-api.municipiumapp.it/s3/720x960/s3/5600/sito/stemma.jpg",
       "fonti": "comune-quargnento",
@@ -1244,8 +1244,8 @@
     },
     {
       "id": "b2bda6aa0017",
-      "titolo": "Elezione della Bela Trifolera",
-      "descrizione": "Elezione della Bela Trifolera confermata nella splendida cornice di piazza Ferrero.",
+      "titolo": "Radio Alba Festival ed elezione della Bela Trifolera",
+      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera, a seguito del rinvio della Notte Bianca.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1873,8 +1873,8 @@
     },
     {
       "id": "bd285593b4a3",
-      "titolo": "Maratona Fenogliana: Lettura collettiva de «Il partigiano Johnny»",
-      "descrizione": "Nell'ambito della 16ª edizione della Maratona Fenogliana, lettura ad alta voce e collettiva aperta al pubblico di brani dal romanzo postumo «Il partigiano Johnny» di Beppe Fenoglio.",
+      "titolo": "Maratona Fenogliana: lettura ad alta voce de \"Il partigiano Johnny\"",
+      "descrizione": "Lettura collettiva aperta al pubblico di brani dal romanzo postumo \"Il partigiano Johnny\" nella scuola frequentata da Beppe Fenoglio, per la 16ª edizione della Maratona Fenogliana.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2061,7 +2061,7 @@
     {
       "id": "81a3b04e09b9",
       "titolo": "Mercatino di via Vittorio",
-      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre.",
+      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2278,6 +2278,23 @@
       "url_approfondimento": "",
       "fonti": "teatro-casale-monferrato-teatro-municipale",
       "quarantena": false
+    },
+    {
+      "id": "df3ef713fa46",
+      "titolo": "Settembre Bergamaschese",
+      "descrizione": "Al via domani il Settembre Bergamaschese a cura della Pro Loco di Bergamasco.",
+      "comune": "Bergamasco",
+      "lat": 44.827249,
+      "lon": 8.454743,
+      "km": 26.7,
+      "minuti": 34.0,
+      "data_inizio": "2026-09-06",
+      "data_fine": "2026-09-06",
+      "tipologia": "sagra",
+      "url": "https://www.facebook.com/proberga?__cft__[0]=AZiw90uyt5TtGfUGNjMwSz6Z4_L654BfYC_W4W2PPmZ0sH76luZSABaduJNfUWB3R-3lI1LBrFVmppue6LzNu1bHtd3Vb74yJODVhUjA5LdHJmYlxcEmxt4THS8zFMtyZnE5rhAF_o1G3uBKgLLshqCkbQkamkBAesZkmh46ce-eOkhtrgRLqpDi7WsL60UUcwC8akxSPEKovqukqvtBWPhx4FyUq7vH&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-proberga",
+      "quarantena": true
     },
     {
       "id": "1d6fa84885bd",
@@ -2537,7 +2554,7 @@
     {
       "id": "f44624985227",
       "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
-      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti.",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2588,7 +2605,7 @@
     {
       "id": "177d1c5fa01f",
       "titolo": "Concerto dei CSI",
-      "descrizione": "Evento conclusivo della Maratona Fenogliana",
+      "descrizione": "Evento conclusivo della Maratona Fenogliana organizzata dal Comune di Alba e dal Centro studi Beppe Fenoglio.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2604,8 +2621,8 @@
     },
     {
       "id": "4ec2dfb3be9c",
-      "titolo": "C.S.I. – Consorzio Suonatori Indipendenti in concerto - Tour «In viaggio»",
-      "descrizione": "Concerto dei C.S.I. (Giovanni Lindo Ferretti, Massimo Zamboni, Gianni Maroccolo, Ginevra Di Marco, Francesco Magnelli e Giorgio Canali) a trent'anni dallo storico concerto del 1996, a chiusura della Maratona Fenogliana 2026.",
+      "titolo": "C.S.I. – Consorzio Suonatori Indipendenti in concerto - Tour \"In viaggio\"",
+      "descrizione": "Concerto a chiusura della Maratona Fenogliana 2026 con Giovanni Lindo Ferretti, Massimo Zamboni, Gianni Maroccolo, Ginevra Di Marco, Francesco Magnelli e Giorgio Canali. Dal palco i C.S.I. leggeranno anche l'ultima lettura a conclusione della maratona.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3081,7 +3098,7 @@
     {
       "id": "2e8c3438ae40",
       "titolo": "Open day al Civico Istituto Musicale “Lodovico Rocca”",
-      "descrizione": "Tre giornate di open day per visitare le aule dell’Istituto, incontrare gli insegnanti, ascoltare le esibizioni di allievi ed ex-allievi e scoprire l'offerta formativa.",
+      "descrizione": "Tre giornate di Open day per visitare le aule dell’Istituto, incontrare gli insegnanti e ascoltare le esibizioni di allievi ed ex-allievi.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4135,7 +4152,7 @@
     {
       "id": "88a4b7bb0d6a",
       "titolo": "Mostra fotografica “Ricordé”",
-      "descrizione": "Oltre 30mila immagini storiche in mostra dal 12 settembre al 25 ottobre. Ingresso gratuito.",
+      "descrizione": "Oltre 30mila immagini storiche in mostra dal 12 settembre al 25 ottobre. Ingresso gratuito",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4797,8 +4814,8 @@
     },
     {
       "id": "6f7cb7ceec68",
-      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Cerimonia commemorativa in ricordo degli oltre 1.300 militari deportati nei lager in Germania, della prima vittima della lotta di Liberazione nazionale Luigi Rinaldi e dei caduti dell'eccidio all'ex Caserma Govone, con deposizione di corone d'alloro e corteo.",
+      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone e dei militari deportati nei lager",
+      "descrizione": "Cerimonia di commemorazione degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale con deposizione di corone di alloro sul monumento agli Alpini e presso l'ex Caserma Govone.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4866,7 +4883,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute. Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Attenzione al divertimento e alla salute. Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5172,7 +5189,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 con il Sindaco Alberto Gatto, la Presidente dell’Associazione Le Fabbriche del Vento Patrizia Sandretto Re Rebaudengo e il Direttore artistico Nicolas Ballario. Presentazione anche del circuito Extra per la partecipazione cittadina.",
+      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 al Teatro Sociale con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e Nicolas Ballario, oltre ai curatori dei progetti.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -5274,7 +5291,7 @@
     {
       "id": "13366e12b5af",
       "titolo": "Concerto inaugurale con l'Ares Trio",
-      "descrizione": "Serata inaugurale dell'anno scolastico del Civico Istituto Musicale con il concerto dell'Ares Trio, che apre gli appuntamenti della 49ª Stagione di Musica da Camera.",
+      "descrizione": "Serata inaugurale del nuovo anno scolastico del Civico Istituto Musicale con il concerto dell’Ares Trio, che apre la 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8316,7 +8333,7 @@
     },
     {
       "id": "8c70c0a44e91",
-      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito",
+      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito - Sua Maestà il Bue Grasso",
       "descrizione": "Torna uno degli appuntamenti più iconici del territorio: un rito antico che affonda le radici nei secoli e che ogni anno trasforma il nostro centro in una vetrina d’eccellenza per la zootecnica e l’enogastronomia.",
       "comune": "Moncalvo",
       "lat": 45.050222,
