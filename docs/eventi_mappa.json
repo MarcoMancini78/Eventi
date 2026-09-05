@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-05T06:39:07",
+  "generato_il": "2026-09-05T08:06:55",
   "eventi": [
     {
       "id": "215d35247178",
@@ -327,7 +327,7 @@
     {
       "id": "116cac097dca",
       "titolo": "Sagra dei Ceci",
-      "descrizione": "Tradizionale appuntamento storico-gastronomico dedicato alla valorizzazione del Cece della Merella (De.Co.). Stand gastronomico con piatti e preparazioni tradizionali della cucina locale a base di ceci.",
+      "descrizione": "Tradizionale Sagra dei Ceci dedicata alla valorizzazione del Cece della Merella, prodotto De.Co. di Novi Ligure. Stand gastronomico con piatti tradizionali della cucina locale a base di ceci.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -496,8 +496,8 @@
     },
     {
       "id": "7644c3149bc7",
-      "titolo": "La Mezza Notte Bianca dei Bambini",
-      "descrizione": "Lungo le vie del centro storico e Piazza Umberto I a Orbassano torna la Mezza Notte Bianca dei Bambini.",
+      "titolo": "Mezza Notte Bianca dei Bambini",
+      "descrizione": "Iniziative dedicate ai bambini con negozi aperti per shopping serale, spettacoli, punti musicali, bolle di sapone giganti, bancarelle, street food, sculture di palloncini, spettacoli di magia, laboratori circensi, mercatino dei bambini, baby dance, truccabimbi, gonfiabili, artisti di strada e trenino Walt Disney.",
       "comune": "Orbassano",
       "lat": 45.007263,
       "lon": 7.536919,
@@ -506,8 +506,8 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "bambini",
-      "url": "https://comune.orbassano.to.it/it/news",
-      "url_approfondimento": "https://orbassano-api.municipiumapp.it/s3/720x960/s3/4772/sito/stemma.jpg",
+      "url": "https://www.facebook.com/cittadiorbassano?__cft__[0]=AZhLqGvA0yfb9KAXDFvE3JPTmvasIBkwddxACCXxgaJ8F4g4yiXPvsmqTfE5uOfsnvCJKxVT95L5MVS3MQO_ipiSl2BS_k9SRjMHQCvax4Y8I1oIAFmwG1QEfwJghsc6EBIQH4nTjwGPGJdwK1BfiQtXb8syLT3bg8ZNaXUZ1R5_PL3Sos4G7KLfZsQuOcxw&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
       "fonti": "comune-orbassano, feed-facebook-cittadiorbassano",
       "quarantena": false
     },
@@ -786,7 +786,7 @@
     {
       "id": "6143eb00ecb7",
       "titolo": "Festa patronale della Beata Vergine delle Grazie",
-      "descrizione": "Festività votiva con novena, celebrazioni religiose, momenti di incontro e celebrazione della solennità della Madonna delle Grazie.",
+      "descrizione": "Festività votiva della Beata Vergine delle Grazie con celebrazioni religiose, novena, sante messe e momenti di incontro per la comunità chierese.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1125,7 +1125,7 @@
     },
     {
       "id": "97281a9aaa08",
-      "titolo": "Osservare il cielo estivo con l'Associazione Astrofili Bisalta",
+      "titolo": "Osservazione del cielo estivo con l'Associazione Astrofili Bisalta",
       "descrizione": "Appuntamento con l’Associazione Astrofili Bisalta per osservare il cielo estivo e scoprire i suoi protagonisti. Attività gratuita e aperta a tutti.",
       "comune": "Chiusa di Pesio",
       "lat": 44.32643,
@@ -1135,7 +1135,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-05",
       "tipologia": "altro",
-      "url": "https://www.facebook.com/comunedichiusadipesio?__cft__[0]=AZjau8b6fljW6FPPAeO209J0SWCUTP_85d0iyKQAfVvT2B6nj9VsUvnCUWG7_83T1cj76I_waHfaiksNR4CNuJu6pegRvHm1MkBI5I7q78cw6HbHsbae_sVlT6ILMEm1RfiCnJq-czRGY03PRFhJL8Fbhl6O6cqcKqd0mizwfUYLDwEDMU5rFyOlMwNVBGnQ&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunedichiusadipesio?__cft__[0]=AZgYKB03-VATewtpldRxjsXaYtQwDhhfazDBJhHkTv_4MykjxjzpaP97r_A9o83168ceRWs_Ed0_OJC1djBssFK9JisOPaDFYbVvdDTSpX_Jc1uuYIemMIqPtzO17HU2xKz5RFfVbGXtDtbb8AKDU2swMCz2kKuvLJCX3PsUEXeAOkUPvtGY4HPtBWEyi3iz&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunedichiusadipesio",
       "quarantena": false
@@ -1210,8 +1210,8 @@
     },
     {
       "id": "635a9f197de6",
-      "titolo": "Open Day del Museo Multimediale TraMe – Tracce Medievali in Liguria",
-      "descrizione": "Open Day per scoprire il nuovo museo multimediale e immergersi nella storia e nelle tracce medievali del territorio. Gratuito per i residenti dei Comuni della Valle Stura e Orba, con riduzioni e agevolazioni per tutti gli altri visitatori.",
+      "titolo": "Open Day del Museo Multimediale TraMe",
+      "descrizione": "Open Day del Museo Multimediale TraMe – Tracce Medievali in Liguria per scoprire il nuovo museo multimediale e la storia del territorio. Accesso gratuito per i residenti dei Comuni della Valle Stura e Orba, riduzioni e agevolazioni per gli altri visitatori. Orari: 10.30–12.00 e 16.00–18.00.",
       "comune": "Campo Ligure",
       "lat": 44.537644,
       "lon": 8.698153,
@@ -1220,7 +1220,7 @@
       "data_inizio": "2026-09-05",
       "data_fine": "2026-09-06",
       "tipologia": "mostra",
-      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZjBipxpxuQYww_TGB9cNwswJ11xtF9l9NeRdcjIGoQtaxDHnQqUjp1RX3jG_YltiYNjZW7DKx2e8QrONQFpfBqgsY3EcQBbek2e102BAzd9YijjyPMduiTABVGf7fpjhkjyxFJfF_u2PI0x4EBCEUxXLd5eGUC7ASSG_Sl2thHX6w9a_bz85s7YXHKh9Sd_tw&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comunecampoligure?__cft__[0]=AZhx8o5gBu-Es7DUNiK7lRUOl9qsRS4U1zhsopKpOJtdp1qKw8I3pfZv6pqKq6SW-Jz4hOmp366D08x9MzpeW6kHiGtkbk1zn7P3xxwwnlJTPtFhPR60sD9q3r3aN7iUQfrufgVaJwwJ1WqsFfqKHgSp9qzXErD8xs--V7XDNCh8jP0jqvkEaQcS1l7H7Usi2w&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comunecampoligure",
       "quarantena": false
@@ -1228,7 +1228,7 @@
     {
       "id": "2f5070738f65",
       "titolo": "Radio Alba Festival",
-      "descrizione": "Programmazione confermata in piazza Ferrero in occasione della serata del 5 settembre ad Alba.",
+      "descrizione": "Programmazione musicale e di intrattenimento del Radio Alba Festival, confermata in piazza Ferrero.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1244,8 +1244,8 @@
     },
     {
       "id": "b2bda6aa0017",
-      "titolo": "Radio Alba Festival ed elezione della Bela Trifolera",
-      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera.",
+      "titolo": "Elezione della Bela Trifolera",
+      "descrizione": "Tradizionale elezione della Bela Trifolera, confermata nella cornice di piazza Ferrero.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1279,7 +1279,7 @@
     {
       "id": "4bbe02f90a36",
       "titolo": "Serata eno-gastronomica con musica",
-      "descrizione": "Momento di aggregazione sociale per la valorizzazione della frazione Oriolo, la promozione delle tradizioni locali e della storia territoriale con enogastronomia e musica.",
+      "descrizione": "L’Associazione “Gli In-soliti Creativi” intende valorizzare la realtà della frazione Oriolo attraverso l’organizzazione di momenti di aggregazione sociale, la promozione delle tradizioni locali e della storia territoriale proponendo una serata eno-gastronomica con musica.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -1308,6 +1308,23 @@
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/trifolao-in-bianco-e-nero-alba",
       "url_approfondimento": "",
       "fonti": "aggregatore-visitlmr",
+      "quarantena": false
+    },
+    {
+      "id": "673bec59445f",
+      "titolo": "Concerto finale con Filarmonica Piobesina",
+      "descrizione": "Concerto finale del Campus Musicale Piobesi con la Filarmonica Piobesina.",
+      "comune": "Piobesi Torinese",
+      "lat": 44.932943,
+      "lon": 7.610123,
+      "km": 76.3,
+      "minuti": 73.0,
+      "data_inizio": "2026-09-05",
+      "data_fine": "2026-09-05",
+      "tipologia": "concerto",
+      "url": "https://www.facebook.com/comunepiobesitorinese?__cft__[0]=AZj90zgD7x6vm79v-S9sqX7OC4ZnWk_UZmJOYGnv7HwhBqSV6SJDAWnbCRXM4Z2-CnnWmZQThUB1jCrdvPXA9HgiDQtcKQqGcXCxZFYmeWf6I6_aQwmpHHEI1kLZTZkynRioQ3tw0HFT1RmflQzvi1b0c9JgR8P3MSUwPyt-BLyKf87FE62eQGiyrPJgXi4FNv9P_HEdWnSaqbzTcna4bBa8kg&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunepiobesitorinese",
       "quarantena": false
     },
     {
@@ -1721,7 +1738,7 @@
     {
       "id": "12bc519e40e5",
       "titolo": "1° Trail delle Cave",
-      "descrizione": "Domenica 6 settembre 2026 la collina buschese si prepara ad accogliere la prima edizione del “Trail delle Cave”, manifestazione organizzata dalla G.S.D. Podistica Buschese che propone un tracciato di oltre 15 km immerso nel verde.",
+      "descrizione": "Prima edizione del “Trail delle Cave”, manifestazione organizzata dalla G.S.D. Podistica Buschese che propone un tracciato di oltre 15 km immerso nel verde attraverso alcuni dei luoghi più suggestivi, tra sentieri e punti panoramici.",
       "comune": "Busca",
       "lat": 44.518132,
       "lon": 7.474328,
@@ -2044,7 +2061,7 @@
     {
       "id": "81a3b04e09b9",
       "titolo": "Mercatino di via Vittorio",
-      "descrizione": "Un appuntamento dedicato a libri, musica e cultura.",
+      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2214,7 +2231,7 @@
     {
       "id": "8734c4275b57",
       "titolo": "Magister ludi / Il cerchio non s'interrompe",
-      "descrizione": "Spettacolo teatrale nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso. Regia di Giordano Amato, produzione Il Mutamento ETS (Torino). Repliche ore 17:30 e ore 20:00.",
+      "descrizione": "Spettacolo nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso. Regia di Giordano Amato, Il Mutamento ETS (Torino). Repliche alle ore 17:30 e alle ore 20:00.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -2231,7 +2248,7 @@
     {
       "id": "e9f27dfbdd16",
       "titolo": "Festa sul Po",
-      "descrizione": "Festa sul Po a cura dell’associazione Amici del Po di Chivasso con giri turistici in barca, canoa, kajak e la collaborazione delle associazioni del territorio.",
+      "descrizione": "Festa sul Po a cura dell’associazione Amici del Po di Chivasso dalle ore 9.30 alle 18.00 con giri turistici in barca, canoa, kajak e la collaborazione delle associazioni del territorio.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -2519,7 +2536,7 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
+      "titolo": "EGITTO. Sulle tracce degli dèi",
       "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti con il Museo Egizio.",
       "comune": "Bra",
       "lat": 44.697678,
@@ -2571,7 +2588,7 @@
     {
       "id": "177d1c5fa01f",
       "titolo": "Concerto dei CSI",
-      "descrizione": "Evento conclusivo della Maratona Fenogliana organizzata dal Comune di Alba e dal Centro studi Beppe Fenoglio.",
+      "descrizione": "Concerto conclusivo della Maratona Fenogliana organizzata dal Comune di Alba e dal Centro studi Beppe Fenoglio.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3012,8 +3029,8 @@
     },
     {
       "id": "221bfbd8a7f9",
-      "titolo": "Novi d'Autore: Pista nera di Roberto Grenna",
-      "descrizione": "Presentazione del libro 'Pista nera' di Roberto Grenna nell'ambito della rassegna Novi d'Autore. Il terzo capitolo della serie noir Indagini di Provincia con i marescialli Davide Benso e Paolo Casale.",
+      "titolo": "Rassegna Novi d'Autore - Pista nera di Roberto Grenna",
+      "descrizione": "Presentazione del libro noir 'Pista nera' di Roberto Grenna (Epoké, 2026), terzo capitolo della serie Indagini di Provincia con i marescialli Davide Benso e Paolo Casale.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -3029,8 +3046,8 @@
     },
     {
       "id": "16f1d31e351d",
-      "titolo": "Cammina con noi - Gruppo di cammino Chivasso",
-      "descrizione": "Momento di socialità aperto a tutte le età e gratuito per la salute: muoversi, stare insieme e riscoprire le nostre strade. Non è una gara e non serve essere allenati.",
+      "titolo": "Cammina con noi",
+      "descrizione": "Gruppo di cammino Chivasso per la salute. Muoversi, stare insieme e riscoprire le nostre strade. Non è una gara e non serve essere allenati: un momento di socialità aperto a tutte le età.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -3251,7 +3268,7 @@
     {
       "id": "f040dd3e08ec",
       "titolo": "Sax Roots and Routes. Cent’anni di Jazz in un soffio",
-      "descrizione": "Concerto dell’orchestra giovanile Saxmania dedicato al jazz e al blues. Al termine dell'esibizione la serata proseguirà con musica da ballo. In caso di maltempo l'evento si svolgerà all'interno del centro.",
+      "descrizione": "Concerto dell’orchestra giovanile Saxmania nell'ambito del progetto CONNESSIONI. Il programma è dedicato al jazz e al blues, pensato per un pubblico di tutte le età. Al termine dell'esibizione la serata proseguirà con musica da ballo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -3472,7 +3489,7 @@
     {
       "id": "5cd53dea50b3",
       "titolo": "Orazio - Vite nude",
-      "descrizione": "Spettacolo teatrale di e con Luca Vonella nell'ambito di Arterie – Festival di Teatro Diffuso. A cura di Teatro a Canone e Il Mutamento ETS.",
+      "descrizione": "Spettacolo teatrale di e con Luca Vonella nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -3489,7 +3506,7 @@
     {
       "id": "7f756466e4c0",
       "titolo": "Malagente",
-      "descrizione": "Spettacolo teatrale nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso. Regia di Francesco Varano, Compagnia Via le sedie (Torino).",
+      "descrizione": "Spettacolo nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso. Regia di Francesco Varano, Compagnia Via le sedie (Torino).",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -3501,6 +3518,40 @@
       "url": "https://www.comune.chivasso.to.it/it/events/arterie-2026-2517130-2517136-2517142-2518202",
       "url_approfondimento": "https://chivasso-api.cloud.municipiumapp.it/s3/720x960/s3/2083/media/arterie.jpg",
       "fonti": "comune-chivasso",
+      "quarantena": false
+    },
+    {
+      "id": "0d7bf7993ecb",
+      "titolo": "Aspettando ASCO – Music & Food in Via Quadrone",
+      "descrizione": "Street food, vino, cocktail, aperitivi, musica e DJ set by Fabri Feel in area attrezzata esterna nell'ambito del Movì Music Festival.",
+      "comune": "Mondovì",
+      "lat": 44.390028,
+      "lon": 7.820472,
+      "km": 79.5,
+      "minuti": 69.0,
+      "data_inizio": "2026-09-11",
+      "data_fine": "2026-09-11",
+      "tipologia": "gastronomia",
+      "url": "https://www.facebook.com/cittadimondovi?__cft__[0]=AZgSddEVlXEGlchGFKP_f5qsb9fZwedovjHUJmAbEjwK6B2VrwHG1F5R1yvlEliBfvNF_PW-rnfP0FE19Iazbk6ogRUVlkit8MFHl1h4DmSeUD_BD9_qzVJS1SdQNKFmZa9rUdMcyMAHVOuf99Y9XhIQQ8slPgCxt-zHbpu6ku7Nyxd2CAGv1lTGToXdzEzymA&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-cittadimondovi",
+      "quarantena": false
+    },
+    {
+      "id": "09c517c0c93c",
+      "titolo": "Musicaè: Ares Trio in concerto",
+      "descrizione": "Stagione concertistica della rassegna 'Musicaè'. Sul palco l'Ares Trio (Andrea D'Amato al pianoforte, Carlotta Malquori al violino e Matteo Fabi al violoncello) con musiche di Johannes Brahms e Antonin Dvořák.",
+      "comune": "Busca",
+      "lat": 44.518132,
+      "lon": 7.474328,
+      "km": 80.9,
+      "minuti": 83.0,
+      "data_inizio": "2026-09-11",
+      "data_fine": "2026-09-11",
+      "tipologia": "concerto",
+      "url": "https://www.facebook.com/comunedibusca?__cft__[0]=AZipHvDb2QaHXkW9T1rS_cSIuCh9b0fhSv8Dg4G81V7gJCTo7Gulu1RRH7etAAk1bx_zABfmA3CaauBas1cia0nTddSyHprjHtxUEx1KzuD8SAIDezdsqGtK7tbp6jMa7T89GQ1zdntU9XJ7k-lWD_HLRnmF09Mof52ysAFSEEnPXZhJgTqdaH8-KlJjztQ_cA&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunedibusca",
       "quarantena": false
     },
     {
@@ -4118,7 +4169,7 @@
     {
       "id": "0cb8b781d8c2",
       "titolo": "Esposizione del Tesoro del Duomo",
-      "descrizione": "Presso la sacrestia del Duomo, esposizione del Tesoro del Duomo con le ritrovate statue della Madonna col Bambino e di San Giuliano. Visita introdotta e guidata da Roberto Toffanello.",
+      "descrizione": "Presso la sacrestia del Duomo, esposizione del Tesoro del Duomo con le ritrovate statue della Madonna col Bambino e di San Giuliano. Visita introdotta e guidata da Roberto Toffanello dalle ore 10.00 alle 12.00 e dalle ore 16.00 alle 18.00.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4135,7 +4186,7 @@
     {
       "id": "753d80371c80",
       "titolo": "Festa dello Sport",
-      "descrizione": "Attività pratiche al Parco Castello con l'iniziativa \"Vieni a provare il tuo sport\" per sperimentare diverse discipline sportive e \"Pompieropoli\" in Piazza XX Settembre per bambine e bambini.",
+      "descrizione": "Attività pratiche al Parco Castello con l'iniziativa 'Vieni a provare il tuo sport' e Pompieropoli in Piazza XX Settembre per bambine e bambini, con percorsi ludico-addestrativi e prove gratuite di diverse discipline sportive.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -4152,7 +4203,7 @@
     {
       "id": "68b4e9cadf75",
       "titolo": "Shakespeare questa sera/Storia di Ofelia",
-      "descrizione": "Spettacolo di Stefano Geraci a cura dell'Associazione Crocevia (Roma).",
+      "descrizione": "Spettacolo di Stefano Geraci con Associazione Crocevia (Roma)",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -4203,7 +4254,7 @@
     {
       "id": "573081030572",
       "titolo": "Concerto della Banda del Corpo Nazionale dei Vigili del Fuoco",
-      "descrizione": "Nell'ambito del Novi Musica Festival 2026, concerto bandistico dedicato al Concorso Internazionale di Composizione Novimusica con la prima esecuzione assoluta del brano vincitore dell'edizione 2025 di Giovanni Lombardi, diretto dal Maestro Donato Di Martile.",
+      "descrizione": "Nell'ambito del Novi Musica Festival 2026, concerto bandistico dedicato al Concorso Internazionale di Composizione Novimusica con la prima esecuzione assoluta dell'opera composta da Giovanni Lombardi, diretta dal Maestro Donato Di Martile.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -4232,6 +4283,40 @@
       "url": "https://comune.voghera.pv.it/it/events/da-voghera-a-new-york",
       "url_approfondimento": "https://voghera-api.municipiumapp.it/s3/720x960/s3/8018/media/locandina-evento-12-settembre.jpg",
       "fonti": "comune-voghera",
+      "quarantena": false
+    },
+    {
+      "id": "2915c7f75286",
+      "titolo": "Raviolata - Festa Patronale della S. S. Beata Vergine Maria Addolorata",
+      "descrizione": "Raviolata nell'ambito della Festa Patronale della S. S. Beata Vergine Maria Addolorata. Tutto il ricavato sarà devoluto in beneficienza alla Casa di Riposo Maria Serra di Frabosa Soprana.",
+      "comune": "Frabosa Soprana",
+      "lat": 44.287769,
+      "lon": 7.806567,
+      "km": 97.6,
+      "minuti": 89.0,
+      "data_inizio": "2026-09-12",
+      "data_fine": "2026-09-12",
+      "tipologia": "gastronomia",
+      "url": "https://www.facebook.com/frabosa?__cft__[0]=AZhuQq5T_50p2iLfe3M1kQfeWUGXdsUPY_m8iTQSoHR4q_Hx2ysLhQmITV7ianwkG8XyeIDkWl0Fqk1QMCFVIPdXULP-ng14TWJsX8TjWkZ4P4g-ABNwbcvb50jThGBdm8uj-NrZtnU0mEZlK6mnr9rNsM3X1Yw_Oh0p8fjzNymSGkxiI_I6548MD-dYqxU6nw&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-frabosa",
+      "quarantena": false
+    },
+    {
+      "id": "70807725a22a",
+      "titolo": "Una grande palestra a cielo aperto",
+      "descrizione": "Un pomeriggio per scoprire, provare e divertirsi con tanti sport. Attività per bambini e novità di quest'anno anche per gli adulti. Iscrizioni presso lo stand Famiglie a colori con consegna della tessera e un omaggio per tutti i partecipanti. Portare bicchiere o borraccia.",
+      "comune": "Chiusa di Pesio",
+      "lat": 44.32643,
+      "lon": 7.675436,
+      "km": 94.8,
+      "minuti": 85.0,
+      "data_inizio": "2026-09-12",
+      "data_fine": "2026-09-12",
+      "tipologia": "sportivo",
+      "url": "https://www.facebook.com/comunedichiusadipesio?__cft__[0]=AZiyxp06hWCA_wZBoVxFsIrgQ48xK6QaDcX_SGMw0VNO_PyLrWjiH46phw2meIOKiExVx1XqqiZUsQlndKofzAYBTqZ5ujU4onAEu_yBLdiHWWCIF-1FK3yBwxCEzZxzzDWBrQoyD5LRizjKH6n5WYjl4ihW0Ryu4zvuB9Uakn_nPUgkkXKsVbIy4zA0WPyw&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comunedichiusadipesio",
       "quarantena": false
     },
     {
@@ -4679,7 +4764,7 @@
     {
       "id": "6f7cb7ceec68",
       "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Cerimonia di commemorazione degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale, con corteo e deposizione di corone d'alloro.",
+      "descrizione": "Cerimonia in ricordo degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale, con deposizione di corone di alloro presso il monumento agli Alpini e l'ex Caserma Govone.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4747,7 +4832,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4832,7 +4917,7 @@
     {
       "id": "e769596f5d1f",
       "titolo": "MAC - Mostra Archeologica Chieri",
-      "descrizione": "Visita guidata nei diversi ambienti del piccolo museo collocato all'interno del Palazzo Civico, con reperti di diversa epoca dall'Età romana fino al basso Medioevo: terrecotte, vetri, monete e monili in metallo.",
+      "descrizione": "Visita guidata nei diversi ambienti del museo collocato all'interno del Palazzo Civico per scoprire reperti dall'Età romana fino al basso Medioevo tra terrecotte, vetri, monete e monili in metallo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4865,8 +4950,8 @@
     },
     {
       "id": "2464656fd63d",
-      "titolo": "Workshop: Castelli in aria, ma con solide radici / Nel laboratorio di Chaplin",
-      "descrizione": "All'interno di Arterie – Festival di Teatro Diffuso, workshop condotto da Stefano Geraci (Associazione Crocevia, Roma).",
+      "titolo": "Castelli in aria, ma con solide radici / Nel laboratorio di Chaplin",
+      "descrizione": "Workshop a cura di Stefano Geraci (Associazione Crocevia, Roma), nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -4882,8 +4967,8 @@
     },
     {
       "id": "0710e1c8919e",
-      "titolo": "Apertura straordinaria dell'Edificio di Presa del Canale Cavour",
-      "descrizione": "In occasione dei 160 anni del Canale Cavour, la Coutenza Canali Cavour con il patrocinio del Comune di Chivasso e la collaborazione del CFP Torassese organizza visite guidate all'Edificio di Presa. Orario mattutino dalle 10 alle 12 (ultima visita alle 11.30) e pomeridiano dalle 14 alle 18 (ultima visita alle 17.30).",
+      "titolo": "Apertura straordinaria dell'edificio di imbocco del Canale Cavour",
+      "descrizione": "In occasione dei 160 anni del Canale Cavour, visite guidate gratuite all'Edificio di Presa a cura del CFP Torassese con orario 10-12 e 14-18.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -4912,6 +4997,23 @@
       "url": "",
       "url_approfondimento": "",
       "fonti": "comune-bra",
+      "quarantena": false
+    },
+    {
+      "id": "bf2bde281915",
+      "titolo": "Torneo di Cirulla",
+      "descrizione": "Torneo di Cirulla nell'ambito della Festa Patronale della S. S. Beata Vergine Maria Addolorata. Tutto il ricavato sarà devoluto in beneficienza alla Casa di Riposo Maria Serra di Frabosa Soprana. Info e prenotazione per la Cirulla: +39 351 785 1117.",
+      "comune": "Frabosa Soprana",
+      "lat": 44.287769,
+      "lon": 7.806567,
+      "km": 97.6,
+      "minuti": 89.0,
+      "data_inizio": "2026-09-13",
+      "data_fine": "2026-09-13",
+      "tipologia": "altro",
+      "url": "https://www.facebook.com/frabosa?__cft__[0]=AZhuQq5T_50p2iLfe3M1kQfeWUGXdsUPY_m8iTQSoHR4q_Hx2ysLhQmITV7ianwkG8XyeIDkWl0Fqk1QMCFVIPdXULP-ng14TWJsX8TjWkZ4P4g-ABNwbcvb50jThGBdm8uj-NrZtnU0mEZlK6mnr9rNsM3X1Yw_Oh0p8fjzNymSGkxiI_I6548MD-dYqxU6nw&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-frabosa",
       "quarantena": false
     },
     {
@@ -5121,7 +5223,7 @@
     {
       "id": "ae5dfacf9b82",
       "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
-      "descrizione": "La città della Zizzola diventa capitale del gusto con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
+      "descrizione": "Dal 17 al 20 settembre 2026 ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5223,7 +5325,7 @@
     {
       "id": "dd9b7b6c18ce",
       "titolo": "Aspettando la Sagra",
-      "descrizione": "Appuntamenti in preparazione della Sagra del Tomino.",
+      "descrizione": "Eventi e appuntamenti in attesa della Sagra del Tomino.",
       "comune": "Rivalta di Torino",
       "lat": 45.034045,
       "lon": 7.518419,
@@ -5232,7 +5334,7 @@
       "data_inizio": "2026-09-18",
       "data_fine": "2026-09-19",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZgfDCvb7AjokmIPWG85dWP_BDe_To0X43g5UZG-tpxUS27k2EhqfjTk7s11fIAMREdwtU9rRkuJ66IINtasv4rp3kxfHWQUzuBnmBV_IdjMicrduO3VGqrJHBGrJu0KhBKdhV00Fjd62_zAKyiuLCVj2n8bXUVIZ6aKOW0mX4_sU5bR3SMgDfBEPlSwNkaG&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZhlko6jsjVQ0p1FPC6S4o9VYzzMzX_PRT_0lPBEY4sDKPE4KWpDW9GL-ZewchU12WUVxynvz6jrv8j9tombLPTp7QpEqGWOYw18d4AjP4FFYP6aj3P3qfkiwrmIlclBYyhMrtLF4VMBen1F7a1SMaBhLIHlzQod84ZU3_yuZxKQJVbdyTiDPRjRSmYoqyuI&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://www.tinyurl.com/sagra-del-tomino-2026",
       "fonti": "feed-facebook-cittadirivalta",
       "quarantena": false
@@ -5290,8 +5392,8 @@
     },
     {
       "id": "abc1e642ffaa",
-      "titolo": "Aspettando Montmartre - Premiazione concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (realizzato in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere (in ricordo di Ester Delforno): 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -5699,7 +5801,7 @@
     {
       "id": "dd7b0c8a3524",
       "titolo": "Fine del ciclo? No, inizio di un nuovo ritmo!",
-      "descrizione": "Nell'ambito della rassegna \"Dialoghi sulla salute – Incontri per una cultura del benessere\", terzo appuntamento dedicato al tema della menopausa. Un percorso immersivo nel contesto naturale del parco focalizzato su nutrizione, movimento e consapevolezza con professioniste del settore.",
+      "descrizione": "Nell'ambito della rassegna \"Dialoghi sulla salute – Incontri per una cultura del benessere\", terzo incontro dedicato al tema della menopausa: un'esperienza immersiva nella natura focalizzata su nutrizione, movimento e consapevolezza con tre professioniste del settore.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -5716,7 +5818,7 @@
     {
       "id": "0ee71af0d147",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell'ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5732,8 +5834,8 @@
     },
     {
       "id": "fafd6745c314",
-      "titolo": "Sagra del Tomino 2026",
-      "descrizione": "Avviso rivolto agli operatori commerciali e agli hobbisti",
+      "titolo": "38ª Sagra del Tomino 2026",
+      "descrizione": "Celebrazione del tomino con specialità enogastronomiche, mercatino degli hobbisti, negozi aperti, animazione per bambini, spettacoli di magia, mostre di bonsai e sculture in legno, musica dal vivo, balli folk, visite guidate al Castello, tornei sportivi.",
       "comune": "Rivalta di Torino",
       "lat": 45.034045,
       "lon": 7.518419,
@@ -5742,9 +5844,9 @@
       "data_inizio": "2026-09-20",
       "data_fine": "2026-09-20",
       "tipologia": "sagra",
-      "url": "https://www.comune.rivalta.to.it/vivere-comune/eventi",
-      "url_approfondimento": "",
-      "fonti": "comune-rivalta-di-torino",
+      "url": "https://www.facebook.com/cittadirivalta?__cft__[0]=AZhlko6jsjVQ0p1FPC6S4o9VYzzMzX_PRT_0lPBEY4sDKPE4KWpDW9GL-ZewchU12WUVxynvz6jrv8j9tombLPTp7QpEqGWOYw18d4AjP4FFYP6aj3P3qfkiwrmIlclBYyhMrtLF4VMBen1F7a1SMaBhLIHlzQod84ZU3_yuZxKQJVbdyTiDPRjRSmYoqyuI&__tn__=-UC%2CP-R",
+      "url_approfondimento": "https://www.tinyurl.com/sagra-del-tomino-2026",
+      "fonti": "comune-rivalta-di-torino, feed-facebook-cittadirivalta",
       "quarantena": false
     },
     {
@@ -6158,7 +6260,7 @@
     {
       "id": "3e4c988b2400",
       "titolo": "Il viaggio di Francesco",
-      "descrizione": "Spettacolo teatrale con drammaturgia e regia di Pino Quartullo, tratto dal romanzo di Éloi Leclerc e dalle Fonti Francescane.",
+      "descrizione": "Spettacolo teatrale con drammaturgia e regia di Pino Quartullo, ispirato al romanzo 'La sapienza di un povero' di Éloi Leclerc, integrato da testi di Gabriele Galloni e dalle Fonti Francescane. Con Giulio Tropea nei panni di San Francesco.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -6174,8 +6276,8 @@
     },
     {
       "id": "dd8f977d950a",
-      "titolo": "PedalAnPo 2026",
-      "descrizione": "Il grande evento dedicato alla mobilità sostenibile e ai territori UNESCO della Riserva MAB passa anche da Chivasso con una sosta ristoro lungo il fiume per cicloturisti e famiglie.",
+      "titolo": "PedalAnpò 2026",
+      "descrizione": "Il grande evento dedicato alla mobilità sostenibile e ai territori UNESCO della Riserva MAB passa anche da Chivasso, punto centrale dei percorsi cicloturistici, con una sosta ristoro lungo il fiume.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -6446,8 +6548,8 @@
     },
     {
       "id": "23e8752fc9ef",
-      "titolo": "Incontri al quadrato: La Divisa Bianca con Silvestro Catacchio",
-      "descrizione": "Nell'ambito del progetto CONNESSIONI, nuovo appuntamento del ciclo 'Incontri al quadrato' proposto dall'associazione I Delfini ODV con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema 'La Divisa Bianca'.",
+      "titolo": "Incontri al quadrato: La Divisa Bianca",
+      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema 'La Divisa Bianca', nell'ambito della rassegna CONNESSIONI e del ciclo proposto dall'associazione I Delfini ODV.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -6548,8 +6650,8 @@
     },
     {
       "id": "408bff64753f",
-      "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
+      "titolo": "Apertura al pubblico della StArt Gallery – Ex Convento di San Filippo Neri",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo, pensato come una galleria pubblica e partecipata, propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6566,7 +6668,7 @@
     {
       "id": "3416e035be74",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Primo appuntamento del progetto con letture condivise tra nonni e bambini dai 6 ai 10 anni, laboratori e merenda per favorire lo scambio generazionale, con la supervisione di una psicologa. Posti limitati e prenotazione obbligatoria.",
+      "descrizione": "Iniziativa per mettere in relazione nonni e bambini (6-10 anni) attraverso letture, racconti, attività laboratoriali e una merenda condivisa, con la supervisione di una psicologa. Evento gratuito con prenotazione obbligatoria.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -6600,7 +6702,7 @@
     {
       "id": "60f249bd056d",
       "titolo": "La Notte della Cultura",
-      "descrizione": "Alla scoperta dei luoghi e degli edifici storici della città di Voghera con mostre, presentazioni, visite guidate e concerti presso Biblioteca Civica Ricottiana, Museo di Scienze Naturali, Museo Storico Beccari, Casa Gallini, Ridotto del teatro V. Garavani e Chiesa di San Giuseppe.",
+      "descrizione": "Alla scoperta dei luoghi e degli edifici storici della città di Voghera, con mostre, presentazioni, aperture serali e concerti presso la Biblioteca Civica Ricottiana, il Museo di Scienze Naturali, il Museo Storico Beccari, Casa Gallini, il Ridotto del Teatro V. Garavani e la Chiesa di San Giuseppe.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -6782,6 +6884,23 @@
       "url": "",
       "url_approfondimento": "",
       "fonti": "comune-bra",
+      "quarantena": false
+    },
+    {
+      "id": "ec7bbf034da1",
+      "titolo": "Passeggiata della Vita",
+      "descrizione": "Manifestazione in programma a Dronero nell'ambito degli appuntamenti dei festeggiamenti patronali.",
+      "comune": "Dronero",
+      "lat": 44.465942,
+      "lon": 7.367256,
+      "km": 92.7,
+      "minuti": 99.0,
+      "data_inizio": "2026-09-27",
+      "data_fine": "2026-09-27",
+      "tipologia": "sportivo",
+      "url": "https://www.facebook.com/cittadidronero?__cft__[0]=AZjSYAImH99J7OGPR9RF8slG7HyzUR9kB0X9udvWNpmnzPWpl8mmsIrrBXQvhtm2uN5HToCvgKrKo25WX9f_pcNxBxGj4GqWk4DdEZpYA9z8fdZ5lYKHTGNwueGle7Cj1xDJm0AbnVZ_vrVQ7v10k6kydf6LZBpPUEjQkWhnX1kbC0hF4l2IZ0GVC7seqccbpFdzSPbLWWLS9wHwIW6JhXtQ&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-cittadidronero",
       "quarantena": false
     },
     {
@@ -7092,8 +7211,8 @@
     },
     {
       "id": "3a429504be32",
-      "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
+      "titolo": "Apertura al pubblico della StArt Gallery – Ex Convento di San Filippo Neri",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo, pensato come galleria pubblica e partecipata, propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7161,7 +7280,7 @@
     {
       "id": "edb55f574be3",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Primo appuntamento dell'iniziativa nell'ambito del progetto CONNESSIONI che mette in relazione nonni e bambini attraverso letture, racconti, attività laboratoriali e una merenda. Rivolto ai bambini dai 6 ai 10 anni con supervisione di una psicologa.",
+      "descrizione": "Incontro rivolto a nonni e bambini dai 6 ai 10 anni con letture di storie, attività laboratoriali e merenda insieme, nell'ambito del progetto CONNESSIONI.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -7229,7 +7348,7 @@
     {
       "id": "079b5172e5ca",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo, pensato come una galleria pubblica e partecipata, propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7297,7 +7416,7 @@
     {
       "id": "1df832aca264",
       "titolo": "Conferenza-Concerto: Cavalleria rusticana",
-      "descrizione": "Conferenza-concerto di presentazione per l'opera Cavalleria rusticana di Pietro Mascagni nell'ambito della Stagione 2026-2027 del Teatro Regio.",
+      "descrizione": "Conferenza-concerto legata all'allestimento dell'opera Cavalleria rusticana di Pietro Mascagni per il progetto Verismo del Teatro Regio.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -7314,7 +7433,7 @@
     {
       "id": "fd1bf8204e17",
       "titolo": "Conferenza-Concerto: Pagliacci",
-      "descrizione": "Conferenza-concerto di presentazione dell'opera Pagliacci di Ruggero Leoncavallo.",
+      "descrizione": "Incontro di presentazione e approfondimento dell'opera Pagliacci di Ruggero Leoncavallo.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -7398,8 +7517,8 @@
     },
     {
       "id": "3bba0d99a63d",
-      "titolo": "Apertura straordinaria dell'Edificio di Presa del Canale Cavour",
-      "descrizione": "In occasione dei 160 anni del Canale Cavour, la Coutenza Canali Cavour con il patrocinio del Comune di Chivasso e la collaborazione del CFP Torassese organizza visite guidate all'Edificio di Presa. Orario mattutino dalle 10 alle 12 (ultima visita alle 11.30) e pomeridiano dalle 14 alle 18 (ultima visita alle 17.30).",
+      "titolo": "Apertura straordinaria dell'edificio di imbocco del Canale Cavour",
+      "descrizione": "In occasione dei 160 anni del Canale Cavour, visite guidate gratuite all'Edificio di Presa a cura del CFP Torassese con orario 10-12 e 14-18.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -7450,7 +7569,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, con le creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità.",
+      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, con le creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità, che avrà ricostruito davanti a tutti il suo corpo e la sua umanità.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -7484,7 +7603,7 @@
     {
       "id": "60c3f8d795ec",
       "titolo": "Conferenza-Concerto: La bohème",
-      "descrizione": "Conferenza-concerto di presentazione per l'opera La bohème di Ruggero Leoncavallo.",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera La bohème di Ruggero Leoncavallo.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -7807,7 +7926,7 @@
     {
       "id": "888c9f03b28a",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell'ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7909,7 +8028,7 @@
     {
       "id": "9616fd15e27d",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Secondo appuntamento dell'iniziativa che crea un ponte tra generazioni con letture, racconti, attività laboratoriali e merenda per nonni e bambini dai 6 ai 10 anni.",
+      "descrizione": "Secondo appuntamento dell'iniziativa che mette in relazione nonni e bambini attraverso letture, laboratori e merenda condivisa.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -8078,8 +8197,8 @@
     },
     {
       "id": "be384f0d5416",
-      "titolo": "Novantico",
-      "descrizione": "",
+      "titolo": "Novantico - Gran Mercato del Piccolo Antiquariato",
+      "descrizione": "Ogni quarto sabato le bancarelle del Gran Mercato del Piccolo Antiquariato espongono arredi per la casa, dischi musicali, libri, riviste, accessori vintage, oggettistica e rarità. In questo appuntamento partecipano anche hobbisti con prodotti a tema natalizio.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -8088,8 +8207,8 @@
       "data_inizio": "2026-11-28",
       "data_fine": "2026-11-28",
       "tipologia": "fiera",
-      "url": "",
-      "url_approfondimento": "",
+      "url": "https://comune.noviligure.al.it/it/events/vediamoci-in-novi-novantico-di-aprile-682382-2511064-2511649-2513238-2513240-2513241-2513242-2513243-2513244-2513246-2513247-2513248",
+      "url_approfondimento": "https://novi-ligure-api.cloud.municipiumapp.it/s3/720x960/s3/4679/media/novantico11.jpg",
       "fonti": "comune-novi-ligure",
       "quarantena": false
     },
@@ -8282,8 +8401,8 @@
     },
     {
       "id": "bbce8630184d",
-      "titolo": "Rappresentazione dei testi vincitori del concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione dei tre testi classificati ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
+      "titolo": "Rappresentazione dei testi vincitori di Mezz'ora da ridere",
+      "descrizione": "Rappresentazione dei tre testi classificati nel concorso Mezz'ora da Ridere ('Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco, 'Comodissimo e facilissimo' di Sabrina Piazzon) ad opera del Laboratorio Teatrale di Cambiano.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -8299,8 +8418,8 @@
     },
     {
       "id": "3bfe9d3ec1f9",
-      "titolo": "Apertura al pubblico della StArt Gallery – Ex Convento di San Filippo Neri",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery nei corridoi dell'ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
+      "titolo": "Apertura al pubblico della StArt Gallery",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -8368,7 +8487,7 @@
     {
       "id": "84fa337dd120",
       "titolo": "Mostra Archeologica Chieri - MAC",
-      "descrizione": "Durante alcune campagne archeologiche, a partire dagli anni Cinquanta sono stati riportati alla luce reperti di diversa epoca: dall'Età romana fino al basso Medioevo. Terrecotte, vetri, monete e monili in metallo permettono di tornare indietro nel tempo, attraverso la visita guidata nei diversi ambienti del museo collocato all'interno del Palazzo Civico.",
+      "descrizione": "Visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico, con reperti di diversa epoca dall’Età romana fino al basso Medioevo tra cui terrecotte, vetri, monete e monili.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -8521,7 +8640,7 @@
     {
       "id": "d1e2e3ee19e1",
       "titolo": "Conferenza-Concerto: Edgar",
-      "descrizione": "Incontro di approfondimento e concerto di presentazione dell'opera Edgar di Giacomo Puccini.",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera Edgar di Giacomo Puccini presso il Foyer Toro.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -8537,8 +8656,8 @@
     },
     {
       "id": "0945056bb5c8",
-      "titolo": "Conferenza-Concerto: La traviata",
-      "descrizione": "Conferenza-concerto di presentazione dell'opera La traviata di Giuseppe Verdi presso il Foyer del Teatro Regio.",
+      "titolo": "La traviata - Conferenza-Concerto",
+      "descrizione": "Incontro di presentazione e conferenza-concerto dedicata all'opera La traviata di Giuseppe Verdi per la stagione del Teatro Regio.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -8555,7 +8674,7 @@
     {
       "id": "5a989e6a307c",
       "titolo": "Conferenza-Concerto: Carmen",
-      "descrizione": "Conferenza-concerto dedicata all'opera Carmen di Georges Bizet.",
+      "descrizione": "Incontro di presentazione e approfondimento dell'opera Carmen di Georges Bizet.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
