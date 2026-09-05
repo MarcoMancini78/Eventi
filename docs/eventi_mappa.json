@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-05T11:28:10",
+  "generato_il": "2026-09-05T12:41:57",
   "eventi": [
     {
       "id": "215d35247178",
@@ -1245,7 +1245,7 @@
     {
       "id": "b2bda6aa0017",
       "titolo": "Radio Alba Festival ed elezione della Bela Trifolera",
-      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera, a seguito del rinvio della Notte Bianca.",
+      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera, in svolgimento regolare.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1873,8 +1873,8 @@
     },
     {
       "id": "bd285593b4a3",
-      "titolo": "Maratona Fenogliana: lettura ad alta voce de \"Il partigiano Johnny\"",
-      "descrizione": "Lettura collettiva aperta al pubblico di brani dal romanzo postumo \"Il partigiano Johnny\" nella scuola frequentata da Beppe Fenoglio, per la 16ª edizione della Maratona Fenogliana.",
+      "titolo": "Maratona Fenogliana: lettura collettiva de \"Il partigiano Johnny\"",
+      "descrizione": "Lettura ad alta voce di brani dal romanzo postumo \"Il partigiano Johnny\" nella scuola frequentata da Beppe Fenoglio, aperta al pubblico.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2061,7 +2061,7 @@
     {
       "id": "81a3b04e09b9",
       "titolo": "Mercatino di via Vittorio",
-      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre",
+      "descrizione": "Un appuntamento dedicato a libri, musica e cultura. Prossime date: 4 ottobre, 8 novembre e 8 dicembre.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2553,8 +2553,8 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
-      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti",
+      "titolo": "EGITTO. Sulle tracce degli dèi",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti, con il Museo Egizio.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2605,7 +2605,7 @@
     {
       "id": "177d1c5fa01f",
       "titolo": "Concerto dei CSI",
-      "descrizione": "Evento conclusivo della Maratona Fenogliana organizzata dal Comune di Alba e dal Centro studi Beppe Fenoglio.",
+      "descrizione": "Evento conclusivo della Maratona Fenogliana.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2621,8 +2621,8 @@
     },
     {
       "id": "4ec2dfb3be9c",
-      "titolo": "C.S.I. – Consorzio Suonatori Indipendenti in concerto - Tour \"In viaggio\"",
-      "descrizione": "Concerto a chiusura della Maratona Fenogliana 2026 con Giovanni Lindo Ferretti, Massimo Zamboni, Gianni Maroccolo, Ginevra Di Marco, Francesco Magnelli e Giorgio Canali. Dal palco i C.S.I. leggeranno anche l'ultima lettura a conclusione della maratona.",
+      "titolo": "Concerto C.S.I. - Consorzio Suonatori Indipendenti: tour \"In viaggio\"",
+      "descrizione": "I C.S.I. tornano sul palco a trent'anni dallo storico concerto albese del 1996. Concluderanno la Maratona Fenogliana con la lettura dell'ultimo brano dal palco.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3098,7 +3098,7 @@
     {
       "id": "2e8c3438ae40",
       "titolo": "Open day al Civico Istituto Musicale “Lodovico Rocca”",
-      "descrizione": "Tre giornate di Open day per visitare le aule dell’Istituto, incontrare gli insegnanti e ascoltare le esibizioni di allievi ed ex-allievi.",
+      "descrizione": "Tre giornate di Open day per visitare le aule dell’Istituto, incontrare gli insegnanti, ascoltare le esibizioni di allievi ed ex-allievi e scoprire l'offerta formativa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4152,7 +4152,7 @@
     {
       "id": "88a4b7bb0d6a",
       "titolo": "Mostra fotografica “Ricordé”",
-      "descrizione": "Oltre 30mila immagini storiche in mostra dal 12 settembre al 25 ottobre. Ingresso gratuito",
+      "descrizione": "Oltre 30mila immagini storiche in mostra dal 12 settembre al 25 ottobre. Ingresso gratuito.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4814,8 +4814,8 @@
     },
     {
       "id": "6f7cb7ceec68",
-      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone e dei militari deportati nei lager",
-      "descrizione": "Cerimonia di commemorazione degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale con deposizione di corone di alloro sul monumento agli Alpini e presso l'ex Caserma Govone.",
+      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
+      "descrizione": "Commemorazione degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale. La cerimonia prevede deposizioni di corone di alloro sul monumento dedicato agli Alpini nel parco Divisione Cuneense e all'ex Caserma Govone.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4883,7 +4883,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Attenzione al divertimento e alla salute. Appuntamento domenica 13 settembre dalle 10 alle 18 nel parco Atleti Azzurri d’Italia",
+      "descrizione": "Appuntamento con il divertimento e la salute nel parco Atleti Azzurri d’Italia.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5188,8 +5188,8 @@
     },
     {
       "id": "6cd2616cd551",
-      "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 al Teatro Sociale con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e Nicolas Ballario, oltre ai curatori dei progetti.",
+      "titolo": "Presentazione del programma di Alba Capitale italiana dell'arte contemporanea 2027",
+      "descrizione": "Una serata aperta alla città per scoprire le iniziative che accompagneranno l’anno da Capitale attraverso le voci di chi ne ha immaginato e costruito i contenuti. Verrà presentato anche il circuito Extra per ampliare la partecipazione a progetti e proposte diffuse.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -5274,7 +5274,7 @@
     {
       "id": "ae5dfacf9b82",
       "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
-      "descrizione": "Dal 17 al 20 settembre 2026 ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
+      "descrizione": "Ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5290,8 +5290,8 @@
     },
     {
       "id": "13366e12b5af",
-      "titolo": "Concerto inaugurale con l'Ares Trio",
-      "descrizione": "Serata inaugurale del nuovo anno scolastico del Civico Istituto Musicale con il concerto dell’Ares Trio, che apre la 49ª Stagione di Musica da Camera.",
+      "titolo": "Concerto dell'Ares Trio - Serata inaugurale 49ª Stagione di Musica da Camera",
+      "descrizione": "Serata inaugurale del nuovo anno scolastico dell'Istituto Civico Musicale con il concerto dell'Ares Trio, che apre la 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6782,6 +6782,23 @@
       "url": "https://comune.voghera.pv.it/it/events/la-notte-della-cultura",
       "url_approfondimento": "https://voghera-api.municipiumapp.it/s3/720x960/s3/8018/media/la-notte-della-cultura.jpg",
       "fonti": "comune-voghera",
+      "quarantena": false
+    },
+    {
+      "id": "fb8fe5dc185e",
+      "titolo": "Asti Ben Essere - 13ª edizione",
+      "descrizione": "Tredicesima edizione di Asti Ben Essere",
+      "comune": "Monale",
+      "lat": 44.93605,
+      "lon": 8.071859,
+      "km": 35.5,
+      "minuti": 45.0,
+      "data_inizio": "2026-09-26",
+      "data_fine": "2026-09-26",
+      "tipologia": "fiera",
+      "url": "https://www.facebook.com/comune.monale?__cft__[0]=AZjYCKz_WPLHWYqnnJhvuzFGXMYrgGH1OKESsJ-2KDB_kAeiflAfZ6aB80UnAK46ftQO7lTk-wI7IQs4iu58aREzFlR5bYGu-LMNWjxfF12aEVCfqkowHlahI9YP7zq8miLKO6nA5YXTRvpnY2Akw7WW2JtHsTN497oafo8S4G-Nqxdv5HxU0EXnPdxS6HeT1A&__tn__=-UC%2CP-R",
+      "url_approfondimento": "",
+      "fonti": "feed-facebook-comune.monale",
       "quarantena": false
     },
     {
