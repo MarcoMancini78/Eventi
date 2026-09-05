@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-05T12:41:57",
+  "generato_il": "2026-09-05T14:00:29",
   "eventi": [
     {
       "id": "215d35247178",
@@ -1245,7 +1245,7 @@
     {
       "id": "b2bda6aa0017",
       "titolo": "Radio Alba Festival ed elezione della Bela Trifolera",
-      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera, in svolgimento regolare.",
+      "descrizione": "Programmazione confermata in piazza Ferrero con il Radio Alba Festival e l'elezione della Bela Trifolera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -1873,8 +1873,8 @@
     },
     {
       "id": "bd285593b4a3",
-      "titolo": "Maratona Fenogliana: lettura collettiva de \"Il partigiano Johnny\"",
-      "descrizione": "Lettura ad alta voce di brani dal romanzo postumo \"Il partigiano Johnny\" nella scuola frequentata da Beppe Fenoglio, aperta al pubblico.",
+      "titolo": "Maratona Fenogliana - Lettura de \"Il partigiano Johnny\"",
+      "descrizione": "Nel liceo classico frequentato da Beppe Fenoglio saranno letti ad alta voce brani dal romanzo postumo \"Il partigiano Johnny\", in una lettura collettiva aperta al pubblico.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -2282,7 +2282,7 @@
     {
       "id": "df3ef713fa46",
       "titolo": "Settembre Bergamaschese",
-      "descrizione": "Al via domani il Settembre Bergamaschese a cura della Pro Loco di Bergamasco.",
+      "descrizione": "Iniziativa a cura della Pro Loco di Bergamasco. Citata la data dell'otto settembre e l'intrattenimento con Filippo Carioca.",
       "comune": "Bergamasco",
       "lat": 44.827249,
       "lon": 8.454743,
@@ -2291,7 +2291,7 @@
       "data_inizio": "2026-09-06",
       "data_fine": "2026-09-06",
       "tipologia": "sagra",
-      "url": "https://www.facebook.com/proberga?__cft__[0]=AZiw90uyt5TtGfUGNjMwSz6Z4_L654BfYC_W4W2PPmZ0sH76luZSABaduJNfUWB3R-3lI1LBrFVmppue6LzNu1bHtd3Vb74yJODVhUjA5LdHJmYlxcEmxt4THS8zFMtyZnE5rhAF_o1G3uBKgLLshqCkbQkamkBAesZkmh46ce-eOkhtrgRLqpDi7WsL60UUcwC8akxSPEKovqukqvtBWPhx4FyUq7vH&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/proberga?__cft__[0]=AZhzrmypQQX0dELbCYU96EB8p0v0a1EHQ5zmZU5OAyU9KWoDIqHnBT0qIjfPXBjB5CDFlBi9bSDYB9L_Dzqa-mdeiOLn8w20BMjfBiJM9aINvkVPUV3DLLNjaWEvjCiKBNbYjpLZNXVvKdu-BET8OtoNYYFHoXNw6zFXKgzzPbzTRno3KBBNkFQpWIcALC1fV0DLvwIiaxUM_ZLPdoUdwbjuIk7UAO_0&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-proberga",
       "quarantena": true
@@ -2553,8 +2553,8 @@
     },
     {
       "id": "f44624985227",
-      "titolo": "EGITTO. Sulle tracce degli dèi",
-      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti, con il Museo Egizio.",
+      "titolo": "Mostra “EGITTO. Sulle tracce degli dèi” con il Museo Egizio",
+      "descrizione": "Dall’8 settembre al 6 gennaio Palazzo Mathis ospita un percorso unico, tra reperti e amuleti inediti.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2621,8 +2621,8 @@
     },
     {
       "id": "4ec2dfb3be9c",
-      "titolo": "Concerto C.S.I. - Consorzio Suonatori Indipendenti: tour \"In viaggio\"",
-      "descrizione": "I C.S.I. tornano sul palco a trent'anni dallo storico concerto albese del 1996. Concluderanno la Maratona Fenogliana con la lettura dell'ultimo brano dal palco.",
+      "titolo": "Concerto C.S.I. – Consorzio Suonatori Indipendenti \"In viaggio\"",
+      "descrizione": "I C.S.I. tornano sul palco con il tour \"In viaggio\". Dal palco leggeranno anche l’ultima lettura a conclusione della Maratona Fenogliana 2026, a trent'anni dal concerto del 1996.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3098,7 +3098,7 @@
     {
       "id": "2e8c3438ae40",
       "titolo": "Open day al Civico Istituto Musicale “Lodovico Rocca”",
-      "descrizione": "Tre giornate di Open day per visitare le aule dell’Istituto, incontrare gli insegnanti, ascoltare le esibizioni di allievi ed ex-allievi e scoprire l'offerta formativa.",
+      "descrizione": "Tre giornate di Open Day per visitare le aule dell’Istituto, incontrare gli insegnanti, ascoltare le esibizioni di allievi ed ex-allievi e scoprire l'offerta formativa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4814,8 +4814,8 @@
     },
     {
       "id": "6f7cb7ceec68",
-      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Commemorazione degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale. La cerimonia prevede deposizioni di corone di alloro sul monumento dedicato agli Alpini nel parco Divisione Cuneense e all'ex Caserma Govone.",
+      "titolo": "Cerimonia in ricordo dell'eccidio all'ex caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
+      "descrizione": "Cerimonia di commemorazione in memoria degli oltre 1.300 militari deportati nei lager in Germania, di Luigi Rinaldi e dei caduti della lotta di Liberazione. Prevista la deposizione di corone d'alloro al monumento degli Alpini e presso l'ex Caserma Govone.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4883,7 +4883,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Appuntamento con il divertimento e la salute nel parco Atleti Azzurri d’Italia.",
+      "descrizione": "Attenzione al divertimento e alla salute nel parco Atleti Azzurri d’Italia.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5188,8 +5188,8 @@
     },
     {
       "id": "6cd2616cd551",
-      "titolo": "Presentazione del programma di Alba Capitale italiana dell'arte contemporanea 2027",
-      "descrizione": "Una serata aperta alla città per scoprire le iniziative che accompagneranno l’anno da Capitale attraverso le voci di chi ne ha immaginato e costruito i contenuti. Verrà presentato anche il circuito Extra per ampliare la partecipazione a progetti e proposte diffuse.",
+      "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
+      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027, con la partecipazione del Sindaco Alberto Gatto, della Presidente Patrizia Sandretto Re Rebaudengo e del Direttore artistico Nicolas Ballario, oltre ai curatori dei progetti.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -5274,7 +5274,7 @@
     {
       "id": "ae5dfacf9b82",
       "titolo": "Bra's - Festival della salsiccia, del formaggio, del pane e del riso di Bra",
-      "descrizione": "Ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra.",
+      "descrizione": "Ritorna l’appuntamento con il Festival della salsiccia, del formaggio, del pane e del riso di Bra: la città della Zizzola diventa capitale del gusto.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -5292,6 +5292,23 @@
       "id": "13366e12b5af",
       "titolo": "Concerto dell'Ares Trio - Serata inaugurale 49ª Stagione di Musica da Camera",
       "descrizione": "Serata inaugurale del nuovo anno scolastico dell'Istituto Civico Musicale con il concerto dell'Ares Trio, che apre la 49ª Stagione di Musica da Camera.",
+      "comune": "Alba",
+      "lat": 44.700724,
+      "lon": 8.035779,
+      "km": 24.3,
+      "minuti": 32.0,
+      "data_inizio": "2026-09-17",
+      "data_fine": "2026-09-17",
+      "tipologia": "concerto",
+      "url": "https://comune.alba.cn.it/it/news/open-day-al-civico-istituto-musicale-di-alba-e-concerto-inaugurale-del-nuovo-anno-scolastico",
+      "url_approfondimento": "https://www.comune.alba.cn.it/it/page/civico-istituto-musicale-lodovico-rocca-1",
+      "fonti": "comune-alba",
+      "quarantena": false
+    },
+    {
+      "id": "7feb9a61eb01",
+      "titolo": "Serata inaugurale dell'anno scolastico: Concerto dell’Ares Trio",
+      "descrizione": "Concerto dell’Ares Trio per la serata inaugurale dell’anno scolastico dell'Istituto Civico Musicale, evento che apre gli appuntamenti della 49ª Stagione di Musica da Camera.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6786,8 +6803,8 @@
     },
     {
       "id": "fb8fe5dc185e",
-      "titolo": "Asti Ben Essere - 13ª edizione",
-      "descrizione": "Tredicesima edizione di Asti Ben Essere",
+      "titolo": "Asti Ben Essere - 13ª Edizione",
+      "descrizione": "Tredicesima edizione di Asti Ben Essere.",
       "comune": "Monale",
       "lat": 44.93605,
       "lon": 8.071859,
@@ -6796,7 +6813,7 @@
       "data_inizio": "2026-09-26",
       "data_fine": "2026-09-26",
       "tipologia": "fiera",
-      "url": "https://www.facebook.com/comune.monale?__cft__[0]=AZjYCKz_WPLHWYqnnJhvuzFGXMYrgGH1OKESsJ-2KDB_kAeiflAfZ6aB80UnAK46ftQO7lTk-wI7IQs4iu58aREzFlR5bYGu-LMNWjxfF12aEVCfqkowHlahI9YP7zq8miLKO6nA5YXTRvpnY2Akw7WW2JtHsTN497oafo8S4G-Nqxdv5HxU0EXnPdxS6HeT1A&__tn__=-UC%2CP-R",
+      "url": "https://www.facebook.com/comune.monale?__cft__[0]=AZjSm9dKzlEDDcrNK1Y8k1dRROoaFKMY4Vtu-eERgSq3IGLvInD4pQFyqE2SGi--w-kwas2S-ypVbTC9VcRajbx8gsBjW8LACuys7BDlARxvDBspv9j4D23mvbfaTIvtiuf1Vp3Nko2-jXjEQO8-8WJtI9ms_ac2AdapdYoW6A_QvxHa2myAOnNJfQ0RKoZi7Q&__tn__=-UC%2CP-R",
       "url_approfondimento": "",
       "fonti": "feed-facebook-comune.monale",
       "quarantena": false
@@ -8350,7 +8367,7 @@
     },
     {
       "id": "8c70c0a44e91",
-      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito - Sua Maestà il Bue Grasso",
+      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito",
       "descrizione": "Torna uno degli appuntamenti più iconici del territorio: un rito antico che affonda le radici nei secoli e che ogni anno trasforma il nostro centro in una vetrina d’eccellenza per la zootecnica e l’enogastronomia.",
       "comune": "Moncalvo",
       "lat": 45.050222,
