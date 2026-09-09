@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-09T06:14:34",
+  "generato_il": "2026-09-09T07:12:11",
   "eventi": [
     {
       "id": "394b74c48e3e",
@@ -536,7 +536,7 @@
     {
       "id": "ea9f7a26e0ce",
       "titolo": "La giunta incontra il quartiere Piave",
-      "descrizione": "La giunta comunale di Alba incontra i cittadini del Quartiere Piave per proseguire il dialogo diretto tra cittadini e amministratori, affrontare temi di interesse locale, presentare proposte e segnalare criticità.",
+      "descrizione": "Incontro dell'Amministrazione comunale di Alba con i residenti e i Comitati di Quartiere Piave per affrontare i temi di interesse locale, presentare proposte e segnalare criticità.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3442,7 +3442,7 @@
     },
     {
       "id": "496c1d8f16ee",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -4031,8 +4031,8 @@
     },
     {
       "id": "6f7cb7ceec68",
-      "titolo": "Cerimonia in ricordo dei militari deportati nei lager e dell'eccidio all'ex Caserma Govone",
-      "descrizione": "Cerimonia e corteo in memoria degli oltre 1.300 militari deportati nei lager in Germania, di Luigi Rinaldi e dei caduti della Resistenza, con deposizione di corone di alloro presso il monumento agli Alpini e all'ex Caserma Govone.",
+      "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
+      "descrizione": "Cerimonia in memoria degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale. Inizia alle ore 11.30 con la deposizione di una corona sul monumento agli Alpini nel parco Divisione Cuneense, seguita da un corteo fino all'ex Caserma Govone con deposizione di corone sulle lapidi commemorative.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4088,8 +4088,8 @@
     },
     {
       "id": "da2e62593e0a",
-      "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno dedicato alle figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali e cartografi del XVIII secolo. Con relazioni di storici e studiosi e la proiezione di un video sui globi di Padre Pietro Maria da Vinchio.",
+      "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato",
+      "descrizione": "Convegno dedicato alle figure di due Frati Francescani originari di Cassine e Vinchio che nel XVIII secolo furono insigni intellettuali e cartografi. Interventi di esperti e proiezione di un video sui globi terrestri e celesti.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -5133,7 +5133,7 @@
     },
     {
       "id": "d228620c8e5a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -6673,7 +6673,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Programma con esibizione dei Tamburini di Canelli, presentazione della mappa 'I Cru di Enogea: Canelli Docg', stand enogastronomici, serate danzanti con orchestra, milonga, visite al Museo MuSa e degustazioni all'Enoteca Regionale.",
+      "descrizione": "Due giorni di eventi a Canelli con tamburini, presentazione della mappa 'I Cru di Enogea: Canelli Docg', stand enogastronomici, serate danzanti con orchestra e Universal Dance, milonga, visite al Museo MuSa e degustazioni di vini e tapas all'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -6919,7 +6919,7 @@
     },
     {
       "id": "a44937f26064",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7660,7 +7660,7 @@
     },
     {
       "id": "2864d66acee5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7984,7 +7984,7 @@
     {
       "id": "46ffa40b4e5d",
       "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
-      "descrizione": "Inaugurazione ufficiale della rinnovata e riqualificata pista di atletica dello stadio comunale Augusto Manzo, nel quartiere San Cassiano.",
+      "descrizione": "Inaugurazione ufficiale della rinnovata pista di atletica dello stadio comunale Augusto Manzo a San Cassiano, alla presenza dell'amministrazione comunale e delle società sportive.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8515,7 +8515,7 @@
     },
     {
       "id": "7a979d2828f4",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -8895,7 +8895,7 @@
     },
     {
       "id": "be8ebcf4806a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9199,7 +9199,7 @@
     },
     {
       "id": "f17da9bce906",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9370,7 +9370,7 @@
     },
     {
       "id": "70606b0d115c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9693,7 +9693,7 @@
     },
     {
       "id": "7f4cc97627f0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9921,7 +9921,7 @@
     },
     {
       "id": "aae63be78cb0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10092,7 +10092,7 @@
     },
     {
       "id": "b50bfda62053",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10244,7 +10244,7 @@
     },
     {
       "id": "eb5bdbefffae",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10472,7 +10472,7 @@
     },
     {
       "id": "c2e3540bcaf5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10548,7 +10548,7 @@
     },
     {
       "id": "84ad5d737596",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
