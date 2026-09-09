@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-09T03:37:23",
+  "generato_il": "2026-09-09T04:11:34",
   "eventi": [
     {
       "id": "394b74c48e3e",
@@ -308,7 +308,7 @@
     {
       "id": "f44624985227",
       "titolo": "EGITTO. Sulle tracce degli dèi",
-      "descrizione": "Mostra promossa dal Comune di Bra in collaborazione con il Museo Egizio, con reperti e amuleti inediti che guidano alla scoperta delle divinità del pantheon egizio, del ruolo del sovrano e della cultura materiale dell'antico Egitto.",
+      "descrizione": "Mostra che pone al centro reperti e amuleti inediti provenienti dai magazzini del Museo Egizio, guidando alla scoperta delle divinità del pantheon egizio, del ruolo del sovrano e della cultura materiale dell'antico Egitto.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -536,7 +536,7 @@
     {
       "id": "ea9f7a26e0ce",
       "titolo": "La giunta incontra il quartiere Piave",
-      "descrizione": "La giunta comunale di Alba incontra i cittadini del Quartiere Piave. Nel corso della serata sarà possibile presentare proposte, segnalare eventuali criticità e condividere le necessità del quartiere direttamente con il sindaco e gli assessori.",
+      "descrizione": "Incontro dell'Amministrazione comunale di Alba con i residenti e il Comitato di Quartiere Piave per affrontare e approfondire i temi di interesse locale, presentare proposte e segnalare criticità.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3442,7 +3442,7 @@
     },
     {
       "id": "496c1d8f16ee",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -4032,7 +4032,7 @@
     {
       "id": "6f7cb7ceec68",
       "titolo": "Cerimonia in ricordo dell'eccidio all'ex Caserma Govone, di Luigi Rinaldi e dei soldati deportati nei lager",
-      "descrizione": "Commemorazione degli oltre 1.300 militari deportati nei lager in Germania con deposizione di corone di alloro sul monumento dedicato agli Alpini nel parco Divisione Cuneense e presso l'ex Caserma Govone sulle lapidi dedicate a Luigi Rinaldi, Gianfranco Caccia, Attilio Bonalumi e Gennaro Sangiano.",
+      "descrizione": "Cerimonia in ricordo degli oltre 1.300 militari deportati nei lager in Germania e delle vittime della lotta di Liberazione nazionale. Inizio alle ore 11.30 con la deposizione di una corona di alloro sul monumento dedicato agli Alpini nel parco Divisione Cuneense, a seguire corteo verso l'ex Caserma Govone con deposizione di corone di alloro sulle lapidi commemorative.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4089,7 +4089,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Iniziativa per valorizzare le figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali e cartografi nel XVIII secolo. Include relazioni e la proiezione del video «Rappresentare l'universo. I globi terrestri e celesti di Padre Pietro Maria da Vinchio e il suo tempo».",
+      "descrizione": "Convegno dedicato alle figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali, cartografi e costruttori di globi. Con relazioni di Ezio Claudio Pia, Francesco Scalfari e Domenico Bussi, e proiezione del video di Lucio Laugelli.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4108,7 +4108,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Vetrina dell'offerta sportiva proposta dalle associazioni del territorio per scoprire e sperimentare discipline sportive. Ritrovo alle 9:30 in piazza Caduti per la Libertà con partenza verso gli impianti sportivi del Parco Atleti Azzurri d’Italia, stand con dimostrazioni e prove pratiche, animazione di Radio Bra on the Rocks ed estrazione premi.",
+      "descrizione": "Vetrina dell'offerta sportiva proposta dalle associazioni del territorio con dimostrazioni e prove per sperimentare diverse discipline sportive, intrattenimento musicale, estrazione premi per under 18 e spazi dedicati alla salute e prevenzione.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4943,7 +4943,7 @@
     },
     {
       "id": "0e5503365ea8",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -6673,7 +6673,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Programma di festeggiamenti con esibizione dei Tamburini di Canelli, presentazione della mappa dei Cru del Canelli Docg, apertura stand enogastronomici, serate danzanti con orchestre e musica dal vivo, milonga pomeridiana, visite al museo MuSa e degustazioni all'Enoteca Regionale.",
+      "descrizione": "Due giornate di eventi con stand enogastronomici, musica dal vivo con Daniela Cavanna, Marco Zeta e Bruno Mauro, milonga pomeridiana, degustazioni all'Enoteca Regionale e visite al Museo MUSA.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -6919,7 +6919,7 @@
     },
     {
       "id": "a44937f26064",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7660,7 +7660,7 @@
     },
     {
       "id": "2864d66acee5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7984,7 +7984,7 @@
     {
       "id": "46ffa40b4e5d",
       "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
-      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo, rinnovata e riqualificata nell'ambito dell'intervento promosso dall'Amministrazione comunale.",
+      "descrizione": "Inaugurazione ufficiale della rinnovata pista di atletica dello stadio comunale Augusto Manzo nel quartiere San Cassiano.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8515,7 +8515,7 @@
     },
     {
       "id": "7a979d2828f4",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -8895,7 +8895,7 @@
     },
     {
       "id": "be8ebcf4806a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9199,7 +9199,7 @@
     },
     {
       "id": "f17da9bce906",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9370,7 +9370,7 @@
     },
     {
       "id": "70606b0d115c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9693,7 +9693,7 @@
     },
     {
       "id": "7f4cc97627f0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9921,7 +9921,7 @@
     },
     {
       "id": "aae63be78cb0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10092,7 +10092,7 @@
     },
     {
       "id": "b50bfda62053",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10244,7 +10244,7 @@
     },
     {
       "id": "eb5bdbefffae",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10472,7 +10472,7 @@
     },
     {
       "id": "c2e3540bcaf5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10548,7 +10548,7 @@
     },
     {
       "id": "84ad5d737596",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio” di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10986,7 +10986,7 @@
     {
       "id": "52ecfaffa55b",
       "titolo": "Fiera Nazionale del Tartufo e Fiera di San Martin",
-      "descrizione": "La prima dedicata alle eccellenze e l'enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
+      "descrizione": "La prima dedicata alle eccellenze e l’enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -11536,7 +11536,7 @@
     },
     {
       "id": "8c70c0a44e91",
-      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito - Sua Maestà il Bue Grasso",
+      "titolo": "388° Fiera Nazionale del Bue Grasso e Sagra del Bollito",
       "descrizione": "Torna uno degli appuntamenti più iconici del territorio: un rito antico che affonda le radici nei secoli e che ogni anno trasforma il nostro centro in una vetrina d’eccellenza per la zootecnica e l’enogastronomia.",
       "comune": "Moncalvo",
       "lat": 45.050222,
