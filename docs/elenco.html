@@ -227,6 +227,14 @@ function formattaDataItalianaBreve(iso) {
   return `${giorno}/${mese}/${anno}`;
 }
 
+function dataOdiernaIso() {
+  const oggi = new Date();
+  const anno = oggi.getFullYear();
+  const mese = String(oggi.getMonth() + 1).padStart(2, "0");
+  const giorno = String(oggi.getDate()).padStart(2, "0");
+  return `${anno}-${mese}-${giorno}`;
+}
+
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -368,6 +376,7 @@ document.querySelectorAll("thead th[data-colonna]").forEach((th) => {
   });
 });
 
+document.getElementById("filtro-data").value = dataOdiernaIso();
 caricaEventi();
 </script>
 
