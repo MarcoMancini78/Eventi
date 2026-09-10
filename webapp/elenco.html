@@ -131,7 +131,7 @@
     flex-wrap: wrap;
     box-shadow: var(--shadow-sm);
     position: sticky;
-    top: 60px;
+    top: var(--altezza-header, 0px);
     z-index: 15;
   }
 
@@ -218,7 +218,7 @@
     background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
-    overflow: hidden;
+    overflow: visible;
     border: 1px solid var(--border);
   }
 
@@ -230,7 +230,7 @@
 
   thead th {
     position: sticky;
-    top: 0;
+    top: var(--altezza-fissa, 0px);
     background: var(--surface-2);
     text-align: left;
     padding: 13px 16px;
@@ -248,6 +248,10 @@
   thead th:hover { color: var(--accent); }
   thead th.col-numero { cursor: default; text-align: right; }
   thead th.col-numero:hover { color: var(--text-2); }
+  thead th:first-child { border-top-left-radius: var(--radius); }
+  thead th:last-child { border-top-right-radius: var(--radius); }
+  tbody tr:last-child td:first-child { border-bottom-left-radius: var(--radius); }
+  tbody tr:last-child td:last-child { border-bottom-right-radius: var(--radius); }
 
   .icona-ordinamento {
     display: inline-block;
@@ -375,7 +379,7 @@
   @media (max-width: 760px) {
     header { padding: 12px 16px; }
     .sottotitolo { display: none; }
-    .barra-filtri { top: 56px; padding: 12px 16px; gap: 10px; }
+    .barra-filtri { padding: 12px 16px; gap: 10px; }
     main { padding: 16px 16px 28px; }
     .campo-filtro { flex: 1 1 45%; }
     button#btn-reset { flex: 1 1 100%; order: 5; }
@@ -671,6 +675,16 @@ document.querySelectorAll("thead th[data-colonna]").forEach((th) => {
     applicaFiltri();
   });
 });
+
+function aggiornaAltezzaFissa() {
+  const header = document.querySelector("header");
+  const filtri = document.querySelector(".barra-filtri");
+  document.documentElement.style.setProperty("--altezza-header", `${header.offsetHeight}px`);
+  document.documentElement.style.setProperty("--altezza-fissa", `${header.offsetHeight + filtri.offsetHeight}px`);
+}
+
+window.addEventListener("resize", aggiornaAltezzaFissa);
+aggiornaAltezzaFissa();
 
 document.getElementById("filtro-data").value = dataOdiernaIso();
 caricaEventi();
