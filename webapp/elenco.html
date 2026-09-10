@@ -272,6 +272,14 @@
   .col-titolo { min-width: 240px; font-weight: 600; }
   .col-descrizione { min-width: 280px; color: var(--text-2); font-weight: 400; }
   .col-numero { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent-dark); white-space: nowrap; }
+  .col-numero-progressivo {
+    text-align: right;
+    color: var(--text-3);
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    width: 1%;
+    white-space: nowrap;
+  }
 
   .badge-tipo {
     display: inline-block;
@@ -335,11 +343,19 @@
     gap: 12px;
     margin-bottom: 8px;
   }
+  .scheda-evento .numero-progressivo {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-3);
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
   .scheda-evento .titolo-evento {
     font-weight: 700;
     font-size: 15px;
     line-height: 1.35;
     letter-spacing: -.01em;
+    flex: 1;
   }
   .scheda-evento .km-evento {
     font-size: 12px;
@@ -429,6 +445,7 @@
     <table id="tabella-eventi">
       <thead>
         <tr>
+          <th class="col-numero-progressivo">#</th>
           <th data-colonna="titolo">Titolo<span class="icona-ordinamento"></span></th>
           <th data-colonna="tipologia">Tipo<span class="icona-ordinamento"></span></th>
           <th data-colonna="comune">Comune<span class="icona-ordinamento"></span></th>
@@ -580,17 +597,18 @@ function disegnaTabella(filtrati) {
 
   if (filtrati.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="8" class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</td>`;
+    tr.innerHTML = `<td colspan="9" class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</td>`;
     corpo.appendChild(tr);
     return;
   }
 
-  for (const ev of filtrati) {
+  filtrati.forEach((ev, indice) => {
     const tr = document.createElement("tr");
     const linkFonte = ev.url
       ? `<a class="link-fonte" href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a>`
       : "";
     tr.innerHTML = `
+      <td class="col-numero-progressivo">${indice + 1}</td>
       <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
       <td><span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span></td>
       <td>${escapeHtml(ev.comune || "")}</td>
@@ -601,7 +619,7 @@ function disegnaTabella(filtrati) {
       <td>${linkFonte}</td>
     `;
     corpo.appendChild(tr);
-  }
+  });
 }
 
 function disegnaCard(filtrati) {
@@ -613,7 +631,7 @@ function disegnaCard(filtrati) {
     return;
   }
 
-  for (const ev of filtrati) {
+  filtrati.forEach((ev, indice) => {
     const periodo = ev.data_fine && ev.data_fine !== ev.data_inizio
       ? `${formattaDataItalianaBreve(ev.data_inizio)} → ${formattaDataItalianaBreve(ev.data_fine)}`
       : formattaDataItalianaBreve(ev.data_inizio);
@@ -624,6 +642,7 @@ function disegnaCard(filtrati) {
     scheda.className = "scheda-evento";
     scheda.innerHTML = `
       <div class="riga-alto">
+        <span class="numero-progressivo">${indice + 1}</span>
         <div class="titolo-evento">${ev.quarantena ? '<span class="badge-quarantena">⚠️</span>' : ""}${escapeHtml(ev.titolo || "")}</div>
         ${ev.km != null ? `<div class="km-evento">${ev.km} km</div>` : ""}
       </div>
@@ -638,7 +657,7 @@ function disegnaCard(filtrati) {
       ${linkFonte ? `<div class="riga-basso">${linkFonte}</div>` : ""}
     `;
     contenitore.appendChild(scheda);
-  }
+  });
 }
 
 function aggiornaConteggio(n) {
