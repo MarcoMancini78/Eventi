@@ -4,27 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eventi Langhe — Elenco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f3f1ea;
+    --bg: #f2f0e9;
     --surface: #ffffff;
-    --surface-2: #faf9f5;
-    --border: #e2ddce;
-    --border-strong: #cfc8b3;
-    --text: #23211d;
-    --text-2: #6b6558;
-    --text-3: #948c78;
-    --accent: #5c6b3f;
-    --accent-dark: #46512f;
-    --accent-soft: #eef1e6;
-    --shadow: 0 1px 2px rgba(35, 33, 29, .04), 0 4px 16px rgba(35, 33, 29, .05);
-    --shadow-card: 0 1px 3px rgba(35, 33, 29, .06), 0 1px 2px rgba(35, 33, 29, .04);
+    --surface-2: #f8f7f2;
+    --border: #e5e0d3;
+    --border-strong: #d3ccb8;
+    --text: #211f1a;
+    --text-2: #63594a;
+    --text-3: #9a917c;
+    --accent: #4f6b3f;
+    --accent-dark: #33482a;
+    --accent-bright: #7a9a5f;
+    --accent-soft: #e7edde;
+    --shadow-sm: 0 1px 2px rgba(30, 27, 18, .05);
+    --shadow-md: 0 4px 16px rgba(30, 27, 18, .06), 0 1px 3px rgba(30, 27, 18, .05);
+    --shadow-lg: 0 12px 32px rgba(30, 27, 18, .10), 0 2px 6px rgba(30, 27, 18, .06);
+    --radius: 14px;
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
   body {
-    font-family: -apple-system, "Segoe UI", sans-serif;
-    background: var(--bg);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(1100px 480px at 100% -10%, #eef2e4 0%, transparent 55%),
+      radial-gradient(900px 420px at -10% 0%, #f4f1e6 0%, transparent 50%),
+      var(--bg);
     color: var(--text);
     display: flex;
     flex-direction: column;
@@ -32,145 +41,183 @@
   }
 
   header {
-    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    background: linear-gradient(120deg, var(--accent-dark) 0%, var(--accent) 55%, var(--accent-bright) 130%);
     color: #fff;
-    padding: 12px 20px;
+    padding: 16px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: var(--shadow-md);
   }
 
   .titolo-pagina {
     display: flex;
-    flex-direction: column;
-    gap: 1px;
+    align-items: center;
+    gap: 10px;
     min-width: 0;
   }
 
+  .logo-punto {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(255,255,255,.22);
+    flex-shrink: 0;
+  }
+
   h1 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -.01em;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
     margin: 0;
     white-space: nowrap;
     color: #fff;
   }
 
   .sottotitolo {
-    font-size: 11.5px;
-    color: rgba(255,255,255,.72);
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,.75);
     white-space: nowrap;
+    padding-left: 10px;
+    margin-left: 2px;
+    border-left: 1px solid rgba(255,255,255,.3);
   }
 
   .header-destra {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
   }
 
   .testo-aggiornato {
-    font-size: 11px;
-    color: rgba(255,255,255,.72);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,.75);
     white-space: nowrap;
   }
 
   .link-mappa {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-dark);
     text-decoration: none;
     white-space: nowrap;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 999px;
-    background: rgba(255,255,255,.16);
-    transition: background .12s ease;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+    transition: transform .12s ease, box-shadow .12s ease;
   }
-  .link-mappa:hover { background: rgba(255,255,255,.28); }
+  .link-mappa:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
-  .barra-stato {
-    background: var(--surface-2);
-    border-bottom: 1px solid var(--border);
-    padding: 6px 20px;
-    font-size: 12px;
-    color: var(--text-3);
-  }
-
-  .filtri {
+  .barra-filtri {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 12px 20px;
+    padding: 14px 24px;
     display: flex;
     align-items: flex-end;
     gap: 14px;
     flex-wrap: wrap;
-    box-shadow: var(--shadow);
-    position: relative;
-    z-index: 5;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 60px;
+    z-index: 15;
   }
 
   .campo-filtro {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    flex: 1 1 140px;
+    gap: 5px;
+    flex: 1 1 150px;
   }
 
   .campo-filtro label {
     font-size: 10.5px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .05em;
+    letter-spacing: .06em;
     color: var(--text-3);
   }
 
   .campo-filtro input,
   .campo-filtro select {
+    font-family: inherit;
     font-size: 14px;
-    padding: 8px 10px;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    background: var(--surface);
+    font-weight: 500;
+    padding: 9px 12px;
+    border: 1.5px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--surface-2);
     color: var(--text);
     width: 100%;
     outline-offset: 1px;
     -webkit-appearance: none;
     appearance: none;
+    transition: border-color .12s ease, background .12s ease;
   }
+  .campo-filtro input:hover,
+  .campo-filtro select:hover { border-color: var(--text-3); }
   .campo-filtro input:focus,
   .campo-filtro select:focus {
     border-color: var(--accent);
-    outline: 2px solid var(--accent-soft);
+    background: var(--surface);
+    outline: 3px solid var(--accent-soft);
   }
 
   button#btn-reset {
+    font-family: inherit;
     font-size: 13px;
-    font-weight: 600;
-    padding: 8px 16px;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    background: var(--surface);
-    color: var(--text-2);
+    font-weight: 700;
+    padding: 9px 18px;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
     cursor: pointer;
-    height: 38px;
+    height: 40px;
     flex: 0 0 auto;
+    transition: background .12s ease;
   }
-  button#btn-reset:hover { border-color: var(--accent); color: var(--accent); }
+  button#btn-reset:hover { background: #dbe6ca; }
+
+  .pillola-conteggio {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-2);
+    white-space: nowrap;
+    margin-left: auto;
+    padding-bottom: 10px;
+  }
+  .pillola-conteggio strong {
+    color: var(--accent-dark);
+    font-weight: 800;
+  }
 
   main {
     flex: 1;
     overflow: auto;
-    padding: 16px 20px 28px;
+    padding: 20px 24px 32px;
   }
 
   /* --- Tabella (desktop) --- */
   .tabella-scroll {
     background: var(--surface);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
     overflow: hidden;
     border: 1px solid var(--border);
   }
@@ -186,8 +233,8 @@
     top: 0;
     background: var(--surface-2);
     text-align: left;
-    padding: 11px 14px;
-    border-bottom: 1px solid var(--border-strong);
+    padding: 13px 16px;
+    border-bottom: 1.5px solid var(--border-strong);
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
@@ -195,7 +242,8 @@
     color: var(--text-2);
     font-size: 11px;
     text-transform: uppercase;
-    letter-spacing: .04em;
+    letter-spacing: .05em;
+    transition: color .12s ease;
   }
   thead th:hover { color: var(--accent); }
   thead th.col-numero { cursor: default; text-align: right; }
@@ -209,7 +257,7 @@
   }
 
   tbody td {
-    padding: 11px 14px;
+    padding: 13px 16px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
@@ -219,41 +267,45 @@
 
   .col-titolo { min-width: 240px; font-weight: 600; }
   .col-descrizione { min-width: 280px; color: var(--text-2); font-weight: 400; }
-  .col-numero { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-2); white-space: nowrap; }
+  .col-numero { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent-dark); white-space: nowrap; }
 
   .badge-tipo {
     display: inline-block;
     font-size: 11.5px;
-    font-weight: 600;
-    padding: 3px 9px;
+    font-weight: 700;
+    padding: 4px 10px;
     border-radius: 999px;
     background: var(--accent-soft);
-    color: var(--accent);
+    color: var(--accent-dark);
     white-space: nowrap;
   }
 
   .badge-quarantena {
     display: inline-block;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     color: #92400e;
     background: #fef3c7;
     border-radius: 999px;
-    padding: 2px 8px;
+    padding: 2px 9px;
     margin-right: 6px;
   }
   a.link-fonte {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     color: var(--accent);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
   }
-  a.link-fonte:hover { text-decoration: underline; }
+  a.link-fonte:hover { color: var(--accent-dark); text-decoration: underline; }
 
   .nessun-risultato {
-    padding: 48px 20px;
+    padding: 56px 20px;
     text-align: center;
     color: var(--text-3);
-    font-size: 14px;
+    font-size: 14.5px;
+    font-weight: 500;
   }
 
   /* --- Card (mobile) --- */
@@ -263,60 +315,71 @@
 
   .scheda-evento {
     background: var(--surface);
-    border-radius: 12px;
-    box-shadow: var(--shadow-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
-    padding: 14px 16px;
-    margin-bottom: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    transition: box-shadow .15s ease, transform .15s ease;
   }
+  .scheda-evento:active { transform: scale(.99); }
+
   .scheda-evento .riga-alto {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 6px;
+    gap: 12px;
+    margin-bottom: 8px;
   }
   .scheda-evento .titolo-evento {
     font-weight: 700;
-    font-size: 14.5px;
-    line-height: 1.3;
+    font-size: 15px;
+    line-height: 1.35;
+    letter-spacing: -.01em;
   }
   .scheda-evento .km-evento {
     font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
+    font-weight: 800;
+    color: #fff;
+    background: var(--accent);
+    padding: 3px 9px;
+    border-radius: 999px;
     white-space: nowrap;
-    padding-top: 2px;
   }
   .scheda-evento .riga-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     font-size: 12.5px;
+    font-weight: 500;
     color: var(--text-2);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
   .scheda-evento .riga-meta .puntino {
     color: var(--text-3);
   }
   .scheda-evento .descrizione-evento {
-    font-size: 13px;
+    font-size: 13.5px;
     color: var(--text-2);
-    line-height: 1.4;
-    margin-bottom: 8px;
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
   .scheda-evento .riga-basso {
     display: flex;
     justify-content: flex-end;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
   }
 
   @media (max-width: 760px) {
-    header { padding: 10px 14px; }
-    .filtri, main, .barra-stato { padding-left: 14px; padding-right: 14px; }
-    .filtri { gap: 10px; }
+    header { padding: 12px 16px; }
+    .sottotitolo { display: none; }
+    .barra-filtri { top: 56px; padding: 12px 16px; gap: 10px; }
+    main { padding: 16px 16px 28px; }
     .campo-filtro { flex: 1 1 45%; }
-    button#btn-reset { flex: 1 1 100%; }
+    button#btn-reset { flex: 1 1 100%; order: 5; }
+    .pillola-conteggio { flex: 1 1 100%; margin-left: 0; justify-content: flex-start; order: 4; padding-bottom: 2px; }
 
     .tabella-scroll { display: none; }
     .elenco-card { display: block; }
@@ -327,20 +390,16 @@
 
 <header>
   <div class="titolo-pagina">
+    <span class="logo-punto"></span>
     <h1>Eventi Langhe</h1>
-    <span class="sottotitolo">Elenco eventi</span>
+    <span class="sottotitolo" id="aggiornato"></span>
   </div>
   <div class="header-destra">
-    <span id="aggiornato" class="testo-aggiornato"></span>
     <a href="index.html" class="link-mappa">← Mappa</a>
   </div>
 </header>
 
-<div class="barra-stato">
-  <span id="stato">Caricamento…</span>
-</div>
-
-<div class="filtri">
+<div class="barra-filtri">
   <div class="campo-filtro">
     <label for="filtro-data">Data</label>
     <input type="date" id="filtro-data">
@@ -358,6 +417,7 @@
     </select>
   </div>
   <button type="button" id="btn-reset">Azzera filtri</button>
+  <span class="pillola-conteggio" id="stato">Caricamento…</span>
 </div>
 
 <main>
@@ -581,9 +641,9 @@ function aggiornaConteggio(n) {
   const totale = eventiTotali.length;
   const el = document.getElementById("stato");
   if (n === totale) {
-    el.textContent = `${totale} eventi.`;
+    el.innerHTML = `<strong>${totale}</strong> eventi`;
   } else {
-    el.textContent = `${n} eventi su ${totale} totali (filtrati).`;
+    el.innerHTML = `<strong>${n}</strong> su ${totale} eventi`;
   }
   el.style.color = "";
 }
