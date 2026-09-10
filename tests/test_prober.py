@@ -37,6 +37,33 @@ def test_trova_link_eventi_case_insensitive_e_sinonimi():
         assert _trova_link_pagina_eventi(html, "https://comune-prova.it/") == "https://comune-prova.it/pagina"
 
 
+def test_trova_link_eventi_accetta_titolo_di_menu_con_articolo():
+    """2026-09-06, caso reale Casal Cermelli (evento 309f6c8c01f2): un
+    titolo di menu con articolo ('Gli Eventi') non è un match esatto, ma
+    è comunque un vero titolo di sezione, non un falso positivo come
+    'Tutti gli eventi del 2025' (vedi test sopra) — quest'ultimo ha un
+    anno numerico dopo la parola chiave, un titolo di menu no."""
+    for testo in ["Gli Eventi", "Tutti gli Eventi", "Le Manifestazioni"]:
+        html = f'<a href="/pagina">{testo}</a>'
+        assert _trova_link_pagina_eventi(html, "https://comune-prova.it/") == "https://comune-prova.it/pagina"
+
+
+def test_trova_link_eventi_preferisce_il_link_che_appare_prima_nel_documento():
+    """2026-09-06, caso reale Casal Cermelli: la homepage aveva sia 'Gli
+    Eventi' (menu principale, la pagina giusta) sia 'Eventi' (sotto-voce
+    annidata in una sezione minore, match esatto ma sbagliata) — il primo
+    a comparire nel documento è quello giusto, indipendentemente da quale
+    dei due pattern soddisfa. Riproduce l'ordine reale osservato sul sito
+    (indici 11 e 28 nell'HTML)."""
+    html = (
+        '<a href="/plcc/index.php/gli-eventi">Gli Eventi</a>'
+        '<a href="/plcc/index.php/realta-locali/insieme-per-leggere-odv/eventi">Eventi</a>'
+    )
+    assert _trova_link_pagina_eventi(html, "http://www.prolococasalcermelli.it/plcc/") == (
+        "http://www.prolococasalcermelli.it/plcc/index.php/gli-eventi"
+    )
+
+
 def test_url_assoluto_gestisce_href_relativo_senza_slash():
     """Bug reale (comune.calosso.at.it): href="Eventi" senza slash iniziale
     va risolto rispetto alla cartella corrente, non concatenato alla radice

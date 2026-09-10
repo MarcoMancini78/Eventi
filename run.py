@@ -329,13 +329,31 @@ def cmd_prober(args: argparse.Namespace) -> None:
     """M8/12.8, discovery (04.2): trova la vera pagina eventi per ogni
     fonte già importata in sources, invece di restare fermi alla
     homepage. Isolamento totale per fonte (15.1 regola 4): un sito
-    irraggiungibile non deve fermare il probing sulle altre."""
+    irraggiungibile non deve fermare il probing sulle altre.
+
+    2026-09-06, richiesto dall'utente (caso Casal Cermelli, evento
+    309f6c8c01f2): il probing normale riparte sempre dall'ENDPOINT già
+    salvato in sources, mai dalla homepage — corretto per il giro
+    ordinario (evita di rifare la discovery da zero ad ogni run), ma
+    inutile per ricorreggere una fonte il cui endpoint è già sbagliato
+    (un link 'Eventi' ambiguo in homepage aveva portato alla sotto-pagina
+    sbagliata): ripartire da lì riproporrebbe lo stesso errore. --fonte
+    con --endpoint-partenza permette di rilanciare la discovery per un
+    singolo source_id da un URL esplicito (tipicamente la homepage)."""
     from src.prober import prova_fonte
 
     conn = store.connect(DB_PATH)
     store.migrate(conn)
 
-    righe = conn.execute("SELECT source_id, endpoint FROM sources WHERE endpoint IS NOT NULL").fetchall()
+    if args.fonte:
+        righe = conn.execute("SELECT source_id, endpoint FROM sources WHERE source_id = ?", (args.fonte,)).fetchall()
+        if not righe:
+            print(f"source_id non trovato: {args.fonte}")
+            sys.exit(1)
+        if args.endpoint_partenza:
+            righe = [{"source_id": args.fonte, "endpoint": args.endpoint_partenza}]
+    else:
+        righe = conn.execute("SELECT source_id, endpoint FROM sources WHERE endpoint IS NOT NULL").fetchall()
     if args.limite:
         righe = righe[: args.limite]
 
@@ -965,6 +983,86 @@ def cmd_correggi_post(args: argparse.Namespace) -> None:
     print("\nRicorda: 'run.py publish' per riflettere le correzioni su Sheets e sulla mappa.")
 
 
+def cmd_correggi_fonte_html(args: argparse.Namespace) -> None:
+    """2026-09-06, richiesto dall'utente dopo il caso Casal Cermelli
+    (309f6c8c01f2, evento in quarantena letto dalla sola pagina indice
+    perché il rilevamento del prefisso dominante non provava un livello di
+    profondità sufficiente su un CMS con index.php nel path) — un fix ad
+    adapters/html.py non tocca da solo gli eventi già in quarantena da un
+    giro precedente. Rilancia l'intera fonte con l'adapter aggiornato
+    (pipeline.riprocessa_fonti_html), non un singolo evento: per l'HTML
+    generico l'URL salvato sull'evento può essere l'indice, mai un vero
+    permalink come su Instagram, quindi va rivista la fonte per intero."""
+    from src import pipeline
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+    extractor = _crea_extractor_se_configurato(config, conn)
+    if extractor is None:
+        print("Estrattore LLM non configurato: impossibile ricorreggere (serve llm_api_key).")
+        sys.exit(1)
+
+    risultati = pipeline.riprocessa_fonti_html(args.source_id, conn, config, extractor)
+
+    print("\nRisultati:")
+    for r in risultati:
+        print(f"  {r['source_id']:40} {r['esito']:18} {r['dettaglio']}")
+    print("\nRicorda: 'run.py publish' per riflettere le correzioni su Sheets e sulla mappa.")
+
+
+def cmd_riprocessa_quarantena(args: argparse.Namespace) -> None:
+    """2026-09-07, richiesto dall'utente: un solo comando per ricorreggere
+    TUTTI gli eventi in quarantena, senza dover sapere a mano per ciascuno
+    se viene da un sito HTML, da Instagram o da Facebook, né passare
+    source_id/event_id ai comandi separati (correggi-post,
+    correggi-fonte-html) — pipeline.riprocessa_quarantena smista da sola
+    in base al prefisso del source_id."""
+    from src import pipeline
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+    extractor = _crea_extractor_se_configurato(config, conn)
+    if extractor is None:
+        print("Estrattore LLM non configurato: impossibile ricorreggere (serve llm_api_key).")
+        sys.exit(1)
+
+    try:
+        riepilogo = pipeline.riprocessa_quarantena(conn, config, extractor)
+    except feed_social_import().SessioneTroppoVicinaAlFollowError as exc:
+        print(f"Impossibile procedere: {exc}")
+        sys.exit(1)
+
+    print(f"\nEventi in quarantena all'avvio: {riepilogo['totale_in_quarantena']}")
+
+    if riepilogo["html"]:
+        print(f"\nFonti sito web ricorrette ({len(riepilogo['html'])}):")
+        for r in riepilogo["html"]:
+            print(f"  {r['source_id']:40} {r['esito']:18} {r['dettaglio']}")
+
+    if riepilogo["instagram"]:
+        print(f"\nPost Instagram ricorretti ({len(riepilogo['instagram'])}):")
+        for r in riepilogo["instagram"]:
+            print(f"  {r['event_id']:16} {r['esito']:12} {r['dettaglio']}")
+
+    if riepilogo["facebook_non_riprocessabili"]:
+        print(f"\nEventi Facebook NON ricorreggibili automaticamente ({len(riepilogo['facebook_non_riprocessabili'])}):")
+        for r in riepilogo["facebook_non_riprocessabili"]:
+            print(f"  {r['event_id']:16} {r['dettaglio']}")
+
+    if not any([riepilogo["html"], riepilogo["instagram"], riepilogo["facebook_non_riprocessabili"]]):
+        print("\nNessun evento in quarantena.")
+
+    print("\nRicorda: 'run.py publish' per riflettere le correzioni su Sheets e sulla mappa.")
+
+
+def feed_social_import():
+    from src import feed_social
+
+    return feed_social
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -1053,6 +1151,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_prober = sub.add_parser("prober", help="Discovery della vera pagina eventi/feed per le fonti già importate (04.2, 12.8)")
     p_prober.add_argument("--limite", type=int, default=0, help="Limita il numero di fonti (0 = tutte)")
+    p_prober.add_argument("--fonte", help="Rilancia la discovery solo per questo source_id")
+    p_prober.add_argument(
+        "--endpoint-partenza",
+        help="Con --fonte: URL da cui ripartire (tipicamente la homepage), invece dell'endpoint già salvato "
+        "— usa quando l'endpoint salvato è già sbagliato e ripartire da lì riproporrebbe lo stesso errore",
+    )
     p_prober.set_defaults(func=cmd_prober)
 
     p_imp = sub.add_parser("import-fonti", help="Import base di Comuni/ProLoco in sources per un giro di ricerca eventi (12.8)")
@@ -1110,6 +1214,24 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_correggi.add_argument("event_id", nargs="+", help="Uno o più event_id da ricorreggere")
     p_correggi.set_defaults(func=cmd_correggi_post)
+
+    p_correggi_html = sub.add_parser(
+        "correggi-fonte-html",
+        help="Rilancia una o più fonti T1_html/aggregatore con l'adapter aggiornato, "
+        "usa quando un fix al rilevamento dei link di dettaglio ha lasciato eventi vecchi "
+        "in quarantena letti solo dall'anteprima (la fonte non viene mai rifetchata da sola "
+        "finché non arriva il prossimo giro schedulato)",
+    )
+    p_correggi_html.add_argument("source_id", nargs="+", help="Uno o più source_id da ricorreggere")
+    p_correggi_html.set_defaults(func=cmd_correggi_fonte_html)
+
+    p_riprocessa_quarantena = sub.add_parser(
+        "riprocessa-quarantena",
+        help="Ricorregge TUTTI gli eventi in quarantena in un colpo solo, smistando da solo se ciascuno "
+        "viene da un sito HTML, da Instagram (permalink riapribile) o da Facebook (non riapribile "
+        "automaticamente, segnalato per correzione manuale)",
+    )
+    p_riprocessa_quarantena.set_defaults(func=cmd_riprocessa_quarantena)
 
     p_follow = sub.add_parser("follow", help="Lotto di follow social (M9)")
     p_follow.add_argument("--platform", required=True, choices=["facebook", "instagram"])

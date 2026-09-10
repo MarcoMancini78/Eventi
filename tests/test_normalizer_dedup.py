@@ -298,3 +298,57 @@ def test_upsert_evento_fuzzy_unisce_con_stessa_fonte_titolo_breve():
     assert id1 == id2
     totale = conn.execute("SELECT COUNT(*) FROM events").fetchone()[0]
     assert totale == 1
+
+
+# --- risolvi_comune_evento: penalità comune-da-fonte calibrata per
+# categoria (2026-09-07, richiesto dall'utente, caso Capriglio/Caprigliola
+# 0fa104f8510b) ---
+
+
+def test_risolvi_comune_evento_comune_esplicito_nessuna_penalita():
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento("Calosso", "Calosso", conn)
+    assert riga["comune"] == "Calosso"
+    assert penalita == 0
+
+
+def test_risolvi_comune_evento_da_fonte_comune_penalita_ridotta():
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento(None, "Calosso", conn, categoria_fonte="comune")
+    assert riga["comune"] == "Calosso"
+    assert penalita == -3
+
+
+def test_risolvi_comune_evento_da_fonte_proloco_penalita_ridotta():
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento(None, "Calosso", conn, categoria_fonte="proloco")
+    assert riga["comune"] == "Calosso"
+    assert penalita == -3
+
+
+def test_risolvi_comune_evento_da_fonte_generica_penalita_piena():
+    """Un aggregatore/raccoglitore senza comune_testuale nel post: la
+    mancanza di comune esplicito è un segnale più forte di scarsa
+    affidabilità della notizia, la penalità piena resta giustificata."""
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento(None, "Calosso", conn, categoria_fonte="aggregatore")
+    assert riga["comune"] == "Calosso"
+    assert penalita == -10
+
+
+def test_risolvi_comune_evento_senza_categoria_penalita_piena_invariata():
+    """categoria_fonte=None (comportamento di default): i chiamanti che
+    non passano questo parametro non cambiano comportamento."""
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento(None, "Calosso", conn)
+    assert riga["comune"] == "Calosso"
+    assert penalita == -10
+
+
+def test_risolvi_comune_evento_penalita_configurabili():
+    conn = _conn_di_prova()
+    riga, penalita = normalizer.risolvi_comune_evento(
+        None, "Calosso", conn, categoria_fonte="proloco",
+        penalita_fonte_affidabile=1, penalita_fonte_generica=20,
+    )
+    assert penalita == -1

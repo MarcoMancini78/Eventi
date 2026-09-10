@@ -187,7 +187,7 @@ def leggi_seguiti_reali(piattaforma: str, config: Config, sessione_dir: Path | N
     e scrolla fino in fondo raccogliendo gli handle. Nessuna azione:
     solo lettura, coerente con 14.5b.
     """
-    contesto = _apri_sessione_browser(piattaforma, sessione_dir)
+    contesto = _apri_sessione_browser(piattaforma, sessione_dir, config.browser_visibile)
     try:
         if piattaforma == "facebook":
             _assicura_identita_pagina(contesto, config)

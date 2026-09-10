@@ -73,8 +73,15 @@ class PostFeed:
     # post Instagram con carosello ha più immagini, e non è detto che la
     # prima sia quella col dettaglio utile (in quel caso erano le date,
     # visibili solo nella terza immagine). Lista invece di singolo valore
-    # — solo per Instagram per ora (collaudato dal vivo il click sul
-    # bottone "Avanti"), Facebook non ancora verificato in questa sessione.
+    # — carosello multi-immagine collaudato dal vivo solo su Instagram
+    # (click sul bottone "Avanti"); Facebook produce sempre al più un
+    # elemento qui (nessun carosello Facebook collaudato), ma il campo
+    # JS lato Facebook produceva 'immagineUrl' (singolare) invece di
+    # 'immagineUrls' fino al 2026-09-07 — bug reale trovato dall'utente
+    # (caso Capriglio/Caprigliola 0fa104f8510b): ogni immagine di post
+    # Facebook veniva raccolta dal DOM ma scartata subito dopo perché il
+    # codice Python legge sempre il nome plurale, mai passata al
+    # download né all'estrattore.
     image_urls: list[str] = field(default_factory=list)
     # 2026-09-02, richiesto dall'utente (caso Valfenera f39bb10a29e1): senza
     # questo campo, un testo relativo ("stasera", "vi aspettiamo dalle
@@ -88,6 +95,17 @@ class PostFeed:
     # (post e feed reali). Solo la data (non l'ora) serve come riferimento
     # per l'LLM, coerente con costruisci_prompt_utente(data_riferimento=...).
     data_pubblicazione: date | None = None
+    # 2026-09-06, richiesto dall'utente (caso Bergamasco df3ef713fa46): con
+    # l'URL Facebook che punta sempre alla pagina dell'autore (mai un
+    # permalink al singolo post, vedi _post_id_da_permalink) e non alla
+    # pagina di dettaglio, tra molti post lo stesso link non basta più a
+    # capire quale post ha generato l'evento in quarantena — la data/ora
+    # letta dal tooltip (già raccolta per data_pubblicazione) va persistita
+    # anche come metadato dell'evento, non solo usata e scartata come
+    # riferimento temporale per l'LLM. Solo Facebook: Instagram non offre
+    # un orario nel tooltip, solo l'attributo <time datetime> già assoluto
+    # e già coperto da data_pubblicazione.
+    ora_pubblicazione: str | None = None
 
 
 def verifica_separazione_da_follow(conn: sqlite3.Connection, piattaforma: str, minuti_minimi: int = 60) -> None:
@@ -163,7 +181,7 @@ def leggi_feed_reale(
 
     ultimo_visto = _ultimo_post_visto(conn, piattaforma)
 
-    contesto = _apri_sessione_browser(piattaforma, sessione_dir)
+    contesto = _apri_sessione_browser(piattaforma, sessione_dir, config.browser_visibile)
     try:
         if piattaforma == "facebook":
             _assicura_identita_pagina(contesto, config)
@@ -216,9 +234,21 @@ _JS_RACCOGLI_POST_FACEBOOK = """
             }
         }
         if (!scelto) continue;
+        // 2026-09-07, bug reale trovato dall'utente (caso Capriglio/
+        // Caprigliola 0fa104f8510b): questo campo produceva 'immagineUrl'
+        // (singolare), ma il codice Python lato _scroll_feed_e_raccogli
+        // legge sempre 'immagineUrls' (plurale, con la 's') — introdotto
+        // per il carosello Instagram (2026-09-02) e mai allineato qui.
+        // Risultato: ogni immagine di post Facebook veniva raccolta dal
+        // DOM ma scartata silenziosamente subito dopo, nessuna immagine
+        // mai scaricata per l'estrazione. Rinominato in 'immagineUrls'
+        // (lista, coerente con Instagram) così la stessa lettura Python
+        // funziona per entrambe le piattaforme — Facebook produce sempre
+        // al più un elemento (nessun carosello multi-immagine collaudato
+        // qui, a differenza di Instagram), ma la forma è la stessa.
         const immagini = Array.from(scelto.querySelectorAll('img'))
             .filter(img => img.naturalWidth > 150 && img.naturalHeight > 150);
-        const immagineUrl = immagini.length > 0 ? immagini[0].src : null;
+        const immagineUrls = immagini.length > 0 ? [immagini[0].src] : [];
 
         // 2026-09-03, richiesto dall'utente: la data di pubblicazione non è
         // mai leggibile come testo (il timestamp relativo "N min/h/g" ha i
@@ -253,7 +283,7 @@ _JS_RACCOGLI_POST_FACEBOOK = """
             }
         }
 
-        risultati.push({href, permalink: href, testo: scelto.innerText || '', immagineUrl, idxTimestamp});
+        risultati.push({href, permalink: href, testo: scelto.innerText || '', immagineUrls, idxTimestamp});
     }
     return risultati;
 }
@@ -352,6 +382,13 @@ _MESI_ITALIANI = {
 _PATTERN_TOOLTIP_DATA_FACEBOOK = re.compile(
     r"(\d{1,2})\s+(\w+)\s+(\d{4})", re.IGNORECASE
 )
+# 2026-09-06, richiesto dall'utente (caso Bergamasco df3ef713fa46): oltre
+# alla data, il tooltip contiene anche l'ora ("alle ore 15:52") — mai letta
+# finora, buttata insieme al resto del tooltip dopo aver estratto solo la
+# data. Pattern separato: non tutti i formati di tooltip osservati hanno
+# necessariamente l'orario (isolamento totale, un'ora mancante non deve
+# impedire di salvare almeno la data).
+_PATTERN_TOOLTIP_ORA_FACEBOOK = re.compile(r"(\d{1,2})[:.](\d{2})")
 
 
 def _data_da_tooltip_facebook(testo_tooltip: str | None) -> date | None:
@@ -375,7 +412,28 @@ def _data_da_tooltip_facebook(testo_tooltip: str | None) -> date | None:
         return None
 
 
-def _leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp: int | None) -> date | None:
+def _ora_da_tooltip_facebook(testo_tooltip: str | None) -> str | None:
+    """Estrae l'orario (HH:MM) dallo stesso tooltip assoluto di Facebook,
+    per persistere non solo la data ma anche l'ora esatta del post
+    (2026-09-06, richiesto dall'utente): con l'URL Facebook che punta
+    sempre alla pagina dell'autore e mai a un permalink del singolo post,
+    tra molti post pubblicati dalla stessa pagina la sola data non basta
+    più a distinguere quale post ha generato l'evento."""
+    if not testo_tooltip:
+        return None
+    m = _PATTERN_TOOLTIP_ORA_FACEBOOK.search(testo_tooltip)
+    if not m:
+        return None
+    ore, minuti = m.groups()
+    try:
+        if not (0 <= int(ore) <= 23 and 0 <= int(minuti) <= 59):
+            return None
+    except ValueError:
+        return None
+    return f"{int(ore):02d}:{minuti}"
+
+
+def _leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp: int | None) -> tuple[date | None, str | None]:
     """Il timestamp relativo di un post Facebook ("N min/h/g") ha i
     caratteri deliberatamente mescolati nel DOM (anti-scraping, verificato
     2026-09-03 confrontando innerText/textContent con l'HTML grezzo:
@@ -386,22 +444,25 @@ def _leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp: int | None) 
     test di verifica, formato 'Giovedì 3 settembre 2026 alle ore 15:52'.
 
     Isolamento totale: un fallimento (elemento non trovato, tooltip che
-    non compare) ritorna None senza sollevare — il chiamante ricade sul
-    default date.today() in client.py, coerente con _data_da_iso.
+    non compare) ritorna (None, None) senza sollevare — il chiamante
+    ricade sul default date.today() in client.py, coerente con _data_da_iso.
 
     2026-09-03: nel primo collaudo su un giro reale di più post il
     tooltip non sempre faceva in tempo a comparire entro 1.2s (2/5
     riusciti) — il selettore trovava sempre il link giusto (verificato),
     quindi il problema era di timing, non di identificazione. Un secondo
     tentativo con attesa più lunga (1.8s) recupera i casi lenti senza
-    appesantire troppo il caso comune (il primo tentativo resta a 1.2s)."""
+    appesantire troppo il caso comune (il primo tentativo resta a 1.2s).
+
+    2026-09-06: ritorna anche l'ora del tooltip (vedi PostFeed.ora_pubblicazione),
+    non più solo la data — stesso tooltip, letto una volta sola."""
     if idx_timestamp is None:
-        return None
+        return None, None
     try:
         loc = pagina.locator(f'[data-claude-ts-idx="{idx_timestamp}"]')
         box = loc.bounding_box(timeout=3000)
         if not box:
-            return None
+            return None, None
         cx, cy = box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
         for attesa_ms in (1200, 1800):
             pagina.mouse.move(cx, cy)
@@ -417,10 +478,10 @@ def _leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp: int | None) 
         pagina.mouse.move(0, 0)
         pagina.wait_for_timeout(300)
         if not tooltip:
-            return None
-        return _data_da_tooltip_facebook(tooltip[0])
+            return None, None
+        return _data_da_tooltip_facebook(tooltip[0]), _ora_da_tooltip_facebook(tooltip[0])
     except Exception:
-        return None
+        return None, None
 
 
 def _handle_da_href_profilo(href: str, piattaforma: str) -> str:
@@ -594,17 +655,20 @@ def _scroll_feed_e_raccogli(pagina, script_js: str, piattaforma: str, ultimo_vis
                 # leggibile come testo. La data assoluta si ottiene solo con
                 # un hover reale sul link e la lettura del tooltip che
                 # compare (vedi _leggi_data_pubblicazione_hover_facebook).
-                data_pubblicazione = (
-                    _leggi_data_pubblicazione_hover_facebook(pagina, g.get("idxTimestamp"))
-                    if piattaforma == "facebook"
-                    else _data_da_iso(g.get("dataPubblicazione"))
-                )
+                ora_pubblicazione = None
+                if piattaforma == "facebook":
+                    data_pubblicazione, ora_pubblicazione = _leggi_data_pubblicazione_hover_facebook(
+                        pagina, g.get("idxTimestamp")
+                    )
+                else:
+                    data_pubblicazione = _data_da_iso(g.get("dataPubblicazione"))
                 trovati[post_id] = PostFeed(
                     piattaforma=piattaforma,
                     handle_autore=handle,
                     post_id=post_id,
                     url=permalink if permalink.startswith("http") else f"https://www.{'facebook' if piattaforma=='facebook' else 'instagram'}.com{permalink}",
                     testo=(g.get("testo") or "").strip() or None,
+                    ora_pubblicazione=ora_pubblicazione,
                     image_urls=urls_carosello,
                     data_pubblicazione=data_pubblicazione,
                 )
@@ -712,6 +776,7 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     correttamente affidandosi al solo comune_testuale esplicito nel testo.
     """
     e_gruppo = "/groups/" in post.url
+    categoria_soggetto = None
     if e_gruppo:
         comune_riferimento = None
     else:
@@ -719,6 +784,15 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
         if riga_fonte is None:
             return "candidato"
         comune_riferimento = riga_fonte["comune"]
+        # 2026-09-07, richiesto dall'utente (caso Capriglio/Caprigliola
+        # 0fa104f8510b): la categoria del SOGGETTO (comune/proloco/ecc.,
+        # da coda_follow) calibra la penalità comune-da-fonte in
+        # risolvi_comune_evento — diversa da 'categoria_fonte' sotto
+        # (fissa a 'social'), che è il tipo di ARTEFATTO passato al
+        # prompt LLM (extractor/prompts), un concetto distinto con lo
+        # stesso nome per coincidenza. Tenerle separate: sovrascrivere
+        # 'categoria' con quella del soggetto romperebbe il prompt LLM.
+        categoria_soggetto = riga_fonte["categoria"]
 
     # 2026-09-01, richiesto dall'utente: post con testo breve ma un'immagine
     # allegata con il dettaglio vero (programma, locandina) — prima
@@ -785,7 +859,12 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
     # IntegrityError al primo post con testo utile.
     _assicura_source(conn, art.source_id)
     artifact_id = _registra_artefatto(conn, art, art.source_id)
-    fonte = {"source_id": art.source_id, "comune_riferimento": comune_riferimento, "categoria": "social"}
+    fonte = {
+        "source_id": art.source_id,
+        "comune_riferimento": comune_riferimento,
+        "categoria": "social",
+        "categoria_soggetto": categoria_soggetto,
+    }
 
     # Approssimazione di 08.5 con la sola fascia geografica (2026-08-27, vedi
     # extractor/client.py decidi_degradazione_quota): il comune è già noto
@@ -844,12 +923,20 @@ def elabora_post(post: PostFeed, conn: sqlite3.Connection, config: Config, extra
             fascia_fonte=fascia_fonte,
         )
 
+    # 2026-09-06, richiesto dall'utente (caso Bergamasco df3ef713fa46): solo
+    # Facebook — Instagram ha un permalink diretto al post (già rintracciabile
+    # da solo), Facebook no (vedi PostFeed.ora_pubblicazione).
+    data_post = post.data_pubblicazione.isoformat() if post.piattaforma == "facebook" and post.data_pubblicazione else None
+    ora_post = post.ora_pubblicazione if post.piattaforma == "facebook" else None
+
     esiti = []
     for evento_estratto in risposta.eventi:
         if e_gruppo and not evento_estratto.comune_testuale:
             esiti.append("gruppo_comune_non_inferito")
             continue
-        esiti.append(_pubblica_o_metti_in_quarantena(evento_estratto, art, fonte, conn, config))
+        esiti.append(_pubblica_o_metti_in_quarantena(
+            evento_estratto, art, fonte, conn, config, data_post=data_post, ora_post=ora_post
+        ))
 
     if not esiti:
         return "scartato"
@@ -925,7 +1012,7 @@ def _riprocessa_un_evento_instagram(event_id: str, conn: sqlite3.Connection, con
 
     verifica_separazione_da_follow(conn, "instagram")
 
-    contesto = _apri_sessione_browser("instagram", None)
+    contesto = _apri_sessione_browser("instagram", None, config.browser_visibile)
     try:
         verifica_identita_instagram(contesto, config)
         pagina = contesto["browser"].new_page()

@@ -48,6 +48,18 @@ _TIMEOUT_SECONDI = 15
 _MAX_LINK_DETTAGLIO = 15  # limite rigido per fonte per run (04.3)
 _SOGLIA_LINK_DOMINANTE = 5
 
+# 2026-09-09, caso reale Caselette (evento 272614985a67, segnalato
+# dall'utente): oltre alle vere pagine di dettaglio evento, lo stesso
+# prefisso '/appuntamenti/' produce anche pagine-CALENDARIO per singola
+# data (es. '/appuntamenti/16-09-2026') — una vista aggregata di TUTTI gli
+# eventi di quel giorno, con solo un estratto TRONCATO di ciascuno (nel
+# caso reale: "...Santa..." al posto di "Santa Croce", scambiato dall'LLM
+# per il titolo). Queste pagine non sono mai il dettaglio di un singolo
+# evento, sempre un duplicato/riassunto della vera pagina — riconoscibili
+# per forma (ultimo segmento di path = solo una data, nessuno slug
+# testuale) indipendentemente dal formato esatto (DD-MM-YYYY o simili).
+_PATTERN_SLUG_SOLO_DATA = re.compile(r"^\d{1,4}[-_]\d{1,2}[-_]\d{1,4}$")
+
 _PATTERN_DATA = [
     re.compile(r"\b\d{1,2}[/\-.]\d{1,2}(?:[/\-.]\d{2,4})?\b"),  # 12/09, 12-09-2026
     re.compile(
@@ -116,6 +128,18 @@ def parse_html(html: str, source_id: str, fetch_url: str) -> list[Artefatto]:
 _PREFISSI_LINGUA = {
     "it", "en", "fr", "de", "es", "pt",
 }
+# 2026-09-08, caso reale Caselette (evento 272614985a67, segnalato
+# dall'utente): alcuni PA design system usano il locale IETF/BCP47
+# completo (es. 'it-it', 'en-us') invece del solo codice lingua a 2
+# lettere — un elenco fisso di stringhe note (come sopra) sarebbe sempre
+# incompleto quando cambia la variante. Riconosciuto per FORMA (2-3
+# lettere, trattino, 2 lettere maiuscole/minuscole) invece che per un
+# elenco enumerato, coerente con lo standard BCP47 (lingua-REGIONE).
+_PATTERN_LOCALE_IETF = re.compile(r"^[a-z]{2,3}-[a-z]{2}$", re.IGNORECASE)
+
+
+def _e_prefisso_lingua(segmento: str) -> bool:
+    return segmento in _PREFISSI_LINGUA or bool(_PATTERN_LOCALE_IETF.match(segmento))
 
 
 def _raggruppa_per_prefisso(link_pagina: list[tuple[str, list[str]]], livelli: int) -> dict[str, list[str]]:
@@ -140,24 +164,147 @@ def _quota_slug_numerici(link: list[str]) -> float:
     return numerici / len(link)
 
 
-def _prefisso_dominante(link_per_prefisso: dict[str, list[str]]) -> tuple[str, list[str]] | None:
+# 2026-09-06, caso reale (Pro Loco Casal Cermelli, evento 309f6c8c01f2,
+# segnalato dall'utente): un CMS Joomla-like mette 'index.php' come
+# segmento comune a (quasi) tutte le pagine del sito
+# (/plcc/index.php/gli-eventi/..., /plcc/index.php/la-pro-loco/...) — a 1
+# livello il prefisso dominante è 'plcc' (63/63 link, l'intero sito), a 2
+# livelli è 'plcc/index.php' (62/63, ancora l'intero sito): nessuno dei
+# due distingue l'elenco eventi dal resto della navigazione, il vero
+# raggruppamento utile ('plcc/index.php/gli-eventi', 30/63) emerge solo al
+# 3° livello. Un prefisso che copre la quasi totalità dei link non è un
+# elenco di dettagli, è il path-base del sito — va scartato come "troppo
+# generico" per far scattare il tentativo al livello successivo, stesso
+# principio già applicato ai codici lingua (_PREFISSI_LINGUA) ma generale
+# invece che basato su un elenco fisso di stringhe note.
+_SOGLIA_PREFISSO_TROPPO_GENERICO = 0.85
+
+
+def _prefisso_ha_livello_piu_profondo(prefisso: str, link: list[str]) -> bool:
+    """Vero solo se il livello successivo (prefisso + 1 segmento) separa
+    davvero i link in più di un sotto-gruppo — non solo se i link sono
+    più lunghi del prefisso. Distingue il caso Casal Cermelli
+    ('plcc/index.php' raggruppa link con MOLTI valori diversi al segmento
+    successivo — gli-eventi, la-pro-loco, il-paese... un livello più
+    preciso esiste davvero) dal caso di una pagina con un solo livello di
+    path per tutti i link (es. '/eventi/e1/', '/eventi/e2/': il segmento
+    successivo a 'eventi' è sempre diverso per definizione — e1, e2, e3,
+    ... — ma non forma sotto-gruppi: ogni pagina di dettaglio finirebbe
+    da sola nel proprio 'prefisso', non un raggruppamento più fine, solo
+    l'ultimo slug che identifica ogni singola pagina). Un vero livello
+    più profondo produce ALMENO due sotto-gruppi con più di un elemento
+    ciascuno; se ogni sotto-gruppo ha un solo elemento, il livello
+    attuale è già la granularità giusta, va accettato così com'è."""
+    livelli_prefisso = len(prefisso.split("/"))
+    sotto_gruppi: dict[str, int] = {}
+    for l in link:
+        segmenti = urlparse(l).path.strip("/").split("/")
+        if len(segmenti) <= livelli_prefisso:
+            continue
+        sotto_prefisso = "/".join(segmenti[: livelli_prefisso + 1])
+        sotto_gruppi[sotto_prefisso] = sotto_gruppi.get(sotto_prefisso, 0) + 1
+    return sum(1 for v in sotto_gruppi.values() if v > 1) >= 2
+
+
+def _prefisso_dominante(
+    link_per_prefisso: dict[str, list[str]], totale_link: int = 0, path_pagina_corrente: str | None = None
+) -> tuple[str, list[str]] | None:
     """2026-09-05, caso reale Alba: un sito può avere più elenchi
     legittimi in parallelo sotto lo stesso prefisso a 1 livello (news,
     news-category) con conteggi comparabili — la vecchia soglia '2x il
     secondo' scartava tutto. Tra i gruppi con conteggio comparabile,
     preferisce quello con slug leggibili (poche pagine categoria/tag da
-    ID numerico) invece di scartare in blocco."""
+    ID numerico) invece di scartare in blocco.
+
+    2026-09-06, caso reale Casal Cermelli: un prefisso che raccoglie quasi
+    tutti i link della pagina (>= _SOGLIA_PREFISSO_TROPPO_GENERICO) E ha
+    ancora un livello di profondità disponibile sotto di sé è il
+    path-base del sito (es. 'index.php' su Joomla), non un elenco di
+    dettagli — va escluso dai candidati anche se numericamente il più
+    frequente, per lasciare che trova_link_dettaglio_dominanti riprovi a
+    un livello di profondità maggiore. Il controllo sul livello più
+    profondo evita di scartare per errore un sito con un solo livello di
+    path per tutti i link (nulla da guadagnare approfondendo).
+
+    2026-09-08, caso reale Caselette (evento 272614985a67, segnalato
+    dall'utente): su un PA design system il menu di navigazione persistente
+    ('amministrazione/*', 38 link) può essere numericamente più frequente
+    del vero contenuto della pagina che si sta guardando
+    ('appuntamenti/*', 15 link) — puro conteggio sceglieva il menu. Se un
+    candidato condivide il prefisso della PAGINA CORRENTE (quella su cui
+    ci troviamo, es. '/it-it/appuntamenti'), è il segnale più affidabile
+    di pertinenza — vince a prescindere dal conteggio, purché superi
+    comunque la soglia minima di un vero elenco.
+
+    2026-09-09, caso reale Caselette (evento 272614985a67, secondo giro,
+    segnalato dall'utente): il filtro anti-pagine-calendario (vedi
+    _PATTERN_SLUG_SOLO_DATA in trova_link_dettaglio_dominanti) toglie di
+    peso gli slug '/16-09-2026' ecc. dal gruppo 'appuntamenti', che in un
+    giorno con pochi eventi nel calendario può scendere sotto
+    _SOGLIA_LINK_DOMINANTE (pensata per un vero elenco con molte voci,
+    non per il caso "la pagina corrente ha solo 2-4 eventi oggi") — il
+    filtro di soglia scartava allora il prefisso pagina-corrente PRIMA che
+    la preferenza sotto potesse applicarsi, facendo ripiegare su un menu
+    di navigazione enorme (es. 'servizi', 21 link) invece che sul vero
+    contenuto, anche solo 2 dettagli veri. Il match sul prefisso della
+    pagina corrente va quindi controllato PRIMA del filtro di soglia
+    piena, con una soglia ridotta a 1 (un solo link reale, purché non sia
+    rumore da slug numerico) — è comunque il segnale più affidabile di
+    pertinenza, indipendentemente da quanti elementi contenga oggi."""
     if not link_per_prefisso:
         return None
+
+    if path_pagina_corrente:
+        segmenti_pagina = path_pagina_corrente.strip("/").split("/")
+        for prefisso, link in link_per_prefisso.items():
+            livelli = len(prefisso.split("/"))
+            if livelli <= len(segmenti_pagina) and "/".join(segmenti_pagina[:livelli]) == prefisso:
+                if len(set(link)) >= 1 and _quota_slug_numerici(link) < 0.5:
+                    return prefisso, link
+
     candidati = {
         k: v for k, v in link_per_prefisso.items()
         if len(set(v)) >= _SOGLIA_LINK_DOMINANTE and _quota_slug_numerici(v) < 0.5
+        and not (
+            totale_link and len(set(v)) / totale_link >= _SOGLIA_PREFISSO_TROPPO_GENERICO
+            and _prefisso_ha_livello_piu_profondo(k, v)
+        )
     }
     if not candidati:
         return None
+
     conteggi = Counter({k: len(set(v)) for k, v in candidati.items()})
     prefisso_top, n_top = conteggi.most_common(1)[0]
     return prefisso_top, candidati[prefisso_top]
+
+
+# 2026-09-09, caso reale Buttigliera d'Asti (evento b185450ddcf6,
+# segnalato dall'utente): un CMS PA più datato identifica il dettaglio
+# con un parametro di query invece che nel path
+# ('/Dettaglionews?IDNews=414150', path SEMPRE uguale, solo il valore di
+# IDNews cambia) — il raggruppamento per path puro non vede mai questo
+# pattern (39 link, tutti collassati sullo stesso path 'Dettaglionews',
+# mai riconosciuti come un elenco perché non sono nel path stesso). Il
+# filtro principale scarta ogni link con query string a monte (mai un
+# candidato a menu/navigazione, coerente col resto del modulo): questi
+# link vanno raccolti a parte e provati come ultimo fallback, quando il
+# path puro non produce nulla di utile.
+def _raggruppa_per_path_e_parametro_query(link_con_query: list[tuple[str, str, str]]) -> dict[str, list[str]]:
+    """Raggruppa link con query string per (path, nome del PRIMO
+    parametro) — non per il valore, che è l'ID stesso e varia per
+    definizione. Un solo parametro nella query, coerente con l'osservato
+    reale ('?IDNews=NNNNNN', non una combinazione di più filtri): una
+    query con più parametri è più probabile un link con stato/filtri
+    (paginazione, ordinamento) che un identificatore di dettaglio."""
+    gruppi: dict[str, list[str]] = {}
+    for path, query, link in link_con_query:
+        parametri = query.split("&")
+        if len(parametri) != 1 or "=" not in parametri[0]:
+            continue
+        nome_parametro = parametri[0].split("=", 1)[0]
+        chiave = f"{path}?{nome_parametro}"
+        gruppi.setdefault(chiave, []).append(link)
+    return gruppi
 
 
 def trova_link_dettaglio_dominanti(html: str, pagina_url: str) -> list[str]:
@@ -169,7 +316,11 @@ def trova_link_dettaglio_dominanti(html: str, pagina_url: str) -> list[str]:
     Prova prima il prefisso a 1 segmento (es. /eventi/xxx); se il primo
     segmento è un codice lingua (es. /it/news/xxx, dove 'it' raggruppa
     insieme menu e notizie senza distinguerli) o non produce un prefisso
-    dominante, riprova a 2 segmenti (es. /it/news)."""
+    dominante, riprova a 2 segmenti (es. /it/news). Se anche il prefisso a
+    2 segmenti risulta troppo generico (es. 'plcc/index.php' su un CMS
+    Joomla-like, dove index.php è il path-base di quasi tutte le pagine
+    del sito — caso reale Casal Cermelli, evento 309f6c8c01f2), riprova a
+    3 segmenti (es. 'plcc/index.php/gli-eventi')."""
     try:
         albero = lxml.html.fromstring(html)
         albero.make_links_absolute(pagina_url)
@@ -180,6 +331,7 @@ def trova_link_dettaglio_dominanti(html: str, pagina_url: str) -> list[str]:
     path_pagina = base.path
 
     link_pagina: list[tuple[str, list[str]]] = []
+    link_con_query: list[tuple[str, str, str]] = []
     for el, attr, link, _pos in albero.iterlinks():
         # Solo <a href>: iterlinks() include anche <link>/<script>/<img>
         # (css, JS, immagini) che sporcano il rilevamento del prefisso
@@ -188,27 +340,62 @@ def trova_link_dettaglio_dominanti(html: str, pagina_url: str) -> list[str]:
         if el.tag != "a" or attr != "href":
             continue
         p = urlparse(link)
-        if p.netloc != base.netloc or p.fragment or p.query:
+        if p.netloc != base.netloc or p.fragment:
             continue
         if p.path in ("/", path_pagina) or "/feed" in p.path or p.path.startswith("/wp-json"):
             continue
+        if p.query:
+            # Raccolti a parte (vedi _raggruppa_per_path_e_parametro_query):
+            # mai un candidato al raggruppamento su path puro sotto, ma un
+            # possibile elenco quando il dettaglio vive nel parametro
+            # invece che nel path (caso Buttigliera d'Asti).
+            link_con_query.append((p.path, p.query, link))
+            continue
+        ultimo_segmento = p.path.rstrip("/").rsplit("/", 1)[-1]
+        if _PATTERN_SLUG_SOLO_DATA.match(ultimo_segmento):
+            continue  # pagina-calendario per data, mai il dettaglio di un evento (vedi sopra)
         link_pagina.append((p.path, link))
 
-    if not link_pagina:
+    if not link_pagina and not link_con_query:
         return []
 
+    totale_link = len(link_pagina)
+
     primo_segmento_generico = all(
-        path.strip("/").split("/", 1)[0] in _PREFISSI_LINGUA for path, _ in link_pagina
+        _e_prefisso_lingua(path.strip("/").split("/", 1)[0]) for path, _ in link_pagina
     )
 
     if not primo_segmento_generico:
-        trovato = _prefisso_dominante(_raggruppa_per_prefisso(link_pagina, livelli=1))
+        trovato = _prefisso_dominante(_raggruppa_per_prefisso(link_pagina, livelli=1), totale_link, path_pagina)
         if trovato:
             return sorted(set(trovato[1]))[:_MAX_LINK_DETTAGLIO]
 
-    trovato = _prefisso_dominante(_raggruppa_per_prefisso(link_pagina, livelli=2))
+    trovato = _prefisso_dominante(_raggruppa_per_prefisso(link_pagina, livelli=2), totale_link, path_pagina)
     if trovato:
         return sorted(set(trovato[1]))[:_MAX_LINK_DETTAGLIO]
+
+    trovato = _prefisso_dominante(_raggruppa_per_prefisso(link_pagina, livelli=3), totale_link, path_pagina)
+    if trovato:
+        return sorted(set(trovato[1]))[:_MAX_LINK_DETTAGLIO]
+
+    if link_con_query:
+        trovato = _prefisso_dominante(_raggruppa_per_path_e_parametro_query(link_con_query), 0, None)
+        if trovato:
+            # 2026-09-09, caso reale Buttigliera d'Asti: un ID numerico
+            # nel parametro di query è quasi sempre auto-incrementale (più
+            # alto = più recente) — l'ordine alfabetico usato per gli slug
+            # testuali (sorted() sopra) tagliava fuori le notizie più
+            # recenti (l'evento reale, IDNews=414150, restava escluso dal
+            # limite _MAX_LINK_DETTAGLIO a favore di ID più bassi/vecchi
+            # solo perché '344221' < '414150' come stringa). Ordina per
+            # valore numerico decrescente quando il valore è numerico;
+            # ricade sull'ordine alfabetico per un valore non numerico
+            # (isolamento totale, 15.1 regola 4: non deve mai sollevare).
+            def _chiave_ordinamento(url: str) -> tuple[int, object]:
+                valore = url.rsplit("=", 1)[-1]
+                return (0, -int(valore)) if valore.isdigit() else (1, url)
+
+            return sorted(set(trovato[1]), key=_chiave_ordinamento)[:_MAX_LINK_DETTAGLIO]
 
     return []
 

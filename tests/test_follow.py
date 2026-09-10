@@ -155,7 +155,7 @@ def test_follow_batch_facebook_si_ferma_se_identita_pagina_non_attivabile(monkey
     contesto_finto = {"piattaforma": "facebook"}
     chiuso = {"valore": False}
 
-    def _apri_finto(piattaforma, sessione_dir):
+    def _apri_finto(piattaforma, sessione_dir, browser_visibile=True):
         return contesto_finto
 
     def _chiudi_finto(contesto):
@@ -192,7 +192,7 @@ def test_follow_batch_su_captcha_ritorna_esito_visibile_non_lista_vuota(monkeypa
 
     contesto_finto = {"piattaforma": "instagram"}
 
-    def _apri_finto(piattaforma, sessione_dir):
+    def _apri_finto(piattaforma, sessione_dir, browser_visibile=True):
         return contesto_finto
 
     def _chiudi_finto(contesto):
@@ -443,3 +443,46 @@ def test_registra_esito_errore_vero_diventa_fallito_dopo_3_tentativi():
 
     riga = conn.execute("SELECT stato FROM coda_follow WHERE source_id='proloco-test-facebook'").fetchone()
     assert riga["stato"] == "fallito"
+
+
+# --- _apri_sessione_browser: finestra visibile/nascosta (2026-09-08,
+# richiesto dall'utente) — headless resta sempre False (14.3: un login/
+# interazione headless è più sospetto), solo gli argomenti Chromium
+# cambiano per spostare/minimizzare la finestra quando browser_visibile
+# è False. Testata la sola costruzione degli argomenti passati a
+# launch_persistent_context, mockato: non si apre mai un browser reale
+# nei test automatici (docstring del modulo). ---
+
+
+def test_apri_sessione_browser_passa_args_corretti_a_playwright(monkeypatch, tmp_path):
+    """_apri_sessione_browser importa sync_playwright localmente
+    (from playwright.sync_api import sync_playwright dentro la funzione),
+    quindi va patchato nel modulo playwright.sync_api stesso — un
+    monkeypatch su src.follow.sync_playwright non basterebbe."""
+    catturati = {}
+
+    class _ContestoFintoChromium:
+        @staticmethod
+        def launch_persistent_context(**kwargs):
+            catturati.update(kwargs)
+            return object()
+
+    class _PlaywrightFinto:
+        def start(self):
+            self.chromium = _ContestoFintoChromium()
+            return self
+
+        def stop(self):
+            pass
+
+    monkeypatch.setattr("playwright.sync_api.sync_playwright", lambda: _PlaywrightFinto())
+
+    follow._apri_sessione_browser("facebook", tmp_path, browser_visibile=True)
+    assert catturati["headless"] is False
+    assert catturati["args"] == []
+
+    catturati.clear()
+    follow._apri_sessione_browser("facebook", tmp_path, browser_visibile=False)
+    assert catturati["headless"] is False  # mai True: stesso fingerprint anti-bot (14.3)
+    assert "--window-position=-32000,-32000" in catturati["args"]
+    assert "--start-minimized" in catturati["args"]

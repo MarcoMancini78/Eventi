@@ -42,13 +42,25 @@ class Config:
     serie_decadimento_sospesa_giorni: int = 400
 
     # Confidenza ed estrazione (06.6). Penalità applicate in pipeline.py
-    # quando l'LLM non trova un anno esplicito o un luogo testuale nel
-    # post — ridotte da 15/10 a 5/5 il 2026-09-01 (richiesto dall'utente:
-    # "stasera"/comune-solo sono normali per un post social, non un
-    # segnale forte di scarsa affidabilità).
+    # quando l'LLM non trova un anno esplicito nel post — ridotta da 15 a
+    # 5 il 2026-09-01 (richiesto dall'utente: "stasera" è normale per un
+    # post social, non un segnale forte di scarsa affidabilità).
     soglia_confidenza: int = 70
     penalita_anno_non_esplicito: int = 5
-    penalita_luogo_assente: int = 5
+    # 2026-09-07, richiesto dall'utente (caso Capriglio/Caprigliola
+    # 0fa104f8510b): il comune resta il dato fondamentale, ma la sua
+    # affidabilità quando inferito dalla fonte (non dal testo) dipende dal
+    # TIPO di fonte — una fonte 'comune'/'proloco' è legata in modo
+    # affidabile a un solo comune noto (l'incertezza residua è solo "la
+    # Pro Loco può pubblicizzare un evento in un comune vicino"), mentre
+    # un aggregatore/raccoglitore di notizie senza comune_testuale nel
+    # post è un segnale di scarsa affidabilità della notizia stessa — lì
+    # la penalità piena resta giustificata. Il luogo (posto preciso dentro
+    # il comune) NON penalizza più (vedi pipeline._pubblica_o_metti_in_quarantena):
+    # un evento diffuso o itinerante può non averne uno, è un dettaglio in
+    # più quando presente, mai un segnale di scarsa certezza quando assente.
+    penalita_comune_da_fonte_affidabile: int = 3
+    penalita_comune_da_fonte_generica: int = 10
 
     # Controllo di sanità 06.8: sopra questa soglia di eventi estratti da un
     # solo artefatto, l'intera risposta è scartata come probabile
@@ -84,6 +96,24 @@ class Config:
     follow_pausa_lunga_min_sec: int = 120
     follow_pausa_lunga_max_sec: int = 240
     follow_intervallo_lotti_min: int = 45
+
+    # 2026-09-08, richiesto dall'utente: la sessione browser Playwright per
+    # Facebook/Instagram è sempre aperta visibile (headless=False, 14.3:
+    # "un login/interazione headless è più sospetto") — corretto per
+    # follow.login_manuale (l'utente deve poter interagire per il primo
+    # login/2FA), ma per i giri automatici senza interazione (lettura feed,
+    # sync seguiti, lotto di follow) l'utente può preferire non vedere la
+    # finestra comparire. 'True' (default, invariato): finestra visibile
+    # normale. 'False': la sessione resta comunque headless=False (stesso
+    # fingerprint anti-bot, nessun compromesso sul rischio di rilevamento
+    # 14.3) ma la finestra viene minimizzata e spostata fuori dall'area
+    # visibile dello schermo subito dopo l'apertura — invisibile
+    # all'utente senza rinunciare alla resa "browser reale" verso Facebook/
+    # Instagram. Non si applica a login_manuale, che resta sempre visibile
+    # per forza (richiede interazione umana diretta).
+    browser_visibile: bool = field(
+        default_factory=lambda: os.getenv("BROWSER_VISIBILE", "true").strip().lower() != "false"
+    )
 
     # 14.1/14.2 opzione A: l'account Facebook dedicato è una Pagina gestita
     # dal profilo personale dell'utente, non un secondo profilo.

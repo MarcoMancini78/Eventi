@@ -5,23 +5,51 @@ riusa il client OAuth ereditato dal tentativo precedente). Al primo utilizzo
 si apre il browser per il consenso una tantum; il token ottenuto si salva in
 `config/token.json` e viene riusato/rinnovato in automatico alle esecuzioni
 successive, senza richiedere un nuovo login.
-"""
+
+2026-09-07, richiesto dall'utente: un token scaduto/revocato lato Google
+(RefreshError: 'invalid_grant') mandava in crash l'intero comando (es.
+'run.py publish'), lasciando in `config/token.json` un token ormai inutile
+che avrebbe fatto fallire allo stesso modo ogni tentativo successivo, non
+solo quello in corso. Non è possibile automatizzare il consenso OAuth in
+sé (richiede l'interazione umana nel browser, non aggirabile) — ma quando
+il refresh fallisce, il token rotto viene ora archiviato (mai cancellato
+in silenzio, 04.7: 'mai un dato perso senza traccia') e si ricade
+automaticamente sul flusso di login pulito già previsto sotto, che riapre
+il browser una volta sola invece di richiedere all'operatore un intervento
+manuale separato (cancellare il file) prima di poter ritentare."""
 from __future__ import annotations
 
 import json
+import logging
+from datetime import datetime
 from pathlib import Path
 
 import gspread
+from google.auth.exceptions import RefreshError
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 
 from .config import Config
 
+logger = logging.getLogger(__name__)
+
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
 ]
+
+
+def _archivia_token_rotto(token_path: Path) -> None:
+    """Rinomina il token scaduto/revocato invece di cancellarlo (04.7):
+    resta ispezionabile per capire quando/perché è stato invalidato, ma
+    non interferisce più con il prossimo tentativo di caricamento."""
+    if not token_path.exists():
+        return
+    timestamp = datetime.now().strftime("%Y%m%dT%H%M%S")
+    destinazione = token_path.with_name(f"{token_path.stem}.rotto-{timestamp}{token_path.suffix}")
+    token_path.rename(destinazione)
+    logger.warning("Token OAuth scaduto/revocato, archiviato in %s", destinazione)
 
 
 def _load_user_credentials(config: Config) -> Credentials:
@@ -32,7 +60,11 @@ def _load_user_credentials(config: Config) -> Credentials:
         creds = Credentials.from_authorized_user_file(str(token_path), SCOPES)
 
     if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
+        try:
+            creds.refresh(Request())
+        except RefreshError:
+            _archivia_token_rotto(token_path)
+            creds = None
 
     if not creds or not creds.valid:
         flow = InstalledAppFlow.from_client_secrets_file(config.google_oauth_client_json, SCOPES)
@@ -65,6 +97,7 @@ INTESTAZIONI = {
         "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
         "url_approfondimento", "fonti", "confidenza", "stato", "note",
         "primo_visto", "ultimo_visto", "bloccato", "soppressa",
+        "data_post", "ora_post",
     ],
     "Perimetro": ["comune", "alias", "provincia", "lat", "lon", "istat", "km", "minuti", "fascia", "attivo"],
     "Fonti": [
@@ -104,11 +137,12 @@ INTESTAZIONI = {
         "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
         "url_approfondimento", "fonti", "confidenza", "stato", "note",
         "primo_visto", "ultimo_visto", "bloccato", "soppressa",
+        "data_post", "ora_post",
     ],
     "Archivio": [
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "data_fine",
         "comune", "luogo", "organizzatore", "url", "url_approfondimento",
-        "fonti", "serie_id", "stato", "note",
+        "fonti", "serie_id", "stato", "note", "data_post", "ora_post",
     ],
 }
 

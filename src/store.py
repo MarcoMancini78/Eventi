@@ -158,6 +158,8 @@ CREATE TABLE IF NOT EXISTS events (
     dettaglio_confidenza TEXT,
     campi_incerti TEXT,
     note_estrazione TEXT,
+    data_post TEXT,
+    ora_post TEXT,
     stato TEXT DEFAULT 'nuovo',
     note TEXT,
     primo_visto TEXT,
@@ -296,6 +298,20 @@ def migrate(conn: sqlite3.Connection) -> None:
     # indovinare cosa mancasse per decidere se promuovere o scartare.
     colonne_events = {r["name"] for r in conn.execute("PRAGMA table_info(events)").fetchall()}
     for colonna in ("dettaglio_confidenza", "campi_incerti", "note_estrazione"):
+        if colonna not in colonne_events:
+            conn.execute(f"ALTER TABLE events ADD COLUMN {colonna} TEXT")
+            conn.commit()
+
+    # 2026-09-06, richiesto dall'utente: la data/ora assoluta del post
+    # Facebook (letta dal tooltip, vedi feed_social._data_da_tooltip_facebook)
+    # veniva usata solo come riferimento temporale per l'LLM e poi persa —
+    # con l'URL salvato per Facebook che punta alla pagina dell'autore (non
+    # un permalink al singolo post, mai risolto: Facebook non offre un
+    # permalink affidabile nel feed), tra molti post lo stesso link non
+    # bastava più a capire quale post avesse generato l'evento. Persistita
+    # qui così resta visibile e rintracciabile su Eventi/Quarantena/Archivio.
+    colonne_events = {r["name"] for r in conn.execute("PRAGMA table_info(events)").fetchall()}
+    for colonna in ("data_post", "ora_post"):
         if colonna not in colonne_events:
             conn.execute(f"ALTER TABLE events ADD COLUMN {colonna} TEXT")
             conn.commit()

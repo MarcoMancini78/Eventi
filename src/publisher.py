@@ -21,6 +21,13 @@ COLONNE_EVENTI = [
     "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
     "url_approfondimento", "fonti", "confidenza", "stato", "note",
     "primo_visto", "ultimo_visto", "bloccato", "soppressa",
+    # 2026-09-06, richiesto dall'utente (caso Bergamasco df3ef713fa46): data
+    # e ora del post Facebook sorgente, lette dal tooltip (feed_social.py)
+    # — l'URL Facebook punta sempre alla pagina dell'autore, mai al singolo
+    # post, quindi con più post sulla stessa pagina è l'unico modo per
+    # rintracciare quale post ha generato l'evento. Valorizzate solo per
+    # eventi da fonte Facebook (feed-facebook-*), vuote per le altre.
+    "data_post", "ora_post",
 ]
 
 # Colonne che appartengono all'utente: un run non le sovrascrive mai con un
@@ -430,8 +437,14 @@ def pubblica_da_verificare(worksheet: gspread.Worksheet, conn: sqlite3.Connectio
         "WHERE stato = 'quarantena' ORDER BY comune ASC, source_id ASC"
     )
     corpo = [[row[col] or "" for col in COLONNE_DA_VERIFICARE] for row in cur.fetchall()]
+    legenda = [[""] * len(COLONNE_DA_VERIFICARE)] + [
+        ["Legenda stato:"] + [""] * (len(COLONNE_DA_VERIFICARE) - 1)
+    ] + [
+        [f"  {stato}"] + [""] * (len(COLONNE_DA_VERIFICARE) - 1)
+        for stato in sorted(_STATI_VALIDI_COD_FOLLOW)
+    ]
     worksheet.clear()
-    worksheet.update([COLONNE_DA_VERIFICARE] + corpo, value_input_option="USER_ENTERED")
+    worksheet.update([COLONNE_DA_VERIFICARE] + corpo + legenda, value_input_option="USER_ENTERED")
     return len(corpo)
 
 
@@ -734,8 +747,8 @@ def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
                e.ora_inizio, e.data_fine, e.ora_fine, e.serie_id, e.occorrenza, e.comune,
                e.luogo, e.km, e.minuti, e.prezzo, e.organizzatore, e.url, e.url_immagine,
                e.url_approfondimento, e.confidenza, e.dettaglio_confidenza, e.campi_incerti,
-               e.note_estrazione, e.stato, e.note, e.primo_visto, e.ultimo_visto,
-               e.bloccato, e.soppressa, c.fascia
+               e.note_estrazione, e.data_post, e.ora_post, e.stato, e.note, e.primo_visto,
+               e.ultimo_visto, e.bloccato, e.soppressa, c.fascia
         FROM events e
         LEFT JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
         WHERE e.archiviato = 'no' AND e.stato != 'scartato'
@@ -795,7 +808,7 @@ def righe_archivio_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
         """
         SELECT event_id AS id, titolo, descrizione, tipologia, data_inizio,
                data_fine, comune, luogo, organizzatore, url, url_approfondimento,
-               serie_id, stato, note
+               serie_id, stato, note, data_post, ora_post
         FROM events
         WHERE archiviato = 'si'
         ORDER BY data_fine DESC
@@ -815,7 +828,7 @@ def righe_archivio_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
 COLONNE_ARCHIVIO = [
     "id", "titolo", "descrizione", "tipologia", "data_inizio", "data_fine",
     "comune", "luogo", "organizzatore", "url", "url_approfondimento",
-    "fonti", "serie_id", "stato", "note",
+    "fonti", "serie_id", "stato", "note", "data_post", "ora_post",
 ]
 
 
@@ -850,7 +863,8 @@ def righe_eventi_per_mappa(conn: sqlite3.Connection) -> list[dict]:
         """
         SELECT e.event_id AS id, e.titolo, e.descrizione, e.tipologia,
                e.data_inizio, e.data_fine, e.ora_inizio, e.comune, e.url,
-               e.url_approfondimento, e.stato, c.lat, c.lon, c.km, c.minuti
+               e.url_approfondimento, e.stato, e.data_post, e.ora_post,
+               c.lat, c.lon, c.km, c.minuti
         FROM events e
         JOIN comuni c ON c.comune = e.comune AND c.attivo = 'si'
         WHERE e.archiviato = 'no' AND e.stato != 'scartato'
@@ -893,6 +907,8 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
                 "url": r["url"] or "",
                 "url_approfondimento": r.get("url_approfondimento") or "",
                 "fonti": r.get("fonti") or "",
+                "data_post": r.get("data_post") or "",
+                "ora_post": r.get("ora_post") or "",
                 "quarantena": r.get("stato") == "quarantena",
             }
             for r in righe

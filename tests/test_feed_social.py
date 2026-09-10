@@ -223,6 +223,47 @@ def test_elabora_post_pubblica_evento_con_estrattore():
     assert riga["comune"] == "Calosso"
 
 
+_RISPOSTA_SENZA_COMUNE_TESTUALE = (
+    '{"eventi": [{"titolo": "Sagra del Tartufo", "descrizione": "Degustazioni", "tipologia": "sagra", '
+    '"data_inizio": "2026-09-12", "data_fine": "2026-09-12", "ora_inizio": "21:00", "ora_fine": null, '
+    '"ricorrenza": {"e_ricorrente": false}, "luogo_testuale": "Piazza Roma", "comune_testuale": null, '
+    '"indirizzo": null, "prezzo": null, "organizzatore": null, "anno_esplicito": true, '
+    '"confidenza": 92, "campi_incerti": [], "note_estrazione": null}], '
+    '"non_e_un_evento": false, "motivo": null}'
+)
+
+
+def test_elabora_post_categoria_proloco_riduce_penalita_comune_da_fonte():
+    """2026-09-07, richiesto dall'utente (caso Capriglio/Caprigliola
+    0fa104f8510b): la categoria del SOGGETTO (da coda_follow.categoria,
+    non 'categoria_fonte' del prompt LLM, fissa a 'social' per il feed) va
+    letta e usata per calibrare la penalità comune-da-fonte — una Pro Loco
+    nota (categoria='proloco') penalizza meno di una fonte non
+    categorizzata (confidenza LLM 92 - penalità ridotta -3 = 89, sopra
+    soglia 70: pubblicato, non in quarantena)."""
+    conn = _conn_con_comune()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, stato) "
+        "VALUES ('x', 'facebook', 'prolococalosso', 'Calosso', 'proloco', 'seguito')"
+    )
+    conn.commit()
+    provider = _ProviderFinto([_RISPOSTA_SENZA_COMUNE_TESTUALE])
+    extractor = ExtractorClient(Config(), conn, provider=provider)
+
+    post = feed_social.PostFeed(
+        piattaforma="facebook", handle_autore="prolococalosso", post_id="1",
+        url="https://www.facebook.com/prolococalosso/posts/1",
+        testo="Sagra del Tartufo sabato 12 settembre, degustazioni e musica.",
+    )
+    esito = feed_social.elabora_post(post, conn, Config(), extractor)
+
+    assert esito == "pubblicato"
+    riga = conn.execute("SELECT comune, confidenza, dettaglio_confidenza FROM events").fetchone()
+    assert riga["comune"] == "Calosso"
+    assert riga["confidenza"] == 89
+    assert "(-3)" in riga["dettaglio_confidenza"]
+
+
 def test_elabora_post_senza_url_approfondimento_usa_url_immagine_remoto(tmp_path):
     """Richiesto dall'utente 2026-09-04: se l'LLM non trova un link
     esplicito 'scopri di più' nel testo, url_approfondimento deve comunque
@@ -907,7 +948,7 @@ def test_riprocessa_eventi_instagram_sostituisce_evento_sbagliato(tmp_path, monk
         "dataPubblicazione": "2026-09-01T10:00:00.000Z",
     }
     pagina = _PaginaCorreggiFinta(grezzo)
-    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir: _contesto_correggi_finto(pagina))
+    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir, browser_visibile=True: _contesto_correggi_finto(pagina))
     monkeypatch.setattr(feed_social, "_chiudi_sessione_browser", lambda contesto: None)
     monkeypatch.setattr(feed_social, "verifica_identita_instagram", lambda contesto, config: None)
 
@@ -994,7 +1035,7 @@ def test_riprocessa_eventi_instagram_isola_errori_tra_piu_id(monkeypatch):
 
     grezzo = {"testo": "Sagra della Nocciola domenica 20 settembre in Piazza Roma a Calosso.", "immagineUrls": [], "dataPubblicazione": None}
     pagina = _PaginaCorreggiFinta(grezzo)
-    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir: _contesto_correggi_finto(pagina))
+    monkeypatch.setattr(feed_social, "_apri_sessione_browser", lambda piattaforma, sessione_dir, browser_visibile=True: _contesto_correggi_finto(pagina))
     monkeypatch.setattr(feed_social, "_chiudi_sessione_browser", lambda contesto: None)
     monkeypatch.setattr(feed_social, "verifica_identita_instagram", lambda contesto, config: None)
 
@@ -1086,19 +1127,19 @@ def test_leggi_data_pubblicazione_hover_facebook_successo():
         tooltip_testo="Giovedì 3 settembre 2026 alle ore 15:52",
     )
     risultato = feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1)
-    assert risultato == date(2026, 9, 3)
+    assert risultato == (date(2026, 9, 3), "15:52")
     assert len(pagina.mosse) == 2  # hover sul link + spostamento finale
 
 
 def test_leggi_data_pubblicazione_hover_facebook_idx_assente():
     pagina = _PaginaHoverFinta(box=None, tooltip_testo=None)
-    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=None) is None
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=None) == (None, None)
 
 
 def test_leggi_data_pubblicazione_hover_facebook_nessun_bounding_box():
     """Isolamento totale: elemento non trovato non deve sollevare."""
     pagina = _PaginaHoverFinta(box=None, tooltip_testo=None)
-    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) is None
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) == (None, None)
 
 
 def test_leggi_data_pubblicazione_hover_facebook_nessun_tooltip():
@@ -1106,7 +1147,7 @@ def test_leggi_data_pubblicazione_hover_facebook_nessun_tooltip():
     pagina = _PaginaHoverFinta(
         box={"x": 100, "y": 50, "width": 30, "height": 17}, tooltip_testo=None
     )
-    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) is None
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(pagina, idx_timestamp=1) == (None, None)
 
 
 def test_leggi_data_pubblicazione_hover_facebook_eccezione_isolata():
@@ -1117,4 +1158,4 @@ def test_leggi_data_pubblicazione_hover_facebook_eccezione_isolata():
         def locator(self, selettore):
             raise RuntimeError("simulato")
 
-    assert feed_social._leggi_data_pubblicazione_hover_facebook(_PaginaCheEsplode(), idx_timestamp=1) is None
+    assert feed_social._leggi_data_pubblicazione_hover_facebook(_PaginaCheEsplode(), idx_timestamp=1) == (None, None)

@@ -87,6 +87,14 @@
   }
   button:hover { border-color: var(--accent); }
 
+  .link-elenco {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .link-elenco:hover { text-decoration: underline; }
+
   .btn-giorno {
     padding: 5px 10px;
     font-size: 15px;
@@ -145,8 +153,7 @@
     </div>
     <input type="date" id="data-osservazione" style="position:absolute; opacity:0; width:1px; height:1px;" tabindex="-1" aria-hidden="true">
     <button type="button" id="btn-oggi">Oggi</button>
-    <button type="button" id="btn-carica-file">Carica eventi_mappa.json…</button>
-    <input type="file" id="input-file" accept="application/json" style="display:none">
+    <a href="elenco.html" class="link-elenco">Vedi elenco eventi →</a>
   </div>
   <span id="stato">Nessun dato caricato.</span>
 </header>
@@ -252,24 +259,6 @@ function initMappa() {
     if (!inputData.value) return;
     const [anno, mese, giorno] = inputData.value.split("-").map(Number);
     impostaData(new Date(anno, mese - 1, giorno));
-  });
-
-  document.getElementById("btn-carica-file").addEventListener("click", () => {
-    document.getElementById("input-file").click();
-  });
-  document.getElementById("input-file").addEventListener("change", (ev) => {
-    const file = ev.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        caricaDati(JSON.parse(reader.result));
-        impostaStato(`Caricati ${eventiTotali.length} eventi da file locale.`);
-      } catch (e) {
-        impostaStato("File non valido: " + e.message, true);
-      }
-    };
-    reader.readAsText(file);
   });
 
   provaCaricamentoAutomatico();

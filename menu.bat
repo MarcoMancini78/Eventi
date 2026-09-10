@@ -142,6 +142,8 @@ echo   6. Fingerprinting comuni (tutti) - solo se cambiano molti siti comunali
 echo   7. Aggiorna da Google Sheets: Fonti, DaVerificare, azioni Quarantena (pull-fonti)
 echo   8. Verifica configurazione (database, credenziali Google, .env)
 echo   9. Ricorreggi eventi Instagram (solo un post gia' letto, con un bug ormai risolto)
+echo   10. Ricorreggi fonte HTML in quarantena (rilancia una fonte con l'adapter aggiornato)
+echo   11. Riprocessa TUTTA la quarantena (smista da solo siti/Instagram/Facebook)
 echo   0. Indietro
 echo.
 set /p SCELTA="Scelta: "
@@ -181,6 +183,15 @@ if "%SCELTA%"=="8" (
 if "%SCELTA%"=="9" (
     set /p EVENTID="Event_id da ricorreggere (separati da spazio): "
     %PYTHON_EXE% run.py correggi-post !EVENTID!
+    goto FINE_COMANDO
+)
+if "%SCELTA%"=="10" (
+    set /p SOURCEID="Source_id da ricorreggere (separati da spazio): "
+    %PYTHON_EXE% run.py correggi-fonte-html !SOURCEID!
+    goto FINE_COMANDO
+)
+if "%SCELTA%"=="11" (
+    %PYTHON_EXE% run.py riprocessa-quarantena
     goto FINE_COMANDO
 )
 if "%SCELTA%"=="0" goto MENU_PRINCIPALE

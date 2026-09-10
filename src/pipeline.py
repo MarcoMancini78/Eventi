@@ -100,7 +100,20 @@ def esegui_fonte(
         if art.titolo and art.data_inizio:
             evento = _costruisci_evento_da_artefatto(art, fonte, conn)
             if evento:
-                upsert_evento(conn, evento, source_id=fonte["source_id"])
+                eid = upsert_evento(conn, evento, source_id=fonte["source_id"])
+                # 2026-09-09, richiesto dall'utente (caso Brandizzo
+                # 182241c091a6): stesso fix già applicato al ramo T1/LLM in
+                # _pubblica_o_metti_in_quarantena — un evento che era finito
+                # in quarantena da un giro precedente (es. quando la fonte
+                # era ancora T1_html, prima di essere promossa a T0_jsonld)
+                # deve uscirne quando il T0 lo ri-conferma con dati certi,
+                # non restarci bloccato per sempre. 'quarantena' è un
+                # valore calcolato (mai una decisione dell'operatore, a
+                # differenza di 'ok'/'scartato'), sicuro da sovrascrivere.
+                conn.execute(
+                    "UPDATE events SET stato = 'nuovo' WHERE event_id = ? AND stato = 'quarantena'", (eid,)
+                )
+                conn.commit()
                 riepilogo["eventi_pubblicati"] += 1
             continue
 
@@ -173,7 +186,8 @@ def _gestisci_evento_ricorrente(evento_estratto, art, fonte: dict, conn: sqlite3
     prossimo avvistamento con dati migliori.
     """
     comune_riga, _ = risolvi_comune_evento(
-        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn
+        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn,
+        categoria_fonte=fonte.get("categoria_soggetto") or fonte.get("categoria"),
     )
     if comune_riga is None:
         return 0
@@ -214,18 +228,31 @@ def _registra_artefatto(conn: sqlite3.Connection, art, source_id: str) -> str:
     return artifact_id
 
 
-def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sqlite3.Connection, config: Config) -> str:
+def _pubblica_o_metti_in_quarantena(
+    evento_estratto, art, fonte: dict, conn: sqlite3.Connection, config: Config,
+    data_post: str | None = None, ora_post: str | None = None,
+) -> str:
     """06.6: sotto soglia_confidenza -> Quarantena, altrimenti Eventi.
 
     La quarantena vera e propria (foglio dedicato) è compito del publisher
     (M5 completo); qui si applica solo la soglia e si evita di pubblicare
     un evento incerto come se fosse certo.
+
+    `data_post`/`ora_post` (2026-09-06, richiesto dall'utente, caso
+    Bergamasco df3ef713fa46): solo per i post Facebook (feed_social.py),
+    dove l'URL salvato punta sempre alla pagina dell'autore e mai a un
+    permalink del singolo post — con molti post sulla stessa pagina, la
+    data/ora di pubblicazione letta dal tooltip è l'unico modo per
+    rintracciare quale post specifico ha generato l'evento.
     """
     if not evento_estratto.data_inizio:
         return "scartato"  # 06.8: data mancante, non pubblicabile né in quarantena senza data
 
     comune_riga, penalita_comune = risolvi_comune_evento(
-        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn
+        evento_estratto.comune_testuale, fonte.get("comune_riferimento"), conn,
+        categoria_fonte=fonte.get("categoria_soggetto") or fonte.get("categoria"),
+        penalita_fonte_affidabile=config.penalita_comune_da_fonte_affidabile,
+        penalita_fonte_generica=config.penalita_comune_da_fonte_generica,
     )
     if comune_riga is None:
         return "quarantena"  # 07.3.7: comune_ambiguo
@@ -241,9 +268,12 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
     if not evento_estratto.anno_esplicito:
         confidenza_finale -= config.penalita_anno_non_esplicito
         dettagli_penalita.append(f"anno non esplicito nel testo (-{config.penalita_anno_non_esplicito})")
-    if not evento_estratto.luogo_testuale:
-        confidenza_finale -= config.penalita_luogo_assente
-        dettagli_penalita.append(f"luogo assente (-{config.penalita_luogo_assente})")
+    # 2026-09-07, richiesto dall'utente: il luogo (posto preciso dentro il
+    # comune) non penalizza più la confidenza — un evento diffuso o
+    # itinerante può non averne uno, è un dettaglio in più quando
+    # presente, non un segnale di scarsa certezza quando assente. Il
+    # comune (già penalizzato sopra quando inferito) resta l'unico dato
+    # di posizione che conta per l'affidabilità.
     dettaglio_confidenza = "; ".join(dettagli_penalita)
 
     titolo_norm = titolo_normalizzato(evento_estratto.titolo, comune_riga["comune"])
@@ -276,6 +306,8 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
         "dettaglio_confidenza": dettaglio_confidenza,
         "campi_incerti": ", ".join(evento_estratto.campi_incerti) or None,
         "note_estrazione": evento_estratto.note_estrazione,
+        "data_post": data_post,
+        "ora_post": ora_post,
     }
 
     eid = upsert_evento(conn, evento, source_id=fonte["source_id"])
@@ -284,12 +316,247 @@ def _pubblica_o_metti_in_quarantena(evento_estratto, art, fonte: dict, conn: sql
         conn.execute("UPDATE events SET stato = 'quarantena' WHERE event_id = ?", (eid,))
         conn.commit()
         return "quarantena"
+
+    # 2026-09-09, richiesto dall'utente (caso Caselette 272614985a67,
+    # secondo giro): un evento già in quarantena da un run precedente, una
+    # volta ri-estratto con dati migliori (es. dopo un fix al rilevamento
+    # dei link di dettaglio) che portano la confidenza sopra soglia, deve
+    # uscire dalla quarantena — prima restava bloccato per sempre a
+    # stato='quarantena' anche con confidenza 95, perché upsert_evento non
+    # tocca mai 'stato' (deliberatamente, è una colonna che l'operatore
+    # può cambiare da Sheets) e qui si scriveva 'quarantena' solo nel ramo
+    # sotto soglia, mai il contrario. 'quarantena' è però un valore
+    # CALCOLATO da questa stessa funzione, non una decisione
+    # dell'operatore (a differenza di 'ok'/'scartato', scritte solo da
+    # publisher.applica_azioni_quarantena) — riportarlo a 'nuovo' qui è
+    # sicuro. Non tocca 'ok' (già promosso a mano) né 'scartato' (già
+    # scartato a mano): quelle restano decisioni dell'operatore, mai
+    # sovrascritte da un run automatico.
+    conn.execute(
+        "UPDATE events SET stato = 'nuovo' WHERE event_id = ? AND stato = 'quarantena'", (eid,)
+    )
+    conn.commit()
     return "pubblicato"
+
+
+class ErroreRiprocessaFonteHtml(Exception):
+    """Sollevato quando una fonte non può essere ricorretta (es. source_id
+    non trovato, o non è una fonte T1_html/aggregatore rilanciabile)."""
+
+
+# 2026-09-07, esteso (richiesto dall'utente): 'riprocessa_quarantena' deve
+# poter rilanciare qualunque fonte "sito web" gestita da esegui_fonte, non
+# solo T1_html — T0_jsonld/T0_ical/T0_rss hanno campi già strutturati (bypassano
+# l'estrattore) ma un dato mancante può comunque dipendere da un fix al
+# parser della fonte, non solo dal rilevamento dei link di dettaglio.
+# Esclusi email/telegram (M7): richiedono credenziali/stato IMAP diversi
+# da un semplice re-fetch HTTP, fuori scope per una ricorrezione mirata.
+_METODI_RIPROCESSABILI = {
+    "T1_html", "T0_aggregatore_playwright", "T0_pa_design_system",
+    "T0_jsonld", "T0_ical", "T0_rss",
+}
+
+
+def riprocessa_fonti_html(
+    source_ids: list[str], conn: sqlite3.Connection, config: Config, extractor: ExtractorClient
+) -> list[dict]:
+    """Utility di correzione mirata (2026-09-06, richiesto dall'utente dopo
+    il caso Casal Cermelli 309f6c8c01f2): un fix alla logica di rilevamento
+    dei link di dettaglio (adapters/html.py) non tocca gli eventi già in
+    quarantena da un run precedente — la fonte non viene mai rifetchata da
+    sola finché non arriva il prossimo giro schedulato, quindi un evento
+    con solo l'anteprima (invece del dettaglio completo) resta così finché
+    non lo si ricorregge esplicitamente. Analogo a
+    feed_social.riprocessa_eventi_instagram, ma per fonte invece che per
+    singolo post: qui si rilancia l'intera fonte con l'adapter aggiornato
+    (che può trovare più pagine di dettaglio da un solo indice), non un
+    singolo URL.
+
+    A differenza del feed social, qui non serve riaprire un URL salvato
+    sull'evento (che potrebbe essere l'indice, mai un vero permalink per
+    l'HTML generico): si rilancia l'endpoint della FONTE, non del singolo
+    evento — è la fonte, non l'evento, a dover essere rivista con la
+    logica nuova.
+
+    Ritorna una lista di dict {source_id, esito, dettaglio} — mai solleva
+    per un singolo fallimento (isolamento totale, 15.1 regola 4): un
+    source_id sbagliato non deve bloccare la correzione degli altri."""
+    risultati = []
+    for source_id in source_ids:
+        try:
+            risultati.append(_riprocessa_una_fonte_html(source_id, conn, config, extractor))
+        except ErroreRiprocessaFonteHtml as exc:
+            risultati.append({"source_id": source_id, "esito": "errore", "dettaglio": str(exc)})
+    return risultati
+
+
+def _riprocessa_una_fonte_html(
+    source_id: str, conn: sqlite3.Connection, config: Config, extractor: ExtractorClient
+) -> dict:
+    riga = conn.execute(
+        "SELECT endpoint, tier, categoria FROM sources WHERE source_id = ?", (source_id,)
+    ).fetchone()
+    if not riga:
+        raise ErroreRiprocessaFonteHtml("source_id non trovato in sources")
+    if riga["tier"] not in _METODI_RIPROCESSABILI:
+        raise ErroreRiprocessaFonteHtml(
+            f"tier '{riga['tier']}' non ricorreggibile con questo comando (solo {sorted(_METODI_RIPROCESSABILI)})"
+        )
+    if not riga["endpoint"]:
+        raise ErroreRiprocessaFonteHtml("fonte senza endpoint")
+
+    vecchi_ids = {
+        r["event_id"]
+        for r in conn.execute(
+            "SELECT DISTINCT event_id FROM event_sources WHERE source_id = ?", (source_id,)
+        ).fetchall()
+    }
+
+    # Stesso pattern già usato in publisher.pubblica_fonti per derivare
+    # comune_riferimento da un source_id 'comune-*': nessuna colonna SQL
+    # dedicata, lo slug del comune è già la fonte di verità nel source_id.
+    comune_riferimento = None
+    if source_id.startswith("comune-"):
+        slug = source_id[len("comune-"):]
+        riga_comune = conn.execute(
+            "SELECT comune FROM comuni WHERE LOWER(REPLACE(comune, ' ', '-')) = ?", (slug,)
+        ).fetchone()
+        comune_riferimento = riga_comune["comune"] if riga_comune else None
+
+    fonte = {
+        "source_id": source_id,
+        "endpoint": riga["endpoint"],
+        "metodo": riga["tier"],
+        "comune_riferimento": comune_riferimento,
+        "categoria": riga["categoria"],
+    }
+
+    riepilogo = esegui_fonte(fonte, conn, config, extractor)
+    if riepilogo.get("errore"):
+        return {"source_id": source_id, "esito": "errore", "dettaglio": riepilogo["errore"]}
+
+    nuovi_ids = {
+        r["event_id"]
+        for r in conn.execute(
+            "SELECT DISTINCT event_id FROM event_sources WHERE source_id = ?", (source_id,)
+        ).fetchall()
+    } - vecchi_ids
+
+    if not nuovi_ids:
+        return {
+            "source_id": source_id, "esito": "nessun_cambiamento",
+            "dettaglio": f"riprocessato: {riepilogo['eventi_pubblicati']} pubblicati, "
+                         f"{riepilogo['eventi_in_quarantena']} in quarantena, nessun evento NUOVO creato",
+        }
+
+    # A differenza di feed_social._riprocessa_un_evento_instagram (un solo
+    # post, quindi al più un vecchio evento da archiviare), qui l'intero
+    # indice viene riletto: può produrre più pagine di dettaglio nuove
+    # senza che nessun vecchio evento venga sostituito 1:1 (l'indice da
+    # solo, prima del fix, produceva un singolo artefatto con più eventi
+    # generici). Gli eventi vecchi restano quindi NON toccati qui — è
+    # l'operatore a decidere se scartarli dal foglio Quarantena (azione
+    # 'scarta'), coerente con 04.7 (mai un dato perso in silenzio).
+    return {
+        "source_id": source_id, "esito": "nuovi_eventi",
+        "dettaglio": f"{len(nuovi_ids)} nuovo/i evento/i: {sorted(nuovi_ids)} — "
+                     f"eventi precedenti di questa fonte NON toccati, valutare se scartarli a mano",
+    }
+
+
+def riprocessa_quarantena(conn: sqlite3.Connection, config: Config, extractor: ExtractorClient) -> dict:
+    """2026-09-07, richiesto dall'utente: un solo comando che scorre TUTTI
+    gli eventi in quarantena e li ricorregge, smistando da solo il tipo di
+    fonte di ciascuno — l'operatore non deve più sapere a mano se un
+    evento viene da un sito HTML, da Instagram o da Facebook, né cercare
+    i source_id/event_id giusti da passare a comandi separati
+    (correggi-post, correggi-fonte-html).
+
+    Smistamento per prefisso di source_id (event_sources), non per
+    tabella `sources` (le fonti sintetiche 'feed-{piattaforma}-{handle}'
+    di feed_social.py non hanno mai un tier lì, vedi feed_social.py):
+    - 'feed-instagram-*' -> feed_social.riprocessa_eventi_instagram
+      (permalink diretto al post, riapribile).
+    - 'feed-facebook-*' -> segnalato esplicitamente come NON
+      riprocessabile: l'URL salvato per Facebook è la pagina
+      dell'autore, mai un permalink al singolo post (limite noto,
+      documentato in feed_social.py — non un bug da aggirare qui,
+      resta correzione manuale).
+    - ogni altro source_id (siti T0/T1) -> pipeline.riprocessa_fonti_html,
+      una sola volta per fonte anche se più eventi in quarantena la
+      condividono (rilanciare la stessa fonte più volte nello stesso giro
+      sarebbe lavoro ripetuto senza guadagno).
+
+    Un evento con più fonti di tipi diversi viene ricorretto da ciascun
+    ramo applicabile (isolamento totale, 15.1 regola 4): un fallimento su
+    un ramo non deve bloccare gli altri.
+
+    Ritorna un riepilogo per tipo di fonte — mai un event_id/source_id
+    lasciato silenziosamente fuori (04.7): ogni evento in quarantena
+    all'inizio del giro compare in almeno una delle liste del risultato."""
+    eventi_quarantena = conn.execute(
+        "SELECT event_id FROM events WHERE stato = 'quarantena'"
+    ).fetchall()
+
+    fonti_instagram: dict[str, list[str]] = {}  # event_id -> [source_id, ...]
+    fonti_facebook: dict[str, list[str]] = {}
+    fonti_html: dict[str, set[str]] = {}  # source_id -> {event_id, ...}
+
+    for riga in eventi_quarantena:
+        event_id = riga["event_id"]
+        fonti = conn.execute(
+            "SELECT DISTINCT source_id FROM event_sources WHERE event_id = ?", (event_id,)
+        ).fetchall()
+        for r in fonti:
+            source_id = r["source_id"]
+            if source_id.startswith("feed-instagram-"):
+                fonti_instagram.setdefault(event_id, []).append(source_id)
+            elif source_id.startswith("feed-facebook-"):
+                fonti_facebook.setdefault(event_id, []).append(source_id)
+            else:
+                fonti_html.setdefault(source_id, set()).add(event_id)
+
+    risultati_instagram = (
+        feed_social_module().riprocessa_eventi_instagram(
+            sorted(fonti_instagram), conn, config, extractor
+        )
+        if fonti_instagram else []
+    )
+
+    risultati_html = riprocessa_fonti_html(sorted(fonti_html), conn, config, extractor) if fonti_html else []
+
+    risultati_facebook = [
+        {
+            "event_id": event_id, "esito": "non_riprocessabile",
+            "dettaglio": "Facebook: l'URL salvato è la pagina dell'autore, non un permalink al "
+                         "singolo post — non riapribile automaticamente, serve correzione manuale "
+                         "(riaprire il feed, cercare il post)",
+        }
+        for event_id in sorted(fonti_facebook)
+    ]
+
+    return {
+        "totale_in_quarantena": len(eventi_quarantena),
+        "instagram": risultati_instagram,
+        "html": risultati_html,
+        "facebook_non_riprocessabili": risultati_facebook,
+    }
+
+
+def feed_social_module():
+    """Import ritardato (2026-09-07): feed_social importa da pipeline
+    (_pubblica_o_metti_in_quarantena), un import diretto in testa al file
+    creerebbe un ciclo. Stesso pattern già usato altrove nel modulo per
+    import interni tardivi (es. .scheduling in esegui_fonte)."""
+    from . import feed_social
+
+    return feed_social
 
 
 def _costruisci_evento_da_artefatto(art, fonte: dict, conn: sqlite3.Connection) -> dict | None:
     comune_riga, penalita = risolvi_comune_evento(
-        art.luogo_testuale, fonte.get("comune_riferimento"), conn
+        art.luogo_testuale, fonte.get("comune_riferimento"), conn,
+        categoria_fonte=fonte.get("categoria_soggetto") or fonte.get("categoria"),
     )
     if comune_riga is None:
         return None  # 07.3.7: nessun match -> quarantena (M5, non ancora implementata qui)

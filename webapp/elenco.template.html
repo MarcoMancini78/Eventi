@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eventi Langhe — Elenco</title>
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --border: #ddd8cc;
+    --text: #23211d;
+    --text-2: #6b6558;
+    --accent: #5c6b3f;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    z-index: 10;
+  }
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .link-mappa {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .link-mappa:hover { text-decoration: underline; }
+
+  #stato {
+    font-size: 12.5px;
+    color: var(--text-2);
+    padding: 0 16px 10px;
+  }
+
+  .filtri {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .campo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .campo-filtro label {
+    font-size: 11.5px;
+    color: var(--text-2);
+  }
+
+  .campo-filtro input,
+  .campo-filtro select {
+    font-size: 13px;
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    min-width: 150px;
+  }
+
+  button {
+    font-size: 13px;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  button:hover { border-color: var(--accent); }
+
+  main {
+    flex: 1;
+    overflow: auto;
+    padding: 0 16px 24px;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    background: var(--surface);
+    font-size: 13px;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  thead th:hover { color: var(--accent); }
+
+  tbody td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:hover { background: #f1efe8; }
+
+  .col-titolo { min-width: 220px; }
+  .col-descrizione { min-width: 260px; color: var(--text-2); }
+  .badge-quarantena {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #92400e;
+    background: #fef3c7;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-right: 6px;
+  }
+  td a { color: var(--accent); }
+
+  .nessun-risultato {
+    padding: 24px;
+    text-align: center;
+    color: var(--text-2);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Eventi Langhe — Elenco</h1>
+  <a href="mappa.html" class="link-mappa">← Torna alla mappa</a>
+</header>
+
+<div class="filtri">
+  <div class="campo-filtro">
+    <label for="filtro-data-da">Dal giorno</label>
+    <input type="date" id="filtro-data-da">
+  </div>
+  <div class="campo-filtro">
+    <label for="filtro-data-a">Al giorno</label>
+    <input type="date" id="filtro-data-a">
+  </div>
+  <div class="campo-filtro">
+    <label for="filtro-comune">Comune</label>
+    <select id="filtro-comune">
+      <option value="">Tutti</option>
+    </select>
+  </div>
+  <div class="campo-filtro">
+    <label for="filtro-tipologia">Tipo evento</label>
+    <select id="filtro-tipologia">
+      <option value="">Tutti</option>
+    </select>
+  </div>
+  <button type="button" id="btn-reset">Azzera filtri</button>
+</div>
+
+<span id="stato">Caricamento…</span>
+
+<main>
+  <table id="tabella-eventi">
+    <thead>
+      <tr>
+        <th data-colonna="titolo">Titolo</th>
+        <th data-colonna="tipologia">Tipo</th>
+        <th data-colonna="comune">Comune</th>
+        <th data-colonna="data_inizio">Dal</th>
+        <th data-colonna="data_fine">Al</th>
+        <th data-colonna="km">Km</th>
+        <th class="col-descrizione">Descrizione</th>
+        <th>Fonte</th>
+      </tr>
+    </thead>
+    <tbody id="corpo-tabella"></tbody>
+  </table>
+</main>
+
+<script>
+const URL_DATI_REMOTI = "eventi_mappa.json";
+
+let eventiTotali = [];
+let colonnaOrdinamento = "data_inizio";
+let direzioneOrdinamento = 1;
+
+const NOMI_MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
+  "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
+
+function formattaDataOraItaliana(isoDataOra) {
+  if (!isoDataOra) return "?";
+  const [parteData, parteOra] = isoDataOra.split("T");
+  if (!parteData) return isoDataOra;
+  const [anno, mese, giorno] = parteData.split("-");
+  const testoData = `${giorno} ${NOMI_MESI[Number(mese) - 1]} ${anno}`;
+  if (!parteOra) return testoData;
+  const [ore, minuti] = parteOra.split(":");
+  return `${testoData} alle ${ore}:${minuti}`;
+}
+
+function formattaDataItalianaBreve(iso) {
+  if (!iso) return "";
+  const [anno, mese, giorno] = iso.split("-");
+  return `${giorno}/${mese}/${anno}`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+function impostaStato(testo, errore) {
+  const el = document.getElementById("stato");
+  el.textContent = testo;
+  el.style.color = errore ? "#a24a3d" : "";
+}
+
+async function caricaEventi() {
+  try {
+    const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
+    if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+    const dati = await risposta.json();
+    eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
+    popolaFiltri();
+    applicaFiltri();
+    impostaStato(`${eventiTotali.length} eventi caricati (generato il ${formattaDataOraItaliana(dati.generato_il)}).`);
+  } catch (e) {
+    impostaStato("Caricamento non riuscito: " + e.message, true);
+  }
+}
+
+function popolaFiltri() {
+  const comuni = [...new Set(eventiTotali.map((ev) => ev.comune).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+  const tipologie = [...new Set(eventiTotali.map((ev) => ev.tipologia).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+
+  const selComune = document.getElementById("filtro-comune");
+  for (const comune of comuni) {
+    const opt = document.createElement("option");
+    opt.value = comune;
+    opt.textContent = comune;
+    selComune.appendChild(opt);
+  }
+
+  const selTipologia = document.getElementById("filtro-tipologia");
+  for (const tipo of tipologie) {
+    const opt = document.createElement("option");
+    opt.value = tipo;
+    opt.textContent = tipo;
+    selTipologia.appendChild(opt);
+  }
+}
+
+function eventiFiltrati() {
+  const dataDa = document.getElementById("filtro-data-da").value;
+  const dataA = document.getElementById("filtro-data-a").value;
+  const comune = document.getElementById("filtro-comune").value;
+  const tipologia = document.getElementById("filtro-tipologia").value;
+
+  return eventiTotali.filter((ev) => {
+    const fineEvento = ev.data_fine || ev.data_inizio;
+    if (dataDa && fineEvento < dataDa) return false;
+    if (dataA && ev.data_inizio > dataA) return false;
+    if (comune && ev.comune !== comune) return false;
+    if (tipologia && ev.tipologia !== tipologia) return false;
+    return true;
+  });
+}
+
+function ordina(eventi) {
+  const col = colonnaOrdinamento;
+  return [...eventi].sort((a, b) => {
+    const va = a[col] ?? "";
+    const vb = b[col] ?? "";
+    if (va < vb) return -1 * direzioneOrdinamento;
+    if (va > vb) return 1 * direzioneOrdinamento;
+    return 0;
+  });
+}
+
+function applicaFiltri() {
+  const filtrati = ordina(eventiFiltrati());
+  const corpo = document.getElementById("corpo-tabella");
+  corpo.innerHTML = "";
+
+  if (filtrati.length === 0) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td colspan="8" class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</td>`;
+    corpo.appendChild(tr);
+  } else {
+    for (const ev of filtrati) {
+      const tr = document.createElement("tr");
+      const linkFonte = ev.url
+        ? `<a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a>`
+        : "";
+      tr.innerHTML = `
+        <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
+        <td>${escapeHtml(ev.tipologia || "")}</td>
+        <td>${escapeHtml(ev.comune || "")}</td>
+        <td>${formattaDataItalianaBreve(ev.data_inizio)}</td>
+        <td>${formattaDataItalianaBreve(ev.data_fine)}</td>
+        <td>${ev.km != null ? ev.km : ""}</td>
+        <td class="col-descrizione">${escapeHtml(ev.descrizione || "")}</td>
+        <td>${linkFonte}</td>
+      `;
+      corpo.appendChild(tr);
+    }
+  }
+
+  document.querySelector(`#stato`).dataset.count = filtrati.length;
+  aggiornaConteggio(filtrati.length);
+}
+
+function aggiornaConteggio(n) {
+  const totale = eventiTotali.length;
+  const el = document.getElementById("stato");
+  if (n === totale) {
+    el.textContent = `${totale} eventi.`;
+  } else {
+    el.textContent = `${n} eventi su ${totale} totali (filtrati).`;
+  }
+}
+
+document.getElementById("filtro-data-da").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-data-a").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-comune").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-tipologia").addEventListener("change", applicaFiltri);
+
+document.getElementById("btn-reset").addEventListener("click", () => {
+  document.getElementById("filtro-data-da").value = "";
+  document.getElementById("filtro-data-a").value = "";
+  document.getElementById("filtro-comune").value = "";
+  document.getElementById("filtro-tipologia").value = "";
+  applicaFiltri();
+});
+
+document.querySelectorAll("thead th[data-colonna]").forEach((th) => {
+  th.addEventListener("click", () => {
+    const col = th.dataset.colonna;
+    if (colonnaOrdinamento === col) {
+      direzioneOrdinamento *= -1;
+    } else {
+      colonnaOrdinamento = col;
+      direzioneOrdinamento = 1;
+    }
+    applicaFiltri();
+  });
+});
+
+caricaEventi();
+</script>
+
+</body>
+</html>

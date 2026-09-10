@@ -148,7 +148,7 @@ def follow_batch(
 
     esiti: list[EsitoFollow] = []
     try:
-        contesto = _apri_sessione_browser(piattaforma, sessione_dir)
+        contesto = _apri_sessione_browser(piattaforma, sessione_dir, config.browser_visibile)
     except Exception as exc:
         raise CircuitoApertoError(f"Impossibile aprire la sessione browser: {exc}") from exc
 
@@ -226,20 +226,37 @@ def _cartella_profilo(piattaforma: str, sessione_dir: Path | None) -> Path:
     return sessione_dir / f"{piattaforma}_profile"
 
 
-def _apri_sessione_browser(piattaforma: str, sessione_dir: Path | None):
+def _apri_sessione_browser(piattaforma: str, sessione_dir: Path | None, browser_visibile: bool = True):
     """Sessione persistente Playwright (14.5b): nessun re-login automatico.
 
     launch_persistent_context salva l'intero profilo del browser (cookie,
     storage) nella cartella indicata: dopo il primo login manuale, i lanci
     successivi riaprono la stessa sessione senza richiederlo di nuovo.
     Nessuna credenziale in chiaro nel codice o in config/.env.
-    """
+
+    2026-09-08, richiesto dall'utente: `browser_visibile=False` non passa a
+    headless=True (resterebbe lo stesso identico rischio di rilevamento
+    anti-bot già documentato sotto, 14.3 — non è questo il compromesso
+    voluto) — la sessione resta un browser reale non-headless, solo con la
+    finestra spostata fuori dall'area visibile dello schermo e minimizzata
+    subito dopo l'apertura, così non compare mai davanti all'utente.
+    `--window-position` fuori schermo è il meccanismo affidabile
+    cross-platform (Chromium non nega la richiesta anche se la posizione è
+    negativa/oltre il bordo); `--start-minimized` è un secondo livello
+    difensivo per i sistemi dove funziona (principalmente Windows), non
+    l'unico meccanismo di cui ci si fida qui. Non usato da
+    login_manuale, che chiama launch_persistent_context direttamente e
+    resta sempre visibile per forza (richiede interazione umana per il
+    login/2FA)."""
     from playwright.sync_api import sync_playwright
+
+    args = [] if browser_visibile else ["--window-position=-32000,-32000", "--start-minimized"]
 
     playwright = sync_playwright().start()
     browser = playwright.chromium.launch_persistent_context(
         user_data_dir=str(_cartella_profilo(piattaforma, sessione_dir)),
         headless=False,  # visibile: un login/interazione headless è più sospetto (14.3)
+        args=args,
     )
     return {"playwright": playwright, "browser": browser, "piattaforma": piattaforma}
 

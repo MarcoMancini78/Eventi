@@ -34,6 +34,24 @@ _TESTI_LINK_EVENTI = re.compile(
     r"events|what'?s on)$",
     re.IGNORECASE,
 )
+# 2026-09-06, caso reale (Pro Loco Casal Cermelli, evento 309f6c8c01f2,
+# segnalato dall'utente): la homepage aveva DUE link con 'eventi' nel testo
+# — 'Gli Eventi' (voce di menu principale, la pagina generale giusta) ed
+# 'Eventi' (sotto-voce annidata in 'Realtà locali > Insieme per Leggere
+# ODV', una sezione minore). Il solo match esatto _TESTI_LINK_EVENTI
+# scartava 'Gli Eventi' (non è un match esatto) e prendeva l'unico che
+# soddisfaceva il pattern — quello sbagliato. Pattern aggiuntivo per un
+# breve titolo di menu con articolo ('Gli Eventi', 'Tutti gli Eventi',
+# 'Le Manifestazioni'): resta comunque un match sull'INTERO testo (non
+# una sottostringa), quindi non riapre il falso positivo già coperto da
+# test_trova_link_eventi_ignora_falsi_positivi_con_testo_diverso ('Tutti
+# gli eventi del 2025' non matcha: ha un anno numerico dopo la parola
+# chiave, non è un titolo di menu breve)."""
+_TESTI_LINK_EVENTI_CON_ARTICOLO = re.compile(
+    r"^(tutti\s+)?(gli|i|le|la|lo|il)\s+"
+    r"(eventi|manifestazioni|agenda|calendario|cartellone|spettacoli|events)$",
+    re.IGNORECASE,
+)
 _PATTERN_LINK_HREF_TESTO = re.compile(r'<a[^>]+href=["\']([^"\']+)["\'][^>]*>([^<]*)</a>', re.IGNORECASE)
 _PATTERN_LINK_CALENDAR = re.compile(
     r'<link[^>]+type=["\']text/calendar["\'][^>]+href=["\']([^"\']+)["\']', re.IGNORECASE
@@ -62,9 +80,27 @@ class RisultatoProbing:
 def _trova_link_pagina_eventi(html: str, url_base: str) -> str | None:
     """Cerca un <a> il cui testo visibile corrisponde a 'Eventi'/'Agenda'/ecc.
     (case-insensitive, match esatto sul testo ripulito, non una sottostringa
-    — evita falsi positivi su frasi come 'Tutti gli eventi del 2025')."""
+    — evita falsi positivi su frasi come 'Tutti gli eventi del 2025').
+
+    2026-09-06, caso reale Casal Cermelli (evento 309f6c8c01f2): un sito
+    può avere PIÙ link con 'eventi' nel testo — un vero titolo di menu con
+    articolo ('Gli Eventi', la pagina generale, comparsa nel menu
+    principale) e una sotto-voce annidata con match esatto ('Eventi',
+    dentro 'Realtà locali > Insieme per Leggere ODV', una sezione
+    minore). Tra i due, preferire quello che appare PRIMA nel documento
+    (non un ordine di priorità fisso tra i due pattern): un link di menu
+    principale precede quasi sempre uno annidato in profondità nell'HTML,
+    coerente con l'ordine tipico di rendering di un menu — verificato sul
+    caso reale ('Gli Eventi' all'indice 11, 'Eventi' della sotto-sezione
+    all'indice 28). Il pattern con articolo resta comunque un match
+    sull'INTERO testo (non una sottostringa), quindi non riapre il falso
+    positivo già coperto da
+    test_trova_link_eventi_ignora_falsi_positivi_con_testo_diverso ('Tutti
+    gli eventi del 2025' non matcha: ha un anno numerico dopo la parola
+    chiave, non è un titolo di menu breve)."""
     for href, testo in _PATTERN_LINK_HREF_TESTO.findall(html):
-        if _TESTI_LINK_EVENTI.match(testo.strip()):
+        testo_pulito = testo.strip()
+        if _TESTI_LINK_EVENTI.match(testo_pulito) or _TESTI_LINK_EVENTI_CON_ARTICOLO.match(testo_pulito):
             return _url_assoluto(href, url_base)
     return None
 

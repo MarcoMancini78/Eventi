@@ -78,13 +78,35 @@ def normalizza_orario(valore: str | None) -> str | None:
     return f"{ore}:{minuti}"
 
 
-def risolvi_comune_evento(comune_testuale: str | None, comune_fonte: str | None, conn: sqlite3.Connection):
+_CATEGORIE_FONTE_AFFIDABILI_PER_COMUNE = {"comune", "proloco"}
+
+
+def risolvi_comune_evento(
+    comune_testuale: str | None,
+    comune_fonte: str | None,
+    conn: sqlite3.Connection,
+    categoria_fonte: str | None = None,
+    penalita_fonte_affidabile: int = 3,
+    penalita_fonte_generica: int = 10,
+):
     """Cascata 07.3, livelli 1-2-5: match esatto/alias, poi comune_riferimento della fonte.
 
     Ritorna (riga_comune | None, confidenza_penalita). I livelli 3/4/6/7
     (testo del luogo, dizionario dei luoghi, geocoding, quarantena) si
     aggiungono quando i moduli relativi esistono (M5+).
-    """
+
+    2026-09-07, richiesto dall'utente (caso Capriglio/Caprigliola
+    0fa104f8510b): la penalità per comune inferito dalla fonte (non dal
+    testo) dipende dal TIPO di fonte, non è più un valore fisso — una
+    fonte 'comune'/'proloco' è legata in modo affidabile a un solo comune
+    noto (l'unica incertezza residua è che una Pro Loco può pubblicizzare
+    un evento in un comune limitrofo diverso dal proprio), mentre un
+    aggregatore/raccoglitore di notizie senza comune_testuale nel post è
+    un segnale più forte di scarsa affidabilità della notizia stessa —
+    lì la penalità piena resta giustificata. `categoria_fonte=None`
+    (fonte non categorizzata, o nessuna categoria disponibile per il
+    chiamante) ricade sulla penalità generica, comportamento invariato
+    per i chiamanti che non passano questo parametro."""
     if comune_testuale:
         riga = risolvi_comune(comune_testuale, conn)
         if riga:
@@ -93,7 +115,12 @@ def risolvi_comune_evento(comune_testuale: str | None, comune_fonte: str | None,
     if comune_fonte:
         riga = risolvi_comune(comune_fonte, conn)
         if riga:
-            return riga, -10  # inferenza dal comune di riferimento della fonte (07.3.5)
+            penalita = (
+                penalita_fonte_affidabile
+                if categoria_fonte in _CATEGORIE_FONTE_AFFIDABILI_PER_COMUNE
+                else penalita_fonte_generica
+            )
+            return riga, -penalita  # inferenza dal comune di riferimento della fonte (07.3.5)
 
     return None, 0
 
