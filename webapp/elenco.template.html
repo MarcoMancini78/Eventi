@@ -15,8 +15,10 @@
     --text-2: #6b6558;
     --text-3: #948c78;
     --accent: #5c6b3f;
+    --accent-dark: #46512f;
     --accent-soft: #eef1e6;
     --shadow: 0 1px 2px rgba(35, 33, 29, .04), 0 4px 16px rgba(35, 33, 29, .05);
+    --shadow-card: 0 1px 3px rgba(35, 33, 29, .06), 0 1px 2px rgba(35, 33, 29, .04);
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -30,76 +32,80 @@
   }
 
   header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    color: #fff;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
     flex-wrap: wrap;
     z-index: 10;
   }
 
   .titolo-pagina {
     display: flex;
-    align-items: baseline;
-    gap: 10px;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
   }
 
   h1 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 700;
     letter-spacing: -.01em;
     margin: 0;
     white-space: nowrap;
+    color: #fff;
   }
 
   .sottotitolo {
-    font-size: 12.5px;
-    color: var(--text-3);
+    font-size: 11.5px;
+    color: rgba(255,255,255,.72);
     white-space: nowrap;
   }
 
   .header-destra {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     flex-wrap: wrap;
   }
 
   .testo-aggiornato {
-    font-size: 12px;
-    color: var(--text-3);
+    font-size: 11px;
+    color: rgba(255,255,255,.72);
     white-space: nowrap;
   }
 
   .link-mappa {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
-    color: var(--accent);
+    color: #fff;
     text-decoration: none;
     white-space: nowrap;
     padding: 6px 12px;
-    border-radius: 7px;
-    background: var(--accent-soft);
+    border-radius: 999px;
+    background: rgba(255,255,255,.16);
     transition: background .12s ease;
   }
-  .link-mappa:hover { background: #e2e8d3; }
+  .link-mappa:hover { background: rgba(255,255,255,.28); }
 
-  #stato {
-    font-size: 12.5px;
-    color: var(--text-2);
-    padding: 10px 24px 0;
+  .barra-stato {
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+    padding: 6px 20px;
+    font-size: 12px;
+    color: var(--text-3);
   }
 
   .filtri {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 14px 24px;
+    padding: 12px 20px;
     display: flex;
     align-items: flex-end;
-    gap: 18px;
+    gap: 14px;
     flex-wrap: wrap;
     box-shadow: var(--shadow);
     position: relative;
@@ -109,27 +115,30 @@
   .campo-filtro {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
+    flex: 1 1 140px;
   }
 
   .campo-filtro label {
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 10.5px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .04em;
+    letter-spacing: .05em;
     color: var(--text-3);
   }
 
   .campo-filtro input,
   .campo-filtro select {
-    font-size: 13.5px;
-    padding: 7px 10px;
+    font-size: 14px;
+    padding: 8px 10px;
     border: 1px solid var(--border-strong);
     border-radius: 8px;
     background: var(--surface);
     color: var(--text);
-    min-width: 160px;
+    width: 100%;
     outline-offset: 1px;
+    -webkit-appearance: none;
+    appearance: none;
   }
   .campo-filtro input:focus,
   .campo-filtro select:focus {
@@ -137,25 +146,27 @@
     outline: 2px solid var(--accent-soft);
   }
 
-  button {
+  button#btn-reset {
     font-size: 13px;
     font-weight: 600;
-    padding: 7px 14px;
+    padding: 8px 16px;
     border: 1px solid var(--border-strong);
     border-radius: 8px;
     background: var(--surface);
     color: var(--text-2);
     cursor: pointer;
-    height: 34px;
+    height: 38px;
+    flex: 0 0 auto;
   }
-  button:hover { border-color: var(--accent); color: var(--accent); }
+  button#btn-reset:hover { border-color: var(--accent); color: var(--accent); }
 
   main {
     flex: 1;
     overflow: auto;
-    padding: 20px 24px 32px;
+    padding: 16px 20px 28px;
   }
 
+  /* --- Tabella (desktop) --- */
   .tabella-scroll {
     background: var(--surface);
     border-radius: 12px;
@@ -180,9 +191,9 @@
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-2);
-    font-size: 11.5px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: .04em;
   }
@@ -231,23 +242,84 @@
     padding: 2px 8px;
     margin-right: 6px;
   }
-  td a {
+  a.link-fonte {
     color: var(--accent);
     font-weight: 600;
     text-decoration: none;
   }
-  td a:hover { text-decoration: underline; }
+  a.link-fonte:hover { text-decoration: underline; }
 
   .nessun-risultato {
-    padding: 40px;
+    padding: 48px 20px;
     text-align: center;
     color: var(--text-3);
     font-size: 14px;
   }
 
-  @media (max-width: 640px) {
-    header, .filtri, main { padding-left: 14px; padding-right: 14px; }
-    .campo-filtro input, .campo-filtro select { min-width: 130px; }
+  /* --- Card (mobile) --- */
+  .elenco-card {
+    display: none;
+  }
+
+  .scheda-evento {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .scheda-evento .riga-alto {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .scheda-evento .titolo-evento {
+    font-weight: 700;
+    font-size: 14.5px;
+    line-height: 1.3;
+  }
+  .scheda-evento .km-evento {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+  .scheda-evento .riga-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--text-2);
+    margin-bottom: 8px;
+  }
+  .scheda-evento .riga-meta .puntino {
+    color: var(--text-3);
+  }
+  .scheda-evento .descrizione-evento {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .scheda-evento .riga-basso {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 760px) {
+    header { padding: 10px 14px; }
+    .filtri, main, .barra-stato { padding-left: 14px; padding-right: 14px; }
+    .filtri { gap: 10px; }
+    .campo-filtro { flex: 1 1 45%; }
+    button#btn-reset { flex: 1 1 100%; }
+
+    .tabella-scroll { display: none; }
+    .elenco-card { display: block; }
   }
 </style>
 </head>
@@ -256,13 +328,17 @@
 <header>
   <div class="titolo-pagina">
     <h1>Eventi Langhe</h1>
-    <span class="sottotitolo">Elenco</span>
+    <span class="sottotitolo">Elenco eventi</span>
   </div>
   <div class="header-destra">
     <span id="aggiornato" class="testo-aggiornato"></span>
-    <a href="index.html" class="link-mappa">← Torna alla mappa</a>
+    <a href="index.html" class="link-mappa">← Mappa</a>
   </div>
 </header>
+
+<div class="barra-stato">
+  <span id="stato">Caricamento…</span>
+</div>
 
 <div class="filtri">
   <div class="campo-filtro">
@@ -284,8 +360,6 @@
   <button type="button" id="btn-reset">Azzera filtri</button>
 </div>
 
-<span id="stato">Caricamento…</span>
-
 <main>
   <div class="tabella-scroll">
     <table id="tabella-eventi">
@@ -304,6 +378,8 @@
       <tbody id="corpo-tabella"></tbody>
     </table>
   </div>
+
+  <div class="elenco-card" id="elenco-card"></div>
 </main>
 
 <script>
@@ -361,8 +437,7 @@ async function caricaEventi() {
     eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
     popolaFiltri();
     applicaFiltri();
-    document.getElementById("aggiornato").textContent = `Dati aggiornati il ${formattaDataOraItaliana(dati.generato_il)}`;
-    impostaStato(`${eventiTotali.length} eventi caricati.`);
+    document.getElementById("aggiornato").textContent = `Aggiornato il ${formattaDataOraItaliana(dati.generato_il)}`;
   } catch (e) {
     impostaStato("Caricamento non riuscito: " + e.message, true);
   }
@@ -430,6 +505,12 @@ function aggiornaIndicatoriOrdinamento() {
 function applicaFiltri() {
   aggiornaIndicatoriOrdinamento();
   const filtrati = ordina(eventiFiltrati());
+  disegnaTabella(filtrati);
+  disegnaCard(filtrati);
+  aggiornaConteggio(filtrati.length);
+}
+
+function disegnaTabella(filtrati) {
   const corpo = document.getElementById("corpo-tabella");
   corpo.innerHTML = "";
 
@@ -437,27 +518,63 @@ function applicaFiltri() {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td colspan="8" class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</td>`;
     corpo.appendChild(tr);
-  } else {
-    for (const ev of filtrati) {
-      const tr = document.createElement("tr");
-      const linkFonte = ev.url
-        ? `<a href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a>`
-        : "";
-      tr.innerHTML = `
-        <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
-        <td><span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span></td>
-        <td>${escapeHtml(ev.comune || "")}</td>
-        <td>${formattaDataItalianaBreve(ev.data_inizio)}</td>
-        <td>${formattaDataItalianaBreve(ev.data_fine)}</td>
-        <td class="col-numero">${ev.km != null ? ev.km : ""}</td>
-        <td class="col-descrizione">${escapeHtml(ev.descrizione || "")}</td>
-        <td>${linkFonte}</td>
-      `;
-      corpo.appendChild(tr);
-    }
+    return;
   }
 
-  aggiornaConteggio(filtrati.length);
+  for (const ev of filtrati) {
+    const tr = document.createElement("tr");
+    const linkFonte = ev.url
+      ? `<a class="link-fonte" href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a>`
+      : "";
+    tr.innerHTML = `
+      <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
+      <td><span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span></td>
+      <td>${escapeHtml(ev.comune || "")}</td>
+      <td>${formattaDataItalianaBreve(ev.data_inizio)}</td>
+      <td>${formattaDataItalianaBreve(ev.data_fine)}</td>
+      <td class="col-numero">${ev.km != null ? ev.km : ""}</td>
+      <td class="col-descrizione">${escapeHtml(ev.descrizione || "")}</td>
+      <td>${linkFonte}</td>
+    `;
+    corpo.appendChild(tr);
+  }
+}
+
+function disegnaCard(filtrati) {
+  const contenitore = document.getElementById("elenco-card");
+  contenitore.innerHTML = "";
+
+  if (filtrati.length === 0) {
+    contenitore.innerHTML = `<div class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</div>`;
+    return;
+  }
+
+  for (const ev of filtrati) {
+    const periodo = ev.data_fine && ev.data_fine !== ev.data_inizio
+      ? `${formattaDataItalianaBreve(ev.data_inizio)} → ${formattaDataItalianaBreve(ev.data_fine)}`
+      : formattaDataItalianaBreve(ev.data_inizio);
+    const linkFonte = ev.url
+      ? `<a class="link-fonte" href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri fonte →</a>`
+      : "";
+    const scheda = document.createElement("div");
+    scheda.className = "scheda-evento";
+    scheda.innerHTML = `
+      <div class="riga-alto">
+        <div class="titolo-evento">${ev.quarantena ? '<span class="badge-quarantena">⚠️</span>' : ""}${escapeHtml(ev.titolo || "")}</div>
+        ${ev.km != null ? `<div class="km-evento">${ev.km} km</div>` : ""}
+      </div>
+      <div class="riga-meta">
+        <span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span>
+        <span class="puntino">·</span>
+        <span>${escapeHtml(ev.comune || "")}</span>
+        <span class="puntino">·</span>
+        <span>${escapeHtml(periodo)}</span>
+      </div>
+      ${ev.descrizione ? `<div class="descrizione-evento">${escapeHtml(ev.descrizione)}</div>` : ""}
+      ${linkFonte ? `<div class="riga-basso">${linkFonte}</div>` : ""}
+    `;
+    contenitore.appendChild(scheda);
+  }
 }
 
 function aggiornaConteggio(n) {
@@ -468,6 +585,7 @@ function aggiornaConteggio(n) {
   } else {
     el.textContent = `${n} eventi su ${totale} totali (filtrati).`;
   }
+  el.style.color = "";
 }
 
 document.getElementById("filtro-data").addEventListener("change", applicaFiltri);
