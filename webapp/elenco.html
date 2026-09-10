@@ -162,12 +162,8 @@
 
 <div class="filtri">
   <div class="campo-filtro">
-    <label for="filtro-data-da">Dal giorno</label>
-    <input type="date" id="filtro-data-da">
-  </div>
-  <div class="campo-filtro">
-    <label for="filtro-data-a">Al giorno</label>
-    <input type="date" id="filtro-data-a">
+    <label for="filtro-data">Data</label>
+    <input type="date" id="filtro-data">
   </div>
   <div class="campo-filtro">
     <label for="filtro-comune">Comune</label>
@@ -279,15 +275,15 @@ function popolaFiltri() {
 }
 
 function eventiFiltrati() {
-  const dataDa = document.getElementById("filtro-data-da").value;
-  const dataA = document.getElementById("filtro-data-a").value;
+  const data = document.getElementById("filtro-data").value;
   const comune = document.getElementById("filtro-comune").value;
   const tipologia = document.getElementById("filtro-tipologia").value;
 
   return eventiTotali.filter((ev) => {
-    const fineEvento = ev.data_fine || ev.data_inizio;
-    if (dataDa && fineEvento < dataDa) return false;
-    if (dataA && ev.data_inizio > dataA) return false;
+    if (data) {
+      const fineEvento = ev.data_fine || ev.data_inizio;
+      if (!(ev.data_inizio <= data && data <= fineEvento)) return false;
+    }
     if (comune && ev.comune !== comune) return false;
     if (tipologia && ev.tipologia !== tipologia) return false;
     return true;
@@ -348,14 +344,12 @@ function aggiornaConteggio(n) {
   }
 }
 
-document.getElementById("filtro-data-da").addEventListener("change", applicaFiltri);
-document.getElementById("filtro-data-a").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-data").addEventListener("change", applicaFiltri);
 document.getElementById("filtro-comune").addEventListener("change", applicaFiltri);
 document.getElementById("filtro-tipologia").addEventListener("change", applicaFiltri);
 
 document.getElementById("btn-reset").addEventListener("click", () => {
-  document.getElementById("filtro-data-da").value = "";
-  document.getElementById("filtro-data-a").value = "";
+  document.getElementById("filtro-data").value = "";
   document.getElementById("filtro-comune").value = "";
   document.getElementById("filtro-tipologia").value = "";
   applicaFiltri();
