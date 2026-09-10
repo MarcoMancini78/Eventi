@@ -6,12 +6,17 @@
 <title>Eventi Langhe — Elenco</title>
 <style>
   :root {
-    --bg: #f7f5f0;
+    --bg: #f3f1ea;
     --surface: #ffffff;
-    --border: #ddd8cc;
+    --surface-2: #faf9f5;
+    --border: #e2ddce;
+    --border-strong: #cfc8b3;
     --text: #23211d;
     --text-2: #6b6558;
+    --text-3: #948c78;
     --accent: #5c6b3f;
+    --accent-soft: #eef1e6;
+    --shadow: 0 1px 2px rgba(35, 33, 29, .04), 0 4px 16px rgba(35, 33, 29, .05);
   }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
@@ -21,142 +26,225 @@
     color: var(--text);
     display: flex;
     flex-direction: column;
+    -webkit-font-smoothing: antialiased;
   }
 
   header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 10px 16px;
+    padding: 14px 24px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
     z-index: 10;
   }
 
+  .titolo-pagina {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
   h1 {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
     margin: 0;
+    white-space: nowrap;
+  }
+
+  .sottotitolo {
+    font-size: 12.5px;
+    color: var(--text-3);
     white-space: nowrap;
   }
 
   .link-mappa {
     font-size: 13px;
+    font-weight: 600;
     color: var(--accent);
     text-decoration: none;
     white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 7px;
+    background: var(--accent-soft);
+    transition: background .12s ease;
   }
-  .link-mappa:hover { text-decoration: underline; }
+  .link-mappa:hover { background: #e2e8d3; }
 
   #stato {
     font-size: 12.5px;
     color: var(--text-2);
-    padding: 0 16px 10px;
+    padding: 10px 24px 0;
   }
 
   .filtri {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 10px 16px;
+    padding: 14px 24px;
     display: flex;
-    align-items: center;
-    gap: 14px;
+    align-items: flex-end;
+    gap: 18px;
     flex-wrap: wrap;
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 5;
   }
 
   .campo-filtro {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 5px;
   }
 
   .campo-filtro label {
-    font-size: 11.5px;
-    color: var(--text-2);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--text-3);
   }
 
   .campo-filtro input,
   .campo-filtro select {
-    font-size: 13px;
-    padding: 5px 8px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    font-size: 13.5px;
+    padding: 7px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
     background: var(--surface);
     color: var(--text);
-    min-width: 150px;
+    min-width: 160px;
+    outline-offset: 1px;
+  }
+  .campo-filtro input:focus,
+  .campo-filtro select:focus {
+    border-color: var(--accent);
+    outline: 2px solid var(--accent-soft);
   }
 
   button {
     font-size: 13px;
-    padding: 6px 12px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
     background: var(--surface);
-    color: var(--text);
+    color: var(--text-2);
     cursor: pointer;
-    align-self: flex-end;
+    height: 34px;
   }
-  button:hover { border-color: var(--accent); }
+  button:hover { border-color: var(--accent); color: var(--accent); }
 
   main {
     flex: 1;
     overflow: auto;
-    padding: 0 16px 24px;
+    padding: 20px 24px 32px;
+  }
+
+  .tabella-scroll {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
   }
 
   table {
     border-collapse: collapse;
     width: 100%;
-    background: var(--surface);
-    font-size: 13px;
+    font-size: 13.5px;
   }
 
   thead th {
     position: sticky;
     top: 0;
-    background: var(--surface);
+    background: var(--surface-2);
     text-align: left;
-    padding: 8px 10px;
-    border-bottom: 2px solid var(--border);
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border-strong);
     white-space: nowrap;
     cursor: pointer;
     user-select: none;
+    font-weight: 600;
+    color: var(--text-2);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
   }
   thead th:hover { color: var(--accent); }
+  thead th.col-numero { cursor: default; text-align: right; }
+  thead th.col-numero:hover { color: var(--text-2); }
+
+  .icona-ordinamento {
+    display: inline-block;
+    margin-left: 4px;
+    font-size: 10px;
+    color: var(--accent);
+  }
 
   tbody td {
-    padding: 8px 10px;
+    padding: 11px 14px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
-  tbody tr:hover { background: #f1efe8; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr { transition: background .1s ease; }
+  tbody tr:hover { background: var(--accent-soft); }
 
-  .col-titolo { min-width: 220px; }
-  .col-descrizione { min-width: 260px; color: var(--text-2); }
+  .col-titolo { min-width: 240px; font-weight: 600; }
+  .col-descrizione { min-width: 280px; color: var(--text-2); font-weight: 400; }
+  .col-numero { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-2); white-space: nowrap; }
+
+  .badge-tipo {
+    display: inline-block;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
   .badge-quarantena {
     display: inline-block;
     font-size: 11px;
     font-weight: 600;
     color: #92400e;
     background: #fef3c7;
-    border-radius: 4px;
-    padding: 2px 6px;
+    border-radius: 999px;
+    padding: 2px 8px;
     margin-right: 6px;
   }
-  td a { color: var(--accent); }
+  td a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  td a:hover { text-decoration: underline; }
 
   .nessun-risultato {
-    padding: 24px;
+    padding: 40px;
     text-align: center;
-    color: var(--text-2);
+    color: var(--text-3);
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    header, .filtri, main { padding-left: 14px; padding-right: 14px; }
+    .campo-filtro input, .campo-filtro select { min-width: 130px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Eventi Langhe — Elenco</h1>
+  <div class="titolo-pagina">
+    <h1>Eventi Langhe</h1>
+    <span class="sottotitolo">Elenco</span>
+  </div>
   <a href="mappa.html" class="link-mappa">← Torna alla mappa</a>
 </header>
 
@@ -183,28 +271,30 @@
 <span id="stato">Caricamento…</span>
 
 <main>
-  <table id="tabella-eventi">
-    <thead>
-      <tr>
-        <th data-colonna="titolo">Titolo</th>
-        <th data-colonna="tipologia">Tipo</th>
-        <th data-colonna="comune">Comune</th>
-        <th data-colonna="data_inizio">Dal</th>
-        <th data-colonna="data_fine">Al</th>
-        <th data-colonna="km">Km</th>
-        <th class="col-descrizione">Descrizione</th>
-        <th>Fonte</th>
-      </tr>
-    </thead>
-    <tbody id="corpo-tabella"></tbody>
-  </table>
+  <div class="tabella-scroll">
+    <table id="tabella-eventi">
+      <thead>
+        <tr>
+          <th data-colonna="titolo">Titolo<span class="icona-ordinamento"></span></th>
+          <th data-colonna="tipologia">Tipo<span class="icona-ordinamento"></span></th>
+          <th data-colonna="comune">Comune<span class="icona-ordinamento"></span></th>
+          <th data-colonna="data_inizio">Dal<span class="icona-ordinamento"></span></th>
+          <th data-colonna="data_fine">Al<span class="icona-ordinamento"></span></th>
+          <th data-colonna="km" class="col-numero">Km<span class="icona-ordinamento"></span></th>
+          <th class="col-descrizione">Descrizione</th>
+          <th>Fonte</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-tabella"></tbody>
+    </table>
+  </div>
 </main>
 
 <script>
 const URL_DATI_REMOTI = "eventi_mappa.json";
 
 let eventiTotali = [];
-let colonnaOrdinamento = "data_inizio";
+let colonnaOrdinamento = "km";
 let direzioneOrdinamento = 1;
 
 const NOMI_MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
@@ -309,7 +399,19 @@ function ordina(eventi) {
   });
 }
 
+function aggiornaIndicatoriOrdinamento() {
+  document.querySelectorAll("thead th[data-colonna]").forEach((th) => {
+    const icona = th.querySelector(".icona-ordinamento");
+    if (th.dataset.colonna === colonnaOrdinamento) {
+      icona.textContent = direzioneOrdinamento === 1 ? "▲" : "▼";
+    } else {
+      icona.textContent = "";
+    }
+  });
+}
+
 function applicaFiltri() {
+  aggiornaIndicatoriOrdinamento();
   const filtrati = ordina(eventiFiltrati());
   const corpo = document.getElementById("corpo-tabella");
   corpo.innerHTML = "";
@@ -326,11 +428,11 @@ function applicaFiltri() {
         : "";
       tr.innerHTML = `
         <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
-        <td>${escapeHtml(ev.tipologia || "")}</td>
+        <td><span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span></td>
         <td>${escapeHtml(ev.comune || "")}</td>
         <td>${formattaDataItalianaBreve(ev.data_inizio)}</td>
         <td>${formattaDataItalianaBreve(ev.data_fine)}</td>
-        <td>${ev.km != null ? ev.km : ""}</td>
+        <td class="col-numero">${ev.km != null ? ev.km : ""}</td>
         <td class="col-descrizione">${escapeHtml(ev.descrizione || "")}</td>
         <td>${linkFonte}</td>
       `;
@@ -338,7 +440,6 @@ function applicaFiltri() {
     }
   }
 
-  document.querySelector(`#stato`).dataset.count = filtrati.length;
   aggiornaConteggio(filtrati.length);
 }
 
