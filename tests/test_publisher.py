@@ -3,7 +3,6 @@ regola 8) tramite un fake minimale dell'interfaccia gspread.Worksheet
 effettivamente usata (clear/update/get_all_records)."""
 import sqlite3
 import sys
-from datetime import date, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -349,35 +348,6 @@ def test_scrivi_eventi_mappa_json_vuoto_non_omesso(tmp_path):
     import json
     dati = json.loads(percorso.read_text(encoding="utf-8"))
     assert dati["eventi"] == []
-
-
-class _ConfigFinta:
-    vista_principale_giorni = 21
-    vista_principale_fasce = ("A", "B")
-
-
-def test_righe_eventi_vista_principale_filtra_per_fascia_e_orizzonte():
-    """03: Eventi = solo prossimi 21 giorni, fasce A/B. Un evento in
-    fascia C o oltre l'orizzonte finisce in Eventi_estesi, non qui."""
-    oggi = date.today()
-    righe = [
-        {"id": "a", "fascia": "A", "data_inizio": (oggi + timedelta(days=5)).isoformat()},
-        {"id": "b", "fascia": "C", "data_inizio": (oggi + timedelta(days=5)).isoformat()},
-        {"id": "c", "fascia": "A", "data_inizio": (oggi + timedelta(days=40)).isoformat()},
-        {"id": "d", "fascia": None, "data_inizio": (oggi + timedelta(days=5)).isoformat()},
-    ]
-    vista = publisher.righe_eventi_vista_principale(righe, _ConfigFinta())
-    assert [r["id"] for r in vista] == ["a"]
-
-
-def test_righe_eventi_estesi_e_complemento_della_vista_principale():
-    oggi = date.today()
-    righe = [
-        {"id": "a", "fascia": "A", "data_inizio": (oggi + timedelta(days=5)).isoformat()},
-        {"id": "b", "fascia": "C", "data_inizio": (oggi + timedelta(days=5)).isoformat()},
-    ]
-    estesi = publisher.righe_eventi_estesi(righe, _ConfigFinta())
-    assert [r["id"] for r in estesi] == ["b"]
 
 
 def test_righe_archivio_da_sqlite_solo_eventi_archiviati():

@@ -30,9 +30,7 @@ class Config:
     soglia_fascia_c_km: float = 100.0
     raggio_max_km: float = 100.0
 
-    # Vista e archiviazione (03.1.6)
-    vista_principale_giorni: int = 21
-    vista_principale_fasce: tuple[str, ...] = ("A", "B")
+    # Archiviazione (03.1.6)
     giorni_archiviazione: int = 0
     limite_sanita_anni: int = 2
 

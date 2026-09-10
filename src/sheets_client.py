@@ -83,7 +83,7 @@ def _load_user_credentials(config: Config) -> Credentials:
 STRUTTURA = {
     "principale": [
         "Eventi", "Quarantena", "Log", "Serie", "Stato",
-        "Newsletter", "CodaFollow", "Perimetro", "Fonti", "Eventi_estesi",
+        "Newsletter", "CodaFollow", "Perimetro", "Fonti",
         "Archivio", "DaVerificare", "CoperturaComuni", "CoperturaAltreEntita",
     ],
     "anagrafiche": [],
@@ -131,14 +131,6 @@ INTESTAZIONI = {
         "fascia", "comune", "sito_istituzionale", "fb_comune", "fb_proloco", "ig_proloco",
     ],
     "CoperturaAltreEntita": ["tipologia", "nome", "sito", "facebook", "instagram"],
-    "Eventi_estesi": [
-        "id", "titolo", "descrizione", "tipologia", "data_inizio", "ora_inizio",
-        "data_fine", "ora_fine", "serie_id", "occorrenza", "comune", "luogo",
-        "km", "minuti", "prezzo", "organizzatore", "url", "url_immagine",
-        "url_approfondimento", "fonti", "confidenza", "stato", "note",
-        "primo_visto", "ultimo_visto", "bloccato", "soppressa",
-        "data_post", "ora_post",
-    ],
     "Archivio": [
         "id", "titolo", "descrizione", "tipologia", "data_inizio", "data_fine",
         "comune", "luogo", "organizzatore", "url", "url_approfondimento",

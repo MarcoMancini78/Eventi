@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import date, datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 import gspread
@@ -764,31 +764,6 @@ def righe_da_sqlite(conn: sqlite3.Connection) -> list[dict]:
         riga["fonti"] = ", ".join(fonti_per_evento.get(riga["id"], []))
 
     return righe
-
-
-def righe_eventi_vista_principale(righe: list[dict], config) -> list[dict]:
-    """03/12: il foglio `Eventi` è una vista, non tutto l'elenco — solo i
-    prossimi `vista_principale_giorni` giorni, nelle fasce
-    `vista_principale_fasce` (default 21 giorni, A/B). Un evento con
-    fascia non risolvibile (comune fuori perimetro/non attivo) non entra
-    mai nella vista principale: non è né A né B."""
-    oggi = date.today().isoformat()
-    limite = (date.today() + timedelta(days=config.vista_principale_giorni)).isoformat()
-    fasce = set(config.vista_principale_fasce)
-    return [
-        r for r in righe
-        if r["fascia"] in fasce and oggi <= (r["data_inizio"] or "") <= limite
-    ]
-
-
-def righe_eventi_estesi(righe: list[dict], config) -> list[dict]:
-    """03: `Eventi_estesi` è il complemento della vista principale — tutto
-    ciò che non rientra nei prossimi `vista_principale_giorni` giorni o
-    nelle fasce `vista_principale_fasce`. Include anche gli eventi con
-    fascia non risolvibile: 'il resto' li deve comunque contenere da
-    qualche parte, non far sparire silenziosamente un evento reale."""
-    principali = {r["id"] for r in righe_eventi_vista_principale(righe, config)}
-    return [r for r in righe if r["id"] not in principali]
 
 
 def righe_quarantena_da_sqlite(conn: sqlite3.Connection) -> list[dict]:

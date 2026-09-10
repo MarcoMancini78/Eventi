@@ -472,14 +472,8 @@ def cmd_publish(args: argparse.Namespace) -> None:
     righe_tutte = publisher.righe_da_sqlite(conn)
 
     ws_eventi = spreadsheet_principale.worksheet("Eventi")
-    righe_eventi = publisher.righe_eventi_vista_principale(righe_tutte, config)
-    publisher.pubblica_eventi(ws_eventi, righe_eventi)
-    print(f"Foglio Eventi aggiornato: {len(righe_eventi)} righe scritte.")
-
-    ws_eventi_estesi = spreadsheet_principale.worksheet("Eventi_estesi")
-    righe_estesi = publisher.righe_eventi_estesi(righe_tutte, config)
-    publisher.pubblica_eventi(ws_eventi_estesi, righe_estesi)
-    print(f"Foglio Eventi_estesi aggiornato: {len(righe_estesi)} righe scritte.")
+    publisher.pubblica_eventi(ws_eventi, righe_tutte)
+    print(f"Foglio Eventi aggiornato: {len(righe_tutte)} righe scritte.")
 
     ws_quarantena = spreadsheet_principale.worksheet("Quarantena")
     righe_quarantena = publisher.righe_quarantena_da_sqlite(conn)
