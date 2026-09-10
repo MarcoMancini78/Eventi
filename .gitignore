@@ -1,6 +1,6 @@
 config/.env
 config/credentials.json
-config/token.json
+config/token*.json
 data/
 webapp/mappa.html
 __pycache__/
