@@ -87,6 +87,7 @@ per la logica di scheduling/budget):
 | `follow` | Esegue un lotto di follow social (`--platform`, `--n`, `--dry-run`) |
 | `feed-social` | Lettura cronologica del feed, attribuzione ed estrazione eventi (sola lettura) |
 | `backup-sheets` | Copia lo spreadsheet principale in una cartella Drive dedicata |
+| `cleanup` | Rimuove backup di `eventi.db` e file scratch/debug più vecchi di N giorni in `data/` (elenco di default, `--esegui` per rimuoverli davvero) |
 | `discover`, `reprocess` | Placeholder, non ancora implementati |
 
 ## 2.4 Interfacce di consultazione

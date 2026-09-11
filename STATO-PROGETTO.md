@@ -51,6 +51,10 @@ Ultimo aggiornamento: 2026-09-11
     `git push` manuale.
 - **Backup**: `run.py backup-sheets` copia lo spreadsheet principale su una
   cartella Drive dedicata.
+- **Pulizia locale**: `run.py cleanup` rimuove backup manuali di `eventi.db`
+  e file scratch/debug più vecchi di 7 giorni in `data/` (elenco di default,
+  `--esegui` per rimuoverli davvero). Aggiunto il 2026-09-11 dopo aver
+  trovato ~260 MB accumulati senza alcuna procedura di pulizia.
 - **Operatività (M11)**: lock file, scheduling coalescente, foglio `Stato`,
   `run.py doctor` — tutti presenti nel codice. Non risulta un collaudo
   esplicito del criterio di accettazione completo (spegnimento reale di 3

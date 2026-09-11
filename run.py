@@ -1031,6 +1031,20 @@ def feed_social_import():
     return feed_social
 
 
+def cmd_cleanup(args: argparse.Namespace) -> None:
+    from src import cleanup
+
+    file_trovati = cleanup.pulisci(DATA_DIR, giorni_minimi=args.giorni, dry_run=not args.esegui)
+    if not file_trovati:
+        print(f"Nessun file da pulire (backup DB o scratch più vecchi di {args.giorni} giorni).")
+        return
+
+    azione = "Rimossi" if args.esegui else "Trovati (aggiungi --esegui per rimuoverli)"
+    print(f"{azione} {len(file_trovati)} file:")
+    for path in file_trovati:
+        print(f"  {path.name}")
+
+
 def cmd_doctor(args: argparse.Namespace) -> None:
     config = load_config()
     problemi = []
@@ -1059,6 +1073,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_doctor = sub.add_parser("doctor", help="Diagnostica configurazione e stato")
     p_doctor.set_defaults(func=cmd_doctor)
+
+    p_cleanup = sub.add_parser(
+        "cleanup",
+        help="Rimuove backup di eventi.db e file scratch/debug più vecchi di N giorni (default: solo elenco, --esegui per rimuoverli davvero)",
+    )
+    p_cleanup.add_argument("--giorni", type=int, default=7, help="Età minima in giorni prima di considerare un file da pulire (default 7)")
+    p_cleanup.add_argument("--esegui", action="store_true", help="Rimuove davvero i file trovati (senza, solo un elenco a schermo)")
+    p_cleanup.set_defaults(func=cmd_cleanup)
 
     p_run = sub.add_parser("run", help="Esegue la raccolta sulle fonti T0/T1 note (M2, parziale)")
     p_run.add_argument("--fonte", help="source_id per un test puntuale, invece di leggere da SQLite")

@@ -142,6 +142,7 @@ echo   6. Verifica configurazione (database, credenziali Google, .env)
 echo   7. Ricorreggi eventi Instagram (solo un post gia' letto, con un bug ormai risolto)
 echo   8. Ricorreggi fonte HTML in quarantena (rilancia una fonte con l'adapter aggiornato)
 echo   9. Riprocessa TUTTA la quarantena (smista da solo siti/Instagram/Facebook)
+echo   10. Pulisci backup DB e file scratch/debug vecchi in data/ (elenco, poi conferma)
 echo   0. Indietro
 echo.
 set /p SCELTA="Scelta: "
@@ -182,6 +183,13 @@ if "%SCELTA%"=="8" (
 )
 if "%SCELTA%"=="9" (
     %PYTHON_EXE% run.py riprocessa-quarantena
+    goto FINE_COMANDO
+)
+if "%SCELTA%"=="10" (
+    %PYTHON_EXE% run.py cleanup
+    echo.
+    set /p CONFERMA="Rimuovere davvero questi file? (s/n): "
+    if /i "!CONFERMA!"=="s" %PYTHON_EXE% run.py cleanup --esegui
     goto FINE_COMANDO
 )
 if "%SCELTA%"=="0" goto MENU_PRINCIPALE
