@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-11T20:03:25",
+  "generato_il": "2026-09-11T20:38:45",
   "eventi": [
     {
       "id": "394b74c48e3e",
@@ -3766,7 +3766,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno per valorizzare le figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali e cartografi del XVIII secolo. Con relazioni di Ezio Claudio Pia, Francesco Scalfari, Domenico Bussi e proiezione video di Lucio Laugelli.",
+      "descrizione": "Iniziativa per valorizzare le figure di due frati francescani originari di Cassine e Vinchio, intellettuali, cartografi e costruttori di globi nel XVIII secolo. L'evento si tiene contestualmente all'esposizione del manoscritto originale dell'atlante geografico delle Province Cappuccine (1712) e include relazioni storiche e la proiezione di un video documentario.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -3785,7 +3785,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Vetrina dell'offerta sportiva proposta dalle associazioni del territorio con dimostrazioni e prove per grandi e piccini in diverse discipline sportive, intrattenimento musicale, estrazione premi e spazi dedicati alla salute e prevenzione.",
+      "descrizione": "Vetrina dell'offerta sportiva proposta dalle associazioni del territorio per scoprire e sperimentare diverse discipline sportive. Ritrovo alle 9.30 in piazza Caduti per la Libertà con partenza verso gli impianti del Parco Atleti Azzurri d'Italia, dove saranno allestiti gli stand di 35 associazioni, dimostrazioni, musica, estrazione premi per under 18 e spazi di prevenzione e salute.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4982,7 +4982,7 @@
     {
       "id": "27bbbf3b537b",
       "titolo": "Inaugurazione della rinnovata Piazza I Maggio",
-      "descrizione": "",
+      "descrizione": "Domenica 13 settembre 2026 alle ore 9,30",
       "comune": "Quargnento",
       "lat": 44.944966,
       "lon": 8.487386,
@@ -5343,7 +5343,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 con il Sindaco Alberto Gatto, la Presidente Patrizia Sandretto Re Rebaudengo e il Direttore artistico Nicolas Ballario. Presentazione anche del circuito Extra aperto a contributi del territorio.",
+      "descrizione": "Serata aperta alla città per scoprire le iniziative che accompagneranno l'anno da Capitale attraverso le voci dei referenti e curatori, con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e Nicolas Ballario. Durante la serata sarà presentato anche Extra, il circuito per la partecipazione diffusa.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6825,7 +6825,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Weekend di eventi a Canelli con stand enogastronomici, musica e orchestre da ballo, milonga pomeridiana, visite al Museo MuSa ed eventi all'Enoteca Regionale con degustazioni e tapas piemontesi.",
+      "descrizione": "Weekend di eventi a Canelli con tamburini, presentazione della mappa dei Cru del Moscato Canelli, stand enogastronomici, serate danzanti con orchestra, milonga pomeridiana, visite al museo MuSa e degustazioni all'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7186,7 +7186,7 @@
     {
       "id": "60a69b33c48c",
       "titolo": "Boogia! Hai voluto la bicicletta?",
-      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, riparazione e recupero di biciclette, spazio informativo sulla sicurezza in strada, asta di bici, merenda condivisa, racconti di viaggi e proiezione del film Anywhere Anytime.",
+      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza stradale, asta di bici, merenda condivisa, racconti di viaggi e proiezione del film Anywhere Anytime di Milad Tangshir.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8117,7 +8117,7 @@
     {
       "id": "ebc7518987b1",
       "titolo": "Sport in piazza",
-      "descrizione": "In apposite aree attrezzate sarà possibile cimentarsi gratuitamente in numerose discipline sportive agonistiche e amatoriali. Alle 17:30 estrazione di premi per chi proverà almeno 8 discipline.",
+      "descrizione": "In aree attrezzate allestite dalle associazioni cittadine sarà possibile cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione di premi per chi proverà almeno 8 discipline.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8191,6 +8191,25 @@
       "quarantena": false
     },
     {
+      "id": "305a7d08ec8c",
+      "titolo": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete",
+      "descrizione": "Il Lions Club di Castagnole con il patrocinio del Comune di Castagnole delle Lanze organizza una camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
+      "comune": "Castagnole delle Lanze",
+      "lat": 44.75114,
+      "lon": 8.150245,
+      "km": 8.7,
+      "minuti": 14.0,
+      "data_inizio": "2026-09-20",
+      "data_fine": "2026-09-20",
+      "tipologia": "sportivo",
+      "url": "https://comune.castagnoledellelanze.at.it/it/events/camminata-non-competitiva-a-favore-della-ricerca-contro-il-diabete-726180",
+      "url_approfondimento": "https://castagnole-delle-lanze-api.municipiumapp.it/s3/720x960/s3/1575/media/immagine-camminata.jpg",
+      "fonti": "comune-castagnole-delle-lanze",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
       "id": "e52535868a39",
       "titolo": "Polenta e salsiccia",
       "descrizione": "Polenta e salsiccia proposta dai polentàu sommarivesi e la Pro Loco.",
@@ -8249,8 +8268,8 @@
     },
     {
       "id": "fbbdccbf946c",
-      "titolo": "Workshop di orientamento “Le diverse tipologie di lavoro e le skills personali utili e spendibili”",
-      "descrizione": "Percorso di formazione gratuito di 5 incontri per un totale di 12 ore, rivolto a giovani disoccupati tra i 18 e i 35 anni. Temi trattati: bilancio competenze, redazione CV, ricerca attiva del lavoro, personal branding, preparazione ai colloqui ed educazione finanziaria.",
+      "titolo": "Workshop di orientamento: Le diverse tipologie di lavoro e le skills personali utili e spendibili",
+      "descrizione": "Percorso di formazione gratuito rivolto a giovani disoccupati di età compresa tra i 18 e i 35 anni. Prevede 5 incontri dedicati all’approfondimento delle principali strategie per affrontare la ricerca del lavoro e alla costruzione del proprio percorso professionale (giornate del 21, 23, 28, 30 settembre e 2 ottobre).",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8478,7 +8497,7 @@
     {
       "id": "8481294c2867",
       "titolo": "Il lavoro cambia strada",
-      "descrizione": "Dario Salvetti dialogherà con Gianluca Pagella per parlare di lavoro, diritti e conversione ecologica.",
+      "descrizione": "Incontro con Dario Salvetti (Collettivo di fabbrica ex GKN e autore del libro 'Questo lavoro non è vita') in dialogo con Gianluca Pagella (presidente di FIAB Alessandria e lavoratore in cargo bike) su lavoro, diritti e conversione ecologica.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8572,8 +8591,8 @@
     },
     {
       "id": "46ffa40b4e5d",
-      "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
-      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo, completamente rinnovata e riqualificata nell'ambito dell'intervento promosso dall'Amministrazione comunale.",
+      "titolo": "Inaugurazione ufficiale della pista di atletica dello stadio comunale Augusto Manzo",
+      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo nel quartiere San Cassiano, riqualificata nell'ambito dell'intervento promosso dall'Amministrazione comunale.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8705,8 +8724,8 @@
     },
     {
       "id": "6de34691f953",
-      "titolo": "Il Pirata: omaggio a Marco Pantani",
-      "descrizione": "Uno spettacolo che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France, fino ai momenti più difficili e alla sua prematura scomparsa.",
+      "titolo": "Teatro e musica: Il Pirata - Omaggio a Marco Pantani",
+      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto per rendere omaggio a Marco Pantani.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -9181,7 +9200,7 @@
     {
       "id": "a18581d8d56f",
       "titolo": "Riprendiamoci… la piazza!",
-      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop in piazza.",
+      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9770,7 +9789,7 @@
     {
       "id": "a46b9688feba",
       "titolo": "Obiettivo Tricolore",
-      "descrizione": "Grande staffetta paralimpica ideata da Alex Zanardi con atleti con disabilità in bici, handbike e carrozzina olimpica. Arrivo ad Alba il 28 settembre in piazza Michele Ferrero, ripartenza il 29 settembre con villaggio sportivo in piazza Medford e l'incontro 'Uguali & diversi, sport e disabilità' a Palazzo Mostre e Congressi 'G. Morra'.",
+      "descrizione": "Staffetta paralimpica ideata da Alex Zanardi per diffondere i valori dello sport e dell'inclusione. Ad Alba è previsto l'arrivo dei partecipanti in piazza Michele Ferrero il 28 settembre, e il 29 settembre la ripartenza, insieme al villaggio sportivo in piazza Medford e all'incontro 'Uguali & diversi, sport e disabilità' presso il Palazzo Mostre e Congressi G. Morra.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9808,7 +9827,7 @@
     {
       "id": "4fe8fce25b24",
       "titolo": "Welfare e comunità sostenibili",
-      "descrizione": "Incontro formativo con Franca Maino (Università Statale di Milano e Direttrice scientifica \"Percorsi di Secondo Welfare\"), parte del ciclo formativo su welfare, salute e ambiente.",
+      "descrizione": "Primo incontro del ciclo formativo rivolto agli amministratori locali e a soggetti interessati ai temi del welfare, salute e ambiente, con Franca Maino.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11043,7 +11062,7 @@
     {
       "id": "2d313d1927b7",
       "titolo": "Salute e comunità sostenibili",
-      "descrizione": "Incontro formativo con Gian Paolo Zanetta (Direttore Generale \"Ospedale Cottolengo\"), parte del ciclo formativo su welfare, salute e ambiente.",
+      "descrizione": "Secondo incontro del ciclo formativo con Gian Paolo Zanetta, Direttore Generale Ospedale Cottolengo.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11784,7 +11803,7 @@
     {
       "id": "d0b1a446ece4",
       "titolo": "Ambiente e comunità sostenibili",
-      "descrizione": "Incontro formativo con Giuseppe Gamba (GDL Enti locali Kyoto Club), parte del ciclo formativo su welfare, salute e ambiente.",
+      "descrizione": "Terzo incontro del ciclo formativo con Giuseppe Gamba, GDL Enti locali Kyoto Club.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -12221,7 +12240,7 @@
     {
       "id": "52ecfaffa55b",
       "titolo": "Fiera Nazionale del Tartufo e Fiera di San Martin",
-      "descrizione": "La prima dedicata alle eccellenze e l’enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi di merceologici.",
+      "descrizione": "La Fiera Nazionale del Tartufo è dedicata alle eccellenze e all'enogastronomia del territorio; la Fiera di San Martin è caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
