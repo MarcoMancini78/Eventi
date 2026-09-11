@@ -133,64 +133,54 @@ echo ================================================================
 echo   Utilita' (comandi usati raramente)
 echo ================================================================
 echo.
-echo   1. Importa perimetro (senza pubblicare) - solo se cambia l'elenco comuni
-echo   2. Importa perimetro e pubblica su Sheets
-echo   3. Import fonti da Comuni.csv/ProLoco.csv - solo per aggiungere nuove fonti
-echo   4. Popola coda follow (senza pubblicare) - solo con nuovi dati anagrafici
-echo   5. Popola coda follow e pubblica su Sheets
-echo   6. Fingerprinting comuni (tutti) - solo se cambiano molti siti comunali
-echo   7. Aggiorna da Google Sheets: Fonti, DaVerificare, azioni Quarantena (pull-fonti)
-echo   8. Verifica configurazione (database, credenziali Google, .env)
-echo   9. Ricorreggi eventi Instagram (solo un post gia' letto, con un bug ormai risolto)
-echo   10. Ricorreggi fonte HTML in quarantena (rilancia una fonte con l'adapter aggiornato)
-echo   11. Riprocessa TUTTA la quarantena (smista da solo siti/Instagram/Facebook)
+echo   1. Import fonti da Comuni.csv/ProLoco.csv - solo per aggiungere nuove fonti
+echo   2. Popola coda follow (senza pubblicare) - solo con nuovi dati anagrafici
+echo   3. Popola coda follow e pubblica su Sheets
+echo   4. Fingerprinting comuni (tutti) - solo se cambiano molti siti comunali
+echo   5. Aggiorna da Google Sheets: Fonti, DaVerificare, azioni Quarantena (pull-fonti)
+echo   6. Verifica configurazione (database, credenziali Google, .env)
+echo   7. Ricorreggi eventi Instagram (solo un post gia' letto, con un bug ormai risolto)
+echo   8. Ricorreggi fonte HTML in quarantena (rilancia una fonte con l'adapter aggiornato)
+echo   9. Riprocessa TUTTA la quarantena (smista da solo siti/Instagram/Facebook)
 echo   0. Indietro
 echo.
 set /p SCELTA="Scelta: "
 
 if "%SCELTA%"=="1" (
-    %PYTHON_EXE% run.py import-perimetro
-    goto FINE_COMANDO
-)
-if "%SCELTA%"=="2" (
-    %PYTHON_EXE% run.py import-perimetro --publish
-    goto FINE_COMANDO
-)
-if "%SCELTA%"=="3" (
     %PYTHON_EXE% run.py import-fonti
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="4" (
+if "%SCELTA%"=="2" (
     %PYTHON_EXE% run.py populate-coda-follow
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="5" (
+if "%SCELTA%"=="3" (
     %PYTHON_EXE% run.py populate-coda-follow --publish
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="6" (
+if "%SCELTA%"=="4" (
     %PYTHON_EXE% run.py fingerprint-comuni
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="7" (
+if "%SCELTA%"=="5" (
     %PYTHON_EXE% run.py pull-fonti
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="8" (
+if "%SCELTA%"=="6" (
     %PYTHON_EXE% run.py doctor
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="9" (
+if "%SCELTA%"=="7" (
     set /p EVENTID="Event_id da ricorreggere (separati da spazio): "
     %PYTHON_EXE% run.py correggi-post !EVENTID!
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="10" (
+if "%SCELTA%"=="8" (
     set /p SOURCEID="Source_id da ricorreggere (separati da spazio): "
     %PYTHON_EXE% run.py correggi-fonte-html !SOURCEID!
     goto FINE_COMANDO
 )
-if "%SCELTA%"=="11" (
+if "%SCELTA%"=="9" (
     %PYTHON_EXE% run.py riprocessa-quarantena
     goto FINE_COMANDO
 )

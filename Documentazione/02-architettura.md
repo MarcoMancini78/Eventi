@@ -69,7 +69,6 @@ per la logica di scheduling/budget):
 |---|---|
 | `init` | Crea fogli Google e database SQLite |
 | `doctor` | Diagnostica configurazione e stato |
-| `import-perimetro` | Importa il file Perimetro |
 | `import-fonti` | Import base di Comuni/ProLoco in `sources` |
 | `fingerprint-comuni` | Fingerprinting batch dei siti comunali per famiglia CMS |
 | `prober` | Discovery della vera pagina eventi/feed per le fonti già importate |

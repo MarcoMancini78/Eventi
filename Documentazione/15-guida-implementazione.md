@@ -82,6 +82,11 @@ run.py reprocess            # riestrae dal grezzo, senza rete
 run.py doctor               # diagnostica
 ```
 
+> Elenco pianificato originale (M0), non l'elenco reale dei comandi oggi —
+> `import-perimetro` è stato rimosso dopo l'import una tantum del 2026-08-22
+> (il perimetro vive in SQLite/Sheets, non serve più il file sorgente).
+> Elenco comandi reale e aggiornato: [02-architettura.md §2.3](02-architettura.md#23-orchestrazione-runpy).
+
 ---
 
 ## M0 — Fondamenta (2-3 giorni)

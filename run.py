@@ -37,32 +37,6 @@ def cmd_init(args: argparse.Namespace) -> None:
     print("Copia questi ID nelle relative variabili GOOGLE_SPREADSHEET_ID_* di config/.env")
 
 
-def cmd_import_perimetro(args: argparse.Namespace) -> None:
-    from src import perimetro
-
-    config = load_config()
-    conn = store.connect(DB_PATH)
-    store.migrate(conn)
-
-    csv_path = Path(args.file)
-    if not csv_path.exists():
-        print(f"File non trovato: {csv_path}")
-        sys.exit(1)
-
-    conteggi = perimetro.importa_perimetro(csv_path, conn, config)
-    print("Import completato. Conteggio per fascia:")
-    for fascia, n in conteggi.items():
-        print(f"  {fascia}: {n}")
-
-    if args.publish:
-        from src import publisher, sheets_client
-
-        client = sheets_client.get_client(config)
-        ws = client.open_by_key(config.spreadsheet_id_anagrafiche).worksheet("Perimetro")
-        n = publisher.pubblica_perimetro(ws, conn)
-        print(f"Foglio Perimetro aggiornato: {n} righe scritte.")
-
-
 def _crea_extractor_se_configurato(config, conn):
     if not config.llm_api_key:
         print("LLM_API_KEY non impostata: le fonti T1 si fermeranno al pre-filtro, senza estrazione.")
@@ -1085,11 +1059,6 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_doctor = sub.add_parser("doctor", help="Diagnostica configurazione e stato")
     p_doctor.set_defaults(func=cmd_doctor)
-
-    p_perimetro = sub.add_parser("import-perimetro", help="Importa il file Perimetro (M1)")
-    p_perimetro.add_argument("--file", default="../Perimetro.txt", help="Percorso del CSV Perimetro (';' separato)")
-    p_perimetro.add_argument("--publish", action="store_true", help="Scrive anche il foglio Perimetro su Google Sheets")
-    p_perimetro.set_defaults(func=cmd_import_perimetro)
 
     p_run = sub.add_parser("run", help="Esegue la raccolta sulle fonti T0/T1 note (M2, parziale)")
     p_run.add_argument("--fonte", help="source_id per un test puntuale, invece di leggere da SQLite")
