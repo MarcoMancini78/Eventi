@@ -38,17 +38,23 @@ Ultimo aggiornamento: 2026-09-11
   Eventi/Quarantena/Archivio/Serie/Fonti/Stato/Log; `run.py pull-fonti`
   riporta indietro le modifiche manuali (categoria, comune, azioni su
   quarantena) — unico verso Sheets→SQLite del sistema.
-- **Due webapp pubbliche su GitHub Pages**, stesso dominio, stesso file dati
-  (`eventi_mappa.json`, rigenerato ad ogni publish):
+- **Tre webapp pubbliche su GitHub Pages**, stesso dominio:
   - **Mappa**: https://marcomancini78.github.io/Eventi/ — filtro per data,
-    marker per comune, popup con dettaglio.
+    marker per comune, popup con dettaglio. Dati: `eventi_mappa.json`.
   - **Elenco** (tabellare, nata il 2026-09-10): https://marcomancini78.github.io/Eventi/elenco.html
     — filtri data/comune/tipologia, ordinamento per colonna, vista a schede
-    su mobile.
+    su mobile. Stesso `eventi_mappa.json` della mappa.
+  - **Perimetro** (elenco comuni, nata il 2026-09-11): https://marcomancini78.github.io/Eventi/perimetro.html
+    — un comune per riga con sito/social del comune, sito/social Pro Loco,
+    e "Altro" per teatri/attività collegate. Dati: `perimetro.json`,
+    rigenerato ad ogni `publish`.
   - Repository: `github.com/MarcoMancini78/Eventi`, cartella pubblicata
     `docs/`. Aggiornamento dati: automatico via commit schedulati
     ("Aggiorna dati mappa"); modifiche di codice alle pagine richiedono un
     `git push` manuale.
+- **Collegamento teatri↔comune**: `run.py collega-teatri` deduce e salva il
+  comune dei teatri/attività da `coda_follow.soggetto` (comando manuale, non
+  schedulato — da rilanciare solo se si aggiungono nuovi teatri).
 - **Backup**: `run.py backup-sheets` copia lo spreadsheet principale su una
   cartella Drive dedicata.
 - **Pulizia locale**: `run.py cleanup` rimuove backup manuali di `eventi.db`

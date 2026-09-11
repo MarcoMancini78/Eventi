@@ -88,6 +88,7 @@ per la logica di scheduling/budget):
 | `feed-social` | Lettura cronologica del feed, attribuzione ed estrazione eventi (sola lettura) |
 | `backup-sheets` | Copia lo spreadsheet principale in una cartella Drive dedicata |
 | `cleanup` | Rimuove backup di `eventi.db` e file scratch/debug più vecchi di N giorni in `data/` (elenco di default, `--esegui` per rimuoverli davvero) |
+| `collega-teatri` | Deduce e salva il comune dei teatri/attività in `coda_follow` dal testo del soggetto (comando manuale, una tantum) |
 | `discover`, `reprocess` | Placeholder, non ancora implementati |
 
 ## 2.4 Interfacce di consultazione

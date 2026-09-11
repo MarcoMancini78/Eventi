@@ -471,6 +471,13 @@ def cmd_publish(args: argparse.Namespace) -> None:
         publisher.scrivi_eventi_mappa_json(righe_mappa, docs_dir / "eventi_mappa.json")
         print(f"File docs/eventi_mappa.json aggiornato (ricorda 'git push' per pubblicarlo su GitHub Pages).")
 
+    righe_perimetro = publisher.righe_perimetro_completo(conn)
+    n_perimetro = publisher.scrivi_perimetro_json(righe_perimetro, DATA_DIR / "perimetro.json")
+    print(f"File perimetro.json scritto: {n_perimetro} comuni.")
+    if docs_dir.exists():
+        publisher.scrivi_perimetro_json(righe_perimetro, docs_dir / "perimetro.json")
+        print(f"File docs/perimetro.json aggiornato (ricorda 'git push' per pubblicarlo su GitHub Pages).")
+
     ws_serie = spreadsheet_principale.worksheet("Serie")
     n_serie = publisher.pubblica_serie(ws_serie, conn)
     print(f"Foglio Serie aggiornato: {n_serie} righe scritte.")
@@ -1031,6 +1038,25 @@ def feed_social_import():
     return feed_social
 
 
+def cmd_collega_teatri(args: argparse.Namespace) -> None:
+    from src import collega_teatri
+
+    conn = store.connect(DB_PATH)
+    esiti = collega_teatri.collega_teatri(conn)
+
+    trovati = [e for e in esiti if e["comune"]]
+    non_trovati = [e for e in esiti if not e["comune"]]
+
+    print(f"Comune dedotto e salvato per {len(trovati)} righe:")
+    for e in trovati:
+        print(f"  {e['soggetto']} -> {e['comune']}")
+
+    if non_trovati:
+        print(f"Non risolti ({len(non_trovati)}), da collegare a mano su Sheets/coda_follow:")
+        for e in non_trovati:
+            print(f"  {e['soggetto']} ({e['source_id']})")
+
+
 def cmd_cleanup(args: argparse.Namespace) -> None:
     from src import cleanup
 
@@ -1073,6 +1099,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_doctor = sub.add_parser("doctor", help="Diagnostica configurazione e stato")
     p_doctor.set_defaults(func=cmd_doctor)
+
+    p_collega_teatri = sub.add_parser(
+        "collega-teatri",
+        help="Deduce e salva il comune dei teatri/attività in coda_follow (categoria='teatro') dal testo del soggetto",
+    )
+    p_collega_teatri.set_defaults(func=cmd_collega_teatri)
 
     p_cleanup = sub.add_parser(
         "cleanup",

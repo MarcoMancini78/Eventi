@@ -877,6 +877,93 @@ def scrivi_eventi_mappa_json(righe: list[dict], percorso: str | Path) -> int:
     return len(corpo["eventi"])
 
 
+def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
+    """16.8 (webapp perimetro): un comune per riga con tutti i link collegati
+    (sito/social del comune, sito/social della Pro Loco, e "altro" per
+    teatri/attività la cui categoria in `coda_follow` è stata risolta al
+    comune — vedi `src/collega_teatri.py`).
+
+    Il collegamento comune->fonte in `sources` passa dallo stesso slug con
+    cui `run.py import-fonti` costruisce i source_id ("comune-{slug}",
+    "proloco-{slug}-sito": `nome.lower().replace(' ', '-')`) — non un nuovo
+    schema, solo la stessa regola riusata al contrario per il JOIN.
+    """
+    comuni = conn.execute(
+        "SELECT istat, comune, provincia, km, minuti FROM comuni WHERE attivo = 'si' ORDER BY km ASC"
+    ).fetchall()
+
+    def slug(nome: str) -> str:
+        return nome.lower().replace(" ", "-")
+
+    siti_per_slug: dict[str, dict[str, str]] = {}
+    for r in conn.execute("SELECT source_id, categoria, endpoint FROM sources WHERE categoria IN ('comune', 'proloco')").fetchall():
+        siti_per_slug.setdefault(r["source_id"], {"categoria": r["categoria"], "endpoint": r["endpoint"]})
+
+    social_per_comune: dict[str, list[dict]] = {}
+    for r in conn.execute(
+        "SELECT comune, categoria, piattaforma, url, soggetto FROM coda_follow "
+        "WHERE comune IS NOT NULL AND comune != ''"
+    ).fetchall():
+        social_per_comune.setdefault(r["comune"], []).append(dict(r))
+
+    righe = []
+    for c in comuni:
+        s = slug(c["comune"])
+        sito_comune = siti_per_slug.get(f"comune-{s}", {}).get("endpoint", "")
+        sito_proloco = siti_per_slug.get(f"proloco-{s}-sito", {}).get("endpoint", "")
+
+        social_comune = [x for x in social_per_comune.get(c["comune"], []) if x["categoria"] == "comune"]
+        social_proloco = [x for x in social_per_comune.get(c["comune"], []) if x["categoria"] == "proloco"]
+        altro = [x for x in social_per_comune.get(c["comune"], []) if x["categoria"] not in ("comune", "proloco")]
+
+        def url_per(lista: list[dict], piattaforma: str) -> str:
+            for x in lista:
+                if x["piattaforma"] == piattaforma:
+                    return x["url"]
+            return ""
+
+        # Un soggetto (teatro/attività) può avere sia Facebook sia Instagram:
+        # una voce sola per soggetto con entrambi i link, non una riga per
+        # piattaforma (altrimenti "Teatro X" compare due volte in "Altro").
+        altro_per_soggetto: dict[str, dict] = {}
+        for x in altro:
+            voce = altro_per_soggetto.setdefault(x["soggetto"], {"soggetto": x["soggetto"], "facebook": "", "instagram": ""})
+            voce[x["piattaforma"]] = x["url"]
+
+        righe.append(
+            {
+                "istat": c["istat"],
+                "comune": c["comune"],
+                "provincia": c["provincia"] or "",
+                "km": c["km"],
+                "minuti": c["minuti"],
+                "sito_comune": sito_comune,
+                "facebook_comune": url_per(social_comune, "facebook"),
+                "instagram_comune": url_per(social_comune, "instagram"),
+                "sito_proloco": sito_proloco,
+                "facebook_proloco": url_per(social_proloco, "facebook"),
+                "instagram_proloco": url_per(social_proloco, "instagram"),
+                "altro": list(altro_per_soggetto.values()),
+            }
+        )
+
+    return righe
+
+
+def scrivi_perimetro_json(righe: list[dict], percorso: str | Path) -> int:
+    """16.8: serializza l'elenco comuni+link in un JSON statico, stesso
+    principio di `scrivi_eventi_mappa_json` (nessun server, letto dalla
+    webapp perimetro.html)."""
+    corpo = {
+        "generato_il": datetime.now().replace(microsecond=0).isoformat(),
+        "comuni": righe,
+    }
+    percorso = Path(percorso)
+    percorso.parent.mkdir(parents=True, exist_ok=True)
+    percorso.write_text(json.dumps(corpo, ensure_ascii=False, indent=2), encoding="utf-8")
+    return len(righe)
+
+
 COLONNE_SERIE = [
     "serie_id", "titolo", "tipologia", "comune", "luogo", "rrule",
     "regola_leggibile", "valida_dal", "valida_al", "eccezioni",

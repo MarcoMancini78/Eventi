@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eventi Langhe — Elenco</title>
+<title>Eventi Langhe — Perimetro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -97,14 +97,7 @@
     flex-wrap: wrap;
   }
 
-  .testo-aggiornato {
-    font-size: 11.5px;
-    font-weight: 500;
-    color: rgba(255,255,255,.75);
-    white-space: nowrap;
-  }
-
-  .link-mappa {
+  .link-nav {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -119,7 +112,7 @@
     box-shadow: var(--shadow-sm);
     transition: transform .12s ease, box-shadow .12s ease;
   }
-  .link-mappa:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .link-nav:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
   .barra-filtri {
     background: var(--surface);
@@ -139,7 +132,7 @@
     display: flex;
     flex-direction: column;
     gap: 5px;
-    flex: 1 1 150px;
+    flex: 1 1 220px;
   }
 
   .campo-filtro label {
@@ -214,7 +207,6 @@
     padding: 20px 24px 32px;
   }
 
-  /* --- Tabella (desktop) --- */
   .tabella-scroll {
     background: var(--surface);
     border-radius: var(--radius);
@@ -234,7 +226,7 @@
     top: var(--altezza-fissa, 0px);
     background: var(--surface-2);
     text-align: left;
-    padding: 13px 16px;
+    padding: 13px 14px;
     border-bottom: 1.5px solid var(--border-strong);
     white-space: nowrap;
     cursor: pointer;
@@ -249,6 +241,8 @@
   thead th:hover { color: var(--accent); }
   thead th.col-numero { cursor: default; text-align: right; }
   thead th.col-numero:hover { color: var(--text-2); }
+  thead th.col-link { cursor: default; }
+  thead th.col-link:hover { color: var(--text-2); }
   thead th:first-child { border-top-left-radius: var(--radius); }
   thead th:last-child { border-top-right-radius: var(--radius); }
   tbody tr:last-child td:first-child { border-bottom-left-radius: var(--radius); }
@@ -262,7 +256,7 @@
   }
 
   tbody td {
-    padding: 13px 16px;
+    padding: 11px 14px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
@@ -270,8 +264,7 @@
   tbody tr { transition: background .1s ease; }
   tbody tr:hover { background: var(--accent-soft); }
 
-  .col-titolo { min-width: 240px; font-weight: 600; }
-  .col-descrizione { min-width: 280px; color: var(--text-2); font-weight: 400; }
+  .col-comune { min-width: 160px; font-weight: 600; }
   .col-numero { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent-dark); white-space: nowrap; }
   .col-numero-progressivo {
     text-align: right;
@@ -281,37 +274,40 @@
     width: 1%;
     white-space: nowrap;
   }
+  .col-link { min-width: 90px; }
+  .col-altro { min-width: 180px; }
 
-  .badge-tipo {
-    display: inline-block;
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent-dark);
-    white-space: nowrap;
-  }
-
-  .badge-quarantena {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    color: #92400e;
-    background: #fef3c7;
-    border-radius: 999px;
-    padding: 2px 9px;
-    margin-right: 6px;
-  }
-  a.link-fonte {
+  .link-icona {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    color: var(--accent);
-    font-weight: 700;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
     text-decoration: none;
+    font-size: 14px;
+    transition: background .12s ease, transform .12s ease;
   }
-  a.link-fonte:hover { color: var(--accent-dark); text-decoration: underline; }
+  .link-icona:hover { background: var(--accent-bright); color: #fff; transform: translateY(-1px); }
+  .link-assente { color: var(--text-3); font-size: 12px; }
+
+  .chip-altro {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 3px 10px;
+    text-decoration: none;
+    margin: 2px 4px 2px 0;
+    white-space: nowrap;
+  }
+  .chip-altro:hover { background: var(--accent-bright); color: #fff; }
 
   .nessun-risultato {
     padding: 56px 20px;
@@ -322,43 +318,31 @@
   }
 
   /* --- Card (mobile) --- */
-  .elenco-card {
-    display: none;
-  }
+  .elenco-card { display: none; }
 
-  .scheda-evento {
+  .scheda-comune {
     background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
     padding: 16px 18px;
     margin-bottom: 12px;
-    transition: box-shadow .15s ease, transform .15s ease;
   }
-  .scheda-evento:active { transform: scale(.99); }
-
-  .scheda-evento .riga-alto {
+  .scheda-comune .riga-alto {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 8px;
   }
-  .scheda-evento .numero-progressivo {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--text-3);
-    padding-top: 2px;
-    flex-shrink: 0;
-  }
-  .scheda-evento .titolo-evento {
+  .scheda-comune .titolo-comune {
     font-weight: 700;
     font-size: 15px;
     line-height: 1.35;
     letter-spacing: -.01em;
     flex: 1;
   }
-  .scheda-evento .km-evento {
+  .scheda-comune .km-comune {
     font-size: 12px;
     font-weight: 800;
     color: #fff;
@@ -367,7 +351,7 @@
     border-radius: 999px;
     white-space: nowrap;
   }
-  .scheda-evento .riga-meta {
+  .scheda-comune .riga-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -375,22 +359,25 @@
     font-size: 12.5px;
     font-weight: 500;
     color: var(--text-2);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
-  .scheda-evento .riga-meta .puntino {
+  .scheda-comune .riga-meta .puntino { color: var(--text-3); }
+  .scheda-comune .gruppo-link {
+    margin-top: 10px;
+  }
+  .scheda-comune .gruppo-link .etichetta {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
     color: var(--text-3);
+    margin-bottom: 5px;
   }
-  .scheda-evento .descrizione-evento {
-    font-size: 13.5px;
-    color: var(--text-2);
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
-  .scheda-evento .riga-basso {
+  .scheda-comune .riga-icone {
     display: flex;
-    justify-content: flex-end;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
   }
 
   @media (max-width: 760px) {
@@ -416,26 +403,20 @@
     <span class="sottotitolo" id="aggiornato"></span>
   </div>
   <div class="header-destra">
-    <a href="mappa.html" class="link-mappa">← Mappa</a>
-    <a href="perimetro.html" class="link-mappa">Perimetro comuni</a>
+    <a href="mappa.html" class="link-nav">← Mappa</a>
+    <a href="elenco.html" class="link-nav">Elenco eventi</a>
   </div>
 </header>
 
 <div class="barra-filtri">
   <div class="campo-filtro">
-    <label for="filtro-data">Data</label>
-    <input type="date" id="filtro-data">
+    <label for="filtro-testo">Cerca comune</label>
+    <input type="text" id="filtro-testo" placeholder="Nome comune...">
   </div>
   <div class="campo-filtro">
-    <label for="filtro-comune">Comune</label>
-    <select id="filtro-comune">
-      <option value="">Tutti</option>
-    </select>
-  </div>
-  <div class="campo-filtro">
-    <label for="filtro-tipologia">Tipo evento</label>
-    <select id="filtro-tipologia">
-      <option value="">Tutti</option>
+    <label for="filtro-provincia">Provincia</label>
+    <select id="filtro-provincia">
+      <option value="">Tutte</option>
     </select>
   </div>
   <button type="button" id="btn-reset">Azzera filtri</button>
@@ -444,18 +425,19 @@
 
 <main>
   <div class="tabella-scroll">
-    <table id="tabella-eventi">
+    <table id="tabella-perimetro">
       <thead>
         <tr>
           <th class="col-numero-progressivo">#</th>
-          <th data-colonna="titolo">Titolo<span class="icona-ordinamento"></span></th>
-          <th data-colonna="tipologia">Tipo<span class="icona-ordinamento"></span></th>
           <th data-colonna="comune">Comune<span class="icona-ordinamento"></span></th>
-          <th data-colonna="data_inizio">Dal<span class="icona-ordinamento"></span></th>
-          <th data-colonna="data_fine">Al<span class="icona-ordinamento"></span></th>
+          <th data-colonna="provincia">Prov.<span class="icona-ordinamento"></span></th>
           <th data-colonna="km" class="col-numero">Km<span class="icona-ordinamento"></span></th>
-          <th class="col-descrizione">Descrizione</th>
-          <th>Fonte</th>
+          <th data-colonna="minuti" class="col-numero">Min.<span class="icona-ordinamento"></span></th>
+          <th class="col-link">Sito comune</th>
+          <th class="col-link">Social comune</th>
+          <th class="col-link">Sito Pro Loco</th>
+          <th class="col-link">Social Pro Loco</th>
+          <th class="col-altro">Altro</th>
         </tr>
       </thead>
       <tbody id="corpo-tabella"></tbody>
@@ -466,9 +448,9 @@
 </main>
 
 <script>
-const URL_DATI_REMOTI = "eventi_mappa.json";
+const URL_DATI_REMOTI = "perimetro.json";
 
-let eventiTotali = [];
+let comuniTotali = [];
 let colonnaOrdinamento = "km";
 let direzioneOrdinamento = 1;
 
@@ -486,20 +468,6 @@ function formattaDataOraItaliana(isoDataOra) {
   return `${testoData} alle ${ore}:${minuti}`;
 }
 
-function formattaDataItalianaBreve(iso) {
-  if (!iso) return "";
-  const [anno, mese, giorno] = iso.split("-");
-  return `${giorno}/${mese}/${anno}`;
-}
-
-function dataOdiernaIso() {
-  const oggi = new Date();
-  const anno = oggi.getFullYear();
-  const mese = String(oggi.getMonth() + 1).padStart(2, "0");
-  const giorno = String(oggi.getDate()).padStart(2, "0");
-  return `${anno}-${mese}-${giorno}`;
-}
-
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
@@ -512,12 +480,12 @@ function impostaStato(testo, errore) {
   el.style.color = errore ? "#a24a3d" : "";
 }
 
-async function caricaEventi() {
+async function caricaPerimetro() {
   try {
     const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
     if (!risposta.ok) throw new Error("HTTP " + risposta.status);
     const dati = await risposta.json();
-    eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
+    comuniTotali = Array.isArray(dati.comuni) ? dati.comuni : [];
     popolaFiltri();
     applicaFiltri();
     document.getElementById("aggiornato").textContent = `Aggiornato il ${formattaDataOraItaliana(dati.generato_il)}`;
@@ -527,45 +495,30 @@ async function caricaEventi() {
 }
 
 function popolaFiltri() {
-  const comuni = [...new Set(eventiTotali.map((ev) => ev.comune).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
-  const tipologie = [...new Set(eventiTotali.map((ev) => ev.tipologia).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
-
-  const selComune = document.getElementById("filtro-comune");
-  for (const comune of comuni) {
+  const province = [...new Set(comuniTotali.map((c) => c.provincia).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+  const selProvincia = document.getElementById("filtro-provincia");
+  for (const provincia of province) {
     const opt = document.createElement("option");
-    opt.value = comune;
-    opt.textContent = comune;
-    selComune.appendChild(opt);
-  }
-
-  const selTipologia = document.getElementById("filtro-tipologia");
-  for (const tipo of tipologie) {
-    const opt = document.createElement("option");
-    opt.value = tipo;
-    opt.textContent = tipo;
-    selTipologia.appendChild(opt);
+    opt.value = provincia;
+    opt.textContent = provincia;
+    selProvincia.appendChild(opt);
   }
 }
 
-function eventiFiltrati() {
-  const data = document.getElementById("filtro-data").value;
-  const comune = document.getElementById("filtro-comune").value;
-  const tipologia = document.getElementById("filtro-tipologia").value;
+function comuniFiltrati() {
+  const testo = document.getElementById("filtro-testo").value.trim().toLowerCase();
+  const provincia = document.getElementById("filtro-provincia").value;
 
-  return eventiTotali.filter((ev) => {
-    if (data) {
-      const fineEvento = ev.data_fine || ev.data_inizio;
-      if (!(ev.data_inizio <= data && data <= fineEvento)) return false;
-    }
-    if (comune && ev.comune !== comune) return false;
-    if (tipologia && ev.tipologia !== tipologia) return false;
+  return comuniTotali.filter((c) => {
+    if (testo && !c.comune.toLowerCase().includes(testo)) return false;
+    if (provincia && c.provincia !== provincia) return false;
     return true;
   });
 }
 
-function ordina(eventi) {
+function ordina(comuni) {
   const col = colonnaOrdinamento;
-  return [...eventi].sort((a, b) => {
+  return [...comuni].sort((a, b) => {
     const va = a[col] ?? "";
     const vb = b[col] ?? "";
     if (va < vb) return -1 * direzioneOrdinamento;
@@ -587,10 +540,32 @@ function aggiornaIndicatoriOrdinamento() {
 
 function applicaFiltri() {
   aggiornaIndicatoriOrdinamento();
-  const filtrati = ordina(eventiFiltrati());
+  const filtrati = ordina(comuniFiltrati());
   disegnaTabella(filtrati);
   disegnaCard(filtrati);
   aggiornaConteggio(filtrati.length);
+}
+
+function linkIcona(url, etichetta, simbolo) {
+  if (!url) return `<span class="link-assente">—</span>`;
+  return `<a class="link-icona" href="${escapeHtml(url)}" target="_blank" rel="noopener" title="${escapeHtml(etichetta)}">${simbolo}</a>`;
+}
+
+function socialIcone(urlFacebook, urlInstagram) {
+  const parti = [];
+  if (urlFacebook) parti.push(linkIcona(urlFacebook, "Facebook", "f"));
+  if (urlInstagram) parti.push(linkIcona(urlInstagram, "Instagram", "ig"));
+  return parti.length ? parti.join(" ") : `<span class="link-assente">—</span>`;
+}
+
+function altroChips(altro) {
+  if (!altro || altro.length === 0) return `<span class="link-assente">—</span>`;
+  return altro
+    .map((a) => {
+      const link = a.facebook || a.instagram;
+      return `<a class="chip-altro" href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(a.soggetto)}</a>`;
+    })
+    .join("");
 }
 
 function disegnaTabella(filtrati) {
@@ -599,26 +574,24 @@ function disegnaTabella(filtrati) {
 
   if (filtrati.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="9" class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</td>`;
+    tr.innerHTML = `<td colspan="10" class="nessun-risultato">Nessun comune corrisponde ai filtri selezionati.</td>`;
     corpo.appendChild(tr);
     return;
   }
 
-  filtrati.forEach((ev, indice) => {
+  filtrati.forEach((c, indice) => {
     const tr = document.createElement("tr");
-    const linkFonte = ev.url
-      ? `<a class="link-fonte" href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri</a>`
-      : "";
     tr.innerHTML = `
       <td class="col-numero-progressivo">${indice + 1}</td>
-      <td class="col-titolo">${ev.quarantena ? '<span class="badge-quarantena">⚠️ da verificare</span>' : ""}${escapeHtml(ev.titolo || "")}</td>
-      <td><span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span></td>
-      <td>${escapeHtml(ev.comune || "")}</td>
-      <td>${formattaDataItalianaBreve(ev.data_inizio)}</td>
-      <td>${formattaDataItalianaBreve(ev.data_fine)}</td>
-      <td class="col-numero">${ev.km != null ? ev.km : ""}</td>
-      <td class="col-descrizione">${escapeHtml(ev.descrizione || "")}</td>
-      <td>${linkFonte}</td>
+      <td class="col-comune">${escapeHtml(c.comune)}</td>
+      <td>${escapeHtml(c.provincia || "")}</td>
+      <td class="col-numero">${c.km != null ? c.km : ""}</td>
+      <td class="col-numero">${c.minuti != null ? c.minuti : ""}</td>
+      <td class="col-link">${linkIcona(c.sito_comune, "Sito del comune", "🌐")}</td>
+      <td class="col-link">${socialIcone(c.facebook_comune, c.instagram_comune)}</td>
+      <td class="col-link">${linkIcona(c.sito_proloco, "Sito Pro Loco", "🌐")}</td>
+      <td class="col-link">${socialIcone(c.facebook_proloco, c.instagram_proloco)}</td>
+      <td class="col-altro">${altroChips(c.altro)}</td>
     `;
     corpo.appendChild(tr);
   });
@@ -629,58 +602,54 @@ function disegnaCard(filtrati) {
   contenitore.innerHTML = "";
 
   if (filtrati.length === 0) {
-    contenitore.innerHTML = `<div class="nessun-risultato">Nessun evento corrisponde ai filtri selezionati.</div>`;
+    contenitore.innerHTML = `<div class="nessun-risultato">Nessun comune corrisponde ai filtri selezionati.</div>`;
     return;
   }
 
-  filtrati.forEach((ev, indice) => {
-    const periodo = ev.data_fine && ev.data_fine !== ev.data_inizio
-      ? `${formattaDataItalianaBreve(ev.data_inizio)} → ${formattaDataItalianaBreve(ev.data_fine)}`
-      : formattaDataItalianaBreve(ev.data_inizio);
-    const linkFonte = ev.url
-      ? `<a class="link-fonte" href="${escapeHtml(ev.url)}" target="_blank" rel="noopener">apri fonte →</a>`
-      : "";
+  filtrati.forEach((c) => {
     const scheda = document.createElement("div");
-    scheda.className = "scheda-evento";
+    scheda.className = "scheda-comune";
     scheda.innerHTML = `
       <div class="riga-alto">
-        <span class="numero-progressivo">${indice + 1}</span>
-        <div class="titolo-evento">${ev.quarantena ? '<span class="badge-quarantena">⚠️</span>' : ""}${escapeHtml(ev.titolo || "")}</div>
-        ${ev.km != null ? `<div class="km-evento">${ev.km} km</div>` : ""}
+        <div class="titolo-comune">${escapeHtml(c.comune)}</div>
+        ${c.km != null ? `<div class="km-comune">${c.km} km</div>` : ""}
       </div>
       <div class="riga-meta">
-        <span class="badge-tipo">${escapeHtml(ev.tipologia || "")}</span>
+        <span>${escapeHtml(c.provincia || "")}</span>
         <span class="puntino">·</span>
-        <span>${escapeHtml(ev.comune || "")}</span>
-        <span class="puntino">·</span>
-        <span>${escapeHtml(periodo)}</span>
+        <span>${c.minuti != null ? c.minuti + " min" : ""}</span>
       </div>
-      ${ev.descrizione ? `<div class="descrizione-evento">${escapeHtml(ev.descrizione)}</div>` : ""}
-      ${linkFonte ? `<div class="riga-basso">${linkFonte}</div>` : ""}
+      <div class="gruppo-link">
+        <div class="etichetta">Comune</div>
+        <div class="riga-icone">${linkIcona(c.sito_comune, "Sito del comune", "🌐")} ${socialIcone(c.facebook_comune, c.instagram_comune)}</div>
+      </div>
+      <div class="gruppo-link">
+        <div class="etichetta">Pro Loco</div>
+        <div class="riga-icone">${linkIcona(c.sito_proloco, "Sito Pro Loco", "🌐")} ${socialIcone(c.facebook_proloco, c.instagram_proloco)}</div>
+      </div>
+      ${c.altro && c.altro.length ? `<div class="gruppo-link"><div class="etichetta">Altro</div>${altroChips(c.altro)}</div>` : ""}
     `;
     contenitore.appendChild(scheda);
   });
 }
 
 function aggiornaConteggio(n) {
-  const totale = eventiTotali.length;
+  const totale = comuniTotali.length;
   const el = document.getElementById("stato");
   if (n === totale) {
-    el.innerHTML = `<strong>${totale}</strong> eventi`;
+    el.innerHTML = `<strong>${totale}</strong> comuni`;
   } else {
-    el.innerHTML = `<strong>${n}</strong> su ${totale} eventi`;
+    el.innerHTML = `<strong>${n}</strong> su ${totale} comuni`;
   }
   el.style.color = "";
 }
 
-document.getElementById("filtro-data").addEventListener("change", applicaFiltri);
-document.getElementById("filtro-comune").addEventListener("change", applicaFiltri);
-document.getElementById("filtro-tipologia").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-testo").addEventListener("input", applicaFiltri);
+document.getElementById("filtro-provincia").addEventListener("change", applicaFiltri);
 
 document.getElementById("btn-reset").addEventListener("click", () => {
-  document.getElementById("filtro-data").value = "";
-  document.getElementById("filtro-comune").value = "";
-  document.getElementById("filtro-tipologia").value = "";
+  document.getElementById("filtro-testo").value = "";
+  document.getElementById("filtro-provincia").value = "";
   applicaFiltri();
 });
 
@@ -707,8 +676,7 @@ function aggiornaAltezzaFissa() {
 window.addEventListener("resize", aggiornaAltezzaFissa);
 aggiornaAltezzaFissa();
 
-document.getElementById("filtro-data").value = dataOdiernaIso();
-caricaEventi();
+caricaPerimetro();
 </script>
 
 </body>

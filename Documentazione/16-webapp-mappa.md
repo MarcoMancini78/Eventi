@@ -1,17 +1,20 @@
-# 16 — Interfacce pubbliche: webapp mappa ed elenco
+# 16 — Interfacce pubbliche: webapp mappa, elenco e perimetro
 
-**Stato:** entrambe implementate, collaudate dal vivo e pubblicate online.
+**Stato:** tutte e tre implementate, collaudate e pubblicate online.
 **Mappa:** https://marcomancini78.github.io/Eventi/
 **Elenco (tabellare):** https://marcomancini78.github.io/Eventi/elenco.html —
 nata il 2026-09-10, condivide lo stesso file dati della mappa.
-**Uso quotidiano:** dopo `run.py publish` (che aggiorna anche
-`docs/eventi_mappa.json` in locale), i **dati** si aggiornano online da soli
-(commit automatico schedulato). Una modifica al **codice** delle pagine
-richiede invece un `git push` manuale dalla cartella del progetto.
+**Perimetro (elenco comuni):** https://marcomancini78.github.io/Eventi/perimetro.html —
+nata il 2026-09-11, un comune per riga con tutti i link collegati.
+**Uso quotidiano:** dopo `run.py publish`/`run.py run-publish` (che scrivono
+anche `docs/eventi_mappa.json` e `docs/perimetro.json` in locale), i **dati**
+si aggiornano online da soli (commit automatico schedulato). Una modifica al
+**codice** delle pagine richiede invece un `git push` manuale dalla cartella
+del progetto.
 **Richiesta originale (2026-08-31):** una seconda interfaccia, oltre al workbook
 Sheets, che mostri gli eventi su una mappa: filtro per data di osservazione, e sulla
 mappa tutti i punti (comuni) con almeno un evento quel giorno. L'elenco
-tabellare è nato in seguito, come vista alternativa sugli stessi dati.
+tabellare e la pagina perimetro sono nati in seguito, come viste alternative.
 
 ---
 
@@ -241,6 +244,44 @@ formalmente ma sviluppata rapidamente (9 commit in 24 ore). Cronaca completa:
 - **Collegamento con la mappa**: solo un link statico `<a href="elenco.html">`
   in `mappa.template.html`/`docs/index.html` — nessuna integrazione più
   profonda (nessuno stato condiviso tra le due pagine).
+
+## 16.8 Webapp perimetro (elenco comuni)
+
+Richiesta esplicita dell'utente (2026-09-11): una pagina con un comune per
+riga (numero, nome, provincia, distanza km/minuti) e tutti i link collegati —
+sito del comune, social del comune, sito Pro Loco, social Pro Loco, "Altro"
+per teatri/altre attività collegate al comune.
+
+**Dati**: `publisher.righe_perimetro_completo` fa un JOIN a tre vie:
+- `comuni` — base (istat, nome, provincia, km, minuti).
+- `sources` — sito web di comune/Pro Loco (`categoria` + `endpoint`),
+  collegato al comune tramite lo stesso slug con cui `run.py import-fonti`
+  costruisce i `source_id` (`comune-{slug}`, `proloco-{slug}-sito`:
+  `nome.lower().replace(' ', '-')`).
+- `coda_follow` — social di comune/Pro Loco/altro, già collegato per
+  `comune` esplicito.
+
+**"Altro" (teatri e attività)**: `coda_follow` con `categoria='teatro'` aveva
+sempre `comune=NULL` — il nome del comune era scritto solo nel testo di
+`soggetto` ("Cambiano - Teatro Comunale"). Deduzione fatta con
+`src/collega_teatri.py` (`run.py collega-teatri`, comando manuale, non
+schedulato) e **persistita** in `coda_follow.comune`, non ricalcolata ad
+ogni publish — così resta correggibile a mano come ogni altro campo del
+progetto. Collaudato sui dati reali: 31/33 teatri collegati automaticamente
+(2 non risolti perché il comune, Savona, è fuori dal perimetro dei 683 —
+comportamento corretto, non un bug). Un soggetto seguito su Facebook e
+Instagram compare una sola volta in "Altro" con entrambi i link, non due
+righe duplicate.
+
+**Pagina**: `webapp/perimetro.template.html` → `webapp/perimetro.html` +
+`docs/perimetro.html` (stesso pattern statico delle altre due webapp, dati
+da `perimetro.json`). Ricerca testuale sul nome comune, filtro per provincia,
+ordinamento per colonna (default km crescente), vista a schede su mobile.
+Link icona 🌐 per i siti, "f"/"ig" per i social, chip cliccabili per "Altro".
+
+Collaudato con Playwright: 683 comuni caricati, filtri e ordinamento
+funzionanti, navigazione incrociata con mappa ed elenco verificata, zero
+errori JavaScript.
 
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)
 
