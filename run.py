@@ -114,7 +114,13 @@ def _elabora_una_fonte_worker(riga, no_llm: bool, config) -> dict:
     conn_worker = store.connect(DB_PATH)
     extractor_worker = None if no_llm else _crea_extractor_se_configurato(config, conn_worker)
 
-    fonte = {"source_id": riga["source_id"], "endpoint": riga["endpoint"], "metodo": riga["tier"], "comune_riferimento": None}
+    comune_riferimento = pipeline.comune_riferimento_da_source_id(riga["source_id"], conn_worker)
+    fonte = {
+        "source_id": riga["source_id"],
+        "endpoint": riga["endpoint"],
+        "metodo": riga["tier"],
+        "comune_riferimento": comune_riferimento,
+    }
     try:
         riepilogo = pipeline.esegui_fonte(fonte, conn_worker, config, extractor_worker)
     except Exception as exc:

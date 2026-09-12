@@ -693,3 +693,65 @@ def test_riprocessa_quarantena_stessa_fonte_html_rilanciata_una_sola_volta():
 
     assert mock_fetch.call_count == 1
     assert len(riepilogo["html"]) == 1
+
+
+def test_comune_riferimento_da_source_id_deriva_dallo_slug():
+    """Bug reale trovato il 2026-09-12 (caso comune-calosso): il worker del
+    giro schedulato (run.py _elabora_una_fonte_worker) impostava sempre
+    comune_riferimento=None invece di derivarlo dal source_id 'comune-*' —
+    per le fonti T0 strutturate (pa_design_system/jsonld, senza estrattore
+    LLM che possa risolvere il comune dal testo), questo faceva scartare
+    silenziosamente ogni evento la cui pagina non nomina esplicitamente il
+    comune. 159 fonti su 386 mostravano il sintomo (eventi trovati mai
+    pubblicati)."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('2', 'Calosso', 'Calosso', 'AT', 44.79, 8.26, 0.0, 0, 'A', 'si')"
+    )
+    conn.commit()
+
+    assert pipeline.comune_riferimento_da_source_id("comune-calosso", conn) == "Calosso"
+    assert pipeline.comune_riferimento_da_source_id("comune-inesistente", conn) is None
+    assert pipeline.comune_riferimento_da_source_id("proloco-calosso-sito", conn) is None
+
+
+def test_fonte_t0_pa_design_system_senza_comune_riferimento_esplicito_scarta_evento():
+    """Controprova del bug: senza comune_riferimento (come faceva il worker
+    prima del fix), un artefatto T0 strutturato senza comune_testuale
+    esplicito nel titolo/descrizione non produce alcun evento — a
+    differenza di quando comune_riferimento è valorizzato (test successivo)."""
+    from src.adapters.base import Artefatto
+
+    conn = _conn_di_prova()
+    fonte = {"source_id": "comune-prova", "metodo": "T0_pa_design_system", "endpoint": "https://x.it/Eventi", "comune_riferimento": None}
+    art = Artefatto(
+        source_id="comune-prova", url="https://x.it/Dettaglionews?IDNews=1", kind="html",
+        text="Fiera del Rapulè", titolo="Fiera del Rapulè", data_inizio="2026-10-16", data_fine="2026-10-18",
+    )
+
+    with patch("src.adapters.pa_design_system.PaDesignSystemAdapter.fetch", return_value=[art]):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, Config())
+
+    assert riepilogo["eventi_pubblicati"] == 0
+    assert conn.execute("SELECT COUNT(*) AS n FROM events").fetchone()["n"] == 0
+
+
+def test_fonte_t0_pa_design_system_con_comune_riferimento_pubblica_evento():
+    """Con comune_riferimento valorizzato (il fix), lo stesso artefatto
+    dell'evento precedente viene pubblicato correttamente."""
+    from src.adapters.base import Artefatto
+
+    conn = _conn_di_prova()
+    fonte = {"source_id": "comune-prova", "metodo": "T0_pa_design_system", "endpoint": "https://x.it/Eventi", "comune_riferimento": "Comune Prova"}
+    art = Artefatto(
+        source_id="comune-prova", url="https://x.it/Dettaglionews?IDNews=1", kind="html",
+        text="Fiera del Rapulè", titolo="Fiera del Rapulè", data_inizio="2026-10-16", data_fine="2026-10-18",
+    )
+
+    with patch("src.adapters.pa_design_system.PaDesignSystemAdapter.fetch", return_value=[art]):
+        riepilogo = pipeline.esegui_fonte(fonte, conn, Config())
+
+    assert riepilogo["eventi_pubblicati"] == 1
+    evento = conn.execute("SELECT titolo, comune FROM events").fetchone()
+    assert evento["comune"] == "Comune Prova"

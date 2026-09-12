@@ -50,6 +50,30 @@ _ADAPTER_PER_TIER = {
 }
 
 
+def comune_riferimento_da_source_id(source_id: str, conn: sqlite3.Connection) -> str | None:
+    """Deriva il comune di riferimento di una fonte 'comune-{slug}' dallo
+    stesso slug con cui `run.py import-fonti` costruisce il source_id
+    (`nome.lower().replace(' ', '-')`) — nessuna colonna SQL dedicata, lo
+    slug nel source_id è già la fonte di verità.
+
+    Indispensabile per le fonti T0 strutturate (pa_design_system, jsonld):
+    non passano dall'estrattore LLM, quindi non hanno mai un
+    `comune_testuale` da cui risolvere il comune — se `comune_riferimento`
+    resta None, `risolvi_comune_evento` non ha nessun livello a cui
+    ripiegare e ogni evento viene scartato in silenzio (2026-09-12, bug
+    reale trovato su comune-calosso: 159 fonti su 386 con eventi trovati
+    ma mai pubblicati, perché il worker del giro schedulato non chiamava
+    questa derivazione — la chiamava solo il percorso di ricorrezione
+    mirata `correggi-fonte-html`)."""
+    if not source_id.startswith("comune-"):
+        return None
+    slug = source_id[len("comune-"):]
+    riga = conn.execute(
+        "SELECT comune FROM comuni WHERE LOWER(REPLACE(comune, ' ', '-')) = ?", (slug,)
+    ).fetchone()
+    return riga["comune"] if riga else None
+
+
 def esegui_fonte(
     fonte: dict, conn: sqlite3.Connection, config: Config, extractor: ExtractorClient | None = None
 ) -> dict:
@@ -412,16 +436,7 @@ def _riprocessa_una_fonte_html(
         ).fetchall()
     }
 
-    # Stesso pattern già usato in publisher.pubblica_fonti per derivare
-    # comune_riferimento da un source_id 'comune-*': nessuna colonna SQL
-    # dedicata, lo slug del comune è già la fonte di verità nel source_id.
-    comune_riferimento = None
-    if source_id.startswith("comune-"):
-        slug = source_id[len("comune-"):]
-        riga_comune = conn.execute(
-            "SELECT comune FROM comuni WHERE LOWER(REPLACE(comune, ' ', '-')) = ?", (slug,)
-        ).fetchone()
-        comune_riferimento = riga_comune["comune"] if riga_comune else None
+    comune_riferimento = comune_riferimento_da_source_id(source_id, conn)
 
     fonte = {
         "source_id": source_id,
