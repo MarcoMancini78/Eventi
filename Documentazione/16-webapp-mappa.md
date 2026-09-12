@@ -221,6 +221,35 @@ Qui solo l'esito finale:
 
 ---
 
+## 16.6b Intestazione tabella fissa: la pagina scrolla, non un div interno
+
+Le pagine con tabella (elenco, perimetro) fanno scorrere **l'intera pagina**
+(`body`/finestra), non un `<div>` interno con `overflow: auto`. Header e
+barra filtri restano sticky sulla finestra (`position: sticky; top: 0`),
+il `thead` della tabella sticky sotto di loro (`top: var(--altezza-fissa)`).
+
+**Causa di due fix precedenti falliti** (2026-09-10/11-12, vedi
+[CRONACA.md](../CRONACA.md)): far scrollare un `<div>` interno (`main` con
+`overflow: auto`) invece della pagina intera produce, su tabelle lunghe
+(centinaia di righe), un disallineamento tra la posizione del `<thead>` come
+elemento e quella dei suoi `<th>` figli (verificato con
+`getBoundingClientRect()`: i due non coincidono, il `<th>` sticky finisce
+visivamente più in basso, sovrapposto a una riga di dati reale) — un
+comportamento di rendering che persiste indipendentemente da
+`border-collapse`, `overflow` degli antenati, o dal valore esatto di `top`.
+Non risolvibile con aggiustamenti CSS mirati sullo sticky stesso.
+
+**Fix strutturale** (quello adottato): `html, body` senza `height: 100%`,
+`main` senza `overflow: auto` — la pagina scrolla per intero, header/filtri
+restano sticky sulla finestra (comportamento sempre affidabile), il thead
+sticky sotto di loro funziona in modo standard perché non c'è più un
+contenitore di scroll intermedio tra lui e la finestra.
+
+⚠️ **Eccezione: la webapp mappa non usa questo pattern** — Google Maps
+richiede un contenitore a dimensione fissa (`height: 100%`) per riempire lo
+spazio disponibile, non ha una tabella con thead sticky, quindi non è
+soggetta a questo bug e resta con la struttura a schermo intero originale.
+
 ## 16.7 Webapp elenco (tabellare)
 
 Nata il 2026-09-10 come vista alternativa sugli stessi dati, non richiesta
