@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-12T12:33:44",
+  "generato_il": "2026-09-12T14:16:36",
   "comuni": [
     {
       "istat": "005015",
@@ -9,8 +9,8 @@
       "minuti": 0.0,
       "sito_comune": {
         "url": "https://comune.calosso.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 19
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comune.calosso",
@@ -482,7 +482,7 @@
       "sito_comune": {
         "url": "https://comune.isoladasti.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/isoladastiofficialpage",
@@ -1181,7 +1181,7 @@
       "sito_comune": {
         "url": "https://comune.vigliano.at.it/Eventi",
         "attivi": 0,
-        "totale": 4
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -1379,7 +1379,7 @@
       "sito_comune": {
         "url": "https://comune.neviglie.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -1683,7 +1683,7 @@
       "sito_comune": {
         "url": "https://comune.cessole.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 13
       },
       "facebook_comune": {
         "url": "",
@@ -1721,7 +1721,7 @@
       "sito_comune": {
         "url": "https://comune.montabone.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -1796,8 +1796,8 @@
       "minuti": 30.0,
       "sito_comune": {
         "url": "https://comune.vesime.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -1987,7 +1987,7 @@
       "sito_comune": {
         "url": "https://comune.fontanile.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 11
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/TartufoBiancoAltoMonferrato",
@@ -2029,8 +2029,8 @@
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunesandamianodasti",
-        "attivi": 0,
-        "totale": 13
+        "attivi": 1,
+        "totale": 14
       },
       "instagram_comune": {
         "url": "",
@@ -2085,7 +2085,7 @@
       "sito_comune": {
         "url": "https://comune.castelrocchero.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Castel-Rocchero-440749839335648",
@@ -2275,7 +2275,7 @@
       "sito_comune": {
         "url": "https://comune.mombaruzzo.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comune.mombaruzzo",
@@ -2667,8 +2667,8 @@
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/rocchettatanaro",
-        "attivi": 0,
-        "totale": 2
+        "attivi": 1,
+        "totale": 3
       },
       "instagram_comune": {
         "url": "",
@@ -2954,7 +2954,7 @@
       "instagram_proloco": {
         "url": "https://www.instagram.com/proloco_bergamasco",
         "attivi": 0,
-        "totale": 4
+        "totale": 5
       },
       "altro": []
     },
@@ -3043,7 +3043,7 @@
       "sito_comune": {
         "url": "https://comune.masio.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ComuneDiMasio",
@@ -3119,7 +3119,7 @@
       "sito_comune": {
         "url": "https://comune.torrebormida.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/TorreBormida",
@@ -3309,7 +3309,7 @@
       "sito_comune": {
         "url": "https://comune.lequioberria.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -3468,8 +3468,8 @@
       "minuti": 39.0,
       "sito_comune": {
         "url": "https://comune.ricaldone.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 10
       },
       "facebook_comune": {
         "url": "",
@@ -3506,8 +3506,8 @@
       "minuti": 36.0,
       "sito_comune": {
         "url": "https://comune.cerrettolanghe.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -3587,8 +3587,8 @@
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/visitacquiterme",
-        "attivi": 32,
-        "totale": 47
+        "attivi": 33,
+        "totale": 48
       },
       "instagram_comune": {
         "url": "",
@@ -3659,7 +3659,7 @@
       "sito_comune": {
         "url": "https://comune.castellettoderro.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -3735,7 +3735,7 @@
       "sito_comune": {
         "url": "https://comune.roddi.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -4282,8 +4282,8 @@
       "minuti": 41.0,
       "sito_comune": {
         "url": "https://www.comune.oviglio.al.it/it-it/vivere-il-comune/eventi/oggi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -4473,7 +4473,7 @@
       "sito_comune": {
         "url": "https://comune.albarettodellatorre.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -4549,7 +4549,7 @@
       "sito_comune": {
         "url": "https://comune.scurzolengo.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -4586,8 +4586,8 @@
       "minuti": 41.0,
       "sito_comune": {
         "url": "https://comune.bergolo.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -4776,8 +4776,8 @@
       "minuti": 42.0,
       "sito_comune": {
         "url": "https://comune.castagnolemonferrato.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -4823,7 +4823,7 @@
       "sito_comune": {
         "url": "https://comune.frascaro.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -5126,8 +5126,8 @@
       "minuti": 47.0,
       "sito_comune": {
         "url": "https://comune.cassine.al.it/it-it/appuntamenti",
-        "attivi": 57,
-        "totale": 57
+        "attivi": 58,
+        "totale": 58
       },
       "facebook_comune": {
         "url": "",
@@ -5202,8 +5202,8 @@
       "minuti": 47.0,
       "sito_comune": {
         "url": "https://comune.castellero.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 4
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Castellero-dAsti-105417837954347",
@@ -5278,8 +5278,8 @@
       "minuti": 45.0,
       "sito_comune": {
         "url": "https://comune.monale.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 23
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comune.monale",
@@ -5317,7 +5317,7 @@
       "sito_comune": {
         "url": "https://comune.cinaglio.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -5545,7 +5545,7 @@
       "sito_comune": {
         "url": "https://comune.cavatore.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 6
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunedicavatore",
@@ -5881,8 +5881,8 @@
       },
       "instagram_proloco": {
         "url": "https://www.instagram.com/proloco_spignomonferrato",
-        "attivi": 2,
-        "totale": 15
+        "attivi": 3,
+        "totale": 17
       },
       "altro": []
     },
@@ -6009,7 +6009,7 @@
       "sito_comune": {
         "url": "https://comune.roddino.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -6110,7 +6110,7 @@
       "instagram_proloco": {
         "url": "https://www.instagram.com/villafrancaproloco",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "altro": []
     },
@@ -6122,8 +6122,8 @@
       "minuti": 43.0,
       "sito_comune": {
         "url": "https://comune.barolo.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 3
       },
       "facebook_comune": {
         "url": "",
@@ -6313,7 +6313,7 @@
       "sito_comune": {
         "url": "https://comune.calliano.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -6389,7 +6389,7 @@
       "sito_comune": {
         "url": "https://comune.sinio.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -6413,8 +6413,8 @@
       },
       "instagram_proloco": {
         "url": "https://www.instagram.com/siniosocial",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 2
       },
       "altro": []
     },
@@ -6503,7 +6503,7 @@
       "sito_comune": {
         "url": "https://comune.bossolasco.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -6731,7 +6731,7 @@
       "sito_comune": {
         "url": "https://comune.rivalta.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -7111,7 +7111,7 @@
       "sito_comune": {
         "url": "https://comune.orsarabormida.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -7187,7 +7187,7 @@
       "sito_comune": {
         "url": "https://comune.mombarcaro.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -7300,8 +7300,8 @@
       "minuti": 48.0,
       "sito_comune": {
         "url": "https://comune.soglio.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -7339,7 +7339,7 @@
       "sito_comune": {
         "url": "https://comune.felizzano.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Felizzano-Pagina-Ufficiale-186777051372982",
@@ -7453,7 +7453,7 @@
       "sito_comune": {
         "url": "https://comune.penango.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -7490,8 +7490,8 @@
       "minuti": 48.0,
       "sito_comune": {
         "url": "https://comune.novello.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 27
       },
       "facebook_comune": {
         "url": "",
@@ -7605,7 +7605,7 @@
       "sito_comune": {
         "url": "https://comune.cellarengo.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 6
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/CellarengoComune",
@@ -7727,7 +7727,7 @@
       "sito_comune": {
         "url": "https://comune.merana.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -7879,7 +7879,7 @@
       "sito_comune": {
         "url": "https://comune.cremolino.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -7993,7 +7993,7 @@
       "sito_comune": {
         "url": "https://comune.altavillamonferrato.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 7
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunealtavillamonf",
@@ -8106,8 +8106,8 @@
       "minuti": 49.0,
       "sito_comune": {
         "url": "https://comune.piea.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -8221,7 +8221,7 @@
       "sito_comune": {
         "url": "https://comune.casorzo.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 6
       },
       "facebook_comune": {
         "url": "",
@@ -8259,7 +8259,7 @@
       "sito_comune": {
         "url": "https://comune.montaldobormida.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 7
       },
       "facebook_comune": {
         "url": "",
@@ -8372,8 +8372,8 @@
       "minuti": 56.0,
       "sito_comune": {
         "url": "https://www.comune.castellazzobormida.al.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 4,
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -8410,8 +8410,8 @@
       "minuti": 53.0,
       "sito_comune": {
         "url": "https://comune.casalcermelli.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 32
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/2.0insiemeperleggere",
@@ -8448,8 +8448,8 @@
       "minuti": 57.0,
       "sito_comune": {
         "url": "https://comune.cassinelle.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 3,
+        "totale": 3
       },
       "facebook_comune": {
         "url": "",
@@ -8525,7 +8525,7 @@
       "sito_comune": {
         "url": "https://comune.trisobbio.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -8913,7 +8913,7 @@
       "sito_comune": {
         "url": "https://www.comune.narzole.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 7
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/narzole",
@@ -9140,8 +9140,8 @@
       "minuti": 54.0,
       "sito_comune": {
         "url": "https://comune.piovamassaia.at.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 3,
+        "totale": 11
       },
       "facebook_comune": {
         "url": "",
@@ -9216,8 +9216,8 @@
       "minuti": 50.0,
       "sito_comune": {
         "url": "https://comune.fubinemonferrato.al.it/Eventi",
-        "attivi": 0,
-        "totale": 2
+        "attivi": 1,
+        "totale": 33
       },
       "facebook_comune": {
         "url": "",
@@ -9300,8 +9300,8 @@
       "minuti": 57.0,
       "sito_comune": {
         "url": "https://comune.villadeati.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 22
       },
       "facebook_comune": {
         "url": "",
@@ -9467,8 +9467,8 @@
       "minuti": 49.0,
       "sito_comune": {
         "url": "https://comune.cervere.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunedicervere",
@@ -9620,7 +9620,7 @@
       "sito_comune": {
         "url": "https://comune.odalengopiccolo.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -9733,8 +9733,8 @@
       "minuti": 61.0,
       "sito_comune": {
         "url": "https://comune.boscomarengo.al.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 2
+        "attivi": 1,
+        "totale": 3
       },
       "facebook_comune": {
         "url": "",
@@ -9772,7 +9772,7 @@
       "sito_comune": {
         "url": "https://comune.cereseto.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Cereseto-Informa-107546224222456",
@@ -9810,7 +9810,7 @@
       "sito_comune": {
         "url": "https://comune.ottiglio.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comune.ottiglio",
@@ -9885,8 +9885,8 @@
       "minuti": 61.0,
       "sito_comune": {
         "url": "https://comune.saliceto.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 6
       },
       "facebook_comune": {
         "url": "",
@@ -9962,7 +9962,7 @@
       "sito_comune": {
         "url": "https://comune.paroldo.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -10122,7 +10122,7 @@
       "sito_comune": {
         "url": "https://comune.belvederelanghe.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -10312,7 +10312,7 @@
       "sito_comune": {
         "url": "https://www.comune.marsaglia.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -10350,7 +10350,7 @@
       "sito_comune": {
         "url": "https://comune.belfortemonferrato.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunebelfortem",
@@ -10387,8 +10387,8 @@
       "minuti": 62.0,
       "sito_comune": {
         "url": "https://comune.tagliolomonferrato.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 22
       },
       "facebook_comune": {
         "url": "",
@@ -10464,7 +10464,7 @@
       "sito_comune": {
         "url": "https://www.comune.igliano.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -10483,8 +10483,8 @@
       },
       "facebook_proloco": {
         "url": "https://www.facebook.com/proloco.ciglianese",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "instagram_proloco": {
         "url": "https://www.instagram.com/prolocoscigliano",
@@ -10540,7 +10540,7 @@
       "sito_comune": {
         "url": "https://comune.conzano.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -10616,7 +10616,7 @@
       "sito_comune": {
         "url": "https://comune.salesangiovanni.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -10738,7 +10738,7 @@
       "sito_comune": {
         "url": "https://comune.pinodasti.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 5
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Pino-dAsti-350749518445789",
@@ -10775,8 +10775,8 @@
       "minuti": 62.0,
       "sito_comune": {
         "url": "https://comune.caramagnapiemonte.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -11315,8 +11315,8 @@
       "minuti": 73.0,
       "sito_comune": {
         "url": "https://comune.francavillabisio.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 17
       },
       "facebook_comune": {
         "url": "",
@@ -11354,7 +11354,7 @@
       "sito_comune": {
         "url": "https://comune.luecuccaromonferrato.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 8
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunelu",
@@ -11505,8 +11505,8 @@
       "minuti": 70.0,
       "sito_comune": {
         "url": "https://comune.castellettodorba.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -11696,7 +11696,7 @@
       "sito_comune": {
         "url": "https://comune.cairomontenotte.sv.it/it/events",
         "attivi": 0,
-        "totale": 2
+        "totale": 3
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/p/Citt%C3%A0-di-Cairo-Montenotte-100081556795204",
@@ -11962,7 +11962,7 @@
       "sito_comune": {
         "url": "https://comune.piozzo.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -13087,8 +13087,8 @@
       "minuti": 66.0,
       "sito_comune": {
         "url": "https://comune.sangiorgiomonferrato.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 3,
+        "totale": 43
       },
       "facebook_comune": {
         "url": "",
@@ -13164,7 +13164,7 @@
       "sito_comune": {
         "url": "https://comune.lesegno.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -13293,7 +13293,7 @@
       "sito_comune": {
         "url": "https://comune.cosseria.sv.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 7
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunecosseria",
@@ -13330,8 +13330,8 @@
       "minuti": 61.0,
       "sito_comune": {
         "url": "https://www.comune.andezeno.to.it/it-it/vivere-il-comune/eventi/oggi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ComuneAndezeno",
@@ -13483,7 +13483,7 @@
       "sito_comune": {
         "url": "https://comune.berzanosanpietro.at.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/berzanoSP",
@@ -13977,7 +13977,7 @@
       "sito_comune": {
         "url": "https://comune.trofarello.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -14053,7 +14053,7 @@
       "sito_comune": {
         "url": "https://comune.cinzano.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Cinzano-1425529801054565",
@@ -14167,7 +14167,7 @@
       "sito_comune": {
         "url": "https://comune.verruasavoia.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 6
       },
       "facebook_comune": {
         "url": "",
@@ -14205,7 +14205,7 @@
       "sito_comune": {
         "url": "https://comune.marentino.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -14318,8 +14318,8 @@
       "minuti": 83.0,
       "sito_comune": {
         "url": "https://comune.gavi.al.it/it-it/vivere-il-comune/eventi/oggi",
-        "attivi": 0,
-        "totale": 1
+        "attivi": 2,
+        "totale": 3
       },
       "facebook_comune": {
         "url": "",
@@ -14813,7 +14813,7 @@
       "sito_comune": {
         "url": "https://comune.villastellone.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 23
       },
       "facebook_comune": {
         "url": "",
@@ -14851,7 +14851,7 @@
       "sito_comune": {
         "url": "https://comune.mirabellomonferrato.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comune.mirabellomonf",
@@ -14964,8 +14964,8 @@
       "minuti": 63.0,
       "sito_comune": {
         "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
-        "attivi": 2,
-        "totale": 2
+        "attivi": 5,
+        "totale": 5
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/pages/Comune-di-Valenza/343289129087772",
@@ -15002,8 +15002,8 @@
       "minuti": 77.0,
       "sito_comune": {
         "url": "https://comune.mombasiglio.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -15155,7 +15155,7 @@
       "sito_comune": {
         "url": "https://comune.bosio.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -15497,7 +15497,7 @@
       "sito_comune": {
         "url": "https://comune.palazzolovercellese.vc.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -15573,7 +15573,7 @@
       "sito_comune": {
         "url": "https://comune.crescentino.vc.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/cittadicrescentino",
@@ -15649,7 +15649,7 @@
       "sito_comune": {
         "url": "https://comune.occimiano.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 26
       },
       "facebook_comune": {
         "url": "",
@@ -16303,7 +16303,7 @@
       "sito_comune": {
         "url": "https://comune.massimino.sv.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/proloco.massimino",
@@ -16340,8 +16340,8 @@
       "minuti": 67.0,
       "sito_comune": {
         "url": "https://comune.giarole.al.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 12
       },
       "facebook_comune": {
         "url": "",
@@ -16797,7 +16797,7 @@
       "sito_comune": {
         "url": "https://comune.mallare.sv.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -16835,7 +16835,7 @@
       "sito_comune": {
         "url": "https://comune.rivalba.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -16948,8 +16948,8 @@
       "minuti": 69.0,
       "sito_comune": {
         "url": "https://comune.vinovo.to.it/it-it/vivere-il-comune/eventi/oggi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/pages/Comune-di-Vinovo/216228804478",
@@ -17223,7 +17223,7 @@
       "sito_comune": {
         "url": "https://comune.carru.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -17337,7 +17337,7 @@
       "sito_comune": {
         "url": "https://comune.rivarone.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -17413,7 +17413,7 @@
       "sito_comune": {
         "url": "https://comune.sanraffaelecimena.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 70
       },
       "facebook_comune": {
         "url": "",
@@ -17526,8 +17526,8 @@
       "minuti": 81.0,
       "sito_comune": {
         "url": "https://comune.castiglionetorinese.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 3,
+        "totale": 24
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ComunediCastiglioneTorinese",
@@ -17641,7 +17641,7 @@
       "sito_comune": {
         "url": "https://comune.priola.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -17838,13 +17838,13 @@
       "minuti": 83.0,
       "sito_comune": {
         "url": "https://www.comune.chivasso.to.it/it/events",
-        "attivi": 35,
-        "totale": 41
+        "attivi": 36,
+        "totale": 42
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunechivasso",
-        "attivi": 7,
-        "totale": 13
+        "attivi": 8,
+        "totale": 14
       },
       "instagram_comune": {
         "url": "",
@@ -17914,8 +17914,8 @@
       "minuti": 73.0,
       "sito_comune": {
         "url": "https://comune.piobesi.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 10
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunepiobesitorinese",
@@ -18407,8 +18407,8 @@
       "minuti": 72.0,
       "sito_comune": {
         "url": "https://comune.carignano.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 30
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunecarignano",
@@ -18483,8 +18483,8 @@
       "minuti": 80.0,
       "sito_comune": {
         "url": "https://comune.tarantasca.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 47
       },
       "facebook_comune": {
         "url": "",
@@ -19002,7 +19002,7 @@
       "sito_comune": {
         "url": "https://comune.centallo.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -19267,8 +19267,8 @@
       "minuti": 91.0,
       "sito_comune": {
         "url": "https://comune.garessio.cn.it/it-it/vivere-il-comune/eventi/oggi",
-        "attivi": 0,
-        "totale": 4
+        "attivi": 2,
+        "totale": 6
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/pages/Comune-di-Garessio/621654611263603",
@@ -19457,8 +19457,8 @@
       "minuti": 76.0,
       "sito_comune": {
         "url": "https://comune.suardi.pv.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -19534,7 +19534,7 @@
       "sito_comune": {
         "url": "https://comune.castagnolepiemonte.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 3
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunecastagnolepiemonte",
@@ -19610,7 +19610,7 @@
       "sito_comune": {
         "url": "https://comune.frassinetopo.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 5
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/frassinetopo",
@@ -20158,7 +20158,7 @@
       "sito_comune": {
         "url": "https://comune.roccadebaldi.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 14
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunediroccadebaldi",
@@ -20309,8 +20309,8 @@
       "minuti": 76.0,
       "sito_comune": {
         "url": "https://comune.none.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 49
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunenone",
@@ -20470,7 +20470,7 @@
       "sito_comune": {
         "url": "https://comune.faule.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -21344,7 +21344,7 @@
       "sito_comune": {
         "url": "https://comune.sanmichelemondovi.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -21610,7 +21610,7 @@
       "sito_comune": {
         "url": "https://comune.bianze.vc.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 4
       },
       "facebook_comune": {
         "url": "",
@@ -21922,12 +21922,12 @@
       "sito_comune": {
         "url": "https://comune.monasterodivasco.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunemonasterodivasco",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 2
       },
       "instagram_comune": {
         "url": "",
@@ -22158,7 +22158,7 @@
       "sito_comune": {
         "url": "https://comune.pianfei.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -22393,8 +22393,8 @@
       "minuti": 80.0,
       "sito_comune": {
         "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 18,
-        "totale": 20
+        "attivi": 23,
+        "totale": 25
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Alpignano-102365745051205",
@@ -22545,8 +22545,8 @@
       "minuti": 83.0,
       "sito_comune": {
         "url": "https://comune.lomello.pv.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunedilomello",
@@ -22659,8 +22659,8 @@
       "minuti": 95.0,
       "sito_comune": {
         "url": "https://cigliano.net/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 31
       },
       "facebook_comune": {
         "url": "",
@@ -22679,8 +22679,8 @@
       },
       "facebook_proloco": {
         "url": "https://www.facebook.com/proloco.ciglianese",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "instagram_proloco": {
         "url": "https://www.instagram.com/prolocoscigliano",
@@ -22697,8 +22697,8 @@
       "minuti": 77.0,
       "sito_comune": {
         "url": "https://comune.torremondovi.cn.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -22811,8 +22811,8 @@
       "minuti": 82.0,
       "sito_comune": {
         "url": "https://www.comune.mezzanabigli.pv.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ComuneDiMezzanaBigli",
@@ -22887,8 +22887,8 @@
       "minuti": 83.0,
       "sito_comune": {
         "url": "https://comune.villarbasse.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -23313,8 +23313,8 @@
       "minuti": 80.0,
       "sito_comune": {
         "url": "https://www.comune.pianezza.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 26,
+        "totale": 26
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/people/Comune-di-Pianezza/61559023423607",
@@ -23428,7 +23428,7 @@
       "sito_comune": {
         "url": "https://comune.villarsancostanzo.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 8
       },
       "facebook_comune": {
         "url": "",
@@ -23959,8 +23959,8 @@
       "minuti": 99.0,
       "sito_comune": {
         "url": "https://comune.candia.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 2,
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/candiacanavese",
@@ -24263,8 +24263,8 @@
       "minuti": 91.0,
       "sito_comune": {
         "url": "https://comune.trana.to.it/Eventi",
-        "attivi": 2,
-        "totale": 35
+        "attivi": 6,
+        "totale": 40
       },
       "facebook_comune": {
         "url": "",
@@ -24424,7 +24424,7 @@
       "sito_comune": {
         "url": "https://comune.pozzolgroppo.al.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -24461,8 +24461,8 @@
       "minuti": 102.0,
       "sito_comune": {
         "url": "https://comune.maglione.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ComuneMaglione",
@@ -24575,8 +24575,8 @@
       "minuti": 84.0,
       "sito_comune": {
         "url": "https://comune.druento.to.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 47
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunedidruento",
@@ -24735,8 +24735,8 @@
       "minuti": 88.0,
       "sito_comune": {
         "url": "https://comune.reano.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 1,
-        "totale": 1
+        "attivi": 5,
+        "totale": 5
       },
       "facebook_comune": {
         "url": "",
@@ -24850,7 +24850,7 @@
       "sito_comune": {
         "url": "https://comune.chiusadipesio.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comunedichiusadipesio",
@@ -24926,7 +24926,7 @@
       "sito_comune": {
         "url": "https://comune.borgodale.vc.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 3
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/comuneborgodale",
@@ -25040,7 +25040,7 @@
       "sito_comune": {
         "url": "https://comune.sangillio.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 14
       },
       "facebook_comune": {
         "url": "",
@@ -25267,8 +25267,8 @@
       "minuti": 104.0,
       "sito_comune": {
         "url": "https://www.comune.montalenghe.to.it/it-it/vivere-il-comune/eventi",
-        "attivi": 1,
-        "totale": 1
+        "attivi": 2,
+        "totale": 2
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/Comune-di-Montalenghe-104892784609004",
@@ -25344,7 +25344,7 @@
       "sito_comune": {
         "url": "https://comune.montemale.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 1
       },
       "facebook_comune": {
         "url": "",
@@ -25648,7 +25648,7 @@
       "sito_comune": {
         "url": "https://comune.cumiana.to.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 3
       },
       "facebook_comune": {
         "url": "",
@@ -25838,7 +25838,7 @@
       "sito_comune": {
         "url": "https://comune.frabosasoprana.cn.it/Eventi",
         "attivi": 0,
-        "totale": 0
+        "totale": 2
       },
       "facebook_comune": {
         "url": "",
@@ -25959,8 +25959,8 @@
       "minuti": 83.0,
       "sito_comune": {
         "url": "https://www.comune.sannazzarodeburgondi.pv.it/it-it/vivere-il-comune/eventi",
-        "attivi": 1,
-        "totale": 2
+        "attivi": 6,
+        "totale": 7
       },
       "facebook_comune": {
         "url": "https://www.facebook.com/ilburgundo",
@@ -26195,8 +26195,8 @@
       "minuti": 91.0,
       "sito_comune": {
         "url": "https://comune.godiascosaliceterme.pv.it/Eventi",
-        "attivi": 0,
-        "totale": 0
+        "attivi": 1,
+        "totale": 57
       },
       "facebook_comune": {
         "url": "",
