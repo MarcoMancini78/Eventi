@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-12T17:39:21",
+  "generato_il": "2026-09-12T18:41:14",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -2625,7 +2625,7 @@
     },
     {
       "id": "496c1d8f16ee",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -3063,7 +3063,7 @@
     {
       "id": "3103eff2d99c",
       "titolo": "Gran Galà di Operetta",
-      "descrizione": "Presso l'area all'aperto della Ciocca alle ore 21,00 evento lirico-musicale con soprano, tenore e corpo di ballo e musicisti",
+      "descrizione": "Evento lirico-musicale con soprano, tenore e corpo di ballo e musicisti.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -3480,7 +3480,7 @@
     },
     {
       "id": "1ba1c9308c4c",
-      "titolo": "Le torri si illuminano di rosso per Corri sotto le torri",
+      "titolo": "Le torri e il palazzo comunale si illuminano di rosso",
       "descrizione": "Nella notte che precede la XVIII edizione di “Corri sotto le torri”, il palazzo comunale e le torri di Alba si illuminano di rosso.",
       "comune": "Alba",
       "lat": 44.700724,
@@ -4032,7 +4032,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Iniziativa dedicata a valorizzare le figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali e cartografi nel XVIII secolo, con interventi di studiosi e la proiezione di un video di Lucio Laugelli.",
+      "descrizione": "Iniziativa volta a valorizzare le figure di due frati francescani cartografi originari di Cassine e Vinchio nel XVIII secolo, con relazioni di esperti e la proiezione di un video sui globi celesti e terrestri.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4886,18 +4886,18 @@
     },
     {
       "id": "0e5503365ea8",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
-      "descrizione": "Esposizione del manoscritto originale dell'atlante geografico delle Province Cappuccine realizzato dal Frate Cappuccino Giovanni Battista da Cassine, stampato a Milano nel 1712. Visionabile nel percorso di visita al Museo il sabato e la domenica dalle 16:00 alle 19:00.",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
+      "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
       "km": 34.9,
       "minuti": 47.0,
       "data_inizio": "2026-09-13",
-      "data_fine": "2026-10-26",
+      "data_fine": "2026-09-13",
       "tipologia": "mostra",
-      "url": "https://comune.cassine.al.it/it-it/appuntamenti/convegno-semper-in-melius-mutari-potest-giovanni-battista-da-cassine-predicatore-e-scienziato-130540-1-a5bcd47064673b85d9a59895def063bd",
-      "url_approfondimento": "https://comune.cassine.al.it/it-it/immagine/img-130540-O-28-377-0-0-dfd3b021b8249a8638d5f8a9cd669d94?639241192408655710",
+      "url": "",
+      "url_approfondimento": "",
       "fonti": "comune-cassine",
       "data_post": "",
       "ora_post": "",
@@ -5171,8 +5171,8 @@
     },
     {
       "id": "6879f3881a5c",
-      "titolo": "Corri sotto le torri - XVIII edizione",
-      "descrizione": "Evento podistico promosso da Triangolo Sport Langhe Monferrato Roero ASD per diffondere la pratica e i valori fondamentali dello sport. Nella notte precedente, il palazzo comunale e le torri di Alba si illuminano di rosso.",
+      "titolo": "Corri sotto le torri",
+      "descrizione": "XVIII edizione dell'evento podistico promosso da Triangolo Sport Langhe Monferrato Roero ASD per diffondere la pratica e i valori fondamentali dello sport.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -5913,7 +5913,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027. Interverranno il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo, Nicolas Ballario e i referenti dei progetti. Verrà presentato anche Extra, il nuovo circuito per ampliare la partecipazione.",
+      "descrizione": "Una serata aperta alla città per scoprire le iniziative che accompagneranno l'anno da Capitale attraverso le voci di chi ne ha immaginato e costruito i contenuti. Verrà presentato anche Extra, il nuovo circuito per ampliare la partecipazione.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7585,7 +7585,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Manifestazione con stand enogastronomici, presentazione della mappa I Cru di Enogea: Canelli Docg, esibizione Tamburini di Canelli, serate danzanti con orchestre, milonga pomeridiana, visite al Museo MuSa e degustazioni all'Enoteca Regionale.",
+      "descrizione": "Due giorni di eventi a Canelli con stand enogastronomici, musica dal vivo, ballo con le orchestre Daniela Cavanna e Bruno Mauro, milonga con TDj Josè Pavese, esibizioni, visite al Museo MuSa e degustazioni all'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7831,7 +7831,7 @@
     },
     {
       "id": "a44937f26064",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7946,7 +7946,7 @@
     {
       "id": "60a69b33c48c",
       "titolo": "Boogia! Hai voluto la bicicletta?",
-      "descrizione": "Una giornata per vivere e raccontare la bicicletta a partire dal pomeriggio, con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza in strada, asta di bici a sostegno delle attività de La Pop, merenda condivisa, racconti di viaggi e la proiezione del film Anywhere Anytime di Milad Tangshir.",
+      "descrizione": "Una giornata per vivere e raccontare la bicicletta a partire dal pomeriggio, con la pedalata sociale, attività di riparazione e recupero di biciclette, lo spazio informativo sulla sicurezza in strada e un’asta di bici a sostegno delle attività de La Pop. Dopo una merenda condivisa, racconti di viaggi in bicicletta e la proiezione del film Anywhere Anytime di Milad Tangshir.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9085,7 +9085,7 @@
     },
     {
       "id": "2864d66acee5",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9143,7 +9143,7 @@
     {
       "id": "419287733375",
       "titolo": "Camminata non competitiva a favore della ricerca contro il diabete",
-      "descrizione": "Camminata non competitiva organizzata dal Lions Club di Castagnole per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
+      "descrizione": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -9162,7 +9162,7 @@
     {
       "id": "ebc7518987b1",
       "titolo": "Sport in piazza",
-      "descrizione": "In apposite aree attrezzate allestite dalle Associazioni cittadine sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline sportive. Alle 17:30 estrazione premi per chi prova almeno 8 discipline.",
+      "descrizione": "In apposite aree attrezzate, allestite dalle Associazioni cittadine, sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione di premi tra cui una bicicletta per chi prova almeno 8 discipline.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9599,7 +9599,7 @@
     {
       "id": "fbbdccbf946c",
       "titolo": "Workshop di orientamento: Le diverse tipologie di lavoro e le skills personali utili e spendibili",
-      "descrizione": "Percorso di formazione gratuito rivolto a giovani disoccupati di età compresa tra i 18 e i 35 anni, articolato in 5 incontri dedicati a ricerca attiva del lavoro, CV, personal branding, preparazione del colloquio ed educazione finanziaria.",
+      "descrizione": "Percorso di formazione gratuito rivolto a giovani disoccupati tra i 18 e i 35 anni. Prevede 5 incontri dedicati alla ricerca del lavoro, curriculum vitae, personal branding, colloquio ed educazione finanziaria.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9846,7 +9846,7 @@
     {
       "id": "8481294c2867",
       "titolo": "Il lavoro cambia strada",
-      "descrizione": "Incontro con Dario Salvetti (Collettivo di fabbrica ex GKN, autore di Questo lavoro non è vita) e Gianluca Pagella (presidente di FIAB Alessandria e lavoratore in cargo bike) per parlare di lavoro, diritti e conversione ecologica.",
+      "descrizione": "Dario Salvetti, del Collettivo di fabbrica ex GKN e autore del libro Questo lavoro non è vita, dialogherà con Gianluca Pagella, presidente di FIAB Alessandria e lavoratore in cargo bike, per parlare di lavoro, diritti e conversione ecologica.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9978,8 +9978,8 @@
     },
     {
       "id": "46ffa40b4e5d",
-      "titolo": "Inaugurazione ufficiale della nuova pista di atletica",
-      "descrizione": "Inaugurazione ufficiale della pista di atletica dello stadio comunale Augusto Manzo, completamente rinnovata e riqualificata.",
+      "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
+      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo, rinnovata e riqualificata nell'ambito dell'intervento di valorizzazione promosso dall'Amministrazione comunale.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -10150,7 +10150,7 @@
     {
       "id": "6de34691f953",
       "titolo": "Il Pirata - Omaggio a Marco Pantani",
-      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France fino alla scomparsa.",
+      "descrizione": "Uno spettacolo che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto, per rendere omaggio a Marco Pantani, dagli esordi alle imprese al Giro d'Italia e al Tour de France fino alla sua scomparsa.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -10586,7 +10586,7 @@
     },
     {
       "id": "7a979d2828f4",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10644,7 +10644,7 @@
     {
       "id": "a18581d8d56f",
       "titolo": "Riprendiamoci… la piazza!",
-      "descrizione": "Dimostrazione della Ciclofficina La Pop in piazza Ferrero nell'ambito dell'evento Riprendiamoci… la piazza!",
+      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop in piazza Ferrero.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11403,7 +11403,7 @@
     },
     {
       "id": "be8ebcf4806a",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11708,7 +11708,7 @@
     {
       "id": "a46b9688feba",
       "titolo": "Obiettivo Tricolore",
-      "descrizione": "Tappa ad Alba della grande staffetta paralimpica ideata da Alex Zanardi. Arrivo dei partecipanti in piazza Michele Ferrero il 28 settembre, ripartenza il 29 settembre per Vigevano. Nella mattinata del 29 settembre allestimento del villaggio sportivo in piazza Medford e incontro 'Uguali & diversi, sport e disabilità' a Palazzo Mostre e Congressi 'G. Morra'.",
+      "descrizione": "La staffetta paralimpica ideata da Alex Zanardi fa tappa ad Alba: arrivo dei partecipanti lunedì 28 settembre in piazza Michele Ferrero e ripartenza il 29 settembre per Vigevano. Nella mattinata del 29 settembre allestimento del villaggio sportivo in piazza Medford per provare handbike e attrezzature.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11746,7 +11746,7 @@
     {
       "id": "4fe8fce25b24",
       "titolo": "Welfare e comunità sostenibili",
-      "descrizione": "Incontro formativo con Franca Maino dell'Università Statale di Milano e Direttrice scientifica 'Percorsi di Secondo Welfare', parte del ciclo formativo su welfare, salute e ambiente per amministratori locali e soggetti interessati.",
+      "descrizione": "Incontro formativo con Franca Maino dell’Università Statale di Milano e Direttrice scientifica 'Percorsi di Secondo Welfare', nell'ambito della proposta formativa per amministratori locali e soggetti interessati su welfare, salute e ambiente.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11936,7 +11936,7 @@
     {
       "id": "a6a196a410b6",
       "titolo": "Uguali & diversi, sport e disabilità",
-      "descrizione": "Incontro rivolto in particolare alle scuole nell'ambito della staffetta Obiettivo Tricolore, con l'intervento di una nutrizionista, degli allenatori e dell'atleta Francesca Fenocchio.",
+      "descrizione": "Incontro rivolto in particolare alle scuole nell'ambito della staffetta Obiettivo Tricolore, con l'intervento di una nutrizionista, degli allenatori e dell'atleta internazionale Francesca Fenocchio.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11944,7 +11944,7 @@
       "minuti": 32.0,
       "data_inizio": "2026-09-29",
       "data_fine": "2026-09-29",
-      "tipologia": "altro",
+      "tipologia": "sportivo",
       "url": "https://comune.alba.cn.it/it/news/arriva-ad-alba-obiettivo-tricolore",
       "url_approfondimento": "https://alba-api.municipiumapp.it/s3/720x960/s3/102/media/comunicati-stampa/2026/obiettivo.png",
       "fonti": "comune-alba",
@@ -12125,7 +12125,7 @@
     },
     {
       "id": "f17da9bce906",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12372,7 +12372,7 @@
     },
     {
       "id": "70606b0d115c",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12847,7 +12847,7 @@
     },
     {
       "id": "7f4cc97627f0",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13132,7 +13132,7 @@
     },
     {
       "id": "aae63be78cb0",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13266,7 +13266,7 @@
     {
       "id": "2d313d1927b7",
       "titolo": "Salute e comunità sostenibili",
-      "descrizione": "Incontro formativo con Gian Paolo Zanetta, Direttore Generale 'Ospedale Cottolengo', parte del ciclo formativo su welfare, salute e ambiente.",
+      "descrizione": "Incontro formativo con Gian Paolo Zanetta, Direttore Generale 'Ospedale Cottolengo', nell'ambito della proposta formativa per amministratori locali e soggetti interessati su welfare, salute e ambiente.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -13493,7 +13493,7 @@
     },
     {
       "id": "b50bfda62053",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13683,7 +13683,7 @@
     },
     {
       "id": "eb5bdbefffae",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13987,7 +13987,7 @@
     },
     {
       "id": "c2e3540bcaf5",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -14120,7 +14120,7 @@
     },
     {
       "id": "84ad5d737596",
-      "titolo": "Esposizione del manoscritto originale di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -14197,7 +14197,7 @@
     {
       "id": "d0b1a446ece4",
       "titolo": "Ambiente e comunità sostenibili",
-      "descrizione": "Incontro formativo con Giuseppe Gamba, GDL Enti locali Kyoto Club, parte del ciclo formativo su welfare, salute e ambiente.",
+      "descrizione": "Incontro formativo con Giuseppe Gamba, GDL Enti locali Kyoto Club, nell'ambito della proposta formativa per amministratori locali e soggetti interessati su welfare, salute e ambiente.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -14652,8 +14652,8 @@
     },
     {
       "id": "52ecfaffa55b",
-      "titolo": "Fiera Nazionale del Tartufo e Fiera di San Martin",
-      "descrizione": "La prima fiera dedicata alle eccellenze e l'enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
+      "titolo": "Fiera Nazionale del Tartufo e la Fiera di San Martin",
+      "descrizione": "La Fiera Nazionale del Tartufo è dedicata alle eccellenze e l'enogastronomia del territorio, mentre la Fiera di San Martin è caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
