@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 import gspread
@@ -881,12 +881,19 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
     """16.8 (webapp perimetro): un comune per riga con tutti i link collegati
     (sito/social del comune, sito/social della Pro Loco, e "altro" per
     teatri/attività la cui categoria in `coda_follow` è stata risolta al
-    comune — vedi `src/collega_teatri.py`).
+    comune — vedi `src/collega_teatri.py`), ciascuno con il conteggio degli
+    eventi trovati (attivi/futuri e totale storico).
 
     Il collegamento comune->fonte in `sources` passa dallo stesso slug con
     cui `run.py import-fonti` costruisce i source_id ("comune-{slug}",
     "proloco-{slug}-sito": `nome.lower().replace(' ', '-')`) — non un nuovo
     schema, solo la stessa regola riusata al contrario per il JOIN.
+
+    Il conteggio eventi per fonte social passa dall'`handle` in
+    `coda_follow`: gli eventi letti dal feed sono registrati in SQLite sotto
+    il source_id sintetico `feed-{piattaforma}-{handle}` (`feed_social.py`),
+    diverso dal source_id di `coda_follow` — non un dato mancante, è così
+    che il sistema li correla da sempre (vedi `pipeline.py`).
     """
     comuni = conn.execute(
         "SELECT istat, comune, provincia, km, minuti FROM comuni WHERE attivo = 'si' ORDER BY km ASC"
@@ -901,10 +908,29 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
 
     social_per_comune: dict[str, list[dict]] = {}
     for r in conn.execute(
-        "SELECT comune, categoria, piattaforma, url, soggetto FROM coda_follow "
+        "SELECT comune, categoria, piattaforma, handle, url, soggetto FROM coda_follow "
         "WHERE comune IS NOT NULL AND comune != ''"
     ).fetchall():
         social_per_comune.setdefault(r["comune"], []).append(dict(r))
+
+    # Conteggio eventi per source_id in un'unica scansione (683 comuni × più
+    # fonti ciascuno: una query per riga sarebbe centinaia di round-trip).
+    oggi = date.today().isoformat()
+    conteggi_per_fonte: dict[str, dict[str, int]] = {}
+    for r in conn.execute(
+        """
+        SELECT es.source_id AS source_id,
+               SUM(CASE WHEN e.archiviato = 'no' AND e.data_fine >= ? THEN 1 ELSE 0 END) AS attivi,
+               COUNT(*) AS totale
+        FROM event_sources es JOIN events e ON e.event_id = es.event_id
+        GROUP BY es.source_id
+        """,
+        (oggi,),
+    ).fetchall():
+        conteggi_per_fonte[r["source_id"]] = {"attivi": r["attivi"] or 0, "totale": r["totale"]}
+
+    def conteggio(source_id: str) -> dict[str, int]:
+        return conteggi_per_fonte.get(source_id, {"attivi": 0, "totale": 0})
 
     righe = []
     for c in comuni:
@@ -916,19 +942,36 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
         social_proloco = [x for x in social_per_comune.get(c["comune"], []) if x["categoria"] == "proloco"]
         altro = [x for x in social_per_comune.get(c["comune"], []) if x["categoria"] not in ("comune", "proloco")]
 
-        def url_per(lista: list[dict], piattaforma: str) -> str:
+        def per_piattaforma(lista: list[dict], piattaforma: str) -> dict | None:
             for x in lista:
                 if x["piattaforma"] == piattaforma:
-                    return x["url"]
-            return ""
+                    return x
+            return None
+
+        def voce_url_conteggio(source_id: str, url: str) -> dict:
+            cnt = conteggio(source_id)
+            return {"url": url, "attivi": cnt["attivi"], "totale": cnt["totale"]}
+
+        fb_comune = per_piattaforma(social_comune, "facebook")
+        ig_comune = per_piattaforma(social_comune, "instagram")
+        fb_proloco = per_piattaforma(social_proloco, "facebook")
+        ig_proloco = per_piattaforma(social_proloco, "instagram")
 
         # Un soggetto (teatro/attività) può avere sia Facebook sia Instagram:
         # una voce sola per soggetto con entrambi i link, non una riga per
         # piattaforma (altrimenti "Teatro X" compare due volte in "Altro").
+        # Il conteggio eventi è sommato tra le due piattaforme dello stesso
+        # soggetto (lo stesso evento letto da entrambi i feed è comunque
+        # un'unica riga in event_sources per ciascun source_id sintetico).
         altro_per_soggetto: dict[str, dict] = {}
         for x in altro:
-            voce = altro_per_soggetto.setdefault(x["soggetto"], {"soggetto": x["soggetto"], "facebook": "", "instagram": ""})
+            voce = altro_per_soggetto.setdefault(
+                x["soggetto"], {"soggetto": x["soggetto"], "facebook": "", "instagram": "", "attivi": 0, "totale": 0}
+            )
             voce[x["piattaforma"]] = x["url"]
+            cnt = conteggio(f"feed-{x['piattaforma']}-{x['handle']}") if x["handle"] else {"attivi": 0, "totale": 0}
+            voce["attivi"] += cnt["attivi"]
+            voce["totale"] += cnt["totale"]
 
         righe.append(
             {
@@ -937,12 +980,12 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
                 "provincia": c["provincia"] or "",
                 "km": c["km"],
                 "minuti": c["minuti"],
-                "sito_comune": sito_comune,
-                "facebook_comune": url_per(social_comune, "facebook"),
-                "instagram_comune": url_per(social_comune, "instagram"),
-                "sito_proloco": sito_proloco,
-                "facebook_proloco": url_per(social_proloco, "facebook"),
-                "instagram_proloco": url_per(social_proloco, "instagram"),
+                "sito_comune": voce_url_conteggio(f"comune-{s}", sito_comune),
+                "facebook_comune": voce_url_conteggio(f"feed-facebook-{fb_comune['handle']}" if fb_comune else "", fb_comune["url"] if fb_comune else ""),
+                "instagram_comune": voce_url_conteggio(f"feed-instagram-{ig_comune['handle']}" if ig_comune else "", ig_comune["url"] if ig_comune else ""),
+                "sito_proloco": voce_url_conteggio(f"proloco-{s}-sito", sito_proloco),
+                "facebook_proloco": voce_url_conteggio(f"feed-facebook-{fb_proloco['handle']}" if fb_proloco else "", fb_proloco["url"] if fb_proloco else ""),
+                "instagram_proloco": voce_url_conteggio(f"feed-instagram-{ig_proloco['handle']}" if ig_proloco else "", ig_proloco["url"] if ig_proloco else ""),
                 "altro": list(altro_per_soggetto.values()),
             }
         )

@@ -306,11 +306,28 @@ righe duplicate.
 `docs/perimetro.html` (stesso pattern statico delle altre due webapp, dati
 da `perimetro.json`). Ricerca testuale sul nome comune, filtro per provincia,
 ordinamento per colonna (default km crescente), vista a schede su mobile.
-Link icona 🌐 per i siti, "f"/"ig" per i social, chip cliccabili per "Altro".
+Link icona 🌐 per i siti, icone SVG inline di Facebook/Instagram per i
+social, chip cliccabili per "Altro".
+
+**Conteggio eventi per fonte** (richiesto 2026-09-12): davanti a ogni icona,
+due numeri `attivi/totale` — il primo è quanti eventi di quella fonte sono
+oggi attivi/futuri (`data_fine >= oggi`, non archiviati), il secondo è il
+totale storico mai trovato da quella fonte (archiviati inclusi), per capire
+"quanto è forte oggi vs quanto lo è stata in passato". Calcolato in
+`righe_perimetro_completo` con un'unica query aggregata su `event_sources`
+(non una per fonte, che sarebbero centinaia di round-trip). Per il sito
+web il collegamento è il `source_id` diretto (`comune-{slug}`); per il
+social passa dall'**handle** salvato in `coda_follow`, perché gli eventi
+letti dal feed sono registrati sotto il source_id sintetico
+`feed-{piattaforma}-{handle}` (`feed_social.py`), diverso da quello di
+`coda_follow` — non un dato mancante, è così che il sistema li correla da
+sempre (`pipeline.py`). Un soggetto in "Altro" seguito su entrambe le
+piattaforme somma i conteggi delle due.
 
 Collaudato con Playwright: 683 comuni caricati, filtri e ordinamento
-funzionanti, navigazione incrociata con mappa ed elenco verificata, zero
-errori JavaScript.
+funzionanti, navigazione incrociata con mappa ed elenco verificata, conteggi
+verificati sui dati reali (101 comuni con almeno un conteggio non nullo),
+zero errori JavaScript.
 
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)
 
