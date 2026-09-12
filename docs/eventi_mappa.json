@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-12T14:16:36",
+  "generato_il": "2026-09-12T14:38:43",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -1258,7 +1258,7 @@
     {
       "id": "2be17849904b",
       "titolo": "Festa Patronale dei 4 Borghi",
-      "descrizione": "Edizione 2026 della Festa Patronale dei 4 Borghi a Pessione: tradizionale Palio dei 4 Borghi, serate gastronomiche con specialità tipiche e opzioni vegetariane, DJ set (Roby G., Discovintage Experience con Renzo Costa), concerto del coro BaldinCanto, torneo di basket 3vs3, caccia al tesoro per famiglie, giochi per bambini e mostra di disegni.",
+      "descrizione": "Edizione 2026 della Festa Patronale di Pessione con il tradizionale Palio dei 4 Borghi, serate gastronomiche, musica dal vivo, DJ set, torneo di basket 3vs3, caccia al tesoro, spettacoli e giochi per bambini.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1295,7 +1295,7 @@
     },
     {
       "id": "0ccb12a2ac02",
-      "titolo": "Giornata della Prevenzione",
+      "titolo": "Giornata della prevenzione",
       "descrizione": "Una giornata dedicata alla salute e al benessere per tutte le età. Per informazioni e prenotazioni contattare il numero 3289436897.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
@@ -1904,7 +1904,7 @@
     {
       "id": "d91783ce559d",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
+      "descrizione": "Una galleria pubblica e partecipata nei corridoi dell’ex Convento di San Filippo Neri con pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1923,7 +1923,7 @@
     {
       "id": "0cb8b781d8c2",
       "titolo": "Esposizione del Tesoro del Duomo",
-      "descrizione": "Esposizione del Tesoro del Duomo presso la sacrestia, con le ritrovate statue della Madonna col Bambino e di San Giuliano. Visita introdotta e guidata da Roberto Toffanello.",
+      "descrizione": "Esposizione del Tesoro del Duomo, con le ritrovate statue della Madonna col Bambino e di San Giuliano. Visita introdotta e guidata da Roberto Toffanello.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2322,7 +2322,7 @@
     {
       "id": "7747706bc91d",
       "titolo": "Crescere con i libri - Nati per leggere e altre storie",
-      "descrizione": "Attività di promozione della lettura rivolte a famiglie con bambini da 0 a 6 anni, a cura dell'associazione culturale Teatrulla nell'ambito del sistema bibliotecario BI.TO sud-ovest in collaborazione con Fondazione Compagnia di San Paolo.",
+      "descrizione": "Iniziativa a cura dell'associazione culturale Teatrulla, nell'ambito delle attività di promozione della lettura rivolte a famiglie con bambini da 0 a 6 anni proposte dal sistema bibliotecario BI.TO sud-ovest in collaborazione con la Fondazione Compagnia di San Paolo.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -2436,7 +2436,7 @@
     {
       "id": "b7976d60408a",
       "titolo": "Punto informativo progetto Nati per Leggere/Cultura per Crescere",
-      "descrizione": "In occasione della Giornata della Prevenzione la Biblioteca Pavesio di Montaldo sarà presente con un Punto informativo sul progetto Nati per Leggere/Cultura per Crescere e alle 10:30 letture per bambini.",
+      "descrizione": "In occasione della Giornata della Prevenzione di sabato 12 settembre 2026 la Biblioteca Pavesio di Montaldo sarà presente con un Punto informativo sul progetto Nati per Leggere/Cultura per Crescere e alle 10:30 letture per le/i bambine/i",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -2625,7 +2625,7 @@
     },
     {
       "id": "496c1d8f16ee",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -2758,8 +2758,8 @@
     },
     {
       "id": "fbeeb4b90608",
-      "titolo": "Notte Bianca",
-      "descrizione": "Nell’ambito di Urban Dream – Settembre Chierese 2026, il centro storico di Chieri si anima con la Notte Bianca: una serata tra musica, DJ set, intrattenimento, shopping sotto le stelle con negozi e locali aperti.",
+      "titolo": "Notte Bianca di Chieri 2026",
+      "descrizione": "Nell'ambito di Urban Dream – Settembre Chierese 2026, il centro storico di Chieri si anima con musica, DJ set, intrattenimento, negozi e locali aperti per shopping e ristorazione sotto le stelle.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2777,7 +2777,7 @@
     },
     {
       "id": "774b9a0bf7bd",
-      "titolo": "Urban Dream: Villabanks e Greta Tedeschi",
+      "titolo": "Villabanks e Greta Tedeschi - Urban Dream",
       "descrizione": "Nell’ambito di Urban Dream – Settembre Chierese 2026, Piazza Dante ospita Greta Tedeschi e Villabanks. Dalle ore 19.00 street food e drink, dalle 21.30 inizio dello show.",
       "comune": "Chieri",
       "lat": 45.013884,
@@ -3063,7 +3063,7 @@
     {
       "id": "3103eff2d99c",
       "titolo": "Gran Galà di Operetta",
-      "descrizione": "Evento lirico-musicale con soprano, tenore e corpo di ballo e musicisti.",
+      "descrizione": "Evento lirico-musicale con soprano, tenore, corpo di ballo e musicisti",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4012,8 +4012,8 @@
     },
     {
       "id": "da2e62593e0a",
-      "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno dedicato alle figure di due Frati Francescani originari di Cassine e Vinchio, illustri intellettuali e cartografi del XVIII secolo. Con relazioni storiche e scientifiche e la proiezione di un video sui globi di Padre Pietro Maria da Vinchio.",
+      "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato",
+      "descrizione": "Convegno dedicato alla valorizzazione delle figure di due frati francescani originari di Cassine e Vinchio, Giovanni Battista da Cassine e Pietro Maria da Vinchio, illustri intellettuali, cartografi e costruttori di globi. Con interventi di studiosi e proiezione di un video documentario.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -4032,7 +4032,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Vetrina dell'offerta sportiva con stand di 35 associazioni sportive cittadine, dimostrazioni e prove pratiche di diverse discipline, intrattenimento musicale, estrazione a sorte di premi per gli under 18 e spazi dedicati alla salute e prevenzione.",
+      "descrizione": "Vetrina dell’offerta sportiva proposta dalle associazioni del territorio per scoprire e sperimentare diverse discipline sportive. Ritrovo alle 9.30 in piazza Caduti per la Libertà con corteo verso gli impianti sportivi del Parco Atleti Azzurri d’Italia in viale Madonna dei Fiori con stand di 35 associazioni sportive, prove, intrattenimento musicale e premi.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4126,8 +4126,8 @@
     },
     {
       "id": "e769596f5d1f",
-      "titolo": "MAC - Mostra Archeologica Chieri",
-      "descrizione": "Durante alcune campagne archeologiche, a partire dagli anni Cinquanta sono stati riportati alla luce reperti di diversa epoca: dall'Età romana fino al basso Medioevo. Terrecotte, vetri, monete e monili in metallo permettono di tornare indietro nel tempo attraverso la visita guidata nel museo all'interno del Palazzo Civico.",
+      "titolo": "Mostra Archeologica Chieri - MAC",
+      "descrizione": "Visita guidata alla scoperta dei reperti emersi dalle campagne archeologiche: terrecotte, vetri, monete e monili in metallo dall'Età romana fino al basso Medioevo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4488,7 +4488,7 @@
     {
       "id": "f05280543fa0",
       "titolo": "La Vijà e i suoi tradizionali Stranòt",
-      "descrizione": "Nell'ambito del Settembre Chierese, spettacolo teatrale interamente in lingua piemontese dedicato alla memoria, ai racconti e alle atmosfere di un tempo, tra tradizioni contadine e cultura popolare.",
+      "descrizione": "Spettacolo teatrale interamente in lingua piemontese che affonda le sue radici nelle tradizioni contadine e nella cultura popolare, nell'ambito del Settembre Chierese.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4716,7 +4716,7 @@
     {
       "id": "6396f7fe5ac6",
       "titolo": "Spettacolo di \"Vignale in danza in tour\"",
-      "descrizione": "Ritrovo Auditorium della Trinità",
+      "descrizione": "Ritrovo Auditorium della Trinità per lo spettacolo di Vignale in danza in tour",
       "comune": "Quargnento",
       "lat": 44.944966,
       "lon": 8.487386,
@@ -4867,7 +4867,7 @@
     },
     {
       "id": "0e5503365ea8",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -5096,7 +5096,7 @@
     {
       "id": "b0db40e32107",
       "titolo": "ScopriCHIERI: Sulle tracce di Guglielmo Caccia detto il Moncalvo",
-      "descrizione": "Ciclo di passeggiate tematiche gratuite alla scoperta del patrimonio culturale, storico e artistico della città. Il percorso accompagnerà i partecipanti tra chiese e palazzi cittadini, alla scoperta delle opere lasciate dal Moncalvo a Chieri, con visita alla StArt Gallery e camminata.",
+      "descrizione": "Passeggiata tematica gratuita alla scoperta del patrimonio culturale, storico e artistico della città, dedicata a Guglielmo Caccia, detto “il Moncalvo”. Ritrovo presso la Chiesa di San Filippo con visita alla StArt Gallery.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5229,7 +5229,7 @@
     {
       "id": "27bbbf3b537b",
       "titolo": "Inaugurazione della rinnovata Piazza I Maggio",
-      "descrizione": "",
+      "descrizione": "Inaugurazione della rinnovata Piazza I Maggio",
       "comune": "Quargnento",
       "lat": 44.944966,
       "lon": 8.487386,
@@ -5837,7 +5837,7 @@
     {
       "id": "aa2b9c5fa6d7",
       "titolo": "Tessile e Tecnologia al Museo del Tessile di Chieri",
-      "descrizione": "Appuntamento specialistico annuale al Museo del Tessile incentrato sul tema \"Tessile e Tecnologia\". Una giornata di studio con interventi di esperti, l'installazione artistica interattiva di Giulia Panero e una visita guidata conclusiva al Museo e Orto del Tessile.",
+      "descrizione": "Giornata di studio e appuntamento specialistico annuale al Museo del Tessile di Chieri dedicato a 'Tessile e Tecnologia', con interventi di relatori ospiti, esposizione di disegni tecnici e dell'installazione artistica interattiva 'Trame sonore', concluso da visita guidata al Museo e Orto del Tessile.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5894,7 +5894,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027, con il Sindaco Alberto Gatto, la Presidente dell’Associazione Le Fabbriche del Vento Patrizia Sandretto Re Rebaudengo e il Direttore artistico Nicolas Ballario.",
+      "descrizione": "Una serata aperta alla città per scoprire le iniziative e i progetti che comporranno il programma dell'anno da Capitale attraverso le voci di referenti e curatori, con la presentazione del circuito Extra.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6350,7 +6350,7 @@
     {
       "id": "10f03221e1eb",
       "titolo": "Bra’s 2026",
-      "descrizione": "Festival gastronomico dedicato alle eccellenze braidesi e piemontesi – la Salsiccia di Bra, il Formaggio Bra DOP, il Pane di Bra e il Riso di Bra – con chef stellati, piatti d'autore, mercati del gusto, aree tematiche, laboratori e intrattenimento diffuso.",
+      "descrizione": "Festival gastronomico dedicato alle eccellenze enogastronomiche piemontesi (Salsiccia di Bra, Formaggio Bra DOP, Pane di Bra e Riso di Bra) con chef stellati, show cooking, mercati del gusto, concerti e laboratori.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -6369,7 +6369,7 @@
     {
       "id": "23a70cc9107a",
       "titolo": "Chieri Food Village",
-      "descrizione": "Quattro giornate dedicate al gusto, alla musica e al divertimento con villaggio dello street food con specialità da tutto il mondo, birre artigianali, opzioni gluten free e musica dal vivo ogni sera con tribute band e DJ set.",
+      "descrizione": "Quattro giornate dedicate al gusto, alla musica e al divertimento con street food, specialità da tutto il mondo, birre artigianali, opzioni gluten free, tribute band e DJ set.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6387,8 +6387,8 @@
     },
     {
       "id": "2629290b5fc2",
-      "titolo": "Cenerentola - Lettura animata",
-      "descrizione": "La compagnia teatrale torinese I Marcido presenta “Cenerentola” in forma di lettura animata, per un pomeriggio dedicato a bambini e famiglie alla riscoperta della celebre fiaba.",
+      "titolo": "Cenerentola",
+      "descrizione": "Lettura animata della celebre fiaba a cura della compagnia teatrale I Marcido, con Ottavia della Porta, Maria Luisa Abate, Paolo Oricco, Valentina Battistone e Alessio Arbustini. Appuntamento dedicato alle famiglie e ai bambini di tutte le età.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -7471,7 +7471,7 @@
     {
       "id": "0ee71af0d147",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell'ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7566,7 +7566,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Due giorni di eventi a Canelli con esibizione di tamburini, presentazione della mappa 'I Cru di Enogea: Canelli Docg', apertura stand enogastronomici, serate danzanti con 'Ballando Le Cupole in Tour' e l'orchestra Bruno Mauro, milonga pomeridiana, visite al Museo MuSa e degustazioni all'Enoteca Regionale.",
+      "descrizione": "Due giorni di eventi a Canelli con tamburini, presentazione della mappa dei Cru del Moscato Canelli Docg, apertura stand enogastronomici, musica e ballo con 'Ballando Le Cupole in Tour' e orchestra Bruno Mauro, milonga pomeridiana, visite al museo MuSa e degustazioni all'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -7661,7 +7661,7 @@
     {
       "id": "302300a1233b",
       "titolo": "Mente Locale",
-      "descrizione": "Una giornata dedicata alla sensibilizzazione sui temi delle demenze, della salute cognitiva e alla valorizzazione delle realtà attive sul territorio.",
+      "descrizione": "Una giornata dedicata alla sensibilizzazione sui temi delle demenze, della salute cognitiva e alla valorizzazione delle realtà attive sul territorio, con associazioni e iniziative dedicate.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7812,7 +7812,7 @@
     },
     {
       "id": "a44937f26064",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7850,8 +7850,8 @@
     },
     {
       "id": "23886a72e7a9",
-      "titolo": "Un pomeriggio di storie e giochi a Villanova d'Asti",
-      "descrizione": "Evento per famiglie, bambini e piccoli lettori con consegna omaggio ai nati nel 2025, incontro con lo scrittore di favole Corrado Brignolo, laboratori creativi, letture ad alta voce, merenda offerta dalla Proloco Amici dei Savi e premiazione 'Amico della biblioteca'.",
+      "titolo": "Un pomeriggio di storie e giochi",
+      "descrizione": "Evento speciale per famiglie, bambini e piccoli lettori con consegna omaggio ai nati nel 2025, incontro con lo scrittore Corrado Brignolo, laboratori creativi, letture ad alta voce, merenda offerta dalla Proloco e premiazione Amico della biblioteca.",
       "comune": "Villanova d'Asti",
       "lat": 44.941889,
       "lon": 7.937502,
@@ -7869,8 +7869,8 @@
     },
     {
       "id": "261140922091",
-      "titolo": "18 anni, un numero che cambia tante cose - Cerimonia di consegna della Costituzione",
-      "descrizione": "Cerimonia di consegna della Costituzione italiana alle ragazze e ai ragazzi chieresi neo-diciottenni. Intervento e spettacolo del podcaster e performer Frank Fossati dal docu-podcast 'Manuale del giovane di successo', sensibilizzazione a cura delle associazioni chieresi donatori di sangue, musica dal vivo e aperitivo finale.",
+      "titolo": "18 anni, un numero che cambia tante cose - Consegna della Costituzione",
+      "descrizione": "Cerimonia di consegna della Costituzione italiana ai neodiciottenni chieresi. Durante l'evento interverrà Frank Fossati con lo spettacolo tratto dal docu-podcast 'Manuale del giovane di successo', rappresentanti delle associazioni donatori di sangue, a seguire aperitivo a cura del Ciofs Istituto Santa Teresa e musica dal vivo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7889,7 +7889,7 @@
     {
       "id": "0379b8bba8be",
       "titolo": "Peer Gynt",
-      "descrizione": "Spettacolo nella formula del MusicoDramma della stagione artistica RI-GENERAZIONE 2026 di Contrametric Ensemble, ispirato all'opera teatrale di Henrik Ibsen con musiche di Edvard Grieg.",
+      "descrizione": "Spettacolo in forma di MusicoDramma, dove musica, recitazione e letteratura si fondono. Ispirato all'opera teatrale di Henrik Ibsen con musiche di Edvard Grieg, inserito nella stagione artistica RI-GENERAZIONE 2026 di Contrametric Ensemble.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -7927,7 +7927,7 @@
     {
       "id": "60a69b33c48c",
       "titolo": "Boogia! Hai voluto la bicicletta?",
-      "descrizione": "Una giornata per vivere e raccontare la bicicletta: pedalata sociale, attività di riparazione e recupero bici, spazio informativo sulla sicurezza in strada, asta di bici a sostegno de La Pop, merenda condivisa, racconti di viaggi in bicicletta e proiezione del film Anywhere Anytime di Milad Tangshir.",
+      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza in strada, asta di bici a sostegno delle attività de La Pop, merenda condivisa, racconti di viaggi in bicicletta e la proiezione del film Anywhere Anytime di Milad Tangshir.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9066,7 +9066,7 @@
     },
     {
       "id": "2864d66acee5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9124,7 +9124,7 @@
     {
       "id": "419287733375",
       "titolo": "Camminata non competitiva a favore della ricerca contro il diabete",
-      "descrizione": "Camminata non competitiva organizzata per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
+      "descrizione": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete organizzata dal Lions Club con il patrocinio del Comune.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -9143,7 +9143,7 @@
     {
       "id": "ebc7518987b1",
       "titolo": "Sport in piazza",
-      "descrizione": "In apposite aree attrezzate allestite dalle associazioni cittadine sarà possibile giocare, divertirsi e cimentarsi in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione premi per chi prova almeno 8 discipline.",
+      "descrizione": "In apposite aree attrezzate allestite dalle associazioni cittadine sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline sportive. Alle 17:30 estrazione di premi per chi proverà almeno 8 discipline.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9162,7 +9162,7 @@
     {
       "id": "e8012e8e7ed3",
       "titolo": "Alba in bici",
-      "descrizione": "Pedalata collettiva aperta a tutte e tutti nel contesto di Sport in Piazza.",
+      "descrizione": "Pedalata collettiva aperta a tutte e tutti, con partenza da piazza Medford, nel contesto di Sport in Piazza.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9579,8 +9579,8 @@
     },
     {
       "id": "fbbdccbf946c",
-      "titolo": "Workshop di orientamento: Le diverse tipologie di lavoro e le skills personali utili e spendibili",
-      "descrizione": "Percorso di formazione gratuito rivolto a giovani disoccupati tra i 18 e i 35 anni. Cinque incontri dedicati all'orientamento al lavoro, redazione del CV, personal branding, preparazione ai colloqui ed educazione finanziaria (21, 23, 28, 30 settembre e 2 ottobre).",
+      "titolo": "Workshop di orientamento “Le diverse tipologie di lavoro e le skills personali utili e spendibili”",
+      "descrizione": "Percorso di formazione gratuito di 5 incontri rivolto a giovani disoccupati di età compresa tra i 18 e i 35 anni, nell'ambito del progetto A.GI.LA. Focus su ricerca attiva del lavoro, curriculum vitae, personal branding, colloquio ed educazione finanziaria.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9827,7 +9827,7 @@
     {
       "id": "8481294c2867",
       "titolo": "Il lavoro cambia strada",
-      "descrizione": "Dario Salvetti, del Collettivo di fabbrica ex GKN e autore del libro 'Questo lavoro non è vita', dialoga con Gianluca Pagella, presidente di FIAB Alessandria e lavoratore in cargo bike, per parlare di lavoro, diritti e conversione ecologica.",
+      "descrizione": "Dario Salvetti, del Collettivo di fabbrica ex GKN e autore del libro Questo lavoro non è vita, dialogherà con Gianluca Pagella, presidente di FIAB Alessandria e lavoratore in cargo bike, per parlare di lavoro, diritti e conversione ecologica.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9941,7 +9941,7 @@
     {
       "id": "e534e92d30c7",
       "titolo": "Odrigh il Drago cantastorie",
-      "descrizione": "Evento di lettura per bambini.",
+      "descrizione": "Mercoledì 23 settembre 2026 alle ore 10:30 presso la Sala Geuna del Comune di Montaldo Torinese si terrà un evento di lettura per bambini.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -9959,8 +9959,8 @@
     },
     {
       "id": "46ffa40b4e5d",
-      "titolo": "Inaugurazione ufficiale della nuova pista di atletica",
-      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo nel tardo pomeriggio, rinnovata e riqualificata nell’ambito dell’intervento di valorizzazione dell’impianto sportivo.",
+      "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
+      "descrizione": "Inaugurazione ufficiale della rinnovata e riqualificata pista di atletica dello stadio comunale Augusto Manzo.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -10131,7 +10131,7 @@
     {
       "id": "6de34691f953",
       "titolo": "Il Pirata - Omaggio a Marco Pantani",
-      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto, per ripercorrere la vita e le imprese di Marco Pantani.",
+      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France fino alla sua prematura scomparsa.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -10150,7 +10150,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Raduno ed eventi dedicati ai camperisti con accoglienza, aperipranzo con degustazione di prodotti e vini locali, visite guidate del borgo antico e del MiCeM, presentazione libraria, colazione insieme, breve trekking panoramico e visita con degustazione in cantina.",
+      "descrizione": "Tre giorni dedicati ai camperisti con accoglienza, aperipranzo con degustazione di prodotti e vini locali, visite guidate del borgo antico e del MiCeM, presentazione libraria, trekking panoramico e visita in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -10169,7 +10169,7 @@
     {
       "id": "23e8752fc9ef",
       "titolo": "Incontri al quadrato: La Divisa Bianca",
-      "descrizione": "Nell'ambito del progetto CONNESSIONI e del ciclo 'Incontri al quadrato' proposto dall'associazione I Delfini ODV, Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, interviene sul tema 'La Divisa Bianca'.",
+      "descrizione": "Incontro del ciclo 'Incontri al quadrato' promosso dall'associazione I Delfini ODV nell'ambito del progetto CONNESSIONI. Protagonista dell'appuntamento sarà Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, che interverrà sul tema 'La Divisa Bianca'. Partecipazione in presenza riservata o su invito, con successiva pubblicazione della registrazione su YouTube.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -10340,7 +10340,7 @@
     {
       "id": "3416e035be74",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Iniziativa per creare un ponte tra generazioni mettendo in relazione nonni e bambini attraverso letture di storie, attività laboratoriali e merenda. Rivolto a bambini dai 6 ai 10 anni.",
+      "descrizione": "Iniziativa per creare un ponte tra generazioni mettendo in relazione nonni e bambini attraverso letture, racconti, attività laboratoriali e merenda. Rivolto ai bambini dai 6 ai 10 anni con supervisione di una psicologa.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -10567,7 +10567,7 @@
     },
     {
       "id": "7a979d2828f4",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10605,8 +10605,8 @@
     },
     {
       "id": "91ef7c2fcd6f",
-      "titolo": "ScopriCHIERI: CHIERI BY NIGHT",
-      "descrizione": "Passeggiata tematica gratuita in notturna nell'ambito del programma ScopriCHIERI.",
+      "titolo": "ScopriCHIERI: Chieri by Night",
+      "descrizione": "Passeggiata tematica del ciclo ScopriCHIERI sostenuto dal Comune di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -10625,7 +10625,7 @@
     {
       "id": "a18581d8d56f",
       "titolo": "Riprendiamoci… la piazza!",
-      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop.",
+      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop in piazza Ferrero nell'ambito delle iniziative collegate alla Settimana europea della mobilità.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11384,7 +11384,7 @@
     },
     {
       "id": "be8ebcf4806a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11689,7 +11689,7 @@
     {
       "id": "a46b9688feba",
       "titolo": "Obiettivo Tricolore",
-      "descrizione": "Grande staffetta paralimpica ideata da Alex Zanardi con atleti in bici, handbike e carrozzina olimpica. Arrivo dei partecipanti il 28 settembre in piazza Michele Ferrero e accoglienza a Palazzo comunale. Il 29 settembre ripartenza verso Vigevano, incontro 'Uguali & diversi, sport e disabilità' presso il Palazzo Mostre e Congressi 'G. Morra' e allestimento del villaggio sportivo con prove pratiche ",
+      "descrizione": "Grande staffetta paralimpica ideata da Alex Zanardi per diffondere i valori dello sport, dell’inclusione e della condivisione. La tappa tocca Alba con l'arrivo dei partecipanti in piazza Michele Ferrero, l'allestimento del villaggio sportivo in piazza Medford e la ripartenza verso Vigevano.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11727,7 +11727,7 @@
     {
       "id": "4fe8fce25b24",
       "titolo": "Welfare e comunità sostenibili",
-      "descrizione": "Incontro formativo con Franca Maino (Università Statale di Milano e Direttrice scientifica \"Percorsi di Secondo Welfare\"), all'interno della proposta formativa promossa da AICCRE Piemonte e Città di Alba.",
+      "descrizione": "Incontro formativo con Franca Maino dell'Università Statale di Milano e Direttrice scientifica 'Percorsi di Secondo Welfare'.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11898,7 +11898,7 @@
     {
       "id": "a6a196a410b6",
       "titolo": "Uguali & diversi, sport e disabilità",
-      "descrizione": "Incontro rivolto in particolare alle scuole nell'ambito della staffetta Obiettivo Tricolore, con l’intervento di una nutrizionista, degli allenatori e dell'atleta internazionale Francesca Fenocchio.",
+      "descrizione": "Incontro rivolto in particolare alle scuole nell'ambito della staffetta Obiettivo Tricolore, con l'intervento di una nutrizionista, degli allenatori e di Francesca Fenocchio, atleta internazionale.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -12087,7 +12087,7 @@
     },
     {
       "id": "f17da9bce906",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12316,7 +12316,7 @@
     {
       "id": "f2dc035eb1b5",
       "titolo": "Caccia ai Tesori Arancioni",
-      "descrizione": "La più grande caccia al tesoro d'Italia, aperta ad adulti e bambini in cento e più borghi Bandiera Arancione in un percorso a sei tappe per scoprire la profonda e autentica identità del territorio e delle comunità residenti, immergendosi nelle tradizioni, nei sapori e nella storia dei luoghi.",
+      "descrizione": "Caccia al tesoro aperta ad adulti e bambini in cento e più borghi Bandiera Arancione in un percorso a sei tappe tra storia, tradizioni, curiosità e sapori tipici per scoprire l'identità del territorio.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -12334,7 +12334,7 @@
     },
     {
       "id": "70606b0d115c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12772,7 +12772,7 @@
     {
       "id": "edb55f574be3",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Incontro per mettere in relazione nonni e bambini (6-10 anni) attraverso letture, racconti, attività laboratoriali e una merenda condivisa, con la supervisione di una psicologa.",
+      "descrizione": "Primo appuntamento del laboratorio di letture, racconti e merenda per mettere in relazione nonni e bambini dai 6 ai 10 anni, realizzato in collaborazione con Auser e con la supervisione di una psicologa. Posti limitati con prenotazione obbligatoria.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -12809,7 +12809,7 @@
     },
     {
       "id": "7f4cc97627f0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13094,7 +13094,7 @@
     },
     {
       "id": "aae63be78cb0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13228,7 +13228,7 @@
     {
       "id": "2d313d1927b7",
       "titolo": "Salute e comunità sostenibili",
-      "descrizione": "Incontro formativo con Gian Paolo Zanetta (Direttore Generale \"Ospedale Cottolengo\"), all'interno del ciclo formativo per amministratori locali e soggetti interessati.",
+      "descrizione": "Incontro formativo con Gian Paolo Zanetta, Direttore Generale 'Ospedale Cottolengo'.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -13455,7 +13455,7 @@
     },
     {
       "id": "b50bfda62053",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13645,7 +13645,7 @@
     },
     {
       "id": "eb5bdbefffae",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -13949,7 +13949,7 @@
     },
     {
       "id": "c2e3540bcaf5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -14082,7 +14082,7 @@
     },
     {
       "id": "84ad5d737596",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Frate Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -14159,7 +14159,7 @@
     {
       "id": "d0b1a446ece4",
       "titolo": "Ambiente e comunità sostenibili",
-      "descrizione": "Incontro formativo con Giuseppe Gamba (GDL Enti locali Kyoto Club), all'interno del ciclo formativo per amministratori locali e soggetti interessati.",
+      "descrizione": "Incontro formativo con Giuseppe Gamba, GDL Enti locali Kyoto Club.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -14615,7 +14615,7 @@
     {
       "id": "52ecfaffa55b",
       "titolo": "Fiera Nazionale del Tartufo e Fiera di San Martin",
-      "descrizione": "La Fiera Nazionale del Tartufo è dedicata alle eccellenze e all'enogastronomia del territorio, affiancata dalla Fiera di San Martin con oltre 100 bancarelle di svariati generi merceologici.",
+      "descrizione": "La prima dedicata alle eccellenze e l’enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi di merceologici.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -14729,7 +14729,7 @@
     {
       "id": "9616fd15e27d",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Incontro per creare un ponte tra generazioni mettendo in relazione nonni e bambini dai 6 ai 10 anni attraverso letture, racconti, attività laboratoriali e merenda, con la supervisione di una psicologa.",
+      "descrizione": "Primo appuntamento del progetto Connessioni dedicato al dialogo intergenerazionale: nonni e bambini dai 6 ai 10 anni si incontrano per letture condivise, attività laboratoriali e una merenda insieme, con la supervisione di una psicologa.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
