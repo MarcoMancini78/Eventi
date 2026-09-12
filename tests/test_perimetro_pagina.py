@@ -57,12 +57,12 @@ def test_righe_perimetro_collega_social_comune_e_proloco():
         "VALUES ('1', 'Calosso', 'AT', 0.0, 0, 'A', 'si')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url) "
-        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso', 'seguito')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url) "
-        "VALUES ('proloco-calosso-instagram', 'instagram', 'prolococalosso', 'Calosso', 'proloco', 'https://instagram.com/prolococalosso')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('proloco-calosso-instagram', 'instagram', 'prolococalosso', 'Calosso', 'proloco', 'https://instagram.com/prolococalosso', 'seguito')"
     )
     conn.commit()
 
@@ -79,8 +79,8 @@ def test_righe_perimetro_categoria_teatro_finisce_in_altro():
         "VALUES ('1', 'Cambiano', 'TO', 30.0, 35, 'A', 'si')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url) "
-        "VALUES ('teatro-cambiano-facebook', 'facebook', 'teatrocambiano', 'Cambiano', 'teatro', 'Cambiano - Teatro Comunale', 'https://facebook.com/teatrocambiano')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url, stato) "
+        "VALUES ('teatro-cambiano-facebook', 'facebook', 'teatrocambiano', 'Cambiano', 'teatro', 'Cambiano - Teatro Comunale', 'https://facebook.com/teatrocambiano', 'da_seguire')"
     )
     conn.commit()
 
@@ -92,6 +92,7 @@ def test_righe_perimetro_categoria_teatro_finisce_in_altro():
             "instagram": "",
             "attivi": 0,
             "totale": 0,
+            "ultimo_aggiornamento": "non_seguita",
         }
     ]
 
@@ -105,12 +106,18 @@ def test_righe_perimetro_altro_unisce_facebook_e_instagram_stesso_soggetto():
         "VALUES ('1', 'Canelli', 'AT', 7.5, 13, 'A', 'si')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url) "
-        "VALUES ('teatro-canelli-facebook', 'facebook', 'teatrobalbi', 'Canelli', 'teatro', 'Canelli - Teatro Balbi', 'https://facebook.com/teatrobalbi')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url, stato) "
+        "VALUES ('teatro-canelli-facebook', 'facebook', 'teatrobalbi', 'Canelli', 'teatro', 'Canelli - Teatro Balbi', 'https://facebook.com/teatrobalbi', 'seguito')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url) "
-        "VALUES ('teatro-canelli-instagram', 'instagram', 'teatrobalbi', 'Canelli', 'teatro', 'Canelli - Teatro Balbi', 'https://instagram.com/teatrobalbi')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, soggetto, url, stato) "
+        "VALUES ('teatro-canelli-instagram', 'instagram', 'teatrobalbi', 'Canelli', 'teatro', 'Canelli - Teatro Balbi', 'https://instagram.com/teatrobalbi', 'seguito')"
+    )
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES ('ultimo_giro_feed_facebook', '2026-09-10T08:00:00')"
+    )
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES ('ultimo_giro_feed_instagram', '2026-09-12T09:00:00')"
     )
     conn.commit()
 
@@ -122,6 +129,7 @@ def test_righe_perimetro_altro_unisce_facebook_e_instagram_stesso_soggetto():
             "instagram": "https://instagram.com/teatrobalbi",
             "attivi": 0,
             "totale": 0,
+            "ultimo_aggiornamento": "2026-09-12T09:00:00",
         }
     ]
 
@@ -135,8 +143,8 @@ def test_righe_perimetro_comune_senza_link_ha_campi_vuoti():
     conn.commit()
 
     righe = publisher.righe_perimetro_completo(conn)
-    assert righe[0]["sito_comune"] == {"url": "", "attivi": 0, "totale": 0}
-    assert righe[0]["facebook_comune"] == {"url": "", "attivi": 0, "totale": 0}
+    assert righe[0]["sito_comune"] == {"url": "", "attivi": 0, "totale": 0, "ultimo_aggiornamento": None}
+    assert righe[0]["facebook_comune"] == {"url": "", "attivi": 0, "totale": 0, "ultimo_aggiornamento": None}
     assert righe[0]["altro"] == []
 
 
@@ -194,8 +202,8 @@ def test_righe_perimetro_conteggio_social_via_handle():
         "VALUES ('1', 'Calosso', 'AT', 0.0, 0, 'A', 'si')"
     )
     conn.execute(
-        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url) "
-        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso')"
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso', 'seguito')"
     )
     futuro = (date.today() + timedelta(days=5)).isoformat()
     conn.execute(
@@ -212,6 +220,71 @@ def test_righe_perimetro_conteggio_social_via_handle():
     righe = publisher.righe_perimetro_completo(conn)
     assert righe[0]["facebook_comune"]["attivi"] == 1
     assert righe[0]["facebook_comune"]["totale"] == 1
+
+
+def test_righe_perimetro_ultimo_aggiornamento_sito_da_sources_last_run():
+    """16.8 (richiesto 2026-09-12): per il sito web, 'ultimo aggiornamento'
+    è sources.last_run — l'ultima volta che la fonte è stata interrogata,
+    indipendentemente dal fatto che abbia trovato qualcosa di nuovo."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, provincia, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Calosso', 'AT', 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO sources (source_id, categoria, endpoint, last_run) "
+        "VALUES ('comune-calosso', 'comune', 'https://comune.calosso.at.it/Eventi', '2026-09-12T03:26:03')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_perimetro_completo(conn)
+    assert righe[0]["sito_comune"]["ultimo_aggiornamento"] == "2026-09-12T03:26:03"
+
+
+def test_righe_perimetro_ultimo_aggiornamento_social_seguito_usa_giro_feed():
+    """Per il social seguito, 'ultimo aggiornamento' è quando è girato
+    l'ultimo giro del feed su quella piattaforma (app_state), non quando è
+    stato trovato un post — anche se il feed non trova nulla di nuovo, gira
+    comunque e questo va riflesso."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, provincia, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Calosso', 'AT', 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso', 'seguito')"
+    )
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES ('ultimo_giro_feed_facebook', '2026-09-12T14:25:46')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_perimetro_completo(conn)
+    assert righe[0]["facebook_comune"]["ultimo_aggiornamento"] == "2026-09-12T14:25:46"
+
+
+def test_righe_perimetro_ultimo_aggiornamento_social_non_seguito():
+    """Uno stato diverso da 'seguito' (candidato_da_feed, quarantena,
+    da_seguire, ecc.) significa che il feed non vede affatto quell'account
+    — mostrare la data dell'ultimo giro feed sarebbe fuorviante, deve
+    risultare esplicitamente 'non_seguita'."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, provincia, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Calosso', 'AT', 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('comune-calosso-facebook', 'facebook', 'comune.calosso', 'Calosso', 'comune', 'https://facebook.com/comune.calosso', 'candidato_da_feed')"
+    )
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES ('ultimo_giro_feed_facebook', '2026-09-12T14:25:46')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_perimetro_completo(conn)
+    assert righe[0]["facebook_comune"]["ultimo_aggiornamento"] == "non_seguita"
 
 
 def test_scrivi_perimetro_json_scrive_file_valido(tmp_path):

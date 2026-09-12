@@ -903,15 +903,31 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
         return nome.lower().replace(" ", "-")
 
     siti_per_slug: dict[str, dict[str, str]] = {}
-    for r in conn.execute("SELECT source_id, categoria, endpoint FROM sources WHERE categoria IN ('comune', 'proloco')").fetchall():
-        siti_per_slug.setdefault(r["source_id"], {"categoria": r["categoria"], "endpoint": r["endpoint"]})
+    for r in conn.execute("SELECT source_id, categoria, endpoint, last_run FROM sources WHERE categoria IN ('comune', 'proloco')").fetchall():
+        siti_per_slug.setdefault(r["source_id"], {"categoria": r["categoria"], "endpoint": r["endpoint"], "last_run": r["last_run"]})
 
     social_per_comune: dict[str, list[dict]] = {}
     for r in conn.execute(
-        "SELECT comune, categoria, piattaforma, handle, url, soggetto FROM coda_follow "
+        "SELECT comune, categoria, piattaforma, handle, url, soggetto, stato FROM coda_follow "
         "WHERE comune IS NOT NULL AND comune != ''"
     ).fetchall():
         social_per_comune.setdefault(r["comune"], []).append(dict(r))
+
+    # 16.8, richiesto 2026-09-12 ("da quanto tempo non vengono verificate le
+    # fonti"): per il sito web basta sources.last_run (interrogato o no, non
+    # importa — è "quando l'abbiamo controllato"). Per il social non esiste
+    # un "ultima verifica" per singolo handle (il feed legge un unico flusso
+    # cronologico condiviso, non una fonte alla volta) — l'unico dato onesto
+    # è "quando è girato l'ultimo giro del feed su quella piattaforma"
+    # (app_state, popolato da feed_social._salva_ultimo_giro_feed), e SOLO
+    # per gli handle davvero seguiti: uno stato diverso da 'seguito' significa
+    # che il feed non vede affatto quell'account, a prescindere da quando gira.
+    ultimo_giro_feed: dict[str, str | None] = {}
+    for piattaforma in ("facebook", "instagram"):
+        r = conn.execute(
+            "SELECT valore FROM app_state WHERE chiave = ?", (f"ultimo_giro_feed_{piattaforma}",)
+        ).fetchone()
+        ultimo_giro_feed[piattaforma] = r["valore"] if r else None
 
     # Conteggio eventi per source_id in un'unica scansione (683 comuni × più
     # fonti ciascuno: una query per riga sarebbe centinaia di round-trip).
@@ -948,9 +964,18 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
                     return x
             return None
 
-        def voce_url_conteggio(source_id: str, url: str) -> dict:
+        def voce_sito(source_id: str, url: str) -> dict:
             cnt = conteggio(source_id)
-            return {"url": url, "attivi": cnt["attivi"], "totale": cnt["totale"]}
+            aggiornamento = siti_per_slug.get(source_id, {}).get("last_run") if url else None
+            return {"url": url, "attivi": cnt["attivi"], "totale": cnt["totale"], "ultimo_aggiornamento": aggiornamento}
+
+        def voce_social(riga_follow: dict | None, piattaforma: str) -> dict:
+            if not riga_follow:
+                return {"url": "", "attivi": 0, "totale": 0, "ultimo_aggiornamento": None}
+            source_id = f"feed-{piattaforma}-{riga_follow['handle']}" if riga_follow.get("handle") else ""
+            cnt = conteggio(source_id) if source_id else {"attivi": 0, "totale": 0}
+            aggiornamento = ultimo_giro_feed[piattaforma] if riga_follow.get("stato") == "seguito" else "non_seguita"
+            return {"url": riga_follow["url"], "attivi": cnt["attivi"], "totale": cnt["totale"], "ultimo_aggiornamento": aggiornamento}
 
         fb_comune = per_piattaforma(social_comune, "facebook")
         ig_comune = per_piattaforma(social_comune, "instagram")
@@ -963,15 +988,23 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
         # Il conteggio eventi è sommato tra le due piattaforme dello stesso
         # soggetto (lo stesso evento letto da entrambi i feed è comunque
         # un'unica riga in event_sources per ciascun source_id sintetico).
+        # "ultimo_aggiornamento" prende il più recente tra le piattaforme su
+        # cui il soggetto è seguito; "non_seguita" solo se non lo è su nessuna.
         altro_per_soggetto: dict[str, dict] = {}
         for x in altro:
             voce = altro_per_soggetto.setdefault(
-                x["soggetto"], {"soggetto": x["soggetto"], "facebook": "", "instagram": "", "attivi": 0, "totale": 0}
+                x["soggetto"],
+                {"soggetto": x["soggetto"], "facebook": "", "instagram": "", "attivi": 0, "totale": 0, "ultimo_aggiornamento": "non_seguita"},
             )
             voce[x["piattaforma"]] = x["url"]
             cnt = conteggio(f"feed-{x['piattaforma']}-{x['handle']}") if x["handle"] else {"attivi": 0, "totale": 0}
             voce["attivi"] += cnt["attivi"]
             voce["totale"] += cnt["totale"]
+            if x.get("stato") == "seguito":
+                candidato = ultimo_giro_feed[x["piattaforma"]]
+                attuale = voce["ultimo_aggiornamento"]
+                if candidato and (attuale == "non_seguita" or (attuale and candidato > attuale)):
+                    voce["ultimo_aggiornamento"] = candidato
 
         righe.append(
             {
@@ -980,12 +1013,12 @@ def righe_perimetro_completo(conn: sqlite3.Connection) -> list[dict]:
                 "provincia": c["provincia"] or "",
                 "km": c["km"],
                 "minuti": c["minuti"],
-                "sito_comune": voce_url_conteggio(f"comune-{s}", sito_comune),
-                "facebook_comune": voce_url_conteggio(f"feed-facebook-{fb_comune['handle']}" if fb_comune else "", fb_comune["url"] if fb_comune else ""),
-                "instagram_comune": voce_url_conteggio(f"feed-instagram-{ig_comune['handle']}" if ig_comune else "", ig_comune["url"] if ig_comune else ""),
-                "sito_proloco": voce_url_conteggio(f"proloco-{s}-sito", sito_proloco),
-                "facebook_proloco": voce_url_conteggio(f"feed-facebook-{fb_proloco['handle']}" if fb_proloco else "", fb_proloco["url"] if fb_proloco else ""),
-                "instagram_proloco": voce_url_conteggio(f"feed-instagram-{ig_proloco['handle']}" if ig_proloco else "", ig_proloco["url"] if ig_proloco else ""),
+                "sito_comune": voce_sito(f"comune-{s}", sito_comune),
+                "facebook_comune": voce_social(fb_comune, "facebook"),
+                "instagram_comune": voce_social(ig_comune, "instagram"),
+                "sito_proloco": voce_sito(f"proloco-{s}-sito", sito_proloco),
+                "facebook_proloco": voce_social(fb_proloco, "facebook"),
+                "instagram_proloco": voce_social(ig_proloco, "instagram"),
                 "altro": list(altro_per_soggetto.values()),
             }
         )

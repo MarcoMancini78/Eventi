@@ -329,6 +329,32 @@ funzionanti, navigazione incrociata con mappa ed elenco verificata, conteggi
 verificati sui dati reali (101 comuni con almeno un conteggio non nullo),
 zero errori JavaScript.
 
+**Ultimo aggiornamento per fonte** (richiesto 2026-09-12, scopo: "da quanto
+tempo non vengono verificate le fonti"): sotto ogni icona/etichetta, data e
+ora dell'ultima verifica di quella fonte specifica. Il significato cambia
+per natura tra sito e social, perché il sistema li controlla in modo
+strutturalmente diverso:
+- **Sito web** (comune/Pro Loco): `sources.last_run` — l'ultima volta che la
+  pagina è stata davvero interrogata, indipendentemente dal fatto che
+  abbia trovato qualcosa di nuovo. Risponde esattamente alla domanda "da
+  quanto tempo non viene controllata".
+- **Social** (Facebook/Instagram): non esiste un "ultima verifica" per
+  singolo handle — il sistema non visita un profilo alla volta, legge un
+  unico feed cronologico condiviso fino all'ultimo post già visto
+  (`feed_social.leggi_feed_reale`, verificato: nessuno scroll parziale,
+  legge sempre tutti i post nuovi). Il dato mostrato è quindi "quando è
+  girato l'ultimo giro del feed su quella piattaforma"
+  (`app_state.ultimo_giro_feed_{piattaforma}`, nuovo — salvato ad ogni
+  giro del feed, post trovati o no, per non confondersi con
+  `ultimo_post_visto_*` che si aggiorna solo se ci sono novità).
+- **Non seguita**: mostrato esplicitamente (in rosso) al posto di una data
+  quando `coda_follow.stato != 'seguito'` — un candidato, una quarantena o
+  un "da seguire" non è mai visto dal feed, a prescindere da quando gira:
+  mostrare la data del feed sarebbe fuorviante.
+
+11 nuovi test (2 su `feed_social._salva_ultimo_giro_feed`, 3 su
+`righe_perimetro_completo`). Suite completa: 392/392.
+
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)
 
 Per evitare di costruire più del richiesto:

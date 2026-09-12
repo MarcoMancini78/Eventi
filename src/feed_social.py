@@ -171,6 +171,20 @@ def _salva_ultimo_post_visto(conn: sqlite3.Connection, piattaforma: str, post_id
     conn.commit()
 
 
+def _salva_ultimo_giro_feed(conn: sqlite3.Connection, piattaforma: str) -> None:
+    """16.8 (pagina perimetro, richiesto 2026-09-12): 'quando e' stato letto
+    l'ultimo post trovato' non basta per sapere se il feed sta girando —
+    una fonte silenziosa per mesi avrebbe una data vecchia anche se il feed
+    passa da li' ogni giorno senza trovare nulla di nuovo. Salvato SEMPRE a
+    fine giro (post trovati o no), indipendentemente da _salva_ultimo_post_visto
+    (che si aggiorna solo se ci sono post nuovi)."""
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES (?, ?) ON CONFLICT(chiave) DO UPDATE SET valore=excluded.valore",
+        (f"ultimo_giro_feed_{piattaforma}", datetime.now().isoformat()),
+    )
+    conn.commit()
+
+
 def leggi_feed_reale(
     piattaforma: str, config: Config, conn: sqlite3.Connection, sessione_dir: Path | None = None
 ) -> list[PostFeed]:
@@ -192,6 +206,7 @@ def leggi_feed_reale(
     finally:
         _chiudi_sessione_browser(contesto)
 
+    _salva_ultimo_giro_feed(conn, piattaforma)
     if post:
         _salva_ultimo_post_visto(conn, piattaforma, post[0].post_id)
     return post

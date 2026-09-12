@@ -293,9 +293,16 @@
 
   .cella-link {
     display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin: 2px 8px 2px 0;
+    vertical-align: top;
+  }
+  .riga-icona-conteggio {
+    display: inline-flex;
     align-items: center;
     gap: 5px;
-    margin: 2px 8px 2px 0;
   }
   .contatore-eventi {
     font-size: 11px;
@@ -303,6 +310,19 @@
     font-variant-numeric: tabular-nums;
     color: var(--text-2);
     white-space: nowrap;
+  }
+  .ultimo-aggiornamento {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--text-3);
+    white-space: nowrap;
+  }
+  .ultimo-aggiornamento.non-seguita {
+    color: #a24a3d;
+    font-style: italic;
+  }
+  .ultimo-aggiornamento.assente {
+    font-style: italic;
   }
 
   .chip-altro {
@@ -568,9 +588,33 @@ function contatoreEventi(attivi, totale) {
   return `<span class="contatore-eventi" title="${attivi} attivi/futuri su ${totale} trovati in totale">${attivi}/${totale}</span>`;
 }
 
+function formattaDataOraBreve(isoDataOra) {
+  if (!isoDataOra) return "";
+  const [parteData, parteOra] = isoDataOra.split("T");
+  if (!parteData) return isoDataOra;
+  const [anno, mese, giorno] = parteData.split("-");
+  const testoData = `${giorno}/${mese}/${anno}`;
+  if (!parteOra) return testoData;
+  const [ore, minuti] = parteOra.split(":");
+  return `${testoData} ${ore}:${minuti}`;
+}
+
+function etichettaUltimoAggiornamento(valore) {
+  if (valore === "non_seguita") {
+    return `<span class="ultimo-aggiornamento non-seguita" title="Questo account non è seguito dal profilo dedicato: il feed non lo vede, indipendentemente da quando gira">non seguita</span>`;
+  }
+  if (!valore) {
+    return `<span class="ultimo-aggiornamento assente">mai verificata</span>`;
+  }
+  return `<span class="ultimo-aggiornamento" title="Ultima verifica: ${escapeHtml(formattaDataOraItaliana(valore))}">${formattaDataOraBreve(valore)}</span>`;
+}
+
 function linkIcona(voce, etichetta, svg) {
   if (!voce || !voce.url) return `<span class="link-assente">—</span>`;
-  return `<span class="cella-link">${contatoreEventi(voce.attivi, voce.totale)}<a class="link-icona" href="${escapeHtml(voce.url)}" target="_blank" rel="noopener" title="${escapeHtml(etichetta)}">${svg}</a></span>`;
+  return `<span class="cella-link">
+    <span class="riga-icona-conteggio">${contatoreEventi(voce.attivi, voce.totale)}<a class="link-icona" href="${escapeHtml(voce.url)}" target="_blank" rel="noopener" title="${escapeHtml(etichetta)}">${svg}</a></span>
+    ${etichettaUltimoAggiornamento(voce.ultimo_aggiornamento)}
+  </span>`;
 }
 
 function socialIcone(voceFacebook, voceInstagram) {
@@ -585,7 +629,10 @@ function altroChips(altro) {
   return altro
     .map((a) => {
       const link = a.facebook || a.instagram;
-      return `<span class="cella-link">${contatoreEventi(a.attivi, a.totale)}<a class="chip-altro" href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(a.soggetto)}</a></span>`;
+      return `<span class="cella-link">
+        <span class="riga-icona-conteggio">${contatoreEventi(a.attivi, a.totale)}<a class="chip-altro" href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(a.soggetto)}</a></span>
+        ${etichettaUltimoAggiornamento(a.ultimo_aggiornamento)}
+      </span>`;
     })
     .join("");
 }

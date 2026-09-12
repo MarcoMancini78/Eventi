@@ -1159,3 +1159,33 @@ def test_leggi_data_pubblicazione_hover_facebook_eccezione_isolata():
             raise RuntimeError("simulato")
 
     assert feed_social._leggi_data_pubblicazione_hover_facebook(_PaginaCheEsplode(), idx_timestamp=1) == (None, None)
+
+
+def test_salva_ultimo_giro_feed_scrive_timestamp_recente():
+    """16.8 (pagina perimetro): serve sapere quando il feed e' girato
+    l'ultima volta, non solo quando ha trovato un post nuovo — una fonte
+    seguita ma silenziosa da mesi avrebbe altrimenti una data vecchia anche
+    se il feed passa da li' ogni giorno."""
+    conn = _conn_di_prova()
+
+    prima = datetime.now()
+    feed_social._salva_ultimo_giro_feed(conn, "facebook")
+    dopo = datetime.now()
+
+    riga = conn.execute("SELECT valore FROM app_state WHERE chiave = 'ultimo_giro_feed_facebook'").fetchone()
+    assert riga is not None
+    timestamp = datetime.fromisoformat(riga["valore"])
+    assert prima <= timestamp <= dopo
+
+
+def test_salva_ultimo_giro_feed_sovrascrive_valore_precedente():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO app_state (chiave, valore) VALUES ('ultimo_giro_feed_instagram', '2020-01-01T00:00:00')"
+    )
+    conn.commit()
+
+    feed_social._salva_ultimo_giro_feed(conn, "instagram")
+
+    riga = conn.execute("SELECT valore FROM app_state WHERE chiave = 'ultimo_giro_feed_instagram'").fetchone()
+    assert riga["valore"] != "2020-01-01T00:00:00"
