@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-13T08:38:38",
+  "generato_il": "2026-09-13T09:38:37",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -2132,7 +2132,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Convegno per valorizzare le figure di Giovanni Battista da Cassine e Pietro Maria da Vinchio, illustri frati, scienziati e cartografi nel XVIII secolo, con interventi di relatori e proiezione di un video documentario.",
+      "descrizione": "Convegno dedicato alla valorizzazione delle figure di due frati francescani e cartografi del XVIII secolo, Giovanni Battista da Cassine e Padre Pietro Maria da Vinchio, con relazioni storiche e proiezione video.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -3176,7 +3176,7 @@
     },
     {
       "id": "d228620c8e5a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -3271,8 +3271,8 @@
     },
     {
       "id": "6879f3881a5c",
-      "titolo": "Corri sotto le torri",
-      "descrizione": "XVIII edizione dell'evento podistico promosso per diffondere la pratica e i valori fondamentali dello sport.",
+      "titolo": "Corri sotto le torri - XVIII edizione",
+      "descrizione": "Evento podistico promosso per diffondere la pratica e i valori fondamentali dello sport.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4070,7 +4070,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e Nicolas Ballario, insieme ai referenti e curatori dei progetti. Durante la serata sarà presentato anche il nuovo circuito Extra.",
+      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027 con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e il Direttore artistico Nicolas Ballario. Verranno illustrate le iniziative, le open call Capitali Sorelle e Vigne ad Arte, e il nuovo circuito Extra.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -5742,7 +5742,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Due giorni di eventi a Canelli con stand enogastronomici, musica e orchestra dal vivo, esibizione dei Tamburini, milonga e visite al Museo MUSA ed Enoteca Regionale.",
+      "descrizione": "Programma di manifestazioni con esibizione dei Tamburini di Canelli, presentazione della mappa 'I Cru di Enogea: Canelli Docg', stand enogastronomici, serate danzanti con liscio e milonga pomeridiana, visite al Museo MUSA e degustazioni presso l'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -6103,7 +6103,7 @@
     {
       "id": "60a69b33c48c",
       "titolo": "Boogia! Hai voluto la bicicletta?",
-      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza in strada, asta di bici, merenda condivisa, racconti di viaggi in bicicletta e la proiezione del film Anywhere Anytime di Milad Tangshir.",
+      "descrizione": "Una giornata per vivere e raccontare la bicicletta a partire dal pomeriggio, con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza in strada, asta di bici a sostegno delle attività de La Pop, merenda condivisa, racconti di viaggi in bici e proiezione del film Anywhere Anytime di Milad Tangshir.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6292,7 +6292,7 @@
     },
     {
       "id": "2599b0cdad8c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7318,8 +7318,8 @@
     },
     {
       "id": "419287733375",
-      "titolo": "Camminata non competitiva per la ricerca contro il diabete",
-      "descrizione": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
+      "titolo": "Camminata non competitiva a favore della ricerca contro il diabete",
+      "descrizione": "Il Lions Club di Castagnole con il patrocinio del Comune di Castagnole delle Lanze organizza una camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 prenotati.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -7338,7 +7338,7 @@
     {
       "id": "ebc7518987b1",
       "titolo": "Sport in piazza",
-      "descrizione": "In apposite aree attrezzate, allestite dalle Associazioni cittadine, sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione di una bicicletta e altri premi per chi prova almeno 8 discipline.",
+      "descrizione": "In apposite aree attrezzate allestite dalle associazioni cittadine, sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione premi per chi prova almeno 8 discipline.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7357,7 +7357,7 @@
     {
       "id": "e8012e8e7ed3",
       "titolo": "Alba in bici",
-      "descrizione": "Pedalata collettiva aperta a tutte e tutti, con partenza da piazza Medford, nel contesto di Sport in Piazza.",
+      "descrizione": "Pedalata collettiva aperta a tutte e tutti nel contesto di Sport in Piazza.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7451,7 +7451,7 @@
     },
     {
       "id": "39c70e9e3a6b",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7812,8 +7812,8 @@
     },
     {
       "id": "fbbdccbf946c",
-      "titolo": "Workshop di orientamento: Le diverse tipologie di lavoro e le skills personali utili e spendibili",
-      "descrizione": "Percorso di formazione gratuito in 5 incontri rivolto a giovani disoccupati tra i 18 e i 35 anni, dedicato all'approfondimento delle strategie per la ricerca del lavoro e alla costruzione del proprio percorso professionale.",
+      "titolo": "Workshop di orientamento “Le diverse tipologie di lavoro e le skills personali utili e spendibili”",
+      "descrizione": "Percorso di formazione gratuito di 5 incontri rivolto a giovani disoccupati tra i 18 e i 35 anni per affrontare la ricerca del lavoro, redazione CV, personal branding e bilancio delle competenze.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8060,7 +8060,7 @@
     {
       "id": "8481294c2867",
       "titolo": "Il lavoro cambia strada",
-      "descrizione": "Dario Salvetti dialoga con Gianluca Pagella: due esperienze diverse per parlare di lavoro, diritti e conversione ecologica.",
+      "descrizione": "Incontro con Dario Salvetti (Collettivo di fabbrica ex GKN, autore del libro Questo lavoro non è vita) e Gianluca Pagella (presidente di FIAB Alessandria e lavoratore in cargo bike) per dialogare su lavoro, diritti e conversione ecologica.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8193,7 +8193,7 @@
     {
       "id": "46ffa40b4e5d",
       "titolo": "Inaugurazione ufficiale della nuova pista di atletica dello stadio Augusto Manzo",
-      "descrizione": "Inaugurazione ufficiale della rinnovata pista di atletica dello stadio comunale Augusto Manzo a seguito dei lavori di riqualificazione.",
+      "descrizione": "Inaugurazione ufficiale della pista di atletica dello stadio comunale Augusto Manzo nel quartiere San Cassiano, riqualificata nell'ambito dell'intervento promosso dall'Amministrazione comunale.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8363,8 +8363,8 @@
     },
     {
       "id": "6de34691f953",
-      "titolo": "Teatro e musica: Il Pirata - Omaggio a Marco Pantani",
-      "descrizione": "Uno spettacolo che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France fino alla scomparsa di Marco Pantani.",
+      "titolo": "Il Pirata: omaggio a Marco Pantani",
+      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Un viaggio emozionante per rendere omaggio a un gigante dello sport.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -8858,7 +8858,7 @@
     {
       "id": "a18581d8d56f",
       "titolo": "Riprendiamoci… la piazza!",
-      "descrizione": "Dimostrazione a cura della Ciclofficina La Pop.",
+      "descrizione": "Evento in piazza Ferrero con dimostrazione della Ciclofficina La Pop.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8990,7 +8990,7 @@
     },
     {
       "id": "2cf7359d3894",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9712,7 +9712,7 @@
     },
     {
       "id": "b6b25d00289c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9941,7 +9941,7 @@
     {
       "id": "a46b9688feba",
       "titolo": "Obiettivo Tricolore",
-      "descrizione": "Staffetta paralimpica ideata da Alex Zanardi che unisce atleti con disabilità in bici, handbike e carrozzina olimpica. Ad Alba arrivo dei partecipanti il 28 settembre in piazza Michele Ferrero, ripartenza il 29 settembre verso Vigevano e villaggio sportivo in piazza Medford con prova handbike e attrezzature.",
+      "descrizione": "Staffetta paralimpica ideata da Alex Zanardi con atleti con disabilità in bici, handbike e carrozzina olimpica. Ad Alba previsti l'arrivo in piazza Michele Ferrero, la ripartenza verso Vigevano, il villaggio sportivo in piazza Medford e l'incontro 'Uguali & diversi, sport e disabilità' al Palazzo Mostre e Congressi 'G. Morra'.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9979,7 +9979,7 @@
     {
       "id": "4fe8fce25b24",
       "titolo": "Welfare e comunità sostenibili",
-      "descrizione": "Primo incontro del ciclo formativo su welfare, salute e ambiente per amministratori locali e soggetti interessati, con Franca Maino (Università Statale di Milano).",
+      "descrizione": "Primo incontro del ciclo formativo su welfare, salute e ambiente, con Franca Maino dell'Università Statale di Milano e Direttrice scientifica 'Percorsi di Secondo Welfare'.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -10434,7 +10434,7 @@
     },
     {
       "id": "7d9fc0ccffe4",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10719,7 +10719,7 @@
     },
     {
       "id": "fe29eba4d695",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11156,7 +11156,7 @@
     },
     {
       "id": "79ea2fe87104",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11479,7 +11479,7 @@
     },
     {
       "id": "72de43d6d0b2",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11537,7 +11537,7 @@
     {
       "id": "2d313d1927b7",
       "titolo": "Salute e comunità sostenibili",
-      "descrizione": "Secondo incontro del ciclo formativo con Gian Paolo Zanetta, Direttore Generale Ospedale Cottolengo.",
+      "descrizione": "Secondo incontro del ciclo formativo su welfare, salute e ambiente, con Gian Paolo Zanetta, Direttore Generale 'Ospedale Cottolengo'.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11802,7 +11802,7 @@
     },
     {
       "id": "e58b202748ff",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12011,7 +12011,7 @@
     },
     {
       "id": "fcc589bc0764",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12315,7 +12315,7 @@
     },
     {
       "id": "ab3e7a5fe558",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12429,7 +12429,7 @@
     },
     {
       "id": "52a13fa588ea",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio»",
+      "titolo": "Esposizione del manoscritto originale della “Chorographica descriptio Provinciarum et Conventuum omnium Ordinis Minorum",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12468,7 +12468,7 @@
     {
       "id": "d0b1a446ece4",
       "titolo": "Ambiente e comunità sostenibili",
-      "descrizione": "Terzo incontro del ciclo formativo con Giuseppe Gamba, GDL Enti locali Kyoto Club.",
+      "descrizione": "Terzo incontro del ciclo formativo su welfare, salute e ambiente, con Giuseppe Gamba, GDL Enti locali Kyoto Club.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
