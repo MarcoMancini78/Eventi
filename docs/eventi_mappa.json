@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-13T01:39:38",
+  "generato_il": "2026-09-13T02:40:41",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -1125,7 +1125,7 @@
     {
       "id": "2be17849904b",
       "titolo": "Festa Patronale dei 4 Borghi",
-      "descrizione": "Edizione 2026 della Festa Patronale di Pessione con Palio dei 4 Borghi, serate gastronomiche con piatti tipici e opzioni vegetariane, musica dal vivo e DJ set, torneo di basket 3vs3, caccia al tesoro, animazioni e laboratori per bambini, e mostra di disegni.",
+      "descrizione": "Edizione 2026 della Festa Patronale con Palio dei 4 Borghi, serate gastronomiche, musica dal vivo e DJ set, torneo di basket 3vs3, mostra di disegni, spettacoli e attività per bambini e famiglie.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1134,7 +1134,7 @@
       "data_inizio": "2026-09-12",
       "data_fine": "2026-09-20",
       "tipologia": "sagra",
-      "url": "https://comune.chieri.to.it/it/events/pessione-festa-patronale-dei-4-borghi-12-e-13-settembre-2026",
+      "url": "https://comune.chieri.to.it/it/events/pessione-festa-patronale-dei-4-borghi-19-e-20-settembre-2026",
       "url_approfondimento": "https://chieri-api.municipiumapp.it/s3/720x960/s3/2053/media/eventi-2026/chatgpt-image-5-ago-2026-15_47_31.png",
       "fonti": "comune-chieri",
       "data_post": "",
@@ -1239,7 +1239,7 @@
     {
       "id": "d91783ce559d",
       "titolo": "Apertura al pubblico della StArt Gallery",
-      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell’ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l’identità di Chieri.",
+      "descrizione": "Una galleria dei cittadini per i cittadini dove sarà possibile visitare liberamente la StArt Gallery, nei corridoi dell'ex Convento di San Filippo Neri. Il percorso espositivo propone pannelli, vetrine e monitor con documenti, fotografie, filmati e reperti che raccontano la storia e l'identità di Chieri.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -1352,8 +1352,8 @@
     },
     {
       "id": "316a5673e4bb",
-      "titolo": "Festival di Fotografia: Universi Paralleli - La bellezza degli altri mondi",
-      "descrizione": "7ª edizione del Festival di Fotografia. Mostra a ingresso libero aperta sabati e domeniche dalle 10 alle 13 e dalle 15:30 alle 19.",
+      "titolo": "Festival di Fotografia - 7ª Edizione: Universi Paralleli - La bellezza degli altri mondi",
+      "descrizione": "Festival di fotografia con mostre a ingresso libero. Inaugurazione sabato 12 settembre ore 11, finissage domenica 27 settembre ore 18. Orari di apertura: sabati e domeniche 10-13 e 15.30-19.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -1409,8 +1409,8 @@
     },
     {
       "id": "7157b41751b9",
-      "titolo": "Casa d'artista 2026",
-      "descrizione": "Opere di Rosangela Bunino. Sabato 12 Settembre 2026 alle ore 10.30 inaugurazione.",
+      "titolo": "Casa d'artista 2026 - Opere di Rosangela Bunino",
+      "descrizione": "Inaugurazione e mostra 'Casa d'artista 2026' con le opere di Rosangela Bunino presso la Cappella di San Rocco.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -1789,7 +1789,7 @@
     },
     {
       "id": "58869ea9944e",
-      "titolo": "Mercato del piccolo antiquariato",
+      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -2132,7 +2132,7 @@
     {
       "id": "da2e62593e0a",
       "titolo": "Convegno «Semper in melius mutari potest» Giovanni Battista da Cassine: predicatore e scienziato (XVII-XVIII secolo)",
-      "descrizione": "Iniziativa per valorizzare le figure di due Frati Francescani di Cassine e Vinchio, intellettuali e cartografi nel XVIII secolo, con interventi di studiosi e proiezione video.",
+      "descrizione": "Convegno dedicato alle figure di due frati francescani cartografi del XVIII secolo originari di Cassine e Vinchio, con interventi di studiosi e proiezione di un video documentario.",
       "comune": "Cassine",
       "lat": 44.749948,
       "lon": 8.527846,
@@ -2151,7 +2151,7 @@
     {
       "id": "59bd18f158f4",
       "titolo": "Sport in piazza",
-      "descrizione": "Vetrina dell'offerta sportiva con la possibilità per grandi e piccini di scoprire e sperimentare diverse discipline sportive attraverso dimostrazioni e prove con gli stand di 35 associazioni sportive cittadine. In programma anche intrattenimento musicale, estrazione premi e spazi dedicati a salute e prevenzione.",
+      "descrizione": "Vetrina dell'offerta sportiva proposta dalle associazioni del territorio che offre a grandi e piccini la possibilità di scoprire e sperimentare diverse discipline sportive, con stand di 35 associazioni, dimostrazioni pratiche, intrattenimento musicale ed estrazione premi per under 18.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -2246,7 +2246,7 @@
     {
       "id": "e769596f5d1f",
       "titolo": "MAC - Mostra Archeologica Chieri",
-      "descrizione": "Visita guidata nei diversi ambienti del museo collocato all'interno del Palazzo Civico, con reperti dall'Età romana al basso Medioevo tra cui terrecotte, vetri, monete e monili.",
+      "descrizione": "Visita guidata nei diversi ambienti del piccolo museo collocato all’interno del Palazzo Civico, con reperti dall’Età romana fino al basso Medioevo: terrecotte, vetri, monete e monili in metallo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2284,7 +2284,7 @@
     {
       "id": "2464656fd63d",
       "titolo": "Castelli in aria, ma con solide radici / Nel laboratorio di Chaplin",
-      "descrizione": "Workshop a cura di Stefano Geraci (Associazione Crocevia) nell'ambito della settima edizione di Arterie – Festival di Teatro Diffuso.",
+      "descrizione": "Workshop con Stefano Geraci (Associazione Crocevia, Roma) nell'ambito di Arterie – Festival di Teatro Diffuso.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -2302,8 +2302,8 @@
     },
     {
       "id": "0710e1c8919e",
-      "titolo": "Apertura straordinaria dell'Edificio di Presa del Canale Cavour",
-      "descrizione": "In occasione dei 160 anni del Canale Cavour, apertura straordinaria con visite guidate a cura del CFP Torassese alla scoperta dell'Edificio di Presa. Orario mattutino dalle 10 alle 12 (ultima visita alle 11.30) e pomeridiano dalle 14 alle 18 (ultima visita alle 17.30).",
+      "titolo": "Apertura straordinaria dell'edificio di imbocco del Canale Cavour",
+      "descrizione": "In occasione dei 160 anni del Canale Cavour, apertura straordinaria con visite guidate dell'Edificio di Presa di Chivasso a cura del CFP Torassese.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -2492,8 +2492,8 @@
     },
     {
       "id": "29b17b97efde",
-      "titolo": "Vitamina N.come Natura - Passeggiate all'aria aperta",
-      "descrizione": "Passeggiate all'aria aperta che fanno bene alla salute dei bambini da 0 a 99 anni. Eventi e proposte di intrattenimento per bambini e famiglie nel Chivassese.",
+      "titolo": "Vitamina N.come Natura: Passeggiate all'aria aperta",
+      "descrizione": "Rassegna Vitamina N...come Natura: passeggiate all'aria aperta che fanno bene alla salute dei bambini da 0 a 99 anni. Evento per bambini e famiglie.",
       "comune": "Monteu da Po",
       "lat": 45.1509,
       "lon": 8.016847,
@@ -2607,7 +2607,7 @@
     {
       "id": "f05280543fa0",
       "titolo": "La Vijà e i suoi tradizionali Stranòt",
-      "descrizione": "Nell'ambito del Settembre Chierese, spettacolo teatrale interamente in lingua piemontese che affonda le sue radici nelle tradizioni contadine e nella cultura popolare, dedicato alla memoria, ai racconti e alle atmosfere di un tempo.",
+      "descrizione": "Nell’ambito del Settembre Chierese, spettacolo teatrale interamente in lingua piemontese che affonda le sue radici nelle tradizioni contadine e nella cultura popolare, dedicato alla memoria, ai racconti e alle atmosfere di un tempo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -2664,7 +2664,7 @@
     {
       "id": "71397fbbdd4c",
       "titolo": "Tutti in vetta",
-      "descrizione": "Iniziativa nell'ambito del 125° anniversario della Festa della Croce.",
+      "descrizione": "Iniziativa in occasione del 125° anniversario della Festa della Croce.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -2672,7 +2672,7 @@
       "minuti": 86.0,
       "data_inizio": "2026-09-13",
       "data_fine": "2026-09-13",
-      "tipologia": "sportivo",
+      "tipologia": "altro",
       "url": "https://comune.caselette.to.it/it-it/appuntamenti/125-anniversario-festa-della-croce-2026-129742-1-f44f193b940c86b42179e350390b4665",
       "url_approfondimento": "https://comune.caselette.to.it/it-it/immagine/img-129742-O-28-957-0-0-88fb58c4d395a5c4b6e68d9f26162a7e?639214415572860650",
       "fonti": "comune-caselette",
@@ -2740,7 +2740,7 @@
     {
       "id": "fa70391e6970",
       "titolo": "Baratta RAEE e Ripara",
-      "descrizione": "Iniziativa presso la casetta degli Ecovolontari.",
+      "descrizione": "Domenica 13 settembre presso la casetta degli Ecovolontari",
       "comune": "Grugliasco",
       "lat": 45.068046,
       "lon": 7.57762,
@@ -2759,7 +2759,7 @@
     {
       "id": "6d0dcb2d9df8",
       "titolo": "Il Coro La Fonte in concerto nella parrocchia SS. Nome di Maria",
-      "descrizione": "",
+      "descrizione": "Domenica 13 settembre alle 16.30",
       "comune": "Grugliasco",
       "lat": 45.068046,
       "lon": 7.57762,
@@ -2986,7 +2986,7 @@
     },
     {
       "id": "0e5503365ea8",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -3214,8 +3214,8 @@
     },
     {
       "id": "b0db40e32107",
-      "titolo": "ScopriCHIERI: Guglielmo Caccia detto “il Moncalvo”",
-      "descrizione": "Passeggiata tematica gratuita tra chiese e palazzi cittadini alla scoperta delle opere che Guglielmo Caccia, detto “il Moncalvo”, lasciò a Chieri. Ritrovo alle 8.30 presso la Chiesa di San Filippo con visita alla StArt Gallery, partenza della camminata alle 9.15 e conclusione alle 12.00.",
+      "titolo": "ScopriCHIERI - Sulle tracce di Guglielmo Caccia detto il Moncalvo",
+      "descrizione": "Passeggiata tematica gratuita tra chiese e palazzi cittadini alla scoperta delle opere lasciate a Chieri dal pittore seicentesco Guglielmo Caccia, detto il Moncalvo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -3233,7 +3233,7 @@
     },
     {
       "id": "9707fca76402",
-      "titolo": "Villa Romana e Area Primavalle - Visite guidate",
+      "titolo": "Visite guidate alla Villa Romana e all'Area Primavalle",
       "descrizione": "Domenica 13 Settembre 2026 si terranno le visite guidate alla Villa Romana di Caselette e all'Area Naturalistica di Primavalle.",
       "comune": "Caselette",
       "lat": 45.104746,
@@ -3272,7 +3272,7 @@
     {
       "id": "6879f3881a5c",
       "titolo": "Corri sotto le torri",
-      "descrizione": "Evento podistico promosso per diffondere la pratica e i valori fondamentali dello sport, giunto alla XVIII edizione.",
+      "descrizione": "XVIII edizione dell'evento podistico promosso per diffondere la pratica e i valori fondamentali dello sport.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -3348,7 +3348,7 @@
     {
       "id": "27bbbf3b537b",
       "titolo": "Inaugurazione della rinnovata Piazza I Maggio",
-      "descrizione": "Inaugurazione della rinnovata Piazza I Maggio alle ore 9,30",
+      "descrizione": "Inaugurazione della rinnovata Piazza I Maggio a Quargnento.",
       "comune": "Quargnento",
       "lat": 44.944966,
       "lon": 8.487386,
@@ -3804,7 +3804,7 @@
     {
       "id": "93aabba76fe1",
       "titolo": "Festa dell'Esaltazione della Santa Croce",
-      "descrizione": "Iniziativa presso la Parrocchia San Giorgio in occasione del 125° anniversario della Festa della Croce.",
+      "descrizione": "Iniziativa in occasione del 125° anniversario della Festa della Croce.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -3850,7 +3850,7 @@
       "minuti": 83.0,
       "data_inizio": "2026-09-14",
       "data_fine": "2026-09-14",
-      "tipologia": "bambini",
+      "tipologia": "altro",
       "url": "https://comune.busca.cn.it/vivere-il-comune/eventi/",
       "url_approfondimento": "",
       "fonti": "comune-busca, feed-facebook-comunedibusca",
@@ -3974,8 +3974,8 @@
     },
     {
       "id": "aa2b9c5fa6d7",
-      "titolo": "Tessile e Tecnologia al Museo del Tessile",
-      "descrizione": "Appuntamento specialistico annuale al Museo del Tessile di Chieri incentrato sul tema “Tessile e Tecnologia”, con interventi di relatori ospiti, esposizione dell'installazione artistica interattiva \"Trame sonore\" di Giulia Panero e visita guidata finale al Museo e Orto del Tessile.",
+      "titolo": "Tessile e Tecnologia al Museo del Tessile di Chieri",
+      "descrizione": "Giornata di studio specialistica incentrata sul tema 'Tessile e Tecnologia' nella settimana della Festa patronale. Comprende interventi di esperti su Fiber Art, tecnologia e tradizione tessile, l'esposizione dell'installazione artistica interattiva 'Trame sonore' e si conclude con una visita guidata al Museo e Orto del Tessile.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4032,7 +4032,7 @@
     {
       "id": "6cd2616cd551",
       "titolo": "Presentazione del programma di Alba Capitale italiana dell’arte contemporanea 2027",
-      "descrizione": "Serata aperta alla città per scoprire pubblicamente il programma e le iniziative di Alba Capitale italiana dell’arte contemporanea 2027, con il Sindaco Alberto Gatto, Patrizia Sandretto Re Rebaudengo e il Direttore artistico Nicolas Ballario.",
+      "descrizione": "Presentazione pubblica del programma di Alba Capitale italiana dell’arte contemporanea 2027, con il Sindaco Alberto Gatto, la Presidente Patrizia Sandretto Re Rebaudengo, il Direttore artistico Nicolas Ballario e i referenti dei progetti. Presentazione del circuito Extra.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -4260,7 +4260,7 @@
     {
       "id": "84d8d48bab12",
       "titolo": "La Croce Rossa cerca Volontari - Serata informativa",
-      "descrizione": "Serata informativa per aspiranti volontari della Croce Rossa.",
+      "descrizione": "Serata informativa per la ricerca di nuovi volontari della Croce Rossa.",
       "comune": "Lauriano",
       "lat": 45.158252,
       "lon": 7.991627,
@@ -4431,7 +4431,7 @@
     {
       "id": "e0ab5069d708",
       "titolo": "Serata su San Francesco e il crocifisso di S. Damiano",
-      "descrizione": "Incontro presso la Chiesa Madonna di Fatima nell'ambito del 125° anniversario della Festa della Croce.",
+      "descrizione": "Iniziativa in occasione del 125° anniversario della Festa della Croce.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -4449,8 +4449,8 @@
     },
     {
       "id": "93ab21569fef",
-      "titolo": "Seminario \"La ricerca del lavoro con Piemonte Tu\"",
-      "descrizione": "Seminario preparatorio alla Fiera del lavoro Val di Susa, a cura del Centro per l'Impiego di Susa. Accesso libero.",
+      "titolo": "Seminario ''La ricerca del lavoro con \"Piemonte Tu\"''",
+      "descrizione": "Seminario ad accesso libero a cura del Centro per l'Impiego di Susa.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -4488,7 +4488,7 @@
     {
       "id": "10f03221e1eb",
       "titolo": "Bra’s 2026",
-      "descrizione": "Festival gastronomico dedicato alle eccellenze del territorio: la Salsiccia di Bra, il Formaggio Bra DOP, il Pane di Bra e il Riso di Bra. Il programma diffuso prevede chef stellati, corteo storico, mercati del gusto, concerti, mostre culturali, laboratori BRA'S LAB e aree per famiglie.",
+      "descrizione": "Festival gastronomico dedicato alle eccellenze enogastronomiche del territorio (Salsiccia di Bra, Formaggio Bra DOP, Pane di Bra e Riso di Bra), con show cooking di chef stellati, mercati del gusto, aree talk, concerti, mostre e iniziative per famiglie.",
       "comune": "Bra",
       "lat": 44.697678,
       "lon": 7.854271,
@@ -4507,7 +4507,7 @@
     {
       "id": "23a70cc9107a",
       "titolo": "Chieri Food Village",
-      "descrizione": "Quattro giornate dedicate al gusto, alla musica e al divertimento con street food da tutto il mondo, birre artigianali, opzioni gluten free, musica dal vivo, tribute band e DJ set.",
+      "descrizione": "Quattro giornate dedicate allo street food con specialità da tutto il mondo, birre artigianali, proposte gluten free e musica dal vivo tutte le sere con tribute band e DJ set.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -4526,7 +4526,7 @@
     {
       "id": "2629290b5fc2",
       "titolo": "Cenerentola - Lettura animata",
-      "descrizione": "La Biblioteca Civica di Carmagnola propone un appuntamento dedicato alle famiglie e ai bambini di tutte le età con la compagnia teatrale I Marcido, che presenterà “Cenerentola” in forma di lettura animata.",
+      "descrizione": "La Biblioteca Civica di Carmagnola propone un appuntamento dedicato alle famiglie e ai bambini con la compagnia teatrale torinese I Marcido, che presenterà “Cenerentola” in forma di lettura animata. Con Ottavia della Porta, Maria Luisa Abate, Paolo Oricco, Valentina Battistone e Alessio Arbustini.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -4640,7 +4640,7 @@
     {
       "id": "c79ead57e7ea",
       "titolo": "Incontri con l’autore | Sandro Campani",
-      "descrizione": "Per “Incontri con l’autore” torna a Busca Sandro Campani con un nuovo libro edito da Einaudi, “La casa del dormiveglia”.",
+      "descrizione": "Per “Incontri con l’autore” torna a Busca Sandro Campani con il nuovo libro edito da Einaudi, “La casa del dormiveglia”.",
       "comune": "Busca",
       "lat": 44.518132,
       "lon": 7.474328,
@@ -4925,7 +4925,7 @@
     {
       "id": "721a5c4574fe",
       "titolo": "Le Rosse nella Città del cioccolato",
-      "descrizione": "Mostra nazionale dedicata alla storia postale e alle celebri impronte di affrancatura meccanica, con macchine affrancatrici in funzione, cartoline commemorative in omaggio, incontri e scambi tra collezionisti.",
+      "descrizione": "Mostra nazionale promossa dall'Associazione Italiana Collezionisti Affrancature Meccaniche (AICAM) dedicata alle impronte di affrancatura meccanica, con macchina affrancatrice in funzione, cartoline commemorative, incontro divulgativo e scambi tra collezionisti.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -5134,7 +5134,7 @@
     {
       "id": "abc1e642ffaa",
       "titolo": "Aspettando Montmartre - Premiazione Concorso Mezz'ora da ridere",
-      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere in ricordo di Ester Delforno in occasione della serata Aspettando Montmartre.",
+      "descrizione": "Premiazione dei primi tre testi classificati nel concorso Mezz'ora da Ridere, realizzato in ricordo di Ester Delforno.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -5513,8 +5513,8 @@
     },
     {
       "id": "b51e85d7fd8c",
-      "titolo": "Sono venuto a suonare. Un'esplorazione dell'universo Paolo Conte",
-      "descrizione": "Un’esperienza d’ascolto di Federico Sacchi Musicteller. Uno spettacolo/concerto tra storytelling, musica, teatro e immagini dedicato alla storia di Paolo Conte, accompagnato dal Maestro Nicola Meloni.",
+      "titolo": "Federico Sacchi - Sono venuto a suonare. Un'esplorazione dell'universo Paolo Conte",
+      "descrizione": "Un’esperienza d’ascolto di Federico Sacchi Musicteller. La storia di Paolo Conte esplorata con uno spettacolo/concerto tra storytelling, musica, teatro e immagini, accompagnato dal Maestro Nicola Meloni. Una produzione Consiste Entertainment e Concerto Music.",
       "comune": "Savigliano",
       "lat": 44.644037,
       "lon": 7.655929,
@@ -5590,7 +5590,7 @@
     {
       "id": "dd7b0c8a3524",
       "titolo": "Fine del ciclo? No, inizio di un nuovo ritmo!",
-      "descrizione": "Nell'ambito della rassegna 'Dialoghi sulla salute – Incontri per una cultura del benessere', terzo incontro dedicato al tema della menopausa: un'esperienza immersiva nella natura focalizzata su nutrizione, movimento e consapevolezza con professioniste del settore.",
+      "descrizione": "Nell'ambito della rassegna 'Dialoghi sulla salute – Incontri per una cultura del benessere', terzo incontro dedicato al tema della menopausa. Un percorso immersivo nella natura focalizzato su nutrizione, movimento e consapevolezza con professioniste del settore.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -5704,7 +5704,7 @@
     {
       "id": "053fa12d0c2d",
       "titolo": "M'illumino d'immenso",
-      "descrizione": "Due giorni di eventi con stand enogastronomici, musica e ballo con Daniela Cavanna e Bruno Mauro, milonga pomeridiana, visite al Museo MuSa e degustazioni all'Enoteca Regionale di Canelli e dell'Astesana.",
+      "descrizione": "Manifestazione con stand enogastronomici, esibizione Tamburini di Canelli, presentazione della mappa 'I Cru di Enogea: Canelli Docg', serate danzanti con orchestre, milonga pomeridiana, visite al Museo MUSA e degustazioni presso l'Enoteca Regionale.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -5761,7 +5761,7 @@
     {
       "id": "d75a3cb55ede",
       "titolo": "Festa Patronale della Madonnina",
-      "descrizione": "Festa patronale a Casalborgone che ospita anche la tradizionale mostra-mercato della Fiera della Nocciola.",
+      "descrizione": "Festa patronale a Casalborgone.",
       "comune": "Casalborgone",
       "lat": 45.130451,
       "lon": 7.940426,
@@ -5780,7 +5780,7 @@
     {
       "id": "d0f9752fbbc7",
       "titolo": "Inaugurazione A.A. 2026/2027 dell'Unitre di Grugliasco",
-      "descrizione": "",
+      "descrizione": "Sabato 19 settembre alle 15:00",
       "comune": "Grugliasco",
       "lat": 45.068046,
       "lon": 7.57762,
@@ -5799,7 +5799,7 @@
     {
       "id": "302300a1233b",
       "titolo": "Mente Locale",
-      "descrizione": "Una giornata dedicata alla sensibilizzazione sui temi delle demenze, della salute cognitiva e alla valorizzazione delle realtà attive sul territorio. Un'occasione per incontrare associazioni, scoprire attività, servizi e iniziative dedicate alle persone con demenza e alle loro famiglie.",
+      "descrizione": "Una giornata dedicata alla sensibilizzazione sui temi delle demenze, della salute cognitiva e alla valorizzazione delle realtà attive sul territorio, con associazioni, servizi e iniziative rivolti a persone con demenza, famiglie e comunità.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -5950,7 +5950,7 @@
     },
     {
       "id": "a44937f26064",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -5988,8 +5988,8 @@
     },
     {
       "id": "23886a72e7a9",
-      "titolo": "Un pomeriggio di storie e giochi a Villanova d'Asti",
-      "descrizione": "Un evento speciale per famiglie, bambini e piccoli lettori con consegna dell'omaggio ai bambini nati nel 2025, incontro con lo scrittore Corrado Brignolo, laboratori creativi, letture ad alta voce, merenda offerta dalla Proloco e premiazione 'Amico della biblioteca'.",
+      "titolo": "Un pomeriggio di storie e giochi a Villanova d'Asti!",
+      "descrizione": "Evento speciale per famiglie, bambini e piccoli lettori con accoglienza, consegna omaggio ai nati nel 2025, incontro con lo scrittore Corrado Brignolo, laboratori creativi, letture ad alta voce, merenda e premiazione 'Amico della biblioteca'.",
       "comune": "Villanova d'Asti",
       "lat": 44.941889,
       "lon": 7.937502,
@@ -6008,7 +6008,7 @@
     {
       "id": "261140922091",
       "titolo": "18 anni: un numero che cambia tante cose - Consegna della Costituzione",
-      "descrizione": "Cerimonia di consegna della Costituzione italiana ai neo-diciottenni chieresi. Interverrà Frank Fossati con uno spettacolo tratto da \"Manuale del giovane di successo\", insieme a rappresentanti delle associazioni di donatori di sangue. Al termine aperitivo e musica dal vivo.",
+      "descrizione": "Cerimonia di consegna della Costituzione italiana alle ragazze e ai ragazzi chieresi che hanno compiuto il diciottesimo anno, con spettacolo di Frank Fossati tratto dal docu-podcast 'Manuale del giovane di successo', intervento delle associazioni donatori di sangue, aperitivo a cura del Ciofs Istituto Santa Teresa e musica dal vivo.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6027,7 +6027,7 @@
     {
       "id": "0379b8bba8be",
       "titolo": "Peer Gynt",
-      "descrizione": "Spettacolo nella formula del MusicoDramma della stagione artistica RI-GENERAZIONE 2026 di Contrametric Ensemble, ispirato all'opera teatrale di Henrik Ibsen con le musiche di Edvard Grieg.",
+      "descrizione": "Spettacolo in forma di MusicoDramma in cui musica, recitazione e letteratura si fondono. Opera in un atto scritta da Alessandro Marise e ispirata al testo di Henrik Ibsen, con musiche di Edvard Grieg eseguite dai solisti di Contrametric Ensemble.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -6065,7 +6065,7 @@
     {
       "id": "60a69b33c48c",
       "titolo": "Boogia! Hai voluto la bicicletta?",
-      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, attività di riparazione e recupero di biciclette, spazio informativo sulla sicurezza stradale, asta di bici, merenda condivisa, racconti di viaggi e la proiezione del film Anywhere Anytime.",
+      "descrizione": "Una giornata per vivere e raccontare la bicicletta con pedalata sociale, riparazione e recupero biciclette, spazio informativo sulla sicurezza stradale, asta di bici, merenda condivisa, racconti di viaggi e proiezione del film Anywhere Anytime di Milad Tangshir.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -6425,8 +6425,8 @@
     },
     {
       "id": "3efd13b5bf59",
-      "titolo": "Rassegna Vitamina N.come Natura - Passeggiate all'aria aperta",
-      "descrizione": "Passeggiate all'aria aperta per bambini e famiglie da 0 a 99 anni nell'ambito di 'A misura di famiglia'. Ingresso gratuito con prenotazione obbligatoria. Luogo preciso di ritrovo indicato all'iscrizione.",
+      "titolo": "Vitamina N.come Natura - Passeggiate all'aria aperta",
+      "descrizione": "Passeggiate all'aria aperta che fanno bene alla salute dei bambini da 0 a 99 anni. Evento per bambini e famiglie a Montanaro nell'ambito della rassegna 'A misura di famiglia'. Ingresso gratuito con prenotazione obbligatoria.",
       "comune": "Montanaro",
       "lat": 45.233553,
       "lon": 7.853323,
@@ -6977,7 +6977,7 @@
     {
       "id": "3e4c988b2400",
       "titolo": "Il viaggio di Francesco",
-      "descrizione": "Spettacolo teatrale con drammaturgia e regia di Pino Quartullo, tratto dal romanzo 'La sapienza di un povero' di Éloi Leclerc, integrato da un testo del poeta Gabriele Galloni e dalle Fonti Francescane. Con Giulio Tropea nei panni di San Francesco.",
+      "descrizione": "Spettacolo teatrale con drammaturgia e regia di Pino Quartullo, ispirato al romanzo 'La sapienza di un povero' di Éloi Leclerc e alle Fonti Francescane.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -6987,7 +6987,7 @@
       "data_fine": "2026-09-20",
       "tipologia": "teatro",
       "url": "https://comune.noviligure.al.it/it/events/tullio-solenghi-in-colpi-di-timone-2518153",
-      "url_approfondimento": "http://www.teatroromualdomarenco.it",
+      "url_approfondimento": "https://www.teatroromualdomarenco.it",
       "fonti": "comune-novi-ligure",
       "data_post": "",
       "ora_post": "",
@@ -6995,8 +6995,8 @@
     },
     {
       "id": "dd8f977d950a",
-      "titolo": "PedalanPò 2026 - Tappa e sosta ristoro a Chivasso",
-      "descrizione": "Evento dedicato alla mobilità sostenibile e ai territori UNESCO della Riserva MAB lungo il Po piemontese e i percorsi cicloturistici, con sosta ristoro lungo fiume al Parco del Sabiuné.",
+      "titolo": "PedalAnPo 2026",
+      "descrizione": "Il grande evento dedicato alla mobilità sostenibile e ai territori UNESCO della Riserva MAB fa tappa a Chivasso con percorsi cicloturistici e una sosta ristoro lungo il fiume.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -7033,8 +7033,8 @@
     },
     {
       "id": "e57c8df23fec",
-      "titolo": "Storie e risate con i Ghissbross",
-      "descrizione": "Rassegna Vitamina C...come Cultura. Intrattenimenti di arte varia per stare bene in famiglia da 0 a 99 anni nell'ambito di 'A misura di famiglia. Eventi e proposte di intrattenimento per bambini e famiglie nel Chivassese 2026'.",
+      "titolo": "STORIE E RISATE con i Ghissbross",
+      "descrizione": "Intrattenimenti di arte varia per stare bene in famiglia da 0 a 99 anni nell'ambito della rassegna Vitamina C...come Cultura / A misura di famiglia.",
       "comune": "Lauriano",
       "lat": 45.158252,
       "lon": 7.991627,
@@ -7110,7 +7110,7 @@
     {
       "id": "2f7a4a49c1ef",
       "titolo": "Fiera della Nocciola",
-      "descrizione": "Tradizionale mostra-mercato che promuove i prodotti, i manufatti e le eccellenze del territorio regionale, allestita nell'ambito della Festa Patronale della Madonnina.",
+      "descrizione": "Tradizionale fiera e mostra-mercato che promuove i prodotti, i manufatti e le eccellenze del territorio regionale, allestita in Piazzale Gaiato nell'ambito della Festa Patronale della Madonnina.",
       "comune": "Casalborgone",
       "lat": 45.130451,
       "lon": 7.940426,
@@ -7223,7 +7223,7 @@
     },
     {
       "id": "2864d66acee5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -7280,8 +7280,8 @@
     },
     {
       "id": "419287733375",
-      "titolo": "Camminata non competitiva a favore della ricerca contro il diabete",
-      "descrizione": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro e maglietta Lions ai primi 100 partecipanti prenotati.",
+      "titolo": "Camminata non competitiva per la ricerca contro il diabete",
+      "descrizione": "Camminata non competitiva per raccogliere fondi da destinare alla ricerca contro il diabete. Le iscrizioni comprendono quota donazione, buono ristoro, maglietta Lions ai primi 100 partecipanti prenotati.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -7300,7 +7300,7 @@
     {
       "id": "ebc7518987b1",
       "titolo": "Sport in piazza",
-      "descrizione": "Aree attrezzate per cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali. Alle 17:30 estrazione di premi tra chi prova almeno 8 discipline sportive.",
+      "descrizione": "In apposite aree attrezzate, allestite dalle Associazioni cittadine, sarà possibile giocare, divertirsi e cimentarsi gratuitamente in numerose discipline agonistiche e amatoriali tra cui scherma, arti marziali, danza, pattinaggio, pallavolo, atletica, basket, arrampicata e molte altre.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7319,7 +7319,7 @@
     {
       "id": "e8012e8e7ed3",
       "titolo": "Alba in bici",
-      "descrizione": "Pedalata collettiva aperta a tutte e tutti con partenza da piazza Medford, organizzata nel contesto di Sport in Piazza all'interno della Settimana europea della mobilità.",
+      "descrizione": "Pedalata collettiva aperta a tutte e tutti nel contesto di Sport in Piazza.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7338,7 +7338,7 @@
     {
       "id": "d55b89387ec6",
       "titolo": "In…Differenti…Mai",
-      "descrizione": "Iniziativa dedicata alla promozione dello sport inclusivo e alla valorizzazione delle capacità di ogni persona, con un pomeriggio di attività sportive rivolte a persone con disabilità intellettiva e motoria (basket, pallavolo, calcio, bocce, atletica, arti marziali, danza e giocoleria).",
+      "descrizione": "Iniziativa dedicata alla promozione dello sport inclusivo e alla valorizzazione delle capacità di ogni persona, con un pomeriggio di attività sportive rivolte a persone con disabilità intellettiva e motoria: basket, pallavolo, calcio, bocce, atletica, arti marziali, percorsi motori, gimkane, danza e giocoleria.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -7697,6 +7697,25 @@
       "quarantena": false
     },
     {
+      "id": "963b4d44365f",
+      "titolo": "Cena dell’Accoglienza",
+      "descrizione": "Nell'ambito del Festival dell'Accoglienza, laboratori di cucina dal mondo al mattino e alle 19:30 grande cena aperta alla cittadinanza in Piazza Umberto I per condividere quanto preparato, dove il cibo diventa occasione di incontro e scambio culturale.",
+      "comune": "Chieri",
+      "lat": 45.013884,
+      "lon": 7.822354,
+      "km": 58.9,
+      "minuti": 60.0,
+      "data_inizio": "2026-09-20",
+      "data_fine": "2026-09-20",
+      "tipologia": "gastronomia",
+      "url": "https://comune.chieri.to.it/it/events/cena-dellaccoglienza",
+      "url_approfondimento": "https://chieri-api.municipiumapp.it/s3/720x960/s3/2053/media/eventi-2026/banner-cena-accoglienza-2026.png",
+      "fonti": "comune-chieri",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
       "id": "e52535868a39",
       "titolo": "Polenta e salsiccia",
       "descrizione": "Polenta e salsiccia proposta dai polentàu sommarivesi e la Pro Loco.",
@@ -7755,8 +7774,8 @@
     },
     {
       "id": "fbbdccbf946c",
-      "titolo": "Workshop di orientamento “Le diverse tipologie di lavoro e le skills personali utili e spendibili”",
-      "descrizione": "Percorso di formazione gratuito di 5 incontri per giovani disoccupati tra i 18 e i 35 anni dedicato alle strategie di ricerca lavoro, stesura CV, colloquio ed educazione finanziaria.",
+      "titolo": "Workshop di orientamento: Le diverse tipologie di lavoro e le skills personali utili e spendibili",
+      "descrizione": "Percorso di formazione gratuito rivolto a giovani disoccupati di età compresa tra i 18 e i 35 anni. Il percorso prevede 5 incontri dedicati all’approfondimento delle principali strategie per affrontare la ricerca del lavoro e alla costruzione del proprio percorso professionale (21, 23, 28, 30 settembre e 2 ottobre).",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -7927,7 +7946,7 @@
     {
       "id": "afe9e9cb50f5",
       "titolo": "Festa dei Nocciolini 2026",
-      "descrizione": "Grande celebrazione del commercio e delle eccellenze del territorio, con musica, degustazioni, intrattenimento, incontri dedicati alla tradizione dolciaria e l'assegnazione dei riconoscimenti del Nocciolino d'Oro e del Nocciolino 'd Tola.",
+      "descrizione": "Celebrazione del commercio e delle eccellenze del territorio con musica, degustazioni, intrattenimento, incontri dedicati alla tradizione dolciaria e l'assegnazione dei riconoscimenti del Nocciolino d'Oro e del Nocciolino 'd Tola.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -8003,7 +8022,7 @@
     {
       "id": "8481294c2867",
       "titolo": "Il lavoro cambia strada",
-      "descrizione": "Incontro-dialogo tra Dario Salvetti (Collettivo di fabbrica ex GKN, autore di 'Questo lavoro non è vita') e Gianluca Pagella (presidente FIAB Alessandria e lavoratore in cargo bike) per parlare di lavoro, diritti e conversione ecologica.",
+      "descrizione": "Dario Salvetti, del Collettivo di fabbrica ex GKN e autore del libro Questo lavoro non è vita, dialoga con Gianluca Pagella, presidente di FIAB Alessandria e lavoratore in cargo bike, su lavoro, diritti e conversione ecologica.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8117,7 +8136,7 @@
     {
       "id": "e534e92d30c7",
       "titolo": "Odrigh il Drago cantastorie",
-      "descrizione": "Mercoledì 23 settembre 2026 alle ore 10:30 presso la Sala Geuna del Comune di Montaldo Torinese si terrà un evento di lettura per bambini.",
+      "descrizione": "Evento di lettura per bambini presso la Sala Geuna del Comune di Montaldo Torinese.",
       "comune": "Montaldo Torinese",
       "lat": 45.065487,
       "lon": 7.849601,
@@ -8136,7 +8155,7 @@
     {
       "id": "46ffa40b4e5d",
       "titolo": "Inaugurazione ufficiale della nuova pista di atletica",
-      "descrizione": "Inaugurazione ufficiale della nuova pista di atletica dello stadio comunale Augusto Manzo, rinnovata e riqualificata nell'ambito dell'intervento promosso dall'Amministrazione comunale.",
+      "descrizione": "Inaugurazione ufficiale della rinnovata e riqualificata pista di atletica dello stadio comunale Augusto Manzo, promossa dall'Amministrazione comunale.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -8269,7 +8288,7 @@
     {
       "id": "6a52f1ddc734",
       "titolo": "V Edizione Fiera del lavoro Val Di Susa",
-      "descrizione": "Quinta edizione della fiera del lavoro Val di Susa con accesso libero.",
+      "descrizione": "Quinta edizione della fiera del lavoro Val di Susa, ad accesso libero.",
       "comune": "Caselette",
       "lat": 45.104746,
       "lon": 7.480817,
@@ -8306,8 +8325,8 @@
     },
     {
       "id": "6de34691f953",
-      "titolo": "Teatro e musica: Il Pirata - Omaggio a Marco Pantani",
-      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto. Dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France, fino ai momenti più difficili e alla sua prematura scomparsa: un viaggio emozionante per rendere omaggio a un gigante dello sport.",
+      "titolo": "Il Pirata - Omaggio a Marco Pantani",
+      "descrizione": "Uno spettacolo unico che unisce la narrazione di Davide Chicarella agli stacchi musicali unplugged della voce di Alessia Sposato e della chitarra di Andrea Lamberto, per rendere omaggio a Marco Pantani dagli esordi alle storiche imprese al Giro d'Italia e al Tour de France.",
       "comune": "Castagnole delle Lanze",
       "lat": 44.75114,
       "lon": 8.150245,
@@ -8326,7 +8345,7 @@
     {
       "id": "4cdf7c4f56fe",
       "titolo": "Festa Nazionale PleinAir",
-      "descrizione": "Raduno camperisti con accoglienza, aperipranzo con degustazione di prodotti e vini locali, visite guidate del borgo antico e del MiCeM, presentazione libraria e trekking.",
+      "descrizione": "Raduno camperisti con accoglienza, aperipranzo con degustazione di prodotti e vini locali, visite guidate al borgo antico e al MiCeM, trekking archeologia industriale e visita in cantina.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -8344,8 +8363,8 @@
     },
     {
       "id": "23e8752fc9ef",
-      "titolo": "Incontri al quadrato: La Divisa Bianca con Silvestro Catacchio",
-      "descrizione": "Incontro con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, sul tema “La Divisa Bianca”. Evento nell'ambito del ciclo “Incontri al quadrato” del progetto CONNESSIONI.",
+      "titolo": "Incontri al quadrato: La Divisa Bianca",
+      "descrizione": "Nell'ambito del progetto CONNESSIONI, appuntamento del ciclo 'Incontri al quadrato' con Silvestro Catacchio, ex appartenente al Corpo della Guardia di Finanza e autore, che interverrà sul tema 'La Divisa Bianca'.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -8516,7 +8535,7 @@
     {
       "id": "3416e035be74",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Iniziativa all'interno del progetto CONNESSIONI per creare un ponte tra generazioni, mettendo in relazione nonni e bambini attraverso letture, racconti, attività laboratoriali e una merenda. Supervisione di una psicologa.",
+      "descrizione": "Iniziativa del progetto Connessioni che mette in relazione nonni e bambini (6-10 anni) attraverso letture, racconti, laboratori e merenda con la supervisione di una psicologa.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -8534,7 +8553,7 @@
     },
     {
       "id": "9463c3ffa6e0",
-      "titolo": "Novantico - Gran Mercato del Piccolo Antiquariato",
+      "titolo": "Novantico",
       "descrizione": "",
       "comune": "Novi Ligure",
       "lat": 44.76085,
@@ -8554,7 +8573,7 @@
     {
       "id": "60f249bd056d",
       "titolo": "La Notte della Cultura",
-      "descrizione": "Alla scoperta dei luoghi e degli edifici storici della città di Voghera con visite guidate, mostre ed esposizioni presso la Biblioteca Civica Ricottiana, il Civico Museo di Scienze Naturali, il Museo Storico Beccari, Casa Gallini, il Ridotto del Teatro V. Garavani e concerti nella Chiesa di San Giuseppe.",
+      "descrizione": "Alla scoperta dei luoghi e degli edifici storici della città di Voghera: visite guidate, mostre, aperture serali e concerti presso la Biblioteca Civica Ricottiana, il Civico Museo di Scienze Naturali, il Museo Storico Beccari, Casa Gallini, il Ridotto del teatro V. Garavani e la Chiesa di San Giuseppe.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -8592,7 +8611,7 @@
     {
       "id": "03ea734d4db7",
       "titolo": "Grande come.piccolo come.",
-      "descrizione": "Lettura animata per bambini da 3 a 6 anni a cura di Coopculture. Ingresso gratuito su prenotazione.",
+      "descrizione": "Lettura animata per bambini da 3 a 6 anni a cura di Coopculture. Ingresso gratuito con prenotazione gradita.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -8743,7 +8762,7 @@
     },
     {
       "id": "7a979d2828f4",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -8781,8 +8800,8 @@
     },
     {
       "id": "91ef7c2fcd6f",
-      "titolo": "ScopriCHIERI: Chieri by Night",
-      "descrizione": "Passeggiata tematica del ciclo ScopriCHIERI sostenuto dal Comune di Chieri.",
+      "titolo": "ScopriCHIERI - CHIERI BY NIGHT",
+      "descrizione": "Passeggiata tematica notturna del ciclo ScopriCHIERI.",
       "comune": "Chieri",
       "lat": 45.013884,
       "lon": 7.822354,
@@ -8953,7 +8972,7 @@
     {
       "id": "9294f522c6fe",
       "titolo": "ARTinCIRCO",
-      "descrizione": "Intrattenimenti di arte varia per stare bene in famiglia da 0 a 99 anni, a cura di Circowow nell'ambito della rassegna 'Vitamina C...come Cultura - A misura di famiglia'. Prenotazione obbligatoria via email. Il luogo esatto di ritrovo verrà comunicato all'iscrizione.",
+      "descrizione": "Intrattenimenti di arte varia per stare bene in famiglia da 0 a 99 anni nell'ambito della rassegna 'Vitamina C...come Cultura'. A cura di Circowow. Ingresso gratuito con prenotazione obbligatoria.",
       "comune": "Verolengo",
       "lat": 45.190053,
       "lon": 7.968226,
@@ -9428,7 +9447,7 @@
     {
       "id": "d5ef575fe765",
       "titolo": "Festival di Fotografia: Universi Paralleli - La bellezza degli altri mondi",
-      "descrizione": "7ª edizione del Festival di Fotografia con la mostra 'Universi Paralleli - La bellezza degli altri mondi'. Finissage ore 18:00.",
+      "descrizione": "7ª edizione del Festival di Fotografia. Mostra 'Universi Paralleli - La bellezza degli altri mondi' con finissage alle ore 18.",
       "comune": "Voghera",
       "lat": 44.99284,
       "lon": 9.008593,
@@ -9579,7 +9598,7 @@
     },
     {
       "id": "be8ebcf4806a",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -9884,7 +9903,7 @@
     {
       "id": "a46b9688feba",
       "titolo": "Obiettivo Tricolore",
-      "descrizione": "Staffetta paralimpica ideata da Alex Zanardi con atleti con disabilità in bici, handbike e carrozzina olimpica. Arrivo ad Alba lunedì 28 settembre in piazza Michele Ferrero, villaggio sportivo in piazza Medford nella mattinata del 29 settembre e ripartenza per Vigevano.",
+      "descrizione": "La staffetta paralimpica ideata da Alex Zanardi fa tappa ad Alba. Il programma prevede l'arrivo dei partecipanti in piazza Michele Ferrero e accoglienza a Palazzo comunale il 28 settembre; il 29 settembre incontro \"Uguali & diversi, sport e disabilità\" al Palazzo Mostre e Congressi \"G. Morra\", villaggio sportivo in piazza Medford e ripartenza verso Vigevano.",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -9922,7 +9941,7 @@
     {
       "id": "4fe8fce25b24",
       "titolo": "Welfare e comunità sostenibili",
-      "descrizione": "Primo incontro della proposta formativa su welfare, salute e ambiente, con Franca Maino dell'Università Statale di Milano e Direttrice scientifica 'Percorsi di Secondo Welfare'.",
+      "descrizione": "Primo incontro del ciclo formativo per amministratori locali con Franca Maino (Università Statale di Milano e Direttrice scientifica \"Percorsi di Secondo Welfare\").",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -10283,7 +10302,7 @@
     {
       "id": "20067ea71d7d",
       "titolo": "Cura le tue piante, baratto piante e baratto libri",
-      "descrizione": "Iniziativa degli Ecovolontari di Grugliasco.",
+      "descrizione": "Sabato 3 ottobre l'iniziativa degli Ecovolontari di Grugliasco",
       "comune": "Grugliasco",
       "lat": 45.068046,
       "lon": 7.57762,
@@ -10301,7 +10320,7 @@
     },
     {
       "id": "f17da9bce906",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10390,6 +10409,25 @@
       "url": "",
       "url_approfondimento": "",
       "fonti": "comune-cassine",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
+      "id": "344691bc8d2c",
+      "titolo": "Un mondo di fumetti. Live comics con il fumettista Bruno Testa",
+      "descrizione": "",
+      "comune": "Chivasso",
+      "lat": 45.190959,
+      "lon": 7.887186,
+      "km": 76.1,
+      "minuti": 83.0,
+      "data_inizio": "2026-10-03",
+      "data_fine": "2026-10-03",
+      "tipologia": "bambini",
+      "url": "",
+      "url_approfondimento": "",
+      "fonti": "comune-chivasso",
       "data_post": "",
       "ora_post": "",
       "quarantena": false
@@ -10530,7 +10568,7 @@
     {
       "id": "f2dc035eb1b5",
       "titolo": "Caccia ai Tesori Arancioni",
-      "descrizione": "Caccia al tesoro aperta ad adulti e bambini nei borghi Bandiera Arancione del Touring Club Italiano, in un percorso a sei tappe tra storia, tradizioni, curiosità e sapori tipici.",
+      "descrizione": "La più grande caccia al tesoro in contemporanea in tutta Italia nei borghi Bandiera Arancione del Touring Club Italiano. Un percorso a sei tappe per scoprire storia, tradizioni, curiosità e sapori tipici del territorio.",
       "comune": "Ozzano Monferrato",
       "lat": 45.108923,
       "lon": 8.37023,
@@ -10548,7 +10586,7 @@
     },
     {
       "id": "70606b0d115c",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -10986,7 +11024,7 @@
     {
       "id": "edb55f574be3",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Incontro intergenerazionale rivolto a nonni e bambini dai 6 ai 10 anni con letture di storie, attività laboratoriali e merenda insieme. Evento con la supervisione di una psicologa, a cura di Comune di Carmagnola e Auser.",
+      "descrizione": "Iniziativa per creare un ponte tra generazioni, mettendo in relazione nonni e bambini attraverso letture, racconti, attività laboratoriali e una merenda. Supervisione di una psicologa. Rivolto ai bambini dai 6 ai 10 anni, posti limitati con prenotazione obbligatoria.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -11023,7 +11061,7 @@
     },
     {
       "id": "7f4cc97627f0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11098,6 +11136,25 @@
       "quarantena": false
     },
     {
+      "id": "e2ffa83ff064",
+      "titolo": "Un mondo di fumetti. Live comics con il fumettista Bruno Testa",
+      "descrizione": "",
+      "comune": "Chivasso",
+      "lat": 45.190959,
+      "lon": 7.887186,
+      "km": 76.1,
+      "minuti": 83.0,
+      "data_inizio": "2026-10-10",
+      "data_fine": "2026-10-10",
+      "tipologia": "bambini",
+      "url": "",
+      "url_approfondimento": "",
+      "fonti": "comune-chivasso",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
       "id": "4fbab2fa424f",
       "titolo": "Relazioni che generano futuro",
       "descrizione": "Iniziativa rivolta a chi desidera approfondire il tema delle relazioni di coppia e della vita familiare. Dalle ore 10.00 alle 13.30 si terrà l'incontro-laboratorio \"Relazioni o connessioni? Affettività e amore nella società contemporanea\", condotto da Simone Bruno.",
@@ -11137,7 +11194,7 @@
     },
     {
       "id": "04b950a527d2",
-      "titolo": "Mercato del piccolo antiquariato",
+      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -11308,7 +11365,7 @@
     },
     {
       "id": "aae63be78cb0",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11442,7 +11499,7 @@
     {
       "id": "2d313d1927b7",
       "titolo": "Salute e comunità sostenibili",
-      "descrizione": "Secondo incontro della proposta formativa su welfare, salute e ambiente, con Gian Paolo Zanetta, Direttore Generale 'Ospedale Cottolengo'.",
+      "descrizione": "Secondo incontro del ciclo formativo per amministratori locali con Gian Paolo Zanetta (Direttore Generale \"Ospedale Cottolengo\").",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -11517,8 +11574,8 @@
     },
     {
       "id": "1df832aca264",
-      "titolo": "Conferenza-Concerto: Cavalleria rusticana",
-      "descrizione": "Conferenza-concerto legata all'allestimento dell'opera Cavalleria rusticana di Pietro Mascagni per la stagione d'Opera e Balletto del Teatro Regio.",
+      "titolo": "Cavalleria rusticana - Conferenza-Concerto",
+      "descrizione": "Conferenza-concerto legata all'allestimento di Cavalleria rusticana di Pietro Mascagni (abbinato a Pagliacci).",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -11669,7 +11726,7 @@
     },
     {
       "id": "b50bfda62053",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11783,8 +11840,8 @@
     },
     {
       "id": "3bba0d99a63d",
-      "titolo": "Apertura straordinaria dell'Edificio di Presa del Canale Cavour",
-      "descrizione": "In occasione dei 160 anni del Canale Cavour, apertura straordinaria con visite guidate a cura del CFP Torassese alla scoperta dell'Edificio di Presa. Orario mattutino dalle 10 alle 12 (ultima visita alle 11.30) e pomeridiano dalle 14 alle 18 (ultima visita alle 17.30).",
+      "titolo": "Apertura straordinaria dell'edificio di imbocco del Canale Cavour",
+      "descrizione": "In occasione dei 160 anni del Canale Cavour, apertura straordinaria con visite guidate dell'Edificio di Presa di Chivasso a cura del CFP Torassese. Orari: 10-12 e 14-18.",
       "comune": "Chivasso",
       "lat": 45.190959,
       "lon": 7.887186,
@@ -11859,7 +11916,7 @@
     },
     {
       "id": "eb5bdbefffae",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -11993,7 +12050,7 @@
     {
       "id": "98fabd214462",
       "titolo": "La misteriosa scomparsa di W",
-      "descrizione": "Spettacolo di Stefano Benni con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini.",
+      "descrizione": "Di Stefano Benni, con Ambra Angiolini. Composizioni sonore Dardust, light designer Marco Filibeck, scenografia Chiara Modolo, creazioni artistiche di Cracking Art, regia Ambra Angiolini. “W” tornerà ad essere una donna nuovamente intera, meravigliosamente non conforme, solida nelle crepe di fragilità.",
       "comune": "Casale Monferrato",
       "lat": 45.136266,
       "lon": 8.449813,
@@ -12068,8 +12125,8 @@
     },
     {
       "id": "60c3f8d795ec",
-      "titolo": "Conferenza-Concerto: La bohème",
-      "descrizione": "Conferenza-concerto dedicata a La bohème di Ruggero Leoncavallo, in programma al Piccolo Regio Puccini.",
+      "titolo": "Conferenza-Concerto: La bohème (Ruggero Leoncavallo)",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera La bohème di Ruggero Leoncavallo.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -12125,7 +12182,7 @@
     },
     {
       "id": "acbece1dbe37",
-      "titolo": "Novantico - Gran Mercato del Piccolo Antiquariato",
+      "titolo": "Novantico",
       "descrizione": "",
       "comune": "Novi Ligure",
       "lat": 44.76085,
@@ -12163,7 +12220,7 @@
     },
     {
       "id": "c2e3540bcaf5",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12296,7 +12353,7 @@
     },
     {
       "id": "84ad5d737596",
-      "titolo": "Esposizione del manoscritto originale della «Chorographica descriptio» di Giovanni Battista da Cassine",
+      "titolo": "Esposizione del manoscritto originale della Chorographica descriptio di Giovanni Battista da Cassine",
       "descrizione": "",
       "comune": "Cassine",
       "lat": 44.749948,
@@ -12373,7 +12430,7 @@
     {
       "id": "d0b1a446ece4",
       "titolo": "Ambiente e comunità sostenibili",
-      "descrizione": "Terzo incontro della proposta formativa su welfare, salute e ambiente, con Giuseppe Gamba, GDL Enti locali Kyoto Club.",
+      "descrizione": "Terzo incontro del ciclo formativo per amministratori locali con Giuseppe Gamba (GDL Enti locali Kyoto Club).",
       "comune": "Alba",
       "lat": 44.700724,
       "lon": 8.035779,
@@ -12638,7 +12695,7 @@
     },
     {
       "id": "81648600b652",
-      "titolo": "Iris - Conferenza-Concerto",
+      "titolo": "Conferenza-Concerto: Iris",
       "descrizione": "Conferenza-concerto di presentazione dell'opera Iris di Pietro Mascagni.",
       "comune": "Torino",
       "lat": 45.067755,
@@ -12790,7 +12847,7 @@
     },
     {
       "id": "05982a785968",
-      "titolo": "Mercato del piccolo antiquariato",
+      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -12829,7 +12886,7 @@
     {
       "id": "52ecfaffa55b",
       "titolo": "Fiera Nazionale del Tartufo e Fiera di San Martin",
-      "descrizione": "La Fiera Nazionale del Tartufo è dedicata alle eccellenze e l’enogastronomia del territorio; la Fiera di San Martin è caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
+      "descrizione": "La prima dedicata alle eccellenze e l’enogastronomia del territorio, la seconda caratterizzata da oltre 100 bancarelle con svariati generi merceologici.",
       "comune": "Canelli",
       "lat": 44.719278,
       "lon": 8.287138,
@@ -12943,7 +13000,7 @@
     {
       "id": "9616fd15e27d",
       "titolo": "Merende avventurose: adotta un nonno",
-      "descrizione": "Primo appuntamento dell'iniziativa nata per creare un ponte tra generazioni, mettendo in relazione nonni e bambini attraverso letture, laboratori e una merenda insieme. Rivolto ai bambini dai 6 ai 10 anni, con la supervisione di una psicologa.",
+      "descrizione": "Primo appuntamento dell'iniziativa nata per mettere in relazione nonni e bambini attraverso letture, racconti, attività laboratoriali e una merenda. Incontro per bambini dai 6 ai 10 anni con supervisione di una psicologa, nell'ambito del progetto CONNESSIONI.",
       "comune": "Carmagnola",
       "lat": 44.846947,
       "lon": 7.717874,
@@ -13246,8 +13303,8 @@
     },
     {
       "id": "be384f0d5416",
-      "titolo": "Novantico - Gran Mercato del Piccolo Antiquariato",
-      "descrizione": "",
+      "titolo": "Novantico",
+      "descrizione": "Gran Mercato del Piccolo Antiquariato con merce varia e di qualità: dagli arredi per la casa ai dischi musicali, libri, riviste, accessori e abbigliamento vintage, oggettistica e rarità. Parteciperanno anche hobbisti con prodotti a tema natalizio.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -13256,8 +13313,8 @@
       "data_inizio": "2026-11-28",
       "data_fine": "2026-11-28",
       "tipologia": "fiera",
-      "url": "",
-      "url_approfondimento": "",
+      "url": "https://comune.noviligure.al.it/it/events/vediamoci-in-novi-novantico-di-aprile-682382-2511064-2511649-2513238-2513240-2513241-2513242-2513243-2513244-2513246-2513247-2513248",
+      "url_approfondimento": "https://novi-ligure-api.cloud.municipiumapp.it/s3/720x960/s3/4679/media/novantico11.jpg",
       "fonti": "comune-novi-ligure",
       "data_post": "",
       "ora_post": "",
@@ -13551,7 +13608,7 @@
     {
       "id": "2effb532894c",
       "titolo": "Conferenza-concerto: The Tokyo Ballet",
-      "descrizione": "Conferenza-concerto di presentazione dello spettacolo del Tokyo Ballet con musiche di Debussy e Stravinskij e coreografie di Kanamori, Petipa e Béjart.",
+      "descrizione": "Incontro introduttivo e conferenza-concerto per lo spettacolo The Tokyo Ballet.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -13646,7 +13703,7 @@
     {
       "id": "b2c62a327329",
       "titolo": "Rappresentazione testi del Concorso Mezz'ora da ridere",
-      "descrizione": "Rappresentazione ad opera del Laboratorio Teatrale di Cambiano dei tre testi vincitori: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
+      "descrizione": "Rappresentazione dei tre testi vincitori del concorso Mezz'ora da Ridere: 'Non ce lo dicono' di Flavio Vasile, 'Niurant' di Massimo Brusasco e 'Comodissimo e facilissimo' di Sabrina Piazzon.",
       "comune": "Cambiano",
       "lat": 44.971416,
       "lon": 7.778698,
@@ -13683,7 +13740,7 @@
     },
     {
       "id": "7681759f2e1b",
-      "titolo": "Mercato del piccolo antiquariato",
+      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -13950,7 +14007,7 @@
     {
       "id": "55e3464df64e",
       "titolo": "Novantico",
-      "descrizione": "Gran Mercato del Piccolo Antiquariato con arredi per la casa, dischi musicali, libri, riviste, vintage, oggettistica e rarità. All'appuntamento partecipano anche hobbisti con prodotti a tema natalizio.",
+      "descrizione": "Gran Mercato del Piccolo Antiquariato con arredi per la casa, dischi musicali, libri, riviste, vintage, oggettistica e rarità. A questo appuntamento parteciperanno anche gli hobbisti con prodotti homemade a tema natalizio.",
       "comune": "Novi Ligure",
       "lat": 44.76085,
       "lon": 8.789551,
@@ -14139,7 +14196,7 @@
     },
     {
       "id": "fbd77d19ba29",
-      "titolo": "Mercato del piccolo antiquariato",
+      "titolo": "Mercato del piccolo antiquariato, anticaglie, robivecchi",
       "descrizione": "",
       "comune": "Carmagnola",
       "lat": 44.846947,
@@ -14177,8 +14234,8 @@
     },
     {
       "id": "d1e2e3ee19e1",
-      "titolo": "Edgar - Conferenza-Concerto",
-      "descrizione": "Incontro di presentazione e concerto per l'opera Edgar di Giacomo Puccini.",
+      "titolo": "Conferenza-Concerto: Edgar",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera Edgar di Giacomo Puccini.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -14196,8 +14253,8 @@
     },
     {
       "id": "0945056bb5c8",
-      "titolo": "Conferenza-Concerto: La traviata",
-      "descrizione": "Conferenza-concerto di presentazione per l'opera La traviata di Giuseppe Verdi con la regia di Jacopo Spirei.",
+      "titolo": "La traviata - Conferenza-Concerto",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera La traviata di Giuseppe Verdi con la regia di Jacopo Spirei.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
@@ -14207,7 +14264,7 @@
       "data_fine": "2027-02-24",
       "tipologia": "concerto",
       "url": "https://www.teatroregio.torino.it/opera-e-balletto-2026-2027/la-traviata",
-      "url_approfondimento": "https://www.teatroregio.torino.it/opera-e-balletto-2026-2027/la-traviata",
+      "url_approfondimento": "",
       "fonti": "teatro-torino-teatro-regio-di-torino",
       "data_post": "",
       "ora_post": "",
@@ -14216,7 +14273,7 @@
     {
       "id": "5a989e6a307c",
       "titolo": "Conferenza-Concerto: Carmen",
-      "descrizione": "Conferenza-concerto di presentazione dell'opera Carmen di Georges Bizet al Piccolo Regio Puccini.",
+      "descrizione": "Conferenza-concerto di presentazione dell'opera Carmen di Georges Bizet.",
       "comune": "Torino",
       "lat": 45.067755,
       "lon": 7.682489,
