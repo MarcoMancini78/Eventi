@@ -4,7 +4,7 @@
 > passi. Niente cronaca di debug qui — quella vive in [CRONACA.md](CRONACA.md).
 > Vedi [CLAUDE.md](eventi/CLAUDE.md) per la regola su come mantenerlo aggiornato.
 
-Ultimo aggiornamento: 2026-09-11
+Ultimo aggiornamento: 2026-09-14
 
 ---
 
@@ -18,7 +18,11 @@ Ultimo aggiornamento: 2026-09-11
 - **Estrazione LLM**: Gemini in produzione, provider intercambiabile
   (`LLM_PROVIDER`). Gestisce ricorrenze (RRULE), confidenza con instradamento
   automatico in quarantena, tetto eventi/artefatto configurabile
-  (`Config.max_eventi_per_artefatto`, non più un numero fisso).
+  (`Config.max_eventi_per_artefatto`, non più un numero fisso). Priorità
+  della quota per fascia già implementata
+  (`extractor.client.decidi_degradazione_quota`: sopra 85% solo fascia A,
+  sopra 70% niente estrazioni da immagine per le altre fasce) — corretto
+  qui il 2026-09-14, prima segnata per errore come mancante.
 - **Follow social**: operativo su Facebook e Instagram (identità verificata
   prima di ogni sessione, circuito di sicurezza su blocco/captcha). Tetti
   alzati su richiesta esplicita a `follow_per_lotto=20`,
@@ -30,7 +34,18 @@ Ultimo aggiornamento: 2026-09-11
   famiglia CMS (`pa_design_system` 63.7%, `wordpress` 13.5%, `drupal` 0.9%,
   sconosciuta 20.4%). Adattatori dedicati `jsonld` e `pa_design_system` in
   produzione, con comandi di promozione automatica (`promuovi-jsonld`,
-  `promuovi-pa-design-system`).
+  `promuovi-pa-design-system`). L'adattatore `pa_design_system` copre ora
+  anche la variante di markup trovata sulla maggioranza dei comuni
+  classificati `wordpress` (stessa famiglia di template Bootstrap Italia,
+  card-calendar con data testuale invece di `.category-top .data` numerica)
+  — nessun adattatore WordPress separato serviva: il vero endpoint REST
+  eventi non è esposto (0/15 in un campione), ma il markup sì. Corretto in
+  questo passaggio (2026-09-14) anche un bug nel prober che scambiava il
+  feed RSS generico di WordPress (`/feed/`, presente su ogni pagina del
+  sito) per l'endpoint eventi, sovrascrivendo la pagina corretta già
+  trovata. Risultato: 68 fonti promosse da T1_html (con LLM) a
+  T0_pa_design_system (senza LLM), totale passato da ~324 a 392 — verificato
+  end-to-end su comuni reali con zero chiamate LLM per evento pubblicato.
 - **Canali email/Telegram**: adattatori scritti e integrati nella pipeline
   (`T0_email`, `T0_telegram`), mai collaudati con credenziali reali (IMAP e
   bot token ancora da configurare in `.env`).
@@ -74,20 +89,42 @@ Ultimo aggiornamento: 2026-09-11
 - Instagram: feed sociale mai collaudato dal vivo (solo Facebook).
 - `social_polling.py` per le fonti `polling_diretto` come rete di sicurezza
   sul feed — non ancora scritto.
-- Priorità della quota LLM per fascia (soglie 70/85/100%) — non implementata.
-- Adattatori dedicati per le famiglie CMS `wordpress` (13.5% dei comuni) —
-  solo `pa_design_system` e `jsonld` esistono oggi.
+- Residuo dei comuni `wordpress` senza la variante card-wrapper riconosciuta
+  (17/85 verificati non promossi): probabilmente pagine eventi con struttura
+  ancora diversa, non ispezionate singolarmente — restano su T1_html/LLM.
 - Newsletter come fonte automatica (discovery/fingerprinting dei moduli di
   iscrizione) — non iniziato.
 - Retry mirato sulle sole fonti fallite — oggi si rilancia l'intero giro
   (il dedup evita duplicati, ma rifà lavoro).
+- **Finestra di attenzione stagionale** (04.7, 12.9): i dati per calcolarla
+  esistono già in `Archivio`, ma `scheduling.py` non li aggrega —
+  `bonus_stagionale` resta sempre a 0. Impatto pratico oggi basso: la
+  formula di priorità decide solo l'*ordine* di elaborazione quando il
+  tempo è scarso, ma ogni run analizza già tutte le 722 fonti (sia web sia
+  social) senza mai esaurire il budget — quindi nessuna fonte viene saltata
+  per mancanza di questo bonus. Resta un gap concettuale rispetto al design
+  originale, ma non un buco di copertura reale nella situazione attuale.
+- Email/Telegram: adapter pronti (`T0_email`, `T0_telegram`) ma
+  `IMAP_HOST`/`IMAP_PASSWORD`/`TELEGRAM_BOT_TOKEN` restano vuoti in `.env` —
+  zero copertura pratica finché non vengono configurati e collaudati.
+- Altri aggregatori regionali (VisitPiemonte, Sagr.it, GuidaTorino) mai
+  verificati per un possibile T0 diretto — solo VisitLMR controllato finora.
+- Dizionario dei luoghi (07.4, "cresce da solo dalle conferme in quarantena")
+  — nessuna tabella `luoghi` nello schema, il meccanismo non risulta
+  implementato nonostante descritto come esistente in 03/07.
 
 ## Prossimi passi (in ordine)
 
-1. Collaudare `feed-social --platform=instagram` dal vivo.
-2. Scrivere un adattatore dedicato per il template WordPress (13.5% dei comuni).
+1. Ispezionare i 17 comuni `wordpress` rimasti su T1_html dopo la
+   promozione del 2026-09-14, per capire se serve una terza variante di
+   markup o restano casi isolati.
+2. Collaudare `feed-social --platform=instagram` dal vivo.
 3. Configurare IMAP/Telegram reali e collaudare i due canali email/newsletter.
 4. Costruire il retry mirato sulle fonti fallite (comando dedicato).
+5. Aggregare la finestra di attenzione stagionale da `Archivio` in
+   `scheduling.py` — dati già disponibili, solo da collegare, ma priorità
+   bassa: nessun impatto sulla copertura reale finché il giro copre sempre
+   tutte le fonti.
 
 ## Link utili
 

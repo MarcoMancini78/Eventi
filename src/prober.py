@@ -116,6 +116,21 @@ def _url_assoluto(href: str, url_base: str) -> str:
     return urljoin(url_base, href)
 
 
+def _e_feed_generico_del_sito(url_feed: str) -> bool:
+    """2026-09-14, bug reale trovato su comuni WordPress (es. Dogliani):
+    WordPress inserisce <link rel="alternate" type="application/rss+xml">
+    verso il feed generico del BLOG ('/feed/') in OGNI pagina del sito, non
+    solo sul blog — anche sulla vera pagina eventi già trovata dal link
+    testuale in homepage. Il prober lo scambiava per un endpoint
+    strutturato migliore, sovrascrivendo la pagina eventi corretta con un
+    feed che non contiene eventi. Un feed è "generico del sito" solo se il
+    suo path è esattamente '/feed' o '/feed/' (il default di WordPress):
+    un feed annidato sotto una sezione tematica ('/eventi/feed') resta
+    valido e specifico."""
+    path = re.sub(r"^https?://[^/]+", "", url_feed)
+    return path.rstrip("/") == "/feed"
+
+
 def _cerca_endpoint_strutturato(html: str, url_base: str) -> tuple[str | None, str | None]:
     """Cerca, in ordine di affidabilità (04.2): calendar link, RSS/Atom,
     JSON-LD con @type Event. Ritorna (url_endpoint, tipo) o (None, None)."""
@@ -125,7 +140,9 @@ def _cerca_endpoint_strutturato(html: str, url_base: str) -> tuple[str | None, s
 
     m = _PATTERN_LINK_RSS.search(html)
     if m:
-        return _url_assoluto(m.group(1), url_base), "rss"
+        url_feed = _url_assoluto(m.group(1), url_base)
+        if not _e_feed_generico_del_sito(url_feed):
+            return url_feed, "rss"
 
     for blocco in _PATTERN_JSONLD_EVENT.findall(html):
         if '"@type"' in blocco and re.search(r'"@type"\s*:\s*"Event"', blocco, re.IGNORECASE):

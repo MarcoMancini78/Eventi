@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from src.adapters.pa_design_system import _estrai_date, parse_pa_design_system
+from src.adapters.pa_design_system import _estrai_date, _estrai_date_testuale, parse_pa_design_system
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
@@ -71,5 +71,49 @@ def test_estrai_date_intervallo():
 
 def test_estrai_date_testo_senza_data():
     inizio, fine = _estrai_date("nessuna data qui")
+    assert inizio is None
+    assert fine is None
+
+
+def test_parse_riconosce_variante_wordpress_con_card_calendar():
+    """2026-09-14: la maggior parte dei comuni classificati 'wordpress' dal
+    fingerprinting non espone un endpoint REST eventi (verificato: 0/15 in
+    un campione), ma 56/91 usano di fatto la stessa famiglia di template
+    Bootstrap Italia con markup leggermente diverso (.card-calendar
+    .card-day invece di .category-top .data, titolo in
+    .cmp-list-card-img__body-title invece di .card-title) — trovato
+    ispezionando dal vivo Dogliani, confermato su Albisola Superiore e
+    Bergeggi. Un solo parser gestisce entrambe le varianti."""
+    html = (FIXTURES / "esempio_pa_design_system_wordpress.html").read_text(encoding="utf-8")
+    artefatti = parse_pa_design_system(html, source_id="comune-prova", fetch_url="https://comune-prova.it/vivere-il-comune/")
+
+    assert len(artefatti) == 1
+    art = artefatti[0]
+    assert art.titolo == "Manifestazioni Estate 2026"
+    assert art.data_inizio == "2026-06-11"
+    assert art.data_fine == "2026-11-01"
+    assert art.url == "https://comune-prova.it/eventi/manifestazioni-estate-2026/"
+    assert "musica e sagre" in art.descrizione
+
+
+def test_estrai_date_testuale_giorno_singolo():
+    inizio, fine = _estrai_date_testuale("20 Maggio 2000")
+    assert inizio == "2000-05-20"
+    assert fine == "2000-05-20"
+
+
+def test_estrai_date_testuale_intervallo():
+    inizio, fine = _estrai_date_testuale("11 Giugno 2026 - 1 Novembre 2026")
+    assert inizio == "2026-06-11"
+    assert fine == "2026-11-01"
+
+
+def test_estrai_date_testuale_case_insensitive():
+    inizio, fine = _estrai_date_testuale("5 MARZO 2027")
+    assert inizio == "2027-03-05"
+
+
+def test_estrai_date_testuale_senza_data():
+    inizio, fine = _estrai_date_testuale("nessuna data qui")
     assert inizio is None
     assert fine is None

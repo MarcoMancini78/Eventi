@@ -722,14 +722,26 @@ def cmd_promuovi_pa_design_system(args: argparse.Namespace) -> None:
     markup `.card-wrapper` del template legacy AGID — verificato con una
     richiesta reale, non un pattern URL preso per buono. Distinto da
     promuovi-jsonld: qui non c'è JSON-LD, il selettore è CSS/XPath dedicato
-    (adapters/pa_design_system.py)."""
+    (adapters/pa_design_system.py).
+
+    2026-09-14: il filtro include anche '/eventi' minuscolo e
+    '/vivere-il-comune%' — il prober, dopo il fix sul feed RSS generico di
+    WordPress, porta ~56 comuni classificati 'wordpress' proprio su questi
+    path (stesso template Bootstrap Italia dei comuni 'pa_design_system'
+    puri, solo markup card-calendar invece di Dettaglionews — vedi
+    adapters/pa_design_system.py). Non un pattern URL nuovo indovinato: il
+    criterio di promozione resta comunque il markup verificato con una
+    richiesta reale, il filtro SQL serve solo a restringere quali fonti
+    provare."""
     from src.fingerprint import verifica_pa_design_system_batch
 
     conn = store.connect(DB_PATH)
     store.migrate(conn)
 
     fonti = conn.execute(
-        "SELECT source_id, endpoint FROM sources WHERE tier = 'T1_html' AND endpoint LIKE '%/Eventi'"
+        "SELECT source_id, endpoint FROM sources WHERE tier = 'T1_html' AND "
+        "(endpoint LIKE '%/Eventi' OR endpoint LIKE '%/eventi' OR endpoint LIKE '%/eventi/' "
+        "OR endpoint LIKE '%/vivere-il-comune' OR endpoint LIKE '%/vivere-il-comune/')"
     ).fetchall()
     fonti = [dict(r) for r in fonti]
     if args.limite:

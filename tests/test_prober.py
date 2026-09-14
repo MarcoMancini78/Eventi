@@ -104,6 +104,29 @@ def test_cerca_endpoint_nessuno_trovato():
     assert tipo is None
 
 
+def test_cerca_endpoint_scarta_feed_generico_del_sito():
+    """2026-09-14, bug reale (comune.dogliani.cn.it e altri 55 comuni con
+    lo stesso template WordPress): il tag <link rel="alternate"> verso il
+    feed generico del blog ('/feed/') compare su OGNI pagina WordPress, non
+    solo sul blog — anche sulla vera pagina eventi. Prendere qualsiasi RSS
+    trovato sovrascriveva la pagina eventi corretta (già trovata dal link
+    testuale in homepage) con un feed che non contiene eventi."""
+    html = '<link rel="alternate" type="application/rss+xml" href="/feed/">'
+    endpoint, tipo = _cerca_endpoint_strutturato(html, "https://comune-prova.it/vivere-il-comune/")
+    assert endpoint is None
+    assert tipo is None
+
+
+def test_cerca_endpoint_accetta_feed_specifico_non_generico():
+    """Un RSS annidato sotto una sezione tematica (non il default '/feed/'
+    di WordPress) resta un endpoint valido — solo il feed generico va
+    scartato, non ogni RSS."""
+    html = '<link rel="alternate" type="application/rss+xml" href="/eventi/feed/">'
+    endpoint, tipo = _cerca_endpoint_strutturato(html, "https://comune-prova.it/eventi")
+    assert endpoint == "https://comune-prova.it/eventi/feed/"
+    assert tipo == "rss"
+
+
 class _RispostaFinta:
     def __init__(self, status_code, testo, url=None):
         self.status_code = status_code
