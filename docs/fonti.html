@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eventi Langhe — Perimetro</title>
+<title>Eventi Langhe — Fonti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -241,10 +241,9 @@
     transition: color .12s ease;
   }
   thead th:hover { color: var(--accent); }
-  thead th.col-numero { cursor: default; text-align: right; }
-  thead th.col-numero:hover { color: var(--text-2); }
-  thead th.col-link { cursor: default; }
-  thead th.col-link:hover { color: var(--text-2); }
+  thead th.col-numero { text-align: right; }
+  thead th.col-url { cursor: default; }
+  thead th.col-url:hover { color: var(--text-2); }
   thead th:first-child { border-top-left-radius: var(--radius); }
   thead th:last-child { border-top-right-radius: var(--radius); }
   tbody tr:last-child td:first-child { border-bottom-left-radius: var(--radius); }
@@ -266,8 +265,6 @@
   tbody tr { transition: background .1s ease; }
   tbody tr:hover { background: var(--accent-soft); }
 
-  .col-comune { min-width: 160px; font-weight: 600; }
-  .col-numero { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent-dark); white-space: nowrap; }
   .col-numero-progressivo {
     text-align: right;
     color: var(--text-3);
@@ -276,74 +273,38 @@
     width: 1%;
     white-space: nowrap;
   }
-  .col-link { min-width: 90px; }
-  .col-altro { min-width: 180px; }
-
-  .link-icona {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: var(--accent-soft);
+  .col-tipo { min-width: 140px; }
+  .col-comune { min-width: 140px; font-weight: 600; }
+  .col-numero {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
     color: var(--accent-dark);
-    text-decoration: none;
-    font-size: 14px;
-    transition: background .12s ease, transform .12s ease;
+    white-space: nowrap;
   }
-  .link-icona:hover { background: var(--accent-bright); color: #fff; transform: translateY(-1px); }
-  .link-assente { color: var(--text-3); font-size: 12px; }
+  .col-url { max-width: 420px; }
 
-  .cella-link {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    margin: 2px 8px 2px 0;
-    vertical-align: top;
-  }
-  .riga-icona-conteggio {
+  .chip-tipo {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-  }
-  .contatore-eventi {
     font-size: 11px;
     font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    color: var(--text-2);
-    white-space: nowrap;
-  }
-  .ultimo-aggiornamento {
-    font-size: 10px;
-    font-weight: 500;
-    color: var(--text-3);
-    white-space: nowrap;
-  }
-  .ultimo-aggiornamento.non-seguita {
-    color: #a24a3d;
-    font-style: italic;
-  }
-  .ultimo-aggiornamento.assente {
-    font-style: italic;
-  }
-
-  .chip-altro {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
     color: var(--accent-dark);
     background: var(--accent-soft);
     border-radius: 999px;
     padding: 3px 10px;
-    text-decoration: none;
-    margin: 2px 4px 2px 0;
     white-space: nowrap;
   }
-  .chip-altro:hover { background: var(--accent-bright); color: #fff; }
+
+  .comune-assente { color: var(--text-3); font-style: italic; }
+
+  .link-url {
+    color: var(--accent-dark);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .link-url:hover { text-decoration: underline; }
 
   .nessun-risultato {
     padding: 56px 20px;
@@ -356,7 +317,7 @@
   /* --- Card (mobile) --- */
   .elenco-card { display: none; }
 
-  .scheda-comune {
+  .scheda-fonte {
     background: var(--surface);
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
@@ -364,21 +325,21 @@
     padding: 16px 18px;
     margin-bottom: 12px;
   }
-  .scheda-comune .riga-alto {
+  .scheda-fonte .riga-alto {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 8px;
   }
-  .scheda-comune .titolo-comune {
+  .scheda-fonte .titolo-fonte {
     font-weight: 700;
     font-size: 15px;
     line-height: 1.35;
     letter-spacing: -.01em;
     flex: 1;
   }
-  .scheda-comune .km-comune {
+  .scheda-fonte .contatore-comune {
     font-size: 12px;
     font-weight: 800;
     color: #fff;
@@ -387,7 +348,7 @@
     border-radius: 999px;
     white-space: nowrap;
   }
-  .scheda-comune .riga-meta {
+  .scheda-fonte .riga-meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -395,25 +356,11 @@
     font-size: 12.5px;
     font-weight: 500;
     color: var(--text-2);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  .scheda-comune .riga-meta .puntino { color: var(--text-3); }
-  .scheda-comune .gruppo-link {
-    margin-top: 10px;
-  }
-  .scheda-comune .gruppo-link .etichetta {
-    font-size: 10.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    color: var(--text-3);
-    margin-bottom: 5px;
-  }
-  .scheda-comune .riga-icone {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 8px;
-    flex-wrap: wrap;
+  .scheda-fonte .riga-meta .puntino { color: var(--text-3); }
+  .scheda-fonte .riga-url {
+    font-size: 12.5px;
   }
 
   @media (max-width: 760px) {
@@ -441,19 +388,19 @@
   <div class="header-destra">
     <a href="index.html" class="link-nav">← Mappa</a>
     <a href="elenco.html" class="link-nav">Elenco eventi</a>
-    <a href="fonti.html" class="link-nav">Fonti</a>
+    <a href="perimetro.html" class="link-nav">Perimetro</a>
   </div>
 </header>
 
 <div class="barra-filtri">
   <div class="campo-filtro">
-    <label for="filtro-testo">Cerca comune</label>
-    <input type="text" id="filtro-testo" placeholder="Nome comune...">
+    <label for="filtro-testo">Cerca comune o URL</label>
+    <input type="text" id="filtro-testo" placeholder="Nome comune o indirizzo...">
   </div>
   <div class="campo-filtro">
-    <label for="filtro-provincia">Provincia</label>
-    <select id="filtro-provincia">
-      <option value="">Tutte</option>
+    <label for="filtro-tipo">Tipo di fonte</label>
+    <select id="filtro-tipo">
+      <option value="">Tutti</option>
     </select>
   </div>
   <button type="button" id="btn-reset">Azzera filtri</button>
@@ -462,19 +409,15 @@
 
 <main>
   <div class="tabella-scroll">
-    <table id="tabella-perimetro">
+    <table id="tabella-fonti">
       <thead>
         <tr>
-          <th class="col-numero-progressivo">#</th>
-          <th data-colonna="comune">Comune<span class="icona-ordinamento"></span></th>
-          <th data-colonna="provincia">Prov.<span class="icona-ordinamento"></span></th>
-          <th data-colonna="km" class="col-numero">Km<span class="icona-ordinamento"></span></th>
-          <th data-colonna="minuti" class="col-numero">Min.<span class="icona-ordinamento"></span></th>
-          <th class="col-link">Sito comune</th>
-          <th class="col-link">Social comune</th>
-          <th class="col-link">Sito Pro Loco</th>
-          <th class="col-link">Social Pro Loco</th>
-          <th class="col-altro">Altro</th>
+          <th class="col-numero-progressivo" data-colonna="numero">#<span class="icona-ordinamento"></span></th>
+          <th data-colonna="tipo" class="col-tipo">Tipo<span class="icona-ordinamento"></span></th>
+          <th data-colonna="comune" class="col-comune">Comune<span class="icona-ordinamento"></span></th>
+          <th data-colonna="attivi" class="col-numero">Attivi<span class="icona-ordinamento"></span></th>
+          <th data-colonna="totale" class="col-numero">Totale<span class="icona-ordinamento"></span></th>
+          <th class="col-url">URL</th>
         </tr>
       </thead>
       <tbody id="corpo-tabella"></tbody>
@@ -485,10 +428,10 @@
 </main>
 
 <script>
-const URL_DATI_REMOTI = "perimetro.json";
+const URL_DATI_REMOTI = "fonti.json";
 
-let comuniTotali = [];
-let colonnaOrdinamento = "km";
+let fontiTotali = [];
+let colonnaOrdinamento = "numero";
 let direzioneOrdinamento = 1;
 
 const NOMI_MESI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno",
@@ -525,12 +468,12 @@ function impostaStato(testo, errore) {
   el.style.color = errore ? "#a24a3d" : "";
 }
 
-async function caricaPerimetro() {
+async function caricaFonti() {
   try {
     const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
     if (!risposta.ok) throw new Error("HTTP " + risposta.status);
     const dati = await risposta.json();
-    comuniTotali = Array.isArray(dati.comuni) ? dati.comuni : [];
+    fontiTotali = Array.isArray(dati.fonti) ? dati.fonti : [];
     popolaFiltri();
     applicaFiltri();
     mostraDataAggiornamento(document.getElementById("aggiornato"), dati.generato_il);
@@ -540,30 +483,34 @@ async function caricaPerimetro() {
 }
 
 function popolaFiltri() {
-  const province = [...new Set(comuniTotali.map((c) => c.provincia).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
-  const selProvincia = document.getElementById("filtro-provincia");
-  for (const provincia of province) {
+  const tipi = [...new Set(fontiTotali.map((f) => f.tipo).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+  const selTipo = document.getElementById("filtro-tipo");
+  for (const tipo of tipi) {
     const opt = document.createElement("option");
-    opt.value = provincia;
-    opt.textContent = provincia;
-    selProvincia.appendChild(opt);
+    opt.value = tipo;
+    opt.textContent = tipo;
+    selTipo.appendChild(opt);
   }
 }
 
-function comuniFiltrati() {
+function fontiFiltrate() {
   const testo = document.getElementById("filtro-testo").value.trim().toLowerCase();
-  const provincia = document.getElementById("filtro-provincia").value;
+  const tipo = document.getElementById("filtro-tipo").value;
 
-  return comuniTotali.filter((c) => {
-    if (testo && !c.comune.toLowerCase().includes(testo)) return false;
-    if (provincia && c.provincia !== provincia) return false;
+  return fontiTotali.filter((f) => {
+    if (tipo && f.tipo !== tipo) return false;
+    if (testo) {
+      const inComune = (f.comune || "").toLowerCase().includes(testo);
+      const inUrl = (f.url || "").toLowerCase().includes(testo);
+      if (!inComune && !inUrl) return false;
+    }
     return true;
   });
 }
 
-function ordina(comuni) {
+function ordina(fonti) {
   const col = colonnaOrdinamento;
-  return [...comuni].sort((a, b) => {
+  return [...fonti].sort((a, b) => {
     const va = a[col] ?? "";
     const vb = b[col] ?? "";
     if (va < vb) return -1 * direzioneOrdinamento;
@@ -585,69 +532,10 @@ function aggiornaIndicatoriOrdinamento() {
 
 function applicaFiltri() {
   aggiornaIndicatoriOrdinamento();
-  const filtrati = ordina(comuniFiltrati());
+  const filtrati = ordina(fontiFiltrate());
   disegnaTabella(filtrati);
   disegnaCard(filtrati);
   aggiornaConteggio(filtrati.length);
-}
-
-const SVG_SITO = `<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.93 6h-3.1a15.6 15.6 0 0 0-1.38-4.3A8.03 8.03 0 0 1 18.93 8zM12 4.06c.8 1.1 1.5 2.5 1.95 3.94h-3.9c.45-1.44 1.15-2.84 1.95-3.94zM4.26 14a7.9 7.9 0 0 1 0-4h3.55a16.7 16.7 0 0 0 0 4H4.26zm.81 2h3.1c.32 1.55.79 3 1.38 4.3A8.03 8.03 0 0 1 5.07 16zm3.1-8H5.07a8.03 8.03 0 0 1 4.48-4.3A15.6 15.6 0 0 0 8.17 8zM12 19.94c-.8-1.1-1.5-2.5-1.95-3.94h3.9c-.45 1.44-1.15 2.84-1.95 3.94zM14.42 14H9.58a14.7 14.7 0 0 1 0-4h4.84a14.7 14.7 0 0 1 0 4zm.16 6.3c.59-1.3 1.06-2.75 1.38-4.3h3.1a8.03 8.03 0 0 1-4.48 4.3zM16.19 14a16.7 16.7 0 0 0 0-4h3.55a7.9 7.9 0 0 1 0 4h-3.55z"/></svg>`;
-
-const SVG_FACEBOOK = `<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>`;
-
-const SVG_INSTAGRAM = `<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77A4.9 4.9 0 0 1 5.45.53c.64-.25 1.37-.42 2.43-.47C8.94.01 9.28 0 12 0zm0 2.16c-2.67 0-2.99.01-4.04.06-.97.04-1.5.2-1.85.34-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.35-.3.88-.34 1.85-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.97.2 1.5.34 1.85.18.47.4.8.75 1.15.35.35.68.57 1.15.75.35.14.88.3 1.85.34 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.97-.04 1.5-.2 1.85-.34.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.35.3-.88.34-1.85.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.97-.2-1.5-.34-1.85a3.1 3.1 0 0 0-.75-1.15 3.1 3.1 0 0 0-1.15-.75c-.35-.14-.88-.3-1.85-.34-1.05-.05-1.37-.06-4.04-.06zm0 3.68a6.16 6.16 0 1 1 0 12.32 6.16 6.16 0 0 1 0-12.32zm0 10.16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7.85-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>`;
-
-function contatoreEventi(attivi, totale) {
-  return `<span class="contatore-eventi" title="${attivi} attivi/futuri su ${totale} trovati in totale">${attivi}/${totale}</span>`;
-}
-
-function formattaDataOraBreve(isoDataOra) {
-  if (!isoDataOra) return "";
-  const [parteData, parteOra] = isoDataOra.split("T");
-  if (!parteData) return isoDataOra;
-  const [anno, mese, giorno] = parteData.split("-");
-  const testoData = `${giorno}/${mese}/${anno}`;
-  if (!parteOra) return testoData;
-  const [ore, minuti] = parteOra.split(":");
-  return `${testoData} ${ore}:${minuti}`;
-}
-
-function etichettaUltimoAggiornamento(valore) {
-  if (valore === "non_seguita") {
-    return `<span class="ultimo-aggiornamento non-seguita" title="Questo account non è seguito dal profilo dedicato: il feed non lo vede, indipendentemente da quando gira">non seguita</span>`;
-  }
-  if (!valore) {
-    return `<span class="ultimo-aggiornamento assente">mai verificata</span>`;
-  }
-  return `<span class="ultimo-aggiornamento" title="Ultima verifica: ${escapeHtml(formattaDataOraItaliana(valore))}">${formattaDataOraBreve(valore)}</span>`;
-}
-
-function linkIcona(voce, etichetta, svg) {
-  if (!voce || !voce.url) return `<span class="link-assente">—</span>`;
-  return `<span class="cella-link">
-    <span class="riga-icona-conteggio">${contatoreEventi(voce.attivi, voce.totale)}<a class="link-icona" href="${escapeHtml(voce.url)}" target="_blank" rel="noopener" title="${escapeHtml(etichetta)}">${svg}</a></span>
-    ${etichettaUltimoAggiornamento(voce.ultimo_aggiornamento)}
-  </span>`;
-}
-
-function socialIcone(voceFacebook, voceInstagram) {
-  const parti = [];
-  if (voceFacebook && voceFacebook.url) parti.push(linkIcona(voceFacebook, "Facebook", SVG_FACEBOOK));
-  if (voceInstagram && voceInstagram.url) parti.push(linkIcona(voceInstagram, "Instagram", SVG_INSTAGRAM));
-  return parti.length ? parti.join("") : `<span class="link-assente">—</span>`;
-}
-
-function altroChips(altro) {
-  if (!altro || altro.length === 0) return `<span class="link-assente">—</span>`;
-  return altro
-    .map((a) => {
-      const link = a.facebook || a.instagram;
-      return `<span class="cella-link">
-        <span class="riga-icona-conteggio">${contatoreEventi(a.attivi, a.totale)}<a class="chip-altro" href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(a.soggetto)}</a></span>
-        ${etichettaUltimoAggiornamento(a.ultimo_aggiornamento)}
-      </span>`;
-    })
-    .join("");
 }
 
 function disegnaTabella(filtrati) {
@@ -656,24 +544,20 @@ function disegnaTabella(filtrati) {
 
   if (filtrati.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="10" class="nessun-risultato">Nessun comune corrisponde ai filtri selezionati.</td>`;
+    tr.innerHTML = `<td colspan="6" class="nessun-risultato">Nessuna fonte corrisponde ai filtri selezionati.</td>`;
     corpo.appendChild(tr);
     return;
   }
 
-  filtrati.forEach((c, indice) => {
+  filtrati.forEach((f) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td class="col-numero-progressivo">${indice + 1}</td>
-      <td class="col-comune">${escapeHtml(c.comune)}</td>
-      <td>${escapeHtml(c.provincia || "")}</td>
-      <td class="col-numero">${c.km != null ? c.km : ""}</td>
-      <td class="col-numero">${c.minuti != null ? c.minuti : ""}</td>
-      <td class="col-link">${linkIcona(c.sito_comune, "Sito del comune", "🌐")}</td>
-      <td class="col-link">${socialIcone(c.facebook_comune, c.instagram_comune)}</td>
-      <td class="col-link">${linkIcona(c.sito_proloco, "Sito Pro Loco", "🌐")}</td>
-      <td class="col-link">${socialIcone(c.facebook_proloco, c.instagram_proloco)}</td>
-      <td class="col-altro">${altroChips(c.altro)}</td>
+      <td class="col-numero-progressivo">${f.numero}</td>
+      <td class="col-tipo"><span class="chip-tipo">${escapeHtml(f.tipo)}</span></td>
+      <td class="col-comune">${f.comune ? escapeHtml(f.comune) : '<span class="comune-assente">—</span>'}</td>
+      <td class="col-numero">${f.attivi}</td>
+      <td class="col-numero">${f.totale}</td>
+      <td class="col-url"><a class="link-url" href="${escapeHtml(f.url)}" target="_blank" rel="noopener">${escapeHtml(f.url)}</a></td>
     `;
     corpo.appendChild(tr);
   });
@@ -684,54 +568,44 @@ function disegnaCard(filtrati) {
   contenitore.innerHTML = "";
 
   if (filtrati.length === 0) {
-    contenitore.innerHTML = `<div class="nessun-risultato">Nessun comune corrisponde ai filtri selezionati.</div>`;
+    contenitore.innerHTML = `<div class="nessun-risultato">Nessuna fonte corrisponde ai filtri selezionati.</div>`;
     return;
   }
 
-  filtrati.forEach((c) => {
+  filtrati.forEach((f) => {
     const scheda = document.createElement("div");
-    scheda.className = "scheda-comune";
+    scheda.className = "scheda-fonte";
     scheda.innerHTML = `
       <div class="riga-alto">
-        <div class="titolo-comune">${escapeHtml(c.comune)}</div>
-        ${c.km != null ? `<div class="km-comune">${c.km} km</div>` : ""}
+        <div class="titolo-fonte">#${f.numero} — ${escapeHtml(f.tipo)}</div>
+        <div class="contatore-comune">${f.attivi}/${f.totale}</div>
       </div>
       <div class="riga-meta">
-        <span>${escapeHtml(c.provincia || "")}</span>
-        <span class="puntino">·</span>
-        <span>${c.minuti != null ? c.minuti + " min" : ""}</span>
+        <span>${f.comune ? escapeHtml(f.comune) : "Comune non collegato"}</span>
       </div>
-      <div class="gruppo-link">
-        <div class="etichetta">Comune</div>
-        <div class="riga-icone">${linkIcona(c.sito_comune, "Sito del comune", "🌐")} ${socialIcone(c.facebook_comune, c.instagram_comune)}</div>
-      </div>
-      <div class="gruppo-link">
-        <div class="etichetta">Pro Loco</div>
-        <div class="riga-icone">${linkIcona(c.sito_proloco, "Sito Pro Loco", "🌐")} ${socialIcone(c.facebook_proloco, c.instagram_proloco)}</div>
-      </div>
-      ${c.altro && c.altro.length ? `<div class="gruppo-link"><div class="etichetta">Altro</div>${altroChips(c.altro)}</div>` : ""}
+      <div class="riga-url"><a class="link-url" href="${escapeHtml(f.url)}" target="_blank" rel="noopener">${escapeHtml(f.url)}</a></div>
     `;
     contenitore.appendChild(scheda);
   });
 }
 
 function aggiornaConteggio(n) {
-  const totale = comuniTotali.length;
+  const totale = fontiTotali.length;
   const el = document.getElementById("stato");
   if (n === totale) {
-    el.innerHTML = `<strong>${totale}</strong> comuni`;
+    el.innerHTML = `<strong>${totale}</strong> fonti`;
   } else {
-    el.innerHTML = `<strong>${n}</strong> su ${totale} comuni`;
+    el.innerHTML = `<strong>${n}</strong> su ${totale} fonti`;
   }
   el.style.color = "";
 }
 
 document.getElementById("filtro-testo").addEventListener("input", applicaFiltri);
-document.getElementById("filtro-provincia").addEventListener("change", applicaFiltri);
+document.getElementById("filtro-tipo").addEventListener("change", applicaFiltri);
 
 document.getElementById("btn-reset").addEventListener("click", () => {
   document.getElementById("filtro-testo").value = "";
-  document.getElementById("filtro-provincia").value = "";
+  document.getElementById("filtro-tipo").value = "";
   applicaFiltri();
 });
 
@@ -758,7 +632,7 @@ function aggiornaAltezzaFissa() {
 window.addEventListener("resize", aggiornaAltezzaFissa);
 aggiornaAltezzaFissa();
 
-caricaPerimetro();
+caricaFonti();
 </script>
 
 </body>

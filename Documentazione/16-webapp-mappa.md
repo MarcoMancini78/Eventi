@@ -1,17 +1,21 @@
-# 16 — Interfacce pubbliche: webapp mappa, elenco e perimetro
+# 16 — Interfacce pubbliche: webapp mappa, elenco, perimetro e fonti
 
-**Stato:** tutte e tre implementate, collaudate e pubblicate online.
+**Stato:** tutte e quattro implementate, collaudate e pubblicate online.
 **Mappa:** https://marcomancini78.github.io/Eventi/
 **Elenco (tabellare):** https://marcomancini78.github.io/Eventi/elenco.html —
 nata il 2026-09-10, condivide lo stesso file dati della mappa.
 **Perimetro (elenco comuni):** https://marcomancini78.github.io/Eventi/perimetro.html —
 nata il 2026-09-11, un comune per riga con tutti i link collegati.
+**Fonti (elenco fonti):** https://marcomancini78.github.io/Eventi/fonti.html —
+nata il 2026-09-16, una riga per ogni fonte in cui il sistema cerca eventi
+(sito web o account social), con comune collegato e conteggio eventi
+prodotti. Vedi [16.9](#169-webapp-fonti).
 **Uso quotidiano:** dopo `run.py publish`/`run.py run-publish` (che scrivono
-anche `docs/eventi_mappa.json` e `docs/perimetro.json` in locale), i **dati**
-si aggiornano online da soli (commit automatico in `ricerca_eventi_automatica.bat`,
-un blocco `git add/commit/push` per ciascun file JSON quando cambia). Una modifica al
-**codice** delle pagine richiede invece un `git push` manuale dalla cartella
-del progetto.
+anche `docs/eventi_mappa.json`, `docs/perimetro.json` e `docs/fonti.json` in
+locale), i **dati** si aggiornano online da soli (commit automatico in
+`ricerca_eventi_automatica.bat`, un blocco `git add/commit/push` per ciascun
+file JSON quando cambia). Una modifica al **codice** delle pagine richiede
+invece un `git push` manuale dalla cartella del progetto.
 
 **Bug corretto (2026-09-16):** il blocco di commit/push automatico esisteva
 da tempo solo per `docs/eventi_mappa.json`; `docs/perimetro.json` veniva
@@ -367,6 +371,53 @@ strutturalmente diverso:
 
 11 nuovi test (2 su `feed_social._salva_ultimo_giro_feed`, 3 su
 `righe_perimetro_completo`). Suite completa: 392/392.
+
+## 16.9 Webapp Fonti
+
+Richiesta esplicita dell'utente (2026-09-16): una pagina con **una riga per
+ogni fonte** in cui il sistema cerca eventi (non un comune per riga come
+Perimetro) — indice numerico progressivo, tipo di fonte, comune collegato,
+eventi attivi/totale prodotti, URL.
+
+**Dati**: `publisher.righe_fonti_complete` unisce due tabelle che non
+condividono schema:
+- `sources` (siti web T0-T3: comune, Pro Loco, teatro, aggregatore,
+  compagnia itinerante) — una riga per `source_id` con `endpoint` non vuoto,
+  esclusi i `source_id` con prefisso `feed-` (sono solo il contatore
+  sintetico dei social, non fonti a sé, vedi 16.8). Il **tipo** mostrato è
+  il `tier` (`T0_pa_design_system`, `T0_jsonld`, `T1_html`, ecc.).
+- `coda_follow` (account social letti dal feed invertito) — una riga per
+  handle con `url` non vuoto. Il **tipo** è `social_facebook` o
+  `social_instagram`.
+
+**Comune collegato**: stesso meccanismo di 16.8 per comune/proloco (slug
+deterministico `comune-{slug}`/`proloco-{slug}-sito` contro `comuni`) e per
+i social (`coda_follow.comune`, già esplicito). Per teatro/aggregatore/
+compagnia — che non hanno uno slug comune deterministico — il comune si
+deduce dalla riga social **gemella** in `coda_follow`: lo stesso
+`source_id` di base del sito, con suffisso `-facebook`/`-instagram` in più
+(es. sito `teatro-cambiano-teatro-comunale` → social
+`teatro-cambiano-teatro-comunale-facebook`, `comune='Cambiano'`).
+Verificato sui dati reali, non un nuovo campo. Se non risolvibile, il campo
+`comune` resta vuoto (mostrato come "—" in pagina) — non blocca la riga.
+
+**Conteggio eventi**: stesso identico calcolo di 16.8 (`event_sources` JOIN
+`events`, attivi = non archiviati con `data_fine >= oggi`, totale = storico
+completo). Per i social passa dal source_id sintetico
+`feed-{piattaforma}-{handle}`, non dal source_id della riga stessa in
+`coda_follow` — stessa ragione di 16.8.
+
+**Pagina**: `docs/fonti.html` + `docs/fonti.json`, stesso pattern statico
+delle altre tre webapp. Colonne: # (indice progressivo, assegnato dopo
+l'ordinamento per comune/tipo/url), tipo (chip), comune, attivi, totale,
+url (link cliccabile). Ricerca testuale su comune/URL, filtro per tipo,
+ordinamento per colonna, vista a schede su mobile. Linkata dalle altre tre
+pagine e viceversa.
+
+Collaudato sui dati reali: 2215 fonti (722 siti + 1493 account social con
+URL valorizzato), Cassinasco verificato singolarmente (3 fonti: sito comune,
+Facebook e Instagram Pro Loco, quest'ultima con 2/2 eventi). 9 nuovi test in
+`tests/test_fonti_pagina.py`.
 
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)
 

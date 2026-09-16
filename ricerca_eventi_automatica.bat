@@ -55,4 +55,15 @@ if errorlevel 1 (
     echo ==== %date% %time% - perimetro online gia' aggiornato, nessun push ==== >> data\log_ricerca_eventi_schedulata.txt
 )
 
+REM Stesso meccanismo per docs/fonti.json (16.9, pagina Fonti).
+git diff --quiet -- docs\fonti.json
+if errorlevel 1 (
+    echo ==== %date% %time% - aggiorno fonti online (git push) ==== >> data\log_ricerca_eventi_schedulata.txt
+    git add docs\fonti.json >> data\log_ricerca_eventi_schedulata.txt 2>&1
+    git commit -m "Aggiorna dati fonti (automatico)" >> data\log_ricerca_eventi_schedulata.txt 2>&1
+    git push origin master >> data\log_ricerca_eventi_schedulata.txt 2>&1
+) else (
+    echo ==== %date% %time% - fonti online gia' aggiornato, nessun push ==== >> data\log_ricerca_eventi_schedulata.txt
+)
+
 echo ==== %date% %time% - fine ==== >> data\log_ricerca_eventi_schedulata.txt

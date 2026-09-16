@@ -1040,6 +1040,118 @@ def scrivi_perimetro_json(righe: list[dict], percorso: str | Path) -> int:
     return len(righe)
 
 
+def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
+    """16.9 (webapp Fonti): una riga per ogni fonte in cui il sistema cerca
+    eventi — siti web (`sources`, tier T0-T3) e account social (`coda_follow`,
+    letti dal feed invertito) — con comune collegato (quando risolvibile) e
+    conteggio eventi prodotti (attivi/futuri e totale storico, stesso JOIN
+    `event_sources`/`events` di `righe_perimetro_completo`).
+
+    Le due tabelle non condividono uno schema: un sito ha un `source_id`
+    diretto in `sources` (`comune-{slug}`, `proloco-{slug}-sito`,
+    `teatro-...`, `aggregatore-...`); un account social è una riga di
+    `coda_follow` il cui conteggio eventi vive sotto il source_id sintetico
+    `feed-{piattaforma}-{handle}` (`feed_social.py`) — non lo stesso
+    source_id della riga stessa. I `source_id` di `sources` con prefisso
+    `feed-` sono solo il contatore sintetico dei social, non una fonte a sé:
+    esclusi qui per non duplicare le righe di `coda_follow`.
+    """
+
+    def slug(nome: str) -> str:
+        return nome.lower().replace(" ", "-")
+
+    comune_per_slug = {slug(r["comune"]): r["comune"] for r in conn.execute("SELECT comune FROM comuni").fetchall()}
+
+    # Teatri/aggregatori/compagnie non hanno uno slug comune deterministico
+    # come comune/proloco: il comune si ricava dalla riga social gemella in
+    # coda_follow (stesso source_id di base, sito senza suffisso piattaforma
+    # — collegamento verificato empiricamente sui dati correnti, non un
+    # nuovo campo).
+    comune_da_coda_follow: dict[str, str] = {}
+    for r in conn.execute(
+        "SELECT source_id, comune FROM coda_follow WHERE comune IS NOT NULL AND comune != ''"
+    ).fetchall():
+        for suffisso in ("-facebook", "-instagram"):
+            if r["source_id"].endswith(suffisso):
+                comune_da_coda_follow[r["source_id"][: -len(suffisso)]] = r["comune"]
+
+    def comune_di_source(source_id: str, categoria: str) -> str:
+        if categoria == "comune":
+            return comune_per_slug.get(source_id.removeprefix("comune-"), "")
+        if categoria == "proloco":
+            base = source_id.removeprefix("proloco-").removesuffix("-sito")
+            return comune_per_slug.get(base, "")
+        return comune_da_coda_follow.get(source_id, "")
+
+    oggi = date.today().isoformat()
+    conteggi_per_fonte: dict[str, dict[str, int]] = {}
+    for r in conn.execute(
+        """
+        SELECT es.source_id AS source_id,
+               SUM(CASE WHEN e.archiviato = 'no' AND e.data_fine >= ? THEN 1 ELSE 0 END) AS attivi,
+               COUNT(*) AS totale
+        FROM event_sources es JOIN events e ON e.event_id = es.event_id
+        GROUP BY es.source_id
+        """,
+        (oggi,),
+    ).fetchall():
+        conteggi_per_fonte[r["source_id"]] = {"attivi": r["attivi"] or 0, "totale": r["totale"]}
+
+    def conteggio(source_id: str) -> dict[str, int]:
+        return conteggi_per_fonte.get(source_id, {"attivi": 0, "totale": 0})
+
+    righe = []
+
+    for r in conn.execute(
+        "SELECT source_id, tier, endpoint, categoria FROM sources "
+        "WHERE endpoint IS NOT NULL AND endpoint != '' AND source_id NOT LIKE 'feed-%'"
+    ).fetchall():
+        cnt = conteggio(r["source_id"])
+        righe.append(
+            {
+                "tipo": r["tier"] or "sito",
+                "comune": comune_di_source(r["source_id"], r["categoria"] or ""),
+                "attivi": cnt["attivi"],
+                "totale": cnt["totale"],
+                "url": r["endpoint"],
+            }
+        )
+
+    for r in conn.execute(
+        "SELECT source_id, piattaforma, handle, url, comune FROM coda_follow WHERE url IS NOT NULL AND url != ''"
+    ).fetchall():
+        source_id_conteggio = f"feed-{r['piattaforma']}-{r['handle']}" if r["handle"] else ""
+        cnt = conteggio(source_id_conteggio) if source_id_conteggio else {"attivi": 0, "totale": 0}
+        righe.append(
+            {
+                "tipo": f"social_{r['piattaforma']}",
+                "comune": r["comune"] or "",
+                "attivi": cnt["attivi"],
+                "totale": cnt["totale"],
+                "url": r["url"],
+            }
+        )
+
+    righe.sort(key=lambda r: (r["comune"] or "￿", r["tipo"], r["url"]))
+    for indice, r in enumerate(righe, start=1):
+        r["numero"] = indice
+
+    return righe
+
+
+def scrivi_fonti_json(righe: list[dict], percorso: str | Path) -> int:
+    """16.9: serializza l'elenco fonti in un JSON statico, stesso principio di
+    `scrivi_perimetro_json` (nessun server, letto dalla webapp fonti.html)."""
+    corpo = {
+        "generato_il": datetime.now().replace(microsecond=0).isoformat(),
+        "fonti": righe,
+    }
+    percorso = Path(percorso)
+    percorso.parent.mkdir(parents=True, exist_ok=True)
+    percorso.write_text(json.dumps(corpo, ensure_ascii=False, indent=2), encoding="utf-8")
+    return len(righe)
+
+
 COLONNE_SERIE = [
     "serie_id", "titolo", "tipologia", "comune", "luogo", "rrule",
     "regola_leggibile", "valida_dal", "valida_al", "eccezioni",

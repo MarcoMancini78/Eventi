@@ -484,6 +484,13 @@ def cmd_publish(args: argparse.Namespace) -> None:
         publisher.scrivi_perimetro_json(righe_perimetro, docs_dir / "perimetro.json")
         print(f"File docs/perimetro.json aggiornato (ricorda 'git push' per pubblicarlo su GitHub Pages).")
 
+    righe_fonti_web = publisher.righe_fonti_complete(conn)
+    n_fonti_web = publisher.scrivi_fonti_json(righe_fonti_web, DATA_DIR / "fonti.json")
+    print(f"File fonti.json scritto: {n_fonti_web} fonti.")
+    if docs_dir.exists():
+        publisher.scrivi_fonti_json(righe_fonti_web, docs_dir / "fonti.json")
+        print(f"File docs/fonti.json aggiornato (ricorda 'git push' per pubblicarlo su GitHub Pages).")
+
     ws_serie = spreadsheet_principale.worksheet("Serie")
     n_serie = publisher.pubblica_serie(ws_serie, conn)
     print(f"Foglio Serie aggiornato: {n_serie} righe scritte.")
