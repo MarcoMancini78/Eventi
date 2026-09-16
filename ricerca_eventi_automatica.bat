@@ -39,4 +39,20 @@ if errorlevel 1 (
     echo ==== %date% %time% - mappa online gia' aggiornata, nessun push ==== >> data\log_ricerca_eventi_schedulata.txt
 )
 
+REM Stesso meccanismo per docs/perimetro.json (16.8): senza questo blocco
+REM il file veniva riscritto in locale ad ogni run ma mai pubblicato, quindi
+REM la pagina Perimetro online restava ferma all'ultimo push manuale mentre
+REM mappa/elenco eventi si aggiornavano regolarmente (caso Cassinasco,
+REM 2026-09-16: evento Instagram gia' in DB e visibile in mappa/elenco, ma
+REM Perimetro online fermo al 12 settembre perche' mancava questo push).
+git diff --quiet -- docs\perimetro.json
+if errorlevel 1 (
+    echo ==== %date% %time% - aggiorno perimetro online (git push) ==== >> data\log_ricerca_eventi_schedulata.txt
+    git add docs\perimetro.json >> data\log_ricerca_eventi_schedulata.txt 2>&1
+    git commit -m "Aggiorna dati perimetro (automatico)" >> data\log_ricerca_eventi_schedulata.txt 2>&1
+    git push origin master >> data\log_ricerca_eventi_schedulata.txt 2>&1
+) else (
+    echo ==== %date% %time% - perimetro online gia' aggiornato, nessun push ==== >> data\log_ricerca_eventi_schedulata.txt
+)
+
 echo ==== %date% %time% - fine ==== >> data\log_ricerca_eventi_schedulata.txt
