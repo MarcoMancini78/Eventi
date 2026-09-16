@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-16T15:20:01",
+  "generato_il": "2026-09-16T16:39:31",
   "comuni": [
     {
       "istat": "005015",
@@ -15927,8 +15927,8 @@
       "minuti": 71.0,
       "sito_comune": {
         "url": "https://comune.carcare.sv.it/eventi/",
-        "attivi": 0,
-        "totale": 0,
+        "attivi": 1,
+        "totale": 3,
         "ultimo_aggiornamento": "2026-09-16T13:08:57.108442"
       },
       "facebook_comune": {
@@ -15971,8 +15971,8 @@
       "minuti": 69.0,
       "sito_comune": {
         "url": "https://www.comune.pozzoloformigaro.al.it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0,
+        "attivi": 3,
+        "totale": 6,
         "ultimo_aggiornamento": "2026-09-16T13:08:43.887275"
       },
       "facebook_comune": {
@@ -19464,9 +19464,9 @@
       "km": 72.5,
       "minuti": 75.0,
       "sito_comune": {
-        "url": "http://www.comune.desana.vc.it/elenco.aspx?c=2&amp;sc=47",
+        "url": "https://comune.desana.vc.it/eventi",
         "attivi": 0,
-        "totale": 0,
+        "totale": 2,
         "ultimo_aggiornamento": "2026-09-16T13:14:22.269159"
       },
       "facebook_comune": {
@@ -21111,8 +21111,8 @@
       "minuti": 84.0,
       "sito_comune": {
         "url": "https://www.comune.albissolamarina.sv.it/vivere-il-comune/eventi",
-        "attivi": 0,
-        "totale": 0,
+        "attivi": 4,
+        "totale": 6,
         "ultimo_aggiornamento": "2026-09-16T13:11:27.960085"
       },
       "facebook_comune": {
@@ -24956,8 +24956,8 @@
       "minuti": 76.0,
       "sito_comune": {
         "url": "https://www.comune.collegno.to.it/vivere-il-comune/eventi/",
-        "attivi": 0,
-        "totale": 0,
+        "attivi": 3,
+        "totale": 3,
         "ultimo_aggiornamento": "2026-09-16T13:10:26.299937"
       },
       "facebook_comune": {
@@ -29243,8 +29243,8 @@
       "minuti": 80.0,
       "sito_comune": {
         "url": "https://www.comune.cuneo.it/vivere-il-comune/eventi/",
-        "attivi": 0,
-        "totale": 0,
+        "attivi": 4,
+        "totale": 4,
         "ultimo_aggiornamento": "2026-09-16T13:11:00.800130"
       },
       "facebook_comune": {

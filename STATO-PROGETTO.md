@@ -49,6 +49,15 @@ Ultimo aggiornamento: 2026-09-14
   trovata. Risultato: 68 fonti promosse da T1_html (con LLM) a
   T0_pa_design_system (senza LLM), totale passato da ~324 a 392 — verificato
   end-to-end su comuni reali con zero chiamate LLM per evento pubblicato.
+  Esteso ulteriormente il 2026-09-17 (audit endpoint 0-eventi): tre nuove
+  varianti gestite (data in `.card-text`, doppio `.card-day` mese+anno,
+  mese abbreviato a 3 lettere) e deduzione dell'anno quando il box
+  calendario non lo riporta (stessa regola del prompt LLM, o l'anno letto
+  dal titolo se il comune lo scrive lì); rilevamento e scarto delle pagine
+  dove quel box è in realtà la data di pubblicazione della notizia, non
+  dell'evento (tutte le card con la stessa data odierna). 6 comuni
+  sbloccati (Cuneo, Carcare, Pozzolo Formigaro, Albissola Marina,
+  Collegno, Desana), 22 nuovi test.
 - **Canali email/Telegram**: adattatori scritti e integrati nella pipeline
   (`T0_email`, `T0_telegram`), mai collaudati con credenziali reali (IMAP e
   bot token ancora da configurare in `.env`).
