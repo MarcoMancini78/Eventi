@@ -28,6 +28,9 @@ Ultimo aggiornamento: 2026-09-14
   alzati su richiesta esplicita a `follow_per_lotto=20`,
   `follow_max_giornalieri=100` — rischio accettato consapevolmente, non il
   default prudente originale. Schedulato ogni 2 ore (`schedulazione_follow.bat`).
+  Follow fatti a mano dall'app (fuori dal sistema): censiti da `run.py
+  sync-seguiti`, schedulato ogni mattina insieme a un giro completo tramite
+  `sync_seguiti_e_pubblica.bat` (14-account-social.md).
 - **Feed social**: lettura passiva del feed Facebook collaudata dal vivo
   (eventi reali pubblicati). Instagram: script pronto, mai collaudato dal vivo.
 - **Fingerprinting comuni**: tutti i 683 comuni del perimetro classificati per

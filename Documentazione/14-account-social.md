@@ -194,17 +194,20 @@ Se un nuovo profilo viene seguito **direttamente dall'app Facebook/Instagram**
 reale e allinea `coda_follow` — un handle nuovo viene aggiunto (per Facebook,
 con un tentativo di auto-classificazione da nome pagina + indirizzo).
 
-`sync-seguiti` **non è schedulato automaticamente** (a differenza di
-`schedulazione_follow.bat`, ogni 2 ore) — va lanciato a mano o tramite lo
-script dedicato `sync_seguiti_e_pubblica.bat` (2026-09-17, richiesto
+Script dedicato `sync_seguiti_e_pubblica.bat` (2026-09-17, richiesto
 dall'utente), che incatena: `sync-seguiti` FB+IG (censisce i nuovi follow) →
 `run-publish` (li segue per davvero se risultano `da_seguire`, gira le
 fonti, legge i feed, pubblica su Sheets/JSON) → `git push` dei tre JSON
 pubblici (`eventi_mappa.json`, `perimetro.json`, `fonti.json`), stesso
-blocco già usato in `ricerca_eventi_automatica.bat`. Non aggiunto alla
-schedulazione automatica di proposito: fa anch'esso un vero follow dentro
-`run-publish`, e vale lo stesso principio di prudenza sulla regolarità
-appena descritto sopra — la decisione se/come schedularlo resta dell'utente.
+blocco già usato in `ricerca_eventi_automatica.bat`.
+
+**Stato reale**: schedulato in Utilità di pianificazione Windows per
+girare **ogni mattina**, una volta al giorno (2026-09-17, richiesto
+dall'utente) — a differenza di `schedulazione_follow.bat` (ogni 2 ore),
+qui una cadenza giornaliera è coerente con lo scopo (censire follow
+manuali dell'app, non un lotto ad alta frequenza) e resta dentro il
+principio di prudenza sulla regolarità appena descritto sopra: un lancio
+al giorno è un pattern molto meno riconoscibile di uno ogni 2 ore.
 
 ---
 

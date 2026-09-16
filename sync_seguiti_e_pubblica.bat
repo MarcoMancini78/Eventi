@@ -2,11 +2,17 @@
 REM Lancio dedicato (richiesto dall'utente 2026-09-17): quando si aggiunge
 REM manualmente un nuovo follow FB/IG dall'app (fuori dal sistema), niente
 REM lo censisce da solo in coda_follow finche' non gira "run.py sync-seguiti"
-REM (sola lettura della lista "seguiti" reale, mai schedulato in automatico
-REM finora). Questo comando incatena: sync-seguiti (acquisisce la fonte) ->
-REM run-publish (la segue per davvero se e' 'da_seguire', gira le fonti,
-REM legge i feed, pubblica su Sheets/JSON) -> git push dei JSON pubblici
-REM (16, GitHub Pages), stesso blocco gia' usato in ricerca_eventi_automatica.bat.
+REM (sola lettura della lista "seguiti" reale). Questo comando incatena:
+REM sync-seguiti (acquisisce la fonte) -> run-publish (la segue per davvero
+REM se e' 'da_seguire', gira le fonti, legge i feed, pubblica su Sheets/JSON)
+REM -> git push dei JSON pubblici (16, GitHub Pages), stesso blocco gia'
+REM usato in ricerca_eventi_automatica.bat.
+REM
+REM Schedulato in Utilita' di pianificazione Windows per girare ogni
+REM mattina (2026-09-17, richiesto dall'utente) - una volta al giorno,
+REM cadenza coerente con lo scopo (censire follow manuali, non un lotto
+REM ad alta frequenza) e con il principio di prudenza sulla regolarita'
+REM gia' documentato per schedulazione_follow.bat (14-account-social.md).
 REM
 REM Il browser Playwright resta non-headless per design (14.3): le finestre
 REM Chromium di sync-seguiti/follow/feed social compariranno visibilmente
