@@ -430,6 +430,46 @@ URL valorizzato), Cassinasco verificato singolarmente (3 fonti: sito comune,
 Facebook e Instagram Pro Loco, quest'ultima con 2/2 eventi). 11 test in
 `tests/test_fonti_pagina.py`.
 
+**Filtro sullo stato** (richiesto 2026-09-17, caso Canelli): solo le fonti
+social con `coda_follow.stato = 'seguito'` compaiono in pagina — una fonte
+scartata (`non_valido`, `fallito`, `quarantena`, `da_seguire`) non è più una
+sorgente su cui il sistema cerca eventi. Prima del fix, 2215 fonti includeva
+anche quelle non seguite; dopo, 1760. Vedi 16.10 per il meccanismo che
+marca `non_valido` una fonte social il cui contenuto è indisponibile.
+
+## 16.10 Verifica di disponibilità delle fonti social (caso Canelli)
+
+Segnalato dall'utente (2026-09-17): la fonte Facebook del Teatro Balbo di
+Canelli (`https://www.facebook.com/teatrobalbocanelli/`) mostrava 0 eventi
+mai prodotti nella pagina Fonti — non perché "silenziosa" (normale, 4.7),
+ma perché il contenuto della pagina risultava non disponibile/rimosso.
+Fonte inutile, da scartare.
+
+**Due interventi**, entrambi in `src/verifica_fonti.py` (dettagli tecnici
+in [04.8.1](04-fonti-ingestione.md#481-caso-diverso-contenuto-social-rimossobloccato)):
+
+1. **Controllo all'ingresso**: `follow._apri_e_segui` ora rifiuta subito
+   (`stato='non_valido'`) una fonte candidata il cui contenuto risulta
+   indisponibile, prima di cliccare "Segui" — non più fonti inutili seguite
+   a vuoto in futuro.
+2. **Audit una tantum**: `run.py verifica-fonti-social` scorre le fonti
+   Facebook già seguite senza eventi mai prodotti (`fonti_social_da_verificare`,
+   solo Facebook per ora — caso segnalato) e le apre una per una con la
+   sessione autenticata già usata dal follow, marcando `non_valido` quelle
+   con contenuto indisponibile. Sola lettura (14.5b): mai un'azione
+   sull'account, mai un fetch anonimo (che darebbe falsi positivi di massa
+   su pagine private o con restrizioni regionali, indistinguibili da una
+   davvero rimossa se aperte senza login).
+
+`classifica_testo_pagina` (funzione pura, testabile senza browser) cerca
+segnali noti ("questo contenuto non è al momento disponibile", "this
+content isn't available", ecc.) nel testo VISIBILE della pagina — stesso
+principio anti-falso-positivo di `follow._SEGNALI_BLOCCO` (14.5): l'HTML
+grezzo produce falsi positivi che il testo visibile non ha.
+
+Applicato subito il fix a Canelli (`teatro-canelli-teatro-balbi-facebook`
+→ `non_valido`). 11 test in `tests/test_verifica_fonti.py`.
+
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)
 
 Per evitare di costruire più del richiesto:

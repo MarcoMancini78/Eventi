@@ -833,6 +833,35 @@ def cmd_follow(args: argparse.Namespace) -> None:
         print(f"\nLotto completato: {seguiti}/{len(esiti)} seguiti con successo.")
 
 
+def cmd_verifica_fonti_social(args: argparse.Namespace) -> None:
+    """16.10, caso Canelli (2026-09-17): audit delle fonti Facebook seguite
+    che non hanno mai prodotto un evento, per trovare quelle il cui contenuto
+    è già indisponibile (pagina rimossa/bloccata) e non solo "silenziosa"."""
+    from src import verifica_fonti
+
+    config = load_config()
+    conn = store.connect(DB_PATH)
+    store.migrate(conn)
+
+    candidati = verifica_fonti.fonti_social_da_verificare(conn)
+    if args.limit:
+        candidati = candidati[: args.limit]
+
+    if not candidati:
+        print("Nessuna fonte Facebook seguita senza eventi da verificare.")
+        return
+
+    print(f"Verifica di {len(candidati)} fonti Facebook senza eventi mai prodotti...")
+    esiti = verifica_fonti.verifica_lotto_facebook(conn, config, candidati)
+
+    non_disponibili = [e for e in esiti if not e.disponibile]
+    for e in esiti:
+        stato = "NON DISPONIBILE" if not e.disponibile else "ok"
+        print(f"  {e.source_id:45} {stato:16} {e.dettaglio}")
+
+    print(f"\n{len(non_disponibili)}/{len(esiti)} fonti marcate 'non_valido' (contenuto non disponibile).")
+
+
 def cmd_login(args: argparse.Namespace) -> None:
     from src import follow
 
@@ -1280,6 +1309,14 @@ def build_parser() -> argparse.ArgumentParser:
     p_follow.add_argument("--n", type=int, default=None, help="Quanti follow in questo lotto (default: follow_per_lotto)")
     p_follow.add_argument("--dry-run", action="store_true", help="Elenca cosa farebbe, senza eseguire alcuna azione")
     p_follow.set_defaults(func=cmd_follow)
+
+    p_verifica_fonti = sub.add_parser(
+        "verifica-fonti-social",
+        help="Audit delle fonti Facebook seguite senza eventi mai prodotti: apre ciascuna con la sessione "
+        "autenticata e marca 'non_valido' quelle il cui contenuto risulta rimosso/bloccato (16.10, caso Canelli)",
+    )
+    p_verifica_fonti.add_argument("--limit", type=int, default=None, help="Verifica solo le prime N fonti (default: tutte)")
+    p_verifica_fonti.set_defaults(func=cmd_verifica_fonti_social)
 
     p_publish = sub.add_parser(
         "publish", help="Elabora lo stato eventi (archiviazione) e pubblica Eventi/Fonti su Google Sheets"

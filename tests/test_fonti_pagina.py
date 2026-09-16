@@ -69,6 +69,22 @@ def test_righe_fonti_include_social_da_coda_follow():
     assert righe[0]["url"] == "https://instagram.com/prolococalosso"
 
 
+def test_righe_fonti_esclude_coda_follow_non_seguita():
+    """16.10, caso Canelli: una fonte scartata (non_valido, fallito,
+    quarantena, da_seguire...) non è più una sorgente su cui il sistema
+    cerca eventi, non deve comparire nella pagina Fonti."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('teatro-canelli-teatro-balbi-facebook', 'facebook', 'teatrobalbocanelli', 'Canelli', "
+        "'teatro', 'https://www.facebook.com/teatrobalbocanelli/', 'non_valido')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_fonti_complete(conn)
+    assert righe == []
+
+
 def test_righe_fonti_esclude_coda_follow_senza_url():
     conn = _conn_di_prova()
     conn.execute(

@@ -448,6 +448,16 @@ def _apri_e_segui(contesto: dict, candidato: sqlite3.Row) -> EsitoFollow:
                     raise SegnaleDiBloccoRilevato(f"Richiesta di verifica identità: fermata definitiva", 24 * 365)
                 raise SegnaleDiBloccoRilevato(f"Segnale di blocco rilevato: {segnale}", ore)
 
+        # 16.10, caso Canelli (2026-09-17): una pagina rimossa/non disponibile
+        # non è un segnale di blocco sul NOSTRO account (non apre il circuito,
+        # 14.5), è la fonte stessa a essere inutile — si scarta subito, prima
+        # di sprecare un follow su un contenuto che non produrrà mai nulla.
+        from .verifica_fonti import classifica_testo_pagina
+
+        contenuto_disponibile, dettaglio_indisponibile = classifica_testo_pagina(testo_visibile)
+        if not contenuto_disponibile:
+            return EsitoFollow(candidato["source_id"], "non_valido", dettaglio_indisponibile)
+
         # Bug reale osservato (2026-08-25): per gli URL facebook.com/people/,
         # l'handle salvato in coda_follow è "Nome-ID" (trattino unito, per
         # renderlo univoco nel Set di sync_seguiti/bonifica_social), ma

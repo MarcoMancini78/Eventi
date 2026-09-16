@@ -1072,6 +1072,13 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
     `instagram` — non il `tier` tecnico, che resta un dettaglio interno);
     **tipo** è la categoria del soggetto (comune, Pro Loco, teatro,
     aggregatore, ecc.), la stessa `categoria` già usata in 16.8 per "Altro".
+
+    Le fonti social sono filtrate su `stato = 'seguito'` (richiesto
+    2026-09-17, caso Canelli): una fonte scartata (`non_valido`, `fallito`,
+    `quarantena`, `da_seguire`...) non è più una sorgente su cui il sistema
+    cerca eventi, quindi non deve comparire in questa pagina — coerente con
+    `verifica_fonti.registra_esito_verifica`, che marca `non_valido` una
+    fonte il cui contenuto risulta indisponibile.
     """
 
     def slug(nome: str) -> str:
@@ -1137,7 +1144,8 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
         )
 
     for r in conn.execute(
-        "SELECT source_id, piattaforma, handle, url, comune, categoria FROM coda_follow WHERE url IS NOT NULL AND url != ''"
+        "SELECT source_id, piattaforma, handle, url, comune, categoria FROM coda_follow "
+        "WHERE url IS NOT NULL AND url != '' AND stato = 'seguito'"
     ).fetchall():
         source_id_conteggio = f"feed-{r['piattaforma']}-{r['handle']}" if r["handle"] else ""
         cnt = conteggio(source_id_conteggio) if source_id_conteggio else {"attivi": 0, "totale": 0}

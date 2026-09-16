@@ -243,3 +243,32 @@ Due precisazioni che contano:
 
 L'unica vera disattivazione definitiva la decidi tu, a mano, quando constati che il
 soggetto non esiste più.
+
+### 4.8.1 Caso diverso: contenuto social rimosso/bloccato
+
+Non è lo stesso caso di una fonte "rotta" sopra (che riguarda i siti web
+T0-T3): un **account social il cui contenuto risulta indisponibile**
+(pagina Facebook rimossa, sospesa, non raggiungibile — caso reale: Teatro
+Balbo di Canelli, 2026-09-17) non ha senso ritentarlo periodicamente come un
+sito che potrebbe tornare online. `src/verifica_fonti.py` distingue i due
+segnali:
+
+- **All'ingresso** (`run.py follow`): prima di cliccare "Segui" su una
+  fonte candidata, `follow._apri_e_segui` controlla se il testo visibile
+  della pagina contiene un segnale di contenuto non disponibile
+  (`verifica_fonti.classifica_testo_pagina`). Se sì, la fonte va subito in
+  `coda_follow.stato = 'non_valido'` senza essere mai seguita — niente
+  follow sprecato su un contenuto che non produrrà mai nulla.
+- **Audit delle fonti già seguite** (`run.py verifica-fonti-social`): scorre
+  le fonti Facebook seguite che non hanno mai prodotto un evento (0 nel
+  totale storico — le uniche su cui il sospetto ha senso, vedi 4.7: una
+  fonte "silenziosa" è normale, una col contenuto rimosso no) e le apre con
+  la sessione autenticata. Quelle il cui contenuto risulta indisponibile
+  passano a `non_valido`. Solo Facebook per ora (caso segnalato), non
+  Instagram.
+
+`non_valido` è lo stesso stato già usato altrove in `coda_follow` per un
+handle scartato: la riga resta ispezionabile (03.1), semplicemente esce
+dalla coda seguita e non viene mai più riproposta a un lotto di follow. La
+pagina Fonti (16.9) mostra solo le fonti con `stato = 'seguito'`, quindi una
+fonte marcata `non_valido` sparisce automaticamente da lì.
