@@ -1040,6 +1040,16 @@ def scrivi_perimetro_json(righe: list[dict], percorso: str | Path) -> int:
     return len(righe)
 
 
+ETICHETTE_CATEGORIA_FONTE = {
+    "comune": "Comune",
+    "proloco": "Pro Loco",
+    "teatro": "Teatro",
+    "aggregatore": "Aggregatore",
+    "compagnia_itinerante": "Compagnia itinerante",
+    "sconosciuto": "Da classificare",
+}
+
+
 def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
     """16.9 (webapp Fonti): una riga per ogni fonte in cui il sistema cerca
     eventi — siti web (`sources`, tier T0-T3) e account social (`coda_follow`,
@@ -1055,6 +1065,13 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
     source_id della riga stessa. I `source_id` di `sources` con prefisso
     `feed-` sono solo il contatore sintetico dei social, non una fonte a sé:
     esclusi qui per non duplicare le righe di `coda_follow`.
+
+    Due colonne distinte, richiesto 2026-09-16 (il precedente campo unico
+    "tipo" mischiava il canale con la categoria del soggetto): **fonte** è
+    il canale con cui il sistema legge quella sorgente (`web`, `facebook`,
+    `instagram` — non il `tier` tecnico, che resta un dettaglio interno);
+    **tipo** è la categoria del soggetto (comune, Pro Loco, teatro,
+    aggregatore, ecc.), la stessa `categoria` già usata in 16.8 per "Altro".
     """
 
     def slug(nome: str) -> str:
@@ -1103,14 +1120,16 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
     righe = []
 
     for r in conn.execute(
-        "SELECT source_id, tier, endpoint, categoria FROM sources "
+        "SELECT source_id, endpoint, categoria FROM sources "
         "WHERE endpoint IS NOT NULL AND endpoint != '' AND source_id NOT LIKE 'feed-%'"
     ).fetchall():
         cnt = conteggio(r["source_id"])
+        categoria = r["categoria"] or "sconosciuto"
         righe.append(
             {
-                "tipo": r["tier"] or "sito",
-                "comune": comune_di_source(r["source_id"], r["categoria"] or ""),
+                "fonte": "web",
+                "tipo": ETICHETTE_CATEGORIA_FONTE.get(categoria, categoria),
+                "comune": comune_di_source(r["source_id"], categoria),
                 "attivi": cnt["attivi"],
                 "totale": cnt["totale"],
                 "url": r["endpoint"],
@@ -1118,13 +1137,15 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
         )
 
     for r in conn.execute(
-        "SELECT source_id, piattaforma, handle, url, comune FROM coda_follow WHERE url IS NOT NULL AND url != ''"
+        "SELECT source_id, piattaforma, handle, url, comune, categoria FROM coda_follow WHERE url IS NOT NULL AND url != ''"
     ).fetchall():
         source_id_conteggio = f"feed-{r['piattaforma']}-{r['handle']}" if r["handle"] else ""
         cnt = conteggio(source_id_conteggio) if source_id_conteggio else {"attivi": 0, "totale": 0}
+        categoria = r["categoria"] or "sconosciuto"
         righe.append(
             {
-                "tipo": f"social_{r['piattaforma']}",
+                "fonte": r["piattaforma"],
+                "tipo": ETICHETTE_CATEGORIA_FONTE.get(categoria, categoria),
                 "comune": r["comune"] or "",
                 "attivi": cnt["attivi"],
                 "totale": cnt["totale"],
@@ -1132,7 +1153,7 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
             }
         )
 
-    righe.sort(key=lambda r: (r["comune"] or "￿", r["tipo"], r["url"]))
+    righe.sort(key=lambda r: (r["comune"] or "￿", r["tipo"], r["fonte"], r["url"]))
     for indice, r in enumerate(righe, start=1):
         r["numero"] = indice
 

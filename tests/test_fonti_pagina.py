@@ -31,7 +31,8 @@ def test_righe_fonti_include_sito_comune_con_comune_risolto():
 
     righe = publisher.righe_fonti_complete(conn)
     assert len(righe) == 1
-    assert righe[0]["tipo"] == "T0_pa_design_system"
+    assert righe[0]["fonte"] == "web"
+    assert righe[0]["tipo"] == "Comune"
     assert righe[0]["comune"] == "Calosso"
     assert righe[0]["url"] == "https://comune.calosso.at.it/Eventi"
     assert righe[0]["numero"] == 1
@@ -62,7 +63,8 @@ def test_righe_fonti_include_social_da_coda_follow():
 
     righe = publisher.righe_fonti_complete(conn)
     assert len(righe) == 1
-    assert righe[0]["tipo"] == "social_instagram"
+    assert righe[0]["fonte"] == "instagram"
+    assert righe[0]["tipo"] == "Pro Loco"
     assert righe[0]["comune"] == "Calosso"
     assert righe[0]["url"] == "https://instagram.com/prolococalosso"
 
@@ -170,6 +172,46 @@ def test_righe_fonti_numerate_progressivamente_dopo_ordinamento():
     righe = publisher.righe_fonti_complete(conn)
     numeri = [r["numero"] for r in righe]
     assert numeri == list(range(1, len(righe) + 1))
+
+
+def test_righe_fonti_fonte_e_tipo_sono_colonne_separate():
+    """16.9, richiesto 2026-09-16: 'fonte' è il canale (web/facebook/
+    instagram), 'tipo' è la categoria del soggetto (Comune, Pro Loco,
+    Teatro, ecc.) — prima un unico campo 'tipo' mischiava tier tecnico e
+    piattaforma social, rendendo la colonna illeggibile per l'utente."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO sources (source_id, categoria, tier, endpoint) "
+        "VALUES ('teatro-cambiano-teatro-comunale', 'teatro', 'T1_html', 'https://teatrocambiano.it')"
+    )
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('aggregatore-sagre-piemonte-facebook', 'facebook', 'sagrepiemonte', '', 'aggregatore', "
+        "'https://facebook.com/sagrepiemonte', 'seguito')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_fonti_complete(conn)
+    sito = next(r for r in righe if r["url"] == "https://teatrocambiano.it")
+    social = next(r for r in righe if r["url"] == "https://facebook.com/sagrepiemonte")
+
+    assert sito["fonte"] == "web"
+    assert sito["tipo"] == "Teatro"
+    assert social["fonte"] == "facebook"
+    assert social["tipo"] == "Aggregatore"
+
+
+def test_righe_fonti_categoria_assente_diventa_da_classificare():
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO coda_follow (source_id, piattaforma, handle, comune, categoria, url, stato) "
+        "VALUES ('sconosciuto-instagram-x', 'instagram', 'x', '', 'sconosciuto', "
+        "'https://instagram.com/x', 'seguito')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_fonti_complete(conn)
+    assert righe[0]["tipo"] == "Da classificare"
 
 
 def test_scrivi_fonti_json_scrive_file_valido(tmp_path):

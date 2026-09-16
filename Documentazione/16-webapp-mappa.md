@@ -376,19 +376,29 @@ strutturalmente diverso:
 
 Richiesta esplicita dell'utente (2026-09-16): una pagina con **una riga per
 ogni fonte** in cui il sistema cerca eventi (non un comune per riga come
-Perimetro) — indice numerico progressivo, tipo di fonte, comune collegato,
-eventi attivi/totale prodotti, URL.
+Perimetro) — indice numerico progressivo, fonte (canale), tipo (categoria
+del soggetto), comune collegato, eventi attivi/totale prodotti, URL.
 
 **Dati**: `publisher.righe_fonti_complete` unisce due tabelle che non
 condividono schema:
 - `sources` (siti web T0-T3: comune, Pro Loco, teatro, aggregatore,
   compagnia itinerante) — una riga per `source_id` con `endpoint` non vuoto,
   esclusi i `source_id` con prefisso `feed-` (sono solo il contatore
-  sintetico dei social, non fonti a sé, vedi 16.8). Il **tipo** mostrato è
-  il `tier` (`T0_pa_design_system`, `T0_jsonld`, `T1_html`, ecc.).
+  sintetico dei social, non fonti a sé, vedi 16.8). **Fonte** è sempre
+  `web`; il `tier` tecnico (`T0_pa_design_system`, `T1_html`, ecc.) non è
+  mostrato in questa pagina, resta un dettaglio interno.
 - `coda_follow` (account social letti dal feed invertito) — una riga per
-  handle con `url` non vuoto. Il **tipo** è `social_facebook` o
-  `social_instagram`.
+  handle con `url` non vuoto. **Fonte** è la piattaforma (`facebook` o
+  `instagram`).
+
+Entrambe le tabelle danno anche **tipo**: la `categoria` del soggetto
+(comune, proloco, teatro, aggregatore, compagnia_itinerante, sconosciuto),
+mappata su un'etichetta leggibile con `ETICHETTE_CATEGORIA_FONTE`
+("Comune", "Pro Loco", "Teatro", "Aggregatore", "Compagnia itinerante",
+"Da classificare" per `sconosciuto`/categoria assente). **Fonte** e **tipo**
+erano in origine un unico campo `tipo` che mischiava canale e categoria
+(es. `social_instagram` non diceva se l'account fosse un Pro Loco o un
+teatro): separati su richiesta esplicita perché la colonna era illeggibile.
 
 **Comune collegato**: stesso meccanismo di 16.8 per comune/proloco (slug
 deterministico `comune-{slug}`/`proloco-{slug}-sito` contro `comuni`) e per
@@ -409,14 +419,15 @@ completo). Per i social passa dal source_id sintetico
 
 **Pagina**: `docs/fonti.html` + `docs/fonti.json`, stesso pattern statico
 delle altre tre webapp. Colonne: # (indice progressivo, assegnato dopo
-l'ordinamento per comune/tipo/url), tipo (chip), comune, attivi, totale,
-url (link cliccabile). Ricerca testuale su comune/URL, filtro per tipo,
+l'ordinamento per comune/tipo/fonte/url), fonte (chip colorato per
+web/Facebook/Instagram), tipo (chip), comune, attivi, totale, url (link
+cliccabile). Ricerca testuale su comune/URL, filtro per fonte e per tipo,
 ordinamento per colonna, vista a schede su mobile. Linkata dalle altre tre
 pagine e viceversa.
 
 Collaudato sui dati reali: 2215 fonti (722 siti + 1493 account social con
 URL valorizzato), Cassinasco verificato singolarmente (3 fonti: sito comune,
-Facebook e Instagram Pro Loco, quest'ultima con 2/2 eventi). 9 nuovi test in
+Facebook e Instagram Pro Loco, quest'ultima con 2/2 eventi). 11 test in
 `tests/test_fonti_pagina.py`.
 
 ## 16.6 Cosa resta esplicitamente fuori scope (v1)

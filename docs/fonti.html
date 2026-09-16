@@ -297,6 +297,21 @@
     white-space: nowrap;
   }
 
+  .chip-fonte {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+    color: #fff;
+  }
+  .chip-fonte-web { background: #63594a; }
+  .chip-fonte-facebook { background: #1877f2; }
+  .chip-fonte-instagram { background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af); }
+
   .comune-assente { color: var(--text-3); font-style: italic; }
 
   .link-url {
@@ -398,7 +413,13 @@
     <input type="text" id="filtro-testo" placeholder="Nome comune o indirizzo...">
   </div>
   <div class="campo-filtro">
-    <label for="filtro-tipo">Tipo di fonte</label>
+    <label for="filtro-fonte">Fonte</label>
+    <select id="filtro-fonte">
+      <option value="">Tutte</option>
+    </select>
+  </div>
+  <div class="campo-filtro">
+    <label for="filtro-tipo">Tipo</label>
     <select id="filtro-tipo">
       <option value="">Tutti</option>
     </select>
@@ -413,6 +434,7 @@
       <thead>
         <tr>
           <th class="col-numero-progressivo" data-colonna="numero">#<span class="icona-ordinamento"></span></th>
+          <th data-colonna="fonte" class="col-tipo">Fonte<span class="icona-ordinamento"></span></th>
           <th data-colonna="tipo" class="col-tipo">Tipo<span class="icona-ordinamento"></span></th>
           <th data-colonna="comune" class="col-comune">Comune<span class="icona-ordinamento"></span></th>
           <th data-colonna="attivi" class="col-numero">Attivi<span class="icona-ordinamento"></span></th>
@@ -468,6 +490,16 @@ function impostaStato(testo, errore) {
   el.style.color = errore ? "#a24a3d" : "";
 }
 
+const ETICHETTE_FONTE = { web: "Web", facebook: "Facebook", instagram: "Instagram" };
+
+function etichettaFonte(fonte) {
+  return ETICHETTE_FONTE[fonte] || fonte;
+}
+
+function chipFonte(fonte) {
+  return `<span class="chip-fonte chip-fonte-${escapeHtml(fonte)}">${escapeHtml(etichettaFonte(fonte))}</span>`;
+}
+
 async function caricaFonti() {
   try {
     const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
@@ -483,6 +515,15 @@ async function caricaFonti() {
 }
 
 function popolaFiltri() {
+  const fonti = [...new Set(fontiTotali.map((f) => f.fonte).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+  const selFonte = document.getElementById("filtro-fonte");
+  for (const fonte of fonti) {
+    const opt = document.createElement("option");
+    opt.value = fonte;
+    opt.textContent = etichettaFonte(fonte);
+    selFonte.appendChild(opt);
+  }
+
   const tipi = [...new Set(fontiTotali.map((f) => f.tipo).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
   const selTipo = document.getElementById("filtro-tipo");
   for (const tipo of tipi) {
@@ -495,9 +536,11 @@ function popolaFiltri() {
 
 function fontiFiltrate() {
   const testo = document.getElementById("filtro-testo").value.trim().toLowerCase();
+  const fonte = document.getElementById("filtro-fonte").value;
   const tipo = document.getElementById("filtro-tipo").value;
 
   return fontiTotali.filter((f) => {
+    if (fonte && f.fonte !== fonte) return false;
     if (tipo && f.tipo !== tipo) return false;
     if (testo) {
       const inComune = (f.comune || "").toLowerCase().includes(testo);
@@ -544,7 +587,7 @@ function disegnaTabella(filtrati) {
 
   if (filtrati.length === 0) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="6" class="nessun-risultato">Nessuna fonte corrisponde ai filtri selezionati.</td>`;
+    tr.innerHTML = `<td colspan="7" class="nessun-risultato">Nessuna fonte corrisponde ai filtri selezionati.</td>`;
     corpo.appendChild(tr);
     return;
   }
@@ -553,6 +596,7 @@ function disegnaTabella(filtrati) {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td class="col-numero-progressivo">${f.numero}</td>
+      <td class="col-tipo">${chipFonte(f.fonte)}</td>
       <td class="col-tipo"><span class="chip-tipo">${escapeHtml(f.tipo)}</span></td>
       <td class="col-comune">${f.comune ? escapeHtml(f.comune) : '<span class="comune-assente">—</span>'}</td>
       <td class="col-numero">${f.attivi}</td>
@@ -581,6 +625,8 @@ function disegnaCard(filtrati) {
         <div class="contatore-comune">${f.attivi}/${f.totale}</div>
       </div>
       <div class="riga-meta">
+        ${chipFonte(f.fonte)}
+        <span class="puntino">·</span>
         <span>${f.comune ? escapeHtml(f.comune) : "Comune non collegato"}</span>
       </div>
       <div class="riga-url"><a class="link-url" href="${escapeHtml(f.url)}" target="_blank" rel="noopener">${escapeHtml(f.url)}</a></div>
@@ -601,10 +647,12 @@ function aggiornaConteggio(n) {
 }
 
 document.getElementById("filtro-testo").addEventListener("input", applicaFiltri);
+document.getElementById("filtro-fonte").addEventListener("change", applicaFiltri);
 document.getElementById("filtro-tipo").addEventListener("change", applicaFiltri);
 
 document.getElementById("btn-reset").addEventListener("click", () => {
   document.getElementById("filtro-testo").value = "";
+  document.getElementById("filtro-fonte").value = "";
   document.getElementById("filtro-tipo").value = "";
   applicaFiltri();
 });
