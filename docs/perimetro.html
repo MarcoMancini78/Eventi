@@ -89,6 +89,10 @@
     margin-left: 2px;
     border-left: 1px solid rgba(255,255,255,.3);
   }
+  .sottotitolo.dati-obsoleti {
+    color: #ffd7d0;
+    font-weight: 800;
+  }
 
   .header-destra {
     display: flex;
@@ -506,6 +510,14 @@ function escapeHtml(s) {
   }[c]));
 }
 
+const ORE_SOGLIA_DATI_OBSOLETI = 16;
+
+function mostraDataAggiornamento(elemento, isoDataOra) {
+  elemento.textContent = `Aggiornato il ${formattaDataOraItaliana(isoDataOra)}`;
+  const ore = (Date.now() - new Date(isoDataOra).getTime()) / 3_600_000;
+  elemento.classList.toggle("dati-obsoleti", ore > ORE_SOGLIA_DATI_OBSOLETI);
+}
+
 function impostaStato(testo, errore) {
   const el = document.getElementById("stato");
   el.textContent = testo;
@@ -520,7 +532,7 @@ async function caricaPerimetro() {
     comuniTotali = Array.isArray(dati.comuni) ? dati.comuni : [];
     popolaFiltri();
     applicaFiltri();
-    document.getElementById("aggiornato").textContent = `Aggiornato il ${formattaDataOraItaliana(dati.generato_il)}`;
+    mostraDataAggiornamento(document.getElementById("aggiornato"), dati.generato_il);
   } catch (e) {
     impostaStato("Caricamento non riuscito: " + e.message, true);
   }

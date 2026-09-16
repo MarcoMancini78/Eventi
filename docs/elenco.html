@@ -89,6 +89,10 @@
     margin-left: 2px;
     border-left: 1px solid rgba(255,255,255,.3);
   }
+  .sottotitolo.dati-obsoleti {
+    color: #ffd7d0;
+    font-weight: 800;
+  }
 
   .header-destra {
     display: flex;
@@ -510,6 +514,14 @@ function impostaStato(testo, errore) {
   el.style.color = errore ? "#a24a3d" : "";
 }
 
+const ORE_SOGLIA_DATI_OBSOLETI = 16;
+
+function mostraDataAggiornamento(elemento, isoDataOra) {
+  elemento.textContent = `Aggiornato il ${formattaDataOraItaliana(isoDataOra)}`;
+  const ore = (Date.now() - new Date(isoDataOra).getTime()) / 3_600_000;
+  elemento.classList.toggle("dati-obsoleti", ore > ORE_SOGLIA_DATI_OBSOLETI);
+}
+
 async function caricaEventi() {
   try {
     const risposta = await fetch(URL_DATI_REMOTI, { cache: "no-store" });
@@ -518,7 +530,7 @@ async function caricaEventi() {
     eventiTotali = Array.isArray(dati.eventi) ? dati.eventi : [];
     popolaFiltri();
     applicaFiltri();
-    document.getElementById("aggiornato").textContent = `Aggiornato il ${formattaDataOraItaliana(dati.generato_il)}`;
+    mostraDataAggiornamento(document.getElementById("aggiornato"), dati.generato_il);
   } catch (e) {
     impostaStato("Caricamento non riuscito: " + e.message, true);
   }
