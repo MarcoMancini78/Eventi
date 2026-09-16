@@ -185,6 +185,27 @@ accettato consapevolmente su richiesta esplicita.
 Vale anche come sicurezza: se qualcosa va storto, si ferma da solo perché nessuno lo
 rilancia.
 
+### Follow fatto a mano dall'app: serve `sync-seguiti`, non basta `follow`
+
+Se un nuovo profilo viene seguito **direttamente dall'app Facebook/Instagram**
+(fuori dal sistema, es. l'utente segue a mano il Comitato Sipario di Canelli),
+`coda_follow` non lo scopre da sola: serve `run.py sync-seguiti --platform=...`
+(`src/sync_seguiti.py`, sola lettura, 14.5b), che legge la lista "seguiti"
+reale e allinea `coda_follow` — un handle nuovo viene aggiunto (per Facebook,
+con un tentativo di auto-classificazione da nome pagina + indirizzo).
+
+`sync-seguiti` **non è schedulato automaticamente** (a differenza di
+`schedulazione_follow.bat`, ogni 2 ore) — va lanciato a mano o tramite lo
+script dedicato `sync_seguiti_e_pubblica.bat` (2026-09-17, richiesto
+dall'utente), che incatena: `sync-seguiti` FB+IG (censisce i nuovi follow) →
+`run-publish` (li segue per davvero se risultano `da_seguire`, gira le
+fonti, legge i feed, pubblica su Sheets/JSON) → `git push` dei tre JSON
+pubblici (`eventi_mappa.json`, `perimetro.json`, `fonti.json`), stesso
+blocco già usato in `ricerca_eventi_automatica.bat`. Non aggiunto alla
+schedulazione automatica di proposito: fa anch'esso un vero follow dentro
+`run-publish`, e vale lo stesso principio di prudenza sulla regolarità
+appena descritto sopra — la decisione se/come schedularlo resta dell'utente.
+
 ---
 
 ## 14.5 Interruttore di sicurezza
