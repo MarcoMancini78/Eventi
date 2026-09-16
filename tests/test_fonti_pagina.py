@@ -38,6 +38,47 @@ def test_righe_fonti_include_sito_comune_con_comune_risolto():
     assert righe[0]["numero"] == 1
 
 
+def test_righe_fonti_sito_comune_con_suffisso_risolve_stesso_comune():
+    """Caso reale (2026-09-17, Acqui Terme): un comune può avere una
+    SECONDA fonte web separata dal sito istituzionale (es. un portale
+    turistico), source_id 'comune-{slug}-{suffisso}'. Deve risolvere sullo
+    stesso comune, non restare vuoto — stessa logica di
+    pipeline.comune_riferimento_da_source_id."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, provincia, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Acqui Terme', 'AL', 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO sources (source_id, categoria, tier, endpoint) "
+        "VALUES ('comune-acqui-terme-turismo', 'comune', 'T0_jsonld_indice', 'https://turismo.comuneacqui.it/events/')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_fonti_complete(conn)
+    assert len(righe) == 1
+    assert righe[0]["comune"] == "Acqui Terme"
+
+
+def test_righe_fonti_esclude_sito_con_stato_esclusa():
+    """Una fonte web disattivata a mano (stato='esclusa', es. dopo aver
+    scoperto che produceva falsi eventi) non deve comparire in Fonti,
+    stesso principio già applicato ai social con stato != 'seguito'."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, provincia, km, minuti, fascia, attivo) "
+        "VALUES ('1', 'Acqui Terme', 'AL', 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO sources (source_id, categoria, tier, endpoint, stato) "
+        "VALUES ('comune-acqui-terme', 'comune', 'T0_pa_design_system', 'https://comune.acquiterme.al.it/Eventi', 'esclusa')"
+    )
+    conn.commit()
+
+    righe = publisher.righe_fonti_complete(conn)
+    assert righe == []
+
+
 def test_righe_fonti_esclude_source_id_feed_sintetici():
     """I source_id 'feed-{piattaforma}-{handle}' in sources sono solo il
     contatore sintetico dei social (feed_social.py): non fonti a sé, non

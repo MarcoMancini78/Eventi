@@ -7,6 +7,7 @@ non sembrano un feed.
 from __future__ import annotations
 
 import hashlib
+import html as html_lib
 import json
 import re
 
@@ -77,12 +78,23 @@ def parse_jsonld(html: str, source_id: str, fetch_url: str) -> list[Artefatto]:
             nodi_evento.extend(_eventi_da_nodo(candidato))
 
         for evento in nodi_evento:
-            titolo = evento.get("name")
+            # Bug reale trovato (2026-09-17, turismo.comuneacqui.it): alcuni
+            # siti WordPress (Yoast SEO) scrivono entità HTML letterali
+            # ("&#8211;") anche DENTRO le stringhe del JSON-LD, non solo
+            # nell'HTML circostante — un difetto della fonte, non del
+            # parsing JSON (che le legge correttamente come testo). Senza
+            # unescape, titoli ed estratti restavano con "&#8211;" al posto
+            # di "–" in produzione. html.unescape su testo che non ha
+            # entità non cambia nulla, quindi applicato sempre.
+            titolo = html_lib.unescape(evento.get("name")) if evento.get("name") else None
             data_inizio = _estrai_data(evento.get("startDate"))
             if not titolo or not data_inizio:
                 continue
             data_fine = _estrai_data(evento.get("endDate")) or data_inizio
-            descrizione = evento.get("description")
+            descrizione_raw = evento.get("description")
+            descrizione = html_lib.unescape(descrizione_raw) if descrizione_raw else None
+            luogo = _estrai_luogo(evento.get("location"))
+            luogo_testuale = html_lib.unescape(luogo) if luogo else None
             testo = f"{titolo}\n{descrizione or ''}".strip()
             artefatti.append(
                 Artefatto(
@@ -93,7 +105,7 @@ def parse_jsonld(html: str, source_id: str, fetch_url: str) -> list[Artefatto]:
                     titolo=titolo,
                     data_inizio=data_inizio,
                     data_fine=data_fine,
-                    luogo_testuale=_estrai_luogo(evento.get("location")),
+                    luogo_testuale=luogo_testuale,
                     descrizione=descrizione,
                     raw_hash=hashlib.sha1(testo.encode("utf-8")).hexdigest(),
                 )

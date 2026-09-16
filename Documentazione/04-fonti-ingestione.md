@@ -78,6 +78,21 @@ l'interpretazione di "sabato prossimo" molto più affidabile.
 ### `jsonld`
 Estrae direttamente `startDate`, `endDate`, `location`, `name`, `description`.
 Nessun LLM. È il tier T0 più prezioso perché arriva da pagine HTML normali.
+Decodifica le entità HTML (`&#8211;` → `–`) nei campi testuali: alcuni siti
+WordPress (Yoast SEO) le scrivono letterali anche dentro il JSON-LD stesso,
+non solo nell'HTML circostante (bug della fonte, trovato 2026-09-17 su
+turismo.comuneacqui.it).
+
+### `jsonld_indice` (T0_jsonld_indice)
+Variante di `jsonld` per il caso in cui l'INDICE che elenca gli eventi non
+espone JSON-LD proprio, ma ogni pagina di DETTAGLIO sì (caso reale,
+2026-09-17: `turismo.comuneacqui.it/events/`, portale turistico WordPress
+separato dal sito istituzionale di Acqui Terme, plugin eventi con
+schema.org/Event solo su `/event/{slug}/`). Segue i link di dettaglio con
+permalink singolare `event/...` (esplicito, non un'euristica di conteggio:
+un sito del genere ha anche `/events/category/...` ed `/events/elenco/...`
+plurali — pagine categoria/filtro numerose che un conteggio generico
+confonderebbe col vero elenco), poi applica `jsonld` a ciascuno. T0 puro.
 
 ### `html`
 1. Scarica la pagina indice (lista eventi)
@@ -94,6 +109,31 @@ Nessun LLM. È il tier T0 più prezioso perché arriva da pagine HTML normali.
 Nessun selettore CSS specifico per sito nell'adattatore generico. Se una fonte
 richiede selettori custom fuori da queste due famiglie, è un segnale che la
 resa non giustifica lo sforzo.
+
+**Verificare che l'endpoint punti alla sezione giusta, non solo che risponda
+200** (caso reale, 2026-09-17, Acqui Terme): `.../Eventi` rispondeva 200 ma
+conteneva solo 1 `.card-wrapper` (un widget, non un vero evento) — la
+sezione eventi del sito era di fatto abbandonata, mentre `.../Notizie?idCat=1`
+(stesso template `pa_design_system`) ne aveva 194, comunicati stampa mescolati
+a eventi veri. **Non sostituire un endpoint 0-eventi con una sezione notizie
+generica**: un tier T0 puro (nessun LLM in mezzo) pubblicherebbe ogni
+comunicato come evento (tentato e scartato: 189 falsi eventi tipo "Auguri di
+Buona Pasqua", "Chiusura sportello UICI"). Cercare invece un portale/sezione
+dedicata **solo** a eventi/turismo, anche su un dominio diverso da quello
+istituzionale (qui: `turismo.comuneacqui.it`, portale WordPress con plugin
+eventi dedicato, JSON-LD pulito su ogni dettaglio → `T0_jsonld_indice`). Le
+due fonti convivono come righe separate in `sources` (`comune-acqui-terme`,
+sito istituzionale, endpoint riportato a `.../Eventi` ed escluso —
+`stato='esclusa'` — perché anche vuoto è meglio di 189 falsi positivi;
+`comune-acqui-terme-turismo`, il portale nuovo, attivo), stesso comune.
+Bug scoperto in conseguenza: `pipeline.comune_riferimento_da_source_id` e
+`publisher.comune_di_source` risolvevano il comune solo per match ESATTO
+dello slug (`acqui-terme`) — un secondo source_id con suffisso
+(`acqui-terme-turismo`) restava senza comune e i suoi eventi venivano
+scartati/mostrati senza comune. Corretto in entrambi i moduli: prova prima
+il match esatto, poi un prefisso `{slug-comune}-` seguito da un suffisso
+libero (il prefisso più lungo vince, per non confondere comuni il cui
+slug è prefisso di un altro).
 
 **Rendering JavaScript:** solo se il testo ripulito risulta praticamente vuoto e la
 fonte è in `polling_diretto`. Playwright headless costa 3-10 secondi per pagina e va usato con

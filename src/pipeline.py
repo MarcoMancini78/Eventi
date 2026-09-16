@@ -21,6 +21,7 @@ from .adapters.email_imap import EmailImapAdapter
 from .adapters.html import HtmlAdapter
 from .adapters.ical import ICalAdapter
 from .adapters.jsonld import JsonLdAdapter
+from .adapters.jsonld_indice import JsonLdIndiceAdapter
 from .adapters.pa_design_system import PaDesignSystemAdapter
 from .adapters.rss import RssAdapter
 from .adapters.telegram import TelegramAdapter
@@ -47,6 +48,12 @@ _ADAPTER_PER_TIER = {
     # HTML identica su centinaia di comuni (verificato su un campione di
     # più province) — selettori dedicati invece del generico T1_html+LLM.
     "T0_pa_design_system": PaDesignSystemAdapter(),
+    # 2026-09-17, caso Acqui Terme: un indice che elenca eventi senza
+    # JSON-LD proprio, ma le cui pagine di DETTAGLIO sì (portale turistico
+    # WordPress separato dal sito istituzionale, plugin eventi). Segue i
+    # link di dettaglio (stessa discovery di T1_html) ed estrae JSON-LD da
+    # ciascuno — T0 puro, nessun LLM.
+    "T0_jsonld_indice": JsonLdIndiceAdapter(),
 }
 
 
@@ -64,14 +71,33 @@ def comune_riferimento_da_source_id(source_id: str, conn: sqlite3.Connection) ->
     reale trovato su comune-calosso: 159 fonti su 386 con eventi trovati
     ma mai pubblicati, perché il worker del giro schedulato non chiamava
     questa derivazione — la chiamava solo il percorso di ricorrezione
-    mirata `correggi-fonte-html`)."""
+    mirata `correggi-fonte-html`).
+
+    Match esatto sullo slug intero prima di tutto; se non trovato, prova
+    un prefisso 'comune-{slug}-' seguito da un suffisso libero (2026-09-17,
+    caso Acqui Terme: un comune può avere una SECONDA fonte web separata,
+    es. 'comune-acqui-terme-turismo' per un portale turistico distinto dal
+    sito istituzionale 'comune-acqui-terme' — stesso comune, source_id
+    diverso). Il prefisso più lungo vince, per non confondere un comune
+    con un altro il cui slug ne è un prefisso (es. 'san-donato' non deve
+    risolvere erroneamente su un ipotetico comune 'San Donato Milanese')."""
     if not source_id.startswith("comune-"):
         return None
     slug = source_id[len("comune-"):]
+
     riga = conn.execute(
         "SELECT comune FROM comuni WHERE LOWER(REPLACE(comune, ' ', '-')) = ?", (slug,)
     ).fetchone()
-    return riga["comune"] if riga else None
+    if riga:
+        return riga["comune"]
+
+    candidati = conn.execute(
+        "SELECT comune FROM comuni WHERE ? LIKE LOWER(REPLACE(comune, ' ', '-')) || '-%'", (slug,)
+    ).fetchall()
+    if not candidati:
+        return None
+    migliore = max(candidati, key=lambda r: len(r["comune"]))
+    return migliore["comune"]
 
 
 def esegui_fonte(
@@ -377,7 +403,7 @@ class ErroreRiprocessaFonteHtml(Exception):
 # da un semplice re-fetch HTTP, fuori scope per una ricorrezione mirata.
 _METODI_RIPROCESSABILI = {
     "T1_html", "T0_aggregatore_playwright", "T0_pa_design_system",
-    "T0_jsonld", "T0_ical", "T0_rss",
+    "T0_jsonld", "T0_jsonld_indice", "T0_ical", "T0_rss",
 }
 
 

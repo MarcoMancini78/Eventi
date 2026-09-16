@@ -117,3 +117,31 @@ def test_estrai_date_testuale_senza_data():
     inizio, fine = _estrai_date_testuale("nessuna data qui")
     assert inizio is None
     assert fine is None
+
+
+def test_parse_riconosce_data_testuale_con_giorno_settimana_in_categoria_top():
+    """Bug reale trovato 2026-09-17 (comune-acqui-terme, sezione
+    /Notizie?idCat=1, stesso template 'card-wrapper'): '.category-top .data'
+    può contenere un formato testuale con giorno della settimana davanti
+    ('Martedì, 08 Settembre 2026'), non solo GG/MM/AAAA. Prima del fix, si
+    tentava solo il pattern numerico su questo campo e, fallito, si passava
+    subito a '.card-day' (che qui contiene solo l'abbreviazione del mese,
+    "set", non l'intera data) — la card veniva scartata pur avendo una
+    data perfettamente leggibile in '.data'."""
+    html = """<html><body>
+    <div class="card-wrapper">
+      <div class="card-calendar"><span class="card-date">08</span><span class="card-day">set</span></div>
+      <div class="category-top">
+        <a href="Notizie?idCat=1">Notizie</a><span class="data">Martedì, 08 Settembre 2026</span>
+      </div>
+      <a href="Dettaglionews?IDNews=415084"><h3 class="card-title">Festa dello Sport</h3></a>
+      <span class="text-paragraph-card">Un appuntamento sportivo</span>
+    </div>
+    </body></html>"""
+    artefatti = parse_pa_design_system(html, source_id="comune-acqui-terme", fetch_url="https://x.it/Notizie?idCat=1")
+
+    assert len(artefatti) == 1
+    art = artefatti[0]
+    assert art.titolo == "Festa dello Sport"
+    assert art.data_inizio == "2026-09-08"
+    assert art.data_fine == "2026-09-08"

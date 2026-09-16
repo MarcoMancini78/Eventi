@@ -1,12 +1,12 @@
 {
-  "generato_il": "2026-09-16T11:59:37",
+  "generato_il": "2026-09-16T12:44:32",
   "fonti": [
     {
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 22,
-      "totale": 50,
+      "attivi": 16,
+      "totale": 44,
       "url": "https://www.facebook.com/visitacquiterme",
       "numero": 1
     },
@@ -14,9 +14,9 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://comune.acquiterme.al.it/Eventi",
+      "attivi": 10,
+      "totale": 10,
+      "url": "https://turismo.comuneacqui.it/events/",
       "numero": 2
     },
     {

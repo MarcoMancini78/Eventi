@@ -67,3 +67,27 @@ def test_parse_jsonld_non_solleva_se_address_e_una_lista():
     assert art.data_inizio == "2026-09-05"
     assert art.data_fine == "2026-09-20"
     assert art.luogo_testuale is None  # nessun addressLocality nel campione, ma nessun crash
+
+
+def test_parse_jsonld_decodifica_entita_html_nel_titolo():
+    """Bug reale trovato (2026-09-17, turismo.comuneacqui.it): alcuni siti
+    WordPress (Yoast SEO) scrivono entità HTML letterali ("&#8211;") anche
+    dentro le stringhe del JSON-LD stesso, non solo nell'HTML circostante —
+    un difetto della fonte, non del parsing JSON. Senza unescape, titolo/
+    descrizione restavano con "&#8211;" invece di "–" in produzione."""
+    html_pagina = """<html><head>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"Event","name":"MENU ALLA CARTA &#8211; CARTA MENU",
+   "startDate":"2026-08-29T00:00:00+00:00","description":"Un men&#249; speciale",
+   "location":{"@type":"Place","name":"Palazzo Robellini &amp; Sale"}}
+]}
+</script>
+</head><body></body></html>"""
+    artefatti = parse_jsonld(html_pagina, source_id="comune-prova", fetch_url="https://x.it/event/menu/")
+
+    assert len(artefatti) == 1
+    art = artefatti[0]
+    assert art.titolo == "MENU ALLA CARTA – CARTA MENU"
+    assert art.descrizione == "Un menù speciale"
+    assert art.luogo_testuale == "Palazzo Robellini & Sale"

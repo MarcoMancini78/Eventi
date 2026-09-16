@@ -1099,12 +1099,28 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
             if r["source_id"].endswith(suffisso):
                 comune_da_coda_follow[r["source_id"][: -len(suffisso)]] = r["comune"]
 
+    def comune_da_slug_con_suffisso(slug: str) -> str:
+        """Match esatto prima; se assente, prova un prefisso 'slug-comune-'
+        seguito da un suffisso libero (2026-09-17, caso Acqui Terme: un
+        comune può avere una SECONDA fonte web separata dal sito
+        istituzionale, es. 'comune-acqui-terme-turismo' per un portale
+        turistico distinto — stesso comune, source_id diverso). Il
+        prefisso più lungo vince, stessa logica di
+        pipeline.comune_riferimento_da_source_id (da tenere allineata)."""
+        diretto = comune_per_slug.get(slug)
+        if diretto:
+            return diretto
+        candidati = [c for s, c in comune_per_slug.items() if slug.startswith(s + "-")]
+        if not candidati:
+            return ""
+        return max(candidati, key=len)
+
     def comune_di_source(source_id: str, categoria: str) -> str:
         if categoria == "comune":
-            return comune_per_slug.get(source_id.removeprefix("comune-"), "")
+            return comune_da_slug_con_suffisso(source_id.removeprefix("comune-"))
         if categoria == "proloco":
             base = source_id.removeprefix("proloco-").removesuffix("-sito")
-            return comune_per_slug.get(base, "")
+            return comune_da_slug_con_suffisso(base)
         return comune_da_coda_follow.get(source_id, "")
 
     oggi = date.today().isoformat()
@@ -1128,7 +1144,7 @@ def righe_fonti_complete(conn: sqlite3.Connection) -> list[dict]:
 
     for r in conn.execute(
         "SELECT source_id, endpoint, categoria FROM sources "
-        "WHERE endpoint IS NOT NULL AND endpoint != '' AND source_id NOT LIKE 'feed-%'"
+        "WHERE endpoint IS NOT NULL AND endpoint != '' AND source_id NOT LIKE 'feed-%' AND stato != 'esclusa'"
     ).fetchall():
         cnt = conteggio(r["source_id"])
         categoria = r["categoria"] or "sconosciuto"

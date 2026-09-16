@@ -13,14 +13,20 @@ REM errore, viene letto al giro schedulato successivo.
 
 cd /d "%~dp0"
 
-set PYTHON_EXE="C:\Program Files\Microsoft SDKs\Azure\CLI2\python.exe"
+REM Bug reale osservato (2026-09-17, in sync_seguiti_e_pubblica.bat, stesso
+REM identico schema qui): PYTHON_EXE con le virgolette incluse nel valore
+REM passato cosi' com'e' come argomento -PythonExe a PowerShell produce
+REM virgolette raddoppiate che Windows non riconosce piu' come comando
+REM valido - run-publish falliva subito ad ogni giro. Valore SENZA
+REM virgolette qui, quotato nell'invocazione PowerShell sotto.
+set PYTHON_EXE=C:\Program Files\Microsoft SDKs\Azure\CLI2\python.exe
 
 echo ==== %date% %time% - avvio ricerca eventi (follow + siti + social + pubblica) ==== >> data\log_ricerca_eventi_schedulata.txt
 REM Timeout esplicito di 1 ora (2026-09-12, secondo livello di sicurezza
 REM oltre a ExecutionTimeLimit del Task Scheduler, vedi esegui_con_timeout.ps1
 REM per il perche': un run rimasto appeso, osservato piu' volte, bloccava
 REM ogni trigger schedulato successivo per MultipleInstances=IgnoreNew).
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0esegui_con_timeout.ps1" -PythonExe %PYTHON_EXE% -LogPath "%~dp0data\log_ricerca_eventi_schedulata.txt" -TimeoutSecondi 3600
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0esegui_con_timeout.ps1" -PythonExe "%PYTHON_EXE%" -LogPath "%~dp0data\log_ricerca_eventi_schedulata.txt" -TimeoutSecondi 3600
 
 REM Pubblica anche docs/eventi_mappa.json (16, richiesto dall'utente
 REM 2026-08-31): run-publish/publish lo scrive gia' in locale, ma la mappa

@@ -20,21 +20,30 @@ REM sullo schermo ad ogni esecuzione.
 
 cd /d "%~dp0"
 
-set PYTHON_EXE="C:\Program Files\Microsoft SDKs\Azure\CLI2\python.exe"
+REM Bug reale osservato (2026-09-17): PYTHON_EXE con le virgolette incluse
+REM nel valore funziona per una chiamata diretta da cmd.exe (%PYTHON_EXE%
+REM sotto), ma passato cosi' com'e' come argomento -PythonExe a PowerShell
+REM (piu' sotto) produce virgolette raddoppiate ("""C:\...\python.exe""")
+REM che Windows non riconosce piu' come comando valido - il giro
+REM run-publish falliva subito, mentre sync-seguiti (chiamato solo da
+REM cmd.exe) andava a buon fine, dando l'impressione di un'esecuzione
+REM parziale bloccata a meta'. Valore SENZA virgolette qui, quotato dove
+REM serve in ogni singola chiamata.
+set PYTHON_EXE=C:\Program Files\Microsoft SDKs\Azure\CLI2\python.exe
 
 echo ==== %date% %time% - avvio sync-seguiti + acquisizione + pubblicazione ==== >> data\log_sync_seguiti_schedulato.txt
 
 echo ==== %date% %time% - sync-seguiti Facebook ==== >> data\log_sync_seguiti_schedulato.txt
-%PYTHON_EXE% run.py sync-seguiti --platform=facebook >> data\log_sync_seguiti_schedulato.txt 2>&1
+"%PYTHON_EXE%" run.py sync-seguiti --platform=facebook >> data\log_sync_seguiti_schedulato.txt 2>&1
 
 echo ==== %date% %time% - sync-seguiti Instagram ==== >> data\log_sync_seguiti_schedulato.txt
-%PYTHON_EXE% run.py sync-seguiti --platform=instagram >> data\log_sync_seguiti_schedulato.txt 2>&1
+"%PYTHON_EXE%" run.py sync-seguiti --platform=instagram >> data\log_sync_seguiti_schedulato.txt 2>&1
 
 REM Timeout esplicito di 1 ora, stesso meccanismo/motivo di
 REM ricerca_eventi_automatica.bat (2026-09-12): un run-publish rimasto
 REM appeso bloccherebbe ogni trigger schedulato successivo.
 echo ==== %date% %time% - run-publish (follow coda + fonti + feed + pubblica) ==== >> data\log_sync_seguiti_schedulato.txt
-powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0esegui_con_timeout.ps1" -PythonExe %PYTHON_EXE% -LogPath "%~dp0data\log_sync_seguiti_schedulato.txt" -TimeoutSecondi 3600
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0esegui_con_timeout.ps1" -PythonExe "%PYTHON_EXE%" -LogPath "%~dp0data\log_sync_seguiti_schedulato.txt" -TimeoutSecondi 3600
 
 REM Pubblica i JSON pubblici su GitHub Pages (16, stesso blocco di
 REM ricerca_eventi_automatica.bat): run-publish li scrive gia' in locale

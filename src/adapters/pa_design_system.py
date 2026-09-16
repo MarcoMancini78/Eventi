@@ -118,12 +118,25 @@ def parse_pa_design_system(html: str, source_id: str, fetch_url: str) -> list[Ar
         if not titolo:
             continue
 
-        # Data: '.category-top .data' con formato GG/MM/AAAA (variante
-        # Dettaglionews) o '.card-calendar .card-day' con formato testuale
-        # italiano "20 Maggio 2000" (variante wordpress, 2026-09-14).
+        # Data: '.category-top .data' può contenere il formato GG/MM/AAAA
+        # (variante Dettaglionews classica) OPPURE un formato testuale con
+        # giorno della settimana davanti, es. "Martedì, 08 Settembre 2026"
+        # (caso reale trovato 2026-09-17: sezione "Notizie" di Acqui Terme,
+        # stesso template ma popolata con notizie/eventi invece che con la
+        # sezione "Eventi" dedicata, che lì risulta vuota). Prima di
+        # rinunciare su questo campo, provano ENTRAMBI i pattern sullo
+        # stesso testo — bug precedente: si tentava solo quello numerico e,
+        # fallito, si passava subito a '.card-day', che qui contiene solo
+        # l'abbreviazione del mese ("set", non "Settembre 2026"), scartando
+        # la card interamente pur avendo una data perfettamente leggibile.
         data_el = _con_classe(card, "data")
-        data_inizio, data_fine = _estrai_date(data_el[0].text_content() if data_el else "")
+        testo_data_el = data_el[0].text_content() if data_el else ""
+        data_inizio, data_fine = _estrai_date(testo_data_el)
         if not data_inizio:
+            data_inizio, data_fine = _estrai_date_testuale(testo_data_el)
+        if not data_inizio:
+            # '.card-calendar .card-day' con formato testuale italiano
+            # "20 Maggio 2000" (variante wordpress, 2026-09-14).
             calendario_el = _con_classe(card, "card-day")
             data_inizio, data_fine = _estrai_date_testuale(calendario_el[0].text_content() if calendario_el else "")
         if not data_inizio:

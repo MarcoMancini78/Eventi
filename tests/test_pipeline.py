@@ -716,6 +716,41 @@ def test_comune_riferimento_da_source_id_deriva_dallo_slug():
     assert pipeline.comune_riferimento_da_source_id("proloco-calosso-sito", conn) is None
 
 
+def test_comune_riferimento_da_source_id_risolve_seconda_fonte_con_suffisso():
+    """Caso reale (2026-09-17, Acqui Terme): un comune può avere una
+    SECONDA fonte web separata dal sito istituzionale (es. un portale
+    turistico), source_id 'comune-{slug}-{suffisso}' invece di
+    'comune-{slug}' puro. Deve risolvere sullo stesso comune, non restare
+    None (altrimenti stesso bug di comune-calosso sopra: eventi scartati
+    in silenzio)."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('3', 'Acqui Terme', 'Acqui Terme', 'AL', 44.67, 8.46, 0.0, 0, 'A', 'si')"
+    )
+    conn.commit()
+
+    assert pipeline.comune_riferimento_da_source_id("comune-acqui-terme-turismo", conn) == "Acqui Terme"
+
+
+def test_comune_riferimento_da_source_id_prefisso_non_sceglie_comune_sbagliato():
+    """Il prefisso più lungo vince: 'san-donato-milanese' non deve
+    risolvere erroneamente su un comune 'San Donato' più corto il cui
+    slug ne è solo un prefisso."""
+    conn = _conn_di_prova()
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('4', 'San Donato', 'San Donato', 'XX', 0, 0, 0.0, 0, 'A', 'si')"
+    )
+    conn.execute(
+        "INSERT INTO comuni (istat, comune, alias, provincia, lat, lon, km, minuti, fascia, attivo) "
+        "VALUES ('5', 'San Donato Milanese', 'San Donato Milanese', 'MI', 0, 0, 0.0, 0, 'A', 'si')"
+    )
+    conn.commit()
+
+    assert pipeline.comune_riferimento_da_source_id("comune-san-donato-milanese-turismo", conn) == "San Donato Milanese"
+
+
 def test_fonte_t0_pa_design_system_senza_comune_riferimento_esplicito_scarta_evento():
     """Controprova del bug: senza comune_riferimento (come faceva il worker
     prima del fix), un artefatto T0 strutturato senza comune_testuale
