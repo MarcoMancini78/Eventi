@@ -8,9 +8,22 @@ nata il 2026-09-10, condivide lo stesso file dati della mappa.
 nata il 2026-09-11, un comune per riga con tutti i link collegati.
 **Uso quotidiano:** dopo `run.py publish`/`run.py run-publish` (che scrivono
 anche `docs/eventi_mappa.json` e `docs/perimetro.json` in locale), i **dati**
-si aggiornano online da soli (commit automatico schedulato). Una modifica al
+si aggiornano online da soli (commit automatico in `ricerca_eventi_automatica.bat`,
+un blocco `git add/commit/push` per ciascun file JSON quando cambia). Una modifica al
 **codice** delle pagine richiede invece un `git push` manuale dalla cartella
 del progetto.
+
+**Bug corretto (2026-09-16):** il blocco di commit/push automatico esisteva
+da tempo solo per `docs/eventi_mappa.json`; `docs/perimetro.json` veniva
+riscritto in locale ad ogni run ma non pubblicato, quindi la pagina Perimetro
+online restava ferma all'ultimo push manuale (nel caso osservato, fermo al
+12 settembre mentre mappa/elenco erano già al giorno). Aggiunto lo stesso
+blocco `git diff --quiet` / `add` / `commit` / `push` anche per
+`docs/perimetro.json` in `ricerca_eventi_automatica.bat`. Inoltre, su tutte
+e tre le pagine (`index.html`, `elenco.html`, `perimetro.html`) la scritta
+"generato/aggiornato il" ora diventa rossa e in grassetto se il dato ha più
+di 16 ore, per rendere visibile a colpo d'occhio un futuro mancato aggiornamento
+dello stesso tipo.
 **Richiesta originale (2026-08-31):** una seconda interfaccia, oltre al workbook
 Sheets, che mostri gli eventi su una mappa: filtro per data di osservazione, e sulla
 mappa tutti i punti (comuni) con almeno un evento quel giorno. L'elenco
