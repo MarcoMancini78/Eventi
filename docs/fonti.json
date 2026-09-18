@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-17T18:33:31",
+  "generato_il": "2026-09-18T02:22:34",
   "fonti": [
     {
       "fonte": "facebook",
@@ -68,7 +68,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Airasca",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://comune.airasca.to.it/novita/categoria/78/Manifestazioni",
       "numero": 8
@@ -86,7 +86,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alba",
-      "attivi": 56,
+      "attivi": 52,
       "totale": 77,
       "url": "https://comune.alba.cn.it/it/news/",
       "numero": 10
@@ -248,7 +248,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alpignano",
-      "attivi": 21,
+      "attivi": 19,
       "totale": 26,
       "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
       "numero": 28
@@ -617,7 +617,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Avigliana",
-      "attivi": 11,
+      "attivi": 9,
       "totale": 19,
       "url": "https://www.facebook.com/comune.avigliana",
       "numero": 69
@@ -627,7 +627,7 @@
       "tipo": "Comune",
       "comune": "Avigliana",
       "attivi": 15,
-      "totale": 29,
+      "totale": 33,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
@@ -1634,7 +1634,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Bra",
-      "attivi": 20,
+      "attivi": 19,
       "totale": 23,
       "url": "https://www.comune.bra.cn.it/it/events",
       "numero": 182
@@ -1877,7 +1877,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Busca",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 15,
       "url": "https://comune.busca.cn.it/vivere-il-comune/eventi/",
       "numero": 209
@@ -2336,8 +2336,8 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Candia Canavese",
-      "attivi": 1,
-      "totale": 4,
+      "attivi": 2,
+      "totale": 5,
       "url": "https://www.facebook.com/candiacanavese",
       "numero": 260
     },
@@ -2696,7 +2696,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Carmagnola",
-      "attivi": 9,
+      "attivi": 8,
       "totale": 13,
       "url": "https://comune.carmagnola.to.it/pagina133703_eventi.html",
       "numero": 300
@@ -2903,7 +2903,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casale Monferrato",
-      "attivi": 6,
+      "attivi": 5,
       "totale": 6,
       "url": "https://comune.casale-monferrato.al.it/vivere-il-comune/eventi/",
       "numero": 323
@@ -3110,7 +3110,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Caselette",
-      "attivi": 6,
+      "attivi": 3,
       "totale": 15,
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
       "numero": 346
@@ -3398,7 +3398,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castell'Alfero",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 9,
       "url": "https://comune.castellalfero.at.it/en/news/spettacoli-di-fine-anno-scolastico-scuola-primaria-e-scuola-secondaria",
       "numero": 378
@@ -3902,7 +3902,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castiglione Torinese",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 26,
       "url": "https://comune.castiglionetorinese.to.it/Eventi",
       "numero": 434
@@ -4541,7 +4541,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chieri",
-      "attivi": 14,
+      "attivi": 13,
       "totale": 21,
       "url": "https://www.facebook.com/comunechieri",
       "numero": 505
@@ -4559,8 +4559,8 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chiusa di Pesio",
-      "attivi": 4,
-      "totale": 13,
+      "attivi": 6,
+      "totale": 15,
       "url": "https://www.facebook.com/comunedichiusadipesio",
       "numero": 507
     },
@@ -5540,8 +5540,8 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Dronero",
-      "attivi": 4,
-      "totale": 9,
+      "attivi": 5,
+      "totale": 10,
       "url": "https://www.facebook.com/cittadidronero",
       "numero": 616
     },
@@ -5639,7 +5639,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Envie",
-      "attivi": 18,
+      "attivi": 17,
       "totale": 22,
       "url": "https://www.comune.envie.cn.it/",
       "numero": 627
@@ -5864,7 +5864,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Fossano",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 7,
       "url": "https://comune.fossano.cn.it/vivere-il-comune/eventi/",
       "numero": 652
@@ -7799,8 +7799,8 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Mirabello Monferrato",
-      "attivi": 0,
-      "totale": 0,
+      "attivi": 1,
+      "totale": 1,
       "url": "https://www.facebook.com/comune.mirabellomonf",
       "numero": 867
     },
@@ -8078,7 +8078,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Monale",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 2,
       "url": "https://www.facebook.com/comune.monale",
       "numero": 898
@@ -8087,7 +8087,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Monale",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 23,
       "url": "https://comune.monale.at.it/Eventi",
       "numero": 899
@@ -9752,7 +9752,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Orbassano",
-      "attivi": 17,
+      "attivi": 16,
       "totale": 20,
       "url": "https://www.facebook.com/cittadiorbassano",
       "numero": 1084
@@ -10391,7 +10391,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Pianezza",
-      "attivi": 22,
+      "attivi": 21,
       "totale": 28,
       "url": "https://www.comune.pianezza.to.it/it-it/vivere-il-comune/eventi",
       "numero": 1155
@@ -10985,7 +10985,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Pozzolo Formigaro",
-      "attivi": 6,
+      "attivi": 5,
       "totale": 24,
       "url": "https://www.facebook.com/radiopnr",
       "numero": 1221
@@ -12470,7 +12470,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "San Damiano d'Asti",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 17,
       "url": "https://www.facebook.com/comunesandamianodasti",
       "numero": 1386
@@ -12551,7 +12551,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Giorgio Monferrato",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 44,
       "url": "https://comune.sangiorgiomonferrato.al.it/Eventi",
       "numero": 1395
@@ -12956,7 +12956,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Santena",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://www.facebook.com/comunesantena",
       "numero": 1440
@@ -14711,7 +14711,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Venaria Reale",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 18,
       "url": "https://comune.venariareale.to.it/it/events",
       "numero": 1635
@@ -15818,8 +15818,8 @@
       "fonte": "web",
       "tipo": "Aggregatore",
       "comune": "",
-      "attivi": 2,
-      "totale": 28,
+      "attivi": 3,
+      "totale": 31,
       "url": "https://www.visitlmr.it/it/calendario-eventi",
       "numero": 1758
     },
