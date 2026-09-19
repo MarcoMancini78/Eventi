@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-19T07:15:18",
+  "generato_il": "2026-09-19T13:41:57",
   "fonti": [
     {
       "fonte": "facebook",
@@ -1886,8 +1886,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Buttigliera d'Asti",
-      "attivi": 1,
-      "totale": 28,
+      "attivi": 2,
+      "totale": 29,
       "url": "https://comune.buttigliera.at.it/Eventi",
       "numero": 210
     },
@@ -3470,8 +3470,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castellero",
-      "attivi": 1,
-      "totale": 4,
+      "attivi": 2,
+      "totale": 5,
       "url": "https://comune.castellero.at.it/Eventi",
       "numero": 386
     },
@@ -11075,8 +11075,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Predosa",
-      "attivi": 3,
-      "totale": 4,
+      "attivi": 5,
+      "totale": 6,
       "url": "https://comune.predosa.al.it/vivere-il-comune/eventi/",
       "numero": 1231
     },
@@ -11300,8 +11300,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Reano",
-      "attivi": 3,
-      "totale": 5,
+      "attivi": 4,
+      "totale": 6,
       "url": "https://comune.reano.to.it/it-it/vivere-il-comune/eventi",
       "numero": 1256
     },
@@ -14585,8 +14585,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Valenza",
-      "attivi": 3,
-      "totale": 6,
+      "attivi": 4,
+      "totale": 7,
       "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
       "numero": 1621
     },
