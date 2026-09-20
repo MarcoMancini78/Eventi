@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-20T07:11:50",
+  "generato_il": "2026-09-20T13:17:36",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -4557,6 +4557,25 @@
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/langhe/maggio/trifolao-in-bianco-e-nero-alba",
       "url_approfondimento": "",
       "fonti": "aggregatore-visitlmr",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
+      "id": "c081d33a2fe6",
+      "titolo": "Festival \"C'era una svolta\", una rassegna per raccontare i bivi della storia per decifrare il presente",
+      "descrizione": "<div><br></div><div><b>NASCE AD ALPIGNANO IL FESTIVAL \"C'ERA UNA SVOLTA\" <br>Dal 19 settembre al 20 novembre</b> prende il via la prima edizione della rassegna che racconta i bivi della storia per decifrare il presente.<br><br>Cosa unisce la nascita della lampadina, il \"No\" dei soldati deportati nel 1943 e i gradini intitolati alle partigiane? La capacità di imprimere una svolta. Dal 19 settembre ",
+      "comune": "Alpignano",
+      "lat": 45.095724,
+      "lon": 7.525403,
+      "km": 88.7,
+      "minuti": 80.0,
+      "data_inizio": "2026-09-20",
+      "data_fine": "2026-09-20",
+      "tipologia": "altro",
+      "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi/festival-c-era-una-svolta-una-rassegna-per-raccontare-i-bivi-della-storia-per-decifrare-il-130557-1-bc786c9f7446a313baba02a34d0471d0",
+      "url_approfondimento": "",
+      "fonti": "comune-alpignano",
       "data_post": "",
       "ora_post": "",
       "quarantena": false
