@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-20T02:23:06",
+  "generato_il": "2026-09-20T04:10:47",
   "fonti": [
     {
       "fonte": "facebook",
@@ -14,8 +14,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 7,
-      "totale": 14,
+      "attivi": 10,
+      "totale": 17,
       "url": "https://turismo.comuneacqui.it/events/",
       "numero": 2
     },
@@ -627,7 +627,7 @@
       "tipo": "Comune",
       "comune": "Avigliana",
       "attivi": 15,
-      "totale": 40,
+      "totale": 41,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
