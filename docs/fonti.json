@@ -1,11 +1,11 @@
 {
-  "generato_il": "2026-09-20T18:22:25",
+  "generato_il": "2026-09-21T02:24:18",
   "fonti": [
     {
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 15,
+      "attivi": 10,
       "totale": 45,
       "url": "https://www.facebook.com/visitacquiterme",
       "numero": 1
@@ -14,7 +14,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 10,
+      "attivi": 6,
       "totale": 17,
       "url": "https://turismo.comuneacqui.it/events/",
       "numero": 2
@@ -86,7 +86,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alba",
-      "attivi": 52,
+      "attivi": 50,
       "totale": 78,
       "url": "https://comune.alba.cn.it/it/news/",
       "numero": 10
@@ -248,7 +248,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alpignano",
-      "attivi": 18,
+      "attivi": 15,
       "totale": 27,
       "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
       "numero": 28
@@ -392,7 +392,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Aramengo",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 2,
       "url": "https://www.facebook.com/www.comune.aramengo.at.it",
       "numero": 44
@@ -617,7 +617,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Avigliana",
-      "attivi": 8,
+      "attivi": 7,
       "totale": 20,
       "url": "https://www.facebook.com/comune.avigliana",
       "numero": 69
@@ -626,8 +626,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Avigliana",
-      "attivi": 15,
-      "totale": 44,
+      "attivi": 14,
+      "totale": 45,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
@@ -806,7 +806,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Baldissero Torinese",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/baldisserotorinese",
       "numero": 90
@@ -923,7 +923,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Basaluzzo",
-      "attivi": 4,
+      "attivi": 0,
       "totale": 4,
       "url": "https://comune.basaluzzo.al.it/eventi/",
       "numero": 103
@@ -1022,7 +1022,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Beinasco",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 7,
       "url": "https://www.facebook.com/comunedibeinasco",
       "numero": 114
@@ -1427,7 +1427,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Borgo d'Ale",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 8,
       "url": "https://www.facebook.com/prolocoborgodale",
       "numero": 159
@@ -1436,7 +1436,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Borgo d'Ale",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 8,
       "url": "https://www.instagram.com/prolocoborgodale",
       "numero": 160
@@ -1553,7 +1553,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Bosco Marengo",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 3,
       "url": "https://comune.boscomarengo.al.it/it-it/vivere-il-comune/eventi",
       "numero": 173
@@ -1634,7 +1634,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Bra",
-      "attivi": 18,
+      "attivi": 14,
       "totale": 24,
       "url": "https://www.comune.bra.cn.it/it/events",
       "numero": 182
@@ -1652,7 +1652,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Brandizzo",
-      "attivi": 4,
+      "attivi": 2,
       "totale": 5,
       "url": "https://comune.brandizzo.to.it/it-it/vivere-il-comune/eventi",
       "numero": 184
@@ -1769,7 +1769,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Bruino",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 7,
       "url": "https://www.facebook.com/comunedibruino",
       "numero": 197
@@ -1886,7 +1886,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Buttigliera d'Asti",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 29,
       "url": "https://comune.buttigliera.at.it/Eventi",
       "numero": 210
@@ -1913,7 +1913,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cairo Montenotte",
-      "attivi": 4,
+      "attivi": 1,
       "totale": 10,
       "url": "https://comune.cairomontenotte.sv.it/it/events",
       "numero": 213
@@ -2039,7 +2039,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Caluso",
-      "attivi": 6,
+      "attivi": 3,
       "totale": 8,
       "url": "https://comune.caluso.to.it/vivere-il-comune/eventi/",
       "numero": 227
@@ -2102,7 +2102,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cambiano",
-      "attivi": 7,
+      "attivi": 3,
       "totale": 8,
       "url": "https://comune.cambiano.to.it/vivere-il-comune/eventi/",
       "numero": 234
@@ -2111,7 +2111,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Cambiano",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 10,
       "url": "https://www.facebook.com/cambiano1991",
       "numero": 235
@@ -2336,7 +2336,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Candia Canavese",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 5,
       "url": "https://www.facebook.com/candiacanavese",
       "numero": 260
@@ -2345,7 +2345,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Candia Canavese",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 4,
       "url": "https://comune.candia.to.it/it-it/vivere-il-comune/eventi",
       "numero": 261
@@ -2399,7 +2399,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Canelli",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 4,
       "url": "https://comune.canelli.at.it/it/events",
       "numero": 267
@@ -2408,7 +2408,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Canelli",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/prolococanelli",
       "numero": 268
@@ -2660,7 +2660,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Carignano",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 13,
       "url": "https://www.facebook.com/comunecarignano",
       "numero": 296
@@ -2867,7 +2867,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casalborgone",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 2,
       "url": "https://comune.casalborgone.to.it/it-it/appuntamenti",
       "numero": 319
@@ -2903,7 +2903,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casale Monferrato",
-      "attivi": 5,
+      "attivi": 3,
       "totale": 6,
       "url": "https://comune.casale-monferrato.al.it/vivere-il-comune/eventi/",
       "numero": 323
@@ -2984,7 +2984,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casalino",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://comune.casalino.no.it/it-it/vivere-il-comune/eventi",
       "numero": 332
@@ -3110,7 +3110,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Caselette",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 15,
       "url": "https://comune.caselette.to.it/it-it/appuntamenti",
       "numero": 346
@@ -3164,7 +3164,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Cassinasco",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://www.instagram.com/proloco_cassinasco",
       "numero": 352
@@ -3173,7 +3173,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cassine",
-      "attivi": 44,
+      "attivi": 40,
       "totale": 58,
       "url": "https://comune.cassine.al.it/it-it/appuntamenti",
       "numero": 353
@@ -3335,7 +3335,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castagnole delle Lanze",
-      "attivi": 3,
+      "attivi": 1,
       "totale": 3,
       "url": "https://comune.castagnoledellelanze.at.it/it/events",
       "numero": 371
@@ -3398,7 +3398,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castell'Alfero",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 9,
       "url": "https://comune.castellalfero.at.it/en/news/spettacoli-di-fine-anno-scolastico-scuola-primaria-e-scuola-secondaria",
       "numero": 378
@@ -3443,7 +3443,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Castellazzo Bormida",
-      "attivi": 4,
+      "attivi": 2,
       "totale": 6,
       "url": "https://www.comune.castellazzobormida.al.it/it-it/vivere-il-comune/eventi",
       "numero": 383
@@ -3920,7 +3920,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Castino",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 4,
       "url": "https://www.facebook.com/prolocodicastino/",
       "numero": 436
@@ -3983,7 +3983,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Cavatore",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/comunedicavatore",
       "numero": 443
@@ -4271,7 +4271,7 @@
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "Cergnago",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/profile.php?id=100080229957596",
       "numero": 475
@@ -4541,7 +4541,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chieri",
-      "attivi": 9,
+      "attivi": 7,
       "totale": 21,
       "url": "https://www.facebook.com/comunechieri",
       "numero": 505
@@ -4550,7 +4550,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Chieri",
-      "attivi": 32,
+      "attivi": 23,
       "totale": 56,
       "url": "https://comune.chieri.to.it/it/events",
       "numero": 506
@@ -4613,7 +4613,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chivasso",
-      "attivi": 10,
+      "attivi": 8,
       "totale": 19,
       "url": "https://www.facebook.com/comunechivasso",
       "numero": 513
@@ -4622,7 +4622,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Chivasso",
-      "attivi": 35,
+      "attivi": 31,
       "totale": 53,
       "url": "https://www.comune.chivasso.to.it/it/events",
       "numero": 514
@@ -5306,7 +5306,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Crescentino",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 8,
       "url": "https://www.facebook.com/cittadicrescentino",
       "numero": 590
@@ -5370,7 +5370,7 @@
       "tipo": "Comune",
       "comune": "Cuneo",
       "attivi": 4,
-      "totale": 4,
+      "totale": 5,
       "url": "https://www.comune.cuneo.it/vivere-il-comune/eventi/",
       "numero": 597
     },
@@ -5576,7 +5576,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Druento",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 12,
       "url": "https://www.facebook.com/comunedidruento",
       "numero": 620
@@ -5865,7 +5865,7 @@
       "tipo": "Comune",
       "comune": "Fossano",
       "attivi": 6,
-      "totale": 7,
+      "totale": 8,
       "url": "https://comune.fossano.cn.it/vivere-il-comune/eventi/",
       "numero": 652
     },
@@ -6143,7 +6143,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Fubine Monferrato",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 36,
       "url": "https://comune.fubinemonferrato.al.it/Eventi",
       "numero": 683
@@ -6323,7 +6323,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Gavi",
-      "attivi": 4,
+      "attivi": 2,
       "totale": 6,
       "url": "https://comune.gavi.al.it/it-it/vivere-il-comune/eventi/oggi",
       "numero": 703
@@ -6368,7 +6368,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Giarole",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 14,
       "url": "https://comune.giarole.al.it/Eventi",
       "numero": 708
@@ -6935,7 +6935,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Lauriano",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 6,
       "url": "https://www.comune.lauriano.to.it/",
       "numero": 771
@@ -7124,7 +7124,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Lomello",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://comune.lomello.pv.it/Eventi",
       "numero": 792
@@ -7151,7 +7151,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Lu e Cuccaro Monferrato",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 10,
       "url": "https://comune.luecuccaromonferrato.al.it/Eventi",
       "numero": 795
@@ -7178,7 +7178,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Magliano Alfieri",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 5,
       "url": "https://www.instagram.com/prolocomaglianoalfieri",
       "numero": 798
@@ -7637,7 +7637,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Mede",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 8,
       "url": "https://www.facebook.com/proloco.mede",
       "numero": 849
@@ -8393,7 +8393,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Mondovì",
-      "attivi": 3,
+      "attivi": 1,
       "totale": 16,
       "url": "https://www.facebook.com/cittadimondovi",
       "numero": 933
@@ -8825,7 +8825,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Montegioco",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://comune.montegioco.al.it/eventi/",
       "numero": 981
@@ -9635,7 +9635,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Novello",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 27,
       "url": "https://comune.novello.cn.it/Eventi",
       "numero": 1071
@@ -9653,7 +9653,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Novi Ligure",
-      "attivi": 6,
+      "attivi": 4,
       "totale": 13,
       "url": "https://comune.noviligure.al.it/it/events",
       "numero": 1073
@@ -10004,7 +10004,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Paesana",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/prolocopaesanacn",
       "numero": 1112
@@ -10049,7 +10049,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Pagno",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.instagram.com/proloco_pagno",
       "numero": 1117
@@ -10148,7 +10148,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Parodi Ligure",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 3,
       "url": "https://comune.parodiligure.al.it/it-it/vivere-il-comune/eventi",
       "numero": 1128
@@ -10391,7 +10391,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Pianezza",
-      "attivi": 20,
+      "attivi": 15,
       "totale": 28,
       "url": "https://www.comune.pianezza.to.it/it-it/vivere-il-comune/eventi",
       "numero": 1155
@@ -10526,7 +10526,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Pino Torinese",
-      "attivi": 5,
+      "attivi": 3,
       "totale": 14,
       "url": "https://www.facebook.com/comunepinotorinese",
       "numero": 1170
@@ -10535,7 +10535,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Pino Torinese",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 3,
       "url": "https://comune.pinotorinese.to.it/vivere-il-comune/",
       "numero": 1171
@@ -10985,7 +10985,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Pozzolo Formigaro",
-      "attivi": 4,
+      "attivi": 1,
       "totale": 24,
       "url": "https://www.facebook.com/radiopnr",
       "numero": 1221
@@ -11300,7 +11300,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Reano",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 6,
       "url": "https://comune.reano.to.it/it-it/vivere-il-comune/eventi",
       "numero": 1256
@@ -11426,7 +11426,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Ricaldone",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 10,
       "url": "https://comune.ricaldone.al.it/Eventi",
       "numero": 1270
@@ -11516,7 +11516,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Rivalta di Torino",
-      "attivi": 19,
+      "attivi": 15,
       "totale": 34,
       "url": "https://www.facebook.com/cittadirivalta",
       "numero": 1280
@@ -11525,7 +11525,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Rivalta di Torino",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 2,
       "url": "https://www.comune.rivalta.to.it/vivere-comune/eventi",
       "numero": 1281
@@ -11948,7 +11948,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Rocchetta Tanaro",
-      "attivi": 4,
+      "attivi": 1,
       "totale": 6,
       "url": "https://www.facebook.com/rocchettatanaro",
       "numero": 1328
@@ -12011,7 +12011,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Roddino",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 4,
       "url": "https://www.facebook.com/proroddino",
       "numero": 1335
@@ -12020,7 +12020,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Roddino",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 6,
       "url": "https://www.instagram.com/prolocoroddino",
       "numero": 1336
@@ -12128,7 +12128,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Rossana",
-      "attivi": 6,
+      "attivi": 5,
       "totale": 7,
       "url": "https://www.facebook.com/amministrazionerossana",
       "numero": 1348
@@ -12470,7 +12470,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "San Damiano d'Asti",
-      "attivi": 6,
+      "attivi": 1,
       "totale": 26,
       "url": "https://www.facebook.com/comunesandamianodasti",
       "numero": 1386
@@ -12497,7 +12497,7 @@
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "San Damiano d'Asti",
-      "attivi": 5,
+      "attivi": 0,
       "totale": 9,
       "url": "https://www.facebook.com/prolocogorzano",
       "numero": 1389
@@ -12515,7 +12515,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "San Damiano d'Asti",
-      "attivi": 5,
+      "attivi": 0,
       "totale": 12,
       "url": "https://www.facebook.com/prolocosandamiano2.0",
       "numero": 1391
@@ -12551,7 +12551,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Giorgio Monferrato",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 44,
       "url": "https://comune.sangiorgiomonferrato.al.it/Eventi",
       "numero": 1395
@@ -12650,7 +12650,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Mauro Torinese",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 5,
       "url": "https://comune.sanmaurotorinese.to.it/vivere-il-comune/eventi/",
       "numero": 1406
@@ -12884,7 +12884,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Sannazzaro de' Burgondi",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 7,
       "url": "https://www.comune.sannazzarodeburgondi.pv.it/it-it/vivere-il-comune/eventi",
       "numero": 1432
@@ -13064,7 +13064,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Savigliano",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 8,
       "url": "https://www.facebook.com/cittadisavigliano",
       "numero": 1452
@@ -13325,7 +13325,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Serravalle Scrivia",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 3,
       "url": "https://comune.serravalle-scrivia.al.it/vivere-il-comune/eventi/",
       "numero": 1481
@@ -13424,7 +13424,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Settimo Torinese",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 3,
       "url": "https://www.comune.settimo-torinese.to.it/it/events",
       "numero": 1492
@@ -13631,7 +13631,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Sommariva Perno",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 4,
       "url": "https://www.facebook.com/comunesommarivaperno",
       "numero": 1515
@@ -13658,7 +13658,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Sommariva Perno",
-      "attivi": 17,
+      "attivi": 2,
       "totale": 24,
       "url": "https://www.instagram.com/proloco_sommariva_perno",
       "numero": 1518
@@ -13694,7 +13694,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Spigno Monferrato",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 18,
       "url": "https://www.instagram.com/proloco_spignomonferrato",
       "numero": 1522
@@ -13730,7 +13730,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Spotorno",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 4,
       "url": "https://comune.spotorno.sv.it/vivere-il-comune/eventi/",
       "numero": 1526
@@ -14072,7 +14072,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Torino",
-      "attivi": 4,
+      "attivi": 2,
       "totale": 6,
       "url": "https://www.comune.torino.it/vivere-comune/eventi",
       "numero": 1564
@@ -14270,7 +14270,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Tortona",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 10,
       "url": "https://www.facebook.com/comuneditortona",
       "numero": 1586
@@ -14315,7 +14315,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Trana",
-      "attivi": 4,
+      "attivi": 2,
       "totale": 44,
       "url": "https://comune.trana.to.it/Eventi",
       "numero": 1591
@@ -14684,7 +14684,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Varazze",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 14,
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
       "numero": 1632
@@ -14711,7 +14711,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Venaria Reale",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 18,
       "url": "https://comune.venariareale.to.it/it/events",
       "numero": 1635
@@ -14846,7 +14846,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Verzuolo",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 4,
       "url": "https://www.facebook.com/provillaverzuolo",
       "numero": 1650
@@ -15638,7 +15638,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Voghera",
-      "attivi": 8,
+      "attivi": 6,
       "totale": 14,
       "url": "https://comune.voghera.pv.it/it/events",
       "numero": 1738
@@ -15647,7 +15647,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Volpedo",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 4,
       "url": "https://www.comune.volpedo.al.it/it-it/appuntamenti",
       "numero": 1739
@@ -15683,7 +15683,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Voltaggio",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 3,
       "url": "https://comune.voltaggio.al.it/vivere-il-comune/eventi/",
       "numero": 1743
@@ -15818,7 +15818,7 @@
       "fonte": "web",
       "tipo": "Aggregatore",
       "comune": "",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 34,
       "url": "https://www.visitlmr.it/it/calendario-eventi",
       "numero": 1758
