@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-21T04:13:42",
+  "generato_il": "2026-09-21T07:16:21",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -1593,6 +1593,25 @@
       "url": "https://www.facebook.com/airasca?__cft__[0]=AZhLTwmwMkpQO8yA393sh9QjUNznKP6yQgRnTsjSnxVCf93EwYW7Cjf9XoL0eHrpWf5hlGmSocsSAp3Khc1fxm_xDSjOyADPMiPEMTfKhuTOv5nRDeYdxi1np24I0KYaeqHN8DSA1t2bGHT6dL8tB2mko8Mp4C7ypKyo8e1Ey67Q0Uci6sdpxzILmm8NhHswuA&__tn__=-UC%2CP-R",
       "url_approfondimento": "https://scontent-mxp2-1.xx.fbcdn.net/v/t39.99422-6/814750022_2274518919767147_5788862165764714962_n.png?stp=dst-jpg_tt6&cstp=mx797x1227&ctp=p526x296&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=7sBiKK1j_dMQ7kNvwEgi5Zz&_nc_oc=Adqnav7jmWt64FtoQZCH_Pw7Us8epS37tKug-epi7zOxdOQOa8fs0PS-C9eaGs2ttHs&_nc_zt=14&_nc_ht=scontent-mxp2-1.xx&_nc_gid=YWOj5ob3NDQqxJu-zmZNcQ&_nc_ss=7b2a8&oh=00_AQJXsyukGLio_sblYO7g4Y3xR5zBZkMw9u29GmyrSbiNMA&oe=6AB2E176",
       "fonti": "feed-facebook-airasca",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
+      "id": "579a89c0a37a",
+      "titolo": "Eventi - Mostra \"1946. Luci e ombre della rinascita\" - Asti - Monferrato",
+      "descrizione": "Eventi culturali, musicali e sportivi in Monferrato. Mostra \"1946. Luci e ombre della rinascita\"  - Asti: date, orari, programma e dettagli.",
+      "comune": "Asti",
+      "lat": 44.826013,
+      "lon": 8.202686,
+      "km": 15.7,
+      "minuti": 22.0,
+      "data_inizio": "2026-09-21",
+      "data_fine": "2026-09-21",
+      "tipologia": "altro",
+      "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/monferrato/marzo/mostra-1946-luci-e-ombre-della-rinascita-asti",
+      "url_approfondimento": "",
+      "fonti": "aggregatore-visitlmr",
       "data_post": "",
       "ora_post": "",
       "quarantena": false
