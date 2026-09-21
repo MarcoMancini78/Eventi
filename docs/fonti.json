@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-21T04:13:43",
+  "generato_il": "2026-09-21T07:16:21",
   "fonti": [
     {
       "fonte": "facebook",
@@ -627,7 +627,7 @@
       "tipo": "Comune",
       "comune": "Avigliana",
       "attivi": 14,
-      "totale": 46,
+      "totale": 47,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
@@ -15818,8 +15818,8 @@
       "fonte": "web",
       "tipo": "Aggregatore",
       "comune": "",
-      "attivi": 0,
-      "totale": 34,
+      "attivi": 1,
+      "totale": 35,
       "url": "https://www.visitlmr.it/it/calendario-eventi",
       "numero": 1758
     },
