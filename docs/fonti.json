@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-21T07:16:21",
+  "generato_il": "2026-09-21T18:40:55",
   "fonti": [
     {
       "fonte": "facebook",
@@ -14,8 +14,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Acqui Terme",
-      "attivi": 6,
-      "totale": 17,
+      "attivi": 10,
+      "totale": 21,
       "url": "https://turismo.comuneacqui.it/events/",
       "numero": 2
     },
@@ -627,7 +627,7 @@
       "tipo": "Comune",
       "comune": "Avigliana",
       "attivi": 14,
-      "totale": 47,
+      "totale": 49,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
@@ -12551,8 +12551,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Giorgio Monferrato",
-      "attivi": 2,
-      "totale": 44,
+      "attivi": 3,
+      "totale": 45,
       "url": "https://comune.sangiorgiomonferrato.al.it/Eventi",
       "numero": 1395
     },
@@ -12965,8 +12965,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Santena",
-      "attivi": 0,
-      "totale": 13,
+      "attivi": 1,
+      "totale": 14,
       "url": "https://comune.santena.to.it/Eventi",
       "numero": 1441
     },
@@ -14234,8 +14234,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Torre Mondovì",
-      "attivi": 0,
-      "totale": 5,
+      "attivi": 1,
+      "totale": 6,
       "url": "https://comune.torremondovi.cn.it/Eventi",
       "numero": 1582
     },
@@ -14441,8 +14441,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Trino",
-      "attivi": 10,
-      "totale": 69,
+      "attivi": 11,
+      "totale": 70,
       "url": "https://comune.trino.vc.it/Eventi",
       "numero": 1605
     },
@@ -14684,8 +14684,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Varazze",
-      "attivi": 0,
-      "totale": 14,
+      "attivi": 2,
+      "totale": 16,
       "url": "https://www.comune.varazze.sv.it/Vivere-il-comune/Eventi",
       "numero": 1632
     },
