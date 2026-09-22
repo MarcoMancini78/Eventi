@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-21T18:40:55",
+  "generato_il": "2026-09-22T18:30:11",
   "fonti": [
     {
       "fonte": "facebook",
@@ -59,7 +59,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Airasca",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/airasca",
       "numero": 7
@@ -68,7 +68,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Airasca",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://comune.airasca.to.it/novita/categoria/78/Manifestazioni",
       "numero": 8
@@ -627,7 +627,7 @@
       "tipo": "Comune",
       "comune": "Avigliana",
       "attivi": 14,
-      "totale": 49,
+      "totale": 50,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
     },
@@ -1868,7 +1868,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Busca",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 18,
       "url": "https://www.facebook.com/comunedibusca",
       "numero": 208
@@ -1877,8 +1877,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Busca",
-      "attivi": 5,
-      "totale": 18,
+      "attivi": 7,
+      "totale": 20,
       "url": "https://comune.busca.cn.it/vivere-il-comune/eventi/",
       "numero": 209
     },
@@ -2040,7 +2040,7 @@
       "tipo": "Comune",
       "comune": "Caluso",
       "attivi": 3,
-      "totale": 8,
+      "totale": 9,
       "url": "https://comune.caluso.to.it/vivere-il-comune/eventi/",
       "numero": 227
     },
@@ -2426,7 +2426,7 @@
       "fonte": "facebook",
       "tipo": "Teatro",
       "comune": "Canelli",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://www.facebook.com/comitatosuilsipario",
       "numero": 270
@@ -2867,7 +2867,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casalborgone",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://comune.casalborgone.to.it/it-it/appuntamenti",
       "numero": 319
@@ -2903,8 +2903,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Casale Monferrato",
-      "attivi": 3,
-      "totale": 6,
+      "attivi": 4,
+      "totale": 7,
       "url": "https://comune.casale-monferrato.al.it/vivere-il-comune/eventi/",
       "numero": 323
     },
@@ -3920,7 +3920,7 @@
       "fonte": "facebook",
       "tipo": "Pro Loco",
       "comune": "Castino",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 4,
       "url": "https://www.facebook.com/prolocodicastino/",
       "numero": 436
@@ -4406,7 +4406,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cervere",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 2,
       "url": "https://comune.cervere.cn.it/Eventi",
       "numero": 490
@@ -4613,7 +4613,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chivasso",
-      "attivi": 8,
+      "attivi": 7,
       "totale": 19,
       "url": "https://www.facebook.com/comunechivasso",
       "numero": 513
@@ -4622,7 +4622,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Chivasso",
-      "attivi": 31,
+      "attivi": 30,
       "totale": 53,
       "url": "https://www.comune.chivasso.to.it/it/events",
       "numero": 514
@@ -5963,8 +5963,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Francavilla Bisio",
-      "attivi": 0,
-      "totale": 17,
+      "attivi": 2,
+      "totale": 19,
       "url": "https://comune.francavillabisio.al.it/Eventi",
       "numero": 663
     },
@@ -7214,7 +7214,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Maglione",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 1,
       "url": "https://comune.maglione.to.it/it-it/vivere-il-comune/eventi",
       "numero": 802
@@ -9599,7 +9599,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "None",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 7,
       "url": "https://www.facebook.com/comunenone",
       "numero": 1067
@@ -9635,8 +9635,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Novello",
-      "attivi": 1,
-      "totale": 27,
+      "attivi": 2,
+      "totale": 29,
       "url": "https://comune.novello.cn.it/Eventi",
       "numero": 1071
     },
@@ -12533,8 +12533,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Gillio",
-      "attivi": 0,
-      "totale": 14,
+      "attivi": 1,
+      "totale": 15,
       "url": "https://comune.sangillio.to.it/Eventi",
       "numero": 1393
     },
@@ -12650,7 +12650,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Mauro Torinese",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 5,
       "url": "https://comune.sanmaurotorinese.to.it/vivere-il-comune/eventi/",
       "numero": 1406
@@ -12965,7 +12965,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Santena",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 14,
       "url": "https://comune.santena.to.it/Eventi",
       "numero": 1441
@@ -13064,7 +13064,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Savigliano",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 8,
       "url": "https://www.facebook.com/cittadisavigliano",
       "numero": 1452
@@ -13631,7 +13631,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Sommariva Perno",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 4,
       "url": "https://www.facebook.com/comunesommarivaperno",
       "numero": 1515
@@ -13658,7 +13658,7 @@
       "fonte": "instagram",
       "tipo": "Pro Loco",
       "comune": "Sommariva Perno",
-      "attivi": 2,
+      "attivi": 0,
       "totale": 24,
       "url": "https://www.instagram.com/proloco_sommariva_perno",
       "numero": 1518
@@ -14585,7 +14585,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Valenza",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 7,
       "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
       "numero": 1621
@@ -15818,8 +15818,8 @@
       "fonte": "web",
       "tipo": "Aggregatore",
       "comune": "",
-      "attivi": 1,
-      "totale": 35,
+      "attivi": 3,
+      "totale": 38,
       "url": "https://www.visitlmr.it/it/calendario-eventi",
       "numero": 1758
     },
