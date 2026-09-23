@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-23T04:13:48",
+  "generato_il": "2026-09-23T07:15:32",
   "eventi": [
     {
       "id": "71fd691545d5",
@@ -1477,6 +1477,25 @@
       "data_fine": "2026-09-23",
       "tipologia": "altro",
       "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/monferrato/marzo/mostra-1946-luci-e-ombre-della-rinascita-asti",
+      "url_approfondimento": "",
+      "fonti": "aggregatore-visitlmr",
+      "data_post": "",
+      "ora_post": "",
+      "quarantena": false
+    },
+    {
+      "id": "6853fbcbb0a1",
+      "titolo": "Eventi - Profondo umano - Alba - Langhe, Roero",
+      "descrizione": "Eventi culturali, musicali e sportivi in Langhe, Roero. Profondo umano - Alba : date, orari, programma e dettagli.",
+      "comune": "Alba",
+      "lat": 44.700724,
+      "lon": 8.035779,
+      "km": 24.3,
+      "minuti": 32.0,
+      "data_inizio": "2026-09-23",
+      "data_fine": "2026-09-23",
+      "tipologia": "altro",
+      "url": "https://www.visitlmr.it/it/eventi/calendario-eventi/generici/langhe/profondo-umano-alba",
       "url_approfondimento": "",
       "fonti": "aggregatore-visitlmr",
       "data_post": "",
@@ -7823,7 +7842,7 @@
       "data_fine": "2026-10-11",
       "tipologia": "gastronomia",
       "url": "https://www.instagram.com/p/DdRzK8QMUAn/",
-      "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/810813849_18065655899774900_8712063788368081955_n.webp?_nc_cat=103&ig_cache_key=Mzk4NjE5MjE5NzQ2MjYwNTg2Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=skxdkfMH778Q7kNvwHhVJlx&_nc_oc=Adrz6p1fBq_xHVCitzpgBES-XG81wdYoOD-yGWPERFRshw3vI-NNEJiJjOrSNN_yTOqSxGAVcPZCmn2TCWUGbT6f&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=ZiPo96CGzcqljRURBohclA&_nc_ss=7a22e&oh=00_AQKlaizsP7Lwn3eQ7BXIok1kvje7Y3l2vUa5XACgjq7Liw&oe=6AAE80AD",
+      "url_approfondimento": "https://scontent-mxp1-1.cdninstagram.com/v/t51.82787-15/810813849_18065655899774900_8712063788368081955_n.webp?_nc_cat=103&ig_cache_key=Mzk4NjE5MjE5NzQ2MjYwNTg2Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=K1XPFU7qRV0Q7kNvwFyb9wj&_nc_oc=Adr1WDInEnXfYvKnVIZDxdZEyet7qIIbd3vke5txlaMXOP6kXB4wrH-kD6GOPogEK3c&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_gid=MS8Nla-dpg5UzvyAv12wgw&_nc_ss=7a22e&oh=00_AQJavUfQE72djMhiNwHa_seDFw9X0Z4COqxmhFg8b2Vqcw&oe=6AB944ED",
       "fonti": "feed-instagram-proloco.montaldo.scarampi",
       "data_post": "",
       "ora_post": "",
