@@ -1,5 +1,5 @@
 {
-  "generato_il": "2026-09-22T18:30:11",
+  "generato_il": "2026-09-23T02:20:17",
   "fonti": [
     {
       "fonte": "facebook",
@@ -86,7 +86,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alba",
-      "attivi": 50,
+      "attivi": 47,
       "totale": 78,
       "url": "https://comune.alba.cn.it/it/news/",
       "numero": 10
@@ -176,7 +176,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Alessandria",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 11,
       "url": "https://www.facebook.com/comunealessandria",
       "numero": 20
@@ -248,7 +248,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Alpignano",
-      "attivi": 15,
+      "attivi": 14,
       "totale": 27,
       "url": "https://comune.alpignano.to.it/it-it/vivere-il-comune/eventi",
       "numero": 28
@@ -617,7 +617,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Avigliana",
-      "attivi": 7,
+      "attivi": 6,
       "totale": 20,
       "url": "https://www.facebook.com/comune.avigliana",
       "numero": 69
@@ -626,7 +626,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Avigliana",
-      "attivi": 14,
+      "attivi": 13,
       "totale": 50,
       "url": "https://turismoavigliana.it/calendario-eventi/",
       "numero": 70
@@ -2102,8 +2102,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cambiano",
-      "attivi": 3,
-      "totale": 8,
+      "attivi": 4,
+      "totale": 9,
       "url": "https://comune.cambiano.to.it/vivere-il-comune/eventi/",
       "numero": 234
     },
@@ -4559,7 +4559,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Chiusa di Pesio",
-      "attivi": 4,
+      "attivi": 3,
       "totale": 15,
       "url": "https://www.facebook.com/comunedichiusadipesio",
       "numero": 507
@@ -5369,8 +5369,8 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Cuneo",
-      "attivi": 4,
-      "totale": 5,
+      "attivi": 5,
+      "totale": 6,
       "url": "https://www.comune.cuneo.it/vivere-il-comune/eventi/",
       "numero": 597
     },
@@ -5540,7 +5540,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Dronero",
-      "attivi": 5,
+      "attivi": 4,
       "totale": 11,
       "url": "https://www.facebook.com/cittadidronero",
       "numero": 616
@@ -8231,7 +8231,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Moncalieri",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 5,
       "url": "https://www.comune.moncalieri.to.it/vivere-comune/eventi",
       "numero": 915
@@ -10391,7 +10391,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Pianezza",
-      "attivi": 15,
+      "attivi": 12,
       "totale": 28,
       "url": "https://www.comune.pianezza.to.it/it-it/vivere-il-comune/eventi",
       "numero": 1155
@@ -10526,7 +10526,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Pino Torinese",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 14,
       "url": "https://www.facebook.com/comunepinotorinese",
       "numero": 1170
@@ -11516,7 +11516,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Rivalta di Torino",
-      "attivi": 15,
+      "attivi": 14,
       "totale": 34,
       "url": "https://www.facebook.com/cittadirivalta",
       "numero": 1280
@@ -11606,7 +11606,7 @@
       "fonte": "facebook",
       "tipo": "Comune",
       "comune": "Rivoli",
-      "attivi": 1,
+      "attivi": 0,
       "totale": 3,
       "url": "https://www.facebook.com/cittadirivoli",
       "numero": 1290
@@ -12650,7 +12650,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "San Mauro Torinese",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 5,
       "url": "https://comune.sanmaurotorinese.to.it/vivere-il-comune/eventi/",
       "numero": 1406
@@ -14585,7 +14585,7 @@
       "fonte": "web",
       "tipo": "Comune",
       "comune": "Valenza",
-      "attivi": 2,
+      "attivi": 1,
       "totale": 7,
       "url": "https://comune.valenza.al.it/it-it/vivere-il-comune/eventi",
       "numero": 1621
@@ -15818,7 +15818,7 @@
       "fonte": "web",
       "tipo": "Aggregatore",
       "comune": "",
-      "attivi": 3,
+      "attivi": 2,
       "totale": 38,
       "url": "https://www.visitlmr.it/it/calendario-eventi",
       "numero": 1758
@@ -16225,7 +16225,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/lavocedialba",
+      "url": "https://www.facebook.com/lapiazzadilombriasco",
       "numero": 1803
     },
     {
@@ -16234,7 +16234,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/morrodalbacomune",
+      "url": "https://www.facebook.com/lavocedialba",
       "numero": 1804
     },
     {
@@ -16243,7 +16243,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/municipale",
+      "url": "https://www.facebook.com/morrodalbacomune",
       "numero": 1805
     },
     {
@@ -16252,7 +16252,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/pro.loco.camino",
+      "url": "https://www.facebook.com/municipale",
       "numero": 1806
     },
     {
@@ -16261,7 +16261,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proandezeno",
+      "url": "https://www.facebook.com/pro.loco.camino",
       "numero": 1807
     },
     {
@@ -16270,7 +16270,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php",
+      "url": "https://www.facebook.com/proandezeno",
       "numero": 1808
     },
     {
@@ -16279,7 +16279,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100054543815368",
+      "url": "https://www.facebook.com/profile.php",
       "numero": 1809
     },
     {
@@ -16288,7 +16288,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100057236546517",
+      "url": "https://www.facebook.com/profile.php?id=100054543815368",
       "numero": 1810
     },
     {
@@ -16297,7 +16297,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100057510081523",
+      "url": "https://www.facebook.com/profile.php?id=100057236546517",
       "numero": 1811
     },
     {
@@ -16306,7 +16306,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100058683729971",
+      "url": "https://www.facebook.com/profile.php?id=100057510081523",
       "numero": 1812
     },
     {
@@ -16315,7 +16315,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100061852788938",
+      "url": "https://www.facebook.com/profile.php?id=100058683729971",
       "numero": 1813
     },
     {
@@ -16324,7 +16324,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100063341943669",
+      "url": "https://www.facebook.com/profile.php?id=100061852788938",
       "numero": 1814
     },
     {
@@ -16333,7 +16333,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100063479411782",
+      "url": "https://www.facebook.com/profile.php?id=100063341943669",
       "numero": 1815
     },
     {
@@ -16342,7 +16342,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100063619571657",
+      "url": "https://www.facebook.com/profile.php?id=100063479411782",
       "numero": 1816
     },
     {
@@ -16351,7 +16351,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100063674075128",
+      "url": "https://www.facebook.com/profile.php?id=100063619571657",
       "numero": 1817
     },
     {
@@ -16360,7 +16360,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100063704197293",
+      "url": "https://www.facebook.com/profile.php?id=100063674075128",
       "numero": 1818
     },
     {
@@ -16369,7 +16369,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064275356542",
+      "url": "https://www.facebook.com/profile.php?id=100063704197293",
       "numero": 1819
     },
     {
@@ -16378,7 +16378,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064288615522",
+      "url": "https://www.facebook.com/profile.php?id=100064275356542",
       "numero": 1820
     },
     {
@@ -16387,7 +16387,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064388811379",
+      "url": "https://www.facebook.com/profile.php?id=100064288615522",
       "numero": 1821
     },
     {
@@ -16396,7 +16396,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064590825959",
+      "url": "https://www.facebook.com/profile.php?id=100064388811379",
       "numero": 1822
     },
     {
@@ -16405,7 +16405,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064638855671",
+      "url": "https://www.facebook.com/profile.php?id=100064590825959",
       "numero": 1823
     },
     {
@@ -16414,7 +16414,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064654514210",
+      "url": "https://www.facebook.com/profile.php?id=100064638855671",
       "numero": 1824
     },
     {
@@ -16423,7 +16423,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064668372410",
+      "url": "https://www.facebook.com/profile.php?id=100064654514210",
       "numero": 1825
     },
     {
@@ -16432,7 +16432,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064754344417",
+      "url": "https://www.facebook.com/profile.php?id=100064668372410",
       "numero": 1826
     },
     {
@@ -16441,7 +16441,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100064893468513",
+      "url": "https://www.facebook.com/profile.php?id=100064754344417",
       "numero": 1827
     },
     {
@@ -16450,7 +16450,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100066238077228",
+      "url": "https://www.facebook.com/profile.php?id=100064893468513",
       "numero": 1828
     },
     {
@@ -16459,7 +16459,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100066555637870",
+      "url": "https://www.facebook.com/profile.php?id=100066238077228",
       "numero": 1829
     },
     {
@@ -16468,7 +16468,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100066734918902",
+      "url": "https://www.facebook.com/profile.php?id=100066555637870",
       "numero": 1830
     },
     {
@@ -16477,7 +16477,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100066825279649",
+      "url": "https://www.facebook.com/profile.php?id=100066734918902",
       "numero": 1831
     },
     {
@@ -16486,7 +16486,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100066867551247",
+      "url": "https://www.facebook.com/profile.php?id=100066825279649",
       "numero": 1832
     },
     {
@@ -16495,7 +16495,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100067057731101",
+      "url": "https://www.facebook.com/profile.php?id=100066867551247",
       "numero": 1833
     },
     {
@@ -16504,7 +16504,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100067508203894",
+      "url": "https://www.facebook.com/profile.php?id=100067057731101",
       "numero": 1834
     },
     {
@@ -16513,7 +16513,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100067645813536",
+      "url": "https://www.facebook.com/profile.php?id=100067508203894",
       "numero": 1835
     },
     {
@@ -16522,7 +16522,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100067730730905",
+      "url": "https://www.facebook.com/profile.php?id=100067645813536",
       "numero": 1836
     },
     {
@@ -16531,7 +16531,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100068801442137",
+      "url": "https://www.facebook.com/profile.php?id=100067730730905",
       "numero": 1837
     },
     {
@@ -16540,7 +16540,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100068893372787",
+      "url": "https://www.facebook.com/profile.php?id=100068801442137",
       "numero": 1838
     },
     {
@@ -16549,7 +16549,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100069741185421",
+      "url": "https://www.facebook.com/profile.php?id=100068893372787",
       "numero": 1839
     },
     {
@@ -16558,7 +16558,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100069950899563",
+      "url": "https://www.facebook.com/profile.php?id=100069741185421",
       "numero": 1840
     },
     {
@@ -16567,7 +16567,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100070944880668",
+      "url": "https://www.facebook.com/profile.php?id=100069950899563",
       "numero": 1841
     },
     {
@@ -16576,7 +16576,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100072432317596",
+      "url": "https://www.facebook.com/profile.php?id=100070944880668",
       "numero": 1842
     },
     {
@@ -16585,7 +16585,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100076230634044",
+      "url": "https://www.facebook.com/profile.php?id=100072432317596",
       "numero": 1843
     },
     {
@@ -16594,7 +16594,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083005848606",
+      "url": "https://www.facebook.com/profile.php?id=100076230634044",
       "numero": 1844
     },
     {
@@ -16603,7 +16603,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083156297670",
+      "url": "https://www.facebook.com/profile.php?id=100083005848606",
       "numero": 1845
     },
     {
@@ -16612,7 +16612,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083176697941",
+      "url": "https://www.facebook.com/profile.php?id=100083156297670",
       "numero": 1846
     },
     {
@@ -16621,7 +16621,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083239254989",
+      "url": "https://www.facebook.com/profile.php?id=100083176697941",
       "numero": 1847
     },
     {
@@ -16630,7 +16630,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083576433481",
+      "url": "https://www.facebook.com/profile.php?id=100083239254989",
       "numero": 1848
     },
     {
@@ -16639,7 +16639,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100083609689246",
+      "url": "https://www.facebook.com/profile.php?id=100083576433481",
       "numero": 1849
     },
     {
@@ -16648,7 +16648,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100085030481527",
+      "url": "https://www.facebook.com/profile.php?id=100083609689246",
       "numero": 1850
     },
     {
@@ -16657,7 +16657,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100087870649155",
+      "url": "https://www.facebook.com/profile.php?id=100085030481527",
       "numero": 1851
     },
     {
@@ -16666,7 +16666,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100087914714647",
+      "url": "https://www.facebook.com/profile.php?id=100087870649155",
       "numero": 1852
     },
     {
@@ -16675,7 +16675,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100090092827840",
+      "url": "https://www.facebook.com/profile.php?id=100087914714647",
       "numero": 1853
     },
     {
@@ -16684,7 +16684,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100090424877951",
+      "url": "https://www.facebook.com/profile.php?id=100090092827840",
       "numero": 1854
     },
     {
@@ -16693,7 +16693,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100091965315966",
+      "url": "https://www.facebook.com/profile.php?id=100090424877951",
       "numero": 1855
     },
     {
@@ -16702,7 +16702,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100092557790500",
+      "url": "https://www.facebook.com/profile.php?id=100091965315966",
       "numero": 1856
     },
     {
@@ -16711,7 +16711,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100092686646748",
+      "url": "https://www.facebook.com/profile.php?id=100092557790500",
       "numero": 1857
     },
     {
@@ -16720,7 +16720,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100093295903582",
+      "url": "https://www.facebook.com/profile.php?id=100092686646748",
       "numero": 1858
     },
     {
@@ -16729,7 +16729,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100093474995900",
+      "url": "https://www.facebook.com/profile.php?id=100093295903582",
       "numero": 1859
     },
     {
@@ -16738,7 +16738,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100094353607581",
+      "url": "https://www.facebook.com/profile.php?id=100093474995900",
       "numero": 1860
     },
     {
@@ -16747,7 +16747,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=100095054374442",
+      "url": "https://www.facebook.com/profile.php?id=100094353607581",
       "numero": 1861
     },
     {
@@ -16756,7 +16756,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61556161387294",
+      "url": "https://www.facebook.com/profile.php?id=100095054374442",
       "numero": 1862
     },
     {
@@ -16765,7 +16765,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61559023423607",
+      "url": "https://www.facebook.com/profile.php?id=61556161387294",
       "numero": 1863
     },
     {
@@ -16774,7 +16774,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61560926860221",
+      "url": "https://www.facebook.com/profile.php?id=61559023423607",
       "numero": 1864
     },
     {
@@ -16783,7 +16783,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61561194611082",
+      "url": "https://www.facebook.com/profile.php?id=61560926860221",
       "numero": 1865
     },
     {
@@ -16792,7 +16792,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61561390314158",
+      "url": "https://www.facebook.com/profile.php?id=61561194611082",
       "numero": 1866
     },
     {
@@ -16801,7 +16801,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61562847455119",
+      "url": "https://www.facebook.com/profile.php?id=61561390314158",
       "numero": 1867
     },
     {
@@ -16810,7 +16810,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61563535504389",
+      "url": "https://www.facebook.com/profile.php?id=61562847455119",
       "numero": 1868
     },
     {
@@ -16819,7 +16819,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61565144021461",
+      "url": "https://www.facebook.com/profile.php?id=61563535504389",
       "numero": 1869
     },
     {
@@ -16828,7 +16828,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61566115147367",
+      "url": "https://www.facebook.com/profile.php?id=61565144021461",
       "numero": 1870
     },
     {
@@ -16837,7 +16837,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61566351734425",
+      "url": "https://www.facebook.com/profile.php?id=61566115147367",
       "numero": 1871
     },
     {
@@ -16846,7 +16846,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61571458212129",
+      "url": "https://www.facebook.com/profile.php?id=61566351734425",
       "numero": 1872
     },
     {
@@ -16855,7 +16855,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61573401493311",
+      "url": "https://www.facebook.com/profile.php?id=61571458212129",
       "numero": 1873
     },
     {
@@ -16864,7 +16864,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61576196755500",
+      "url": "https://www.facebook.com/profile.php?id=61573401493311",
       "numero": 1874
     },
     {
@@ -16873,7 +16873,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61576549470133",
+      "url": "https://www.facebook.com/profile.php?id=61576196755500",
       "numero": 1875
     },
     {
@@ -16882,7 +16882,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61577100156678",
+      "url": "https://www.facebook.com/profile.php?id=61576549470133",
       "numero": 1876
     },
     {
@@ -16891,7 +16891,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/profile.php?id=61583672407365",
+      "url": "https://www.facebook.com/profile.php?id=61577100156678",
       "numero": 1877
     },
     {
@@ -16900,7 +16900,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.callianetto",
+      "url": "https://www.facebook.com/profile.php?id=61583672407365",
       "numero": 1878
     },
     {
@@ -16909,7 +16909,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.cusano.milanino",
+      "url": "https://www.facebook.com/proloco.callianetto",
       "numero": 1879
     },
     {
@@ -16918,7 +16918,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.motta",
+      "url": "https://www.facebook.com/proloco.cusano.milanino",
       "numero": 1880
     },
     {
@@ -16927,7 +16927,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.osasco",
+      "url": "https://www.facebook.com/proloco.motta",
       "numero": 1881
     },
     {
@@ -16936,7 +16936,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.pasturana",
+      "url": "https://www.facebook.com/proloco.osasco",
       "numero": 1882
     },
     {
@@ -16945,7 +16945,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.quiliano",
+      "url": "https://www.facebook.com/proloco.pasturana",
       "numero": 1883
     },
     {
@@ -16954,7 +16954,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/proloco.trescore.infopointvalcavallina",
+      "url": "https://www.facebook.com/proloco.quiliano",
       "numero": 1884
     },
     {
@@ -16963,7 +16963,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoalfianonatta",
+      "url": "https://www.facebook.com/proloco.trescore.infopointvalcavallina",
       "numero": 1885
     },
     {
@@ -16972,7 +16972,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoaltessanovenaria",
+      "url": "https://www.facebook.com/prolocoalfianonatta",
       "numero": 1886
     },
     {
@@ -16981,7 +16981,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoanticoborgovillanuovadicanelli",
+      "url": "https://www.facebook.com/prolocoaltessanovenaria",
       "numero": 1887
     },
     {
@@ -16990,7 +16990,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoborgaro",
+      "url": "https://www.facebook.com/prolocoanticoborgovillanuovadicanelli",
       "numero": 1888
     },
     {
@@ -16999,7 +16999,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocobricco",
+      "url": "https://www.facebook.com/prolocoborgaro",
       "numero": 1889
     },
     {
@@ -17008,7 +17008,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocobuttigliera",
+      "url": "https://www.facebook.com/prolocobricco",
       "numero": 1890
     },
     {
@@ -17017,7 +17017,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococaorso",
+      "url": "https://www.facebook.com/prolocobuttigliera",
       "numero": 1891
     },
     {
@@ -17026,7 +17026,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococarignano",
+      "url": "https://www.facebook.com/prolococaorso",
       "numero": 1892
     },
     {
@@ -17035,7 +17035,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococasalborgone",
+      "url": "https://www.facebook.com/prolococarignano",
       "numero": 1893
     },
     {
@@ -17044,7 +17044,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococastiglioneasti",
+      "url": "https://www.facebook.com/prolococasalborgone",
       "numero": 1894
     },
     {
@@ -17053,7 +17053,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococeresole",
+      "url": "https://www.facebook.com/prolococastiglioneasti",
       "numero": 1895
     },
     {
@@ -17062,7 +17062,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolococontessadicastiglione",
+      "url": "https://www.facebook.com/prolococeresole",
       "numero": 1896
     },
     {
@@ -17071,7 +17071,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodego",
+      "url": "https://www.facebook.com/prolococisternaasti",
       "numero": 1897
     },
     {
@@ -17080,7 +17080,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodicalizzano",
+      "url": "https://www.facebook.com/prolococontessadicastiglione",
       "numero": 1898
     },
     {
@@ -17089,7 +17089,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodicaluso",
+      "url": "https://www.facebook.com/prolocodego",
       "numero": 1899
     },
     {
@@ -17098,7 +17098,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodicamo",
+      "url": "https://www.facebook.com/prolocodicalizzano",
       "numero": 1900
     },
     {
@@ -17107,7 +17107,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodirefrancore",
+      "url": "https://www.facebook.com/prolocodicaluso",
       "numero": 1901
     },
     {
@@ -17116,7 +17116,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocodiviarigi",
+      "url": "https://www.facebook.com/prolocodicamo",
       "numero": 1902
     },
     {
@@ -17125,7 +17125,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocofaule",
+      "url": "https://www.facebook.com/prolocodirefrancore",
       "numero": 1903
     },
     {
@@ -17134,7 +17134,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocofontanettopo",
+      "url": "https://www.facebook.com/prolocodiviarigi",
       "numero": 1904
     },
     {
@@ -17143,7 +17143,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocofubinedimonferrato",
+      "url": "https://www.facebook.com/prolocofaule",
       "numero": 1905
     },
     {
@@ -17152,7 +17152,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocogalloegrinzanecavour",
+      "url": "https://www.facebook.com/prolocofontanettopo",
       "numero": 1906
     },
     {
@@ -17161,7 +17161,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocolauriano",
+      "url": "https://www.facebook.com/prolocofubinedimonferrato",
       "numero": 1907
     },
     {
@@ -17170,7 +17170,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocolesegno",
+      "url": "https://www.facebook.com/prolocogalloegrinzanecavour",
       "numero": 1908
     },
     {
@@ -17179,7 +17179,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomadonninaserralungadicrea",
+      "url": "https://www.facebook.com/prolocolauriano",
       "numero": 1909
     },
     {
@@ -17188,7 +17188,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomarene2",
+      "url": "https://www.facebook.com/prolocolesegno",
       "numero": 1910
     },
     {
@@ -17197,7 +17197,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomoncucco",
+      "url": "https://www.facebook.com/prolocomadonninaserralungadicrea",
       "numero": 1911
     },
     {
@@ -17206,7 +17206,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomontechiaro",
+      "url": "https://www.facebook.com/prolocomarene2",
       "numero": 1912
     },
     {
@@ -17215,7 +17215,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomonticello",
+      "url": "https://www.facebook.com/prolocomoncucco",
       "numero": 1913
     },
     {
@@ -17224,7 +17224,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomorozzo",
+      "url": "https://www.facebook.com/prolocomontechiaro",
       "numero": 1914
     },
     {
@@ -17233,7 +17233,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocomurello",
+      "url": "https://www.facebook.com/prolocomonticello",
       "numero": 1915
     },
     {
@@ -17242,7 +17242,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoorsarab",
+      "url": "https://www.facebook.com/prolocomorozzo",
       "numero": 1916
     },
     {
@@ -17251,7 +17251,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocopallareofficialpage",
+      "url": "https://www.facebook.com/prolocomurello",
       "numero": 1917
     },
     {
@@ -17260,7 +17260,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocopinotorinese",
+      "url": "https://www.facebook.com/prolocoorsarab",
       "numero": 1918
     },
     {
@@ -17269,7 +17269,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocopiovamassaia",
+      "url": "https://www.facebook.com/prolocopallareofficialpage",
       "numero": 1919
     },
     {
@@ -17278,7 +17278,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoponti",
+      "url": "https://www.facebook.com/prolocopinotorinese",
       "numero": 1920
     },
     {
@@ -17287,7 +17287,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoportacomarostazione",
+      "url": "https://www.facebook.com/prolocopiovamassaia",
       "numero": 1921
     },
     {
@@ -17296,7 +17296,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocoquaranti2019",
+      "url": "https://www.facebook.com/prolocoponti",
       "numero": 1922
     },
     {
@@ -17305,7 +17305,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocorossiglione",
+      "url": "https://www.facebook.com/prolocoportacomarostazione",
       "numero": 1923
     },
     {
@@ -17314,7 +17314,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocos.biagio",
+      "url": "https://www.facebook.com/prolocoquaranti2019",
       "numero": 1924
     },
     {
@@ -17323,7 +17323,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocosanmarzanooliveto",
+      "url": "https://www.facebook.com/prolocorossiglione",
       "numero": 1925
     },
     {
@@ -17332,7 +17332,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocosanstefanese2017",
+      "url": "https://www.facebook.com/prolocos.biagio",
       "numero": 1926
     },
     {
@@ -17341,7 +17341,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocovigone",
+      "url": "https://www.facebook.com/prolocosanmarzanooliveto",
       "numero": 1927
     },
     {
@@ -17350,7 +17350,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/prolocovottignasco",
+      "url": "https://www.facebook.com/prolocosanstefanese2017",
       "numero": 1928
     },
     {
@@ -17359,7 +17359,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/roccadarazzoinforma",
+      "url": "https://www.facebook.com/prolocovigone",
       "numero": 1929
     },
     {
@@ -17368,7 +17368,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/rosignanomonferratoinfopoint",
+      "url": "https://www.facebook.com/prolocovottignasco",
       "numero": 1930
     },
     {
@@ -17377,7 +17377,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/rossanaproloco",
+      "url": "https://www.facebook.com/roccadarazzoinforma",
       "numero": 1931
     },
     {
@@ -17386,7 +17386,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/sagradegliin",
+      "url": "https://www.facebook.com/rosignanomonferratoinfopoint",
       "numero": 1932
     },
     {
@@ -17395,7 +17395,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/sagreinpiemonte",
+      "url": "https://www.facebook.com/rossanaproloco",
       "numero": 1933
     },
     {
@@ -17404,7 +17404,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/sandesiderio",
+      "url": "https://www.facebook.com/sagradegliin",
       "numero": 1934
     },
     {
@@ -17413,7 +17413,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/scavalcamontagne",
+      "url": "https://www.facebook.com/sagreinpiemonte",
       "numero": 1935
     },
     {
@@ -17422,7 +17422,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/stalkerteatrostalker",
+      "url": "https://www.facebook.com/sandesiderio",
       "numero": 1936
     },
     {
@@ -17431,16 +17431,16 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/teatro.degli.acerbi",
+      "url": "https://www.facebook.com/scavalcamontagne",
       "numero": 1937
     },
     {
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "",
-      "attivi": 9,
-      "totale": 10,
-      "url": "https://www.facebook.com/teatroalfieriasti",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.facebook.com/stalkerteatrostalker",
       "numero": 1938
     },
     {
@@ -17449,16 +17449,16 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/teatrochiabrera",
+      "url": "https://www.facebook.com/teatro.degli.acerbi",
       "numero": 1939
     },
     {
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://www.facebook.com/teatrocivicotortona",
+      "attivi": 9,
+      "totale": 10,
+      "url": "https://www.facebook.com/teatroalfieriasti",
       "numero": 1940
     },
     {
@@ -17467,7 +17467,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/teatrodelrimbombo",
+      "url": "https://www.facebook.com/teatrochiabrera",
       "numero": 1941
     },
     {
@@ -17476,16 +17476,16 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/teatroregiotorino",
+      "url": "https://www.facebook.com/teatrocivicotortona",
       "numero": 1942
     },
     {
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "",
-      "attivi": 1,
-      "totale": 1,
-      "url": "https://www.facebook.com/teatrostabileditorino",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.facebook.com/teatrodelrimbombo",
       "numero": 1943
     },
     {
@@ -17494,16 +17494,16 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/teatrosuperga",
+      "url": "https://www.facebook.com/teatroregiotorino",
       "numero": 1944
     },
     {
       "fonte": "facebook",
       "tipo": "Da classificare",
       "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://www.facebook.com/tonengo.proloco",
+      "attivi": 1,
+      "totale": 1,
+      "url": "https://www.facebook.com/teatrostabileditorino",
       "numero": 1945
     },
     {
@@ -17512,8 +17512,26 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.facebook.com/totiluxsd",
+      "url": "https://www.facebook.com/teatrosuperga",
       "numero": 1946
+    },
+    {
+      "fonte": "facebook",
+      "tipo": "Da classificare",
+      "comune": "",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.facebook.com/tonengo.proloco",
+      "numero": 1947
+    },
+    {
+      "fonte": "facebook",
+      "tipo": "Da classificare",
+      "comune": "",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.facebook.com/totiluxsd",
+      "numero": 1948
     },
     {
       "fonte": "facebook",
@@ -17522,24 +17540,6 @@
       "attivi": 3,
       "totale": 3,
       "url": "https://www.facebook.com/tpeteatroastra",
-      "numero": 1947
-    },
-    {
-      "fonte": "instagram",
-      "tipo": "Da classificare",
-      "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://www.instagram.com/_vibefestival",
-      "numero": 1948
-    },
-    {
-      "fonte": "instagram",
-      "tipo": "Da classificare",
-      "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://www.instagram.com/banda_costigliole",
       "numero": 1949
     },
     {
@@ -17548,7 +17548,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/borgo_sanmarzanotto",
+      "url": "https://www.instagram.com/_vibefestival",
       "numero": 1950
     },
     {
@@ -17557,7 +17557,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/borgotorretta",
+      "url": "https://www.instagram.com/banda_costigliole",
       "numero": 1951
     },
     {
@@ -17566,7 +17566,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/castel_boglione",
+      "url": "https://www.instagram.com/borgo_sanmarzanotto",
       "numero": 1952
     },
     {
@@ -17575,7 +17575,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/castiglione.tinella",
+      "url": "https://www.instagram.com/borgotorretta",
       "numero": 1953
     },
     {
@@ -17584,7 +17584,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/castiglionet_ouristoffice",
+      "url": "https://www.instagram.com/castel_boglione",
       "numero": 1954
     },
     {
@@ -17593,7 +17593,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/citta_di_alba",
+      "url": "https://www.instagram.com/castiglione.tinella",
       "numero": 1955
     },
     {
@@ -17602,7 +17602,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/comune_loazzolo",
+      "url": "https://www.instagram.com/castiglionet_ouristoffice",
       "numero": 1956
     },
     {
@@ -17611,7 +17611,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/comune_mongardino",
+      "url": "https://www.instagram.com/citta_di_alba",
       "numero": 1957
     },
     {
@@ -17620,7 +17620,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/comunebra",
+      "url": "https://www.instagram.com/comune_loazzolo",
       "numero": 1958
     },
     {
@@ -17629,7 +17629,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/comunedivalfenera",
+      "url": "https://www.instagram.com/comune_mongardino",
       "numero": 1959
     },
     {
@@ -17638,7 +17638,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/consorzio.astidocg",
+      "url": "https://www.instagram.com/comunebra",
       "numero": 1960
     },
     {
@@ -17647,7 +17647,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/contessa.di.castiglione",
+      "url": "https://www.instagram.com/comunedivalfenera",
       "numero": 1961
     },
     {
@@ -17656,7 +17656,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/daop_alessandria",
+      "url": "https://www.instagram.com/consorzio.astidocg",
       "numero": 1962
     },
     {
@@ -17665,7 +17665,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/daop_asti",
+      "url": "https://www.instagram.com/contessa.di.castiglione",
       "numero": 1963
     },
     {
@@ -17674,7 +17674,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/daop_cuneo",
+      "url": "https://www.instagram.com/daop_alessandria",
       "numero": 1964
     },
     {
@@ -17683,7 +17683,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/davinavillien",
+      "url": "https://www.instagram.com/daop_asti",
       "numero": 1965
     },
     {
@@ -17692,7 +17692,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/dhom_enogastroteca",
+      "url": "https://www.instagram.com/daop_cuneo",
       "numero": 1966
     },
     {
@@ -17701,7 +17701,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/doglianiturismo",
+      "url": "https://www.instagram.com/davinavillien",
       "numero": 1967
     },
     {
@@ -17710,7 +17710,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/doujador",
+      "url": "https://www.instagram.com/dhom_enogastroteca",
       "numero": 1968
     },
     {
@@ -17719,7 +17719,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/fieradelrapule",
+      "url": "https://www.instagram.com/doglianiturismo",
       "numero": 1969
     },
     {
@@ -17728,7 +17728,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/fieranocciola_cortemilia",
+      "url": "https://www.instagram.com/doujador",
       "numero": 1970
     },
     {
@@ -17737,7 +17737,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/lizausdenbergen",
+      "url": "https://www.instagram.com/fieradelrapule",
       "numero": 1971
     },
     {
@@ -17746,7 +17746,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/mancini1978",
+      "url": "https://www.instagram.com/fieranocciola_cortemilia",
       "numero": 1972
     },
     {
@@ -17755,7 +17755,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/mineteatranti",
+      "url": "https://www.instagram.com/lizausdenbergen",
       "numero": 1973
     },
     {
@@ -17764,7 +17764,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/mirabiliafestival",
+      "url": "https://www.instagram.com/mancini1978",
       "numero": 1974
     },
     {
@@ -17773,7 +17773,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/montigliomonferrato_infopoint",
+      "url": "https://www.instagram.com/mineteatranti",
       "numero": 1975
     },
     {
@@ -17782,7 +17782,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/nizza_monferrato",
+      "url": "https://www.instagram.com/mirabiliafestival",
       "numero": 1976
     },
     {
@@ -17791,7 +17791,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/pescheria.abissi.asti",
+      "url": "https://www.instagram.com/montigliomonferrato_infopoint",
       "numero": 1977
     },
     {
@@ -17800,7 +17800,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco.casalcermelli",
+      "url": "https://www.instagram.com/nizza_monferrato",
       "numero": 1978
     },
     {
@@ -17809,7 +17809,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco.pray",
+      "url": "https://www.instagram.com/pescheria.abissi.asti",
       "numero": 1979
     },
     {
@@ -17818,7 +17818,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco_giaveno",
+      "url": "https://www.instagram.com/proloco.casalcermelli",
       "numero": 1980
     },
     {
@@ -17827,7 +17827,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco_incisa_scapaccino",
+      "url": "https://www.instagram.com/proloco.pray",
       "numero": 1981
     },
     {
@@ -17836,7 +17836,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco_revigliasco_asti",
+      "url": "https://www.instagram.com/proloco_giaveno",
       "numero": 1982
     },
     {
@@ -17845,7 +17845,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco_rocchettatanaro",
+      "url": "https://www.instagram.com/proloco_incisa_scapaccino",
       "numero": 1983
     },
     {
@@ -17854,7 +17854,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/proloco_vesime",
+      "url": "https://www.instagram.com/proloco_revigliasco_asti",
       "numero": 1984
     },
     {
@@ -17863,7 +17863,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolococameri",
+      "url": "https://www.instagram.com/proloco_rocchettatanaro",
       "numero": 1985
     },
     {
@@ -17872,7 +17872,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolococanelli",
+      "url": "https://www.instagram.com/proloco_vesime",
       "numero": 1986
     },
     {
@@ -17881,7 +17881,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocodisantostefanobelbo",
+      "url": "https://www.instagram.com/prolococameri",
       "numero": 1987
     },
     {
@@ -17890,7 +17890,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocodogliani",
+      "url": "https://www.instagram.com/prolococanelli",
       "numero": 1988
     },
     {
@@ -17899,7 +17899,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocoisola",
+      "url": "https://www.instagram.com/prolocodisantostefanobelbo",
       "numero": 1989
     },
     {
@@ -17908,7 +17908,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocomaddalene",
+      "url": "https://www.instagram.com/prolocodogliani",
       "numero": 1990
     },
     {
@@ -17917,7 +17917,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocomontechiaro11",
+      "url": "https://www.instagram.com/prolocoisola",
       "numero": 1991
     },
     {
@@ -17926,7 +17926,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocomottadicostigliole",
+      "url": "https://www.instagram.com/prolocomaddalene",
       "numero": 1992
     },
     {
@@ -17935,7 +17935,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/prolocosanmarzanottoaps",
+      "url": "https://www.instagram.com/prolocomontechiaro11",
       "numero": 1993
     },
     {
@@ -17944,7 +17944,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/sagrecastellalfero",
+      "url": "https://www.instagram.com/prolocomottadicostigliole",
       "numero": 1994
     },
     {
@@ -17953,7 +17953,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/sagreinitalia",
+      "url": "https://www.instagram.com/prolocosanmarzanottoaps",
       "numero": 1995
     },
     {
@@ -17962,7 +17962,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/sanbenedetto.eventi",
+      "url": "https://www.instagram.com/sagrecastellalfero",
       "numero": 1996
     },
     {
@@ -17971,7 +17971,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/scavalcamontagne",
+      "url": "https://www.instagram.com/sagreinitalia",
       "numero": 1997
     },
     {
@@ -17980,7 +17980,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/sushikoizen168",
+      "url": "https://www.instagram.com/sanbenedetto.eventi",
       "numero": 1998
     },
     {
@@ -17989,7 +17989,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/sushistar_canelli",
+      "url": "https://www.instagram.com/scavalcamontagne",
       "numero": 1999
     },
     {
@@ -17998,7 +17998,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/villaggio_narrante",
+      "url": "https://www.instagram.com/sushikoizen168",
       "numero": 2000
     },
     {
@@ -18007,7 +18007,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/visit.asti",
+      "url": "https://www.instagram.com/sushistar_canelli",
       "numero": 2001
     },
     {
@@ -18016,7 +18016,7 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/visitcanelli",
+      "url": "https://www.instagram.com/villaggio_narrante",
       "numero": 2002
     },
     {
@@ -18025,8 +18025,26 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.instagram.com/visitgattinara",
+      "url": "https://www.instagram.com/visit.asti",
       "numero": 2003
+    },
+    {
+      "fonte": "instagram",
+      "tipo": "Da classificare",
+      "comune": "",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.instagram.com/visitcanelli",
+      "numero": 2004
+    },
+    {
+      "fonte": "instagram",
+      "tipo": "Da classificare",
+      "comune": "",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.instagram.com/visitgattinara",
+      "numero": 2005
     },
     {
       "fonte": "facebook",
@@ -18035,7 +18053,7 @@
       "attivi": 0,
       "totale": 0,
       "url": "https://www.facebook.com/teatrochiabrera/",
-      "numero": 2004
+      "numero": 2006
     },
     {
       "fonte": "instagram",
@@ -18044,24 +18062,6 @@
       "attivi": 0,
       "totale": 0,
       "url": "https://www.instagram.com/teatrochiabrera/",
-      "numero": 2005
-    },
-    {
-      "fonte": "web",
-      "tipo": "Teatro",
-      "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://unionemusicale.it/teatro-vittoria/",
-      "numero": 2006
-    },
-    {
-      "fonte": "web",
-      "tipo": "Teatro",
-      "comune": "",
-      "attivi": 0,
-      "totale": 0,
-      "url": "https://www.arte-e-tecnica.it/stagione-teatrale-moncalvo/",
       "numero": 2007
     },
     {
@@ -18070,16 +18070,16 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.comune.cuneo.it/vivere-il-comune/eventi/teatro-toselli-la-stagione-2025-2026/",
+      "url": "https://unionemusicale.it/teatro-vittoria/",
       "numero": 2008
     },
     {
       "fonte": "web",
       "tipo": "Teatro",
       "comune": "",
-      "attivi": 2,
-      "totale": 6,
-      "url": "https://www.comune.grugliasco.to.it/it/point-of-interest/teatro-perempruner",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.arte-e-tecnica.it/stagione-teatrale-moncalvo/",
       "numero": 2009
     },
     {
@@ -18088,8 +18088,26 @@
       "comune": "",
       "attivi": 0,
       "totale": 0,
-      "url": "https://www.teatroalessandrino.it/",
+      "url": "https://www.comune.cuneo.it/vivere-il-comune/eventi/teatro-toselli-la-stagione-2025-2026/",
       "numero": 2010
+    },
+    {
+      "fonte": "web",
+      "tipo": "Teatro",
+      "comune": "",
+      "attivi": 2,
+      "totale": 6,
+      "url": "https://www.comune.grugliasco.to.it/it/point-of-interest/teatro-perempruner",
+      "numero": 2011
+    },
+    {
+      "fonte": "web",
+      "tipo": "Teatro",
+      "comune": "",
+      "attivi": 0,
+      "totale": 0,
+      "url": "https://www.teatroalessandrino.it/",
+      "numero": 2012
     },
     {
       "fonte": "web",
@@ -18098,7 +18116,7 @@
       "attivi": 0,
       "totale": 0,
       "url": "https://www.teatrochiabrera.it/",
-      "numero": 2011
+      "numero": 2013
     }
   ]
 }
