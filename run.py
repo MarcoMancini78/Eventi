@@ -522,6 +522,31 @@ def cmd_publish(args: argparse.Namespace) -> None:
     n_log = publisher.pubblica_log(ws_log, conn)
     print(f"Foglio Log aggiornato: {n_log} run registrati.")
 
+    if docs_dir.exists():
+        import subprocess
+        repo_root = docs_dir.parent
+        file_docs = [
+            str((docs_dir / "eventi_mappa.json").relative_to(repo_root)),
+            str((docs_dir / "perimetro.json").relative_to(repo_root)),
+            str((docs_dir / "fonti.json").relative_to(repo_root)),
+        ]
+        try:
+            subprocess.run(["git", "add"] + file_docs, cwd=repo_root, check=True, capture_output=True)
+            status = subprocess.run(
+                ["git", "status", "--porcelain"] + file_docs,
+                cwd=repo_root, check=True, capture_output=True, text=True
+            )
+            if status.stdout.strip():
+                from datetime import datetime as _dt
+                msg = f"Aggiornamento dati sito {_dt.now().strftime('%Y-%m-%d %H:%M')}"
+                subprocess.run(["git", "commit", "-m", msg], cwd=repo_root, check=True, capture_output=True)
+                subprocess.run(["git", "push"], cwd=repo_root, check=True, capture_output=True)
+                print("Git push completato: sito GitHub Pages aggiornato.")
+            else:
+                print("Git: nessuna modifica ai JSON del sito, push non necessario.")
+        except subprocess.CalledProcessError as e:
+            print(f"Git push fallito (i JSON sono aggiornati in locale): {e.stderr.decode().strip() if e.stderr else e}")
+
 
 def cmd_pull_fonti(args: argparse.Namespace) -> None:
     """Rilegge dai fogli Sheets verso SQLite le poche colonne che
